@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "./logout-button";
+import { OrderDocuments, type DocRow } from "./order-documents";
 import { ServiceCheckout } from "./service-checkout";
 
 const statusLabel: Record<string, string> = {
@@ -44,6 +45,34 @@ export default async function DashboardPage() {
     name: s.name as string,
     price_cents: s.price_cents as number,
   }));
+
+  const orderIds = (orders ?? []).map((o) => o.id as string);
+  let docsByOrder: Record<string, DocRow[]> = {};
+  if (orderIds.length > 0) {
+    const { data: allDocs } = await supabase
+      .from("documents")
+      .select("id, order_id, file_name, file_path, document_type, created_at")
+      .in("order_id", orderIds)
+      .order("created_at", { ascending: false });
+    for (const d of allDocs ?? []) {
+      const oid = d.order_id as string;
+      const row: DocRow = {
+        id: d.id as string,
+        file_name: d.file_name as string,
+        file_path: d.file_path as string,
+        document_type: d.document_type as string,
+        created_at: d.created_at as string,
+      };
+      if (!docsByOrder[oid]) docsByOrder[oid] = [];
+      docsByOrder[oid].push(row);
+    }
+    for (const key of Object.keys(docsByOrder)) {
+      docsByOrder[key].sort((a, b) => b.created_at.localeCompare(a.created_at));
+    }
+  }
+
+  const canUploadStatus = (s: string) =>
+    ["paid", "pending_docs", "in_review", "in_progress"].includes(s);
 
   return (
     <div className="min-h-screen bg-[#F1F5F9]">
@@ -95,6 +124,12 @@ export default async function DashboardPage() {
                   {new Date(row.created_at).toLocaleString("es-ES")}
                   {row.total_cents != null ? ` · ${(row.total_cents / 100).toFixed(2)} €` : null}
                 </p>
+                <OrderDocuments
+                  orderId={row.id}
+                  userId={user.id}
+                  canUpload={canUploadStatus(row.status)}
+                  initialDocs={docsByOrder[row.id] ?? []}
+                />
               </li>
             )})}
           </ul>
