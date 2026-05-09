@@ -4,9 +4,11 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAdminNotifyEmail, getAppUrl, getResendFrom } from "./config";
 import AdminDocUploadedEmail from "./templates/admin-doc-uploaded";
 import AdminNewOrderEmail from "./templates/admin-new-order";
+import DocsReminderEmail from "./templates/docs-reminder";
 import DocumentDeliveredEmail from "./templates/document-delivered";
 import OrderConfirmedEmail from "./templates/order-confirmed";
 import OrderStatusUpdatedEmail from "./templates/order-status-updated";
+import WelcomeEmail from "./templates/welcome";
 import { getResend } from "./resend-client";
 
 export async function getAuthUserContact(supabase: SupabaseClient, userId: string) {
@@ -15,6 +17,41 @@ export async function getAuthUserContact(supabase: SupabaseClient, userId: strin
   const email = data.user.email ?? null;
   const fullName = (data.user.user_metadata?.full_name as string | undefined) ?? "";
   return { email, fullName };
+}
+
+export async function sendWelcomeEmail(opts: { to: string; customerName: string }) {
+  const resend = getResend();
+  if (!resend || !opts.to) return;
+  const dashboardUrl = `${getAppUrl()}/dashboard`;
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: opts.to,
+    subject: "Bienvenido/a a Livendia",
+    react: WelcomeEmail({
+      customerName: opts.customerName,
+      dashboardUrl,
+    }),
+  });
+}
+
+export async function sendDocsReminderEmail(opts: {
+  to: string;
+  customerName: string;
+  serviceName: string;
+}) {
+  const resend = getResend();
+  if (!resend || !opts.to) return;
+  const dashboardUrl = `${getAppUrl()}/dashboard`;
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: opts.to,
+    subject: `Livendia — Recordatorio: documentación pendiente (${opts.serviceName})`,
+    react: DocsReminderEmail({
+      customerName: opts.customerName,
+      serviceName: opts.serviceName,
+      dashboardUrl,
+    }),
+  });
 }
 
 export async function sendOrderConfirmedEmail(opts: {

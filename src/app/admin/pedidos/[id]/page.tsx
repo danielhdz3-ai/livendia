@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { AdminNotifyDeliveredForm } from "./admin-notify-delivered";
 import { AdminOrderStatusForm } from "./admin-order-status";
 
 const statusLabel: Record<string, string> = {
@@ -110,6 +111,10 @@ export default async function AdminPedidoDetailPage({
 
         <div className="mt-8 border-t border-slate-100 pt-6">
           <AdminOrderStatusForm orderId={order.id as string} currentStatus={order.status as string} />
+        </div>
+
+        <div className="mt-8 border-t border-slate-100 pt-6">
+          <AdminNotifyDeliveredForm orderId={order.id as string} />
         </div>
       </div>
 

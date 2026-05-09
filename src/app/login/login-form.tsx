@@ -19,11 +19,17 @@ export function LoginForm() {
     setError(null);
     setLoading(true);
     const supabase = createBrowserSupabaseClient();
-    const { error: err } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error: err } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (err) {
       setError(err.message);
       return;
+    }
+    if (data.session?.access_token) {
+      void fetch("/api/email/welcome", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${data.session.access_token}` },
+      });
     }
     router.push(next);
     router.refresh();

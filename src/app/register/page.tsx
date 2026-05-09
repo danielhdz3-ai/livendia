@@ -34,7 +34,11 @@ export default function RegisterPage() {
       setError(err.message);
       return;
     }
-    if (data.session) {
+    if (data.session?.access_token) {
+      void fetch("/api/email/welcome", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${data.session.access_token}` },
+      });
       router.push("/dashboard");
       router.refresh();
       return;
