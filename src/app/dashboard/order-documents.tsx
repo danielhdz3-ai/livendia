@@ -95,6 +95,16 @@ export function OrderDocuments({
     setBusy(false);
     if (row) setDocs((d) => [row as DocRow, ...d]);
     router.refresh();
+
+    void fetch("/api/email/doc-uploaded", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        orderId,
+        fileName: file.name,
+        docTypeLabel: typeLabel(docType),
+      }),
+    });
   }
 
   async function download(path: string) {
