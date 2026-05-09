@@ -37,6 +37,21 @@ export async function middleware(request: NextRequest) {
     login.searchParams.set("next", path);
     return NextResponse.redirect(login);
   }
+  if (path.startsWith("/admin")) {
+    if (!user) {
+      const login = new URL("/login", request.url);
+      login.searchParams.set("next", path);
+      return NextResponse.redirect(login);
+    }
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+    if (profile?.role !== "admin") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+  }
   if ((path === "/login" || path === "/register") && user) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }

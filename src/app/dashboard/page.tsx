@@ -92,7 +92,17 @@ export default async function DashboardPage() {
               ) : null}
             </p>
           </div>
-          <LogoutButton />
+          <div className="flex flex-wrap items-center gap-2">
+            {profile?.role === "admin" ? (
+              <Link
+                href="/admin/pedidos"
+                className="rounded-full border border-[#06B6D4] px-4 py-2 text-sm font-semibold text-[#1A4FBF] hover:bg-[#06B6D4]/10"
+              >
+                Admin
+              </Link>
+            ) : null}
+            <LogoutButton />
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
