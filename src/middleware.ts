@@ -27,7 +27,19 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const path = request.nextUrl.pathname;
+  if (path.startsWith("/dashboard") && !user) {
+    const login = new URL("/login", request.url);
+    login.searchParams.set("next", path);
+    return NextResponse.redirect(login);
+  }
+  if ((path === "/login" || path === "/register") && user) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 
   return response;
 }

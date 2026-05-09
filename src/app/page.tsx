@@ -20,6 +20,9 @@ export default function Home() {
             <a href="#confianza" className="hover:text-cyan-300 transition-colors">
               Confianza
             </a>
+            <Link href="/login" className="hover:text-cyan-300 transition-colors">
+              Entrar
+            </Link>
           </nav>
           <a
             href={waHref}
