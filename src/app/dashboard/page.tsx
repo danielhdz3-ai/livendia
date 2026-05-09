@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "./logout-button";
+import { ServiceCheckout } from "./service-checkout";
 
 const statusLabel: Record<string, string> = {
   pending_payment: "Pago pendiente",
@@ -29,7 +30,20 @@ export default async function DashboardPage() {
     )
     .order("created_at", { ascending: false });
 
+  const { data: services } = await supabase
+    .from("services")
+    .select("id, name, price_cents")
+    .eq("is_active", true)
+    .eq("is_recurring", false)
+    .order("price_cents", { ascending: true });
+
   const name = profile?.full_name?.trim() || user.email || "Cliente";
+
+  const serviceRows = (services ?? []).map((s) => ({
+    id: s.id as string,
+    name: s.name as string,
+    price_cents: s.price_cents as number,
+  }));
 
   return (
     <div className="min-h-screen bg-[#F1F5F9]">
@@ -53,7 +67,8 @@ export default async function DashboardPage() {
         </div>
       </header>
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-        <h2 className="text-lg font-semibold text-[#1E293B]">Mis pedidos</h2>
+        <ServiceCheckout services={serviceRows} />
+        <h2 className="mt-12 text-lg font-semibold text-[#1E293B]">Mis pedidos</h2>
         {!orders?.length ? (
           <p className="mt-4 rounded-xl bg-white p-6 text-[#475569] shadow ring-1 ring-slate-200">
             Aún no tienes pedidos. Cuando contrates un servicio, aparecerán aquí.
