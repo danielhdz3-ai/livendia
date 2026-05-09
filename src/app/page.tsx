@@ -9,11 +9,16 @@ export default function Home() {
     <div className="flex flex-col">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#1A4FBF] text-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <span className="text-lg font-bold tracking-tight">Livendia</span>
+          <Link href="/" className="text-lg font-bold tracking-tight text-white hover:text-cyan-200">
+            Livendia
+          </Link>
           <nav className="hidden gap-8 text-sm font-medium sm:flex">
-            <a href="#servicios" className="hover:text-cyan-300 transition-colors">
+            <Link href="/servicios" className="hover:text-cyan-300 transition-colors">
               Servicios
-            </a>
+            </Link>
+            <Link href="/precios" className="hover:text-cyan-300 transition-colors">
+              Precios
+            </Link>
             <a href="#equipo" className="hover:text-cyan-300 transition-colors">
               Equipo
             </a>
