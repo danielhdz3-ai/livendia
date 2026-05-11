@@ -19,6 +19,7 @@ import {
   ImageIcon,
 } from "lucide-react";
 import { PropertyForm } from "./property-form";
+import { TenantForm } from "./tenant-form";
 
 export const metadata = { title: "Administración de Alquileres — Livendia" };
 
@@ -45,6 +46,18 @@ export default async function RentalManagementPage() {
     .eq("user_id", user.id);
 
   const hasProperty = (properties?.length ?? 0) > 0;
+  const firstProperty = properties?.[0];
+
+  // Fetch tenants for first property
+  const { data: tenants } = firstProperty
+    ? await supabase
+        .from("tenants")
+        .select("*")
+        .eq("property_id", firstProperty.id)
+    : { data: null };
+
+  const hasTenant = (tenants?.length ?? 0) > 0;
+  const isSetupComplete = hasProperty && hasTenant;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
@@ -83,227 +96,166 @@ export default async function RentalManagementPage() {
             <div>
               <h1 className="text-3xl font-bold">Bienvenido a tu panel de administración de alquiler</h1>
               <p className="mt-2 text-blue-100">
-                Gestiona tus inmuebles, inquilinos, incidencias y comunicaciones en un solo lugar
+                {isSetupComplete
+                  ? "Gestiona tus inmuebles, inquilinos, incidencias y comunicaciones en un solo lugar"
+                  : "Completa los datos iniciales para empezar a gestionar tu alquiler"}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Section 1: Datos del Inmueble */}
-        <section className="mb-8">
-          <div className="mb-4 flex items-center justify-between">
-            <div>
+        {/* Section 1: Datos del Inmueble - Solo si no tiene inmueble */}
+        {!hasProperty && (
+          <section className="mb-8">
+            <div className="mb-4">
               <h2 className="text-2xl font-bold text-[#1E293B]">1. Datos del Inmueble</h2>
               <p className="text-sm text-[#64748B]">Información y documentación de la propiedad</p>
             </div>
-            {hasProperty && (
-              <button className="inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
-                <Plus className="h-4 w-4" />
-                <span>Agregar inmueble</span>
-              </button>
-            )}
-          </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            {!hasProperty ? (
+            <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
               <PropertyForm />
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-sm text-[#64748B]">Inmuebles registrados: {properties?.length}</p>
-              </div>
-            )}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
 
-        {/* Section 2: Datos del Inquilino */}
-        <section className="mb-8">
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold text-[#1E293B]">2. Datos del Inquilino</h2>
-            <p className="text-sm text-[#64748B]">Información del arrendatario y contrato activo</p>
-          </div>
+        {/* Section 2: Datos del Inquilino - Solo si tiene inmueble pero no inquilino */}
+        {hasProperty && !hasTenant && (
+          <section className="mb-8">
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold text-[#1E293B]">2. Datos del Inquilino</h2>
+              <p className="text-sm text-[#64748B]">Información del arrendatario y contrato activo</p>
+            </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <div className="text-center py-12">
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-emerald-50">
-                <Users className="h-10 w-10 text-emerald-600" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Agrega inquilino</h3>
-              <p className="mt-2 text-sm text-[#64748B]">
-                Registra la información del arrendatario y los detalles del contrato
-              </p>
+            <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+              <TenantForm propertyId={firstProperty!.id} />
+            </div>
+          </section>
+        )}
 
-              <div className="mt-8 grid gap-4 text-left md:grid-cols-3">
-                {/* Datos de Contacto */}
-                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-emerald-600" />
-                    <h4 className="font-semibold text-[#1E293B]">Datos de Contacto</h4>
-                  </div>
-                  <div className="space-y-3">
-                    <input
-                      type="text"
-                      placeholder="Nombre completo"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Teléfono"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="text"
-                      placeholder="DNI/NIE"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
+        {/* Dashboard completo - Solo si tiene inmueble Y inquilino */}
+        {isSetupComplete && (
+          <>
+            {/* Resumen rápido */}
+            <section className="mb-8">
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-xl bg-blue-50 p-3">
+                      <Building2 className="h-6 w-6 text-[#1A4FBF]" />
+                    </div>
+                    <div>
+                      <div className="text-sm text-[#64748B]">Inmueble</div>
+                      <div className="text-lg font-bold text-[#1E293B]">{firstProperty?.address}</div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Contrato Activo */}
-                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <FileSignature className="h-5 w-5 text-emerald-600" />
-                    <h4 className="font-semibold text-[#1E293B]">Contrato Activo</h4>
-                  </div>
-                  <div className="space-y-3">
-                    <input
-                      type="date"
-                      placeholder="Fecha inicio"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="date"
-                      placeholder="Fecha fin"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Mensualidad (€)"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Otros gastos (€)"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
+                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-xl bg-emerald-50 p-3">
+                      <Users className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <div>
+                      <div className="text-sm text-[#64748B]">Inquilino</div>
+                      <div className="text-lg font-bold text-[#1E293B]">{tenants?.[0]?.full_name}</div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Fianzas */}
-                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <Euro className="h-5 w-5 text-emerald-600" />
-                    <h4 className="font-semibold text-[#1E293B]">Fianzas Depositadas</h4>
-                  </div>
-                  <div className="space-y-3">
-                    <input
-                      type="number"
-                      placeholder="Fianza legal (€)"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Fianza adicional (€)"
-                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
-                    />
-                    <div className="rounded-lg bg-emerald-50 p-3">
-                      <div className="text-xs font-semibold text-emerald-900">Total Fianza</div>
-                      <div className="text-2xl font-bold text-emerald-600">0 €</div>
+                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-xl bg-amber-50 p-3">
+                      <Euro className="h-6 w-6 text-amber-600" />
+                    </div>
+                    <div>
+                      <div className="text-sm text-[#64748B]">Renta mensual</div>
+                      <div className="text-lg font-bold text-[#1E293B]">
+                        {tenants?.[0]?.monthly_rent?.toFixed(2) || "0.00"} €
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </section>
 
-              <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105">
-                <Plus className="h-5 w-5" />
-                <span>Guardar Inquilino</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 3: Portal de Incidencias */}
-        <section className="mb-8">
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold text-[#1E293B]">3. Portal de Incidencias</h2>
-            <p className="text-sm text-[#64748B]">
-              Gestiona tickets con fotos, autoriza presupuestos y coordina técnicos
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <div className="text-center py-12">
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-amber-50">
-                <AlertCircle className="h-10 w-10 text-amber-600" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Sin incidencias activas</h3>
-              <p className="mt-2 text-sm text-[#64748B]">
-                Los inquilinos pueden crear tickets y tú autorizas presupuestos
-              </p>
-
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl border border-slate-200 p-6 text-left">
-                  <h4 className="font-semibold text-[#1E293B]">Crear Incidencia Manual</h4>
-                  <p className="mt-2 text-sm text-[#64748B]">
-                    Registra una incidencia como gestor
-                  </p>
-                  <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-200">
-                    <Plus className="h-4 w-4" />
-                    <span>Nueva incidencia</span>
-                  </button>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 p-6 text-left">
-                  <h4 className="font-semibold text-[#1E293B]">Portal del Inquilino</h4>
-                  <p className="mt-2 text-sm text-[#64748B]">
-                    Los inquilinos crean tickets con fotos desde su portal
-                  </p>
-                  <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-200">
-                    <ImageIcon className="h-4 w-4" />
-                    <span>Configurar acceso</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 4: Chat Unificado */}
-        <section className="mb-8">
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold text-[#1E293B]">4. Chat Unificado</h2>
-            <p className="text-sm text-[#64748B]">
-              Conversaciones entre propietario y gestor con archivos adjuntos
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <div className="text-center py-12">
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
-                <MessageSquare className="h-10 w-10 text-[#1A4FBF]" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Chat con tu gestor</h3>
-              <p className="mt-2 text-sm text-[#64748B]">
-                Comunícate directamente con nuestro equipo de gestión inmobiliaria
-              </p>
-
-              <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
-                <MessageSquare className="h-5 w-5" />
-                <span>Iniciar Conversación</span>
-              </button>
-
-              <div className="mt-6 rounded-xl bg-blue-50 p-4">
-                <p className="text-sm text-blue-900">
-                  💡 <strong>Tip:</strong> Puedes adjuntar fotos, documentos y facturas en el chat
+            {/* Section 3: Portal de Incidencias */}
+            <section className="mb-8">
+              <div className="mb-4">
+                <h2 className="text-2xl font-bold text-[#1E293B]">Portal de Incidencias</h2>
+                <p className="text-sm text-[#64748B]">
+                  Gestiona tickets con fotos, autoriza presupuestos y coordina técnicos
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
+
+              <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+                <div className="text-center py-12">
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-amber-50">
+                    <AlertCircle className="h-10 w-10 text-amber-600" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Sin incidencias activas</h3>
+                  <p className="mt-2 text-sm text-[#64748B]">
+                    Los inquilinos pueden crear tickets y tú autorizas presupuestos
+                  </p>
+
+                  <div className="mt-8 grid gap-4 md:grid-cols-2">
+                    <div className="rounded-xl border border-slate-200 p-6 text-left">
+                      <h4 className="font-semibold text-[#1E293B]">Crear Incidencia Manual</h4>
+                      <p className="mt-2 text-sm text-[#64748B]">Registra una incidencia como gestor</p>
+                      <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-200">
+                        <Plus className="h-4 w-4" />
+                        <span>Nueva incidencia</span>
+                      </button>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-200 p-6 text-left">
+                      <h4 className="font-semibold text-[#1E293B]">Portal del Inquilino</h4>
+                      <p className="mt-2 text-sm text-[#64748B]">
+                        Los inquilinos crean tickets con fotos desde su portal
+                      </p>
+                      <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-200">
+                        <ImageIcon className="h-4 w-4" />
+                        <span>Configurar acceso</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 4: Chat Unificado */}
+            <section className="mb-8">
+              <div className="mb-4">
+                <h2 className="text-2xl font-bold text-[#1E293B]">Chat Unificado</h2>
+                <p className="text-sm text-[#64748B]">
+                  Conversaciones entre propietario y gestor con archivos adjuntos
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+                <div className="text-center py-12">
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
+                    <MessageSquare className="h-10 w-10 text-[#1A4FBF]" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Chat con tu gestor</h3>
+                  <p className="mt-2 text-sm text-[#64748B]">
+                    Comunícate directamente con nuestro equipo de gestión inmobiliaria
+                  </p>
+
+                  <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
+                    <MessageSquare className="h-5 w-5" />
+                    <span>Iniciar Conversación</span>
+                  </button>
+
+                  <div className="mt-6 rounded-xl bg-blue-50 p-4">
+                    <p className="text-sm text-blue-900">
+                      💡 <strong>Tip:</strong> Puedes adjuntar fotos, documentos y facturas en el chat
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
       </main>
     </div>
   );
