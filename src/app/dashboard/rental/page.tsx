@@ -1,33 +1,41 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Home,
   Building2,
   Users,
-  FileText,
-  DollarSign,
-  Calendar,
-  AlertTriangle,
+  MessageSquare,
+  AlertCircle,
   Plus,
-  TrendingUp,
-  TrendingDown,
-  Eye,
-  CheckCircle,
-  Clock,
-  XCircle,
-  ArrowRight,
-  Download,
-  BarChart3,
+  FileText,
+  Upload,
+  ArrowLeft,
+  MapPin,
+  Phone,
+  Mail,
+  Euro,
+  FileSignature,
+  ImageIcon,
 } from "lucide-react";
 
-export default async function RentalDashboardPage() {
+export const metadata = { title: "Administración de Alquileres — Livendia" };
+
+export default async function RentalManagementPage() {
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("full_name")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  const name = profile?.full_name?.trim() || user.email || "Cliente";
+  const firstName = name.split(" ")[0];
 
   // Fetch properties
   const { data: properties } = await supabase
@@ -35,395 +43,339 @@ export default async function RentalDashboardPage() {
     .select("*")
     .eq("user_id", user.id);
 
-  const property = properties?.[0]; // Por ahora tomamos la primera propiedad
-
-  // Fetch active tenant
-  const { data: tenants } = property
-    ? await supabase
-        .from("tenants")
-        .select("*")
-        .eq("property_id", property.id)
-        .eq("is_active", true)
-        .limit(1)
-    : { data: null };
-
-  const activeTenant = tenants?.[0];
-
-  // Fetch recent payments
-  const { data: payments } = property
-    ? await supabase
-        .from("rent_payments")
-        .select("*")
-        .eq("property_id", property.id)
-        .order("payment_date", { ascending: false })
-        .limit(6)
-    : { data: [] };
-
-  // Fetch expenses
-  const { data: expenses } = property
-    ? await supabase
-        .from("property_expenses")
-        .select("*")
-        .eq("property_id", property.id)
-        .order("expense_date", { ascending: false })
-        .limit(10)
-    : { data: [] };
-
-  // Fetch incidents
-  const { data: incidents } = property
-    ? await supabase
-        .from("incidents")
-        .select("*")
-        .eq("property_id", property.id)
-        .order("created_at", { ascending: false })
-        .limit(5)
-    : { data: [] };
-
-  // Calculate stats
-  const totalIncome = payments?.reduce((sum, p) => p.status === "paid" ? sum + Number(p.amount) : sum, 0) ?? 0;
-  const totalExpenses = expenses?.reduce((sum, e) => sum + Number(e.amount), 0) ?? 0;
-  const netProfit = totalIncome - totalExpenses;
-  const pendingPayments = payments?.filter(p => p.status === "pending").length ?? 0;
-  const openIncidents = incidents?.filter(i => i.status !== "resolved").length ?? 0;
+  const hasProperty = (properties?.length ?? 0) > 0;
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+      {/* Header */}
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-[#1E293B]">Administración de Alquiler</h1>
-              <p className="mt-1 text-sm text-[#64748B]">
-                Gestión completa de tu propiedad en alquiler
-              </p>
-            </div>
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-[#64748B] transition hover:bg-slate-50"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#1A4FBF] transition hover:text-[#06B6D4]"
             >
-              <Home className="h-4 w-4" />
-              <span>Panel general</span>
+              <ArrowLeft className="h-4 w-4" />
+              <span>Volver al panel</span>
             </Link>
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="text-sm font-semibold text-[#1E293B]">{firstName}</div>
+                <div className="text-xs text-[#64748B]">Administración de alquileres</div>
+              </div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4] text-sm font-bold text-white">
+                {firstName.charAt(0).toUpperCase()}
+              </div>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6">
-        {!property ? (
-          // No property yet - Setup wizard
-          <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-white p-12 text-center">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
-              <Building2 className="h-10 w-10 text-blue-600" />
+      {/* Main Content */}
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        {/* Welcome Section */}
+        <div className="mb-8 rounded-2xl bg-gradient-to-r from-[#1A4FBF] via-[#2563EB] to-[#06B6D4] p-8 text-white shadow-2xl">
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
+              <Building2 className="h-8 w-8 text-white" />
             </div>
-            <h2 className="mt-6 text-2xl font-bold text-[#1E293B]">
-              Configura tu primera propiedad
-            </h2>
-            <p className="mt-2 text-sm text-[#64748B]">
-              Para empezar a gestionar tu alquiler, necesitamos los datos de tu inmueble
-            </p>
-            <Link
-              href="/dashboard/rental/properties/new"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:scale-105"
-            >
-              <Plus className="h-4 w-4" />
-              <span>Añadir propiedad</span>
-            </Link>
+            <div>
+              <h1 className="text-3xl font-bold">Bienvenido a tu panel de administración de alquiler</h1>
+              <p className="mt-2 text-blue-100">
+                Gestiona tus inmuebles, inquilinos, incidencias y comunicaciones en un solo lugar
+              </p>
+            </div>
           </div>
-        ) : (
-          <>
-            {/* Stats Cards */}
-            <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg">
-                <div className="flex items-center gap-2 text-sm opacity-90">
-                  <TrendingUp className="h-4 w-4" />
-                  <span>Ingresos totales</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{totalIncome.toFixed(0)} €</div>
-                <div className="mt-1 text-xs opacity-75">Este año</div>
-              </div>
+        </div>
 
-              <div className="rounded-2xl bg-gradient-to-br from-red-500 to-red-600 p-6 text-white shadow-lg">
-                <div className="flex items-center gap-2 text-sm opacity-90">
-                  <TrendingDown className="h-4 w-4" />
-                  <span>Gastos totales</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{totalExpenses.toFixed(0)} €</div>
-                <div className="mt-1 text-xs opacity-75">Este año</div>
-              </div>
-
-              <div className="rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg">
-                <div className="flex items-center gap-2 text-sm opacity-90">
-                  <BarChart3 className="h-4 w-4" />
-                  <span>Beneficio neto</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">
-                  {netProfit >= 0 ? "+" : ""}{netProfit.toFixed(0)} €
-                </div>
-                <div className="mt-1 text-xs opacity-75">Rentabilidad</div>
-              </div>
-
-              <div className="rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 p-6 text-white shadow-lg">
-                <div className="flex items-center gap-2 text-sm opacity-90">
-                  <AlertTriangle className="h-4 w-4" />
-                  <span>Pendientes</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{pendingPayments + openIncidents}</div>
-                <div className="mt-1 text-xs opacity-75">
-                  {pendingPayments} pagos, {openIncidents} incidencias
-                </div>
-              </div>
+        {/* Section 1: Datos del Inmueble */}
+        <section className="mb-8">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-[#1E293B]">1. Datos del Inmueble</h2>
+              <p className="text-sm text-[#64748B]">Información y documentación de la propiedad</p>
             </div>
+            {hasProperty && (
+              <button className="inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
+                <Plus className="h-4 w-4" />
+                <span>Agregar inmueble</span>
+              </button>
+            )}
+          </div>
 
-            <div className="grid gap-8 lg:grid-cols-3">
-              {/* Left Column */}
-              <div className="space-y-6 lg:col-span-2">
-                {/* Property & Tenant Info */}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  {/* Property Card */}
-                  <div className="rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
-                    <div className="mb-4 flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-[#1E293B]">Inmueble</h3>
-                      <Link
-                        href={`/dashboard/rental/properties/${property.id}`}
-                        className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-                      >
-                        <Eye className="h-4 w-4" />
-                      </Link>
-                    </div>
-                    <div className="space-y-2 text-sm">
-                      <div className="font-semibold text-[#1E293B]">{property.address}</div>
-                      <div className="text-[#64748B]">
-                        {property.property_type} • {property.rooms} hab. • {property.surface_m2} m²
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-[#64748B]">
-                        <span>IBI: {property.ibi_annual}€/año</span>
-                        <span>•</span>
-                        <span>Comunidad: {property.community_fee_monthly}€/mes</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Tenant Card */}
-                  <div className="rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
-                    <div className="mb-4 flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-[#1E293B]">Inquilino</h3>
-                      {activeTenant && (
-                        <Link
-                          href={`/dashboard/rental/tenants/${activeTenant.id}`}
-                          className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-                        >
-                          <Eye className="h-4 w-4" />
-                        </Link>
-                      )}
-                    </div>
-                    {activeTenant ? (
-                      <div className="space-y-2 text-sm">
-                        <div className="font-semibold text-[#1E293B]">{activeTenant.full_name}</div>
-                        <div className="text-[#64748B]">{activeTenant.phone}</div>
-                        <div className="text-xs text-[#64748B]">
-                          Renta: {activeTenant.monthly_rent}€/mes • Fianza: {activeTenant.deposit_amount}€
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-sm text-[#64748B]">Sin inquilino activo</p>
-                        <Link
-                          href="/dashboard/rental/tenants/new"
-                          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#1A4FBF]"
-                        >
-                          <Plus className="h-3 w-3" />
-                          <span>Añadir inquilino</span>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
+          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+            {!hasProperty ? (
+              <div className="text-center py-12">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
+                  <Building2 className="h-10 w-10 text-[#1A4FBF]" />
                 </div>
+                <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Agrega tu primer inmueble</h3>
+                <p className="mt-2 text-sm text-[#64748B]">
+                  Completa la información de la propiedad que deseas administrar
+                </p>
 
-                {/* Payments Calendar */}
-                <div className="rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
-                  <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-[#1E293B]">Calendario de cobros</h3>
-                    <Link
-                      href="/dashboard/rental/payments"
-                      className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-                    >
-                      Ver todos →
-                    </Link>
-                  </div>
-
-                  {!payments?.length ? (
-                    <p className="text-center text-sm text-[#64748B]">No hay pagos registrados</p>
-                  ) : (
-                    <div className="space-y-2">
-                      {payments.slice(0, 5).map((payment) => (
-                        <div
-                          key={payment.id}
-                          className="flex items-center justify-between rounded-xl border border-slate-200 p-3"
-                        >
-                          <div className="flex items-center gap-3">
-                            {payment.status === "paid" ? (
-                              <CheckCircle className="h-5 w-5 text-green-600" />
-                            ) : payment.status === "late" ? (
-                              <XCircle className="h-5 w-5 text-red-600" />
-                            ) : (
-                              <Clock className="h-5 w-5 text-amber-600" />
-                            )}
-                            <div>
-                              <div className="text-sm font-semibold text-[#1E293B]">
-                                {new Date(payment.payment_date).toLocaleDateString("es-ES", {
-                                  month: "long",
-                                  year: "numeric",
-                                })}
-                              </div>
-                              <div className="text-xs text-[#64748B]">
-                                {payment.status === "paid"
-                                  ? "Pagado"
-                                  : payment.status === "late"
-                                  ? "Impagado"
-                                  : "Pendiente"}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="text-sm font-bold text-[#1A4FBF]">
-                            {Number(payment.amount).toFixed(0)} €
-                          </div>
-                        </div>
-                      ))}
+                <div className="mt-8 grid gap-4 text-left md:grid-cols-2">
+                  {/* Información Básica */}
+                  <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <MapPin className="h-5 w-5 text-[#1A4FBF]" />
+                      <h4 className="font-semibold text-[#1E293B]">Información Básica</h4>
                     </div>
-                  )}
-                </div>
-
-                {/* Recent Expenses */}
-                <div className="rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
-                  <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-[#1E293B]">Gastos recientes</h3>
-                    <Link
-                      href="/dashboard/rental/expenses"
-                      className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-                    >
-                      Ver todos →
-                    </Link>
-                  </div>
-
-                  {!expenses?.length ? (
-                    <p className="text-center text-sm text-[#64748B]">No hay gastos registrados</p>
-                  ) : (
-                    <div className="space-y-2">
-                      {expenses.slice(0, 5).map((expense) => (
-                        <div
-                          key={expense.id}
-                          className="flex items-center justify-between rounded-xl border border-slate-200 p-3"
-                        >
-                          <div>
-                            <div className="text-sm font-semibold text-[#1E293B]">
-                              {expense.expense_type}
-                            </div>
-                            <div className="text-xs text-[#64748B]">
-                              {new Date(expense.expense_date).toLocaleDateString("es-ES")}
-                              {expense.is_deductible && (
-                                <span className="ml-2 text-green-600">• Deducible</span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="text-sm font-bold text-red-600">
-                            -{Number(expense.amount).toFixed(0)} €
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Right Column - Incidents */}
-              <div className="space-y-6">
-                <div className="rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200">
-                  <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-[#1E293B]">Incidencias</h3>
-                    <Link
-                      href="/dashboard/rental/incidents"
-                      className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-                    >
-                      Ver todas →
-                    </Link>
-                  </div>
-
-                  {!incidents?.length ? (
-                    <div className="text-center">
-                      <p className="text-sm text-[#64748B]">No hay incidencias</p>
-                      <p className="mt-1 text-xs text-[#94A3B8]">¡Todo va bien! 🎉</p>
-                    </div>
-                  ) : (
                     <div className="space-y-3">
-                      {incidents.map((incident) => {
-                        const priorityColors: Record<string, string> = {
-                          low: "bg-blue-100 text-blue-900",
-                          medium: "bg-amber-100 text-amber-900",
-                          high: "bg-orange-100 text-orange-900",
-                          urgent: "bg-red-100 text-red-900",
-                        };
-
-                        return (
-                          <div
-                            key={incident.id}
-                            className="rounded-xl border border-slate-200 p-4"
-                          >
-                            <div className="mb-2 flex items-start justify-between">
-                              <h4 className="text-sm font-semibold text-[#1E293B]">
-                                {incident.title}
-                              </h4>
-                              <span
-                                className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                                  priorityColors[incident.priority] || priorityColors.medium
-                                }`}
-                              >
-                                {incident.priority}
-                              </span>
-                            </div>
-                            <p className="text-xs text-[#64748B] line-clamp-2">
-                              {incident.description}
-                            </p>
-                            <div className="mt-2 flex items-center justify-between text-xs text-[#64748B]">
-                              <span>{incident.status}</span>
-                              {incident.estimated_cost && (
-                                <span className="font-semibold">~{incident.estimated_cost}€</span>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
+                      <input
+                        type="text"
+                        placeholder="Dirección del inmueble"
+                        className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
+                      />
+                      <div className="grid grid-cols-2 gap-3">
+                        <input
+                          type="text"
+                          placeholder="Zona"
+                          className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
+                        />
+                        <input
+                          type="text"
+                          placeholder="Código Postal"
+                          className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
+                        />
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Referencia catastral (opcional)"
+                        className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
+                      />
                     </div>
-                  )}
+                  </div>
+
+                  {/* Documentación */}
+                  <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <Upload className="h-5 w-5 text-[#1A4FBF]" />
+                      <h4 className="font-semibold text-[#1E293B]">Documentación</h4>
+                    </div>
+                    <div className="space-y-3">
+                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
+                        <FileText className="h-5 w-5" />
+                        <span>Nota simple</span>
+                      </button>
+                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
+                        <FileText className="h-5 w-5" />
+                        <span>IBI</span>
+                      </button>
+                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
+                        <FileText className="h-5 w-5" />
+                        <span>Cédula de habitabilidad</span>
+                      </button>
+                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
+                        <Plus className="h-5 w-5" />
+                        <span>Otros documentos</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Quick Actions */}
-                <div className="rounded-2xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] p-6 text-white shadow-lg">
-                  <h3 className="mb-4 text-lg font-bold">Acciones rápidas</h3>
-                  <div className="space-y-2">
-                    <Link
-                      href="/dashboard/rental/expenses/new"
-                      className="flex items-center gap-2 rounded-xl bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/30"
-                    >
-                      <Plus className="h-4 w-4" />
-                      <span>Registrar gasto</span>
-                    </Link>
-                    <Link
-                      href="/dashboard/rental/incidents/new"
-                      className="flex items-center gap-2 rounded-xl bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/30"
-                    >
-                      <AlertTriangle className="h-4 w-4" />
-                      <span>Nueva incidencia</span>
-                    </Link>
-                    <button className="flex w-full items-center gap-2 rounded-xl bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/30">
-                      <Download className="h-4 w-4" />
-                      <span>Exportar informe</span>
-                    </button>
+                <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#1A4FBF] to-[#06B6D4] px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105">
+                  <Plus className="h-5 w-5" />
+                  <span>Guardar Inmueble</span>
+                </button>
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-sm text-[#64748B]">Inmuebles registrados: {properties?.length}</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Section 2: Datos del Inquilino */}
+        <section className="mb-8">
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-[#1E293B]">2. Datos del Inquilino</h2>
+            <p className="text-sm text-[#64748B]">Información del arrendatario y contrato activo</p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+            <div className="text-center py-12">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-emerald-50">
+                <Users className="h-10 w-10 text-emerald-600" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Agrega inquilino</h3>
+              <p className="mt-2 text-sm text-[#64748B]">
+                Registra la información del arrendatario y los detalles del contrato
+              </p>
+
+              <div className="mt-8 grid gap-4 text-left md:grid-cols-3">
+                {/* Datos de Contacto */}
+                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <Phone className="h-5 w-5 text-emerald-600" />
+                    <h4 className="font-semibold text-[#1E293B]">Datos de Contacto</h4>
+                  </div>
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Nombre completo"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Teléfono"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="text"
+                      placeholder="DNI/NIE"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                  </div>
+                </div>
+
+                {/* Contrato Activo */}
+                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <FileSignature className="h-5 w-5 text-emerald-600" />
+                    <h4 className="font-semibold text-[#1E293B]">Contrato Activo</h4>
+                  </div>
+                  <div className="space-y-3">
+                    <input
+                      type="date"
+                      placeholder="Fecha inicio"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="date"
+                      placeholder="Fecha fin"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Mensualidad (€)"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Otros gastos (€)"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                  </div>
+                </div>
+
+                {/* Fianzas */}
+                <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <Euro className="h-5 w-5 text-emerald-600" />
+                    <h4 className="font-semibold text-[#1E293B]">Fianzas Depositadas</h4>
+                  </div>
+                  <div className="space-y-3">
+                    <input
+                      type="number"
+                      placeholder="Fianza legal (€)"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Fianza adicional (€)"
+                      className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20"
+                    />
+                    <div className="rounded-lg bg-emerald-50 p-3">
+                      <div className="text-xs font-semibold text-emerald-900">Total Fianza</div>
+                      <div className="text-2xl font-bold text-emerald-600">0 €</div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105">
+                <Plus className="h-5 w-5" />
+                <span>Guardar Inquilino</span>
+              </button>
             </div>
-          </>
-        )}
+          </div>
+        </section>
+
+        {/* Section 3: Portal de Incidencias */}
+        <section className="mb-8">
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-[#1E293B]">3. Portal de Incidencias</h2>
+            <p className="text-sm text-[#64748B]">
+              Gestiona tickets con fotos, autoriza presupuestos y coordina técnicos
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+            <div className="text-center py-12">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-amber-50">
+                <AlertCircle className="h-10 w-10 text-amber-600" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Sin incidencias activas</h3>
+              <p className="mt-2 text-sm text-[#64748B]">
+                Los inquilinos pueden crear tickets y tú autorizas presupuestos
+              </p>
+
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-slate-200 p-6 text-left">
+                  <h4 className="font-semibold text-[#1E293B]">Crear Incidencia Manual</h4>
+                  <p className="mt-2 text-sm text-[#64748B]">
+                    Registra una incidencia como gestor
+                  </p>
+                  <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-200">
+                    <Plus className="h-4 w-4" />
+                    <span>Nueva incidencia</span>
+                  </button>
+                </div>
+
+                <div className="rounded-xl border border-slate-200 p-6 text-left">
+                  <h4 className="font-semibold text-[#1E293B]">Portal del Inquilino</h4>
+                  <p className="mt-2 text-sm text-[#64748B]">
+                    Los inquilinos crean tickets con fotos desde su portal
+                  </p>
+                  <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-200">
+                    <ImageIcon className="h-4 w-4" />
+                    <span>Configurar acceso</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Chat Unificado */}
+        <section className="mb-8">
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold text-[#1E293B]">4. Chat Unificado</h2>
+            <p className="text-sm text-[#64748B]">
+              Conversaciones entre propietario y gestor con archivos adjuntos
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+            <div className="text-center py-12">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
+                <MessageSquare className="h-10 w-10 text-[#1A4FBF]" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Chat con tu gestor</h3>
+              <p className="mt-2 text-sm text-[#64748B]">
+                Comunícate directamente con nuestro equipo de gestión inmobiliaria
+              </p>
+
+              <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
+                <MessageSquare className="h-5 w-5" />
+                <span>Iniciar Conversación</span>
+              </button>
+
+              <div className="mt-6 rounded-xl bg-blue-50 p-4">
+                <p className="text-sm text-blue-900">
+                  💡 <strong>Tip:</strong> Puedes adjuntar fotos, documentos y facturas en el chat
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
