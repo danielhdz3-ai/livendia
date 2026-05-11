@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/site-footer";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,6 +19,9 @@ export default function Home() {
             </Link>
             <Link href="/precios" className="hover:text-cyan-300 transition-colors">
               Precios
+            </Link>
+            <Link href="/contacto" className="hover:text-cyan-300 transition-colors">
+              Contacto
             </Link>
             <a href="#equipo" className="hover:text-cyan-300 transition-colors">
               Equipo
@@ -108,6 +112,96 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#06B6D4] to-[#0891B2] py-16 text-white sm:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid items-center gap-10 md:grid-cols-2">
+              <div>
+                <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
+                  Servicio destacado
+                </div>
+                <h2 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                  Administración de Alquileres
+                </h2>
+                <p className="mt-4 text-xl text-cyan-50">
+                  Olvídate de llamadas, reclamaciones y gestiones. Nosotros somos el punto de contacto con tu inquilino.
+                </p>
+                <div className="mt-6 flex items-baseline gap-2">
+                  <span className="text-5xl font-extrabold">49 €</span>
+                  <span className="text-lg text-cyan-100">/ mes · IVA incluido</span>
+                </div>
+                <ul className="mt-8 space-y-3 text-cyan-50">
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Cero contacto con el inquilino</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Gestión de incidencias y reparaciones</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Seguimiento de renovaciones y mediación</span>
+                  </li>
+                </ul>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link
+                    href="/servicios/administracion-alquiler"
+                    className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-[#0891B2] shadow-lg transition hover:bg-slate-50"
+                  >
+                    Más información
+                  </Link>
+                  <Link
+                    href="/login?next=/dashboard"
+                    className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
+                  >
+                    Contratar ahora
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-black/5">
+                  <h3 className="text-xl font-bold text-[#1E293B]">¿Qué incluye?</h3>
+                  <ul className="mt-6 space-y-4 text-sm text-[#475569]">
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Todas las comunicaciones con el inquilino</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Coordinación de reparaciones y empresas</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Control de renovaciones y actualizaciones</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Mediación de conflictos</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Alertas solo cuando sea necesario</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold text-[#06B6D4]">✓</span>
+                      <span>Atención completa al inquilino</span>
+                    </li>
+                  </ul>
+                  <p className="mt-6 text-xs text-[#64748b]">
+                    Sin permanencia. Sin costes ocultos. Sin sorpresas.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -265,21 +359,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-[#F1F5F9] py-10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <div>
-            <p className="font-bold text-[#1E293B]">Livendia</p>
-            <p className="mt-1 text-sm text-[#475569]">Gestoría inmobiliaria digital · livendia.com</p>
-          </div>
-          <div className="flex flex-wrap gap-4 text-sm text-[#475569]">
-            <a href={waHref} className="font-medium text-[#1A4FBF] hover:text-[#06B6D4]">
-              WhatsApp
-            </a>
-            <span aria-hidden>·</span>
-            <span>Aviso legal (próximamente)</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <a
         href={waHref}

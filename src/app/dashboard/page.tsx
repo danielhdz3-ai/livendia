@@ -1,19 +1,10 @@
+import { SiteFooter } from "@/components/site-footer";
+import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "./logout-button";
-import { OrderDocuments, type DocRow } from "./order-documents";
 import { ServiceCheckout } from "./service-checkout";
-
-const statusLabel: Record<string, string> = {
-  pending_payment: "Pago pendiente",
-  paid: "Pagado",
-  pending_docs: "Falta documentación",
-  in_review: "En revisión",
-  in_progress: "En curso",
-  completed: "Completado",
-  cancelled: "Cancelado",
-};
 
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient();
@@ -47,32 +38,17 @@ export default async function DashboardPage() {
   }));
 
   const orderIds = (orders ?? []).map((o) => o.id as string);
-  let docsByOrder: Record<string, DocRow[]> = {};
+  let docCountByOrder: Record<string, number> = {};
   if (orderIds.length > 0) {
     const { data: allDocs } = await supabase
       .from("documents")
-      .select("id, order_id, file_name, file_path, document_type, created_at")
-      .in("order_id", orderIds)
-      .order("created_at", { ascending: false });
+      .select("order_id")
+      .in("order_id", orderIds);
     for (const d of allDocs ?? []) {
       const oid = d.order_id as string;
-      const row: DocRow = {
-        id: d.id as string,
-        file_name: d.file_name as string,
-        file_path: d.file_path as string,
-        document_type: d.document_type as string,
-        created_at: d.created_at as string,
-      };
-      if (!docsByOrder[oid]) docsByOrder[oid] = [];
-      docsByOrder[oid].push(row);
-    }
-    for (const key of Object.keys(docsByOrder)) {
-      docsByOrder[key].sort((a, b) => b.created_at.localeCompare(a.created_at));
+      docCountByOrder[oid] = (docCountByOrder[oid] ?? 0) + 1;
     }
   }
-
-  const canUploadStatus = (s: string) =>
-    ["paid", "pending_docs", "in_review", "in_progress"].includes(s);
 
   return (
     <div className="min-h-screen bg-[#F1F5F9]">
@@ -127,24 +103,31 @@ export default async function DashboardPage() {
                     {serviceRow?.name ?? "Servicio"}
                   </span>
                   <span className="rounded-full bg-[#1A4FBF]/10 px-3 py-1 text-xs font-semibold text-[#1A4FBF]">
-                    {statusLabel[row.status] ?? row.status}
+                    {ORDER_STATUS_LABEL_ES[row.status] ?? row.status}
                   </span>
                 </div>
                 <p className="mt-2 text-xs text-[#64748b]">
                   {new Date(row.created_at).toLocaleString("es-ES")}
                   {row.total_cents != null ? ` · ${(row.total_cents / 100).toFixed(2)} €` : null}
+                  {docCountByOrder[row.id as string]
+                    ? ` · ${docCountByOrder[row.id as string]} documento(s)`
+                    : null}
                 </p>
-                <OrderDocuments
-                  orderId={row.id}
-                  userId={user.id}
-                  canUpload={canUploadStatus(row.status)}
-                  initialDocs={docsByOrder[row.id] ?? []}
-                />
+                <div className="mt-4">
+                  <Link
+                    href={`/mis-pedidos/${row.id}`}
+                    className="text-sm font-semibold text-[#06B6D4] hover:underline"
+                  >
+                    Ver expediente y documentación →
+                  </Link>
+                </div>
               </li>
-            )})}
+              );
+            })}
           </ul>
         )}
       </main>
+      <SiteFooter />
     </div>
   );
 }

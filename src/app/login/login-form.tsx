@@ -1,6 +1,7 @@
 "use client";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { GoogleAuthButton } from "@/components/google-auth-button";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -9,6 +10,7 @@ export function LoginForm() {
   const router = useRouter();
   const search = useSearchParams();
   const next = search.get("next") ?? "/dashboard";
+  const oauthError = search.get("error");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -38,8 +40,25 @@ export function LoginForm() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#F1F5F9] px-4">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
+        {oauthError === "oauth" ? (
+          <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+            No se pudo completar el acceso con Google. Configura el proveedor en Supabase y la URL de
+            redirección (ver documentación del proyecto).
+          </p>
+        ) : null}
         <h1 className="text-2xl font-bold text-[#1E293B]">Entrar</h1>
         <p className="mt-1 text-sm text-[#475569]">Panel Livendia</p>
+        <div className="mt-8">
+          <GoogleAuthButton next={next} />
+        </div>
+        <div className="relative mt-8">
+          <div className="absolute inset-0 flex items-center" aria-hidden>
+            <span className="w-full border-t border-slate-200" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-white px-2 text-[#94a3b8]">o con email</span>
+          </div>
+        </div>
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-[#1E293B]">
@@ -80,7 +99,7 @@ export function LoginForm() {
         </form>
         <p className="mt-6 text-center text-sm text-[#475569]">
           ¿No tienes cuenta?{" "}
-          <Link href="/register" className="font-semibold text-[#1A4FBF] hover:text-[#06B6D4]">
+          <Link href={`/register?next=${encodeURIComponent(next)}`} className="font-semibold text-[#1A4FBF] hover:text-[#06B6D4]">
             Regístrate
           </Link>
         </p>

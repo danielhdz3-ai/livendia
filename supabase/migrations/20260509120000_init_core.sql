@@ -169,14 +169,6 @@ create policy "orders_update_own_or_admin"
 insert into public.services (slug, name, description, category, price_cents, is_recurring)
 values
   (
-    'contrato-alquiler-lau',
-    'Contrato de Alquiler LAU',
-    'Contrato actualizado a la normativa vigente.',
-    'alquiler',
-    12000,
-    false
-  ),
-  (
     'reserva-de-compra',
     'Reserva de Compra',
     'Documento de reserva 48–72h.',

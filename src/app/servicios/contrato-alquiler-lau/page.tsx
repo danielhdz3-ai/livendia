@@ -1,0 +1,169 @@
+import { PublicHeader } from "@/components/public-header";
+import { SiteFooter } from "@/components/site-footer";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contrato de Alquiler LAU — Livendia",
+  description:
+    "Redacción o revisión del contrato de arrendamiento de vivienda conforme a la normativa vigente. 120€ IVA incluido.",
+};
+
+export default function ContratoLAUPage() {
+  const features = [
+    {
+      icon: Shield,
+      title: "Normativa actualizada",
+      description: "Contrato adaptado a la Ley de Arrendamientos Urbanos vigente y últimas reformas.",
+    },
+    {
+      icon: FileText,
+      title: "Cláusulas personalizadas",
+      description: "Ajustamos el contrato a las particularidades de tu vivienda y acuerdo.",
+    },
+    {
+      icon: Clock,
+      title: "Entrega rápida",
+      description: "Documento listo en 24-48h laborables tras recibir toda la información.",
+    },
+    {
+      icon: CheckCircle,
+      title: "Revisión incluida",
+      description: "Si ya tienes un borrador, lo revisamos y ajustamos sin coste adicional.",
+    },
+  ];
+
+  return (
+    <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
+      <PublicHeader />
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid items-center gap-10 md:grid-cols-2">
+              <div>
+                <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
+                  Alquiler de vivienda
+                </div>
+                <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                  Contrato de Alquiler LAU
+                </h1>
+                <p className="mt-5 text-xl leading-relaxed text-blue-100">
+                  Redacción o revisión del contrato de arrendamiento de vivienda conforme a la normativa vigente.
+                </p>
+
+                <div className="mt-8 flex items-baseline gap-2">
+                  <span className="text-5xl font-extrabold">120 €</span>
+                  <span className="text-lg text-blue-200">IVA incluido</span>
+                </div>
+
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link
+                    href="/login?next=/dashboard"
+                    className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
+                  >
+                    Contratar por 120 €
+                  </Link>
+                  <Link
+                    href="/servicios"
+                    className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                  >
+                    Ver todos los servicios
+                  </Link>
+                </div>
+              </div>
+
+              <div className="relative h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
+                <Image
+                  src="/images/contratos.jpg"
+                  alt="Contrato de alquiler LAU"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Características */}
+        <section className="px-4 py-16 sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-center text-3xl font-bold text-[#1E293B]">
+              ¿Qué incluye este servicio?
+            </h2>
+
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={feature.title}
+                    className="rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200 transition-shadow hover:shadow-lg"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#06B6D4]/10">
+                      <Icon className="h-6 w-6 text-[#06B6D4]" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">{feature.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#475569]">
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Galería */}
+        <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-3xl font-bold text-[#1E293B]">Nuestro trabajo</h2>
+            <p className="mt-3 text-[#475569]">
+              Ejemplos de contratos y documentación que preparamos en nuestro despacho.
+            </p>
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {["/images/contratos1.jpg", "/images/contratos2.jpg", "/images/gestoria1.jpg"].map(
+                (src, idx) => (
+                  <div
+                    key={idx}
+                    className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Documentación contrato ${idx + 1}`}
+                      fill
+                      className="object-cover transition hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="px-4 py-16 sm:px-6">
+          <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-8 py-12 text-center text-white shadow-xl">
+            <h2 className="text-3xl font-bold">¿Listo para tu contrato LAU?</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
+              Contrata ahora y recibe tu contrato personalizado en 24-48h laborables.
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/login?next=/dashboard"
+                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
+              >
+                Contratar ahora
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

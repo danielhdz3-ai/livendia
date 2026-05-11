@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { SiteFooter } from "@/components/site-footer";
 import { formatEur, getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -91,11 +92,7 @@ export default async function PreciosPage() {
           </div>
         </div>
       </main>
-      <footer className="border-t border-slate-200 bg-white py-6 text-center text-sm text-[#64748b]">
-        <Link href="/" className="font-medium text-[#1A4FBF] hover:underline">
-          Volver al inicio
-        </Link>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

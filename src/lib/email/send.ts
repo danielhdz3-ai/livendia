@@ -4,6 +4,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAdminNotifyEmail, getAppUrl, getResendFrom } from "./config";
 import AdminDocUploadedEmail from "./templates/admin-doc-uploaded";
 import AdminNewOrderEmail from "./templates/admin-new-order";
+import ContactInquiryEmail from "./templates/contact-inquiry";
 import DocsReminderEmail from "./templates/docs-reminder";
 import DocumentDeliveredEmail from "./templates/document-delivered";
 import OrderConfirmedEmail from "./templates/order-confirmed";
@@ -161,6 +162,32 @@ export async function sendDocumentDeliveredEmail(opts: {
       serviceName: opts.serviceName,
       message: opts.message,
       dashboardUrl,
+    }),
+  });
+}
+
+export async function sendContactInquiryEmail(opts: {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+}) {
+  const resend = getResend();
+  if (!resend) {
+    throw new Error("RESEND_API_KEY no configurada");
+  }
+  const submittedAt = new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" });
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: getAdminNotifyEmail(),
+    replyTo: opts.email,
+    subject: `[Livendia] Consulta web — ${opts.name.slice(0, 60)}`,
+    react: ContactInquiryEmail({
+      name: opts.name,
+      email: opts.email,
+      phone: opts.phone,
+      message: opts.message,
+      submittedAt,
     }),
   });
 }

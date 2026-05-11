@@ -17,6 +17,9 @@ export function PublicHeader() {
           <Link href="/precios" className="hover:text-cyan-300">
             Precios
           </Link>
+          <Link href="/contacto" className="hover:text-cyan-300">
+            Contacto
+          </Link>
           <Link href="/#equipo" className="hover:text-cyan-300">
             Equipo
           </Link>
