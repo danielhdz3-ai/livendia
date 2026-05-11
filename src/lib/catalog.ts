@@ -62,3 +62,14 @@ export function groupByCategory(services: PublicService[]) {
   });
   return sortedKeys.map((key) => ({ key, label: CATEGORY_LABEL[key] ?? key, items: map.get(key)! }));
 }
+
+// Mapa de imágenes por slug de servicio
+export const SERVICE_IMAGES: Record<string, string> = {
+  "administracion-alquiler": "/images/gestoria.jpg",
+  "contrato-alquiler-lau": "/images/contratos.jpg",
+  "contrato-alquiler-temporada": "/images/contratos5.jpg",
+  "contrato-alquiler-habitacion": "/images/contratos2.jpg",
+  "contrato-arras-penitenciales": "/images/contratos1.jpg",
+  "contrato-arras-confirmatorias": "/images/contratos7.jpg",
+  "reserva-de-compra": "/images/contratos6.jpg",
+};

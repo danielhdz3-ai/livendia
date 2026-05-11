@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
-import { formatEur, getPublicServices, groupByCategory } from "@/lib/catalog";
+import { getPublicServices, groupByCategory } from "@/lib/catalog";
+import { ServiceCardsClient } from "./service-cards-client";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -50,35 +51,8 @@ export default async function ServiciosPage() {
             <div className="space-y-12">
               {groups.map((group) => (
                 <section key={group.key}>
-                  <h2 className="text-xl font-bold text-[#1E293B]">{group.label}</h2>
-                  <ul className="mt-4 grid gap-4 sm:grid-cols-2">
-                    {group.items.map((s) => (
-                      <li
-                        key={s.id}
-                        className="rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200"
-                      >
-                        <div className="flex flex-wrap items-start justify-between gap-2">
-                          <h3 className="text-lg font-semibold text-[#1E293B]">{s.name}</h3>
-                          <span className="text-lg font-bold text-[#1A4FBF]">
-                            {s.is_recurring ? `${formatEur(s.price_cents)}/mes` : formatEur(s.price_cents)}
-                          </span>
-                        </div>
-                        {s.description ? (
-                          <p className="mt-3 text-sm leading-relaxed text-[#475569]">{s.description}</p>
-                        ) : null}
-                        {s.is_recurring ? (
-                          <p className="mt-4 text-xs text-[#64748b]">Suscripción — disponible pronto en web.</p>
-                        ) : (
-                          <Link
-                            href="/login?next=/dashboard"
-                            className="mt-4 inline-block text-sm font-semibold text-[#06B6D4] hover:underline"
-                          >
-                            Contratar →
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                  <h2 className="text-2xl font-bold text-[#1E293B]">{group.label}</h2>
+                  <ServiceCardsClient services={group.items} />
                 </section>
               ))}
             </div>
@@ -89,3 +63,4 @@ export default async function ServiciosPage() {
     </div>
   );
 }
+
