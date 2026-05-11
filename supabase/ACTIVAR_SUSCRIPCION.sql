@@ -46,16 +46,16 @@ BEGIN
     -- Verificar si ya tiene suscripción
     SELECT EXISTS(
       SELECT 1 FROM public.orders 
-      WHERE user_id = v_user_id 
+      WHERE client_id = v_user_id 
       AND service_id = v_service_id
     ) INTO v_order_exists;
 
     IF NOT v_order_exists THEN
       -- Crear suscripción
       INSERT INTO public.orders (
-        id, user_id, service_id, status, amount, payment_method, created_at
+        id, client_id, service_id, status, total_cents, created_at
       ) VALUES (
-        gen_random_uuid(), v_user_id, v_service_id, 'completed', 49.00, 'manual', now()
+        gen_random_uuid(), v_user_id, v_service_id, 'completed', 4900, now()
       );
       RAISE NOTICE '   ✓ Suscripción creada (49€/mes)';
     ELSE

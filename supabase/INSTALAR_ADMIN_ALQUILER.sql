@@ -50,14 +50,14 @@ BEGIN
   RAISE NOTICE '📋 Paso 3/4: Creando tu suscripción...';
   SELECT id INTO v_order_id 
   FROM public.orders 
-  WHERE user_id = v_user_id AND service_id = v_service_id 
+  WHERE client_id = v_user_id AND service_id = v_service_id 
   LIMIT 1;
 
   IF v_order_id IS NULL THEN
     INSERT INTO public.orders (
-      id, user_id, service_id, status, total_cents, created_at
+      id, client_id, service_id, status, total_cents, created_at
     ) VALUES (
-      gen_random_uuid(), v_user_id, v_service_id, 'delivered', 4900, now()
+      gen_random_uuid(), v_user_id, v_service_id, 'completed', 4900, now()
     ) RETURNING id INTO v_order_id;
     
     RAISE NOTICE '   ✓ Suscripción creada (49€/mes)';
