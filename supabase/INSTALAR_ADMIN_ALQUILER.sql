@@ -6,13 +6,13 @@
 -- 2. Te crea una suscripción al servicio de administración de alquiler
 -- 3. Crea datos de prueba completos
 --
--- ✏️ SOLO CAMBIA ESTO: Reemplaza 'danielhdz3@gmail.com' con tu email de usuario
+-- ✏️ Email configurado: daniel.trading.sniper@gmail.com
 -- ============================================
 
 DO $$
 DECLARE
   v_user_id uuid;
-  v_user_email text := 'danielhdz3@gmail.com'; -- ⬅️ CAMBIA ESTO POR TU EMAIL
+  v_user_email text := 'daniel.trading.sniper@gmail.com';
   v_service_id uuid;
   v_order_id uuid;
   v_property_id uuid;
