@@ -129,7 +129,7 @@ export default async function DashboardPage() {
           </Link>
 
           <Link
-            href="#documentos"
+            href="/mis-pedidos"
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#64748B] transition hover:bg-slate-50 hover:text-[#1E293B]"
           >
             <FileText className="h-5 w-5" />
@@ -139,7 +139,7 @@ export default async function DashboardPage() {
           <div className="my-4 border-t border-slate-200"></div>
 
           <Link
-            href="#perfil"
+            href="/dashboard/perfil"
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#64748B] transition hover:bg-slate-50 hover:text-[#1E293B]"
           >
             <User className="h-5 w-5" />
@@ -147,7 +147,7 @@ export default async function DashboardPage() {
           </Link>
 
           <Link
-            href="#pagos"
+            href="/dashboard/pagos"
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#64748B] transition hover:bg-slate-50 hover:text-[#1E293B]"
           >
             <CreditCard className="h-5 w-5" />
@@ -155,7 +155,7 @@ export default async function DashboardPage() {
           </Link>
 
           <Link
-            href="#configuracion"
+            href="/dashboard/configuracion"
             className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#64748B] transition hover:bg-slate-50 hover:text-[#1E293B]"
           >
             <Settings className="h-5 w-5" />
@@ -439,7 +439,7 @@ export default async function DashboardPage() {
             <h2 className="mb-6 text-xl font-bold text-[#1E293B]">Acciones rápidas</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Link
-                href="#perfil"
+                href="/dashboard/perfil"
                 className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 transition group-hover:bg-blue-100">
@@ -452,7 +452,7 @@ export default async function DashboardPage() {
               </Link>
 
               <Link
-                href="#pagos"
+                href="/dashboard/pagos"
                 className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 transition group-hover:bg-green-100">
@@ -465,7 +465,7 @@ export default async function DashboardPage() {
               </Link>
 
               <Link
-                href="#documentos"
+                href="/mis-pedidos"
                 className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 transition group-hover:bg-violet-100">
