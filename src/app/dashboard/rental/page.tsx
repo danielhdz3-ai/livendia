@@ -18,6 +18,7 @@ import {
   FileSignature,
   ImageIcon,
 } from "lucide-react";
+import { PropertyForm } from "./property-form";
 
 export const metadata = { title: "Administración de Alquileres — Livendia" };
 
@@ -105,80 +106,7 @@ export default async function RentalManagementPage() {
 
           <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
             {!hasProperty ? (
-              <div className="text-center py-12">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
-                  <Building2 className="h-10 w-10 text-[#1A4FBF]" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Agrega tu primer inmueble</h3>
-                <p className="mt-2 text-sm text-[#64748B]">
-                  Completa la información de la propiedad que deseas administrar
-                </p>
-
-                <div className="mt-8 grid gap-4 text-left md:grid-cols-2">
-                  {/* Información Básica */}
-                  <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
-                    <div className="mb-4 flex items-center gap-3">
-                      <MapPin className="h-5 w-5 text-[#1A4FBF]" />
-                      <h4 className="font-semibold text-[#1E293B]">Información Básica</h4>
-                    </div>
-                    <div className="space-y-3">
-                      <input
-                        type="text"
-                        placeholder="Dirección del inmueble"
-                        className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
-                      />
-                      <div className="grid grid-cols-2 gap-3">
-                        <input
-                          type="text"
-                          placeholder="Zona"
-                          className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Código Postal"
-                          className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
-                        />
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Referencia catastral (opcional)"
-                        className="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Documentación */}
-                  <div className="rounded-xl border-2 border-dashed border-slate-200 p-6">
-                    <div className="mb-4 flex items-center gap-3">
-                      <Upload className="h-5 w-5 text-[#1A4FBF]" />
-                      <h4 className="font-semibold text-[#1E293B]">Documentación</h4>
-                    </div>
-                    <div className="space-y-3">
-                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
-                        <FileText className="h-5 w-5" />
-                        <span>Nota simple</span>
-                      </button>
-                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
-                        <FileText className="h-5 w-5" />
-                        <span>IBI</span>
-                      </button>
-                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
-                        <FileText className="h-5 w-5" />
-                        <span>Cédula de habitabilidad</span>
-                      </button>
-                      <button className="flex w-full items-center gap-3 rounded-lg border-2 border-dashed border-slate-300 p-3 text-left text-sm text-[#64748B] transition hover:border-[#1A4FBF] hover:bg-blue-50">
-                        <Plus className="h-5 w-5" />
-                        <span>Otros documentos</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#1A4FBF] to-[#06B6D4] px-6 py-3 font-semibold text-white shadow-lg transition hover:scale-105">
-                  <Plus className="h-5 w-5" />
-                  <span>Guardar Inmueble</span>
-                </button>
-              </div>
+              <PropertyForm />
             ) : (
               <div className="text-center py-8">
                 <p className="text-sm text-[#64748B]">Inmuebles registrados: {properties?.length}</p>
