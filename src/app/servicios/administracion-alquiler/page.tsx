@@ -156,8 +156,8 @@ export default function AdministracionAlquilerPage() {
               <div className="relative">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
                   <Image
-                    src="/images/gestoria.jpg"
-                    alt="Gestoría inmobiliaria profesional"
+                    src="/images/familia1.jpg"
+                    alt="Familia feliz sin preocupaciones por el alquiler"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -245,7 +245,12 @@ export default function AdministracionAlquilerPage() {
                     <div className={`relative ${isEven ? "" : "lg:order-1"}`}>
                       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200">
                         <Image
-                          src={`/images/gestoria${idx + 1}.jpg`}
+                          src={[
+                            "/images/gestoria.jpg",
+                            "/images/familia2.jpg",
+                            "/images/equipo1.jpg",
+                            "/images/gestoria5.jpg"
+                          ][idx]}
                           alt={item.title}
                           fill
                           className="object-cover"
