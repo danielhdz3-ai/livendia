@@ -100,80 +100,81 @@ export default function AdministracionAlquilerPage() {
       <PublicHeader />
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#2563EB] to-[#3B82F6] px-4 py-20 text-white sm:px-6 lg:py-32">
-          <div className="absolute inset-0 bg-[url('/images/gestoria1.jpg')] bg-cover bg-center opacity-10"></div>
-          
-          <div className="relative mx-auto max-w-7xl">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div>
-                <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
-                  Administración profesional de alquileres
+        {/* Hero Section - Estilo Inmonest */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid lg:grid-cols-2 min-h-[650px]">
+              {/* Contenido izquierda */}
+              <div className="px-6 py-16 lg:px-12 lg:py-24 flex flex-col justify-center">
+                <div className="inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm mb-8">
+                  Servicio destacado
                 </div>
                 
-                <h1 className="mt-6 text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
-                  Despreocúpate<br />del alquiler
+                <h1 className="text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+                  Administración de Alquileres
                 </h1>
                 
-                <p className="mt-6 text-xl leading-relaxed text-blue-50 lg:text-2xl">
-                  Nosotros somos el punto de contacto con tu inquilino. Gestionamos incidencias, renovaciones y toda la comunicación. <strong className="text-white">Tú solo cobras.</strong>
+                <p className="mt-6 text-xl leading-relaxed text-blue-50">
+                  Olvídate de llamadas, reclamaciones y gestiones. Nosotros somos el punto de contacto con tu inquilino.
                 </p>
 
-                <div className="mt-8 flex items-baseline gap-3">
+                <div className="mt-10 flex items-baseline gap-3">
                   <span className="text-6xl font-extrabold">49 €</span>
                   <div className="text-lg text-blue-100">
-                    <div>/mes</div>
-                    <div className="text-sm">IVA incluido</div>
+                    <div>/mes · IVA incluido</div>
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm text-blue-200">
-                  Sin permanencia · Sin costes ocultos · Sin sorpresas
-                </p>
+                <div className="mt-8 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-6 w-6 text-cyan-300 flex-shrink-0" />
+                    <span className="text-lg">Cero contacto con el inquilino</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-6 w-6 text-cyan-300 flex-shrink-0" />
+                    <span className="text-lg">Gestión de incidencias y reparaciones</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-6 w-6 text-cyan-300 flex-shrink-0" />
+                    <span className="text-lg">Seguimiento de renovaciones y mediación</span>
+                  </div>
+                </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
                     href="/login?next=/dashboard"
-                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-8 py-4 text-base font-bold text-[#1E293B] shadow-2xl transition hover:scale-105"
+                    className="inline-flex items-center gap-2 rounded-full bg-white text-[#1E3A8A] px-8 py-4 text-base font-bold shadow-xl transition hover:bg-blue-50 hover:scale-105"
                   >
-                    <span>Contratar por 49 €/mes</span>
-                    <svg className="h-5 w-5 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <span>Contratar ahora</span>
                   </Link>
                   <a
                     href="https://wa.me/34XXXXXXXXX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10 transition"
                   >
-                    <MessageCircle className="h-5 w-5" />
-                    <span>Consultar por WhatsApp</span>
+                    <span>Más información</span>
                   </a>
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
-                  <Image
-                    src="/images/familia1.jpg"
-                    alt="Familia feliz sin preocupaciones por el alquiler"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-[#06B6D4] opacity-20 blur-3xl"></div>
-                <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-[#D4AF37] opacity-20 blur-3xl"></div>
+              {/* Imagen derecha */}
+              <div className="relative h-[300px] lg:h-auto">
+                <Image
+                  src="/images/modelo3.jpg"
+                  alt="Confianza que se construye"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* ¿Qué incluye? */}
-        <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-20 sm:px-6">
+        {/* Qué incluye el servicio */}
+        <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
               <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
@@ -181,6 +182,9 @@ export default function AdministracionAlquilerPage() {
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
                 Una gestión completa para que te despreocupes de todo lo relacionado con tu alquiler
+              </p>
+              <p className="mx-auto mt-3 text-sm font-medium text-[#475569]">
+                Sin permanencia. Sin costes ocultos. Sin sorpresas.
               </p>
             </div>
 
