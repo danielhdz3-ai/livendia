@@ -1,6 +1,6 @@
 /**
  * URL pública sin barra final (Stripe, SEO, enlaces absolutos).
- * Prioridad: `NEXT_PUBLIC_APP_URL` → preview en Vercel → dev local → dominio oficial.
+ * Preview en Vercel → URL temporal; prod nunca debe usar *.vercel.app como canónica.
  */
 
 function stripTrailingSlash(url: string) {
@@ -8,16 +8,23 @@ function stripTrailingSlash(url: string) {
 }
 
 export function getSiteUrl(): string {
-  const explicit = process.env.NEXT_PUBLIC_APP_URL?.trim();
-  if (explicit) return stripTrailingSlash(explicit);
-
   if (process.env.NODE_ENV === "development") {
-    return "http://localhost:3000";
+    const dev = process.env.NEXT_PUBLIC_APP_URL?.trim();
+    return stripTrailingSlash(dev ?? "http://localhost:3000");
   }
 
   if (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL?.trim()) {
     const host = process.env.VERCEL_URL.replace(/^https?:\/\//, "").replace(/\/$/, "");
     return `https://${host}`;
+  }
+
+  const explicit = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  if (
+    explicit &&
+    !/\.vercel\.app\b/i.test(explicit) &&
+    !/\.vercel\.sh\b/i.test(explicit)
+  ) {
+    return stripTrailingSlash(explicit);
   }
 
   return "https://livendia.com";
