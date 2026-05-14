@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LoginForm } from "./login-form";
 
-export const metadata = { title: "Entrar — Livendia" };
+export const metadata: Metadata = {
+  title: "Entrar",
+  robots: { index: false, follow: true },
+};
 
 export default function LoginPage() {
   return (

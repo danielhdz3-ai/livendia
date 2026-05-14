@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import { RegisterClient } from "./register-client";
 import { Suspense } from "react";
 
-export const metadata = { title: "Registro — Livendia" };
+export const metadata: Metadata = {
+  title: "Registro",
+  robots: { index: false, follow: true },
+};
 
 export default function RegisterPage() {
   return (
