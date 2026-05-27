@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, User, Mail, Phone, MapPin, FileText, Save } from "lucide-react";
 
-export const metadata = { title: "Mi Perfil — Livendia" };
+export const metadata = { title: "Mi perfil" };
 
 export default async function PerfilPage() {
   const supabase = await createServerSupabaseClient();

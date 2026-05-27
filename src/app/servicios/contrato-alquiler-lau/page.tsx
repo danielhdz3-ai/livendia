@@ -1,17 +1,23 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import { getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contrato de Alquiler LAU — Livendia",
+  title: "Contrato de alquiler LAU — 120 € IVA incl. | Livendia",
   description:
-    "Redacción o revisión del contrato de arrendamiento de vivienda conforme a la normativa vigente. 120€ IVA incluido.",
+    "Redacción y revisión legal del contrato de alquiler LAU. 120 € IVA incluido, entrega 48-72 h. Inventario fotográfico y cláusulas personalizadas. Gestoría Livendia.",
 };
 
-export default function ContratoLAUPage() {
+export default async function ContratoLAUPage() {
+  const catalog = await getPublicServices();
+  const service = catalog.find((s) => s.slug === "contrato-alquiler-lau") ?? null;
+
   const features = [
     {
       icon: Shield,
@@ -36,6 +42,8 @@ export default function ContratoLAUPage() {
   ];
 
   return (
+    <ServicePurchaseProvider service={service}>
+    {service ? <ServiceStructuredDataFromCatalog service={service} /> : null}
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
       <main className="flex-1">
@@ -60,12 +68,9 @@ export default function ContratoLAUPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-                  >
+                  <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                     Contratar por 120 €
-                  </Link>
+                  </ContratarServicioButton>
                   <Link
                     href="/servicios"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -153,17 +158,15 @@ export default function ContratoLAUPage() {
               Contrata ahora y recibe tu contrato personalizado en 24-48h laborables.
             </p>
             <div className="mt-8">
-              <Link
-                href="/login?next=/dashboard"
-                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-              >
+              <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                 Contratar ahora
-              </Link>
+              </ContratarServicioButton>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
     </div>
+    </ServicePurchaseProvider>
   );
 }

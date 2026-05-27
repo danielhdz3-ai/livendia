@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X, Check, Mail, MessageCircle } from "lucide-react";
-import type { PublicService } from "@/lib/catalog";
+import { X, Check, Mail, MessageCircle, Phone } from "lucide-react";
+import type { PublicService } from "@/lib/catalog.public";
+import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+
+const WA_MODAL = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+const waHrefModal = `https://wa.me/${WA_MODAL.replace(/\D/g, "")}`;
 
 interface ServiceModalProps {
   service: PublicService;
-  imageUrl: string;
   onClose: () => void;
   onCheckout: (service: PublicService, formData: {
     fullName: string;
@@ -16,7 +19,7 @@ interface ServiceModalProps {
   }) => void;
 }
 
-export function ServiceModal({ service, imageUrl, onClose, onCheckout }: ServiceModalProps) {
+export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -98,13 +101,24 @@ export function ServiceModal({ service, imageUrl, onClose, onCheckout }: Service
 
             <div className="mt-8 space-y-2 border-t border-white/20 pt-6 text-sm">
               <div className="flex items-center gap-2 text-blue-100">
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4 shrink-0" aria-hidden />
                 <span>Seguimiento por email</span>
               </div>
               <div className="flex items-center gap-2 text-blue-100">
-                <MessageCircle className="h-4 w-4" />
-                <span>Soporte vía WhatsApp</span>
+                <Phone className="h-4 w-4 shrink-0" aria-hidden />
+                <a href={getContactPhoneTelHref()} className="font-medium hover:underline">
+                  Tel. {getContactPhoneDisplay()}
+                </a>
               </div>
+              <a
+                href={waHrefModal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-100 hover:text-white"
+              >
+                <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+                <span>Soporte vía WhatsApp</span>
+              </a>
             </div>
 
             <p className="mt-6 rounded-lg bg-white/10 p-4 text-xs leading-relaxed">
@@ -117,7 +131,8 @@ export function ServiceModal({ service, imageUrl, onClose, onCheckout }: Service
           <div className="p-8 md:p-10">
             <h3 className="text-xl font-bold text-[#1E293B]">Completa tu pedido</h3>
             <p className="mt-2 text-sm text-[#64748b]">
-              Regístrate y accede a tu panel para gestionar el servicio
+              Introduce tus datos y continúa al <strong>pago seguro con tarjeta</strong>. Si aún no tienes cuenta,
+              la creamos automáticamente; después entrarás al panel para la documentación y el seguimiento.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-5">
@@ -161,15 +176,15 @@ export function ServiceModal({ service, imageUrl, onClose, onCheckout }: Service
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="600 000 000"
+                  placeholder="Ej. 612 345 678"
                   className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-2 focus:ring-[#1A4FBF]/20"
                 />
               </div>
 
               <div className="rounded-lg bg-blue-50 p-4 text-xs leading-relaxed text-[#475569]">
-                Al continuar, crearemos tu cuenta automáticamente. Recibirás acceso a tu{" "}
-                <strong>panel de usuario</strong> donde podrás subir la documentación del inmueble y
-                completar el pago de forma segura mediante Stripe.
+                Tras enviar este formulario pasarás a <strong>Stripe</strong> para pagar el servicio. Cuando el cobro
+                se confirme, tendrás acceso a tu <strong>panel</strong> para subir documentación y coordinar los
+                siguientes pasos con tu gestor.
               </div>
 
               <button

@@ -1,75 +1,82 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/service";
+import {
+  CATALOG_SERVICE_SEEDS,
+  type CatalogServiceSeed,
+  type PublicService,
+} from "@/lib/catalog.public";
 
-export type PublicService = {
-  id: string;
-  slug: string;
-  name: string;
-  description: string | null;
-  category: string | null;
-  price_cents: number;
-  is_recurring: boolean;
-};
+export * from "@/lib/catalog.public";
+
+const SERVICE_SELECT =
+  "id, slug, name, description, category, price_cents, is_recurring, features, badge";
+
+function normalizeServiceCategory(service: PublicService): PublicService {
+  if (service.slug === "revision-documental-post-arras") {
+    return { ...service, category: "compraventa" };
+  }
+  return service;
+}
+
+async function syncMissingCatalogSeeds(services: PublicService[]): Promise<PublicService[]> {
+  const missingSeeds = CATALOG_SERVICE_SEEDS.filter(
+    (seed) => !services.some((service) => service.slug === seed.slug),
+  );
+  if (missingSeeds.length === 0) return services;
+
+  try {
+    const admin = createServiceRoleClient();
+    for (const seed of missingSeeds) {
+      const { error } = await admin.from("services").upsert(toUpsertRow(seed), { onConflict: "slug" });
+      if (error) {
+        console.error("[catalog] upsert seed failed", seed.slug, error.message);
+      }
+    }
+
+    const slugs = missingSeeds.map((seed) => seed.slug);
+    const { data, error } = await admin
+      .from("services")
+      .select(SERVICE_SELECT)
+      .in("slug", slugs)
+      .eq("is_active", true);
+
+    if (error || !data?.length) return services;
+
+    const bySlug = new Map(services.map((service) => [service.slug, service]));
+    for (const row of data as PublicService[]) {
+      bySlug.set(row.slug, row);
+    }
+    return [...bySlug.values()];
+  } catch (error) {
+    console.error("[catalog] syncMissingCatalogSeeds", error);
+    return services;
+  }
+}
+
+function toUpsertRow(seed: CatalogServiceSeed) {
+  return {
+    slug: seed.slug,
+    name: seed.name,
+    description: seed.description,
+    category: seed.category,
+    price_cents: seed.price_cents,
+    is_recurring: seed.is_recurring,
+    features: seed.features,
+    badge: seed.badge,
+    is_active: true,
+  };
+}
 
 export async function getPublicServices(): Promise<PublicService[]> {
   const supabase = await createServerSupabaseClient();
   const { data } = await supabase
     .from("services")
-    .select("id, slug, name, description, category, price_cents, is_recurring")
+    .select(SERVICE_SELECT)
     .eq("is_active", true)
     .order("category", { ascending: true })
     .order("price_cents", { ascending: true });
 
-  return (data ?? []) as PublicService[];
+  const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
+  const synced = await syncMissingCatalogSeeds(services);
+  return synced.map(normalizeServiceCategory);
 }
-
-export const CATEGORY_LABEL: Record<string, string> = {
-  compraventa: "Compraventa",
-  alquiler: "Alquiler",
-  pack: "Packs",
-  administracion_alquiler: "Administración de alquiler",
-  contrato: "Contratos",
-  acompanamiento: "Acompañamiento",
-  revision: "Revisión",
-  otro: "Otros",
-};
-
-export const CATEGORY_ORDER = [
-  "compraventa",
-  "alquiler",
-  "pack",
-  "administracion_alquiler",
-  "contrato",
-  "acompanamiento",
-  "revision",
-  "otro",
-];
-
-export function formatEur(cents: number) {
-  return `${(cents / 100).toFixed(2).replace(".", ",")} €`;
-}
-
-export function groupByCategory(services: PublicService[]) {
-  const map = new Map<string, PublicService[]>();
-  for (const s of services) {
-    const c = s.category ?? "otro";
-    if (!map.has(c)) map.set(c, []);
-    map.get(c)!.push(s);
-  }
-  const sortedKeys = [...map.keys()].sort((a, b) => {
-    const ia = CATEGORY_ORDER.indexOf(a);
-    const ib = CATEGORY_ORDER.indexOf(b);
-    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-  });
-  return sortedKeys.map((key) => ({ key, label: CATEGORY_LABEL[key] ?? key, items: map.get(key)! }));
-}
-
-// Mapa de imágenes por slug de servicio
-export const SERVICE_IMAGES: Record<string, string> = {
-  "administracion-alquiler": "/images/gestoria.jpg",
-  "contrato-alquiler-lau": "/images/contratos.jpg",
-  "contrato-alquiler-temporada": "/images/contratos5.jpg",
-  "contrato-alquiler-habitacion": "/images/contratos2.jpg",
-  "contrato-arras-penitenciales": "/images/contratos1.jpg",
-  "contrato-arras-confirmatorias": "/images/contratos7.jpg",
-  "reserva-de-compra": "/images/contratos6.jpg",
-};

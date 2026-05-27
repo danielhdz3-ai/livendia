@@ -1,9 +1,9 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Bell, Shield, Mail, Lock, Eye, Save } from "lucide-react";
+import { ArrowLeft, Bell, Shield, Lock, Eye, Save } from "lucide-react";
 
-export const metadata = { title: "Configuración — Livendia" };
+export const metadata = { title: "Configuración" };
 
 export default async function ConfiguracionPage() {
   const supabase = await createServerSupabaseClient();

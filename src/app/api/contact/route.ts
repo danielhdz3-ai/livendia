@@ -1,16 +1,37 @@
 import { sendContactInquiryEmail } from "@/lib/email/send";
+import { getRequestIp } from "@/lib/request-ip";
+import { rateLimitContact } from "@/lib/ratelimit";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 import { NextResponse } from "next/server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  let body: { name?: string; email?: string; phone?: string; message?: string };
+  const ip = await getRequestIp();
+  const rl = await rateLimitContact(ip);
+  if (!rl.ok) {
+    return NextResponse.json({ error: "Demasiadas solicitudes. Inténtalo mañana." }, { status: 429 });
+  }
+
+  let body: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+    turnstileToken?: string;
+  };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
   }
 
+  if (process.env.TURNSTILE_SECRET_KEY) {
+    const okCaptcha = await verifyTurnstileToken(body.turnstileToken);
+    if (!okCaptcha) {
+      return NextResponse.json({ error: "Completa la verificación anti‑spam." }, { status: 400 });
+    }
+  }
   const name = typeof body.name === "string" ? body.name.trim() : "";
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
   const phone =

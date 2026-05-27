@@ -2,6 +2,8 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export const metadata = { title: { absolute: "Pedidos — Livendia Admin" } };
+
 const statusLabel: Record<string, string> = {
   pending_payment: "Pago pendiente",
   paid: "Pagado",

@@ -2,7 +2,7 @@
 
 import { updateOrderStatus } from "@/app/admin/actions";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const OPTIONS: { value: string; label: string }[] = [
   { value: "pending_payment", label: "Pago pendiente" },
@@ -25,10 +25,6 @@ export function AdminOrderStatusForm({
   const [status, setStatus] = useState(currentStatus);
   const [msg, setMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setStatus(currentStatus);
-  }, [currentStatus]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();

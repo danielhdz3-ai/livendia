@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Aviso legal — Livendia",
+  title: "Aviso legal",
   robots: { index: false },
 };
 

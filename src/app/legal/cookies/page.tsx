@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de cookies — Livendia",
+  title: "Política de cookies",
   robots: { index: false },
 };
 

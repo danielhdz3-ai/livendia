@@ -1,29 +1,32 @@
-import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
-import Link from "next/link";
+import { DownloadButton } from "@/components/download-button";
 import {
-  Home,
+  PROPERTY_DOCUMENT_LABEL_ES,
+  TENANT_DOCUMENT_LABEL_ES,
+} from "@/lib/rental-document-labels";
+import { resolveRentalDocStoragePath } from "@/lib/rental-doc-storage-path";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import {
   Building2,
   Users,
-  MessageSquare,
   AlertCircle,
-  Plus,
+  Calendar,
   FileText,
-  Upload,
-  ArrowLeft,
-  MapPin,
-  Phone,
-  Mail,
-  Euro,
+  CheckCircle2,
+  Clock,
+  User,
+  CreditCard,
+  MessageCircle,
   FileSignature,
-  ImageIcon,
+  ArrowRight,
 } from "lucide-react";
 import { PropertyForm } from "./property-form";
 import { TenantForm } from "./tenant-form";
 
-export const metadata = { title: "Administración de Alquileres — Livendia" };
+export const metadata = { title: "Panel de administración de alquileres" };
 
-export default async function RentalManagementPage() {
+export default async function RentalDashboardPage() {
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
@@ -57,36 +60,31 @@ export default async function RentalManagementPage() {
     : { data: null };
 
   const hasTenant = (tenants?.length ?? 0) > 0;
+  const firstTenant = tenants?.[0];
   const isSetupComplete = hasProperty && hasTenant;
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
-      {/* Header */}
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#1A4FBF] transition hover:text-[#06B6D4]"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>Volver al panel</span>
-            </Link>
-            <div className="flex items-center gap-4">
-              <div className="text-right">
-                <div className="text-sm font-semibold text-[#1E293B]">{firstName}</div>
-                <div className="text-xs text-[#64748B]">Administración de alquileres</div>
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4] text-sm font-bold text-white">
-                {firstName.charAt(0).toUpperCase()}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+  const { data: propertyDocsDashboard } =
+    isSetupComplete && firstProperty
+      ? await supabase
+          .from("property_documents")
+          .select("id, document_type, file_name, file_url, storage_path, uploaded_at")
+          .eq("property_id", firstProperty.id)
+          .order("uploaded_at", { ascending: false })
+      : { data: null };
 
-      {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+  const { data: tenantDocsDashboard } =
+    isSetupComplete && firstTenant
+      ? await supabase
+          .from("tenant_documents")
+          .select("id, document_type, file_name, file_url, storage_path, uploaded_at")
+          .eq("tenant_id", firstTenant.id)
+          .order("uploaded_at", { ascending: false })
+      : { data: null };
+
+  // Si no está configurado, mostrar onboarding
+  if (!isSetupComplete) {
+    return (
+      <div className="p-8">
         {/* Welcome Section */}
         <div className="mb-8 rounded-2xl bg-gradient-to-r from-[#1A4FBF] via-[#2563EB] to-[#06B6D4] p-8 text-white shadow-2xl">
           <div className="flex items-center gap-4">
@@ -96,9 +94,7 @@ export default async function RentalManagementPage() {
             <div>
               <h1 className="text-3xl font-bold">Bienvenido a tu panel de administración de alquiler</h1>
               <p className="mt-2 text-blue-100">
-                {isSetupComplete
-                  ? "Gestiona tus inmuebles, inquilinos, incidencias y comunicaciones en un solo lugar"
-                  : "Completa los datos iniciales para empezar a gestionar tu alquiler"}
+                Completa los datos iniciales para empezar a gestionar tu alquiler
               </p>
             </div>
           </div>
@@ -131,132 +127,325 @@ export default async function RentalManagementPage() {
             </div>
           </section>
         )}
+      </div>
+    );
+  }
 
-        {/* Dashboard completo - Solo si tiene inmueble Y inquilino */}
-        {isSetupComplete && (
-          <>
-            {/* Resumen rápido */}
-            <section className="mb-8">
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-blue-50 p-3">
-                      <Building2 className="h-6 w-6 text-[#1A4FBF]" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-[#64748B]">Inmueble</div>
-                      <div className="text-lg font-bold text-[#1E293B]">{firstProperty?.address}</div>
-                    </div>
-                  </div>
-                </div>
+  // Dashboard completo cuando está configurado
+  return (
+    <div className="p-8">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-[#1E293B]">¡Hola, {firstName}! 👋</h1>
+        <p className="mt-1 text-[#64748B]">Bienvenido a tu panel de gestión inmobiliaria</p>
+      </div>
 
-                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-emerald-50 p-3">
-                      <Users className="h-6 w-6 text-emerald-600" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-[#64748B]">Inquilino</div>
-                      <div className="text-lg font-bold text-[#1E293B]">{tenants?.[0]?.full_name}</div>
-                    </div>
-                  </div>
-                </div>
+      {/* Stats Cards */}
+      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* Total pedidos (placeholder) */}
+        <div className="rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg">
+          <div className="mb-2 flex items-center gap-2">
+            <Calendar className="h-5 w-5" />
+            <span className="text-sm font-medium">Total pedidos</span>
+          </div>
+          <div className="text-3xl font-bold">0</div>
+          <div className="mt-1 text-xs opacity-90">0 completados</div>
+        </div>
 
-                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-amber-50 p-3">
-                      <Euro className="h-6 w-6 text-amber-600" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-[#64748B]">Renta mensual</div>
-                      <div className="text-lg font-bold text-[#1E293B]">
-                        {tenants?.[0]?.monthly_rent?.toFixed(2) || "0.00"} €
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        {/* En proceso */}
+        <div className="rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 p-6 text-white shadow-lg">
+          <div className="mb-2 flex items-center gap-2">
+            <Clock className="h-5 w-5" />
+            <span className="text-sm font-medium">En proceso</span>
+          </div>
+          <div className="text-3xl font-bold">0</div>
+          <div className="mt-1 text-xs opacity-90">Requieren atención</div>
+        </div>
+
+        {/* Completados */}
+        <div className="rounded-2xl bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg">
+          <div className="mb-2 flex items-center gap-2">
+            <CheckCircle2 className="h-5 w-5" />
+            <span className="text-sm font-medium">Completados</span>
+          </div>
+          <div className="text-3xl font-bold">0</div>
+          <div className="mt-1 text-xs opacity-90">Servicios finalizados</div>
+        </div>
+
+        <Link
+          href="/dashboard/servicios"
+          className="group rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 p-6 text-white shadow-lg transition hover:shadow-xl hover:ring-2 hover:ring-white/30"
+        >
+          <div className="mb-2 flex items-center gap-2">
+            <FileSignature className="h-5 w-5" />
+            <span className="text-sm font-medium">Contratar contratos</span>
+          </div>
+          <p className="text-lg font-bold leading-snug">
+            Contratos LAU, arras, revisión registral…
+          </p>
+          <div className="mt-3 flex items-center gap-1 text-xs font-semibold opacity-95">
+            Ver servicios en tu panel
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+          </div>
+        </Link>
+      </div>
+
+      {/* Datos del Inmueble y del Inquilino */}
+      <div className="mb-8 grid gap-6 lg:grid-cols-2">
+        {/* Datos del Inmueble */}
+        <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+          <div className="mb-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl bg-blue-50 p-2">
+                <Building2 className="h-6 w-6 text-[#1A4FBF]" />
               </div>
-            </section>
+              <div>
+                <h2 className="text-lg font-bold text-[#1E293B]">Datos del Inmueble</h2>
+                <p className="text-sm text-[#64748B]">Información de la propiedad</p>
+              </div>
+            </div>
+            <Link
+              href="/dashboard/rental/inmueble"
+              className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
+            >
+              Ver detalles →
+            </Link>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <div className="text-xs font-semibold text-[#64748B]">DIRECCIÓN</div>
+              <div className="text-sm font-medium text-[#1E293B]">{firstProperty.address}</div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <div className="text-xs font-semibold text-[#64748B]">ZONA</div>
+                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.zone || "—"}</div>
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-[#64748B]">CÓDIGO POSTAL</div>
+                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.postal_code || "—"}</div>
+              </div>
+            </div>
+            {firstProperty.cadastral_reference && (
+              <div>
+                <div className="text-xs font-semibold text-[#64748B]">REFERENCIA CATASTRAL</div>
+                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.cadastral_reference}</div>
+              </div>
+            )}
+          </div>
+        </div>
 
-            {/* Section 3: Portal de Incidencias */}
-            <section className="mb-8">
-              <div className="mb-4">
-                <h2 className="text-2xl font-bold text-[#1E293B]">Portal de Incidencias</h2>
+        {/* Datos del Inquilino */}
+        <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
+          <div className="mb-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl bg-emerald-50 p-2">
+                <Users className="h-6 w-6 text-emerald-600" />
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-[#1E293B]">Datos del Inquilino</h2>
+                <p className="text-sm text-[#64748B]">Información del arrendatario</p>
+              </div>
+            </div>
+            <Link
+              href="/dashboard/rental/inquilino"
+              className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
+            >
+              Ver detalles →
+            </Link>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <div className="text-xs font-semibold text-[#64748B]">NOMBRE COMPLETO</div>
+              <div className="text-sm font-medium text-[#1E293B]">{firstTenant.full_name}</div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <div className="text-xs font-semibold text-[#64748B]">EMAIL</div>
+                <div className="text-sm font-medium text-[#1E293B]">{firstTenant.email || "—"}</div>
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-[#64748B]">TELÉFONO</div>
+                <div className="text-sm font-medium text-[#1E293B]">{firstTenant.phone || "—"}</div>
+              </div>
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#64748B]">RENTA MENSUAL</div>
+              <div className="text-2xl font-bold text-emerald-600">
+                {firstTenant.monthly_rent?.toFixed(2)} €
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Acciones rápidas */}
+      <div className="mb-8">
+        <h2 className="mb-4 text-xl font-bold text-[#1E293B]">Acciones rápidas</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <Link
+            href="/dashboard/rental/incidencias"
+            className="rounded-xl border-2 border-slate-200 bg-white p-6 transition hover:border-[#1A4FBF] hover:shadow-lg"
+          >
+            <AlertCircle className="mb-3 h-8 w-8 text-orange-600" />
+            <h3 className="font-semibold text-[#1E293B]">Incidencias</h3>
+            <p className="mt-1 text-sm text-[#64748B]">Ver reportes del gestor</p>
+          </Link>
+
+          <Link
+            href="/dashboard/rental/chat"
+            className="rounded-xl border-2 border-slate-200 bg-white p-6 transition hover:border-[#1A4FBF] hover:shadow-lg"
+          >
+            <MessageCircle className="mb-3 h-8 w-8 text-cyan-600" />
+            <h3 className="font-semibold text-[#1E293B]">Chat con Gestor</h3>
+            <p className="mt-1 text-sm text-[#64748B]">Mensajería directa</p>
+          </Link>
+
+          <Link
+            href="/dashboard/perfil"
+            className="rounded-xl border-2 border-slate-200 bg-white p-6 transition hover:border-[#1A4FBF] hover:shadow-lg"
+          >
+            <User className="mb-3 h-8 w-8 text-[#1A4FBF]" />
+            <h3 className="font-semibold text-[#1E293B]">Editar perfil</h3>
+            <p className="mt-1 text-sm text-[#64748B]">Actualiza tu información personal</p>
+          </Link>
+
+          <Link
+            href="/dashboard/pagos"
+            className="rounded-xl border-2 border-slate-200 bg-white p-6 transition hover:border-[#1A4FBF] hover:shadow-lg"
+          >
+            <CreditCard className="mb-3 h-8 w-8 text-[#1A4FBF]" />
+            <h3 className="font-semibold text-[#1E293B]">Métodos de pago</h3>
+            <p className="mt-1 text-sm text-[#64748B]">Gestiona tus formas de pago</p>
+          </Link>
+        </div>
+
+        {/* Documentación ya subida (inmueble + inquilino) */}
+        <div className="mt-6 rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100">
+          <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl bg-[#1A4FBF]/10 p-2">
+                <FileText className="h-6 w-6 text-[#1A4FBF]" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-[#1E293B]">Mis documentos</h3>
                 <p className="text-sm text-[#64748B]">
-                  Gestiona tickets con fotos, autoriza presupuestos y coordina técnicos
+                  Archivos asociados a tu administración de alquiler (inmueble e inquilino)
                 </p>
               </div>
+            </div>
+          </div>
 
-              <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-                <div className="text-center py-12">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-amber-50">
-                    <AlertCircle className="h-10 w-10 text-amber-600" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Sin incidencias activas</h3>
-                  <p className="mt-2 text-sm text-[#64748B]">
-                    Los inquilinos pueden crear tickets y tú autorizas presupuestos
-                  </p>
-
-                  <div className="mt-8 grid gap-4 md:grid-cols-2">
-                    <div className="rounded-xl border border-slate-200 p-6 text-left">
-                      <h4 className="font-semibold text-[#1E293B]">Crear Incidencia Manual</h4>
-                      <p className="mt-2 text-sm text-[#64748B]">Registra una incidencia como gestor</p>
-                      <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-900 transition hover:bg-amber-200">
-                        <Plus className="h-4 w-4" />
-                        <span>Nueva incidencia</span>
-                      </button>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 p-6 text-left">
-                      <h4 className="font-semibold text-[#1E293B]">Portal del Inquilino</h4>
-                      <p className="mt-2 text-sm text-[#64748B]">
-                        Los inquilinos crean tickets con fotos desde su portal
-                      </p>
-                      <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-200">
-                        <ImageIcon className="h-4 w-4" />
-                        <span>Configurar acceso</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl bg-slate-50/80 p-4 ring-1 ring-slate-100">
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <span className="text-sm font-bold text-[#1E293B]">Del inmueble</span>
+                <Link
+                  href="/dashboard/rental/inmueble"
+                  className="text-xs font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
+                >
+                  Gestionar →
+                </Link>
               </div>
-            </section>
-
-            {/* Section 4: Chat Unificado */}
-            <section className="mb-8">
-              <div className="mb-4">
-                <h2 className="text-2xl font-bold text-[#1E293B]">Chat Unificado</h2>
+              {!propertyDocsDashboard?.length ? (
                 <p className="text-sm text-[#64748B]">
-                  Conversaciones entre propietario y gestor con archivos adjuntos
+                  No hay archivos registrados todavía. Puedes subirlos en{" "}
+                  <Link href="/dashboard/rental/inmueble" className="font-semibold text-[#1A4FBF] hover:underline">
+                    Datos del inmueble
+                  </Link>
+                  .
                 </p>
+              ) : (
+                <ul className="space-y-3">
+                  {propertyDocsDashboard.map((doc) => {
+                    const resolved = resolveRentalDocStoragePath(
+                      doc.storage_path as string | null,
+                      doc.file_url as string | null,
+                    );
+                    return (
+                      <li
+                        key={doc.id}
+                        className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-3 last:border-0 last:pb-0"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-medium text-[#1E293B]">{doc.file_name as string}</p>
+                          <p className="text-xs text-[#64748B]">
+                            {PROPERTY_DOCUMENT_LABEL_ES[doc.document_type as string] ?? doc.document_type}
+                          </p>
+                        </div>
+                        {resolved ? (
+                          <DownloadButton
+                            filePath={resolved}
+                            fileName={(doc.file_name as string) || "documento"}
+                            variant="link"
+                            documentType="Descargar"
+                          />
+                        ) : (
+                          <span className="text-xs text-amber-700">Consultar en datos del inmueble</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+
+            <div className="rounded-xl bg-slate-50/80 p-4 ring-1 ring-slate-100">
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <span className="text-sm font-bold text-[#1E293B]">Del inquilino</span>
+                <Link
+                  href="/dashboard/rental/inquilino"
+                  className="text-xs font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
+                >
+                  Gestionar →
+                </Link>
               </div>
-
-              <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-                <div className="text-center py-12">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
-                    <MessageSquare className="h-10 w-10 text-[#1A4FBF]" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Chat con tu gestor</h3>
-                  <p className="mt-2 text-sm text-[#64748B]">
-                    Comunícate directamente con nuestro equipo de gestión inmobiliaria
-                  </p>
-
-                  <button className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-[#2563EB]">
-                    <MessageSquare className="h-5 w-5" />
-                    <span>Iniciar Conversación</span>
-                  </button>
-
-                  <div className="mt-6 rounded-xl bg-blue-50 p-4">
-                    <p className="text-sm text-blue-900">
-                      💡 <strong>Tip:</strong> Puedes adjuntar fotos, documentos y facturas en el chat
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </>
-        )}
-      </main>
+              {!tenantDocsDashboard?.length ? (
+                <p className="text-sm text-[#64748B]">
+                  No hay archivos registrados todavía. Puedes subirlos en{" "}
+                  <Link href="/dashboard/rental/inquilino" className="font-semibold text-[#1A4FBF] hover:underline">
+                    Datos del inquilino
+                  </Link>
+                  .
+                </p>
+              ) : (
+                <ul className="space-y-3">
+                  {tenantDocsDashboard.map((doc) => {
+                    const resolved = resolveRentalDocStoragePath(
+                      doc.storage_path as string | null,
+                      doc.file_url as string | null,
+                    );
+                    return (
+                      <li
+                        key={doc.id}
+                        className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-3 last:border-0 last:pb-0"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-medium text-[#1E293B]">{doc.file_name as string}</p>
+                          <p className="text-xs text-[#64748B]">
+                            {TENANT_DOCUMENT_LABEL_ES[doc.document_type as string] ?? doc.document_type}
+                          </p>
+                        </div>
+                        {resolved ? (
+                          <DownloadButton
+                            filePath={resolved}
+                            fileName={(doc.file_name as string) || "documento"}
+                            variant="link"
+                            documentType="Descargar"
+                          />
+                        ) : (
+                          <span className="text-xs text-amber-700">Consultar en datos del inquilino</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+

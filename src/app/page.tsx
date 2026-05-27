@@ -1,96 +1,120 @@
+import { FaqSection } from "@/components/faq-section";
+import { HomeSitelinksNav } from "@/components/home-sitelinks-nav";
+import { HomeServicesCarousel } from "@/components/home-services-carousel";
+import { TrustReviewsBlock } from "@/components/trust-reviews-block";
+import { HOME_FAQ_ITEMS } from "@/lib/home-faq";
+import { MultiServicePurchaseProvider, ContratarSlugButton } from "@/components/service-purchase-provider";
+import { PublicHeader } from "@/components/public-header";
+import type { PublicService } from "@/lib/catalog.public";
+import { getPublicServices } from "@/lib/catalog";
 import { SiteFooter } from "@/components/site-footer";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600000000";
+export const metadata: Metadata = {
+  title: "Livendia — Gestoría inmobiliaria online en España",
+  description:
+    "Contratos de alquiler, arras, compraventa y administración de alquileres. Gestores expertos, proceso digital y pago seguro.",
+  alternates: { canonical: getSiteUrl() },
+  openGraph: {
+    title: "Livendia — Gestoría inmobiliaria online",
+    url: getSiteUrl(),
+    type: "website",
+    locale: "es_ES",
+  },
+};
+
+const HOME_SERVICES_ORDER = [
+  "contrato-alquiler-lau",
+  "contrato-arras-penitenciales",
+  "revision-documental-post-arras",
+  "contrato-alquiler-temporada",
+  "contrato-alquiler-habitacion",
+  "servicio-completo-compra",
+  "administracion-alquiler",
+] as const;
+
+const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
-export default function Home() {
+export default async function Home() {
+  const catalog = await getPublicServices();
+  const homeCarouselServices = HOME_SERVICES_ORDER.map((slug) => catalog.find((s) => s.slug === slug)).filter(
+    (s): s is PublicService => s != null,
+  );
+
+  const rental = catalog.find((s) => s.slug === "administracion-alquiler");
+  const compraCompleta = catalog.find((s) => s.slug === "servicio-completo-compra");
+  const homeCheckoutBySlug: Partial<Record<string, PublicService>> = {};
+  if (rental) homeCheckoutBySlug["administracion-alquiler"] = rental;
+  if (compraCompleta) homeCheckoutBySlug["servicio-completo-compra"] = compraCompleta;
+
   return (
+    <MultiServicePurchaseProvider servicesBySlug={homeCheckoutBySlug}>
     <div className="flex flex-col">
-      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-[#1A4FBF] text-white">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="text-lg font-bold tracking-tight text-white hover:text-cyan-200">
-            Livendia
-          </Link>
-          <nav className="hidden gap-8 text-sm font-medium sm:flex">
-            <Link href="/servicios" className="hover:text-cyan-300 transition-colors">
-              Servicios
-            </Link>
-            <Link href="/precios" className="hover:text-cyan-300 transition-colors">
-              Precios
-            </Link>
-            <Link href="/contacto" className="hover:text-cyan-300 transition-colors">
-              Contacto
-            </Link>
-            <a href="#equipo" className="hover:text-cyan-300 transition-colors">
-              Equipo
-            </a>
-            <a href="#confianza" className="hover:text-cyan-300 transition-colors">
-              Confianza
-            </a>
-            <Link href="/login" className="hover:text-cyan-300 transition-colors">
-              Entrar
-            </Link>
-          </nav>
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-[#06B6D4] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#67E8F9] hover:text-[#1e293b]"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </header>
+      <PublicHeader />
 
       <main>
-        <section className="relative overflow-hidden bg-[#1A4FBF] text-white">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:items-center md:py-24">
-            <div className="relative z-10">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[#67E8F9]">
-                Gestoría inmobiliaria digital
-              </p>
-              <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-                Tu alquiler y tus contratos, bajo control profesional
-              </h1>
-              <p className="mt-6 max-w-xl text-lg text-blue-100">
-                Administración de alquiler, contratos LAU, arras, reservas y packs a la carta.
-                Pagas online y seguimos el expediente contigo desde tu panel.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  href="#servicios"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1A4FBF] shadow-lg transition hover:bg-[#F1F5F9]"
-                >
-                  Ver servicios
-                </Link>
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-[#06B6D4] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#06B6D4]"
-                >
-                  Hablar por WhatsApp
-                </a>
+        {/* Hero Section - Estilo Inmonest */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+              {/* Contenido izquierda */}
+              <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+                <h1 className="mb-4 text-3xl font-bold leading-snug sm:mb-6 sm:text-4xl sm:leading-tight md:text-5xl lg:mb-8 lg:text-7xl">
+                  La gestoría inmobiliaria que cuida de los tuyos
+                </h1>
+                <p className="mt-4 text-base leading-relaxed text-blue-50 sm:mt-6 sm:text-lg lg:text-xl">
+                  Ten el control de tus contratos inmobiliarios, redactados por gestores expertos, y despreocúpate.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <Link
+                    href="#servicios"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                  >
+                    Ver servicios
+                  </Link>
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden min-h-11 items-center justify-center rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10 lg:inline-flex"
+                  >
+                    Hablar por WhatsApp
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="relative min-h-[280px] md:min-h-[420px]">
-              <Image
-                src="/images/gestoria.jpg"
-                alt="Equipo de Livendia en la gestoría"
-                fill
-                priority
-                className="rounded-2xl object-cover shadow-2xl ring-1 ring-white/20"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+
+              {/* Imagen derecha */}
+              <div className="relative h-44 sm:h-56 lg:h-auto">
+                <Image
+                  src="/images/chica-mobile.jpg"
+                  alt="Tranquilidad en casa: revisas tu gestión inmobiliaria desde el sofá"
+                  fill
+                  priority
+                  className="object-cover object-center lg:hidden"
+                  sizes="100vw"
+                />
+                <Image
+                  src="/images/chicavertical.png"
+                  alt=""
+                  fill
+                  className="hidden object-cover object-center lg:block"
+                  sizes="50vw"
+                  aria-hidden
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="como-funciona" className="border-b border-slate-200 bg-white py-16 sm:py-20">
+        <HomeSitelinksNav />
+
+        <section id="como-funciona" className="border-b border-slate-200 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-center text-3xl font-bold text-[#1E293B]">Cómo funciona</h2>
+            <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">Cómo funciona</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-[#475569]">
               Tres pasos para dejar la parte legal y administrativa en manos expertas.
             </p>
@@ -115,24 +139,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#06B6D4] to-[#0891B2] py-16 text-white sm:py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="grid items-center gap-10 md:grid-cols-2">
-              <div>
-                <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+              {/* Imagen izquierda */}
+              <div className="relative h-48 sm:h-64 lg:h-auto">
+                <Image
+                  src="/images/modelo3.jpg"
+                  alt="Administración de Alquileres"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+
+              {/* Contenido derecha */}
+              <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-cyan-300 sm:mb-6">
                   Servicio destacado
-                </div>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                </p>
+                <h2 className="text-2xl font-bold leading-snug sm:text-4xl sm:leading-tight lg:text-6xl">
                   Administración de Alquileres
                 </h2>
-                <p className="mt-4 text-xl text-cyan-50">
+                <p className="mt-4 text-base leading-relaxed text-blue-50 sm:text-lg lg:text-xl">
                   Olvídate de llamadas, reclamaciones y gestiones. Nosotros somos el punto de contacto con tu inquilino.
                 </p>
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-5xl font-extrabold">49 €</span>
-                  <span className="text-lg text-cyan-100">/ mes · IVA incluido</span>
+                <div className="mt-4 flex items-baseline gap-2 sm:mt-6">
+                  <span className="text-4xl font-extrabold sm:text-5xl">49 €</span>
+                  <span className="text-base text-blue-100 sm:text-lg">/ mes · IVA incluido</span>
                 </div>
-                <ul className="mt-8 space-y-3 text-cyan-50">
+                <ul className="mt-6 space-y-2.5 text-sm text-blue-50 sm:mt-8 sm:space-y-3 sm:text-base">
                   <li className="flex items-start gap-3">
                     <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -152,84 +188,109 @@ export default function Home() {
                     <span>Seguimiento de renovaciones y mediación</span>
                   </li>
                 </ul>
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <Link
+                    href="/para-propietarios"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                  >
+                    Soy propietario
+                  </Link>
                   <Link
                     href="/servicios/administracion-alquiler"
-                    className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-[#0891B2] shadow-lg transition hover:bg-slate-50"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-white px-6 py-3.5 text-base font-semibold transition hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4"
                   >
-                    Más información
+                    Ficha del servicio
                   </Link>
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
+                  <ContratarSlugButton
+                    slug="administracion-alquiler"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-white px-6 py-3.5 text-base font-semibold transition hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4"
                   >
                     Contratar ahora
-                  </Link>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="rounded-2xl bg-white p-8 shadow-2xl ring-1 ring-black/5">
-                  <h3 className="text-xl font-bold text-[#1E293B]">¿Qué incluye?</h3>
-                  <ul className="mt-6 space-y-4 text-sm text-[#475569]">
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Todas las comunicaciones con el inquilino</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Coordinación de reparaciones y empresas</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Control de renovaciones y actualizaciones</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Mediación de conflictos</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Alertas solo cuando sea necesario</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold text-[#06B6D4]">✓</span>
-                      <span>Atención completa al inquilino</span>
-                    </li>
-                  </ul>
-                  <p className="mt-6 text-xs text-[#64748b]">
-                    Sin permanencia. Sin costes ocultos. Sin sorpresas.
-                  </p>
+                  </ContratarSlugButton>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="servicios" className="bg-[#F1F5F9] py-16 sm:py-20">
+        <section id="servicios" className="border-b border-slate-200/80 bg-[#EFF3F9] py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-bold text-[#1E293B]">Contratos y documentación</h2>
-            <p className="mt-3 max-w-2xl text-[#475569]">
-              Imágenes reales de nuestro trabajo con documentación y firma de contratos.
+            <h2 className="text-center text-3xl font-bold text-[#1E293B] sm:text-4xl">
+              Servicios de gestoría inmobiliaria
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-center text-[#475569] sm:text-lg">
+              Gestoría inmobiliaria experta en derecho inmobiliario con un gestor asignado y un amplio abanico
+              de servicios adaptado a tus necesidades.
             </p>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {[
-                { src: "/images/contratos.jpg", alt: "Revisión de contratos inmobiliarios" },
-                { src: "/images/contratos1.jpg", alt: "Formalización de documentación" },
-                { src: "/images/contratos2.jpg", alt: "Contratos y tramitación" },
-              ].map((img) => (
-                <div
-                  key={img.src}
-                  className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover transition duration-300 hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+            <HomeServicesCarousel services={homeCarouselServices} />
+          </div>
+        </section>
+
+        {/* Servicio Completo de Compra - Producto Estrella */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+              {/* Contenido izquierda */}
+              <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-cyan-300 sm:mb-6">
+                  Producto estrella
+                </p>
+                <h2 className="text-2xl font-bold leading-snug sm:text-4xl sm:leading-tight lg:text-6xl">
+                  Servicio Completo de Compra: Reserva a Escritura
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-blue-50 sm:text-lg lg:text-xl">
+                  Un gestor experto te acompaña en todo el proceso documental: desde la reserva hasta la escritura. Evita cláusulas abusivas, controla cada paso y resuelve tus dudas en cualquier momento.
+                </p>
+                <div className="mt-4 flex items-baseline gap-2 sm:mt-6">
+                  <span className="text-4xl font-extrabold sm:text-5xl">666 €</span>
+                  <span className="text-base text-blue-100 sm:text-lg">IVA incluido</span>
                 </div>
-              ))}
+                <ul className="mt-6 space-y-2.5 text-sm text-blue-50 sm:mt-8 sm:space-y-3 sm:text-base">
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Gestor personal que cuida de tus intereses</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Control total: reserva, arras y escritura</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg className="mt-1 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Protección contra cláusulas abusivas de agencias</span>
+                  </li>
+                </ul>
+                <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <Link
+                    href="/servicios/servicio-completo-compra"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                  >
+                    Más información
+                  </Link>
+                  <ContratarSlugButton
+                    slug="servicio-completo-compra"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-white px-6 py-3.5 text-base font-semibold transition hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4"
+                  >
+                    Contratar ahora
+                  </ContratarSlugButton>
+                </div>
+              </div>
+
+              {/* Imagen derecha */}
+              <div className="relative h-48 sm:h-64 lg:h-auto">
+                <Image
+                  src="/images/gestoria3.jpg"
+                  alt="Servicio Completo de Compra"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -303,8 +364,16 @@ export default function Home() {
 
         <section className="bg-[#F1F5F9] py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-3xl font-bold text-[#1E293B]">En el día a día del despacho</h2>
-            <p className="mt-3 text-[#475569]">Momentos de trabajo y encuentros con clientes.</p>
+            <h2 className="text-3xl font-bold text-[#1E293B]">
+              Gestores personalizados, una filosofía cercana
+            </h2>
+            <p className="mt-3 max-w-3xl text-lg leading-relaxed text-[#475569]">
+              En Livendia creemos que un contrato importante merece tiempo, claridad y alguien que conozca
+              tu historia. Por eso cada cliente cuenta con gestores dedicados que siguen tu expediente de
+              principio a fin: ordenan pasos y plazos, responden con rigor profesional sin jerga innecesaria
+              y se implican contigo hasta dejar cerrado cada acuerdo. Legalidad bien hecha con el trato
+              cercano que esperas de quien lleva tus intereses.
+            </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "/images/gestoria2.jpg",
@@ -325,6 +394,75 @@ export default function Home() {
                   />
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Banner contratos — mismo lenguaje visual que hero / servicio destacado */}
+        <section
+          id="contratos-tranquilidad"
+          aria-label="Contratos inmobiliarios con respaldo profesional"
+          className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white"
+        >
+          <div className="mx-auto max-w-7xl">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[560px]">
+              <div className="order-2 flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:order-1 lg:px-12 lg:py-20">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-cyan-300">
+                  Contratos redactados por gestores
+                </p>
+                <h2 className="text-2xl font-bold leading-snug sm:text-3xl sm:leading-tight lg:text-[2.75rem] lg:leading-[1.15]">
+                  Arras, alquiler y acuerdos entre particulares — con la tranquilidad de tenerlo bien hecho
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-blue-50 sm:mt-5 sm:text-lg">
+                  En cualquier intermediación inmobiliaria, te acompañamos con trato claro y documentación sólida:
+                  tú te centras en tu operación y nosotros cuidamos la parte contractual.
+                </p>
+                <ul className="mt-8 space-y-3 text-blue-50">
+                  {[
+                    "Contrato de arras y revisión de condiciones clave",
+                    "Contratos de alquiler (LAU, temporada, habitación…)",
+                    "Redacción y asesoramiento en acuerdos entre particulares",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-3">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#06B6D4]" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <Link
+                    href="/servicios"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-[1.02] sm:w-auto sm:px-8 sm:py-4"
+                  >
+                    Ver servicios de contratos
+                  </Link>
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden min-h-11 items-center justify-center rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10 lg:inline-flex"
+                  >
+                    Hablar por WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative order-1 h-44 min-h-0 sm:h-56 lg:order-2 lg:h-auto">
+                <Image
+                  src="/images/contratos2.jpg"
+                  alt="Gestor revisando contratos y documentación inmobiliaria"
+                  fill
+                  className="object-cover object-[center_right] sm:object-center lg:object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority={false}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -350,11 +488,29 @@ export default function Home() {
                 href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 inline-flex rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#06B6D4]"
+                data-analytics-placement="confianza_whatsapp"
+                className="mt-8 inline-flex min-h-11 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#06B6D4]"
               >
                 Escríbenos por WhatsApp
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 bg-[#F8FAFC] py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl space-y-16 px-4 sm:px-6">
+            <TrustReviewsBlock
+              title="Confianza con nombre y apellidos"
+              subtitle="No solo lo decimos: esto es lo que destacan clientes que ya nos han contratado para alquiler, arras o compra."
+              ctaHref="/contacto"
+              ctaLabel="Cuéntanos tu caso"
+            />
+            <FaqSection
+              id="preguntas-frecuentes"
+              title="Preguntas frecuentes"
+              subtitle="Todo lo que suelen preguntarnos antes del primer contrato o la administración del piso."
+              items={HOME_FAQ_ITEMS}
+            />
           </div>
         </section>
       </main>
@@ -365,7 +521,8 @@ export default function Home() {
         href={waHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:shadow-xl"
+        data-analytics-placement="fab"
+        className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:shadow-xl bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] lg:bottom-6 lg:right-6"
         aria-label="Abrir WhatsApp"
       >
         <svg className="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -373,5 +530,6 @@ export default function Home() {
         </svg>
       </a>
     </div>
+    </MultiServicePurchaseProvider>
   );
 }

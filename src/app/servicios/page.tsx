@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Servicios — Livendia",
+  title: "Servicios de gestoría inmobiliaria: alquiler, compraventa y packs",
   description:
-    "Contratos LAU, reservas, arras, compraventa y packs de gestoría inmobiliaria digital.",
+    "Contratos de alquiler LAU, arras, reserva, administración de alquileres o acompañamiento hasta escritura. Precios claros, IVA incluido y área cliente online.",
 };
 
 export default async function ServiciosPage() {
@@ -23,7 +23,8 @@ export default async function ServiciosPage() {
           <div className="mx-auto max-w-6xl">
             <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Servicios</h1>
             <p className="mt-3 max-w-2xl text-lg text-blue-100">
-              Catálogo de gestoría inmobiliaria. Contratas desde tu panel con pago seguro.
+              Elige servicio abajo y contrata con <strong>pago seguro por tarjeta</strong>; después accedes al panel con
+              tu cuenta para documentación y seguimiento.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -36,7 +37,7 @@ export default async function ServiciosPage() {
                 href="/login?next=/dashboard"
                 className="rounded-full border-2 border-[#06B6D4] px-6 py-3 text-sm font-semibold hover:bg-[#06B6D4]"
               >
-                Ir al panel
+                Ya soy cliente — acceder al panel
               </Link>
             </div>
           </div>
@@ -63,4 +64,3 @@ export default async function ServiciosPage() {
     </div>
   );
 }
-

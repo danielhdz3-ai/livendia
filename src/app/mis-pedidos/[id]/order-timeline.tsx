@@ -36,13 +36,19 @@ const STEP_UI: Record<(typeof FLOW)[number], { title: string; hint: string }> = 
   },
 };
 
+function normalizeOrderStatus(status: string): string {
+  if (status === "delivered") return "completed";
+  return status;
+}
+
 function flowIndex(status: string): number {
-  const i = FLOW.indexOf(status as (typeof FLOW)[number]);
+  const normalized = normalizeOrderStatus(status);
+  const i = FLOW.indexOf(normalized as (typeof FLOW)[number]);
   return i >= 0 ? i : 0;
 }
 
 export function OrderTimeline({
-  status,
+  status: rawStatus,
   createdAt,
   paidAt,
   completedAt,
@@ -54,6 +60,8 @@ export function OrderTimeline({
   completedAt: string | null;
   updatedAt: string;
 }) {
+  const status = normalizeOrderStatus(rawStatus);
+
   if (status === "cancelled") {
     return (
       <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-950">

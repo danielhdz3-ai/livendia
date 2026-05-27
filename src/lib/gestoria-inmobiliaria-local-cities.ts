@@ -284,6 +284,11 @@ export const GESTORIA_SCHEMA_OFFERS = [
     price: "424.00",
   },
   {
+    slug: "revision-documental-post-arras",
+    name: "Pack Revisión Documental post-arras",
+    price: "169.00",
+  },
+  {
     slug: "servicio-completo-compra",
     name: "Servicio Completo hasta Escritura y Notaría",
     price: "666.00",

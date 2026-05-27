@@ -3,7 +3,6 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
-  Home,
   FileText,
   Clock,
   CheckCircle2,
@@ -15,9 +14,12 @@ import {
   TrendingUp,
   Calendar,
   FileSignature,
+  CreditCard,
+  Shield,
+  type LucideIcon,
 } from "lucide-react";
 
-export const metadata = { title: "Mis Pedidos — Livendia" };
+export const metadata = { title: "Mis pedidos" };
 
 export default async function MisPedidosPage() {
   const supabase = await createServerSupabaseClient();
@@ -26,15 +28,13 @@ export default async function MisPedidosPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase.from("profiles").select("full_name").eq("id", user.id).maybeSingle();
-
   const { data: orders } = await supabase
     .from("orders")
     .select("id, status, created_at, total_cents, services ( name, slug )")
     .order("created_at", { ascending: false });
 
   const orderIds = (orders ?? []).map((o) => o.id as string);
-  let docCountByOrder: Record<string, number> = {};
+  const docCountByOrder: Record<string, number> = {};
   if (orderIds.length > 0) {
     const { data: allDocs } = await supabase
       .from("documents")
@@ -46,22 +46,32 @@ export default async function MisPedidosPage() {
     }
   }
 
-  const name = profile?.full_name?.trim() || user.email || "Cliente";
-
-  const pendingOrders = orders?.filter(o => o.status === "pending_docs" || o.status === "in_progress") ?? [];
-  const completedOrders = orders?.filter(o => o.status === "delivered") ?? [];
+  const pendingOrders =
+    orders?.filter((o) =>
+      ["pending_payment", "paid", "pending_docs", "in_review", "in_progress"].includes(o.status as string),
+    ) ?? [];
+  const completedOrders =
+    orders?.filter((o) => o.status === "completed" || o.status === "delivered") ?? [];
   const totalSpent = orders?.reduce((sum, o) => sum + (o.total_cents ?? 0), 0) ?? 0;
 
   const statusColors: Record<string, string> = {
+    pending_payment: "bg-slate-100 text-slate-900 border-slate-200",
+    paid: "bg-cyan-100 text-cyan-900 border-cyan-200",
     pending_docs: "bg-amber-100 text-amber-900 border-amber-200",
+    in_review: "bg-violet-100 text-violet-900 border-violet-200",
     in_progress: "bg-blue-100 text-blue-900 border-blue-200",
+    completed: "bg-green-100 text-green-900 border-green-200",
     delivered: "bg-green-100 text-green-900 border-green-200",
     cancelled: "bg-red-100 text-red-900 border-red-200",
   };
 
-  const statusIcons: Record<string, any> = {
+  const statusIcons: Record<string, LucideIcon> = {
+    pending_payment: CreditCard,
+    paid: Shield,
     pending_docs: Upload,
+    in_review: Clock,
     in_progress: Clock,
+    completed: CheckCircle2,
     delivered: CheckCircle2,
     cancelled: AlertCircle,
   };

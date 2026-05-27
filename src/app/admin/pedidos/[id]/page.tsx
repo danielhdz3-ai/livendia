@@ -1,8 +1,12 @@
+import { AdminStorageDocLink } from "@/components/admin-storage-doc-link";
+import { ORDER_DOCUMENT_LABEL_ES } from "@/lib/order-document-labels";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { AdminNotifyDeliveredForm } from "./admin-notify-delivered";
 import { AdminOrderStatusForm } from "./admin-order-status";
+
+export const metadata = { title: { absolute: "Detalle de pedido — Livendia Admin" } };
 
 const statusLabel: Record<string, string> = {
   pending_payment: "Pago pendiente",
@@ -11,37 +15,9 @@ const statusLabel: Record<string, string> = {
   in_review: "En revisión",
   in_progress: "En curso",
   completed: "Completado",
+  delivered: "Completado",
   cancelled: "Cancelado",
 };
-
-const DOC_LABEL: Record<string, string> = {
-  dni_propietario: "DNI propietario",
-  dni_inquilino: "DNI inquilino",
-  escrituras: "Escrituras",
-  nota_simple: "Nota simple",
-  contrato_actual: "Contrato actual",
-  recibos: "Recibos",
-  poder_notarial: "Poder notarial",
-  otro: "Otro",
-};
-
-async function DocLink({ path, name }: { path: string; name: string }) {
-  const supabase = await createServerSupabaseClient();
-  const { data, error } = await supabase.storage.from("documents").createSignedUrl(path, 300);
-  if (error || !data?.signedUrl) {
-    return <span className="text-[#1E293B]">{name}</span>;
-  }
-  return (
-    <a
-      href={data.signedUrl}
-      target="_blank"
-      rel="noreferrer"
-      className="font-medium text-[#1A4FBF] hover:underline"
-    >
-      {name}
-    </a>
-  );
-}
 
 export default async function AdminPedidoDetailPage({
   params,
@@ -110,7 +86,11 @@ export default async function AdminPedidoDetailPage({
         </div>
 
         <div className="mt-8 border-t border-slate-100 pt-6">
-          <AdminOrderStatusForm orderId={order.id as string} currentStatus={order.status as string} />
+          <AdminOrderStatusForm
+            key={order.status as string}
+            orderId={order.id as string}
+            currentStatus={order.status as string}
+          />
         </div>
 
         <div className="mt-8 border-t border-slate-100 pt-6">
@@ -127,9 +107,11 @@ export default async function AdminPedidoDetailPage({
             {docs.map((d) => (
               <li key={d.id} className="flex flex-wrap items-center justify-between gap-2 py-3">
                 <div>
-                  <DocLink path={d.file_path as string} name={d.file_name as string} />
+                  <AdminStorageDocLink path={d.file_path as string}>
+                    {d.file_name as string}
+                  </AdminStorageDocLink>
                   <span className="ml-2 text-xs text-[#64748b]">
-                    {DOC_LABEL[d.document_type as string] ?? d.document_type}
+                    {ORDER_DOCUMENT_LABEL_ES[d.document_type as string] ?? d.document_type}
                   </span>
                 </div>
                 <span className="text-xs text-[#94a3b8]">

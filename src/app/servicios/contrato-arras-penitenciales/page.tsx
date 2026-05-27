@@ -1,17 +1,22 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import { getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Shield, FileText, Clock, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contrato de Arras Penitenciales — Livendia",
+  title: "Contrato de arras penitenciales (compraventa)",
   description:
     "El contrato más habitual en compraventa. Permite desistir pagando o reteniendo las arras. 145€ IVA incluido.",
 };
 
-export default function ArrasPenitencialesPage() {
+export default async function ArrasPenitencialesPage() {
+  const catalog = await getPublicServices();
+  const service = catalog.find((s) => s.slug === "contrato-arras-penitenciales") ?? null;
+
   const features = [
     {
       icon: Shield,
@@ -37,6 +42,7 @@ export default function ArrasPenitencialesPage() {
   ];
 
   return (
+    <ServicePurchaseProvider service={service}>
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
       <main className="flex-1">
@@ -61,12 +67,9 @@ export default function ArrasPenitencialesPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-                  >
+                  <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                     Contratar por 145 €
-                  </Link>
+                  </ContratarServicioButton>
                   <Link
                     href="/servicios"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -186,17 +189,15 @@ export default function ArrasPenitencialesPage() {
               Contrata ahora y recibe tu contrato de arras en 24-48h laborables.
             </p>
             <div className="mt-8">
-              <Link
-                href="/login?next=/dashboard"
-                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-              >
+              <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                 Contratar ahora
-              </Link>
+              </ContratarServicioButton>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
     </div>
+    </ServicePurchaseProvider>
   );
 }

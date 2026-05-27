@@ -1,17 +1,22 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import { getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Lock, FileText, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contrato de Arras Confirmatorias — Livendia",
+  title: "Contrato de arras confirmatorias",
   description:
     "Mayor seguridad jurídica para ambas partes. Obliga a completar la compraventa. 145€ IVA incluido.",
 };
 
-export default function ArrasConfirmatoriasPage() {
+export default async function ArrasConfirmatoriasPage() {
+  const catalog = await getPublicServices();
+  const service = catalog.find((s) => s.slug === "contrato-arras-confirmatorias") ?? null;
+
   const features = [
     {
       icon: Lock,
@@ -37,6 +42,7 @@ export default function ArrasConfirmatoriasPage() {
   ];
 
   return (
+    <ServicePurchaseProvider service={service}>
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
       <main className="flex-1">
@@ -61,12 +67,9 @@ export default function ArrasConfirmatoriasPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-                  >
+                  <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                     Contratar por 145 €
-                  </Link>
+                  </ContratarServicioButton>
                   <Link
                     href="/servicios"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -234,17 +237,15 @@ export default function ArrasConfirmatoriasPage() {
               Máxima seguridad jurídica para tu compraventa inmobiliaria.
             </p>
             <div className="mt-8">
-              <Link
-                href="/login?next=/dashboard"
-                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-              >
+              <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                 Contratar ahora
-              </Link>
+              </ContratarServicioButton>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
     </div>
+    </ServicePurchaseProvider>
   );
 }

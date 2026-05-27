@@ -1,17 +1,27 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { getPublicServices } from "@/lib/catalog";
+import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, FileText, Wrench } from "lucide-react";
+import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
+import { TrustReviewsBlock } from "@/components/trust-reviews-block";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 
 export const metadata: Metadata = {
-  title: "Administración de Alquileres — Livendia",
+  title: "Administración de alquileres para propietarios desde 49 €/mes",
   description:
-    "Despreocúpate del alquiler. Gestionamos la relación con tu inquilino, incidencias, renovaciones y más. Tú solo cobras. 49€/mes sin permanencia.",
+    "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y mediación. Sin permanencia. Gestoría inmobiliaria Livendia.",
 };
 
-export default function AdministracionAlquilerPage() {
+export default async function AdministracionAlquilerPage() {
+  const services = await getPublicServices();
+  const rentalService = services.find((s) => s.slug === "administracion-alquiler") ?? null;
+  const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+  const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
+
   const howItWorks = [
     {
       icon: Users,
@@ -96,10 +106,12 @@ export default function AdministracionAlquilerPage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <PublicHeader />
-      
-      <main className="flex-1">
+    <ServicePurchaseProvider service={rentalService}>
+      {rentalService ? <ServiceStructuredDataFromCatalog service={rentalService} /> : null}
+      <div className="flex min-h-screen flex-col bg-white">
+        <PublicHeader />
+
+        <main className="flex-1">
         {/* Hero Section - Estilo Inmonest */}
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
@@ -141,19 +153,34 @@ export default function AdministracionAlquilerPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="inline-flex items-center gap-2 rounded-full bg-white text-[#1E3A8A] px-8 py-4 text-base font-bold shadow-xl transition hover:bg-blue-50 hover:scale-105"
-                  >
-                    <span>Contratar ahora</span>
-                  </Link>
+                  <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
+                    Contratar ahora
+                  </ContratarServicioButton>
                   <a
-                    href="https://wa.me/34XXXXXXXXX"
+                    href={waHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10 transition"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
                   >
-                    <span>Más información</span>
+                    Más información — WhatsApp
+                  </a>
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-blue-100">
+                  <a
+                    href={getContactPhoneTelHref()}
+                    className="inline-flex items-center gap-2 font-semibold text-white hover:text-cyan-200"
+                  >
+                    <Phone className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
+                    <span>Llamar: {getContactPhoneDisplay()}</span>
+                  </a>
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
+                  >
+                    WhatsApp
                   </a>
                 </div>
               </div>
@@ -296,7 +323,9 @@ export default function AdministracionAlquilerPage() {
                     ))}
                   </div>
                   <p className="mt-4 text-lg italic leading-relaxed text-[#475569]">
-                    "{testimonial.quote}"
+                    <span aria-hidden>&ldquo;</span>
+                    {testimonial.quote}
+                    <span aria-hidden>&rdquo;</span>
                   </p>
                   <div className="mt-6 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]"></div>
@@ -330,6 +359,19 @@ export default function AdministracionAlquilerPage() {
           </div>
         </section>
 
+        <section className="px-4 py-12 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <TrustReviewsBlock />
+            <p className="mt-6 text-center text-sm text-[#64748B]">
+              ¿Primera vez? Lee la guía{" "}
+              <Link href="/para-propietarios" className="font-semibold text-[#1A4FBF] hover:underline">
+                Para propietarios
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+
         {/* CTA Final */}
         <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
@@ -341,13 +383,10 @@ export default function AdministracionAlquilerPage() {
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/login?next=/dashboard"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105"
-              >
+              <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105">
                 <span>Contratar por 49 €/mes</span>
-                <CheckCircle className="h-6 w-6" />
-              </Link>
+                <CheckCircle className="h-6 w-6" aria-hidden />
+              </ContratarServicioButton>
               <Link
                 href="/servicios"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold hover:bg-white/10"
@@ -372,9 +411,10 @@ export default function AdministracionAlquilerPage() {
             </div>
           </div>
         </section>
-      </main>
+        </main>
 
-      <SiteFooter />
-    </div>
+        <SiteFooter />
+      </div>
+    </ServicePurchaseProvider>
   );
 }

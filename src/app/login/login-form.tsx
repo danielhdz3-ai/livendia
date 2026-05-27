@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Home, ShieldCheck, Users, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Users, Sparkles, CheckCircle2 } from "lucide-react";
 
 export function LoginForm() {
   const router = useRouter();
@@ -42,7 +42,7 @@ export function LoginForm() {
   return (
     <div className="flex min-h-screen bg-white">
       {/* Left Panel - Branding & Content */}
-      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 lg:flex">
+      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#2563EB] to-[#06B6D4] p-12 lg:flex">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -52,16 +52,15 @@ export function LoginForm() {
             className="object-cover opacity-20"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1A4FBF]/90 via-[#2563EB]/80 to-[#06B6D4]/90"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold text-white">
-            <Home className="h-7 w-7 text-[#D4AF37]" />
-            <span>Livendia</span>
+          <Link href="/" className="inline-flex items-center gap-2">
+            <span className="text-4xl font-bold text-white">Livendia</span>
           </Link>
-          <div className="mt-2 text-sm font-light tracking-wide text-slate-300">
+          <div className="mt-2 text-sm font-light tracking-wide text-blue-100">
             Gestoría Inmobiliaria Digital
           </div>
         </div>
@@ -74,7 +73,7 @@ export function LoginForm() {
                 sin intermediarios abusivos
               </span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-slate-300">
+            <p className="mt-6 text-lg leading-relaxed text-blue-50">
               Somos una gestoría inmobiliaria boutique diseñada para hacer tu vida más fácil. 
               Ayudamos a particulares en el proceso de compra y gestión de alquileres, 
               sin comisiones exorbitantes ni agencias tradicionales.
@@ -88,7 +87,7 @@ export function LoginForm() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">Contratos y documentación legal</h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-1 text-sm leading-relaxed text-blue-100">
                   Redactamos y revisamos contratos de alquiler, arras y toda la documentación 
                   necesaria para tu tranquilidad.
                 </p>
@@ -101,7 +100,7 @@ export function LoginForm() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">Administración de alquileres</h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-1 text-sm leading-relaxed text-blue-100">
                   Nos encargamos de toda la gestión con tus inquilinos. Tú solo cobras, 
                   nosotros hacemos el resto.
                 </p>
@@ -114,7 +113,7 @@ export function LoginForm() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">Asesoramiento personalizado</h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                <p className="mt-1 text-sm leading-relaxed text-blue-100">
                   Cada cliente es único. Te acompañamos en cada paso con un servicio 
                   cercano y profesional.
                 </p>
@@ -122,12 +121,12 @@ export function LoginForm() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-700 bg-slate-800/50 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md">
             <div className="mb-3 flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-[#D4AF37]" />
-              <span className="text-sm font-semibold text-slate-300">Por qué Livendia</span>
+              <span className="text-sm font-semibold text-white">Por qué Livendia</span>
             </div>
-            <ul className="space-y-2 text-sm text-slate-400">
+            <ul className="space-y-2 text-sm text-blue-50">
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]"></span>
                 <span>Tarifas transparentes, sin sorpresas</span>
@@ -148,8 +147,8 @@ export function LoginForm() {
           </div>
         </div>
 
-        <div className="relative z-10 border-t border-slate-700 pt-8">
-          <p className="text-xs text-slate-500">
+        <div className="relative z-10 border-t border-white/20 pt-8">
+          <p className="text-xs text-blue-100">
             © {new Date().getFullYear()} Livendia. Gestoría inmobiliaria digital.
           </p>
         </div>
@@ -160,9 +159,8 @@ export function LoginForm() {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <div className="mb-8 lg:hidden">
-            <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold text-[#1E293B]">
-              <Home className="h-7 w-7 text-[#1A4FBF]" />
-              <span>Livendia</span>
+            <Link href="/" className="inline-flex items-center gap-2">
+              <span className="text-3xl font-bold text-[#1A4FBF]">Livendia</span>
             </Link>
           </div>
 

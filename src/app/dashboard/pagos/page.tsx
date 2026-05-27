@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CreditCard, Plus, Trash2, CheckCircle } from "lucide-react";
 
-export const metadata = { title: "Métodos de Pago — Livendia" };
+export const metadata = { title: "Métodos de pago" };
 
 export default async function MetodosPagoPage() {
   const supabase = await createServerSupabaseClient();

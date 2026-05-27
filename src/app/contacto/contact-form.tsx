@@ -1,7 +1,11 @@
 "use client";
 
+import { TurnstileField } from "@/components/turnstile-field";
+import { trackGenerateLead } from "@/lib/analytics";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export function ContactForm() {
   const router = useRouter();
@@ -9,6 +13,7 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [companyUrl, setCompanyUrl] = useState(""); // honeypot
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -18,12 +23,22 @@ export function ContactForm() {
     e.preventDefault();
     setErr(null);
     if (companyUrl.trim()) return;
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setErr("Completa la verificación antes de enviar.");
+      return;
+    }
     setBusy(true);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone: phone || undefined, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          phone: phone || undefined,
+          message,
+          turnstileToken: turnstileToken ?? undefined,
+        }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
@@ -32,10 +47,12 @@ export function ContactForm() {
         return;
       }
       setOk(true);
+      trackGenerateLead("contact_form");
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
+      setTurnstileToken(null);
       router.refresh();
     } catch {
       setErr("Error de red. Inténtalo de nuevo.");
@@ -129,6 +146,7 @@ export function ContactForm() {
           className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-[#1E293B] shadow-sm focus:border-[#1A4FBF] focus:outline-none focus:ring-1 focus:ring-[#1A4FBF]"
         />
       </div>
+      {TURNSTILE_SITE_KEY ? <TurnstileField siteKey={TURNSTILE_SITE_KEY} onToken={setTurnstileToken} /> : null}
       {err ? <p className="text-sm text-red-600">{err}</p> : null}
       <button
         type="submit"

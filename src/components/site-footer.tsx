@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { getSiteUrl } from "@/lib/site-url";
+import { Mail, Phone, MessageCircle } from "lucide-react";
+import { businessNap, getWhatsAppHref } from "@/lib/business-nap";
+import { buildLocalBusinessSchema } from "@/lib/schema-local-business";
 
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600000000";
-const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
+const waHref = getWhatsAppHref();
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -16,17 +16,17 @@ export function SiteFooter() {
       <div className="h-4 bg-gradient-to-b from-slate-100 to-[#1E3A8A]/5" />
       
       {/* Footer principal con fondo azul */}
-      <div className="bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
-        <div className="grid lg:grid-cols-2">
-          {/* Imagen de la chica */}
-          <div className="relative h-[280px] lg:h-[380px]">
+      <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
+        <div className="grid items-stretch lg:grid-cols-2">
+          {/* Foto a ras de celda: cover + overflow (sin márgenes tipo “marco”) */}
+          <div className="relative h-[280px] w-full min-[480px]:h-[340px] lg:h-full lg:min-h-[24rem] overflow-hidden">
             <Image
-              src="/images/sofa1.jpg"
-              alt="Confianza que se construye"
+              src="/images/chicasofa4.png"
+              alt="Gestiona tranquila desde casa con Livendia"
               fill
-              className="object-cover"
+              className="object-cover object-[center_30%] lg:object-[center_25%] rounded-none"
               sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
+              loading="lazy"
             />
           </div>
 
@@ -45,6 +45,7 @@ export function SiteFooter() {
               </p>
               <a
                 href={waHref}
+                data-analytics-placement="footer_whatsapp"
                 className="inline-flex items-center gap-2 bg-white text-[#1E3A8A] px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
               >
                 <Phone className="h-4 w-4" />
@@ -61,6 +62,11 @@ export function SiteFooter() {
                 </h3>
                 <ul className="space-y-1 text-xs">
                   <li>
+                    <Link href="/para-propietarios" className="text-blue-100 hover:text-white transition-colors">
+                      Para propietarios
+                    </Link>
+                  </li>
+                  <li>
                     <Link
                       href="/servicios/administracion-alquiler"
                       className="text-blue-100 hover:text-white transition-colors"
@@ -74,6 +80,22 @@ export function SiteFooter() {
                       className="text-blue-100 hover:text-white transition-colors"
                     >
                       Contrato Alquiler LAU
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/servicios/contrato-de-arras"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Contrato de arras (guía)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/servicios/contrato-de-alquiler"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Contrato de alquiler (guía)
                     </Link>
                   </li>
                   <li>
@@ -94,6 +116,16 @@ export function SiteFooter() {
                 </h3>
                 <ul className="space-y-1 text-xs">
                   <li>
+                    <Link href="/blog" className="text-blue-100 hover:text-white transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog#guías-por-ciudad" className="text-blue-100 hover:text-white transition-colors">
+                      Guías por ciudad
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/precios" className="text-blue-100 hover:text-white transition-colors">
                       Precios
                     </Link>
@@ -101,6 +133,11 @@ export function SiteFooter() {
                   <li>
                     <Link href="/contacto" className="text-blue-100 hover:text-white transition-colors">
                       Contacto
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#preguntas-frecuentes" className="text-blue-100 hover:text-white transition-colors">
+                      Preguntas frecuentes
                     </Link>
                   </li>
                   <li>
@@ -114,16 +151,25 @@ export function SiteFooter() {
 
             {/* Contacto */}
             <div className="mt-4 space-y-1 text-xs border-t border-white/20 pt-4">
-              <div className="flex items-start gap-2 text-blue-100">
-                <MapPin className="mt-0.5 h-3 w-3 flex-shrink-0 text-cyan-300" />
-                <span>Calle Ejemplo 123, 28001 Madrid</span>
-              </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-3 w-3 flex-shrink-0 text-cyan-300" />
-                <a href={waHref} className="text-blue-100 hover:text-white transition-colors">
-                  {WA}
+                <Phone className="h-3 w-3 flex-shrink-0 text-cyan-300" aria-hidden />
+                <a href={businessNap.telephoneTel()} className="text-blue-100 hover:text-white transition-colors">
+                  Tel. {businessNap.telephoneDisplay()}
                 </a>
               </div>
+              <div className="flex items-center gap-2">
+                <MessageCircle className="h-3 w-3 flex-shrink-0 text-cyan-300" aria-hidden />
+                <a
+                  href={waHref}
+                  data-analytics-placement="footer_whatsapp_text"
+                  className="text-blue-100 hover:text-white transition-colors"
+                >
+                  WhatsApp {businessNap.telephoneDisplay()}
+                </a>
+              </div>
+              <p className="text-blue-200/90">
+                Horario L–V {businessNap.openingHours.opens}–{businessNap.openingHours.closes} · {businessNap.category}
+              </p>
               <div className="flex items-center gap-2">
                 <Mail className="h-3 w-3 flex-shrink-0 text-cyan-300" />
                 <a href="mailto:info@livendia.com" className="text-blue-100 hover:text-white transition-colors">
@@ -152,43 +198,9 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Schema.org para SEO local */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Livendia",
-              "description": "Gestoría inmobiliaria digital especializada en contratos de alquiler, compraventa y administración de propiedades",
-              "url": getSiteUrl(),
-              "telephone": WA,
-              "email": "info@livendia.com",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Calle Ejemplo 123",
-                "addressLocality": "Madrid",
-                "postalCode": "28001",
-                "addressCountry": "ES"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "40.4168",
-                "longitude": "-3.7038"
-              },
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "09:00",
-                "closes": "18:00"
-              },
-              "priceRange": "€€",
-              "areaServed": {
-                "@type": "Country",
-                "name": "España"
-              }
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessSchema({ withContext: true })) }}
         />
       </div>
     </footer>

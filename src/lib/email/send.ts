@@ -4,9 +4,12 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAdminNotifyEmail, getAppUrl, getResendFrom } from "./config";
 import AdminDocUploadedEmail from "./templates/admin-doc-uploaded";
 import AdminNewOrderEmail from "./templates/admin-new-order";
+import AdminNewIncidentEmail from "./templates/admin-new-incident";
 import ContactInquiryEmail from "./templates/contact-inquiry";
 import DocsReminderEmail from "./templates/docs-reminder";
 import DocumentDeliveredEmail from "./templates/document-delivered";
+import IncidentStatusUpdatedEmail from "./templates/incident-status-updated";
+import IncidentToOwnerEmail from "./templates/incident-to-owner";
 import OrderConfirmedEmail from "./templates/order-confirmed";
 import OrderStatusUpdatedEmail from "./templates/order-status-updated";
 import WelcomeEmail from "./templates/welcome";
@@ -22,9 +25,9 @@ export async function getAuthUserContact(supabase: SupabaseClient, userId: strin
 
 export async function sendWelcomeEmail(opts: { to: string; customerName: string }) {
   const resend = getResend();
-  if (!resend || !opts.to) return;
+  if (!resend || !opts.to) return null;
   const dashboardUrl = `${getAppUrl()}/dashboard`;
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from: getResendFrom(),
     to: opts.to,
     subject: "Bienvenido/a a Livendia",
@@ -33,6 +36,7 @@ export async function sendWelcomeEmail(opts: { to: string; customerName: string 
       dashboardUrl,
     }),
   });
+  return result;
 }
 
 export async function sendDocsReminderEmail(opts: {
@@ -196,4 +200,82 @@ export async function fetchClientEmailForOrder(clientId: string) {
   const supabase = createServiceRoleClient();
   const contact = await getAuthUserContact(supabase, clientId);
   return contact;
+}
+
+export async function sendAdminNewIncidentEmail(opts: {
+  incidentTitle: string;
+  incidentId: string;
+  propertyAddress: string;
+  clientEmail: string;
+  priority: string;
+}) {
+  const resend = getResend();
+  if (!resend) return;
+  const adminIncidentUrl = `${getAppUrl()}/admin/incidencias/${opts.incidentId}`;
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: getAdminNotifyEmail(),
+    subject: `[Livendia] Nueva incidencia: ${opts.incidentTitle}`,
+    react: AdminNewIncidentEmail({
+      incidentTitle: opts.incidentTitle,
+      incidentId: opts.incidentId,
+      propertyAddress: opts.propertyAddress,
+      clientEmail: opts.clientEmail,
+      priority: opts.priority,
+      adminIncidentUrl,
+    }),
+  });
+}
+
+export async function sendIncidentToOwnerEmail(opts: {
+  to: string;
+  ownerName: string;
+  incidentTitle: string;
+  incidentDescription: string;
+  priority: string;
+  propertyAddress: string;
+  incidentId: string;
+}) {
+  const resend = getResend();
+  if (!resend || !opts.to) return;
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: opts.to,
+    subject: `[Livendia] Nueva incidencia en ${opts.propertyAddress}`,
+    react: IncidentToOwnerEmail({
+      ownerName: opts.ownerName,
+      incidentTitle: opts.incidentTitle,
+      incidentDescription: opts.incidentDescription,
+      priority: opts.priority,
+      propertyAddress: opts.propertyAddress,
+      incidentId: opts.incidentId,
+    }),
+  });
+}
+
+export async function sendIncidentStatusUpdatedEmail(opts: {
+  to: string;
+  customerName: string;
+  incidentTitle: string;
+  newStatus: string;
+  estimatedCost?: number;
+  approvedBudget?: number;
+  incidentId: string;
+}) {
+  const resend = getResend();
+  if (!resend || !opts.to) return;
+  const incidentUrl = `${getAppUrl()}/dashboard/rental/incidencias/${opts.incidentId}`;
+  await resend.emails.send({
+    from: getResendFrom(),
+    to: opts.to,
+    subject: `Livendia — Actualización de incidencia: ${opts.incidentTitle}`,
+    react: IncidentStatusUpdatedEmail({
+      customerName: opts.customerName,
+      incidentTitle: opts.incidentTitle,
+      newStatus: opts.newStatus,
+      estimatedCost: opts.estimatedCost,
+      approvedBudget: opts.approvedBudget,
+      incidentUrl,
+    }),
+  });
 }

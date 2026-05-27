@@ -11,6 +11,60 @@ interface UploadedDocument {
   name: string;
 }
 
+function PropertyDocumentButton({
+  label,
+  type,
+  inputRef,
+  accept = ".pdf,.jpg,.jpeg,.png",
+  doc,
+  onPick,
+  onRemove,
+}: {
+  label: string;
+  type: DocumentType;
+  inputRef: React.RefObject<HTMLInputElement | null>;
+  accept?: string;
+  doc: UploadedDocument | undefined;
+  onPick: (t: DocumentType, file: File | null) => void;
+  onRemove: (t: DocumentType) => void;
+}) {
+  return (
+    <div className="relative">
+      <input
+        ref={inputRef}
+        type="file"
+        accept={accept}
+        className="hidden"
+        onChange={(e) => onPick(type, e.target.files?.[0] || null)}
+      />
+      <button
+        type="button"
+        onClick={() => inputRef.current?.click()}
+        className={`flex w-full items-center gap-3 rounded-lg border-2 border-dashed p-3 text-left text-sm transition ${
+          doc
+            ? "border-green-500 bg-green-50 text-green-900"
+            : "border-slate-300 text-[#64748B] hover:border-[#1A4FBF] hover:bg-blue-50"
+        }`}
+      >
+        {doc ? <Check className="h-5 w-5 text-green-600" /> : <FileText className="h-5 w-5" />}
+        <span className="flex-1">{doc ? doc.name : label}</span>
+        {doc && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemove(type);
+            }}
+            className="rounded-full p-1 hover:bg-green-200"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
+      </button>
+    </div>
+  );
+}
+
 export function PropertyForm() {
   const [address, setAddress] = useState("");
   const [zone, setZone] = useState("");
@@ -90,11 +144,21 @@ export function PropertyForm() {
         body: formData,
       });
 
+      const payload = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error("Error al guardar inmueble");
+        throw new Error(typeof payload.error === "string" ? payload.error : "Error al guardar inmueble");
       }
 
-      // Reload page to show updated data
+      const errs = Array.isArray(payload.uploadErrors) ? (payload.uploadErrors as string[]) : [];
+      if (errs.length > 0) {
+        alert(
+          "Inmueble guardado, pero algún archivo no se pudo subir:\n\n" +
+            errs.join("\n") +
+            "\n\nSi ves permisos o RLS: ejecuta en Supabase la migración storage (property docs).",
+        );
+      }
+
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -102,56 +166,6 @@ export function PropertyForm() {
     } finally {
       setIsUploading(false);
     }
-  };
-
-  const DocumentButton = ({
-    label,
-    type,
-    inputRef,
-    accept = ".pdf,.jpg,.jpeg,.png",
-  }: {
-    label: string;
-    type: DocumentType;
-    inputRef: React.RefObject<HTMLInputElement | null>;
-    accept?: string;
-  }) => {
-    const doc = getDocumentByType(type);
-
-    return (
-      <div className="relative">
-        <input
-          ref={inputRef}
-          type="file"
-          accept={accept}
-          className="hidden"
-          onChange={(e) => handleFileSelect(type, e.target.files?.[0] || null)}
-        />
-        <button
-          type="button"
-          onClick={() => inputRef.current?.click()}
-          className={`flex w-full items-center gap-3 rounded-lg border-2 border-dashed p-3 text-left text-sm transition ${
-            doc
-              ? "border-green-500 bg-green-50 text-green-900"
-              : "border-slate-300 text-[#64748B] hover:border-[#1A4FBF] hover:bg-blue-50"
-          }`}
-        >
-          {doc ? <Check className="h-5 w-5 text-green-600" /> : <FileText className="h-5 w-5" />}
-          <span className="flex-1">{doc ? doc.name : label}</span>
-          {doc && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                removeDocument(type);
-              }}
-              className="rounded-full p-1 hover:bg-green-200"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
-        </button>
-      </div>
-    );
   };
 
   return (
@@ -212,14 +226,38 @@ export function PropertyForm() {
             <h4 className="font-semibold text-[#1E293B]">Documentación</h4>
           </div>
           <div className="space-y-3">
-            <DocumentButton label="Nota simple" type="nota_simple" inputRef={notaSimpleRef} />
-            <DocumentButton label="IBI" type="ibi" inputRef={ibiRef} />
-            <DocumentButton
+            <PropertyDocumentButton
+              label="Nota simple"
+              type="nota_simple"
+              inputRef={notaSimpleRef}
+              doc={getDocumentByType("nota_simple")}
+              onPick={handleFileSelect}
+              onRemove={removeDocument}
+            />
+            <PropertyDocumentButton
+              label="IBI"
+              type="ibi"
+              inputRef={ibiRef}
+              doc={getDocumentByType("ibi")}
+              onPick={handleFileSelect}
+              onRemove={removeDocument}
+            />
+            <PropertyDocumentButton
               label="Cédula de habitabilidad"
               type="cedula_habitabilidad"
               inputRef={cedulaRef}
+              doc={getDocumentByType("cedula_habitabilidad")}
+              onPick={handleFileSelect}
+              onRemove={removeDocument}
             />
-            <DocumentButton label="Otros documentos" type="otros" inputRef={otrosRef} />
+            <PropertyDocumentButton
+              label="Otros documentos"
+              type="otros"
+              inputRef={otrosRef}
+              doc={getDocumentByType("otros")}
+              onPick={handleFileSelect}
+              onRemove={removeDocument}
+            />
           </div>
           {documents.length > 0 && (
             <div className="mt-3 text-xs text-green-600">

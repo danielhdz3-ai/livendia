@@ -1,17 +1,23 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import { getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Users, FileText, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contrato de Alquiler de Habitación — Livendia",
+  title: "Contrato de alquiler de habitación (piso compartido)",
   description:
     "Arrendamiento de habitación en piso compartido con cláusulas específicas para este régimen. 120€ IVA incluido.",
 };
 
-export default function ContratoHabitacionPage() {
+export default async function ContratoHabitacionPage() {
+  const catalog = await getPublicServices();
+  const service = catalog.find((s) => s.slug === "contrato-alquiler-habitacion") ?? null;
+
   const features = [
     {
       icon: Users,
@@ -36,6 +42,8 @@ export default function ContratoHabitacionPage() {
   ];
 
   return (
+    <ServicePurchaseProvider service={service}>
+    {service ? <ServiceStructuredDataFromCatalog service={service} /> : null}
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
       <main className="flex-1">
@@ -60,12 +68,9 @@ export default function ContratoHabitacionPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-                  >
+                  <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                     Contratar por 120 €
-                  </Link>
+                  </ContratarServicioButton>
                   <Link
                     href="/servicios"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -180,17 +185,15 @@ export default function ContratoHabitacionPage() {
               Protégete con un contrato claro y adaptado a tu situación.
             </p>
             <div className="mt-8">
-              <Link
-                href="/login?next=/dashboard"
-                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
-              >
+              <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                 Contratar ahora
-              </Link>
+              </ContratarServicioButton>
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
     </div>
+    </ServicePurchaseProvider>
   );
 }

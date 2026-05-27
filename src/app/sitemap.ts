@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog-content";
 import {
   CONTRATO_ALQUILER_LOCAL_BASE,
   getPublishedContratoAlquilerLocalCities,
@@ -12,6 +12,10 @@ import {
   ADMINISTRACION_ALQUILER_LOCAL_BASE,
   getPublishedAdministracionAlquilerLocalCities,
 } from "@/lib/administracion-alquiler-local-cities";
+import {
+  CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
+  getPublishedContratoAlquilerTemporadaLocalCities,
+} from "@/lib/contrato-alquiler-temporada-local-cities";
 import {
   SERVICIO_COMPLETO_COMPRA_LOCAL_BASE,
   getPublishedServicioCompletoCompraLocalCities,
@@ -31,11 +35,14 @@ const SERVICIO_SLUGS = [
   "contrato-arras-confirmatorias",
   "contrato-arras-penitenciales",
   "servicio-completo-compra",
+  "revision-documental-post-arras",
+  "acompanamiento-reserva-arras",
   "contrato-de-arras",
   "contrato-de-alquiler",
   "contrato-alquiler-local",
   "contrato-arras-local",
   "administracion-alquiler-local",
+  "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
 ] as const;
 
@@ -47,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/servicios`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${base}/precios`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/para-propietarios`, lastModified: now, changeFrequency: "weekly", priority: 0.92 },
     { url: `${base}/contacto`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/equipo`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.82 },
@@ -84,6 +92,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     }));
 
+  const contratoAlquilerTemporadaLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedContratoAlquilerTemporadaLocalCities().map((c) => ({
+      url: `${base}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.82,
+    }));
+
   const compraCompletaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedServicioCompletoCompraLocalCities().map((c) => ({
       url: `${base}${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}/${c.slug}`,
@@ -109,9 +125,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.88,
     }));
 
-  const blogArticles: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+  const blogArticles: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
     url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.publishedAt + "T12:00:00Z"),
+    lastModified: new Date(p.modified + "T12:00:00Z"),
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
@@ -122,6 +138,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...contratoLocalCiudades,
     ...contratoArrasLocalCiudades,
     ...administracionAlquilerLocalCiudades,
+    ...contratoAlquilerTemporadaLocalCiudades,
     ...compraCompletaLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,

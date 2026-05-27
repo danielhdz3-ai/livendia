@@ -1,10 +1,11 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, ShoppingBag, Sparkles } from "lucide-react";
+import { getPublicServices, groupByCategory } from "@/lib/catalog";
+import { ServiceCardsClient } from "@/app/servicios/service-cards-client";
 
-export const metadata = { title: "Contratar Servicios — Livendia" };
+export const metadata = { title: "Contratar servicios" };
 
 export default async function ServiciosInternosPage() {
   const supabase = await createServerSupabaseClient();
@@ -13,20 +14,9 @@ export default async function ServiciosInternosPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: services } = await supabase
-    .from("services")
-    .select("id, name, slug, description, price_cents, category, is_recurring")
-    .eq("is_active", true)
-    .eq("is_recurring", false) // Solo contratos, no suscripciones
-    .order("price_cents", { ascending: true });
-
-  const SERVICE_IMAGES: Record<string, string> = {
-    "contrato-alquiler-lau": "/images/contratos1.jpg",
-    "contrato-alquiler-temporada": "/images/contratos2.jpg",
-    "contrato-alquiler-habitacion": "/images/contratos5.jpg",
-    "contrato-arras-penitenciales": "/images/contratos6.jpg",
-    "contrato-arras-confirmatorias": "/images/contratos7.jpg",
-  };
+  /** Mismo catálogo y flujo (modal → Stripe) que /servicios; enlaces a `/servicios/{slug}` fallaban en slugs sin página Next. */
+  const services = await getPublicServices();
+  const groups = groupByCategory(services);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
@@ -46,7 +36,7 @@ export default async function ServiciosInternosPage() {
             <div>
               <h1 className="text-3xl font-bold text-[#1E293B]">Servicios disponibles</h1>
               <p className="text-sm text-[#64748B]">
-                Contrata y gestiona tus servicios inmobiliarios
+                Elige tarjeta y contrata con pago seguro; mismo catálogo que en la web pública.
               </p>
             </div>
           </div>
@@ -54,71 +44,30 @@ export default async function ServiciosInternosPage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-        {!services?.length ? (
+        {groups.length === 0 ? (
           <div className="rounded-2xl border-2 border-dashed border-slate-200 bg-white p-12 text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100">
               <Sparkles className="h-8 w-8 text-[#64748B]" />
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">
-              No hay servicios disponibles
-            </h3>
-            <p className="mt-2 text-sm text-[#64748B]">
-              Los servicios estarán disponibles próximamente
-            </p>
+            <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">No hay servicios disponibles</h3>
+            <p className="mt-2 text-sm text-[#64748B]">Los servicios estarán disponibles próximamente.</p>
           </div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => {
-              const imageUrl = SERVICE_IMAGES[service.slug as string] || "/images/contratos.jpg";
-              
-              return (
-                <div
-                  key={service.id}
-                  className="group relative overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200 transition-all hover:shadow-2xl hover:ring-[#1A4FBF]"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={imageUrl}
-                      alt={service.name as string}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="rounded-xl bg-white px-3 py-1.5 text-center">
-                        <span className="text-2xl font-bold text-[#1A4FBF]">
-                          {((service.price_cents as number) / 100).toFixed(0)} €
-                        </span>
-                        <span className="ml-1 text-xs text-[#64748B]">IVA incl.</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-[#1E293B]">{service.name}</h3>
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[#64748B]">
-                      {service.description}
-                    </p>
-
-                    <Link
-                      href={`/servicios/${service.slug}`}
-                      className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition hover:scale-[1.02]"
-                    >
-                      <span>Ver detalles y contratar</span>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="space-y-12">
+            {groups.map((group) => (
+              <section key={group.key}>
+                <h2 className="text-2xl font-bold text-[#1E293B]">{group.label}</h2>
+                <ServiceCardsClient services={group.items} />
+              </section>
+            ))}
           </div>
         )}
 
         <div className="mt-8 rounded-2xl bg-blue-50 p-6 ring-1 ring-blue-200">
           <h3 className="font-bold text-blue-900">¿Necesitas ayuda?</h3>
           <p className="mt-2 text-sm leading-relaxed text-blue-800">
-            Si tienes dudas sobre qué servicio contratar o necesitas asesoramiento personalizado,
-            nuestro equipo está aquí para ayudarte.
+            Si tienes dudas sobre qué servicio contratar o necesitas asesoramiento personalizado, nuestro equipo está
+            aquí para ayudarte.
           </p>
           <Link
             href="/contacto"

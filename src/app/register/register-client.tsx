@@ -3,10 +3,9 @@
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { GoogleAuthButton } from "@/components/google-auth-button";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Home, Zap, Target, Award, CheckCircle2 } from "lucide-react";
+import { Zap, Target, Award, CheckCircle2 } from "lucide-react";
 
 function safeNext(raw: string | null): string {
   const n = raw ?? "/dashboard";
@@ -45,16 +44,35 @@ export function RegisterClient() {
       setError(err.message);
       return;
     }
+    
+    // Enviar email de bienvenida (con o sin sesión inmediata)
+    if (data.user?.email) {
+      try {
+        await fetch("/api/email/welcome", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(data.session?.access_token 
+              ? { Authorization: `Bearer ${data.session.access_token}` }
+              : {}),
+          },
+          body: JSON.stringify({ 
+            email: data.user.email, 
+            name: fullName 
+          }),
+        });
+      } catch (emailError) {
+        console.error("Error sending welcome email:", emailError);
+        // No bloqueamos el login por un error de email
+      }
+    }
+    
     if (data.session?.access_token) {
-      void fetch("/api/email/welcome", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${data.session.access_token}` },
-      });
       router.push(next);
       router.refresh();
       return;
     }
-    setMessage("Si está activada la confirmación por email, revisa tu bandeja.");
+    setMessage("✅ Registro exitoso. Revisa tu email para confirmar tu cuenta.");
   }
 
   return (
@@ -69,9 +87,8 @@ export function RegisterClient() {
 
         {/* Content */}
         <div className="relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold text-white">
-            <Home className="h-7 w-7 text-[#D4AF37]" />
-            <span>Livendia</span>
+          <Link href="/" className="inline-flex items-center gap-2">
+            <span className="text-4xl font-bold text-white">Livendia</span>
           </Link>
           <div className="mt-2 text-sm font-light tracking-wide text-blue-100">
             Gestoría Inmobiliaria Digital
@@ -169,9 +186,8 @@ export function RegisterClient() {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <div className="mb-8 lg:hidden">
-            <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold text-[#1E293B]">
-              <Home className="h-7 w-7 text-[#1A4FBF]" />
-              <span>Livendia</span>
+            <Link href="/" className="inline-flex items-center gap-2">
+              <span className="text-3xl font-bold text-[#1A4FBF]">Livendia</span>
             </Link>
           </div>
 

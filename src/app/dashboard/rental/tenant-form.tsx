@@ -61,11 +61,18 @@ export function TenantForm({ propertyId }: { propertyId: string }) {
         body: formData,
       });
 
+      const payload = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error("Error al guardar inquilino");
+        throw new Error(typeof payload.error === "string" ? payload.error : "Error al guardar inquilino");
       }
 
-      // Redirigir al dashboard principal de administración
+      const warn =
+        typeof payload.tenantDocWarning === "string" ? payload.tenantDocWarning.trim() : "";
+      if (warn) {
+        alert(`Inquilino guardado, pero el archivo no se subió:\n${warn}`);
+      }
+
       window.location.href = "/dashboard/rental";
     } catch (error) {
       console.error(error);

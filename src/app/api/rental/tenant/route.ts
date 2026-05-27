@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     const startDate = formData.get("startDate") as string;
     const endDate = formData.get("endDate") as string;
     const monthlyRent = formData.get("monthlyRent") as string;
-    const otherExpenses = formData.get("otherExpenses") as string;
+    void formData.get("otherExpenses");
     const legalDeposit = formData.get("legalDeposit") as string;
     const additionalDeposit = formData.get("additionalDeposit") as string;
 
@@ -77,6 +77,8 @@ export async function POST(request: NextRequest) {
 
     // Upload DNI document if provided
     const dniFile = formData.get("dniDocument") as File | null;
+    let tenantDocWarning: string | null = null;
+
     if (dniFile) {
       const fileExt = dniFile.name.split(".").pop();
       const fileName = `${user.id}/${propertyId}/tenant_dni_${Date.now()}.${fileExt}`;
@@ -84,7 +86,7 @@ export async function POST(request: NextRequest) {
       const arrayBuffer = await dniFile.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
-      const { error: uploadError } = await supabase.storage
+      const { data: uploadData, error: uploadError } = await supabase.storage
         .from("documents")
         .upload(fileName, buffer, {
           contentType: dniFile.type,
@@ -93,25 +95,32 @@ export async function POST(request: NextRequest) {
 
       if (uploadError) {
         console.error("Error uploading DNI:", uploadError);
-      } else {
-        // Get public URL
+        tenantDocWarning = `DNI: ${uploadError.message}`;
+      } else if (uploadData) {
         const {
           data: { publicUrl },
         } = supabase.storage.from("documents").getPublicUrl(fileName);
 
-        // Save document record
-        await supabase.from("tenant_documents").insert({
+        const { error: insertDocError } = await supabase.from("tenant_documents").insert({
           tenant_id: tenant.id,
           document_type: "dni",
           file_url: publicUrl,
           file_name: dniFile.name,
+          storage_path: uploadData.path,
         });
+
+        if (insertDocError) {
+          console.error("tenant_documents insert:", insertDocError);
+          tenantDocWarning = `DNI (BD): ${insertDocError.message}`;
+          await supabase.storage.from("documents").remove([uploadData.path]);
+        }
       }
     }
 
     return NextResponse.json({
       success: true,
       tenant,
+      tenantDocWarning,
     });
   } catch (error) {
     console.error("API Error:", error);

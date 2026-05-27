@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
     ];
 
     const uploadedDocs: Array<{ type: string; url: string }> = [];
+    const uploadErrors: string[] = [];
 
     for (const docType of documentTypes) {
       const file = formData.get(docType) as File | null;
@@ -78,22 +79,34 @@ export async function POST(request: NextRequest) {
 
       if (uploadError) {
         console.error("Error uploading file:", uploadError);
+        uploadErrors.push(`${propertyDocLabel(docType)}: ${uploadError.message}`);
         continue;
       }
 
-      // Get public URL
+      if (!uploadData) {
+        uploadErrors.push(`${propertyDocLabel(docType)}: almacenamiento sin respuesta`);
+        continue;
+      }
+
       const {
         data: { publicUrl },
       } = supabase.storage.from("documents").getPublicUrl(fileName);
 
-      // Save document record
       const documentTypeName = docType.replace("doc_", "");
-      await supabase.from("property_documents").insert({
+      const { error: insertError } = await supabase.from("property_documents").insert({
         property_id: property.id,
         document_type: documentTypeName,
         file_url: publicUrl,
         file_name: file.name,
+        storage_path: uploadData.path,
       });
+
+      if (insertError) {
+        console.error("Error saving property_documents:", insertError);
+        uploadErrors.push(`${propertyDocLabel(docType)} (BD): ${insertError.message}`);
+        await supabase.storage.from("documents").remove([uploadData.path]);
+        continue;
+      }
 
       uploadedDocs.push({ type: documentTypeName, url: publicUrl });
     }
@@ -102,6 +115,7 @@ export async function POST(request: NextRequest) {
       success: true,
       property,
       documents: uploadedDocs,
+      uploadErrors,
     });
   } catch (error) {
     console.error("API Error:", error);
@@ -110,4 +124,14 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+function propertyDocLabel(docType: string) {
+  const map: Record<string, string> = {
+    doc_nota_simple: "Nota simple",
+    doc_ibi: "IBI",
+    doc_cedula_habitabilidad: "Cédula de habitabilidad",
+    doc_otros: "Otros",
+  };
+  return map[docType] ?? docType;
 }

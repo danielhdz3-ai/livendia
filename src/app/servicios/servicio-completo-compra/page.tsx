@@ -1,17 +1,25 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
+import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import { getPublicServices } from "@/lib/catalog";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, FileText, Home, Eye, Scale } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Servicio Completo de Compra: Reserva a Escritura — Livendia",
+  title: "Servicio completo de compra: de la reserva a la escritura",
   description:
     "Acompañamiento profesional completo en tu compra inmobiliaria. Desde la reserva hasta la escritura con gestor experto que cuida de tus intereses. 666€ todo incluido.",
 };
 
-export default function ServicioCompletoCompraPage() {
+const WA_SERVICIO_COMPLETO = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+const waHrefServicioCompleto = `https://wa.me/${WA_SERVICIO_COMPLETO.replace(/\D/g, "")}`;
+
+export default async function ServicioCompletoCompraPage() {
+  const catalog = await getPublicServices();
+  const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
+
   const howItWorks = [
     {
       icon: FileText,
@@ -96,7 +104,9 @@ export default function ServicioCompletoCompraPage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <ServicePurchaseProvider service={service}>
+      {service ? <ServiceStructuredDataFromCatalog service={service} /> : null}
+      <div className="flex min-h-screen flex-col bg-white">
       <PublicHeader />
       
       <main className="flex-1">
@@ -141,17 +151,14 @@ export default function ServicioCompletoCompraPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href="/login?next=/dashboard"
-                    className="inline-flex items-center gap-2 rounded-full bg-white text-[#1E3A8A] px-8 py-4 text-base font-bold shadow-xl transition hover:bg-blue-50 hover:scale-105"
-                  >
+                  <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
                     <span>Contratar ahora</span>
-                  </Link>
+                  </ContratarServicioButton>
                   <a
-                    href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "")}`}
+                    href={waHrefServicioCompleto}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10 transition"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
                   >
                     <span>Consultar por WhatsApp</span>
                   </a>
@@ -296,7 +303,9 @@ export default function ServicioCompletoCompraPage() {
                     ))}
                   </div>
                   <p className="mt-4 text-lg italic leading-relaxed text-[#475569]">
-                    "{testimonial.quote}"
+                    <span aria-hidden>&ldquo;</span>
+                    {testimonial.quote}
+                    <span aria-hidden>&rdquo;</span>
                   </p>
                   <div className="mt-6 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]"></div>
@@ -341,17 +350,14 @@ export default function ServicioCompletoCompraPage() {
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/login?next=/dashboard"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105"
-              >
+              <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105">
                 <span>Contratar ahora · 666€</span>
-              </Link>
+              </ContratarServicioButton>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "")}`}
+                href={waHrefServicioCompleto}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold hover:bg-white/10 transition"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold transition hover:bg-white/10"
               >
                 <span>Consultar por WhatsApp</span>
               </a>
@@ -366,5 +372,6 @@ export default function ServicioCompletoCompraPage() {
 
       <SiteFooter />
     </div>
+    </ServicePurchaseProvider>
   );
 }

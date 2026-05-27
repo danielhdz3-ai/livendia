@@ -3,13 +3,15 @@ import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "./contact-form";
+import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600000000";
+const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "Contacto — Livendia",
-  description: "Escríbenos para dudas sobre servicios, alquiler o contratos. Gestoría inmobiliaria digital.",
+  title: "Contacto",
+  description:
+    "WhatsApp, teléfono y formulario: consultas sobre contratos de alquiler, arras, compraventa y administración de alquileres.",
 };
 
 export default function ContactoPage() {
@@ -24,14 +26,22 @@ export default function ContactoPage() {
               Cuéntanos en qué podemos ayudarte. Recibirás respuesta por email. Para algo inmediato, usa
               WhatsApp.
             </p>
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex rounded-full border-2 border-[#06B6D4] px-6 py-3 text-sm font-semibold hover:bg-[#06B6D4]"
-            >
-              WhatsApp
-            </a>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={getContactPhoneTelHref()}
+                className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1E3A8A] hover:bg-blue-50"
+              >
+                Llamar: {getContactPhoneDisplay()}
+              </a>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex rounded-full border-2 border-[#06B6D4] px-6 py-3 text-sm font-semibold hover:bg-[#06B6D4]"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </section>
 
@@ -60,7 +70,7 @@ export default function ContactoPage() {
                 href="/login?next=/dashboard"
                 className="mt-3 inline-block text-sm font-semibold text-[#06B6D4] hover:underline"
               >
-                Ir al panel →
+                Acceder al panel →
               </Link>
             </div>
           </div>
