@@ -1,3 +1,4 @@
+import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -175,6 +176,27 @@ export async function ContratoAlquilerLocalSeoLanding({
     "/images/gestoria3.jpg",
   ];
 
+  const benefitStyle = [
+    { icon: KeyRound, color: "from-blue-500 to-blue-600" },
+    { icon: Eye, color: "from-cyan-500 to-cyan-600" },
+    { icon: ClipboardList, color: "from-teal-500 to-teal-600" },
+    { icon: Users, color: "from-indigo-500 to-indigo-600" },
+    { icon: Home, color: "from-violet-500 to-violet-600" },
+    { icon: Clock, color: "from-purple-500 to-purple-600" },
+  ] as const;
+
+  const displayBenefits =
+    config.localBenefits?.map((b, idx) => {
+      const style = benefitStyle[idx % benefitStyle.length];
+      return { ...b, icon: style.icon, color: style.color };
+    }) ?? benefits;
+
+  const heroBullets = config.heroBullets ?? [
+    "Revisión profesional según LAU vigente",
+    "Cláusulas alineadas con tu situación real",
+    "Inventario del inmueble incluido en el pack gestor",
+  ];
+
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <LocalServiceJsonLd
@@ -195,7 +217,7 @@ export async function ContratoAlquilerLocalSeoLanding({
                   </div>
 
                   <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
-                    ¿Quieres redactar un contrato de alquiler por expertos?
+                    {config.heroH1 ?? "¿Quieres redactar un contrato de alquiler por expertos?"}
                   </h1>
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
@@ -228,20 +250,14 @@ export async function ContratoAlquilerLocalSeoLanding({
                     </div>
                   </div>
 
-                  <div className="mt-8 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Revisión profesional según LAU vigente</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Cláusulas alineadas con tu situación real</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Inventario del inmueble incluido en el pack gestor</span>
-                    </div>
-                  </div>
+                  <ul className="mt-8 space-y-3">
+                    {heroBullets.map((line) => (
+                      <li key={line} className="flex items-center gap-3">
+                        <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
+                        <span className="text-lg">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
                     <ContratarSlugButton
@@ -279,13 +295,15 @@ export async function ContratoAlquilerLocalSeoLanding({
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
-                  ¿Por qué pasar tu contrato de alquiler por Livendia en {config.city}?
+                  {config.whyTitle ?? `¿Por qué pasar tu contrato de alquiler por Livendia en ${config.city}?`}
                 </h2>
-                <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
+                <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">
+                  {config.whySubtitle ?? config.whyIntro}
+                </p>
               </div>
 
               <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {benefits.map((benefit) => {
+                {displayBenefits.map((benefit) => {
                   const Icon = benefit.icon;
                   return (
                     <div
@@ -304,6 +322,17 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.localZones ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  {config.localZonesHeading ?? `Zonas de ${config.city} donde revisamos contratos`}
+                </h2>
+                <p className="mt-4 text-center text-lg leading-relaxed text-[#475569]">{config.localZones}</p>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
@@ -388,6 +417,17 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.faq && config.faq.length > 0 ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  title={`Preguntas frecuentes — contrato de alquiler en ${config.city}`}
+                  items={config.faq.map((f) => ({ question: f.question, answer: f.answer }))}
+                />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

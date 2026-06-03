@@ -1,3 +1,4 @@
+import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -157,6 +158,27 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
     "/images/gestoria3.jpg",
   ];
 
+  const benefitStyle = [
+    { icon: Calendar, color: "from-blue-500 to-blue-600" },
+    { icon: Home, color: "from-cyan-500 to-cyan-600" },
+    { icon: Shield, color: "from-teal-500 to-teal-600" },
+    { icon: ClipboardList, color: "from-indigo-500 to-indigo-600" },
+    { icon: Clock, color: "from-violet-500 to-violet-600" },
+    { icon: MessageCircle, color: "from-purple-500 to-purple-600" },
+  ] as const;
+
+  const displayBenefits =
+    config.localBenefits?.map((b, idx) => {
+      const style = benefitStyle[idx % benefitStyle.length];
+      return { ...b, icon: style.icon, color: style.color };
+    }) ?? benefits;
+
+  const heroBullets = config.heroBullets ?? [
+    "Regulación específica fuera de LAU estándar",
+    "Cláusulas de duración, prórroga y suministros",
+    "Inventario del inmueble incluido",
+  ];
+
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <LocalTemporadaJsonLd
@@ -177,7 +199,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   </div>
 
                   <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
-                    Contrato de alquiler por temporada en {config.city}
+                    {config.heroH1 ?? `Contrato de alquiler por temporada en ${config.city}`}
                   </h1>
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
@@ -189,20 +211,14 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                     </div>
                   </div>
 
-                  <div className="mt-8 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Regulación específica fuera de LAU estándar</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Cláusulas de duración, prórroga y suministros</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Inventario del inmueble incluido</span>
-                    </div>
-                  </div>
+                  <ul className="mt-8 space-y-3">
+                    {heroBullets.map((line) => (
+                      <li key={line} className="flex items-center gap-3">
+                        <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
+                        <span className="text-lg">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
                     <ContratarSlugButton
@@ -250,13 +266,15 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
-                  ¿Por qué un contrato de temporada en {config.city}?
+                  {config.whyTitle ?? `¿Por qué un contrato de temporada en ${config.city}?`}
                 </h2>
-                <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
+                <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">
+                  {config.whySubtitle ?? config.whyIntro}
+                </p>
               </div>
 
               <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {benefits.map((benefit) => {
+                {displayBenefits.map((benefit) => {
                   const Icon = benefit.icon;
                   return (
                     <div
@@ -274,6 +292,17 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.localZones ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  {config.localZonesHeading ?? `Dónde redactamos contratos de temporada en ${config.city}`}
+                </h2>
+                <p className="mt-4 text-center text-lg leading-relaxed text-[#475569]">{config.localZones}</p>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
@@ -365,6 +394,17 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               </p>
             </div>
           </section>
+
+          {config.faq && config.faq.length > 0 ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  title={`Preguntas frecuentes — alquiler por temporada en ${config.city}`}
+                  items={config.faq.map((f) => ({ question: f.question, answer: f.answer }))}
+                />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

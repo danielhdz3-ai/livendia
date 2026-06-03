@@ -4,6 +4,8 @@
  */
 
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
+import { TEMPORADA_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-temporada-local-differentiation";
+import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 
 export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE = "/servicios/contrato-alquiler-temporada-local";
 
@@ -28,7 +30,8 @@ export type ContratoAlquilerTemporadaLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
-};
+  faq?: readonly { question: string; answer: string }[];
+} & LocalCityLandingFields;
 
 export type ContratoAlquilerTemporadaLocalCityDefinition = Omit<
   ContratoAlquilerTemporadaLocalLandingConfig,
@@ -44,8 +47,10 @@ export function localContratoAlquilerTemporadaHref(slug: string): string {
 export function toContratoAlquilerTemporadaLandingConfig(
   def: ContratoAlquilerTemporadaLocalCityDefinition,
 ): ContratoAlquilerTemporadaLocalLandingConfig {
+  const diff = TEMPORADA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   return {
     ...def,
+    ...diff,
     path: localContratoAlquilerTemporadaHref(def.slug),
   };
 }

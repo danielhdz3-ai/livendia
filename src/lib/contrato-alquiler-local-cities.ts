@@ -7,6 +7,9 @@
  * enlaces internos). Así reduces el riesgo de que parezca contenido masivo de golpe.
  */
 
+import { ALQUILER_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-local-differentiation";
+import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+
 export const CONTRATO_ALQUILER_LOCAL_BASE = "/servicios/contrato-alquiler-local";
 
 /**
@@ -41,7 +44,8 @@ export type ContratoAlquilerLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
-};
+  faq?: readonly { question: string; answer: string }[];
+} & LocalCityLandingFields;
 
 export type ContratoAlquilerLocalCityDefinition = Omit<ContratoAlquilerLocalLandingConfig, "path"> & {
   slug: string;
@@ -52,8 +56,10 @@ export function localContratoAlquilerHref(slug: string): string {
 }
 
 export function toLandingConfig(def: ContratoAlquilerLocalCityDefinition): ContratoAlquilerLocalLandingConfig {
+  const diff = ALQUILER_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   return {
     ...def,
+    ...diff,
     path: localContratoAlquilerHref(def.slug),
   };
 }

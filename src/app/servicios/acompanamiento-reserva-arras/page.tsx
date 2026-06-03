@@ -1,17 +1,30 @@
+import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 
+const canonical = `${getSiteUrl()}/servicios/acompanamiento-reserva-arras`;
+
 export const metadata: Metadata = {
   title: "Acompañamiento reserva hasta arras — 424 € IVA incl. | Livendia",
   description:
     "Asesoramiento jurídico desde la reserva hasta el contrato de arras: revisión de reserva, nota registral, urbanismo y redacción de arras. 424 € IVA incluido.",
+  alternates: { canonical },
+  openGraph: {
+    title: "Acompañamiento reserva hasta arras | Livendia",
+    description:
+      "Asesoramiento jurídico desde la reserva hasta el contrato de arras. 424 € IVA incluido.",
+    url: canonical,
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 export default async function AcompanamientoReservaArrasPage() {
@@ -58,8 +71,9 @@ export default async function AcompanamientoReservaArrasPage() {
                     Acompañamiento: reserva hasta arras
                   </h1>
                   <p className="mt-5 text-xl leading-relaxed text-blue-100">
-                    {service?.description ??
-                      "Servicio de asesoramiento jurídico desde la reserva hasta el contrato de arras."}
+                    Compras entre particulares y ya firmaste reserva o estás a punto: un gestor inmobiliario revisa el
+                    documento, la nota registral y el urbanismo antes de que el dinero quede vinculante, y te acompaña
+                    hasta un contrato de arras coherente con lo acordado.
                   </p>
                   <div className="mt-8 flex items-baseline gap-2">
                     <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">424 €</span>
@@ -110,6 +124,145 @@ export default async function AcompanamientoReservaArrasPage() {
                   );
                 })}
               </div>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-[#1E293B]">¿En qué momento encaja este servicio?</h2>
+              <p className="mt-6 text-lg leading-relaxed text-[#475569]">
+                Cuando has encontrado piso con otro particular, has negociado precio y plazos, y el vendedor o la
+                inmobiliaria te pide firmar una reserva o entregar una señal. Es el tramo más delicado: todavía no hay
+                arras penitenciales ni escritura, pero ya comprometes dinero y calendario. Livendia entra antes de que
+                esas condiciones queden fijas sin revisión profesional.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-[#475569]">
+                Si prefieres un único gestor desde la primera visita hasta la escritura, el{" "}
+                <Link
+                  href="/servicios/servicio-completo-compra"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  servicio completo de compra (890 €)
+                </Link>{" "}
+                cubre reserva, arras y cierre. El acompañamiento reserva–arras es la opción focalizada si ya llevas parte
+                del camino hecho o quieres validar solo este tramo.
+              </p>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-[#1E293B]">Qué revisamos en tu expediente</h2>
+              <ul className="mt-8 space-y-4 text-lg text-[#475569]">
+                <li>
+                  <strong className="text-[#1E293B]">Documento de reserva:</strong> plazos, penalizaciones, quién
+                  asume gastos si la operación no sigue y coherencia con el precio acordado.
+                </li>
+                <li>
+                  <strong className="text-[#1E293B]">Nota registral:</strong> titularidad, cargas, hipotecas y
+                  limitaciones que afecten a la compra.
+                </li>
+                <li>
+                  <strong className="text-[#1E293B]">Situación urbanística básica:</strong> indicios de
+                  irregularidades o licencias pendientes que debas conocer antes de pagar.
+                </li>
+                <li>
+                  <strong className="text-[#1E293B]">Borrador de arras:</strong> penitenciales o confirmatorias,
+                  calendario de pago y condiciones suspensivas razonables.
+                </li>
+                <li>
+                  <strong className="text-[#1E293B]">Coordinación con el vendedor:</strong> respuestas en lenguaje
+                  claro para que ambas partes firmen con el mismo entendimiento.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-2xl font-bold text-[#1E293B]">Proceso con tu gestor Livendia</h2>
+              <ol className="mt-8 space-y-6">
+                {[
+                  {
+                    t: "Contratas por 424 € IVA incl.",
+                    d: "Pago seguro con tarjeta; accedes al panel para subir reserva y datos del inmueble.",
+                  },
+                  {
+                    t: "Asignación de gestor",
+                    d: "Un profesional inmobiliario toma el expediente y te indica qué documentación falta.",
+                  },
+                  {
+                    t: "Análisis registral y de reserva",
+                    d: "Informe de riesgos y recomendaciones antes de transferir importes relevantes.",
+                  },
+                  {
+                    t: "Hacia las arras",
+                    d: "Ajustamos o redactamos el contrato de arras alineado con lo revisado; resolvemos dudas hasta la firma.",
+                  },
+                ].map((step, i) => (
+                  <li key={step.t} className="flex gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-lg font-bold text-white">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold text-[#1E293B]">{step.t}</h3>
+                      <p className="mt-1 text-[#475569]">{step.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-8 text-[#475569]">
+                También puedes contratar por separado{" "}
+                <Link
+                  href="/servicios/contrato-arras-penitenciales"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  arras penitenciales
+                </Link>{" "}
+                o{" "}
+                <Link
+                  href="/servicios/revision-documental-post-arras"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  revisión documental post-arras
+                </Link>{" "}
+                si tu operación ya está en otra fase.
+              </p>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-3xl">
+              <FaqSection
+                title="Preguntas frecuentes — acompañamiento reserva hasta arras"
+                items={[
+                  {
+                    question: "¿Puedo contratar si ya firmé la reserva?",
+                    answer:
+                      "Sí, aunque lo ideal es antes de entregar dinero. Revisamos el texto vigente y te indicamos riesgos y próximos pasos.",
+                  },
+                  {
+                    question: "¿Sustituye al servicio completo de compra?",
+                    answer:
+                      "No. Este servicio cubre el tramo reserva–arras. Si quieres gestor hasta escritura, contrata el servicio completo de compra.",
+                  },
+                  {
+                    question: "¿Incluye la escritura en notaría?",
+                    answer:
+                      "No forma parte de este pack. Te acompañamos hasta unas arras bien planteadas; la escritura puede encajar en otro servicio o en el completo.",
+                  },
+                  {
+                    question: "¿Trabajáis con compras entre particulares sin agencia?",
+                    answer:
+                      "Sí, es nuestro foco: comprador y vendedor particulares con gestor Livendia como tercero profesional.",
+                  },
+                  {
+                    question: "¿Cuánto tarda la primera revisión?",
+                    answer:
+                      "Depende de la documentación recibida; en condiciones normales el gestor responde en plazos laborables publicados tras subir la reserva al panel.",
+                  },
+                ]}
+              />
             </div>
           </section>
 

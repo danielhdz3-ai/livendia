@@ -29,19 +29,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
+  const config = toContratoAlquilerTemporadaLandingConfig(city);
   const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}/${slug}`;
   const title =
-    slug === "mallorca"
+    config.metaTitle ??
+    (slug === "mallorca"
       ? `Contrato alquiler por temporada Mallorca — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`
-      : `Contrato alquiler por temporada en ${city.city} — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`;
+      : `Contrato alquiler por temporada en ${city.city} — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`);
   const description =
-    slug === "mallorca"
+    config.metaDescription ??
+    (slug === "mallorca"
       ? `Contrato de alquiler por temporada en Mallorca y Palma desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. Estancias estacionales, desplazamiento laboral o segunda residencia. Redacción gestor + inventario. Livendia.`
-      : `Contrato de alquiler por temporada en ${city.city} desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. Redacción profesional, inventario y asesoramiento hasta la firma. Livendia.`;
+      : `Contrato de alquiler por temporada en ${city.city} desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. Redacción profesional, inventario y asesoramiento hasta la firma. Livendia.`);
 
   return {
     title,
     description,
+    ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },
     openGraph: {
       title,

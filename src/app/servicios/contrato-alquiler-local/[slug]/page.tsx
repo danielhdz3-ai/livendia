@@ -29,13 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
+  const config = toLandingConfig(city);
   const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_LOCAL_BASE}/${slug}`;
-  const title = `Contrato de alquiler en ${city.city} por expertos | Revisión LAU`;
-  const description = `¿Quieres redactar un contrato de alquiler por expertos en ${city.city}? Revisión LAU, inventario del piso y asesoramiento hasta la firma. Livendia, gestoría inmobiliaria digital.`;
+  const title =
+    config.metaTitle ?? `Contrato de alquiler en ${city.city} por expertos | Revisión LAU`;
+  const description =
+    config.metaDescription ??
+    `¿Quieres redactar un contrato de alquiler por expertos en ${city.city}? Revisión LAU, inventario del piso y asesoramiento hasta la firma. Livendia, gestoría inmobiliaria digital.`;
 
   return {
     title,
     description,
+    ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },
     openGraph: {
       title: `Contrato de alquiler en ${city.city} por expertos | Livendia`,
