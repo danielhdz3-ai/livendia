@@ -29,8 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const canonical = `${getSiteUrl()}${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}/${slug}`;
-  const title = `Comprar con garantías en ${city.city} | Servicio completo Livendia`;
-  const description = `¿Necesitas comprar con todas las garantías en ${city.city}? Gestor inmobiliario experto: reserva, arras y escritura revisadas. Servicio completo 666 €.`;
+  const title =
+    city.metaTitle ?? `Comprar con garantías en ${city.city} | Servicio completo Livendia`;
+  const description =
+    city.metaDescription ??
+    `¿Necesitas comprar con todas las garantías en ${city.city}? Gestor inmobiliario experto: reserva, arras y escritura revisadas. Servicio completo 890 €.`;
 
   return {
     title,

@@ -1,3 +1,5 @@
+import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+
 /**
  * Landings SEO locales: servicio completo de compra por ciudad.
  * Rutas: /servicios/servicio-completo-compra-local/[slug]
@@ -9,12 +11,19 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISHED_SLUGS: readonly string[] =
   "madrid",
   "barcelona",
   "valencia",
+  "bilbao",
+  "malaga",
+  "sevilla",
 ];
 
 export type ServicioCompletoCompraLocalLandingConfig = {
   path: string;
   city: string;
   schemaAdministrativeArea: string;
+  heroBadge?: string;
+  heroH1?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   heroLead: string;
   whyIntro: string;
   howIntro: string;
@@ -85,7 +94,7 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
       },
     ],
     finalCtaLead:
-      "Contrata el servicio completo (666 €, IVA incluido) y trabaja con tu gestor personal hasta rubricar en Madrid con documentación revisada.",
+      `Contrata el servicio completo (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y trabaja con tu gestor personal hasta rubricar en Madrid con documentación revisada.`,
   },
   {
     slug: "barcelona",
@@ -142,5 +151,104 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     ],
     finalCtaLead:
       "Contrata el acompañamiento completo y cierra en Valencia con reserva, arras y escritura bajo revisión gestora.",
+  },
+  {
+    slug: "bilbao",
+    city: "Bilbao",
+    schemaAdministrativeArea: "País Vasco",
+    metaTitle: "Comprar piso entre particulares en Bilbao | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras de particular a particular en Bilbao? Gestor inmobiliario experto: revisión de reserva y arras, defensa frente a cláusulas abusivas y acompañamiento hasta escritura. 890 € IVA incl.",
+    heroBadge: "Compra entre particulares · Bilbao",
+    heroH1: "Compras de particular a particular en Bilbao — con asesor experto en todo el proceso",
+    heroLead:
+      "¿Compras piso de particular a particular en Bilbao o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — el mismo acompañamiento profesional en Abando, Deusto, Getxo o el Gran Bilbao.",
+    whyIntro:
+      "En Bizkaia muchos compradores encuentran vivienda por Idealista, recomendación o vendedor particular, sin agencia que defienda sus intereses. Las plantillas de reserva y arras suelen proteger al vendedor; sin asesor, plazos de hipoteca, penalidades o cargas ocultas pueden costarte miles de euros. Livendia es tu gestor dedicado en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal de referencia y coordinación con vendedor y notaría en Bilbao, Barakaldo, Portugalete o Getxo.",
+    testimonialsTitle: "Compradores en Bilbao que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos a un particular en Deusto. Livendia revisó la reserva que nos pasó el vendedor, ajustó plazos de financiación y redactó arras equilibradas. Llegamos a escritura sin sorpresas.",
+        author: "Ane & Iker",
+        role: "Compradores, Deusto",
+      },
+      {
+        quote:
+          "Primera compra entre particulares: el gestor explicó la nota simple, derramas pendientes y qué negociar antes de entregar la señal. Valió cada euro del servicio completo.",
+        author: "Patricia L.",
+        role: "Compradora, Getxo",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Bilbao con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "sevilla",
+    city: "Sevilla",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Comprar piso entre particulares en Sevilla | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras de particular a particular en Sevilla? Gestor inmobiliario experto: revisión de reserva y arras, sin depender de comisiones de agencia. Acompañamiento hasta escritura. 890 € IVA incl.",
+    heroBadge: "Compra entre particulares · Sevilla",
+    heroH1: "Compra de particular a particular en Sevilla — con asesor experto en todo el proceso",
+    heroLead:
+      "¿Compras piso de particular a particular en Sevilla o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas desequilibradas y te acompaña hasta la escritura — el mismo acompañamiento profesional en Triana, Nervión, Los Remedios, Tomares o el área metropolitana.",
+    whyIntro:
+      "En Sevilla muchos compradores encuentran vivienda por Idealista, recomendación o vendedor particular, sin agencia que defienda sus intereses. Las plantillas de reserva y arras suelen proteger al vendedor; sin asesor, plazos de hipoteca, penalidades o cargas ocultas pueden costarte miles de euros. Livendia es tu gestor dedicado en el bando del comprador, con tarifa plana frente a comisiones abusivas de intermediación.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal de referencia y coordinación con vendedor y notaría en Sevilla capital, Dos Hermanas, Alcalá de Guadaíra o municipios cercanos.",
+    testimonialsTitle: "Compradores en Sevilla que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos a un particular en Nervión. Livendia revisó la reserva que nos pasó el vendedor, ajustó plazos de financiación y redactó arras equilibradas. Llegamos a escritura sin sorpresas.",
+        author: "Raquel & Pablo",
+        role: "Compradores, Nervión",
+      },
+      {
+        quote:
+          "Primera compra entre particulares: el gestor explicó la nota simple, derramas pendientes y qué negociar antes de entregar la señal. Valió cada euro del servicio completo.",
+        author: "Manuel G.",
+        role: "Comprador, Los Remedios",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Sevilla con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "malaga",
+    city: "Málaga",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Comprar piso entre particulares en Málaga | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras de particular a particular en Málaga o Costa del Sol? Gestor inmobiliario experto: reserva, arras y escritura revisadas. Sin pagar comisiones de agencia. 890 € IVA incl.",
+    heroBadge: "Compra entre particulares · Málaga",
+    heroH1: "Compra de particular a particular en Málaga — con asesor experto en todo el proceso",
+    heroLead:
+      "¿Compras piso de particular a particular en Málaga, la costa o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en Centro, Teatinos, El Palo, Torremolinos o Rincón de la Victoria.",
+    whyIntro:
+      "En Málaga y la Costa del Sol es habitual comprar por portales o a un vendedor particular (segunda residencia, traslado o inversión) sin un profesional en tu bando. Reservas copiadas, arras desequilibradas y promesas verbales que no aparecen por escrito generan litigios caros. Livendia te da un gestor dedicado al comprador, con tarifa plana frente a los miles de euros que suelen costar errores o cláusulas de agencia.",
+    howIntro:
+      "Mismo protocolo en cuatro fases hasta escritura: revisión de documentación, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Málaga capital, Benalmádena, Fuengirola o municipios del área.",
+    testimonialsTitle: "Compradores en Málaga que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos apartamento de particular en Teatinos. Livendia revisó la reserva, negoció arras confirmatorias y nos alertó de una derrama en la comunidad que no nos habían comentado.",
+        author: "Laura & Miguel",
+        role: "Compradores, Teatinos",
+      },
+      {
+        quote:
+          "Vivienda en la costa con vendedor particular: el gestor coordinó plazos, revisó la nota simple y nos ahorró firmar una penalización desproporcionada en arras.",
+        author: "Antonio R.",
+        role: "Comprador, Torremolinos",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Málaga con un asesor experto hasta la escritura.`,
   },
 ];
