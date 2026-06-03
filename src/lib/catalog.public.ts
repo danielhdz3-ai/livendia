@@ -17,14 +17,97 @@ export type PublicService = {
 /** Servicios que deben existir en BD; se sincronizan en servidor si faltan. */
 export type CatalogServiceSeed = Omit<PublicService, "id">;
 
+/** Servicio completo de compra y de venta (reserva → escritura), IVA incl. — precio en euros. */
+export const SERVICIO_COMPLETO_CV_PRICE_EUR = 890;
+/** Stripe y Supabase guardan céntimos: 890 € → 89000 (no confundir con 89000 €). */
+export const SERVICIO_COMPLETO_CV_PRICE_CENTS = SERVICIO_COMPLETO_CV_PRICE_EUR * 100;
+export const SERVICIO_COMPLETO_CV_PRICE_LABEL = `${SERVICIO_COMPLETO_CV_PRICE_EUR} €`;
+export const SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT = `${SERVICIO_COMPLETO_CV_PRICE_EUR}€`;
+
+/** Slugs cuyo precio en BD debe coincidir con SERVICIO_COMPLETO_CV_PRICE_EUR. */
+export const SERVICIO_COMPLETO_CV_SLUGS = [
+  "servicio-completo-compra",
+  "servicio-completo-venta",
+] as const;
+
+/** Reserva de compra — precio comercial IVA incl. */
+export const RESERVA_DE_COMPRA_PRICE_EUR = 61;
+export const RESERVA_DE_COMPRA_PRICE_CENTS = RESERVA_DE_COMPRA_PRICE_EUR * 100;
+export const RESERVA_DE_COMPRA_PRICE_LABEL = `${RESERVA_DE_COMPRA_PRICE_EUR} €`;
+export const RESERVA_DE_COMPRA_SLUG = "reserva-de-compra" as const;
+
+/** Pack Revisión Documental post-arras — precio comercial IVA incl. */
+export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR = 350;
+export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS = REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR * 100;
+export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL = `${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR} €`;
+export const REVISION_DOCUMENTAL_POST_ARRAS_SLUG = "revision-documental-post-arras" as const;
+
+/** Contrato de alquiler LAU — precio comercial IVA incl. */
+export const CONTRATO_ALQUILER_LAU_PRICE_EUR = 145;
+export const CONTRATO_ALQUILER_LAU_PRICE_CENTS = CONTRATO_ALQUILER_LAU_PRICE_EUR * 100;
+export const CONTRATO_ALQUILER_LAU_PRICE_LABEL = `${CONTRATO_ALQUILER_LAU_PRICE_EUR} €`;
+export const CONTRATO_ALQUILER_LAU_SLUG = "contrato-alquiler-lau" as const;
+
+/** Contrato de alquiler por temporada — precio comercial IVA incl. */
+export const CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR = 200;
+export const CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS = CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR * 100;
+export const CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL = `${CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR} €`;
+export const CONTRATO_ALQUILER_TEMPORADA_SLUG = "contrato-alquiler-temporada" as const;
+
+/** Contrato de habitación — precio comercial IVA incl. */
+export const CONTRATO_ALQUILER_HABITACION_PRICE_EUR = 120;
+export const CONTRATO_ALQUILER_HABITACION_PRICE_CENTS = CONTRATO_ALQUILER_HABITACION_PRICE_EUR * 100;
+export const CONTRATO_ALQUILER_HABITACION_PRICE_LABEL = `${CONTRATO_ALQUILER_HABITACION_PRICE_EUR} €`;
+export const CONTRATO_ALQUILER_HABITACION_SLUG = "contrato-alquiler-habitacion" as const;
+
+/** Precios fijos en BD (slug → céntimos). */
+export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
+  [REVISION_DOCUMENTAL_POST_ARRAS_SLUG]: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
+  [RESERVA_DE_COMPRA_SLUG]: RESERVA_DE_COMPRA_PRICE_CENTS,
+  [CONTRATO_ALQUILER_LAU_SLUG]: CONTRATO_ALQUILER_LAU_PRICE_CENTS,
+  [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
+  [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
+  "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
+  "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
+};
+
+/** Etiqueta de precio desde catálogo o constante de respaldo. */
+export function resolveServicePriceLabel(
+  service: Pick<PublicService, "price_cents"> | null | undefined,
+  fallbackLabel: string,
+): string {
+  if (!service) return fallbackLabel;
+  return `${(service.price_cents / 100).toFixed(0)} €`;
+}
+
 export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
+  {
+    slug: "servicio-completo-venta",
+    name: "Servicio completo de venta: reserva a escritura",
+    description:
+      "Acompañamiento para propietarios que venden su piso de forma particular a un comprador particular: gestor personalizado, reserva, arras, documentación y asesoramiento hasta escriturar con éxito.",
+    category: "acompanamiento",
+    price_cents: SERVICIO_COMPLETO_CV_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Estudio de la operación con gestor personalizado",
+      "Redacción de contrato de reserva",
+      "Redacción de contrato de arras (penitenciales o confirmatorias)",
+      "Ayuda para recabar nota simple, comunidad, ITE y certificados",
+      "Revisión de coherencia entre reserva, arras y documentación",
+      "Asesoramiento hasta la firma en notaría",
+      "Coordinación de plazos y checklist pre-escritura",
+      "Área de cliente para centralizar documentos",
+    ],
+    badge: "Para vendedores",
+  },
   {
     slug: "revision-documental-post-arras",
     name: "Pack Revisión Documental post-arras",
     description:
       "Verificación documental integral tras firmar arras y antes de escriturar. Revisamos contrato de arras, actas de comunidad, derramas, ITE, nota registral e información urbanística. Informe ejecutivo + llamada de veredicto y asesoramiento telefónico.",
     category: "compraventa",
-    price_cents: 16900,
+    price_cents: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
     is_recurring: false,
     features: [
       "Revisión completa de contrato de arras",
@@ -102,7 +185,11 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
       if (i !== -1) return i;
     }
     if (category === "acompanamiento") {
-      const order = ["servicio-completo-compra", "acompanamiento-reserva-arras"];
+      const order = [
+        "servicio-completo-compra",
+        "servicio-completo-venta",
+        "acompanamiento-reserva-arras",
+      ];
       const i = order.indexOf(s.slug);
       if (i !== -1) return i - 100;
     }
@@ -127,6 +214,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "reserva-de-compra": "/images/contratos6.jpg",
   "acompanamiento-reserva-arras": "/images/familia1.jpg",
   "servicio-completo-compra": "/images/familia2.jpg",
+  "servicio-completo-venta": "/images/servicio-completo-venta-hero.jpg",
   "revision-documental-post-arras": "/images/gestoria20.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
