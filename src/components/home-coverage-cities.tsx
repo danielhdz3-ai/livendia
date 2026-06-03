@@ -22,7 +22,7 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
             Cobertura online
           </p>
           <h2 id="cobertura-ciudades" className="mt-3 text-2xl font-bold text-[#1E293B] sm:text-3xl">
-            Operamos en Madrid, Valencia y Barcelona — y en toda España
+            Operamos en Madrid, Valencia, Barcelona, Málaga y Sevilla — y en toda España
           </h2>
           <p className="mt-3 text-[#475569]">
             Mismo gestor, mismos precios y panel online. Las landings por ciudad te orientan; el servicio es 100 %
@@ -30,7 +30,7 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {HOME_COVERAGE_CITIES.map((city) => (
             <li
               key={city.slug}

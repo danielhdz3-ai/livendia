@@ -76,7 +76,7 @@ export function FooterDiscoverabilityLinks() {
       </ul>
 
       <div className="mt-3">
-        <p className="font-semibold text-blue-50">Madrid, Valencia y Barcelona</p>
+        <p className="font-semibold text-blue-50">Madrid, Valencia, Barcelona, Málaga y Sevilla</p>
         <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-blue-100">
           {cityPriorityLinks.map((item) => (
             <li key={item.href}>

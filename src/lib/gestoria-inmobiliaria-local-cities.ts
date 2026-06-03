@@ -31,6 +31,8 @@ export const GESTORIA_INMOBILIARIA_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "zaragoza",
   "alicante",
   "murcia",
+  "malaga",
+  "sevilla",
 ];
 
 export type GestoriaInmobiliariaLocalLandingConfig = {
@@ -521,6 +523,155 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     ],
     finalCtaLead:
       `Empieza en Murcia con precios fijos: 424 €, 890 €, ${LAU_TEMPORADA_CTA} o administración 49 €/mes. Contratación 100 % online.`,
+  },
+  {
+    slug: "malaga",
+    city: "Málaga",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Gestoría inmobiliaria en Málaga para particulares | Livendia",
+    metaDescription:
+      `Gestoría inmobiliaria Málaga particulares: compraventa entre particulares 424 € y 890 €, contratos LAU/arras, ${REVISION_META_SNIPPET} y administración alquiler 49 €/mes. Sin comisiones abusivas.`,
+    keywords: [
+      "gestoría inmobiliaria malaga particulares",
+      "tramites compra piso malaga entre particulares",
+      "vender piso sin agencia malaga gestoría",
+      "venta entre particulares malaga",
+      "contrato arras malaga particular",
+      "administración alquiler malaga particulares",
+      "gestoría compraventa vivienda malaga",
+    ],
+    h1: "Gestoría inmobiliaria en Málaga para particulares: compraventa, contratos y alquileres",
+    heroLead:
+      "Gestoría inmobiliaria digital para propietarios y compradores en Málaga capital y Costa del Sol. Tarifas planas en compraventa entre particulares, contratos en 48-72 h y administración mensual del alquiler sin permanencia.",
+    compraventa: {
+      h2: "Gestoría compraventa vivienda en Málaga entre particulares",
+      intro:
+        "En Málaga y la costa (Teatinos, El Palo, Torremolinos, Benalmádena, Rincón de la Victoria…) comprar o vender entre particulares exige revisar reserva, arras y documentación antes de la señal — sin pagar comisión de agencia si ya tienes comprador o vendedor.",
+      h3Reserva: "Acompañamiento Reserva hasta Arras — 424 € (IVA incl.)",
+      reservaCopy:
+        "Revisión de reserva, nota simple registral, arras y urbanismo. Detectamos cláusulas abusivas y plazos irreales antes de entregar la señal.",
+      h3Completo: "Servicio Completo hasta Escritura y Notaría — 890 € (IVA incl.)",
+      completoCopy:
+        "Gestor dedicado desde la reserva hasta la firma en notaría: coordinación documental, defensa frente a cláusulas desequilibradas y alerta ante cargas o derramas ocultas.",
+    },
+    contratos: {
+      h2: "Redacción contrato alquiler en Málaga y contrato de arras en Málaga",
+      intro:
+        "Contratos LAU, temporada, habitación y arras con precio fijo. Entrega en 48-72 h adaptada al uso real (habitual, turístico-residencial o habitaciones en pisos compartidos).",
+      h3Arras: GESTORIA_H3_ARRAS,
+      arrasCopy:
+        "Arras penitenciales o confirmatorias para compraventa en Málaga. Condiciones suspensivas, plazos de hipoteca y penalidades revisadas por gestor.",
+      h3Lau: GESTORIA_H3_LAU,
+      lauCopy:
+        "Arrendamiento habitual con fianza, IPC, gastos de comunidad y causas de resolución conforme a LAU. Para propietarios en Málaga ciudad y Costa del Sol.",
+      h3Temporada: GESTORIA_H3_TEMPORADA,
+      temporadaCopy:
+        "Estancias temporales, segunda residencia o alquiler por habitación, con límites de ocupación y suministros por escrito.",
+    },
+    administracion: {
+      h2: "Administración de alquileres en Málaga — gestión integral sin permanencia",
+      intro:
+        "Delega la relación con el inquilino en Málaga: incidencias, averías, mediación y renovaciones. Tú decides; Livendia ejecuta con gestor asignado.",
+      h3Incluye: "Qué incluye la gestión integral de alquileres en Málaga",
+      incluyeCopy:
+        "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si vives fuera de la provincia.",
+      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      precioCopy:
+        "El propietario no atiende llamadas ni urgencias estivales: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
+    },
+    faq: [
+      {
+        question: "¿Atendéis compraventas en la Costa del Sol?",
+        answer:
+          "Sí. Misma gestoría online en Málaga capital, Torremolinos, Fuengirola, Marbella oriente y municipios cercanos con documentación digital.",
+      },
+      {
+        question: "¿Cuánto cuesta vender un piso entre particulares en Málaga con Livendia?",
+        answer:
+          "El servicio completo de venta cuesta 890 € IVA incl., tarifa plana sin comisión sobre el precio de venta. Incluye reserva, arras, trámites y coordinación con notaría.",
+      },
+      {
+        question: `¿Puedo contratar solo el contrato de arras en Málaga?`,
+        answer: `Sí. El contrato de arras (${CONTRATO_ARRAS_PRICE_LABEL}) es independiente y se entrega en 48-72 h laborables.`,
+      },
+    ],
+    finalCtaLead:
+      `Contrata online en Málaga: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+  },
+  {
+    slug: "sevilla",
+    city: "Sevilla",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Gestoría inmobiliaria en Sevilla para particulares | Livendia",
+    metaDescription:
+      `Gestoría inmobiliaria Sevilla particulares: venta y compra entre particulares 424 € y 890 €, contratos LAU/arras, ${REVISION_META_SNIPPET} y administración alquiler 49 €/mes.`,
+    keywords: [
+      "gestoría inmobiliaria sevilla particulares",
+      "tramites compra piso sevilla entre particulares",
+      "vender piso sin agencia sevilla gestoría",
+      "venta entre particulares sevilla",
+      "contrato arras sevilla particular",
+      "administración alquiler sevilla particulares",
+      "gestoría compraventa vivienda sevilla",
+    ],
+    h1: "Gestoría inmobiliaria en Sevilla para particulares: compraventa, contratos y alquileres",
+    heroLead:
+      "Gestoría inmobiliaria 100 % online para propietarios y compradores en Sevilla capital y área metropolitana. Mismos precios que en Madrid: tarifa plana, gestor legal dedicado y contratos en 48-72 h.",
+    compraventa: {
+      h2: "Gestoría compraventa vivienda en Sevilla entre particulares",
+      intro:
+        "En Sevilla (Triana, Nervión, Los Remedios, Macarena, Tomares, Dos Hermanas…) comprar o vender entre particulares exige revisar reserva, arras y documentación antes de la señal — sin pagar comisión de agencia si ya tienes contraparte.",
+      h3Reserva: "Acompañamiento Reserva hasta Arras — 424 € (IVA incl.)",
+      reservaCopy:
+        "Revisión de reserva, nota registral, arras y urbanismo. Priorizamos lo negociable antes de que el dinero quede atado a una plantilla genérica.",
+      h3Completo: "Servicio Completo hasta Escritura y Notaría — 890 € (IVA incl.)",
+      completoCopy:
+        "Gestor experto desde la señal hasta notaría: defensa frente a cláusulas abusivas, coordinación con vendedor o comprador y seguimiento documental completo.",
+    },
+    contratos: {
+      h2: "Redacción contrato alquiler en Sevilla y contrato de arras en Sevilla",
+      intro:
+        "Contratos LAU, temporada, habitación y arras con precio cerrado. Entrega en 48-72 h con inventario y cláusulas adaptadas al mercado sevillano (estudiantes, habitual, temporada).",
+      h3Arras: GESTORIA_H3_ARRAS,
+      arrasCopy:
+        "Arras penitenciales o confirmatorias para compraventa en Sevilla. Plazos de hipoteca, penalidades y condiciones suspensivas revisadas por gestor.",
+      h3Lau: GESTORIA_H3_LAU,
+      lauCopy:
+        "Arrendamiento habitual con depósito, fianza, IPC y gastos de comunidad redactados conforme a LAU. Inventario fotográfico recomendado.",
+      h3Temporada: GESTORIA_H3_TEMPORADA,
+      temporadaCopy:
+        "Para estancias temporales, alquiler por habitación en pisos compartidos o contratos fuera del régimen LAU estándar, con normas de convivencia explícitas.",
+    },
+    administracion: {
+      h2: "Administración de alquileres en Sevilla — gestión integral sin permanencia",
+      intro:
+        "Administración de alquileres en Sevilla con tarifa plana: intermediamos con el inquilino, gestionamos averías y documentamos cada incidencia hasta su cierre.",
+      h3Incluye: "Qué incluye la gestión integral de alquileres en Sevilla",
+      incluyeCopy:
+        "Canal único con el arrendatario, coordinación de reparaciones, control de renovaciones y mediación si surge discrepancia sobre pagos o mantenimiento.",
+      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      precioCopy:
+        "El propietario delega llamadas y urgencias: Livendia filtra, coordina técnicos y te informa solo cuando hace falta tu decisión.",
+    },
+    faq: [
+      {
+        question: "¿Cubrís municipios del área metropolitana de Sevilla?",
+        answer:
+          "Sí. Mismo servicio en capital, Tomares, Dos Hermanas, Alcalá de Guadaíra y núcleos cercanos con operativa digital.",
+      },
+      {
+        question: "¿Cuánto cuesta comprar entre particulares en Sevilla con Livendia?",
+        answer:
+          "El servicio completo de compra cuesta 890 € IVA incl., con gestor dedicado desde reserva hasta escritura. Sin comisión sobre el precio del inmueble.",
+      },
+      {
+        question: "¿La administración de alquiler incluye buscar inquilino?",
+        answer:
+          "No incluye captación ni visitas. Entra en vigor una vez firmado el contrato: gestionamos la relación día a día con quien ya ocupa el piso.",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online en Sevilla: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
   },
 ];
 

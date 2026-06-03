@@ -15,6 +15,8 @@ export const ADMINISTRACION_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "barcelona",
   "valencia",
   "mallorca",
+  "sevilla",
+  "malaga",
 ];
 
 export function isAdministracionAlquilerLocalSlugPublished(slug: string): boolean {
@@ -178,20 +180,60 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     finalCtaLead:
       "Contrata administración profesional en Mallorca desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
-
-  /*
-  Ejemplo borrador futuro — añade el slug arriba en ADMINISTRACION_ALQUILER_LOCAL_PUBLISHED_SLUGS antes de indexar:
-
   {
     slug: "sevilla",
     city: "Sevilla",
     schemaAdministrativeArea: "Andalucía",
-    heroLead: "…",
-    whyIntro: "…",
-    howIntro: "…",
-    testimonialsTitle: "…",
-    testimonials: [{ quote: "", author: "", role: "" }],
-    finalCtaLead: "…",
+    heroLead:
+      "Sevilla capital y área metropolitana concentran alquiler habitual, estancias académicas y segunda residencia: propietarios que viven fuera reciben llamadas de averías, dudas sobre IPC y conflictos con la comunidad. Livendia es vuestro único interlocutor ante el inquilino para que solo firméis lo que merece vuestra decisión.",
+    whyIntro:
+      "En barrios como Triana, Nervión o Los Remedios la rotación de inquilinos acelera incidencias en los primeros quince días. Sin canal profesional, WhatsApp personal y el presidente de la comunidad acaban mediando antes que un gestor. Centralizamos comunicaciones y documentamos cada paso.",
+    howIntro:
+      "Cuatro fases idénticas al servicio nacional: intermediación, gestión de consultas, coordinación de reparaciones y avisos solo cuando hace falta vuestra firma — en Sevilla, Tomares, Dos Hermanas o municipios cercanos.",
+    testimonialsTitle: "Propietarios en Sevilla que delegaron el día a día del alquiler en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilo en Macarena y trabajo fuera de la ciudad. Livendia atiende al inquilino, coordina fontanería y yo solo apruebo cuando el gasto supera el umbral que pactamos.",
+        author: "Elena R.",
+        role: "Propietaria, Macarena",
+      },
+      {
+        quote:
+          "Piso en Los Remedios con contrato LAU bien hecho, pero las averías no entienden de horario. Ellos filtran lo urgente y me resumen por WhatsApp lo importante.",
+        author: "Javier M.",
+        role: "Propietario, Los Remedios",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Sevilla desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
-  */
+  {
+    slug: "malaga",
+    city: "Málaga",
+    schemaAdministrativeArea: "Andalucía",
+    heroLead:
+      "Málaga capital y Costa del Sol mezclan alquiler residencial, temporada y propietarios en la península: incidencias en verano, averías en comunidades con mucha rotación y dudas sobre renovaciones cuando el mercado presiona. Livendia canaliza todo con el inquilino para que no perdáis fines de semana en llamadas.",
+    whyIntro:
+      "En Teatinos, El Palo o municipios como Torremolinos o Rincón de la Victoria es frecuente que el propietario no pueda desplazarse en 24 h. Un gestor profesional amortigua conflictos sobre suministros, ocupación y reparaciones antes de que escalen a la junta de vecinos.",
+    howIntro:
+      "Mismo protocolo Livendia en cuatro hitos: onboarding, intermediación con el arrendatario, ejecución de incidencias y reporting — válido para vivienda habitual o segunda residencia en la costa.",
+    testimonialsTitle: "Propietarios en Málaga que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Tengo piso en Teatinos y vivo en Madrid. Antes perdía noches con WhatsApp del inquilino; ahora Livendia coordina técnico y comunidad y yo solo veo el resumen cuando toca autorizar.",
+        author: "Laura P.",
+        role: "Propietaria, Teatinos",
+      },
+      {
+        quote:
+          "Apartamento en la costa alquilado todo el año. Filtran incidencias menores y cuando hubo humedad coordinaron empresa sin que yo llamara tres veces al vecino.",
+        author: "Antonio R.",
+        role: "Propietario, Torremolinos",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Málaga desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+  },
 ];

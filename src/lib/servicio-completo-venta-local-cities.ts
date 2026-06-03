@@ -7,6 +7,7 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "barcelona",
   "valencia",
   "malaga",
+  "sevilla",
   "bilbao",
 ];
 
@@ -178,6 +179,36 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_CITIES: ServicioCompletoVentaLocalCit
     ],
     finalCtaLead:
       `Contrata el servicio completo de venta (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y cierra en Málaga con gestor personal hasta la escritura.`,
+  },
+  {
+    slug: "sevilla",
+    city: "Sevilla",
+    schemaAdministrativeArea: "Andalucía",
+    heroLead:
+      "En Sevilla capital y área metropolitana, vende tu vivienda a un comprador particular con un gestor inmobiliario experto: reserva, arras, documentación y coordinación pre-escritura — sin pagar comisión del 3–5 % cuando ya tienes comprador.",
+    whyIntro:
+      "En Sevilla es habitual vender entre particulares (Idealista, recomendación o comprador ya encontrado). Las plantillas de reserva y arras suelen proteger al vendedor; sin gestor, plazos, derramas o cargas ocultas pueden retrasar meses la operación o costarte miles de euros.",
+    agencyIntro:
+      `En un piso de 250.000 €, una comisión del 3 % son 7.500 € más IVA. El servicio completo de venta Livendia (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) concentra el valor en contratos y documentación, no en exclusivas ni carteles.`,
+    howIntro:
+      "Mismo protocolo en Triana, Nervión, Los Remedios, Macarena, Tomares o Dos Hermanas: estudio de operación, contratos, checklist documental y seguimiento hasta firma.",
+    testimonialsTitle: "Propietarios en Sevilla que vendieron con gestor Livendia",
+    testimonials: [
+      {
+        quote:
+          "Vendíamos en Nervión con comprador particular. Livendia revisó la reserva, redactó arras equilibradas y coordinó la comunidad sin firmar exclusiva con una inmobiliaria.",
+        author: "Raquel & Pablo",
+        role: "Vendedores, Nervión",
+      },
+      {
+        quote:
+          "Ahorramos la comisión de intermediación y tuvimos un gestor que nos guió con plusvalía municipal y calendario de notaría hasta escritura.",
+        author: "Manuel G.",
+        role: "Propietario, Los Remedios",
+      },
+    ],
+    finalCtaLead:
+      `Contrata el servicio completo de venta (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y cierra en Sevilla con gestor personal hasta la escritura.`,
   },
   {
     slug: "bilbao",

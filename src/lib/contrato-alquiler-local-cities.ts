@@ -17,6 +17,8 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona",
   "valencia",
   "asturias",
+  "sevilla",
+  "malaga",
 ];
 
 export function isContratoAlquilerLocalSlugPublished(slug: string): boolean {

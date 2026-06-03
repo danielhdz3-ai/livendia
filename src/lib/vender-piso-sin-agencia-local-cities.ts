@@ -203,6 +203,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     faq: faqForCity("Sevilla"),
     analyticsPlacement: "vender_piso_sevilla",
     gestorCtaPlacement: "vender_piso_sevilla",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/sevilla",
   },
   {
     slug: "barcelona",
