@@ -675,7 +675,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
   },
 ];
 
-/** Servicios con precio fijo para JSON-LD (LegalService + OfferCatalog con Service). */
+/** Catálogo de servicios (precios en UI; no se emite Offer en JSON-LD para evitar errores Merchant en GSC). */
 export const GESTORIA_SCHEMA_OFFERS = [
   {
     slug: "acompanamiento-reserva-arras",

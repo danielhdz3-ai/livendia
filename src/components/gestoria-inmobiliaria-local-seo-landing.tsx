@@ -12,10 +12,7 @@ import {
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
 } from "@/lib/catalog.public";
-import {
-  GESTORIA_SCHEMA_OFFERS,
-  type GestoriaInmobiliariaLocalLandingConfig,
-} from "@/lib/gestoria-inmobiliaria-local-cities";
+import type { GestoriaInmobiliariaLocalLandingConfig } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
@@ -50,33 +47,6 @@ function GestoriaLocalJsonLd({
   const base = getSiteUrl().replace(/\/$/, "");
   const pageUrl = `${base}${path}`;
 
-  /** Ofertas enlazadas a la ficha del servicio (Service, no Product → evita errores de Merchant listings). */
-  const catalogOffers = GESTORIA_SCHEMA_OFFERS.map((item) => {
-    const serviceUrl = `${base}/servicios/${item.slug}`;
-    const price = Number(item.price);
-    return {
-      "@type": "Offer" as const,
-      url: serviceUrl,
-      price,
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification" as const,
-        price,
-        priceCurrency: "EUR",
-        valueAddedTaxIncluded: true,
-        description: "IVA incluido",
-        ...("unitText" in item && item.unitText ? { unitText: item.unitText } : {}),
-      },
-      itemOffered: {
-        "@type": "Service" as const,
-        name: item.name,
-        url: serviceUrl,
-        provider: { "@id": `${base}/#organization` },
-      },
-    };
-  });
-
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
@@ -95,15 +65,6 @@ function GestoriaLocalJsonLd({
             "@type": "AdministrativeArea",
             name: administrativeArea,
           },
-        },
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: `Servicios de gestoría inmobiliaria en ${city}`,
-          itemListElement: catalogOffers.map((offer, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: offer,
-          })),
         },
       },
       {
