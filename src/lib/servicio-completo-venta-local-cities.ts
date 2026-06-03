@@ -1,4 +1,6 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { VENTA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-venta-local-differentiation";
 
 export const SERVICIO_COMPLETO_VENTA_LOCAL_BASE = "/servicios/servicio-completo-venta-local";
 
@@ -22,7 +24,7 @@ export type ServicioCompletoVentaLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
-};
+} & LocalCityLandingFields;
 
 export type ServicioCompletoVentaLocalCityDefinition = Omit<
   ServicioCompletoVentaLocalLandingConfig,
@@ -38,8 +40,10 @@ export function localServicioCompletoVentaHref(slug: string): string {
 export function toVentaCompletaLandingConfig(
   def: ServicioCompletoVentaLocalCityDefinition,
 ): ServicioCompletoVentaLocalLandingConfig {
+  const diff = VENTA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   return {
     ...def,
+    ...diff,
     path: localServicioCompletoVentaHref(def.slug),
   };
 }

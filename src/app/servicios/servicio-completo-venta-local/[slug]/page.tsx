@@ -29,18 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
+  const config = toVentaCompletaLandingConfig(city);
   const canonical = `${getSiteUrl()}${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}/${slug}`;
-  const isMadrid = slug === "madrid";
-  const title = isMadrid
-    ? "Vender piso en Madrid sin agencia | Gestor inmobiliario Livendia"
-    : `Vender piso en ${city.city} sin agencia | Gestor inmobiliario Livendia`;
-  const description = isMadrid
-    ? "Vende en Madrid entre particulares si ya tienes comprador: trámites, reserva, arras y escritura. 890 € IVA incl. Sin comisiones del 3–5 %."
-    : `Vende en ${city.city} entre particulares con gestor especializado en la venta: reserva, arras, documentación y escritura. 890 € IVA incl. Sin comisiones del 3–5 %.`;
+  const title =
+    config.metaTitle ?? `Vender piso en ${city.city} sin agencia | Gestor inmobiliario Livendia`;
+  const description =
+    config.metaDescription ??
+    `Vende en ${city.city} entre particulares con gestor especializado en la venta: reserva, arras, documentación y escritura. 890 € IVA incl. Sin comisiones del 3–5 %.`;
 
   return {
     title,
     description,
+    ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },
     openGraph: {
       title: `Venta con gestor en ${city.city} | Livendia`,

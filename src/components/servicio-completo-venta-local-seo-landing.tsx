@@ -126,7 +126,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
     },
   ];
 
-  const benefits = [
+  const defaultBenefits = [
     {
       icon: Users,
       title: "Gestor especializado en venta",
@@ -153,6 +153,27 @@ export async function ServicioCompletoVentaLocalSeoLanding({
     },
   ];
 
+  const benefitStyle = [
+    { icon: Users, color: "from-blue-500 to-blue-600" },
+    { icon: Banknote, color: "from-emerald-500 to-emerald-600" },
+    { icon: Home, color: "from-cyan-500 to-cyan-600" },
+    { icon: FileText, color: "from-indigo-500 to-indigo-600" },
+    { icon: Shield, color: "from-violet-500 to-violet-600" },
+    { icon: Scale, color: "from-purple-500 to-purple-600" },
+  ] as const;
+
+  const benefits =
+    config.localBenefits?.map((b, idx) => {
+      const style = benefitStyle[idx % benefitStyle.length];
+      return { ...b, icon: style.icon, color: style.color };
+    }) ?? defaultBenefits;
+
+  const heroBullets = config.heroBullets ?? [
+    "Gestor personal para tu venta",
+    "Reserva y arras redactadas por expertos",
+    "Evita comisiones altas de agencia",
+  ];
+
   const stepImages = [
     "/images/servicio-completo-venta-hero.jpg",
     "/images/contratodearras.jpg",
@@ -176,11 +197,11 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Vender sin agencia · {config.city}
+                    {config.heroBadge ?? `Vender sin agencia · ${config.city}`}
                   </div>
 
                   <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-5xl">
-                    Vender tu piso en {config.city} con gestor inmobiliario especializado
+                    {config.heroH1 ?? `Vender tu piso en ${config.city} con gestor inmobiliario especializado`}
                   </h1>
 
                   <p className="mt-6 text-lg leading-relaxed text-blue-50 sm:text-xl">{config.heroLead}</p>
@@ -193,11 +214,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                   </div>
 
                   <ul className="mt-8 space-y-3">
-                    {[
-                      "Gestor personal para tu venta",
-                      "Reserva y arras redactadas por expertos",
-                      "Evita comisiones altas de agencia",
-                    ].map((line) => (
+                    {heroBullets.map((line) => (
                       <li key={line} className="flex items-center gap-3">
                         <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
                         <span className="text-base sm:text-lg">{line}</span>
@@ -302,12 +319,15 @@ export async function ServicioCompletoVentaLocalSeoLanding({
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
-                  ¿Por qué vender en {config.city} con Livendia?
+                  {config.whyTitle ?? `¿Por qué vender en ${config.city} con Livendia?`}
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
+                {config.whySubtitle ? (
+                  <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-[#475569]">{config.whySubtitle}</p>
+                ) : null}
               </div>
 
-              <div className="mt-16 grid gap-8 sm:grid-cols-2">
+              <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {benefits.map((benefit) => {
                   const Icon = benefit.icon;
                   return (
@@ -326,6 +346,17 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.localZones ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  {config.localZonesHeading ?? `Dónde vendemos con gestor en ${config.city}`}
+                </h2>
+                <p className="mt-4 text-center text-lg leading-relaxed text-[#475569]">{config.localZones}</p>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

@@ -1,4 +1,5 @@
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { VENDER_PISO_DIFFERENTIATION } from "@/lib/vender-piso-sin-agencia-differentiation";
 
 export const VENTA_PARTICULAR_TRAMITES = [
   {
@@ -376,11 +377,30 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
 export function toVenderPisoSinAgenciaConfig(
   def: VenderPisoSinAgenciaCityDefinition,
 ): VenderPisoSinAgenciaLandingConfig {
-  return { ...def, path: localVenderPisoSinAgenciaHref(def.slug) };
+  const diff = VENDER_PISO_DIFFERENTIATION[def.slug];
+  return {
+    ...def,
+    ...(diff?.keywords ? { keywords: [...diff.keywords] } : {}),
+    ...(diff?.metaTitle ? { metaTitle: diff.metaTitle } : {}),
+    ...(diff?.metaDescription ? { metaDescription: diff.metaDescription } : {}),
+    ...(diff?.tramitesAreaNote ? { tramitesAreaNote: diff.tramitesAreaNote } : {}),
+    ...(diff?.benefitsAreaNote ? { benefitsAreaNote: diff.benefitsAreaNote } : {}),
+    ...(diff?.faq ? { faq: diff.faq } : {}),
+    copy: { ...def.copy, ...diff?.copy },
+    path: localVenderPisoSinAgenciaHref(def.slug),
+  };
 }
 
 export function getVenderPisoSinAgenciaCity(slug: string): VenderPisoSinAgenciaCityDefinition | undefined {
   return VENDER_PISO_SIN_AGENCIA_CITIES.find((c) => c.slug === slug);
+}
+
+/** Config lista para render (merge de copy diferenciado por ciudad). */
+export function getVenderPisoSinAgenciaLandingConfig(
+  slug: string,
+): VenderPisoSinAgenciaLandingConfig | undefined {
+  const def = getVenderPisoSinAgenciaCity(slug);
+  return def ? toVenderPisoSinAgenciaConfig(def) : undefined;
 }
 
 export function isVenderPisoSinAgenciaSlugPublished(slug: string): boolean {

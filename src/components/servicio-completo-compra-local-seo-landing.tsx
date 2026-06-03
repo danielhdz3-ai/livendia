@@ -29,10 +29,12 @@ function LocalCompraCompletaJsonLd({
   path,
   city,
   administrativeArea,
+  description,
 }: {
   path: string;
   city: string;
   administrativeArea: string;
+  description?: string;
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const graph = {
@@ -40,6 +42,7 @@ function LocalCompraCompletaJsonLd({
     "@type": "Service",
     name: `Servicio completo de compra con gestor experto en ${city}`,
     description:
+      description ??
       "Acompañamiento profesional desde la reserva hasta la escritura: revisión documental, defensa frente a cláusulas abusivas y gestor dedicado.",
     serviceType: "Acompañamiento integral en compraventa de vivienda",
     provider: {
@@ -112,7 +115,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
     },
   ];
 
-  const benefits = [
+  const defaultBenefits = [
     {
       icon: Shield,
       title: "Gestor experto que cuida de ti",
@@ -155,6 +158,27 @@ export async function ServicioCompletoCompraLocalSeoLanding({
     },
   ];
 
+  const benefitStyle = [
+    { icon: Shield, color: "from-blue-500 to-blue-600" },
+    { icon: FileText, color: "from-cyan-500 to-cyan-600" },
+    { icon: Eye, color: "from-teal-500 to-teal-600" },
+    { icon: Scale, color: "from-indigo-500 to-indigo-600" },
+    { icon: MessageCircle, color: "from-violet-500 to-violet-600" },
+    { icon: Clock, color: "from-purple-500 to-purple-600" },
+  ] as const;
+
+  const benefits =
+    config.localBenefits?.map((b, idx) => {
+      const style = benefitStyle[idx % benefitStyle.length];
+      return { ...b, icon: style.icon, color: style.color };
+    }) ?? defaultBenefits;
+
+  const heroBullets = config.heroBullets ?? [
+    "Gestor personal dedicado a tu compra",
+    "Protección contra prácticas abusivas",
+    "Revisión completa: reserva, arras y escritura",
+  ];
+
   const stepImages = [
     "/images/gestoria3.jpg",
     "/images/contratodearras.jpg",
@@ -168,6 +192,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
         path={config.path}
         city={config.city}
         administrativeArea={config.schemaAdministrativeArea}
+        description={config.metaDescription}
       />
       <div className="flex min-h-screen flex-col bg-white">
         <PublicHeader />
@@ -194,20 +219,14 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                     </div>
                   </div>
 
-                  <div className="mt-8 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Gestor personal dedicado a tu compra</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Protección contra prácticas abusivas</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                      <span className="text-lg">Revisión completa: reserva, arras y escritura</span>
-                    </div>
-                  </div>
+                  <ul className="mt-8 space-y-3">
+                    {heroBullets.map((line) => (
+                      <li key={line} className="flex items-center gap-3">
+                        <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
+                        <span className="text-lg">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
                     <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
@@ -242,11 +261,12 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
-                  ¿Por qué comprar en {config.city} con Livendia?
+                  {config.whyTitle ?? `¿Por qué comprar en ${config.city} con Livendia?`}
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
                 <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-[#475569]">
-                  Un gestor inmobiliario experto que revisa tu compra con seguridad de principio a fin.
+                  {config.whySubtitle ??
+                    "Un gestor inmobiliario experto que revisa tu compra con seguridad de principio a fin."}
                 </p>
               </div>
 
@@ -270,6 +290,17 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.localZones ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  {config.localZonesHeading ?? `Zonas de ${config.city} donde acompañamos compradores`}
+                </h2>
+                <p className="mt-4 text-center text-lg leading-relaxed text-[#475569]">{config.localZones}</p>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

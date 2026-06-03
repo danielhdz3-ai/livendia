@@ -1,4 +1,6 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { COMPRA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-compra-local-differentiation";
 
 /**
  * Landings SEO locales: servicio completo de compra por ciudad.
@@ -20,17 +22,13 @@ export type ServicioCompletoCompraLocalLandingConfig = {
   path: string;
   city: string;
   schemaAdministrativeArea: string;
-  heroBadge?: string;
-  heroH1?: string;
-  metaTitle?: string;
-  metaDescription?: string;
   heroLead: string;
   whyIntro: string;
   howIntro: string;
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
-};
+} & LocalCityLandingFields;
 
 export type ServicioCompletoCompraLocalCityDefinition = Omit<
   ServicioCompletoCompraLocalLandingConfig,
@@ -46,8 +44,10 @@ export function localServicioCompletoCompraHref(slug: string): string {
 export function toCompraCompletaLandingConfig(
   def: ServicioCompletoCompraLocalCityDefinition,
 ): ServicioCompletoCompraLocalLandingConfig {
+  const diff = COMPRA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   return {
     ...def,
+    ...diff,
     path: localServicioCompletoCompraHref(def.slug),
   };
 }
@@ -156,11 +156,6 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     slug: "bilbao",
     city: "Bilbao",
     schemaAdministrativeArea: "País Vasco",
-    metaTitle: "Comprar piso entre particulares en Bilbao | Asesor experto Livendia",
-    metaDescription:
-      "¿Compras de particular a particular en Bilbao? Gestor inmobiliario experto: revisión de reserva y arras, defensa frente a cláusulas abusivas y acompañamiento hasta escritura. 890 € IVA incl.",
-    heroBadge: "Compra entre particulares · Bilbao",
-    heroH1: "Compras de particular a particular en Bilbao — con asesor experto en todo el proceso",
     heroLead:
       "¿Compras piso de particular a particular en Bilbao o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — el mismo acompañamiento profesional en Abando, Deusto, Getxo o el Gran Bilbao.",
     whyIntro:
@@ -189,11 +184,6 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     slug: "sevilla",
     city: "Sevilla",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Comprar piso entre particulares en Sevilla | Asesor experto Livendia",
-    metaDescription:
-      "¿Compras de particular a particular en Sevilla? Gestor inmobiliario experto: revisión de reserva y arras, sin depender de comisiones de agencia. Acompañamiento hasta escritura. 890 € IVA incl.",
-    heroBadge: "Compra entre particulares · Sevilla",
-    heroH1: "Compra de particular a particular en Sevilla — con asesor experto en todo el proceso",
     heroLead:
       "¿Compras piso de particular a particular en Sevilla o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas desequilibradas y te acompaña hasta la escritura — el mismo acompañamiento profesional en Triana, Nervión, Los Remedios, Tomares o el área metropolitana.",
     whyIntro:
@@ -222,11 +212,6 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     slug: "malaga",
     city: "Málaga",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Comprar piso entre particulares en Málaga | Asesor experto Livendia",
-    metaDescription:
-      "¿Compras de particular a particular en Málaga o Costa del Sol? Gestor inmobiliario experto: reserva, arras y escritura revisadas. Sin pagar comisiones de agencia. 890 € IVA incl.",
-    heroBadge: "Compra entre particulares · Málaga",
-    heroH1: "Compra de particular a particular en Málaga — con asesor experto en todo el proceso",
     heroLead:
       "¿Compras piso de particular a particular en Málaga, la costa o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en Centro, Teatinos, El Palo, Torremolinos o Rincón de la Victoria.",
     whyIntro:

@@ -1,35 +1,35 @@
 import { VenderPisoSinAgenciaLocalSeoLanding } from "@/components/vender-piso-sin-agencia-local-seo-landing";
 import {
-  getVenderPisoSinAgenciaCity,
+  getVenderPisoSinAgenciaLandingConfig,
   localVenderPisoSinAgenciaHref,
-  toVenderPisoSinAgenciaConfig,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
-const city = getVenderPisoSinAgenciaCity("bilbao")!;
-const canonical = `${getSiteUrl()}${localVenderPisoSinAgenciaHref("bilbao")}`;
+const slug = "bilbao";
+const config = getVenderPisoSinAgenciaLandingConfig(slug)!;
+const canonical = `${getSiteUrl()}${localVenderPisoSinAgenciaHref(slug)}`;
 
 export const metadata: Metadata = {
-  title: city.metaTitle,
-  description: city.metaDescription,
+  title: config.metaTitle,
+  description: config.metaDescription,
   alternates: { canonical },
-  keywords: [...city.keywords],
+  keywords: [...config.keywords],
   openGraph: {
-    title: city.metaTitle,
-    description: city.metaDescription,
+    title: config.metaTitle,
+    description: config.metaDescription,
     url: canonical,
     locale: "es_ES",
     type: "website",
     images: [
       {
         url: "/images/servicio-completo-venta-hero.jpg",
-        alt: "Vender piso sin agencia en Bilbao con Livendia",
+        alt: config.copy?.imageAlt ?? `Vender piso sin agencia en ${config.city} con Livendia`,
       },
     ],
   },
 };
 
 export default function VenderPisoSinAgenciaBilbaoPage() {
-  return <VenderPisoSinAgenciaLocalSeoLanding config={toVenderPisoSinAgenciaConfig(city)} />;
+  return <VenderPisoSinAgenciaLocalSeoLanding config={config} />;
 }
