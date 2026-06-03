@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ShieldCheck, Users, Sparkles, CheckCircle2 } from "lucide-react";
 
 export function LoginForm() {
@@ -283,6 +284,8 @@ export function LoginForm() {
             </ul>
           </div>
         </div>
+
+        <GestorContactCta placement="login" className="mt-10 rounded-2xl" />
       </div>
     </div>
   );

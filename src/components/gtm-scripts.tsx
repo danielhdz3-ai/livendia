@@ -1,13 +1,14 @@
 import Script from "next/script";
+import { getGaMeasurementId } from "@/lib/ga-measurement-id";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
 
 /**
- * Google Tag Manager — solo se carga si NEXT_PUBLIC_GTM_ID está definida.
+ * Google Tag Manager — solo si NEXT_PUBLIC_GTM_ID está definida y no hay GA4 directo.
  * @see https://tagmanager.google.com/
  */
 export function GtmScripts() {
-  if (!gtmId) return null;
+  if (!gtmId || getGaMeasurementId()) return null;
 
   return (
     <>

@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import {
   GESTORIA_INMOBILIARIA_LOCAL_BASE,
   getPublishedGestoriaInmobiliariaLocalCities,
   localGestoriaInmobiliariaHref,
+  type GestoriaInmobiliariaLocalCityDefinition,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
+import {
+  CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+} from "@/lib/catalog.public";
+import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
+import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -13,22 +21,30 @@ const canonical = `${getSiteUrl()}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
   title: "Gestoría inmobiliaria por ciudad | Livendia",
-  description:
-    "Landings locales con compraventa (424 € y 666 €), contratos LAU/arras (120-145 €) y administración de alquileres 49 €/mes. Precios fijos y JSON-LD LegalService.",
+  description: SITE_DEFAULT_DESCRIPTION,
   alternates: { canonical },
   openGraph: {
     title: "Gestoría inmobiliaria por ciudad | Livendia",
     description:
-      "Compraventa, contratos y administración de alquileres por ciudad. Piloto: Zaragoza, Alicante y Murcia.",
+      "Compraventa, contratos y administración de alquileres. Madrid, Valencia, Barcelona y más ciudades — mismo servicio online en toda España.",
     url: canonical,
     locale: "es_ES",
     type: "website",
   },
 };
 
+function splitFeaturedCities(published: GestoriaInmobiliariaLocalCityDefinition[]) {
+  const prioritySet = new Set<string>(HOME_COVERAGE_CITY_SLUGS);
+  const featured = HOME_COVERAGE_CITY_SLUGS.map((slug) => published.find((c) => c.slug === slug)).filter(
+    (c): c is GestoriaInmobiliariaLocalCityDefinition => c != null,
+  );
+  const rest = published.filter((c) => !prioritySet.has(c.slug));
+  return { featured, rest };
+}
+
 export default function GestoriaIndexPage() {
   const publishedCities = getPublishedGestoriaInmobiliariaLocalCities();
-
+  const { featured, rest } = splitFeaturedCities(publishedCities);
   return (
     <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
       <PublicHeader />
@@ -40,30 +56,54 @@ export default function GestoriaIndexPage() {
               Gestoría inmobiliaria por ciudad
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
-              Cada landing integra compraventa entre particulares, redacción de contratos legales y administración
-              mensual del alquiler con precios fijos y marcado Schema.org LegalService + Product.
-            </p>
-          </div>
+              Gestoría inmobiliaria online en Madrid, Valencia, Barcelona y toda España. Compraventa entre
+              particulares, contratos LAU/arras ({CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada{" "}
+              {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración 49 €/mes.
+            </p>          </div>
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold text-[#1E293B]">Ciudades piloto publicadas</h2>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {publishedCities.map((c) => (
+          <h2 className="text-2xl font-bold text-[#1E293B]">Madrid, Valencia y Barcelona</h2>
+          <p className="mt-2 max-w-2xl text-[#475569]">
+            Misma operativa online en las tres ciudades: gestor dedicado, precios fijos y panel de cliente.
+          </p>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+            {featured.map((c) => (
               <li key={c.slug}>
                 <Link
                   href={localGestoriaInmobiliariaHref(c.slug)}
-                  className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
+                  className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-[#1A4FBF]/20 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
                 >
                   <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
                   <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver landing →</span>
+                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver gestoría →</span>
                 </Link>
               </li>
             ))}
           </ul>
+
+          {rest.length > 0 ? (
+            <>
+              <h2 className="mt-14 text-2xl font-bold text-[#1E293B]">Más ciudades</h2>
+              <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {rest.map((c) => (
+                  <li key={c.slug}>
+                    <Link
+                      href={localGestoriaInmobiliariaHref(c.slug)}
+                      className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
+                    >
+                      <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
+                      <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
+                      <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver landing →</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </section>
-      </main>
+
+        <HomeCoverageCities variant="compact" />      </main>
       <SiteFooter />
     </div>
   );

@@ -6,6 +6,7 @@ import { BlogStructuredData } from "@/components/blog-structured-data";
 import { BlogMarkdown } from "@/components/blog-markdown";
 import { BlogToc } from "@/components/blog-toc";
 import { BlogCategoryCta } from "@/components/blog-category-cta";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { BlogPostNav } from "@/components/blog-post-nav";
 import {
   BLOG_CATEGORY_IMAGES,
@@ -122,6 +123,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 </nav>
               ) : null}
               <BlogMarkdown content={post.content} />
+              <GestorContactCta placement="blog_post" className="mt-12 rounded-2xl" />
               <BlogCategoryCta category={post.category} />
               <BlogPostNav prev={prev} next={next} />
             </div>

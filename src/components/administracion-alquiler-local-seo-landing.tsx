@@ -7,6 +7,7 @@ import {
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import type { AdministracionAlquilerLocalLandingConfig } from "@/lib/administracion-alquiler-local-cities";
+import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
@@ -169,20 +170,20 @@ export async function AdministracionAlquilerLocalSeoLanding({
         <main className="flex-1">
           <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
-              <div className="grid min-h-[650px] lg:grid-cols-2">
-                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     Administración de alquiler · {config.city}
                   </div>
 
-                  <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
                     ¿Necesitas administración profesional del alquiler en {config.city}?
                   </h1>
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
 
                   <div className="mt-10 flex items-baseline gap-3">
-                    <span className="text-6xl font-extrabold">49 €</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">49 €</span>
                     <div className="text-lg text-blue-100">
                       <div>/mes · IVA incluido</div>
                     </div>
@@ -239,7 +240,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative h-[300px] lg:h-auto">
+                <div className="relative h-44 sm:h-56 lg:h-auto">
                   <Image
                     src="/images/modelo3.jpg"
                     alt={`Administración de alquiler en ${config.city}`}
@@ -256,7 +257,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Qué incluye el servicio en {config.city}?
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
@@ -289,7 +290,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">¿Cómo funciona?</h2>
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">¿Cómo funciona?</h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">{config.howIntro}</p>
               </div>
 
@@ -337,7 +338,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">{config.testimonialsTitle}</h2>
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">{config.testimonialsTitle}</h2>
               </div>
 
               <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -376,12 +377,12 @@ export async function AdministracionAlquilerLocalSeoLanding({
               <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 ring-1 ring-slate-200">
                 <h3 className="text-lg font-bold text-[#1E293B]">¿Aún no has firmado? Contrato por temporada</h3>
                 <p className="mt-2 text-[#475569]">
-                  Si buscas alquilar por meses concretos en Mallorca, revisa nuestra landing de{" "}
+                  Si buscas alquilar por meses concretos en {config.city}, revisa nuestra landing de{" "}
                   <Link
                     href={localContratoAlquilerTemporadaHref("mallorca")}
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
-                    contrato de alquiler por temporada (120 €)
+                    contrato de alquiler por temporada ({CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL})
                   </Link>
                   .
                 </p>
@@ -410,7 +411,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
 
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl font-extrabold sm:text-5xl">
+              <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
                 ¿Listo para despreocuparte en {config.city}?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>

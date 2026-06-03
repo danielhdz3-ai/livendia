@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,9 +25,9 @@ const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "Revisión documental post-arras — 169 € | Livendia",
+  title: `Revisión documental post-arras — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
   description:
-    "Verificación documental tras firmar arras y antes de escriturar: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. 169 € IVA incl.",
+    `Verificación documental tras firmar arras y antes de escriturar: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl.`,
 };
 
 const INCLUDED = [
@@ -45,7 +46,7 @@ const INCLUDED = [
 export default async function RevisionDocumentalPostArrasPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "revision-documental-post-arras") ?? null;
-  const priceLabel = service ? `${(service.price_cents / 100).toFixed(0)} €` : "169 €";
+  const priceLabel = resolveServicePriceLabel(service, REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL);
 
   const steps = [
     {
@@ -87,7 +88,7 @@ export default async function RevisionDocumentalPostArrasPage() {
                   <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
                     Compraventa · Post-arras
                   </div>
-                  <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                  <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-5xl">
                     Pack Revisión Documental post-arras
                   </h1>
                   <p className="mt-5 text-lg leading-relaxed text-blue-100 sm:text-xl">
@@ -95,7 +96,7 @@ export default async function RevisionDocumentalPostArrasPage() {
                     para compradores que quieren certeza total antes de la compra definitiva.
                   </p>
                   <div className="mt-8 flex items-baseline gap-2">
-                    <span className="text-5xl font-extrabold sm:text-6xl">{priceLabel}</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
                     <span className="text-lg text-blue-200">IVA incluido</span>
                   </div>
                   <div className="mt-8 flex flex-wrap gap-4">
@@ -215,7 +216,7 @@ export default async function RevisionDocumentalPostArrasPage() {
                   </Link>{" "}
                   o el{" "}
                   <Link href="/servicios/servicio-completo-compra" className="font-semibold text-[#1A4FBF] hover:underline">
-                    servicio completo hasta escritura (666 €)
+                    servicio completo hasta escritura (890 €)
                   </Link>
                   .
                 </p>

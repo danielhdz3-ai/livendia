@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, FileText, Wrench } from "lucide-react";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
+import { TrustRatingStructuredData } from "@/components/trust-rating-structured-data";
 import { TrustReviewsBlock } from "@/components/trust-reviews-block";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 
@@ -115,14 +116,14 @@ export default async function AdministracionAlquilerPage() {
         {/* Hero Section - Estilo Inmonest */}
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 min-h-[650px]">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               {/* Contenido izquierda */}
               <div className="px-6 py-16 lg:px-12 lg:py-24 flex flex-col justify-center">
                 <div className="inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm mb-8">
                   Servicio destacado
                 </div>
                 
-                <h1 className="text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+                <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-7xl">
                   Administración de Alquileres
                 </h1>
                 
@@ -131,7 +132,7 @@ export default async function AdministracionAlquilerPage() {
                 </p>
 
                 <div className="mt-10 flex items-baseline gap-3">
-                  <span className="text-6xl font-extrabold">49 €</span>
+                  <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">49 €</span>
                   <div className="text-lg text-blue-100">
                     <div>/mes · IVA incluido</div>
                   </div>
@@ -186,7 +187,7 @@ export default async function AdministracionAlquilerPage() {
               </div>
 
               {/* Imagen derecha */}
-              <div className="relative h-[300px] lg:h-auto">
+              <div className="relative h-44 sm:h-56 lg:h-auto">
                 <Image
                   src="/images/modelo3.jpg"
                   alt="Confianza que se construye"
@@ -204,7 +205,7 @@ export default async function AdministracionAlquilerPage() {
         <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 ¿Qué incluye el servicio?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
@@ -243,7 +244,7 @@ export default async function AdministracionAlquilerPage() {
         <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 ¿Cómo funciona?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
@@ -304,7 +305,7 @@ export default async function AdministracionAlquilerPage() {
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 Lo que dicen nuestros clientes
               </h2>
             </div>
@@ -360,6 +361,7 @@ export default async function AdministracionAlquilerPage() {
         </section>
 
         <section className="px-4 py-12 sm:px-6">
+          <TrustRatingStructuredData />
           <div className="mx-auto max-w-6xl">
             <TrustReviewsBlock />
             <p className="mt-6 text-center text-sm text-[#64748B]">
@@ -375,7 +377,7 @@ export default async function AdministracionAlquilerPage() {
         {/* CTA Final */}
         <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-4xl font-extrabold sm:text-5xl">
+            <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
               ¿Listo para despreocuparte?
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">

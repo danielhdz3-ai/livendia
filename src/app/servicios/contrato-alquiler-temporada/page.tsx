@@ -3,20 +3,22 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, FileText, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contrato de alquiler por temporada",
+  title: `Contrato de alquiler por temporada — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. | Livendia`,
   description:
-    "Para estancias temporales, estudios o trabajo. Regulación específica fuera de la LAU estándar. 120€ IVA incluido.",
+    `Para estancias temporales, estudios o trabajo. Regulación específica fuera de la LAU estándar. ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido.`,
 };
 
 export default async function ContratoTemporadaPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "contrato-alquiler-temporada") ?? null;
+  const priceLabel = resolveServicePriceLabel(service, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
 
   const features = [
     {
@@ -55,7 +57,7 @@ export default async function ContratoTemporadaPage() {
                 <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
                   Alquiler temporal
                 </div>
-                <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
                   Contrato de Alquiler por Temporada
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-blue-100">
@@ -63,13 +65,13 @@ export default async function ContratoTemporadaPage() {
                 </p>
 
                 <div className="mt-8 flex items-baseline gap-2">
-                  <span className="text-5xl font-extrabold">120 €</span>
+                  <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
                   <span className="text-lg text-blue-200">IVA incluido</span>
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
-                    Contratar por 120 €
+                    Contratar por {priceLabel}
                   </ContratarServicioButton>
                   <Link
                     href="/servicios"

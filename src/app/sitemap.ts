@@ -21,10 +21,18 @@ import {
   getPublishedServicioCompletoCompraLocalCities,
 } from "@/lib/servicio-completo-compra-local-cities";
 import {
+  SERVICIO_COMPLETO_VENTA_LOCAL_BASE,
+  getPublishedServicioCompletoVentaLocalCities,
+} from "@/lib/servicio-completo-venta-local-cities";
+import {
   GESTORIA_INMOBILIARIA_LOCAL_BASE,
   getPublishedGestoriaInmobiliariaLocalCities,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import {
+  getPublishedVenderPisoSinAgenciaCities,
+  localVenderPisoSinAgenciaHref,
+} from "@/lib/vender-piso-sin-agencia-local-cities";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -35,7 +43,9 @@ const SERVICIO_SLUGS = [
   "contrato-arras-confirmatorias",
   "contrato-arras-penitenciales",
   "servicio-completo-compra",
+  "servicio-completo-venta",
   "revision-documental-post-arras",
+  "reserva-de-compra",
   "acompanamiento-reserva-arras",
   "contrato-de-arras",
   "contrato-de-alquiler",
@@ -44,6 +54,7 @@ const SERVICIO_SLUGS = [
   "administracion-alquiler-local",
   "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
+  "servicio-completo-venta-local",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -58,9 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contacto`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/equipo`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.82 },
-    { url: `${base}/legal/aviso-legal`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/legal/privacidad`, lastModified: now, changeFrequency: "yearly", priority: 0.35 },
-    { url: `${base}/legal/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/mapa-del-sitio`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const servicios: MetadataRoute.Sitemap = SERVICIO_SLUGS.map((slug) => ({
@@ -108,6 +117,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     }));
 
+  const ventaCompletaLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedServicioCompletoVentaLocalCities().map((c) => ({
+      url: `${base}${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.84,
+    }));
+
   const gestoriaHub: MetadataRoute.Sitemap = [
     {
       url: `${base}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`,
@@ -132,6 +149,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  const ventaSeoLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinAgenciaCities().map((c) => ({
+    url: `${base}${localVenderPisoSinAgenciaHref(c.slug)}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.88,
+  }));
+
   return [
     ...core,
     ...servicios,
@@ -140,6 +164,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...administracionAlquilerLocalCiudades,
     ...contratoAlquilerTemporadaLocalCiudades,
     ...compraCompletaLocalCiudades,
+    ...ventaCompletaLocalCiudades,
+    ...ventaSeoLocal,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...blogArticles,

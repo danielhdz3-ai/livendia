@@ -6,6 +6,7 @@ import {
   getPublishedContratoAlquilerTemporadaLocalCities,
   localContratoAlquilerTemporadaHref,
 } from "@/lib/contrato-alquiler-temporada-local-cities";
+import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -14,7 +15,7 @@ const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}`;
 export const metadata: Metadata = {
   title: "Contrato de alquiler por temporada por ciudad | Livendia",
   description:
-    "Landings locales para arrendamientos temporales: estancias estacionales, trabajo o segunda residencia. Redacción gestor desde 120 € IVA incl.",
+    `Landings locales para arrendamientos temporales: estancias estacionales, trabajo o segunda residencia. Redacción gestor desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl.`,
   alternates: { canonical },
   openGraph: {
     title: "Contrato de alquiler por temporada por ciudad | Livendia",

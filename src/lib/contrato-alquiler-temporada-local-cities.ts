@@ -3,6 +3,8 @@
  * Rutas: /servicios/contrato-alquiler-temporada-local/[slug]
  */
 
+import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
+
 export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE = "/servicios/contrato-alquiler-temporada-local";
 
 export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_PUBLISHED_SLUGS: readonly string[] = ["mallorca"];
@@ -60,7 +62,7 @@ export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_CITIES: ContratoAlquilerTemporada
     city: "Palma de Mallorca",
     schemaAdministrativeArea: "Islas Baleares",
     heroLead:
-      "En Mallorca el alquiler por temporada concentra estancias de verano, desplazamientos laborales, estudios y segundas residencias con plazos acotados. Un contrato genérico LAU no encaja: hace falta redacción específica fuera del arrendamiento habitual, con duración, prórroga, suministros y entrega de llaves bien cerrados. Livendia redacta o revisa tu contrato de temporada con gestor inmobiliario desde 120 € IVA incluido.",
+      `En Mallorca el alquiler por temporada concentra estancias de verano, desplazamientos laborales, estudios y segundas residencias con plazos acotados. Un contrato genérico LAU no encaja: hace falta redacción específica fuera del arrendamiento habitual, con duración, prórroga, suministros y entrega de llaves bien cerrados. Livendia redacta o revisa tu contrato de temporada con gestor inmobiliario desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido.`,
     whyIntro:
       "Las Baleares mezclan demanda turística, nómadas digitales y propietarios que alquilan meses concretos en Palma, Calvià, Alcúdia o Manacor. Las plantillas copiadas confunden temporada contractual con otros regímenes y dejan lagunas sobre mobiliario, limpieza de salida o depósitos. Adaptamos el texto al uso real acordado y al marco aplicable a arrendamientos temporales.",
     howIntro:
@@ -81,6 +83,6 @@ export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_CITIES: ContratoAlquilerTemporada
       },
     ],
     finalCtaLead:
-      "Contrata tu contrato de alquiler por temporada en Mallorca por 120 € IVA incluido. Pago seguro, panel online e inventario incluido en el expediente gestor.",
+      `Contrata tu contrato de alquiler por temporada en Mallorca por ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido. Pago seguro, panel online e inventario incluido en el expediente gestor.`,
   },
 ];

@@ -3,14 +3,7 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
-const SERVICIO_LINKS = [
-  { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
-  { href: "/servicios/servicio-completo-compra", label: "Acompañamiento de compra" },
-  { href: "/servicios/contrato-de-arras", label: "Contrato de arras" },
-  { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
-  { href: "/servicios/contrato-de-alquiler", label: "Contrato de alquiler" },
-] as const;
+import { SERVICE_LANDING_NAV_GROUPS } from "@/lib/service-landing-nav-links";
 
 export function NavServicesDropdown() {
   const [open, setOpen] = useState(false);
@@ -51,20 +44,38 @@ export function NavServicesDropdown() {
       </button>
       {open ? (
         <div
-          className="absolute left-1/2 top-full z-[60] mt-3 min-w-[min(280px,calc(100vw-2rem))] -translate-x-1/2 rounded-xl border border-slate-200 bg-white py-2 shadow-xl md:left-0 md:translate-x-0"
+          className="absolute left-1/2 top-full z-[60] mt-3 max-h-[min(70vh,28rem)] min-w-[min(320px,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-xl border border-slate-200 bg-white py-2 shadow-xl md:left-0 md:translate-x-0"
           role="menu"
         >
-          {SERVICIO_LINKS.map((item) => (
+          {SERVICE_LANDING_NAV_GROUPS.map((group, groupIndex) => (
+            <div key={group.title}>
+              {groupIndex > 0 ? <div className="my-1 border-t border-slate-100" aria-hidden /> : null}
+              <p className="px-5 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                {group.title}
+              </p>
+              {group.links.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  role="menuitem"
+                  className="block px-5 py-2.5 text-sm font-medium text-[#1E293B] hover:bg-slate-50 hover:text-[#1A4FBF]"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+          <div className="mt-1 border-t border-slate-100 pt-1">
             <Link
-              key={item.href}
-              href={item.href}
+              href="/servicios"
               role="menuitem"
-              className="block px-5 py-3 text-sm font-medium text-[#1E293B] hover:bg-slate-50 hover:text-[#1A4FBF]"
+              className="block px-5 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-slate-50"
               onClick={() => setOpen(false)}
             >
-              {item.label}
+              Ver catálogo completo
             </Link>
-          ))}
+          </div>
         </div>
       ) : null}
     </div>

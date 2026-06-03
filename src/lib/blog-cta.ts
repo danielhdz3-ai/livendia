@@ -1,4 +1,5 @@
 import type { BlogCategory } from "@/lib/blog-types";
+import { CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
 
 export type BlogCategoryCta = {
   headline: string;
@@ -15,7 +16,7 @@ export function getCategoryCta(category: BlogCategory): BlogCategoryCta {
     case "alquiler":
       return {
         headline: "¿Necesitas un contrato de alquiler bien hecho?",
-        subline: "Redacción o revisión LAU por gestores expertos. Entrega en 48–72 h, IVA incluido.",
+        subline: `Redacción o revisión LAU por gestores expertos. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl., entrega 48–72 h.`,
         contratarHref: "/servicios/contrato-alquiler-lau",
         contratarLabel: "Contratar contrato LAU",
         infoHref: "/servicios/contrato-de-alquiler",

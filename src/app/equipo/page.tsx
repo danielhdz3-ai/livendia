@@ -96,13 +96,13 @@ export default function EquipoPage() {
       <main className="flex-1">
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
-            <div className="grid min-h-[650px] lg:grid-cols-2">
-              <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+              <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                 <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                   Nuestro equipo
                 </div>
 
-                <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl xl:text-7xl">
                   Gestoría inmobiliaria digital con alma jurídica
                 </h1>
 
@@ -171,7 +171,7 @@ export default function EquipoPage() {
         <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">Cómo entendemos nuestro trabajo</h2>
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">Cómo entendemos nuestro trabajo</h2>
               <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">
                 No solo completamos fichas: estudiamos riesgos, anticipamos preguntas y dejamos claro cada escenario antes
                 de firmar un papel que te va a comprometer años.
@@ -205,7 +205,7 @@ export default function EquipoPage() {
         <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">Tres instantes del despacho</h2>
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">Tres instantes del despacho</h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
                 Fotografías que resumen mejor que mil titulares qué esperar cuando Livendia entra en una operación
                 contigo.
@@ -239,7 +239,7 @@ export default function EquipoPage() {
 
         <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-4xl font-extrabold sm:text-5xl">¿Hablamos de tu siguiente contrato?</h2>
+            <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">¿Hablamos de tu siguiente contrato?</h2>
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">
               Ya sea una arras compleja, un alquiler con muchos matices o una compraventa que quieres blindar ante sorpresas,
               tienes detrás personas que llevan ese tipo de dossier día sí y día también.

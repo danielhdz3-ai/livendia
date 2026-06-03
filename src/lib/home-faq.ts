@@ -27,7 +27,7 @@ export const HOME_FAQ_ITEMS: FaqItem[] = [
   {
     question: "¿Atendéis en toda España?",
     answer:
-      "Sí. Trabajamos de forma digital con clientes en toda España (y consultas desde Portugal en algunos casos). Para alquiler y contratos aplicamos la normativa española vigente (LAU, arras, compraventa).",
+      "Sí. Trabajamos de forma digital con clientes en toda España (y consultas desde Portugal en algunos casos). Tenemos landings orientativas en Madrid, Valencia y Barcelona; el servicio es el mismo online en cualquier provincia. Para alquiler y contratos aplicamos la normativa española vigente (LAU, arras, compraventa).",
   },
   {
     question: "¿Puedo contratar solo un contrato sin administración?",

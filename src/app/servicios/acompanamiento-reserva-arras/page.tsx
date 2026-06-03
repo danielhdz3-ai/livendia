@@ -54,7 +54,7 @@ export default async function AcompanamientoReservaArrasPage() {
                   <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
                     Compraventa
                   </div>
-                  <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                  <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
                     Acompañamiento: reserva hasta arras
                   </h1>
                   <p className="mt-5 text-xl leading-relaxed text-blue-100">
@@ -62,7 +62,7 @@ export default async function AcompanamientoReservaArrasPage() {
                       "Servicio de asesoramiento jurídico desde la reserva hasta el contrato de arras."}
                   </p>
                   <div className="mt-8 flex items-baseline gap-2">
-                    <span className="text-5xl font-extrabold">424 €</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">424 €</span>
                     <span className="text-lg text-blue-200">IVA incluido</span>
                   </div>
                   <div className="mt-10 flex flex-wrap gap-4">

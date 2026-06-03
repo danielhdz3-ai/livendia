@@ -2,6 +2,8 @@ import { BUSINESS_EMAIL, BUSINESS_NAME, businessNap } from "@/lib/business-nap";
 
 import { getContactPhoneE164Plus } from "@/lib/contact";
 
+import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
+
 import { buildLocalBusinessSchema } from "@/lib/schema-local-business";
 
 import { getSiteUrl } from "@/lib/site-url";
@@ -10,9 +12,7 @@ import { SITE_SITELINKS } from "@/lib/sitelinks";
 
 
 
-const siteDescription =
-
-  "Gestoría inmobiliaria digital: contratos de alquiler y compraventa, administración de alquileres y acompañamiento hasta escritura.";
+const siteDescription = SITE_DEFAULT_DESCRIPTION;
 
 
 
@@ -43,10 +43,6 @@ export function WebsiteStructuredData() {
 
 
   const localBusiness = buildLocalBusinessSchema();
-
-  const { ratingValue, reviewCount } = businessNap.aggregateRating;
-
-
 
   const graph = {
 
@@ -93,16 +89,6 @@ export function WebsiteStructuredData() {
             closes: businessNap.openingHours.closes,
 
           },
-
-        },
-
-        aggregateRating: {
-
-          "@type": "AggregateRating",
-
-          ratingValue,
-
-          reviewCount,
 
         },
 

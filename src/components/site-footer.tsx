@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MessageCircle } from "lucide-react";
+import { FooterDiscoverabilityLinks } from "@/components/footer-discoverability-links";
+import { FooterParticularesTestimonials } from "@/components/footer-particulares-testimonials";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
 import { businessNap, getWhatsAppHref } from "@/lib/business-nap";
-import { buildLocalBusinessSchema } from "@/lib/schema-local-business";
 
 const waHref = getWhatsAppHref();
 
@@ -11,15 +14,13 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto">
-      {/* División sombreada superior */}
-      <div className="h-8 bg-gradient-to-b from-white via-slate-50 to-slate-100" />
-      <div className="h-4 bg-gradient-to-b from-slate-100 to-[#1E3A8A]/5" />
-      
+      <GestorContactCta placement="footer" />
+      <FooterParticularesTestimonials />
       {/* Footer principal con fondo azul */}
       <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
         <div className="grid items-stretch lg:grid-cols-2">
           {/* Foto a ras de celda: cover + overflow (sin márgenes tipo “marco”) */}
-          <div className="relative h-[280px] w-full min-[480px]:h-[340px] lg:h-full lg:min-h-[24rem] overflow-hidden">
+          <div className="relative hidden h-[280px] w-full min-[480px]:h-[340px] lg:block lg:h-full lg:min-h-[24rem] overflow-hidden">
             <Image
               src="/images/chicasofa4.png"
               alt="Gestiona tranquila desde casa con Livendia"
@@ -31,10 +32,10 @@ export function SiteFooter() {
           </div>
 
           {/* Contenido del footer */}
-          <div className="px-6 py-6 lg:px-10 lg:py-8">
+          <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-8">
             {/* Título principal */}
             <div className="mb-5">
-              <h2 className="text-4xl lg:text-5xl font-extrabold mb-2 leading-tight">
+              <h2 className="text-3xl font-extrabold mb-2 leading-tight sm:text-4xl lg:text-5xl">
                 Livendia
               </h2>
               <p className="text-xl lg:text-2xl font-bold mb-3 leading-tight text-blue-100">
@@ -80,6 +81,14 @@ export function SiteFooter() {
                       className="text-blue-100 hover:text-white transition-colors"
                     >
                       Contrato Alquiler LAU
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/servicios/servicio-completo-venta"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Acompañamiento de venta
                     </Link>
                   </li>
                   <li>
@@ -178,6 +187,11 @@ export function SiteFooter() {
               </div>
             </div>
 
+            <FooterDiscoverabilityLinks />
+            <div className="mt-4 border-t border-white/20 pt-4">
+              <ServicioCompletoVentaLocalCityLinks variant="footer" />
+            </div>
+
             {/* Legal y copyright */}
             <div className="mt-4 border-t border-white/20 pt-3">
               <div className="flex flex-wrap gap-2 text-xs text-blue-200 mb-1">
@@ -197,11 +211,6 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessSchema({ withContext: true })) }}
-        />
       </div>
     </footer>
   );

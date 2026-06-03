@@ -7,12 +7,19 @@ import {
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
+  CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
+  CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+  REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
+} from "@/lib/catalog.public";
+import {
   GESTORIA_SCHEMA_OFFERS,
   type GestoriaInmobiliariaLocalLandingConfig,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   CheckCircle,
@@ -33,36 +40,42 @@ function GestoriaLocalJsonLd({
   path,
   city,
   administrativeArea,
+  faq,
 }: {
   path: string;
   city: string;
   administrativeArea: string;
+  faq: GestoriaInmobiliariaLocalLandingConfig["faq"];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const pageUrl = `${base}${path}`;
 
-  const offers = GESTORIA_SCHEMA_OFFERS.map((item) => ({
-    "@type": "Offer" as const,
-    price: item.price,
-    priceCurrency: "EUR",
-    ...( "unitText" in item && item.unitText
-      ? { priceSpecification: { "@type": "UnitPriceSpecification", price: item.price, priceCurrency: "EUR", unitText: item.unitText } }
-      : {}),
-    availability: "https://schema.org/InStock",
-    url: pageUrl,
-    itemOffered: {
-      "@type": "Product",
-      name: item.name,
-      brand: { "@type": "Brand", name: "Livendia" },
-      offers: {
-        "@type": "Offer",
-        price: item.price,
+  /** Ofertas enlazadas a la ficha del servicio (Service, no Product → evita errores de Merchant listings). */
+  const catalogOffers = GESTORIA_SCHEMA_OFFERS.map((item) => {
+    const serviceUrl = `${base}/servicios/${item.slug}`;
+    const price = Number(item.price);
+    return {
+      "@type": "Offer" as const,
+      url: serviceUrl,
+      price,
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification" as const,
+        price,
         priceCurrency: "EUR",
-        availability: "https://schema.org/InStock",
-        url: pageUrl,
+        valueAddedTaxIncluded: true,
+        description: "IVA incluido",
+        ...("unitText" in item && item.unitText ? { unitText: item.unitText } : {}),
       },
-    },
-  }));
+      itemOffered: {
+        "@type": "Service" as const,
+        name: item.name,
+        url: serviceUrl,
+        provider: { "@id": `${base}/#organization` },
+      },
+    };
+  });
 
   const graph = {
     "@context": "https://schema.org",
@@ -74,11 +87,7 @@ function GestoriaLocalJsonLd({
         description: `Gestoría inmobiliaria en ${city}: compraventa entre particulares, redacción de contratos legales y administración de alquileres con precios fijos.`,
         url: pageUrl,
         inLanguage: "es-ES",
-        provider: {
-          "@type": "Organization",
-          name: "Livendia",
-          url: base,
-        },
+        provider: { "@id": `${base}/#organization` },
         areaServed: {
           "@type": "City",
           name: city,
@@ -87,16 +96,41 @@ function GestoriaLocalJsonLd({
             name: administrativeArea,
           },
         },
-        makesOffer: offers,
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `Servicios de gestoría inmobiliaria en ${city}`,
+          itemListElement: catalogOffers.map((offer, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: offer,
+          })),
+        },
       },
-      ...GESTORIA_SCHEMA_OFFERS.map((item, i) => ({
-        "@type": "Product",
-        "@id": `${pageUrl}#product-${item.slug}`,
-        name: `${item.name} — ${city}`,
-        description: `${item.name} en ${city} con gestoría Livendia. Precio fijo IVA incluido.`,
-        brand: { "@type": "Brand", name: "Livendia" },
-        offers: offers[i],
-      })),
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: base },
+          { "@type": "ListItem", position: 2, name: "Gestoría por ciudad", item: `${base}/gestoria` },
+          { "@type": "ListItem", position: 3, name: city, item: pageUrl },
+        ],
+      },
+      ...(faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              mainEntity: faq.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -106,6 +140,10 @@ function GestoriaLocalJsonLd({
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
+}
+
+function serviceProductHref(slug: string): string {
+  return `/servicios/${slug}`;
 }
 
 function ServicePriceCard({
@@ -125,18 +163,22 @@ function ServicePriceCard({
       <p className="mt-4 flex-1 text-[#64748b] leading-relaxed">{children}</p>
       <div className="mt-6 flex items-baseline gap-2">
         <span className="text-4xl font-extrabold text-[#1E3A8A]">{price}</span>
-        {price.includes("/mes") ? (
-          <span className="text-sm text-[#64748b]">IVA incl.</span>
-        ) : (
-          <span className="text-sm text-[#64748b]">IVA incl.</span>
-        )}
+        <span className="text-sm text-[#64748b]">IVA incl.</span>
       </div>
-      <ContratarSlugButton
-        slug={slug}
-        className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1E40AF]"
-      >
-        Contratar
-      </ContratarSlugButton>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <ContratarSlugButton
+          slug={slug}
+          className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1E40AF]"
+        >
+          Contratar
+        </ContratarSlugButton>
+        <Link
+          href={serviceProductHref(slug)}
+          className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1E3A8A] px-6 py-3 text-sm font-bold text-[#1E3A8A] transition hover:bg-blue-50"
+        >
+          Acceder
+        </Link>
+      </div>
     </article>
   );
 }
@@ -151,6 +193,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
     "acompanamiento-reserva-arras",
     "revision-documental-post-arras",
     "servicio-completo-compra",
+    "servicio-completo-venta",
     "contrato-arras-penitenciales",
     "contrato-alquiler-lau",
     "contrato-alquiler-temporada",
@@ -170,6 +213,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
         path={config.path}
         city={config.city}
         administrativeArea={config.schemaAdministrativeArea}
+        faq={config.faq}
       />
       <div className="flex min-h-screen flex-col bg-white">
         <PublicHeader />
@@ -187,11 +231,15 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   <ul className="mt-8 space-y-3">
                     <li className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
-                      <span>Compraventa: 424 € y 666 € (IVA incl.)</span>
+                      <span>Compraventa: 424 € y 890 € (IVA incl.)</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
-                      <span>Contratos: 120 €, 145 € y 169 € · entrega 48-72 h</span>
+                      <span>
+                        Contratos: LAU {CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada{" "}
+                        {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión {REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}{" "}
+                        · entrega 48-72 h
+                      </span>
                     </li>
                     <li className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
@@ -238,7 +286,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
               <h2 className="mt-4 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">{config.compraventa.h2}</h2>
               <p className="mt-4 max-w-3xl text-lg text-[#64748b]">{config.compraventa.intro}</p>
-              <div className="mt-10 grid gap-6 md:grid-cols-2">
+              <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <ServicePriceCard
                   slug="acompanamiento-reserva-arras"
                   price="424 €"
@@ -248,10 +296,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                 </ServicePriceCard>
                 <ServicePriceCard
                   slug="servicio-completo-compra"
-                  price="666 €"
+                  price="890 €"
                   title={config.compraventa.h3Completo}
                 >
                   {config.compraventa.completoCopy}
+                </ServicePriceCard>
+                <ServicePriceCard
+                  slug="servicio-completo-venta"
+                  price="890 €"
+                  title="Servicio completo de venta"
+                >
+                  Para propietarios que venden entre particulares: reserva, arras, documentación del inmueble y
+                  asesoramiento hasta la escritura con gestor personalizado.
                 </ServicePriceCard>
               </div>
             </div>
@@ -275,18 +331,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                 </ServicePriceCard>
                 <ServicePriceCard
                   slug="revision-documental-post-arras"
-                  price="169 €"
+                  price={REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}
                   title="Pack Revisión Documental post-arras"
                 >
                   Verificación integral tras firmar arras: actas, derramas, ITE, nota registral e informe con
                   llamada de veredicto antes de escriturar en {config.city}.
                 </ServicePriceCard>
-                <ServicePriceCard slug="contrato-alquiler-lau" price="120 €" title={config.contratos.h3Lau}>
+                <ServicePriceCard slug="contrato-alquiler-lau" price={CONTRATO_ALQUILER_LAU_PRICE_LABEL} title={config.contratos.h3Lau}>
                   {config.contratos.lauCopy}
                 </ServicePriceCard>
                 <ServicePriceCard
                   slug="contrato-alquiler-temporada"
-                  price="120 €"
+                  price={CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}
                   title={config.contratos.h3Temporada}
                 >
                   {config.contratos.temporadaCopy}
@@ -295,7 +351,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               <p className="mt-6 text-sm text-[#64748b]">
                 También disponible{" "}
                 <ContratarSlugButton slug="contrato-alquiler-habitacion" className="font-semibold text-[#1E3A8A] underline">
-                  Contrato de Habitación — 120 €
+                  Contrato de Habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
                 </ContratarSlugButton>
               </p>
             </div>
@@ -330,15 +386,23 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   <h3 className="text-xl font-bold text-[#1E293B]">{config.administracion.h3Precio}</h3>
                   <p className="mt-3 text-[#64748b] leading-relaxed">{config.administracion.precioCopy}</p>
                   <div className="mt-6 flex items-baseline gap-2">
-                    <span className="text-5xl font-extrabold text-[#1E3A8A]">49 €</span>
+                    <span className="text-4xl font-extrabold text-[#1E3A8A] sm:text-5xl lg:text-6xl">49 €</span>
                     <span className="text-lg text-[#64748b]">/mes · IVA incl.</span>
                   </div>
-                  <ContratarSlugButton
-                    slug="administracion-alquiler"
-                    className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-4 text-base font-bold text-white transition hover:bg-[#1E40AF]"
-                  >
-                    Contratar administración
-                  </ContratarSlugButton>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <ContratarSlugButton
+                      slug="administracion-alquiler"
+                      className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-4 text-base font-bold text-white transition hover:bg-[#1E40AF]"
+                    >
+                      Contratar administración
+                    </ContratarSlugButton>
+                    <Link
+                      href={serviceProductHref("administracion-alquiler")}
+                      className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1E3A8A] px-6 py-4 text-base font-bold text-[#1E3A8A] transition hover:bg-blue-50"
+                    >
+                      Acceder
+                    </Link>
+                  </div>
                 </article>
               </div>
             </div>
@@ -368,7 +432,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   slug="servicio-completo-compra"
                   className="rounded-full bg-white px-8 py-3 font-bold text-[#1E3A8A] hover:bg-blue-50"
                 >
-                  Servicio completo 666 €
+                  servicio completo 890 €
                 </ContratarSlugButton>
                 <a
                   href={getContactPhoneTelHref()}

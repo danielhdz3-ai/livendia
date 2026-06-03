@@ -18,6 +18,26 @@ export const BUSINESS_OPENING_HOURS = {
 
 export const BUSINESS_AREA_SERVED = ["España", "Portugal"] as const;
 
+/** Dirección postal (ficha Google Business). Configurar en Vercel para LocalBusiness válido. */
+export function buildBusinessPostalAddress(): Record<string, string> | null {
+  const streetAddress = process.env.NEXT_PUBLIC_BUSINESS_STREET_ADDRESS?.trim();
+  const addressLocality = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS_LOCALITY?.trim();
+  const addressRegion = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS_REGION?.trim();
+  const postalCode = process.env.NEXT_PUBLIC_BUSINESS_POSTAL_CODE?.trim();
+  const addressCountry = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS_COUNTRY?.trim() || "ES";
+
+  if (!streetAddress && !addressLocality) return null;
+
+  return {
+    "@type": "PostalAddress",
+    ...(streetAddress ? { streetAddress } : {}),
+    ...(addressLocality ? { addressLocality } : {}),
+    ...(addressRegion ? { addressRegion } : {}),
+    ...(postalCode ? { postalCode } : {}),
+    addressCountry,
+  };
+}
+
 export function getBusinessUrl(): string {
   return getSiteUrl().replace(/\/$/, "");
 }

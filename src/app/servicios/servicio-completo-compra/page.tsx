@@ -3,14 +3,19 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import {
+  SERVICIO_COMPLETO_CV_PRICE_LABEL,
+  SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
+} from "@/lib/catalog.public";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, FileText, Home, Eye, Scale } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Servicio completo de compra: de la reserva a la escritura",
   description:
-    "Acompañamiento profesional completo en tu compra inmobiliaria. Desde la reserva hasta la escritura con gestor experto que cuida de tus intereses. 666€ todo incluido.",
+    "Acompañamiento profesional completo en tu compra inmobiliaria. Desde la reserva hasta la escritura con gestor experto que cuida de tus intereses. 890€ todo incluido.",
 };
 
 const WA_SERVICIO_COMPLETO = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
@@ -19,6 +24,12 @@ const waHrefServicioCompleto = `https://wa.me/${WA_SERVICIO_COMPLETO.replace(/\D
 export default async function ServicioCompletoCompraPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
+  const priceLabel = service
+    ? `${(service.price_cents / 100).toFixed(0)} €`
+    : SERVICIO_COMPLETO_CV_PRICE_LABEL;
+  const priceLabelCompact = service
+    ? `${(service.price_cents / 100).toFixed(0)}€`
+    : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
 
   const howItWorks = [
     {
@@ -113,14 +124,14 @@ export default async function ServicioCompletoCompraPage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 min-h-[650px]">
+            <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               {/* Contenido izquierda */}
               <div className="px-6 py-16 lg:px-12 lg:py-24 flex flex-col justify-center">
                 <div className="inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm mb-8">
                   Producto estrella
                 </div>
                 
-                <h1 className="text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+                <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-7xl">
                   Servicio Completo de Compra
                 </h1>
                 
@@ -129,7 +140,7 @@ export default async function ServicioCompletoCompraPage() {
                 </p>
 
                 <div className="mt-10 flex items-baseline gap-3">
-                  <span className="text-6xl font-extrabold">666 €</span>
+                  <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
                   <div className="text-lg text-blue-100">
                     <div>IVA incluido · Pago único</div>
                   </div>
@@ -166,7 +177,7 @@ export default async function ServicioCompletoCompraPage() {
               </div>
 
               {/* Imagen derecha */}
-              <div className="relative h-[300px] lg:h-auto">
+              <div className="relative h-44 sm:h-56 lg:h-auto">
                 <Image
                   src="/images/gestoria3.jpg"
                   alt="Servicio Completo de Compra"
@@ -184,7 +195,7 @@ export default async function ServicioCompletoCompraPage() {
         <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 ¿Por qué necesitas este servicio?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
@@ -223,7 +234,7 @@ export default async function ServicioCompletoCompraPage() {
         <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 ¿Cómo trabajamos contigo?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
@@ -284,7 +295,7 @@ export default async function ServicioCompletoCompraPage() {
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                 Experiencias reales de clientes
               </h2>
             </div>
@@ -342,7 +353,7 @@ export default async function ServicioCompletoCompraPage() {
         {/* CTA Final */}
         <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-4xl font-extrabold sm:text-5xl">
+            <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
               ¿Listo para comprar con seguridad?
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">
@@ -351,7 +362,7 @@ export default async function ServicioCompletoCompraPage() {
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105">
-                <span>Contratar ahora · 666€</span>
+                <span>Contratar ahora · {priceLabelCompact}</span>
               </ContratarServicioButton>
               <a
                 href={waHrefServicioCompleto}
@@ -363,7 +374,13 @@ export default async function ServicioCompletoCompraPage() {
               </a>
             </div>
 
-            <p className="mt-8 text-sm text-blue-200">
+                <p className="mt-6 text-sm text-blue-200">
+              ¿Vendes tu piso entre particulares?{" "}
+              <Link href="/servicios/servicio-completo-venta" className="font-semibold underline hover:text-white">
+                Ver servicio completo de venta
+              </Link>
+            </p>
+            <p className="mt-2 text-sm text-blue-200">
               ¿Tienes dudas? Escríbenos y te asesoramos sin compromiso
             </p>
           </div>

@@ -2,6 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ContactForm } from "./contact-form";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 
@@ -75,6 +76,8 @@ export default function ContactoPage() {
             </div>
           </div>
         </div>
+
+        <GestorContactCta placement="contacto" />
       </main>
       <SiteFooter />
     </div>

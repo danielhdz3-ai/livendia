@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: city.metaTitle,
     description: city.metaDescription,
     alternates: { canonical },
+    ...(city.keywords?.length ? { keywords: [...city.keywords] } : {}),
     openGraph: {
       title: city.metaTitle,
       description: city.metaDescription,

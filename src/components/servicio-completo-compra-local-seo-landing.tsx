@@ -4,6 +4,10 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 import { getPublicServices } from "@/lib/catalog";
 import type { ServicioCompletoCompraLocalLandingConfig } from "@/lib/servicio-completo-compra-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import {
+  SERVICIO_COMPLETO_CV_PRICE_LABEL,
+  SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
+} from "@/lib/catalog.public";
 import Image from "next/image";
 import {
   Shield,
@@ -70,6 +74,12 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 }) {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
+  const priceLabel = service
+    ? `${(service.price_cents / 100).toFixed(0)} €`
+    : SERVICIO_COMPLETO_CV_PRICE_LABEL;
+  const priceLabelCompact = service
+    ? `${(service.price_cents / 100).toFixed(0)}€`
+    : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
 
   const howItWorks = [
     {
@@ -165,20 +175,20 @@ export async function ServicioCompletoCompraLocalSeoLanding({
         <main className="flex-1">
           <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
-              <div className="grid min-h-[650px] lg:grid-cols-2">
-                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Compra con gestor · {config.city}
+                    {config.heroBadge ?? `Compra con gestor · ${config.city}`}
                   </div>
 
-                  <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                    ¿Necesitas comprar con todas las garantías para ti?
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
+                    {config.heroH1 ?? "¿Necesitas comprar con todas las garantías para ti?"}
                   </h1>
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
 
                   <div className="mt-10 flex items-baseline gap-3">
-                    <span className="text-5xl font-extrabold sm:text-6xl">666 €</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
                     <div className="text-lg text-blue-100">
                       <div>IVA incluido · Pago único</div>
                     </div>
@@ -214,7 +224,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative order-first h-[320px] sm:h-[420px] lg:order-none lg:h-auto lg:min-h-[520px]">
+                <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
                     src="/images/gestoria3.jpg"
                     alt={`Servicio completo de compra con gestor en ${config.city}`}
@@ -231,7 +241,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Por qué comprar en {config.city} con Livendia?
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
@@ -264,7 +274,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Cómo te acompañamos en tu compra?
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">{config.howIntro}</p>
@@ -314,7 +324,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   {config.testimonialsTitle}
                 </h2>
               </div>
@@ -369,14 +379,14 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl font-extrabold sm:text-5xl">
+              <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
                 ¿Listo para comprar con seguridad en {config.city}?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105">
-                  Contratar ahora · 666€
+                  Contratar ahora · {priceLabelCompact}
                 </ContratarServicioButton>
                 <a
                   href={waHref}

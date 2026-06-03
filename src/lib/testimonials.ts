@@ -35,4 +35,11 @@ export const LIVENDIA_TESTIMONIALS: Testimonial[] = [
     context: "Compradores · Zaragoza",
     service: "compraventa",
   },
+  {
+    quote:
+      "Vendimos entre particulares sin agencia: nos redactaron reserva y arras, nos dijeron qué papeles pedir y llegamos a escritura sin sustos.",
+    author: "María G.",
+    context: "Propietaria vendedora · Sevilla",
+    service: "compraventa",
+  },
 ];

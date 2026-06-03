@@ -6,6 +6,12 @@ import {
 } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
+import {
+  CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
+  CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+  resolveServicePriceLabel,
+} from "@/lib/catalog.public";
 import type { ContratoAlquilerLocalLandingConfig } from "@/lib/contrato-alquiler-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
@@ -81,6 +87,10 @@ export async function ContratoAlquilerLocalSeoLanding({
   if (lau) servicesBySlug["contrato-alquiler-lau"] = lau;
   if (temp) servicesBySlug["contrato-alquiler-temporada"] = temp;
   if (hab) servicesBySlug["contrato-alquiler-habitacion"] = hab;
+
+  const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
+  const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
+  const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
 
   const howItWorks = [
     {
@@ -178,13 +188,13 @@ export async function ContratoAlquilerLocalSeoLanding({
         <main className="flex-1">
           <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
-              <div className="grid min-h-[650px] lg:grid-cols-2">
-                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     Contrato de alquiler · {config.city}
                   </div>
 
-                  <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
                     ¿Quieres redactar un contrato de alquiler por expertos?
                   </h1>
 
@@ -201,19 +211,19 @@ export async function ContratoAlquilerLocalSeoLanding({
                         slug="contrato-alquiler-lau"
                         className="rounded-full bg-white/90 px-4 py-2 font-semibold text-[#1E3A8A] hover:bg-white"
                       >
-                        Contratar LAU
+                        Contratar LAU · {lauPrice}
                       </ContratarSlugButton>
                       <ContratarSlugButton
                         slug="contrato-alquiler-temporada"
                         className="rounded-full border border-white/60 px-4 py-2 font-semibold text-white hover:bg-white/10"
                       >
-                        Contratar temporada
+                        Contratar temporada · {tempPrice}
                       </ContratarSlugButton>
                       <ContratarSlugButton
                         slug="contrato-alquiler-habitacion"
                         className="rounded-full border border-white/60 px-4 py-2 font-semibold text-white hover:bg-white/10"
                       >
-                        Contratar habitación
+                        Contratar habitación · {habPrice}
                       </ContratarSlugButton>
                     </div>
                   </div>
@@ -238,7 +248,7 @@ export async function ContratoAlquilerLocalSeoLanding({
                       slug="contrato-alquiler-lau"
                       className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50"
                     >
-                      Contratar contrato LAU
+                      Contratar LAU · {lauPrice}
                     </ContratarSlugButton>
                     <a
                       href={waHref}
@@ -251,7 +261,7 @@ export async function ContratoAlquilerLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative order-first h-[320px] sm:h-[420px] lg:order-none lg:h-auto lg:min-h-[520px]">
+                <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
                     src="/images/contratodealquiler.jpg"
                     alt={`Gestor revisando contrato de alquiler en ${config.city}`}
@@ -268,7 +278,7 @@ export async function ContratoAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Por qué pasar tu contrato de alquiler por Livendia en {config.city}?
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
@@ -298,7 +308,7 @@ export async function ContratoAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Cómo trabajamos tu contrato de alquiler?
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">{config.howIntro}</p>
@@ -348,7 +358,7 @@ export async function ContratoAlquilerLocalSeoLanding({
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">{config.testimonialsTitle}</h2>
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">{config.testimonialsTitle}</h2>
               </div>
 
               <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -401,7 +411,7 @@ export async function ContratoAlquilerLocalSeoLanding({
 
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl font-extrabold sm:text-5xl">
+              <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
                 ¿Listo para alquilar sin sustos en {config.city}?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>
@@ -411,19 +421,19 @@ export async function ContratoAlquilerLocalSeoLanding({
                   slug="contrato-alquiler-lau"
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105"
                 >
-                  Contratar LAU
+                  Contratar LAU · {lauPrice}
                 </ContratarSlugButton>
                 <ContratarSlugButton
                   slug="contrato-alquiler-temporada"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold transition hover:bg-white/10"
                 >
-                  Contratar temporada
+                  Contratar temporada · {tempPrice}
                 </ContratarSlugButton>
                 <ContratarSlugButton
                   slug="contrato-alquiler-habitacion"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold transition hover:bg-white/10"
                 >
-                  Contratar habitación
+                  Contratar habitación · {habPrice}
                 </ContratarSlugButton>
                 <a
                   href={waHref}

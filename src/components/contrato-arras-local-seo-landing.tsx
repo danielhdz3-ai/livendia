@@ -176,13 +176,13 @@ export async function ContratoArrasLocalSeoLanding({
         <main className="flex-1">
           <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
-              <div className="grid min-h-[650px] lg:grid-cols-2">
-                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     Contrato de arras · {config.city}
                   </div>
 
-                  <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
                     ¿Necesitas redactar un contrato de arras por un profesional?
                   </h1>
 
@@ -243,7 +243,7 @@ export async function ContratoArrasLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative order-first h-[320px] sm:h-[420px] lg:order-none lg:h-auto lg:min-h-[520px]">
+                <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
                     src="/images/contratodearras.jpg"
                     alt={`Revisión profesional de contrato de arras en ${config.city}`}
@@ -260,7 +260,7 @@ export async function ContratoArrasLocalSeoLanding({
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Por qué revisar las arras con Livendia en {config.city}?
                 </h2>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
@@ -294,7 +294,7 @@ export async function ContratoArrasLocalSeoLanding({
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
                   ¿Cómo trabajamos tu contrato de arras?
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">{config.howIntro}</p>
@@ -344,7 +344,7 @@ export async function ContratoArrasLocalSeoLanding({
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
-                <h2 className="text-4xl font-extrabold text-[#1E293B] sm:text-5xl">{config.testimonialsTitle}</h2>
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">{config.testimonialsTitle}</h2>
               </div>
 
               <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -397,7 +397,7 @@ export async function ContratoArrasLocalSeoLanding({
 
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl font-extrabold sm:text-5xl">
+              <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
                 ¿Listo para firmar arras con criterio en {config.city}?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>

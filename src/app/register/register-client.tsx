@@ -1,6 +1,10 @@
 "use client";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import {
+  CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+} from "@/lib/catalog.public";
 import { GoogleAuthButton } from "@/components/google-auth-button";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -141,7 +145,8 @@ export function RegisterClient() {
               <div>
                 <h3 className="font-semibold text-white">Precios transparentes</h3>
                 <p className="mt-1 text-sm leading-relaxed text-blue-100">
-                  Tarifas claras sin letra pequeña. Contratos desde 120€, administración desde 49€/mes.
+                  Tarifas claras sin letra pequeña. LAU {CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada{" "}
+                  {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, administración desde 49€/mes.
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-/** Eventos estándar para GTM → GA4 (configurar triggers en contenedor GTM-NCDNCRMH). */
+/** Eventos dataLayer (+ gtag si GA4 directo). Con GTM: triggers en contenedor GTM-NCDNCRMH. */
 
 export type AnalyticsItem = {
   item_id: string;
@@ -13,6 +13,7 @@ export type AnalyticsItem = {
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -20,6 +21,9 @@ export function pushDataLayer(event: string, params?: Record<string, unknown>): 
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({ event, ...params });
+  if (typeof window.gtag === "function") {
+    window.gtag("event", event, params);
+  }
 }
 
 export function trackWhatsAppClick(placement: string, linkUrl?: string): void {

@@ -6,6 +6,7 @@ import {
   isContratoAlquilerTemporadaLocalSlugPublished,
   toContratoAlquilerTemporadaLandingConfig,
 } from "@/lib/contrato-alquiler-temporada-local-cities";
+import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -31,12 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}/${slug}`;
   const title =
     slug === "mallorca"
-      ? `Contrato alquiler por temporada Mallorca — 120 € | Livendia`
-      : `Contrato alquiler por temporada en ${city.city} — 120 € | Livendia`;
+      ? `Contrato alquiler por temporada Mallorca — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`
+      : `Contrato alquiler por temporada en ${city.city} — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`;
   const description =
     slug === "mallorca"
-      ? `Contrato de alquiler por temporada en Mallorca y Palma desde 120 € IVA incl. Estancias estacionales, desplazamiento laboral o segunda residencia. Redacción gestor + inventario. Livendia.`
-      : `Contrato de alquiler por temporada en ${city.city} desde 120 € IVA incl. Redacción profesional, inventario y asesoramiento hasta la firma. Livendia.`;
+      ? `Contrato de alquiler por temporada en Mallorca y Palma desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. Estancias estacionales, desplazamiento laboral o segunda residencia. Redacción gestor + inventario. Livendia.`
+      : `Contrato de alquiler por temporada en ${city.city} desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. Redacción profesional, inventario y asesoramiento hasta la firma. Livendia.`;
 
   return {
     title,

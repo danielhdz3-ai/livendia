@@ -4,6 +4,7 @@ import { ContratoAlquilerLocalCityLinks } from "@/components/contrato-alquiler-l
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
 import { GestoriaInmobiliariaLocalCityLinks } from "@/components/gestoria-inmobiliaria-local-city-links";
 import { ServicioCompletoCompraLocalCityLinks } from "@/components/servicio-completo-compra-local-city-links";
+import { VentaParticularesLocalCityLinks } from "@/components/venta-particulares-local-city-links";
 
 /**
  * Enlaces a landings locales: viven en el blog, no en Servicios (estructura comercial limpia).
@@ -46,6 +47,9 @@ export function BlogLocalCitiesSection() {
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
             <ServicioCompletoCompraLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
+            <VentaParticularesLocalCityLinks />
           </div>
         </div>
       </div>

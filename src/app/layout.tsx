@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { getSiteUrl } from "@/lib/site-url";
 import { AnalyticsBootstrap } from "@/components/analytics-bootstrap";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { GtmScripts } from "@/components/gtm-scripts";
 import { WebsiteStructuredData } from "@/components/website-structured-data";
+import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
+import { PublicMobileChrome } from "@/components/public-mobile-chrome";
+import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -15,8 +19,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 const siteUrl = getSiteUrl();
 const googleVerify = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
-const siteDescription =
-  "Contratos de alquiler (LAU, habitación, temporada), arras y compraventa, y administración de alquileres. Gestores expertos, proceso digital y pago seguro en España.";
+const siteDescription = SITE_DEFAULT_DESCRIPTION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,9 +58,12 @@ export default function RootLayout({
     <html lang="es" className={`${plusJakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-[#1E293B]">
         <WebsiteStructuredData />
+        <GoogleAnalytics />
         <GtmScripts />
         <AnalyticsBootstrap />
         {children}
+        <PublicMobileChrome />
+        <FloatingWhatsAppButton />
       </body>
     </html>
   );

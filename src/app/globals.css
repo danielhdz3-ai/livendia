@@ -23,8 +23,67 @@
   --color-livendia-surface: var(--livendia-surface);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
+@keyframes livendia-wa-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes livendia-wa-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.livendia-wa-fab {
+  animation: livendia-wa-bounce 2.2s ease-in-out infinite;
+}
+
+.livendia-wa-fab-ring {
+  animation: livendia-wa-ring 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (max-width: 639px) {
+  body.livendia-mobile-nav {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.livendia-mobile-nav .livendia-wa-fab-anchor {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.livendia-modal-open .mobile-bottom-nav,
+  body.livendia-modal-open .livendia-wa-fab-anchor,
+  body.livendia-menu-open .livendia-wa-fab-anchor {
+    display: none;
+  }
+
+  body.livendia-menu-open .mobile-bottom-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) {
+  body.livendia-mobile-nav {
+    padding-bottom: 0;
+  }
 }

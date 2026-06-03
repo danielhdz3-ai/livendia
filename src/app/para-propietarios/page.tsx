@@ -1,5 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { TrustRatingStructuredData } from "@/components/trust-rating-structured-data";
 import { TrustReviewsBlock } from "@/components/trust-reviews-block";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -80,6 +81,37 @@ export default async function ParaPropietariosPage() {
           </div>
         </section>
 
+        <section className="border-b border-amber-100 bg-amber-50/80 py-12 sm:py-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid gap-8 rounded-2xl border border-amber-200/80 bg-white p-6 shadow-sm ring-1 ring-amber-100 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-amber-800">Venta entre particulares</p>
+                <h2 className="mt-2 text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                  ¿Vendes tu piso sin agencia?
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#475569]">
+                  Te acompañamos desde la reserva hasta la escritura: gestor personalizado, contratos de reserva y arras,
+                  recopilación de documentación y asesoramiento hasta notaría.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 sm:items-end">
+                <Link
+                  href="/servicios/servicio-completo-venta"
+                  className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-3.5 text-center text-base font-bold text-white hover:bg-[#2563EB]"
+                >
+                  Servicio completo de venta
+                </Link>
+                <p className="text-xs text-amber-900/80">
+                  Madrid · Barcelona · Valencia —{" "}
+                  <Link href="/servicios/servicio-completo-venta-local" className="font-semibold underline">
+                    ver por ciudad
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="border-b border-slate-200 bg-white py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">Cómo funciona</h2>
@@ -120,6 +152,7 @@ export default async function ParaPropietariosPage() {
         </section>
 
         <section className="py-12 sm:py-16">
+          <TrustRatingStructuredData />
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <TrustReviewsBlock
               title="Propietarios que ya delegaron en Livendia"
@@ -161,10 +194,14 @@ export default async function ParaPropietariosPage() {
                 Madrid
               </Link>
               ,{" "}
+              <Link href="/servicios/administracion-alquiler-local/valencia" className="underline">
+                Valencia
+              </Link>
+              ,{" "}
               <Link href="/servicios/administracion-alquiler-local/barcelona" className="underline">
                 Barcelona
               </Link>{" "}
-              y más ciudades.
+              y toda España.
             </p>
           </div>
         </section>

@@ -76,7 +76,7 @@ export function ServicePurchaseCard({
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         <h3 className="text-lg font-bold text-[#1E293B] group-hover:text-[#1A4FBF]">{service.name}</h3>
         {service.description ? (
           <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#475569]">{service.description}</p>
@@ -101,7 +101,7 @@ export function ServicePurchaseCard({
           </ul>
         ) : null}
 
-        <div className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-4 py-3 text-sm font-semibold text-white shadow-md pointer-events-none">
+        <div className="mt-5 flex w-full min-h-11 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-4 py-3 text-sm font-semibold text-white shadow-md pointer-events-none sm:mt-6">
           <span>Ver detalles y contratar</span>
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
