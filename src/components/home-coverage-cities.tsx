@@ -63,6 +63,13 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                     Administración de alquiler — 49 €/mes
                   </Link>
                 </li>
+                {city.temporadaHref ? (
+                  <li>
+                    <Link href={city.temporadaHref} className="font-semibold text-[#1A4FBF] hover:underline">
+                      Contrato alquiler temporada — 200 €
+                    </Link>
+                  </li>
+                ) : null}
               </ul>
             </li>
           ))}

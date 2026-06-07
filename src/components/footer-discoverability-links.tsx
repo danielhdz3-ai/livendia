@@ -8,6 +8,10 @@ import {
   getPublishedContratoAlquilerLocalCities,
 } from "@/lib/contrato-alquiler-local-cities";
 import {
+  CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
+  getPublishedContratoAlquilerTemporadaLocalCities,
+} from "@/lib/contrato-alquiler-temporada-local-cities";
+import {
   CONTRATO_ARRAS_LOCAL_BASE,
   getPublishedContratoArrasLocalCities,
 } from "@/lib/contrato-arras-local-cities";
@@ -31,6 +35,7 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/servicio-completo-compra", label: "Acompañamiento de compra" },
   { href: "/servicios/servicio-completo-venta", label: "Acompañamiento de venta" },
   { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato alquiler habitación" },
+  { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/contrato-arras-confirmatorias", label: "Arras confirmatorias" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
   { href: "/blog", label: "Blog y guías" },
@@ -56,6 +61,7 @@ export function FooterDiscoverabilityLinks() {
   const adminLocal = getPublishedAdministracionAlquilerLocalCities();
   const compraLocal = getPublishedServicioCompletoCompraLocalCities();
   const ventaLocal = getPublishedServicioCompletoVentaLocalCities();
+  const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -128,6 +134,14 @@ export function FooterDiscoverabilityLinks() {
           title="Venta entre particulares por ciudad"
           hub={`${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}`}
           cities={ventaLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Contrato alquiler temporada por ciudad"
+          hub={CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}
+          cities={temporadaLocal.map((c) => ({
+            slug: c.slug,
+            name: c.city === "Palma de Mallorca" ? "Mallorca" : c.city,
+          }))}
         />
       </div>
     </nav>

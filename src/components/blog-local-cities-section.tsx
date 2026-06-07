@@ -21,8 +21,9 @@ export function BlogLocalCitiesSection() {
           Guías y servicios por ciudad
         </h2>
         <p className="mt-3 max-w-3xl text-[#64748b]">
-          Contenido local con precios fijos: compraventa, contratos y administración de alquileres adaptados a cada
-          mercado. Las páginas de contratación siguen en{" "}
+          Contenido local con precios fijos: compraventa, contratos LAU,{" "}
+          <strong className="font-semibold text-[#1E293B]">alquiler por temporada</strong> y administración de
+          alquileres adaptados a cada mercado. Las páginas de contratación siguen en{" "}
           <a href="/servicios" className="font-semibold text-[#1A4FBF] hover:underline">
             Servicios
           </a>
