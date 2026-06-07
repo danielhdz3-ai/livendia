@@ -29,6 +29,7 @@ export function getPublishedContratoAlquilerTemporadaLocalCities(): ContratoAlqu
 }
 
 export type ContratoAlquilerTemporadaLocalLandingConfig = {
+  slug: string;
   path: string;
   city: string;
   schemaAdministrativeArea: string;
@@ -66,6 +67,7 @@ export function toContratoAlquilerTemporadaLandingConfig(
     ...diff,
     ...(seoContent ? { seoContent } : {}),
     ...(faq ? { faq } : {}),
+    slug: def.slug,
     path: localContratoAlquilerTemporadaHref(def.slug),
     adminSlug: def.adminSlug ?? def.slug,
     gestoriaSlug: def.gestoriaSlug ?? def.slug,
