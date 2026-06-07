@@ -9,7 +9,9 @@ import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import type { ContratoAlquilerTemporadaLocalLandingConfig } from "@/lib/contrato-alquiler-temporada-local-cities";
+import { temporadaSavingsDerived } from "@/lib/contrato-alquiler-temporada-local-seo-content";
 import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-local-cities";
+import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
@@ -29,6 +31,10 @@ import {
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
+
+function formatEur(n: number): string {
+  return `${n.toLocaleString("es-ES")} €`;
+}
 
 function LocalTemporadaJsonLd({
   path,
@@ -79,6 +85,12 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (temporada) servicesBySlug["contrato-alquiler-temporada"] = temporada;
   const priceLabel = resolveServicePriceLabel(temporada, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
+  const seo = config.seoContent;
+  const adminSlug = config.adminSlug ?? config.slug;
+  const gestoriaSlug = config.gestoriaSlug ?? config.slug;
+  const savingsRows = seo?.savingsRows.map(temporadaSavingsDerived) ?? [];
+  const highlightRow =
+    savingsRows.find((r) => r.monthlyRent === seo?.highlightRent) ?? savingsRows[0];
 
   const howItWorks = [
     {
@@ -139,7 +151,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
     },
     {
       icon: Clock,
-      title: "Entrega en 48-72 h",
+      title: "Entrega en 24-48 h",
       description: "Tras recibir la información completa, redactamos con los plazos publicados de Livendia.",
       color: "from-violet-500 to-violet-600",
     },
@@ -262,6 +274,29 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             </div>
           </section>
 
+          {seo ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <p className="text-lg leading-relaxed text-[#475569]">{seo.introParagraph}</p>
+              </div>
+            </section>
+          ) : null}
+
+          {seo ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  ¿Cuándo usar un contrato de temporada en {config.city}?
+                </h2>
+                <ul className="mt-6 list-disc space-y-3 pl-6 text-lg leading-relaxed text-[#475569]">
+                  {seo.whenToUseCases.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : null}
+
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
@@ -292,6 +327,113 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {seo ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Qué incluye el contrato de temporada de Livendia
+                </h2>
+                <ul className="mt-6 list-disc space-y-2 pl-6 text-[#475569]">
+                  {seo.includesItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-lg font-semibold text-[#1E3A8A]">
+                  Precio: {priceLabel} IVA incluido · Plazo: 24-48 h laborables
+                </p>
+              </div>
+            </section>
+          ) : null}
+
+          {seo ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-5xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Diferencia entre contrato de temporada y contrato LAU en {config.city}
+                </h2>
+                <div className="mt-8 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
+                  <table className="w-full min-w-[640px] text-left text-sm">
+                    <thead className="bg-[#1E3A8A] text-white">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold">Aspecto</th>
+                        <th className="px-4 py-3 font-semibold">Contrato de temporada</th>
+                        <th className="px-4 py-3 font-semibold">Contrato LAU (vivienda habitual)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 bg-white">
+                      {seo.lauComparisonRows.map((row) => (
+                        <tr key={row.aspect}>
+                          <td className="px-4 py-3 font-medium text-[#1E293B]">{row.aspect}</td>
+                          <td className="px-4 py-3 text-[#475569]">{row.temporada}</td>
+                          <td className="px-4 py-3 text-[#475569]">{row.lau}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {seo && highlightRow ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-5xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
+                  {seo.savingsTitle}
+                </h2>
+                <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-[#64748b]">
+                  {seo.savingsIntro} Con una renta de referencia de {formatEur(highlightRow.monthlyRent)}/mes, Livendia
+                  supone un ahorro de{" "}
+                  <strong className="text-[#1E293B]">{formatEur(highlightRow.savingVsLawyer)}</strong> frente a despacho
+                  de abogados y{" "}
+                  <strong className="text-[#1E293B]">{formatEur(highlightRow.savingVsAgency)}</strong> frente a gestión
+                  inmobiliaria por contrato.
+                </p>
+                <div className="mt-10 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
+                  <table className="w-full min-w-[720px] text-left text-sm">
+                    <thead className="bg-[#1E3A8A] text-white">
+                      <tr>
+                        <th className="px-4 py-3 font-semibold">Renta mensual ref.</th>
+                        <th className="px-4 py-3 font-semibold">Despacho abogados*</th>
+                        <th className="px-4 py-3 font-semibold">Inmobiliaria (contrato)**</th>
+                        <th className="px-4 py-3 font-semibold">Livendia</th>
+                        <th className="px-4 py-3 font-semibold text-emerald-200">Ahorro vs abogado</th>
+                        <th className="px-4 py-3 font-semibold text-emerald-200">Ahorro vs agencia</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 bg-[#F8FAFC]">
+                      {savingsRows.map((row) => (
+                        <tr
+                          key={row.monthlyRent}
+                          className={row.monthlyRent === seo.highlightRent ? "bg-emerald-50/80" : undefined}
+                        >
+                          <td className="px-4 py-3 font-medium text-[#1E293B]">{formatEur(row.monthlyRent)}/mes</td>
+                          <td className="px-4 py-3 text-[#475569]">{formatEur(row.lawyerWithVat)}</td>
+                          <td className="px-4 py-3 text-[#475569]">{formatEur(row.agencyEstimate)}</td>
+                          <td className="px-4 py-3 font-semibold text-[#1A4FBF]">{formatEur(row.livendiaPrice)}</td>
+                          <td className="px-4 py-3 font-semibold text-emerald-700">{formatEur(row.savingVsLawyer)}</td>
+                          <td className="px-4 py-3 font-semibold text-emerald-700">{formatEur(row.savingVsAgency)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-4 text-center text-xs text-[#64748b] sm:text-sm">{seo.savingsFootnote}</p>
+              </div>
+            </section>
+          ) : null}
+
+          {seo ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  ¿Qué pasa si el contrato de temporada no está bien redactado?
+                </h2>
+                <p className="mt-4 text-lg leading-relaxed text-[#475569]">{seo.risksParagraph}</p>
+              </div>
+            </section>
+          ) : null}
 
           {config.localZones ? (
             <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
@@ -352,46 +494,67 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             </div>
           </section>
 
-          <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
-            <div className="mx-auto max-w-7xl">
-              <div className="text-center">
-                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">{config.testimonialsTitle}</h2>
-              </div>
-
-              <div className="mt-12 grid gap-8 lg:grid-cols-2">
-                {config.testimonials.map((testimonial, idx) => (
-                  <div key={idx} className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
-                    <p className="text-lg italic leading-relaxed text-[#475569]">
-                      <span aria-hidden>&ldquo;</span>
-                      {testimonial.quote}
-                      <span aria-hidden>&rdquo;</span>
-                    </p>
-                    <div className="mt-6 flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]" />
-                      <div>
-                        <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
-                        <p className="text-sm text-[#64748b]">{testimonial.role}</p>
+          {config.testimonials.length > 0 ? (
+            <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
+              <div className="mx-auto max-w-7xl">
+                <div className="text-center">
+                  <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
+                    {config.testimonialsTitle}
+                  </h2>
+                </div>
+                <div className="mt-12 grid gap-8 lg:grid-cols-2">
+                  {config.testimonials.map((testimonial, idx) => (
+                    <div key={idx} className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
+                      <p className="text-lg italic leading-relaxed text-[#475569]">
+                        <span aria-hidden>&ldquo;</span>
+                        {testimonial.quote}
+                        <span aria-hidden>&rdquo;</span>
+                      </p>
+                      <div className="mt-6 flex items-center gap-4">
+                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]" />
+                        <div>
+                          <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
+                          <p className="text-sm text-[#64748b]">{testimonial.role}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-slate-50 px-4 py-12 sm:px-6">
-            <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 ring-1 ring-slate-200">
-              <h3 className="text-lg font-bold text-[#1E293B]">¿Ya tienes inquilino y quieres delegar el día a día?</h3>
-              <p className="mt-2 text-[#475569]">
-                Si el piso ya está alquilado en {config.city}, nuestra{" "}
-                <Link
-                  href={localAdministracionAlquilerHref("mallorca")}
-                  className="font-semibold text-[#1A4FBF] hover:underline"
-                >
-                  administración de alquiler (49 €/mes)
-                </Link>{" "}
-                convierte a Livendia en único interlocutor ante el arrendatario.
-              </p>
+            <div className="mx-auto max-w-4xl space-y-6">
+              <div className="rounded-2xl bg-white p-8 ring-1 ring-slate-200">
+                <h3 className="text-lg font-bold text-[#1E293B]">¿Ya tienes inquilino y quieres delegar el día a día?</h3>
+                <p className="mt-2 text-[#475569]">
+                  Si el piso ya está alquilado en {config.city}, nuestra{" "}
+                  <Link
+                    href={localAdministracionAlquilerHref(adminSlug)}
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    administración de alquiler en {config.city} (49 €/mes)
+                  </Link>{" "}
+                  convierte a Livendia en único interlocutor ante el arrendatario.
+                </p>
+              </div>
+              {seo ? (
+                <p className="text-center text-sm text-[#64748b]">
+                  También te puede interesar el{" "}
+                  <Link href="/servicios/contrato-alquiler-lau" className="font-semibold text-[#1A4FBF] hover:underline">
+                    contrato de alquiler LAU
+                  </Link>{" "}
+                  o la{" "}
+                  <Link
+                    href={`${GESTORIA_INMOBILIARIA_LOCAL_BASE}/${gestoriaSlug}`}
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    gestoría inmobiliaria en {config.city}
+                  </Link>
+                  .
+                </p>
+              ) : null}
             </div>
           </section>
 
@@ -399,7 +562,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
               <div className="mx-auto max-w-3xl">
                 <FaqSection
-                  title={`Preguntas frecuentes — alquiler por temporada en ${config.city}`}
+                  title={`Preguntas frecuentes sobre contrato de temporada en ${config.city}`}
                   items={config.faq.map((f) => ({ question: f.question, answer: f.answer }))}
                 />
               </div>
@@ -440,12 +603,14 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                 >
                   Contratar por {priceLabel}
                 </ContratarSlugButton>
-                <Link
-                  href="/servicios/contrato-alquiler-temporada"
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold hover:bg-white/10"
                 >
-                  Ver servicio nacional
-                </Link>
+                  Consultar por WhatsApp
+                </a>
               </div>
             </div>
           </section>
