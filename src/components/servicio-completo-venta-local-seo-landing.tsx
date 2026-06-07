@@ -1,3 +1,4 @@
+import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
@@ -30,6 +31,10 @@ import {
 } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+
+function formatEur(n: number): string {
+  return `${n.toLocaleString("es-ES")} €`;
+}
 
 function LocalVentaCompletaJsonLd({
   path,
@@ -90,6 +95,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
   const priceLabelCompact = service
     ? `${(service.price_cents / 100).toFixed(0)}€`
     : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
+  const seo = config.seoContent;
   const ventaSeoCity = getPublishedVenderPisoSinAgenciaCities().find((c) => c.city === config.city);
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
     `Hola, quiero vender mi piso en ${config.city} entre particulares sin agencia. Me interesa el servicio completo de venta Livendia.`,
@@ -309,6 +315,18 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                       <td className="px-4 py-3 text-[#475569]">No tienes comprador</td>
                       <td className="px-4 py-3 text-[#475569]">Ya tienes comprador particular</td>
                     </tr>
+                    {seo ? (
+                      <tr className="bg-emerald-50/80">
+                        <td className="px-4 py-3 font-medium text-[#1E293B]">
+                          Ejemplo en {config.city}
+                        </td>
+                        <td className="px-4 py-3 text-[#475569]">
+                          {formatEur(seo.savingVs3)} (3 %) · {formatEur(seo.savingVs5)} (5 %) sobre{" "}
+                          {formatEur(seo.highlightSalePrice)}
+                        </td>
+                        <td className="px-4 py-3 font-semibold text-[#1A4FBF]">{priceLabel} · ahorro máximo</td>
+                      </tr>
+                    ) : null}
                   </tbody>
                 </table>
               </div>
@@ -324,6 +342,12 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-[#64748b]">{config.whyIntro}</p>
                 {config.whySubtitle ? (
                   <p className="mx-auto mt-3 max-w-2xl text-sm font-medium text-[#475569]">{config.whySubtitle}</p>
+                ) : null}
+                {seo?.gestorLocalNote ? (
+                  <p className="mx-auto mt-6 max-w-3xl text-left text-base leading-relaxed text-[#475569] sm:text-center">
+                    <span className="font-semibold text-[#1E293B]">Qué cubre tu gestor en {config.city}: </span>
+                    {seo.gestorLocalNote}
+                  </p>
                 ) : null}
               </div>
 
@@ -347,7 +371,26 @@ export async function ServicioCompletoVentaLocalSeoLanding({
             </div>
           </section>
 
-          {config.localZones ? (
+          {seo?.zones?.length ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  {config.localZonesHeading ?? `Dónde vendemos con gestor en ${config.city}`}
+                </h2>
+                <ul className="mt-8 space-y-4">
+                  {seo.zones.map((zone) => (
+                    <li
+                      key={zone.name}
+                      className="rounded-xl bg-[#F8FAFC] px-5 py-4 ring-1 ring-slate-200"
+                    >
+                      <span className="font-semibold text-[#1E293B]">{zone.name}</span>
+                      <span className="text-[#475569]"> — {zone.context}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : config.localZones ? (
             <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
               <div className="mx-auto max-w-4xl">
                 <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
@@ -407,6 +450,17 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.faq?.length ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  title={`Preguntas frecuentes sobre vender en ${config.city} entre particulares`}
+                  items={[...config.faq]}
+                />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

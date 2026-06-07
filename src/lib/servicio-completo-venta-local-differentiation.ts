@@ -342,4 +342,115 @@ export const VENTA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields>
       },
     ],
   },
+  valladolid: {
+    keywords: [
+      "vender piso entre particulares valladolid",
+      "gestor venta vivienda valladolid sin agencia",
+      "vender piso parquesol delicias particular",
+      "tramites venta herencia valladolid",
+      "contrato arras vendedor valladolid",
+      "vender sin inmobiliaria castilla y leon",
+    ],
+    heroBadge: "Venta entre particulares · Valladolid",
+    heroH1: "Vende en Valladolid con comprador particular — gestor legal, no comisión del 3 %",
+    metaTitle: "Vender piso entre particulares en Valladolid | Gestor venta Livendia",
+    metaDescription:
+      "¿Vendes en Valladolid con comprador ya encontrado? Reserva, arras y escritura. Ahorra hasta 7.500 € vs comisión 5 % en piso de 150.000 €. 890 € IVA incl.",
+    heroBullets: [
+      "Centro, Delicias, Parquesol, Rondilla y provincia",
+      "Herencias, ventas entre vecinos y comprador de fuera",
+      "Ahorro de 4.500–7.500 € en ticket medio vallisoletano",
+    ],
+    whyTitle: "¿Cómo es el mercado inmobiliario en Valladolid?",
+    whySubtitle:
+      "Mercado pausado, muchas ventas entre conocidos. El riesgo está en herencias, arras copiadas y cargas en la nota simple — no en el cartel de venta.",
+    localZonesHeading: "Zonas donde gestionamos ventas entre particulares en Valladolid",
+    localBenefits: [
+      {
+        title: "Herencia y titularidad registral",
+        description:
+          "Revisamos que la aceptación de herencia esté inscrita antes de vincular arras definitivas.",
+      },
+      {
+        title: "Reserva y arras entre particulares",
+        description:
+          "Redactamos penalizaciones y plazos cuando el comprador es vecino, familiar o contacto de Idealista.",
+      },
+      {
+        title: "Comunidad en Delicias y Parquesol",
+        description:
+          "Certificado de deuda y derramas antes de la señal en edificios de los 90 y 2000.",
+      },
+      {
+        title: "Ahorro frente a agencia",
+        description:
+          `En 150.000 €, el 3 % son 4.500 € + IVA. Livendia: ${SERVICIO_COMPLETO_CV_PRICE_LABEL} fijos.`,
+      },
+      {
+        title: "Vendedor senior o familia",
+        description:
+          "Acompañamiento claro cuando vendes segunda vivienda o liquidas herencia con comprador ya elegido.",
+      },
+      {
+        title: "Gestor online en Castilla y León",
+        description: "Expediente en panel Livendia sin desplazarte a una oficina de intermediación.",
+      },
+    ],
+  },
+  granada: {
+    keywords: [
+      "vender piso entre particulares granada",
+      "gestor venta vivienda granada sin agencia",
+      "vender piso albaicin zaidin particular",
+      "tramites venta piso granada idealista",
+      "contrato arras vendedor granada",
+      "vender sin inmobiliaria granada capital",
+    ],
+    heroBadge: "Venta entre particulares · Granada",
+    heroH1: "Vende en Granada entre particulares — gestoría inmobiliaria, no comisión del 5 %",
+    metaTitle: "Vender piso entre particulares en Granada | Gestor venta Livendia",
+    metaDescription:
+      "Venta en Albaicín, Zaidín, Ronda o área metropolitana con comprador particular. Ahorra hasta 8.500 € vs 5 % en piso de 170.000 €. 890 € IVA incl.",
+    heroBullets: [
+      "Casco histórico, universidad UGR y costa granadina",
+      "Compradores locales y de otras provincias",
+      "Ahorro de 5.100–8.500 € en precio medio granadino",
+    ],
+    whyTitle: "¿Cómo es el mercado inmobiliario en Granada?",
+    whySubtitle:
+      "Turismo residencial, universidad y ventas entre particulares. Livendia blinda contratos cuando tú ya tienes comprador.",
+    localZonesHeading: "Barrios y municipios donde gestionamos ventas en Granada",
+    localBenefits: [
+      {
+        title: "Albaicín y casco histórico",
+        description:
+          "Documentación impecable en edificios patrimoniales antes de que el comprador pida rebaja.",
+      },
+      {
+        title: "Zona universitaria y Zaidín",
+        description:
+          "Arras con plazos realistas para compradores jóvenes con hipoteca o aval familiar.",
+      },
+      {
+        title: "Reserva y arras a medida",
+        description:
+          "Cláusulas que reflejan financiación, venta previa del comprador o pago al contado.",
+      },
+      {
+        title: "Ahorro visible vs agencia",
+        description:
+          `En 170.000 €, el 3 % son 5.100 € + IVA. Livendia: ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido.`,
+      },
+      {
+        title: "Comunidad y cargas",
+        description:
+          "Nota simple, certificado de deuda y coherencia entre reserva y escritura.",
+      },
+      {
+        title: "Sin exclusiva ni marketing",
+        description:
+          "No publicamos tu piso: gestionamos el tramo legal de la venta que tú has cerrado.",
+      },
+    ],
+  },
 };

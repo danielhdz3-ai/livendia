@@ -1,6 +1,10 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { VENTA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-venta-local-differentiation";
+import {
+  getVentaLocalSeoContent,
+  type VentaLocalSeoContent,
+} from "@/lib/servicio-completo-venta-local-seo-content";
 
 export const SERVICIO_COMPLETO_VENTA_LOCAL_BASE = "/servicios/servicio-completo-venta-local";
 
@@ -11,6 +15,8 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "malaga",
   "sevilla",
   "bilbao",
+  "valladolid",
+  "granada",
 ];
 
 export type ServicioCompletoVentaLocalLandingConfig = {
@@ -24,6 +30,8 @@ export type ServicioCompletoVentaLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
+  seoContent?: VentaLocalSeoContent;
+  faq?: readonly { question: string; answer: string }[];
 } & LocalCityLandingFields;
 
 export type ServicioCompletoVentaLocalCityDefinition = Omit<
@@ -37,13 +45,35 @@ export function localServicioCompletoVentaHref(slug: string): string {
   return `${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}/${slug}`;
 }
 
+function formatEur(n: number): string {
+  return `${n.toLocaleString("es-ES")} €`;
+}
+
+function agencyIntroFromSeo(seo: VentaLocalSeoContent): string {
+  const price = formatEur(seo.highlightSalePrice);
+  const vs3 = formatEur(seo.savingVs3);
+  const vs5 = formatEur(seo.savingVs5);
+  return `En un piso de ${price}, una comisión del 3 % suponen ${vs3} + IVA (~${formatEur(Math.round(seo.savingVs3 * 1.21))}) y al 5 %, ${vs5} + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana de gestoría inmobiliaria, sin comisión sobre el precio de venta. Ideal cuando ya tienes comprador particular.`;
+}
+
 export function toVentaCompletaLandingConfig(
   def: ServicioCompletoVentaLocalCityDefinition,
 ): ServicioCompletoVentaLocalLandingConfig {
   const diff = VENTA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
+  const seoContent = getVentaLocalSeoContent(def.slug);
+  const faq = seoContent?.faq;
   return {
     ...def,
     ...diff,
+    ...(seoContent
+      ? {
+          seoContent,
+          heroLead: seoContent.introParagraph,
+          whyIntro: seoContent.marketParagraph,
+          agencyIntro: agencyIntroFromSeo(seoContent),
+        }
+      : {}),
+    ...(faq ? { faq } : {}),
     path: localServicioCompletoVentaHref(def.slug),
   };
 }
@@ -243,5 +273,59 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_CITIES: ServicioCompletoVentaLocalCit
     ],
     finalCtaLead:
       "Contrata online el pack de venta completo y escritura en Bilbao con reserva, arras y expediente bajo control profesional.",
+  },
+  {
+    slug: "valladolid",
+    city: "Valladolid",
+    schemaAdministrativeArea: "Castilla y León",
+    heroLead: "",
+    whyIntro: "",
+    agencyIntro: "",
+    howIntro:
+      "Mismo protocolo en Centro, Delicias, Parquesol, Rondilla o municipios del área: estudio de operación, contratos, checklist documental y seguimiento hasta firma.",
+    testimonialsTitle: "Propietarios en Valladolid que vendieron con gestor Livendia",
+    testimonials: [
+      {
+        quote:
+          "Vendíamos piso en Parquesol a un comprador que conocíamos. Livendia redactó arras y revisó la herencia pendiente de inscripción sin que pagáramos comisión de agencia.",
+        author: "María J.",
+        role: "Vendedora, Parquesol",
+      },
+      {
+        quote:
+          "Teníamos comprador de otra provincia. El gestor ordenó reserva, comunidad y calendario de notaría por 890 € cuando una inmobiliaria pedía el 3 %.",
+        author: "Antonio & Lucía",
+        role: "Vendedores, Delicias",
+      },
+    ],
+    finalCtaLead:
+      `Contrata el servicio completo de venta (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y cierra en Valladolid con gestor personal hasta la escritura.`,
+  },
+  {
+    slug: "granada",
+    city: "Granada",
+    schemaAdministrativeArea: "Andalucía",
+    heroLead: "",
+    whyIntro: "",
+    agencyIntro: "",
+    howIntro:
+      "Mismo protocolo en Albaicín, Zaidín, Ronda, Chana o municipios del área metropolitana: estudio de operación, contratos, checklist documental y seguimiento hasta firma.",
+    testimonialsTitle: "Propietarios en Granada que vendieron con gestor Livendia",
+    testimonials: [
+      {
+        quote:
+          "Vendimos piso en Zaidín con comprador de la UGR. Livendia revisó arras y documentación de comunidad sin exclusiva ni comisión sobre el precio.",
+        author: "Pablo R.",
+        role: "Vendedor, Zaidín",
+      },
+      {
+        quote:
+          "Comprador de Madrid, piso en Realejo. El gestor coordinó plazos de hipoteca y nota simple antes de firmar arras penitenciales.",
+        author: "Carmen & Diego",
+        role: "Vendedores, Realejo",
+      },
+    ],
+    finalCtaLead:
+      `Contrata el servicio completo de venta (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y cierra en Granada con gestor personal hasta la escritura.`,
   },
 ];
