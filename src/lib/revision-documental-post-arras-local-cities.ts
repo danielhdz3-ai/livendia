@@ -24,6 +24,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly stri
   "bilbao",
   "zaragoza",
   "alicante",
+  "granada",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -293,7 +294,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "granada",
     city: "Granada",
     schemaAdministrativeArea: "Andalucía",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Granada",
+    heroH1: `Revisión post-arras en Granada: Albaicín, regantes e inquilinos — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: "Post-arras Granada: Albaicín, regantes e inquilinos — 350 € | Livendia",
+    metaDescription:
+      "¿Firmaste arras en Granada? Revisamos patrimonio Albaicín, servidumbres y arrendamientos antes de escriturar. Informe 48h — 350 € IVA incl.",
+    keywords: [
+      "revision post arras granada",
+      "comprar piso albaicin revisar documentacion",
+      "inquilino contrato alquiler compra granada",
+      "servidumbre regantes vega granada",
+      "verificar arras antes escritura granada",
+    ],
+    heroBullets: [
+      "Albaicín y Centro Histórico: registro complejo",
+      "Servidumbres de regantes en la Vega y alfoz",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Granada? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "granada",
     gestoriaSlug: "granada",
   },

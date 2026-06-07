@@ -401,6 +401,55 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  granada: {
+    introParagraph: `Firmaste arras en Granada y entregaste una señal que puede rondar los 17.000 € en un piso de 170.000 €. Entre hoy y la escritura, tres preguntas muy granadinas: ¿el piso en el Albaicín tiene la situación registral en orden? ¿Hay servidumbres de regantes o de paso que la nota simple no destaca? ¿Y si hay un inquilino con contrato vigente que no te mencionaron al firmar? En el casco histórico y la Vega abundan fincas con protección patrimonial, indivisiones antiguas y pisos de inversión universitaria con arrendatarios. Nuestro gestor revisa actas, nota registral, urbanismo, contrato de arras y situación de arrendamiento. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Protección patrimonial en el Albaicín y Centro Histórico",
+        body:
+          "El Albaicín y el Centro Histórico concentran inmuebles con niveles de protección patrimonial que limitan reformas y cuya situación registral puede ser compleja: fincas sin número registral independiente, situaciones de indivisión históricas o descripciones que no coinciden con la realidad. El comprador que firma arras sin revisar registro y urbanismo puede descubrir limitaciones días antes de escriturar, con la señal ya comprometida.",
+      },
+      {
+        title: "Servidumbres de regantes y de paso en la Vega y el alfoz",
+        body:
+          "En la Vega de Granada y municipios del alfoz es frecuente encontrar inmuebles con servidumbres de paso o cargas de comunidades de regantes que no aparecen con claridad en una nota registral estándar o en el anuncio. Si compras para vivienda o inversión sin detectarlo, el uso del inmueble o el coste futuro pueden verse condicionados de formas que las arras no reflejan.",
+      },
+      {
+        title: "Piso de inversión con inquilino y derecho de tanteo",
+        body:
+          "Granada tiene un mercado activo de pisos para alquiler universitario. El comprador puede encontrarse con contrato de arrendamiento vigente y derecho de tanteo del inquilino que no conocía al firmar arras. No es lo mismo comprar piso libre que adquirir uno ocupado: la revisión documental cruza arras, situación de arrendamiento y plazos hasta escritura.",
+      },
+      {
+        title: "Comunidades con obras y normativa estricta en edificios antiguos",
+        body:
+          "Edificios del casco y zonas consolidadas como Zaidín o Ronda aprueban obras de accesibilidad o rehabilitación con derramas que el vendedor no siempre comunica. En un mercado con muchos compradores jóvenes (UGR) y operaciones rápidas, revisar actas de los últimos dos años evita heredar cuotas extraordinarias antes de la firma.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y mención explícita de arrendamiento o libre de ocupantes si aplica.",
+      "Revisión de actas de comunidad (últimos 2 años) — edificios en Albaicín, Zaidín, Ronda y barrios con rehabilitaciones frecuentes.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — cuotas de obra o accesibilidad no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — deficiencias en edificios patrimoniales y obligaciones de subsanación compartidas.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, servidumbres y coherencia con lo pactado en arras.",
+      "Consulta de información urbanística y licencias — protección patrimonial, uso del suelo y situación en Vega o alfoz.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo, incluidos indicios de arrendamiento o cargas de regantes.",
+      "Llamada de veredicto con gestor especializado — opciones si detectamos inquilino, servidumbre o registro complejo.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o calendario de firma.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Granada que ya firmaron arras. El perfil típico: inversor de alquiler universitario en Zaidín o Campus; comprador joven de primera vivienda cerca de la UGR; o familia que adquiere vivienda con jardín en municipios del alfoz. Si compraste en el Albaicín con dudas sobre protección patrimonial, o firmaste arras en un piso que creías libre y ahora aparece un inquilino, este pack te da margen para actuar antes de notaría — sin sustituir al notario ni negociar en tu nombre.`,
+    faqLocal: [
+      {
+        question: "¿Revisáis si hay un contrato de alquiler vigente o derecho de tanteo del inquilino?",
+        answer:
+          "Cruzamos arras con la documentación que aportes sobre arrendamiento. Si hay indicios de contrato vigente o ocupación que no se reflejó en las arras, lo señalamos en el informe para que valores el impacto antes de escriturar.",
+      },
+      {
+        question: "¿Detectáis servidumbres de regantes o de paso en la Vega de Granada?",
+        answer:
+          "Analizamos la nota registral y documentación disponible. Si aparecen servidumbres o cargas que condicionan el uso del inmueble y no estaban claras en la operación, lo reflejamos con recomendaciones concretas.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {
