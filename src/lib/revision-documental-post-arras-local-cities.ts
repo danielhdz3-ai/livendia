@@ -15,7 +15,10 @@ import {
 
 export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE = "/servicios/revision-documental-post-arras";
 
-export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = ["madrid"];
+export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
+  "madrid",
+  "barcelona",
+];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
   slug: string;
@@ -102,7 +105,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Barcelona",
+    heroH1: `Revisión documental post-arras en Barcelona: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: `Revisión documental post-arras en Barcelona — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      "¿Firmaste arras en Barcelona? Verificamos ITE, derramas y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
+    keywords: [
+      "revision documental post arras barcelona",
+      "revisar ite edificio barcelona compra",
+      "derramas comunidad barcelona comprador",
+      "nota registral barcelona post arras",
+      "verificar arras antes escritura barcelona",
+    ],
+    heroBullets: [
+      "ITE estricta en Eixample, Gràcia, Sant Andreu y Nou Barris",
+      "Terrazas, trasteros y parkings no inscritos en registro",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Barcelona? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "barcelona",
     gestoriaSlug: "barcelona",
   },
