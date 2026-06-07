@@ -21,6 +21,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly stri
   "valencia",
   "malaga",
   "sevilla",
+  "bilbao",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -212,7 +213,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "bilbao",
     city: "Bilbao",
     schemaAdministrativeArea: "País Vasco",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Gran Bilbao",
+    heroH1: `Revisión documental post-arras en Bilbao: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: `Revisión documental post-arras en Bilbao — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      "¿Firmaste arras en Bilbao? Revisamos régimen foral, derramas RENOVE e ITE antes de escriturar. Informe en 48h — 350 € IVA incl.",
+    keywords: [
+      "revision documental post arras bilbao",
+      "revisar nota registral bilbao compra",
+      "derramas renovo bilbao comunidad",
+      "regimen foral vasco compra vivienda",
+      "verificar arras antes escritura bilbao",
+    ],
+    heroBullets: [
+      "Régimen foral y cargas en nota registral",
+      "Derramas RENOVE en Casco Viejo e Indautxu",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Bilbao? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "bilbao",
     gestoriaSlug: "bilbao",
   },

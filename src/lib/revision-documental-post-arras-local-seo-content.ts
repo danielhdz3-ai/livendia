@@ -254,6 +254,55 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  bilbao: {
+    introParagraph: `Firmaste arras en Bilbao o el Gran Bilbao y entregaste una señal que puede rondar los 35.000 € en un piso de 350.000 €. Tienes entre 30 y 90 días hasta escritura — y si vienes de fuera del País Vasco, el sistema registral foral puede generar dudas que el vendedor no resuelve: comunicación foral de bienes, foruak o cargas que la nota simple no explica con claridad. En Casco Viejo, Indautxu o Abando muchos edificios de los 50-70 tienen planes de rehabilitación energética (Programa RENOVE) con derramas significativas aunque parcialmente subvencionadas. Nuestro gestor revisa actas, ITE, nota registral, urbanismo y tus arras. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Derramas por rehabilitación energética (Programa RENOVE)",
+        body:
+          "El parque edificado de Bilbao — especialmente en Casco Viejo, Indautxu y Abando — incluye muchos bloques de los años 50 a 70 con planes de rehabilitación energética impulsados por el Gobierno Vasco. Las juntas aprueban derramas que pueden ser elevadas aunque parte esté subvencionada. El vendedor no siempre detalla cuotas pendientes o acuerdos en curso. Con la señal ya entregada, heredar una derrama de varios miles de euros justo antes de escriturar es uno de los riesgos más habituales en compradores que no revisan actas a tiempo.",
+      },
+      {
+        title: "Cargas y particularidades del régimen foral vasco",
+        body:
+          "El sistema registral y matrimonial en el País Vasco tiene particularidades (régimen foral, comunicación foral de bienes en matrimonios, foruak) que pueden generar cargas o limitaciones en la transmisión. Un comprador de Madrid, Barcelona u otra CCAA que firma arras en Bilbao sin asesoramiento local puede no anticipar restricciones que aparecen al cruzar nota registral y situación del vendedor.",
+      },
+      {
+        title: "ITE con deficiencias en el Casco Viejo",
+        body:
+          "El Casco Viejo de Bilbao concentra edificios con ITE que documenta deficiencias estructurales o de conservación. El Ayuntamiento de Bilbao mantiene planes de intervención que pueden afectar al inmueble adquirido. Si el vendedor minimizó el estado del edificio, el comprador puede quedar vinculado a obligaciones de subsanación compartidas que no figuraban con claridad en las arras.",
+      },
+      {
+        title: "Coherencia entre garaje, trastero y registro en operaciones de precio alto",
+        body:
+          "En Bilbao los tickets son elevados y es frecuente que plaza de garaje o trastero figure en la operación pero no esté correctamente inscrita o vinculada registralmente. El banco vizcaíno revisa la operación con rigor: discrepancias entre arras, registro y escritura pueden frenar la hipoteca días antes de la firma.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia con precios elevados del mercado vizcaíno.",
+      "Revisión de actas de comunidad (últimos 2 años) — atención a acuerdos RENOVE y rehabilitación energética en Casco Viejo, Indautxu y Abando.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — detectamos cuotas de rehabilitación no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — deficiencias en Casco Viejo y obligaciones de subsanación del propietario o comunidad.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y particularidades forales que afecten a la transmisión.",
+      "Consulta de información urbanística y licencias — planes de intervención municipal y situación urbanística del edificio.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo para decidir antes de notaría.",
+      "Llamada de veredicto con gestor especializado — explicación de hallazgos y opciones si detectamos incidencias.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con entidad financiera, vendedor o calendario de firma.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Bilbao que ya firmaron arras. El perfil típico: profesionales del sector industrial o financiero que compran en Abando o Indautxu; compradores de fuera del País Vasco que se trasladan por trabajo y no dominan el régimen foral; o inversores de alquiler de larga duración en Getxo, Portugalete o Barakaldo que quieren certeza documental antes de desembolsar el resto del precio. Si entregaste una señal de 30.000 a 50.000 € y te preocupan derramas RENOVE o cargas que no entiendes en la nota registral, este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Revisáis las particularidades del régimen foral vasco en la nota registral?",
+        answer:
+          "Sí. Analizamos titularidad, cargas y coherencia registral teniendo en cuenta que en el País Vasco pueden aplicarse normas forales en materia matrimonial y de transmisión. Si detectamos indicios de limitación, lo reflejamos en el informe.",
+      },
+      {
+        question: "¿Comprobáis derramas del Programa RENOVE en mi comunidad de vecinos?",
+        answer:
+          "Cruzamos actas de los últimos dos años con certificado de deuda para detectar acuerdos de rehabilitación energética aprobados o en ejecución que el vendedor no haya comunicado.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {
