@@ -303,6 +303,104 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  zaragoza: {
+    introParagraph: `Firmaste arras en Zaragoza y entregaste una señal que puede rondar los 22.000 € en un piso de 220.000 €. Entre hoy y la escritura, una duda muy concreta en la capital aragonesa: ¿las cargas de urbanización de tu PAU están realmente canceladas en el Registro? En Valdespartera, Parque Goya o Rosales del Canal hay obra nueva reciente donde las cargas de urbanización a veces no figuran totalmente canceladas cuando el comprador firma arras. Sumado a herencias familiares con titularidad registral imperfecta o ITE con deficiencias en el Casco Histórico, el riesgo no es teórico. Nuestro gestor revisa actas, nota registral, urbanismo y tus arras. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Cargas urbanísticas pendientes en PAUs recientes",
+        body:
+          "Los Programas de Actuación Urbanística de Zaragoza — Valdespartera, Parque Goya, Rosales del Canal — concentran promociones de los últimos años donde las cargas de urbanización pueden no estar totalmente canceladas registralmente. El comprador que confía solo en la nota simple y en la palabra del vendedor puede descubrir afecciones días antes de escriturar, con la señal ya ingresada y el banco revisando de nuevo la operación.",
+      },
+      {
+        title: "ITE y derramas en el Casco Histórico",
+        body:
+          "El Casco Histórico de Zaragoza tiene edificios antiguos con ITE que documenta deficiencias y comunidades que aprueban derramas de subsanación. Las actas pueden reflejar acuerdos costosos que el vendedor no detalla al comprador. En un mercado con alto porcentaje de operaciones entre particulares vinculadas a herencias, revisar el estado del edificio antes de escriturar evita sorpresas estructurales.",
+      },
+      {
+        title: "Compraventas entre herederos con documentación registral defectuosa",
+        body:
+          "Zaragoza mueve muchas ventas procedentes de herencias familiares: varios herederos, aceptación pendiente de inscripción o liquidación de sucesiones incompleta. La nota registral puede mostrar titularidad que aún no permite transmitir con garantías. Si no lo detectas en los primeros días tras firmar arras, el plazo hasta escritura se convierte en una carrera contra el reloj.",
+      },
+      {
+        title: "Coherencia entre arras rápidas y financiación bancaria",
+        body:
+          "Compradores que se trasladan desde Madrid o funcionarios de la DGA suelen cerrar arras con plazos ajustados. Si la documentación de comunidad, registro o urbanismo no está alineada con lo que el banco exige, la hipoteca puede frenarse a última hora — cuando ya no puedes permitirte improvisar.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia con operaciones entre particulares frecuentes en Zaragoza.",
+      "Revisión de actas de comunidad (últimos 2 años) — edificios del centro y bloques de expansión con acuerdos de mantenimiento o rehabilitación.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — cuotas aprobadas en junta que el vendedor no haya liquidado.",
+      "Análisis del ITE si existe — deficiencias en Casco Histórico y obligaciones de subsanación.",
+      "Obtención y revisión de nota registral actualizada — titularidad tras herencia, cargas y hipotecas.",
+      "Consulta de información urbanística y licencias — cargas de urbanización en PAUs y situación de finca en expansión reciente.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo antes de notaría.",
+      "Llamada de veredicto con gestor especializado — opciones si detectamos cargas de PAU o herencia incompleta.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o plazos.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Zaragoza que ya firmaron arras. El perfil típico: familias locales que compran en Valdespartera o el centro; compradores que se trasladan desde Madrid por trabajo; o funcionarios de la DGA que cerraron arras con rapidez y quieren auditar documentación antes de desembolsar el resto del precio. Si compraste en un PAU reciente o a varios herederos y la nota registral te genera dudas, este pack te da margen para actuar con la señal ya comprometida.`,
+    faqLocal: [
+      {
+        question: "¿Verificáis si las cargas de urbanización están canceladas en Valdespartera o Parque Goya?",
+        answer:
+          "Revisamos la información registral y urbanística disponible y la cruzamos con arras. Si hay indicios de cargas de urbanización no canceladas en PAUs, lo reflejamos en el informe con recomendaciones concretas.",
+      },
+      {
+        question: "¿Revisáis operaciones de compra a herederos en Zaragoza?",
+        answer:
+          "Sí. Analizamos titularidad, posibles cotitulares y coherencia registral tras herencia. Si la aceptación no está correctamente inscrita, lo señalamos antes de que llegue la fecha de escritura.",
+      },
+    ],
+  },
+  alicante: {
+    introParagraph: `Firmaste arras en Alicante, Torrevieja, Benidorm, Altea o Jávea y entregaste una señal que puede superar los 28.000 € en un piso de 280.000 €. En la Costa Blanca el comprador suele ser extranjero o no residente — británico, alemán, belga o jubilado de otra provincia — y el vendedor tampoco siempre vive en la urbanización. La pregunta urgente: ¿la comunidad tiene deudas o derramas que heredarás sin saberlo? En urbanizaciones costeras es habitual que el anterior propietario deba cuotas durante años. Nuestro gestor revisa actas, nota registral, licencias turísticas, urbanismo y tus arras. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Deudas de comunidad en urbanizaciones costeras",
+        body:
+          "Torrevieja, Benidorm, Altea y Jávea concentran urbanizaciones con comunidades que gestionan piscina, jardines y mantenimiento con cuotas elevadas. Los vendedores no residentes pueden deber meses o años de comunidad. El comprador que no verifica certificado de deuda y actas antes de escriturar hereda esas deudas o llega a notaría con un conflicto que bloquea la operación.",
+      },
+      {
+        title: "Licencia turística (VFT) o suelo con limitaciones",
+        body:
+          "Parte del mercado de la Costa Blanca incluye inmuebles con licencia de alquiler turístico activa o en situación urbanística irregular. Si compras para vivienda habitual pero el inmueble tiene VFT o limitaciones de uso, tu plan puede verse condicionado. Las arras raramente detallan estas restricciones con el detalle que necesitas antes de pagar el resto del precio.",
+      },
+      {
+        title: "Compradores extranjeros y documentación para escritura",
+        body:
+          "Es frecuente que compradores británicos o alemanes lleguen a arras sin tener el NIE tramitado correctamente o con poderes notariales insuficientes, lo que bloquea la escritura en el último momento. La revisión post-arras no sustituye la tramitación del NIE, pero sí audita la parte documental del inmueble mientras ordenas tu expediente personal.",
+      },
+      {
+        title: "Segunda residencia con anejos mal descritos en registro",
+        body:
+          "En operaciones de segunda residencia es común que trastero, plaza de garaje o terraza figure en la venta pero no esté correctamente inscrita. El banco y el notario en Alicante revisan la coherencia entre arras, registro y escritura — discrepancias detectadas tarde pueden retrasar la hipoteca.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia en operaciones con compradores nacionales y extranjeros.",
+      "Revisión de actas de comunidad (últimos 2 años) — urbanizaciones en Torrevieja, Benidorm, Altea y Jávea con mantenimiento costoso y acuerdos frecuentes.",
+      "Verificación de derramas pendientes y deudas de comunidad — detectamos cuotas impagadas del vendedor no residente.",
+      "Análisis del ITE si existe — estado del edificio en bloques costeros y del centro de Alicante.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y anejos (garaje, trastero).",
+      "Consulta de información urbanística y licencias — licencia turística VFT, uso del suelo y situación urbanística en costa.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo antes de la firma.",
+      "Llamada de veredicto con gestor especializado — explicación clara para compradores internacionales con dudas sobre documentación española.",
+      "Asesoramiento telefónico hasta la escritura — soporte para coordinar con banco, vendedor o gestoría.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Alicante y la Costa Blanca que ya firmaron arras. El perfil típico: compradores británicos, alemanes, holandeses o belgas que cerraron en Benidorm o Torrevieja; jubilados españoles con segunda residencia en Altea o Jávea; o inversores de alquiler turístico que deben verificar VFT y comunidad antes de escriturar. Si entregaste la señal y temes deudas ocultas de la urbanización o licencias que condicionan el uso, este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Verificáis si hay deudas de comunidad pendientes del vendedor en la urbanización?",
+        answer:
+          "Sí. Cruzamos actas de los últimos dos años con certificado de deuda de la comunidad para detectar cuotas impagadas o derramas que el vendedor no residente pueda haber omitido.",
+      },
+      {
+        question: "¿Revisáis si el inmueble tiene licencia turística VFT o limitaciones de uso?",
+        answer:
+          "Consultamos la documentación urbanística disponible y la coherencia con arras. Si hay indicios de VFT activa o restricciones que afecten a tu uso previsto, lo reflejamos en el informe.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {

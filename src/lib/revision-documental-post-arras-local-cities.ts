@@ -22,6 +22,8 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly stri
   "malaga",
   "sevilla",
   "bilbao",
+  "zaragoza",
+  "alicante",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -239,7 +241,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "zaragoza",
     city: "Zaragoza",
     schemaAdministrativeArea: "Aragón",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Zaragoza",
+    heroH1: `Pack post-arras en Zaragoza: audita PAUs, ITE y herencias antes de notaría — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: "Verificar arras en Zaragoza: PAUs y herencias — 350 € | Livendia",
+    metaDescription:
+      "¿Firmaste arras en Zaragoza? Revisamos cargas en PAUs, ITE del Casco y herencias antes de escriturar. Informe 48h — 350 € IVA incl.",
+    keywords: [
+      "revision post arras zaragoza",
+      "cargas urbanizacion valdespartera compra",
+      "revisar documentacion compra piso zaragoza",
+      "herencia compra vivienda zaragoza arras",
+      "verificar arras antes escritura zaragoza",
+    ],
+    heroBullets: [
+      "PAUs: Valdespartera, Parque Goya, Rosales del Canal",
+      "Herencias familiares y titularidad registral",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Zaragoza? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "zaragoza",
     gestoriaSlug: "zaragoza",
   },
@@ -247,7 +267,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "alicante",
     city: "Alicante",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Costa Blanca",
+    heroH1: `Auditoría post-arras en Alicante y Costa Blanca: comunidad, VFT y registro — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: "Post-arras Costa Blanca: deudas comunidad y VFT — 350 € | Livendia",
+    metaDescription:
+      "¿Firmaste arras en Alicante o Costa Blanca? Revisamos deudas de urbanización, licencia VFT y registro. Informe 48h — 350 € IVA incl.",
+    keywords: [
+      "revision post arras alicante",
+      "comprar piso torrevieja revisar documentacion",
+      "deudas comunidad costa blanca comprador",
+      "licencia turistica vft alicante compra",
+      "verificar arras benidorm altea",
+    ],
+    heroBullets: [
+      "Torrevieja, Benidorm, Altea y Jávea",
+      "Deudas de comunidad del vendedor no residente",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Alicante o la Costa Blanca? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "alicante",
     gestoriaSlug: "alicante",
   },
