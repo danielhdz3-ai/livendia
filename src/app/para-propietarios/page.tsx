@@ -1,7 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
-import { TrustRatingStructuredData } from "@/components/trust-rating-structured-data";
-import { TrustReviewsBlock } from "@/components/trust-reviews-block";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import { getWhatsAppHref, businessNap } from "@/lib/business-nap";
@@ -148,17 +146,6 @@ export default async function ParaPropietariosPage() {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        <section className="py-12 sm:py-16">
-          <TrustRatingStructuredData />
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <TrustReviewsBlock
-              title="Propietarios que ya delegaron en Livendia"
-              ctaHref="/servicios/administracion-alquiler"
-              ctaLabel="Más detalles del servicio"
-            />
           </div>
         </section>
 

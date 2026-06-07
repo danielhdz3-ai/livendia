@@ -7,8 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, FileText, Wrench } from "lucide-react";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
-import { TrustRatingStructuredData } from "@/components/trust-rating-structured-data";
-import { TrustReviewsBlock } from "@/components/trust-reviews-block";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 
 export const metadata: Metadata = {
@@ -360,18 +358,14 @@ export default async function AdministracionAlquilerPage() {
           </div>
         </section>
 
-        <section className="px-4 py-12 sm:px-6">
-          <TrustRatingStructuredData />
-          <div className="mx-auto max-w-6xl">
-            <TrustReviewsBlock />
-            <p className="mt-6 text-center text-sm text-[#64748B]">
-              ¿Primera vez? Lee la guía{" "}
-              <Link href="/para-propietarios" className="font-semibold text-[#1A4FBF] hover:underline">
-                Para propietarios
-              </Link>
-              .
-            </p>
-          </div>
+        <section className="px-4 py-8 sm:px-6">
+          <p className="mx-auto max-w-6xl text-center text-sm text-[#64748B]">
+            ¿Primera vez? Lee la guía{" "}
+            <Link href="/para-propietarios" className="font-semibold text-[#1A4FBF] hover:underline">
+              Para propietarios
+            </Link>
+            .
+          </p>
         </section>
 
         {/* CTA Final */}

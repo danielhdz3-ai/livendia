@@ -5,8 +5,6 @@ import { HomeMobileQuickActions } from "@/components/home-mobile-quick-actions";
 import { HomeSitelinksNav } from "@/components/home-sitelinks-nav";
 import { HomeServicesCarousel } from "@/components/home-services-carousel";
 import { MobileServicesList } from "@/components/mobile-services-list";
-import { TrustRatingStructuredData } from "@/components/trust-rating-structured-data";
-import { TrustReviewsBlock } from "@/components/trust-reviews-block";
 import { HOME_FAQ_ITEMS } from "@/lib/home-faq";
 import { MultiServicePurchaseProvider, ContratarSlugButton } from "@/components/service-purchase-provider";
 import { PublicHeader } from "@/components/public-header";
@@ -505,14 +503,7 @@ export default async function Home() {
         </section>
 
         <section className="border-t border-slate-200 bg-[#F8FAFC] py-16 sm:py-20">
-          <TrustRatingStructuredData />
-          <div className="mx-auto max-w-6xl space-y-16 px-4 sm:px-6">
-            <TrustReviewsBlock
-              title="Confianza con nombre y apellidos"
-              subtitle="No solo lo decimos: esto es lo que destacan clientes que ya nos han contratado para alquiler, arras o compra."
-              ctaHref="/contacto"
-              ctaLabel="Cuéntanos tu caso"
-            />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <FaqSection
               id="preguntas-frecuentes"
               title="Preguntas frecuentes"
