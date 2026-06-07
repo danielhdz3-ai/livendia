@@ -30,6 +30,10 @@ import {
 } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import {
+  REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE,
+  getPublishedRevisionDocumentalPostArrasLocalCities,
+} from "@/lib/revision-documental-post-arras-local-cities";
+import {
   getPublishedVenderPisoSinAgenciaCities,
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
@@ -156,6 +160,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.88,
   }));
 
+  const revisionPostArrasLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedRevisionDocumentalPostArrasLocalCities().map((c) => ({
+      url: `${base}${REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.84,
+    }));
+
   return [
     ...core,
     ...servicios,
@@ -166,6 +178,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
+    ...revisionPostArrasLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...blogArticles,
