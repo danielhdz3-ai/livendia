@@ -19,6 +19,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly stri
   "madrid",
   "barcelona",
   "valencia",
+  "malaga",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -158,7 +159,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "malaga",
     city: "Málaga",
     schemaAdministrativeArea: "Andalucía",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Málaga y Costa del Sol",
+    heroH1: `Revisión documental post-arras en Málaga: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: `Revisión documental post-arras en Málaga — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      "¿Firmaste arras en Málaga o Costa del Sol? Revisamos derramas, VFT y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
+    keywords: [
+      "revision documental post arras malaga",
+      "comprar piso marbella revisar documentacion",
+      "derramas urbanizacion costa del sol",
+      "licencia turistica vft malaga compra",
+      "verificar arras extranjero malaga",
+    ],
+    heroBullets: [
+      "Compradores UK, Alemania y nórdicos en Marbella y Estepona",
+      "Derramas en urbanizaciones con piscina y seguridad",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Málaga o la Costa del Sol? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "malaga",
     gestoriaSlug: "malaga",
   },

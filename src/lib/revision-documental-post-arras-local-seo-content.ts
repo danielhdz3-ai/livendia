@@ -156,6 +156,55 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  malaga: {
+    introParagraph: `Firmaste arras en Málaga, la Costa del Sol o Marbella y entregaste una señal que puede superar los 35.000 € en un piso de 350.000 €. Si eres comprador extranjero — británico, alemán o nórdico — es frecuente firmar arras sin dominar del todo el sistema registral español y descubrir cargas o derramas solo cuando el notario las menciona. En urbanizaciones de Estepona, Benalmádena o Marbella las comunidades con piscina, jardinería y seguridad pueden tener cuotas y derramas de 3.000 a 8.000 € anuales que el vendedor no siempre detalla. Nuestro gestor revisa actas, nota registral, licencias, ITE y tus arras antes de escriturar. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Compradores extranjeros sin asesoramiento local",
+        body:
+          "Málaga capital, la Costa del Sol y Marbella concentran un altísimo porcentaje de compradores del Reino Unido, Alemania, Países Bajos y Escandinavia. Muchos firman arras confiando en el agente o el vendedor y descubren cargas registrales, deudas de comunidad o cláusulas desfavorables cuando el notario repasa la operación. Con la señal ya entregada, cada sorpresa documental se vive con mucha más presión.",
+      },
+      {
+        title: "Urbanizaciones de lujo con comunidades complejas",
+        body:
+          "En Marbella, Estepona o Benalmádena las urbanizaciones con piscina, jardinería, vigilancia y mantenimiento comunitario generan cuotas elevadas y derramas extraordinarias frecuentes. El vendedor no residente puede deber meses de comunidad o cuotas de urbanización. Si no lo verificas antes de escriturar, heredas deudas o conflictos que el banco español también revisa al formalizar la hipoteca.",
+      },
+      {
+        title: "Licencia turística (VFT) o suelo con limitaciones de uso",
+        body:
+          "Parte del mercado de segunda residencia en la provincia incluye inmuebles con licencia de alquiler turístico activa (VFT) o en suelo con restricciones que condicionan el uso previsto. El comprador que busca vivienda habitual puede encontrarse con obligaciones o limitaciones que no figuraban con claridad en las arras — y que afectan a reventa o alquiler.",
+      },
+      {
+        title: "ITE y estado del edificio en el Centro Histórico de Málaga",
+        body:
+          "El Casco Antiguo de Málaga tiene edificios con deficiencias estructurales documentadas en ITE que las actas de comunidad no siempre reflejan con claridad. Comprar en el centro sin revisar el estado técnico del edificio puede dejarte con obligaciones de subsanación compartidas que el vendedor minimizó al vender.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia con el precio; especial atención si el comprador es extranjero y las arras se redactaron en castellano.",
+      "Revisión de actas de comunidad (últimos 2 años) — urbanizaciones en Marbella, Estepona y Benalmádena con servicios comunitarios amplios suelen generar acuerdos y derramas complejas.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — detectamos cuotas de mantenimiento, piscina o seguridad no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — deficiencias en edificios del Centro Histórico de Málaga y obligaciones de subsanación.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y coherencia con lo vendido (trastero, plaza de garaje, anejos).",
+      "Consulta de información urbanística y licencias — licencia turística VFT, uso del suelo y situación urbanística en segunda residencia o costa.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo para decidir antes de la firma en notaría.",
+      "Llamada de veredicto con gestor especializado — explicación clara de hallazgos; útil para compradores internacionales con dudas sobre documentación española.",
+      "Asesoramiento telefónico hasta la escritura — soporte para coordinar con banco español, vendedor o gestoría del vendedor.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Málaga que ya firmaron arras. El perfil típico: compradores británicos, alemanes o escandinavos que cerraron en Marbella o Estepona y quieren certeza registral antes de escriturar; jubilados españoles con segunda residencia en la costa; o inversores de alquiler turístico que deben verificar si el inmueble tiene VFT o limitaciones de uso. Si eres comprador extranjero que firmó arras en la Costa del Sol y quieres entender cargas, derramas y comunidad sin depender solo del vendedor, este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿El informe sirve si soy comprador extranjero y mi banco pide documentación en España?",
+        answer:
+          "El informe PDF se emite en español porque la documentación legal y registral lo está. En la llamada de veredicto el gestor te explica los hallazgos de forma clara; muchos compradores internacionales lo usan junto con su asesor o banco en España para validar la operación antes de escriturar.",
+      },
+      {
+        question: "¿Verificáis deudas de comunidad en urbanizaciones de Marbella, Estepona o Benalmádena?",
+        answer:
+          "Sí. Cruzamos actas de los últimos dos años con certificado de deuda de la comunidad para detectar cuotas impagadas o derramas aprobadas que el vendedor no residente pueda haber omitido.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {
