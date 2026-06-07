@@ -18,6 +18,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE = "/servicios/revision-do
 export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "madrid",
   "barcelona",
+  "valencia",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -131,7 +132,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Valencia",
+    heroH1: `Revisión documental post-arras en Valencia: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: `Revisión documental post-arras en Valencia — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      "¿Firmaste arras en Valencia? Revisamos DANA, derramas, licencias y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
+    keywords: [
+      "revision documental post arras valencia",
+      "revisar documentacion compra piso valencia",
+      "dana valencia compra vivienda arras",
+      "licencia primera ocupacion valencia",
+      "verificar arras antes escritura valencia",
+    ],
+    heroBullets: [
+      "Daños DANA en Paiporta, Sedaví, Catarroja y área sur",
+      "Primera ocupación en obra nueva 2000-2010",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Valencia? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "valencia",
     gestoriaSlug: "valencia",
   },

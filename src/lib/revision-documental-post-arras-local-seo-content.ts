@@ -107,6 +107,55 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  valencia: {
+    introParagraph: `Firmaste arras en Valencia y entregaste una señal que puede rondar los 25.000 € en un piso de 250.000 €. Tienes entre 30 y 90 días hasta escritura — y en muchas operaciones valencianas la duda no es solo la comunidad: ¿el inmueble sufrió daños por la DANA de noviembre de 2024 sin que conste en actas ni en la nota registral? En municipios del área metropolitana sur como Paiporta, Sedaví, Catarroja, Alfafar o Massanassa hay viviendas con daños estructurales o humedades que el vendedor no siempre declara. Nuestro gestor revisa actas, derramas, licencias, nota registral, urbanismo y tus arras antes de notaría. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Inmuebles afectados por la DANA (noviembre 2024)",
+        body:
+          "El área metropolitana sur de Valencia — Paiporta, Sedaví, Catarroja, Alfafar, Massanassa y otros municipios — sufrió inundaciones severas. Puede haber daños estructurales, humedades persistentes o afectación a instalaciones que no figuran en la nota registral ni en actas de comunidad recientes. Un comprador que no revisa la documentación post-arras puede llevarse una sorpresa mayúscula días antes de escriturar, con la señal ya comprometida y el banco revisando de nuevo el inmueble.",
+      },
+      {
+        title: "Licencia de primera ocupación o certificado de fin de obra",
+        body:
+          "Valencia y su área metropolitana tienen muchos inmuebles de obra nueva de los 2000-2010 donde la licencia de primera ocupación o el certificado de fin de obra no se gestionó correctamente. Sin documentación urbanística en regla, el banco puede negarse a formalizar la hipoteca a última hora — justo cuando ya firmaste arras y entregaste la señal.",
+      },
+      {
+        title: "Cargas de promotoras extintas en urbanizaciones de los 2000",
+        body:
+          "Urbanizaciones de la expansión valenciana pueden conservar afecciones o cargas de promotoras en quiebra que nunca se cancelaron registralmente. La nota simple aislada no siempre basta: hay que cruzar registro, planeamiento y lo pactado en arras. Si no lo detectas antes de escriturar, el conflicto aparece en notaría cuando ya no tienes margen para renegociar con calma.",
+      },
+      {
+        title: "Derramas y comunidades en barrios consolidados",
+        body:
+          "En Ciutat Vella, Ruzafa, Benimaclet o municipios del cinturón (Mislata, Torrent) las comunidades aprueban con frecuencia derramas de rehabilitación o ascensor que el vendedor no comunica. Heredar una cuota de varios miles de euros tras haber entregado el 10 % en arras es uno de los motivos más habituales por los que los compradores contratan revisión documental en Valencia.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia con el precio en un mercado donde familias locales y compradores de Madrid o Barcelona cierran con rapidez.",
+      "Revisión de actas de comunidad (últimos 2 años) — especial atención a edificios en zona metropolitana sur y barrios con rehabilitaciones recientes.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — detectamos cuotas aprobadas en junta que el vendedor no haya liquidado.",
+      "Análisis del ITE si existe — vigencia y deficiencias en edificios antiguos del centro o ensanche.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y coherencia con arras.",
+      "Consulta de información urbanística y licencias — primera ocupación, fin de obra y situación catastral en promociones de los 2000-2010.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo, incluidos indicios de afectación por DANA si la documentación lo sugiere.",
+      "Llamada de veredicto con gestor especializado — opciones concretas si detectamos incidencias graves.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o calendario de firma.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Valencia que ya firmaron arras. El perfil típico: familias locales que compran primera o segunda vivienda en Ruzafa, Campanar o el área metropolitana; inversores de zona costera o alfoz; o compradores que se trasladan desde Madrid o Barcelona y no conocen las particularidades documentales valencianas. Si compraste en Paiporta, Sedaví o municipios afectados por la DANA y quieres certeza antes de desembolsar el resto del precio — o si tu banco pide licencia de primera ocupación y no la tienes clara — este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Podéis verificar si el inmueble tuvo daños por la DANA de noviembre de 2024?",
+        answer:
+          "Revisamos actas de comunidad, informes disponibles, coherencia registral y la documentación que aportes. Si hay indicios de afectación por inundación o daños no declarados por el vendedor, lo reflejamos en el informe con recomendaciones antes de escriturar.",
+      },
+      {
+        question: "¿Comprobáis si existe licencia de primera ocupación o certificado de fin de obra?",
+        answer:
+          "Sí. Cruzamos la documentación urbanística con lo pactado en arras. La ausencia de primera ocupación es una causa frecuente de bloqueo hipotecario días antes de la firma en promociones de los 2000-2010.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {
