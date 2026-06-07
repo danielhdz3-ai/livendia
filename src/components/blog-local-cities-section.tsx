@@ -4,6 +4,7 @@ import { ContratoAlquilerLocalCityLinks } from "@/components/contrato-alquiler-l
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
 import { GestoriaInmobiliariaLocalCityLinks } from "@/components/gestoria-inmobiliaria-local-city-links";
 import { ServicioCompletoCompraLocalCityLinks } from "@/components/servicio-completo-compra-local-city-links";
+import { RevisionDocumentalPostArrasLocalCityLinks } from "@/components/revision-documental-post-arras-local-city-links";
 import { VentaParticularesLocalCityLinks } from "@/components/venta-particulares-local-city-links";
 
 /**
@@ -21,7 +22,8 @@ export function BlogLocalCitiesSection() {
           Guías y servicios por ciudad
         </h2>
         <p className="mt-3 max-w-3xl text-[#64748b]">
-          Contenido local con precios fijos: compraventa, contratos LAU,{" "}
+          Contenido local con precios fijos: compraventa,{" "}
+          <strong className="font-semibold text-[#1E293B]">revisión post-arras</strong>, contratos LAU,{" "}
           <strong className="font-semibold text-[#1E293B]">alquiler por temporada</strong> y administración de
           alquileres adaptados a cada mercado. Las páginas de contratación siguen en{" "}
           <a href="/servicios" className="font-semibold text-[#1A4FBF] hover:underline">
@@ -46,8 +48,11 @@ export function BlogLocalCitiesSection() {
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <ContratoAlquilerTemporadaLocalCityLinks />
           </div>
-          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <ServicioCompletoCompraLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <RevisionDocumentalPostArrasLocalCityLinks />
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
             <VentaParticularesLocalCityLinks />

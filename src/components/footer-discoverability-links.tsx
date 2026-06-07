@@ -20,6 +20,10 @@ import {
   getPublishedServicioCompletoCompraLocalCities,
 } from "@/lib/servicio-completo-compra-local-cities";
 import {
+  REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE,
+  getPublishedRevisionDocumentalPostArrasLocalCities,
+} from "@/lib/revision-documental-post-arras-local-cities";
+import {
   SERVICIO_COMPLETO_VENTA_LOCAL_BASE,
   getPublishedServicioCompletoVentaLocalCities,
 } from "@/lib/servicio-completo-venta-local-cities";
@@ -37,6 +41,7 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato alquiler habitación" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/contrato-arras-confirmatorias", label: "Arras confirmatorias" },
+  { href: "/servicios/revision-documental-post-arras", label: "Revisión post-arras" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
   { href: "/blog", label: "Blog y guías" },
   { href: "/equipo", label: "Equipo" },
@@ -62,6 +67,7 @@ export function FooterDiscoverabilityLinks() {
   const compraLocal = getPublishedServicioCompletoCompraLocalCities();
   const ventaLocal = getPublishedServicioCompletoVentaLocalCities();
   const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
+  const revisionPostArrasLocal = getPublishedRevisionDocumentalPostArrasLocalCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -142,6 +148,11 @@ export function FooterDiscoverabilityLinks() {
             slug: c.slug,
             name: c.city === "Palma de Mallorca" ? "Mallorca" : c.city,
           }))}
+        />
+        <LocalGroup
+          title="Revisión post-arras por ciudad"
+          hub={REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE}
+          cities={revisionPostArrasLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
       </div>
     </nav>
