@@ -205,6 +205,55 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  sevilla: {
+    introParagraph: `Firmaste arras en Sevilla y entregaste una señal que puede rondar los 25.000 € en un piso de 250.000 €. Entre hoy y la escritura te asaltan las mismas dudas: ¿hay una derrama de rehabilitación en la comunidad que nadie mencionó? En Triana, el Casco Antiguo o Macarena muchos edificios están catalogados o protegidos y las obras de rehabilitación son más caras — las actas pueden reflejar derramas de 10.000 a 20.000 € por vivienda. Además, en Sevilla es frecuente comprar a herederos con aceptación de herencia o liquidación de sucesiones pendientes. Nuestro gestor revisa actas, nota registral, licencias, ITE y tus arras antes de notaría. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Derramas en edificios históricos del Centro y Triana",
+        body:
+          "El patrimonio edificado de Sevilla concentra inmuebles catalogados o protegidos donde las rehabilitaciones de fachada, estructura o accesibilidad son más costosas y las derramas más frecuentes. Las actas de comunidad en Triana, Casco Antiguo o Macarena pueden reflejar acuerdos de 10.000 a 20.000 € por vivienda que el vendedor no traslada al comprador. Con la señal ya entregada, descubrirlo en notaría deja poco margen para renegociar.",
+      },
+      {
+        title: "Herencias no liquidadas o con defectos registrales",
+        body:
+          "Muchas operaciones en Sevilla proceden de herencias: varios herederos venden sin haber liquidado correctamente el impuesto de sucesiones o con aceptación de herencia con defectos formales que aparecen en la nota registral. El comprador que no revisa titularidad y cargas antes de escriturar puede encontrarse con un vendedor que no puede transmitir limpiamente — o con retrasos que ponen en riesgo el plazo de arras.",
+      },
+      {
+        title: "Reformas importantes sin licencia municipal",
+        body:
+          "Es frecuente en Sevilla encontrar inmuebles con ampliaciones, cambios de distribución o terrazas cerradas realizadas sin licencia que no están reflejadas en la ficha catastral ni en el registro. El banco y el notario pueden cuestionar la operación si lo vendido no coincide con la realidad urbanística. Revisar licencias y coherencia catastral antes de escriturar evita bloqueos de última hora.",
+      },
+      {
+        title: "Alquiler turístico en el Centro y obligaciones de comunidad",
+        body:
+          "Compradores que adquieren en el Centro para alquiler turístico pueden ignorar restricciones de comunidad, licencias o cargas que afectan al uso previsto. Las arras raramente detallan si el edificio limita apartamentos turísticos o si hay sanciones municipales pendientes — información que debe cruzarse en la revisión documental.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca y coherencia con el precio en un mercado sevillano con muchas operaciones entre particulares.",
+      "Revisión de actas de comunidad (últimos 2 años) — especial atención a edificios históricos en Triana, Macarena y Casco Antiguo con derramas de rehabilitación frecuentes.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — detectamos cuotas de fachada, estructura o accesibilidad no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — deficiencias en edificios antiguos del centro y obligaciones de subsanación compartidas.",
+      "Obtención y revisión de nota registral actualizada — titularidad tras herencia, cargas, hipotecas y coherencia con arras.",
+      "Consulta de información urbanística y licencias — reformas sin licencia, legalización de obras y situación catastral.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo para decidir con datos antes de la firma.",
+      "Llamada de veredicto con gestor especializado — opciones si detectamos herencia incompleta o cargas ocultas.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o plazos de arras.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Sevilla que ya firmaron arras. El perfil típico: familias locales que compran primera vivienda en Nervión, Los Remedios o Triana; funcionarios de la Junta de Andalucía que cierran con rapidez; o inversores de alquiler turístico en el Centro que deben verificar licencias y comunidad antes de desembolsar el resto del precio. Si compraste a herederos o en un edificio catalogado y quieres certeza documental con la señal ya comprometida, este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Revisáis si el vendedor heredó y la titularidad registral está correcta?",
+        answer:
+          "Sí. Analizamos la nota registral y la coherencia con la situación de herencia. Si la aceptación no está inscrita o hay cotitulares pendientes de firmar, lo reflejamos en el informe antes de que llegue el día de escritura.",
+      },
+      {
+        question: "¿Detectáis reformas sin licencia en pisos del Centro o Triana?",
+        answer:
+          "Cruzamos la documentación urbanística disponible con la ficha catastral y lo pactado en arras. Si hay indicios de obras no legalizadas que puedan afectar a la operación o a la hipoteca, lo señalamos con recomendaciones concretas.",
+      },
+    ],
+  },
 };
 
 export function getRevisionPostArrasLocalSeoContent(slug: string): RevisionPostArrasSeoContent | undefined {

@@ -20,6 +20,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly stri
   "barcelona",
   "valencia",
   "malaga",
+  "sevilla",
 ];
 
 export type RevisionDocumentalPostArrasLocalLandingConfig = {
@@ -185,7 +186,25 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     slug: "sevilla",
     city: "Sevilla",
     schemaAdministrativeArea: "Andalucía",
-    finalCtaLead: "",
+    heroBadge: "Post-arras · Comprador · Sevilla",
+    heroH1: `Revisión documental post-arras en Sevilla: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
+    metaTitle: `Revisión documental post-arras en Sevilla — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      "¿Firmaste arras en Sevilla? Revisamos derramas en Triana, herencias y licencias antes de escriturar. Informe en 48h — 350 € IVA incl.",
+    keywords: [
+      "revision documental post arras sevilla",
+      "revisar documentacion compra piso sevilla",
+      "derramas triana casco antiguo comprador",
+      "herencia compra vivienda sevilla arras",
+      "verificar arras antes escritura sevilla",
+    ],
+    heroBullets: [
+      "Derramas en Triana, Macarena y Casco Antiguo",
+      "Herencias y titularidad registral pendiente",
+      "Informe PDF + llamada de veredicto en 48 h",
+    ],
+    finalCtaLead:
+      "¿Ya firmaste arras en Sevilla? Contrata el pack por 350 € — informe en 48h.",
     compraLocalSlug: "sevilla",
     gestoriaSlug: "sevilla",
   },
