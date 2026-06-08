@@ -42,6 +42,18 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS = REVISION_DOCUMENTAL_PO
 export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL = `${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR} €`;
 export const REVISION_DOCUMENTAL_POST_ARRAS_SLUG = "revision-documental-post-arras" as const;
 
+/** Gestor documental vendedor (arras → escritura) — precio comercial IVA incl. */
+export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR = 350;
+export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS = GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR * 100;
+export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL = `${GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR} €`;
+export const GESTION_DOCUMENTAL_VENDEDOR_SLUG = "gestion-documental-vendedor" as const;
+
+/** Contrato de arras local — tarifa publicada IVA incl. */
+export const CONTRATO_ARRAS_LOCAL_PRICE_EUR = 145;
+export const CONTRATO_ARRAS_LOCAL_PRICE_LABEL = `${CONTRATO_ARRAS_LOCAL_PRICE_EUR} €`;
+export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR =
+  CONTRATO_ARRAS_LOCAL_PRICE_EUR + GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR;
+
 /** Contrato de alquiler LAU — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_LAU_PRICE_EUR = 145;
 export const CONTRATO_ALQUILER_LAU_PRICE_CENTS = CONTRATO_ALQUILER_LAU_PRICE_EUR * 100;
@@ -67,6 +79,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [CONTRATO_ALQUILER_LAU_SLUG]: CONTRATO_ALQUILER_LAU_PRICE_CENTS,
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
   [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
+  [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
 };
@@ -122,6 +135,32 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "Entrega en 3-5 días · Análisis en 48h",
     ],
     badge: "Pre-escritura",
+  },
+  {
+    slug: "gestion-documental-vendedor",
+    name: "Gestor documental vendedor — De arras a escritura",
+    description:
+      "Gestor dedicado que obtiene y verifica toda la documentación para escriturar: nota simple, comunidad, ITE, certificado energético, hipoteca, IBI y coherencia con arras. Informe semáforo y asesoramiento hasta notaría.",
+    category: "acompanamiento",
+    price_cents: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Gestor dedicado desde la contratación",
+      "Checklist personalizado de documentación",
+      "Nota simple registral actualizada",
+      "Certificado de deuda cero de comunidad",
+      "Verificación ITE vigente si aplica",
+      "Certificado de eficiencia energético",
+      "Estado de suministros (luz, agua, gas)",
+      "IBI y prorrateo vendedor/comprador",
+      "Cargas y afecciones registrales",
+      "Documentación hipoteca pendiente",
+      "Coherencia documentación vs arras",
+      "Informe semáforo verde/ámbar/rojo",
+      "Asesoramiento hasta notaría",
+      "Área de cliente Livendia",
+    ],
+    badge: "Para vendedores",
   },
 ];
 
@@ -216,6 +255,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "servicio-completo-compra": "/images/familia2.jpg",
   "servicio-completo-venta": "/images/servicio-completo-venta-hero.jpg",
   "revision-documental-post-arras": "/images/gestoria20.jpg",
+  "gestion-documental-vendedor": "/images/gestoria20.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
   "contrato-de-alquiler": "/images/contratodealquiler.jpg",

@@ -34,6 +34,10 @@ import {
   getPublishedRevisionDocumentalPostArrasLocalCities,
 } from "@/lib/revision-documental-post-arras-local-cities";
 import {
+  GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE,
+  getPublishedGestionDocumentalVendedorLocalCities,
+} from "@/lib/gestion-documental-vendedor-local-cities";
+import {
   getPublishedVenderPisoSinAgenciaCities,
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
@@ -49,6 +53,7 @@ const SERVICIO_SLUGS = [
   "servicio-completo-compra",
   "servicio-completo-venta",
   "revision-documental-post-arras",
+  "gestion-documental-vendedor",
   "reserva-de-compra",
   "acompanamiento-reserva-arras",
   "contrato-de-arras",
@@ -168,6 +173,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.84,
     }));
 
+  const gestionVendedorLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedGestionDocumentalVendedorLocalCities().map((c) => ({
+      url: `${base}${GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+
   return [
     ...core,
     ...servicios,
@@ -179,6 +192,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
     ...revisionPostArrasLocalCiudades,
+    ...gestionVendedorLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...blogArticles,
