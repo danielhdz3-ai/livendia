@@ -37,8 +37,8 @@ export function RevisionDocumentalPostArrasLocalCityLinks({
           }
         >
           {isFooter
-            ? "Revisión post-arras por ciudad"
-            : "Revisión documental post-arras por ciudad"}
+            ? "Revisión comprador post-arras por ciudad"
+            : "Revisión documental comprador post-arras por ciudad"}
         </p>
       ) : null}
       <nav

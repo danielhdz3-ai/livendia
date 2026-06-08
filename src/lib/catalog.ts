@@ -13,7 +13,10 @@ const SERVICE_SELECT =
   "id, slug, name, description, category, price_cents, is_recurring, features, badge";
 
 function normalizeServiceCategory(service: PublicService): PublicService {
-  if (service.slug === "revision-documental-post-arras") {
+  if (
+    service.slug === "revision-documental-post-arras" ||
+    service.slug === "gestion-documental-vendedor"
+  ) {
     return { ...service, category: "compraventa" };
   }
   return service;

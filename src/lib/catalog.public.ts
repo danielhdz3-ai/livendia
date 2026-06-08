@@ -138,10 +138,10 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
   },
   {
     slug: "gestion-documental-vendedor",
-    name: "Gestor documental vendedor — De arras a escritura",
+    name: "Gestión documental vendedor post-arras",
     description:
       "Gestor dedicado que obtiene y verifica toda la documentación para escriturar: nota simple, comunidad, ITE, certificado energético, hipoteca, IBI y coherencia con arras. Informe semáforo y asesoramiento hasta notaría.",
-    category: "acompanamiento",
+    category: "compraventa",
     price_cents: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
     is_recurring: false,
     features: [
@@ -160,7 +160,7 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "Asesoramiento hasta notaría",
       "Área de cliente Livendia",
     ],
-    badge: "Para vendedores",
+    badge: "Post-arras · Vendedor",
   },
 ];
 
@@ -218,6 +218,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
         "contrato-arras-penitenciales",
         "contrato-arras-confirmatorias",
         "revision-documental-post-arras",
+        "gestion-documental-vendedor",
         "reserva-de-compra",
       ];
       const i = order.indexOf(s.slug);

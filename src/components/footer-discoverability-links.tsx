@@ -24,6 +24,10 @@ import {
   getPublishedRevisionDocumentalPostArrasLocalCities,
 } from "@/lib/revision-documental-post-arras-local-cities";
 import {
+  GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE,
+  getPublishedGestionDocumentalVendedorLocalCities,
+} from "@/lib/gestion-documental-vendedor-local-cities";
+import {
   SERVICIO_COMPLETO_VENTA_LOCAL_BASE,
   getPublishedServicioCompletoVentaLocalCities,
 } from "@/lib/servicio-completo-venta-local-cities";
@@ -41,7 +45,8 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato alquiler habitación" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/contrato-arras-confirmatorias", label: "Arras confirmatorias" },
-  { href: "/servicios/revision-documental-post-arras", label: "Revisión post-arras" },
+  { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },
+  { href: "/servicios/gestion-documental-vendedor", label: "Gestión vendedor post-arras" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
   { href: "/blog", label: "Blog y guías" },
   { href: "/equipo", label: "Equipo" },
@@ -68,6 +73,7 @@ export function FooterDiscoverabilityLinks() {
   const ventaLocal = getPublishedServicioCompletoVentaLocalCities();
   const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
   const revisionPostArrasLocal = getPublishedRevisionDocumentalPostArrasLocalCities();
+  const gestionVendedorLocal = getPublishedGestionDocumentalVendedorLocalCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -150,9 +156,14 @@ export function FooterDiscoverabilityLinks() {
           }))}
         />
         <LocalGroup
-          title="Revisión post-arras por ciudad"
+          title="Revisión comprador post-arras por ciudad"
           hub={REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE}
           cities={revisionPostArrasLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Gestión vendedor post-arras por ciudad"
+          hub={GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE}
+          cities={gestionVendedorLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
       </div>
     </nav>
