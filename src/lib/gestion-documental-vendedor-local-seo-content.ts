@@ -56,86 +56,86 @@ export const GESTION_VENDEDOR_SEO_CONTENT: Record<string, GestionVendedorSeoCont
   madrid: {
     precioMedio: 350_000,
     heroSubtitle:
-      "Vendiste tu piso en Madrid y tienes comprador. Entre las arras y la notaría hay 30-90 días en los que alguien tiene que gestionar la nota simple, el certificado de comunidad, el ITE y la documentación de tu hipoteca. Tu gestor Livendia lo hace por ti desde 24 horas después de contratar.",
+      "Vendiste tu piso en Madrid y ya tienes comprador en el mercado más activo de España. Aquí los plazos de escritura suelen ser más cortos por la alta demanda: si la documentación no está lista, pierdes la ventana con el comprador. Tu gestor Livendia gestiona nota simple, comunidad, ITE y hipoteca desde 24 h para que no se retrase la firma.",
     localProblemIntro:
-      "En Madrid, el problema más frecuente en ventas entre particulares es la hipoteca pendiente: el vendedor no sabe qué pasos dar con su banco para coordinar la cancelación con la escritura, y los bancos no siempre son ágiles.",
+      "En Madrid, el cuello de botella habitual son las comunidades grandes de Salamanca y Chamberí: administradores saturados que tardan semanas en emitir el certificado de deuda cero, y edificios de los 60-70 con derramas de rehabilitación de fachada o ascensor que el vendedor no había previsto.",
     step2LocalNote:
-      "Coordinación con el banco para certificado de deuda hipotecaria y cancelación registral el mismo día de la venta.",
+      "Solicitud prioritaria de certificado de comunidad en bloques de Salamanca y Chamberí, y coordinación hipotecaria con el banco del vendedor.",
     casuistica: [
       {
-        title: "Derramas en Carabanchel, Vallecas, Tetuán y Usera",
+        title: "Comunidades saturadas en Salamanca y Chamberí",
         body:
-          "Edificios de los 60-80 con rehabilitación de fachada o ascensor pueden tener derramas de 5.000-15.000 € por piso. El gestor verifica que el certificado de comunidad refleja el estado real.",
+          "Bloques con decenas de propietarios y gestores externos pueden tardar 2-3 semanas en el certificado de deuda. El gestor lo solicita en la semana 1 para no perder la fecha de escritura.",
       },
       {
-        title: "Cancelación registral de hipoteca",
+        title: "Derramas de rehabilitación en edificios de los 60-70",
         body:
-          "Madrid concentra muchas hipotecas pendientes. El gestor solicita el certificado de deuda al banco y coordina la cancelación en notaría el día de la venta.",
+          "En Carabanchel, Tetuán o Usera es habitual encontrar derramas de 5.000-15.000 € por piso aprobadas en junta. El gestor cruza actas y certificado antes de ir a notaría.",
       },
       {
-        title: "ITE en Chamberí, Salamanca y Centro",
+        title: "ITE obligatoria en edificios de más de 50 años",
         body:
-          "Edificios anteriores a 1970 con ITE obligatoria. El gestor verifica vigencia y deficiencias antes de fijar fecha de escritura.",
+          "Madrid no exige cédula de habitabilidad, pero sí ITE en muchos edificios antiguos del centro. El gestor verifica vigencia y deficiencias antes de fijar fecha.",
       },
       {
-        title: "Afecciones urbanísticas en PAUs",
+        title: "Hipoteca pendiente y plazos ajustados",
         body:
-          "En Vallecas, Los Berrocales o Valdecarros la nota simple puede contener afecciones que deben verificarse antes de transmitir.",
+          "Con compradores que compiten por el piso, un retraso del banco en el certificado de deuda puede tumbar la operación. El gestor coordina cancelación el día de la venta.",
       },
     ],
     faqLocal: [
       {
-        question: "¿Cuánto tarda el banco en dar el certificado de deuda pendiente de la hipoteca en Madrid?",
+        question: "¿Hace falta cédula de habitabilidad para vender en Madrid?",
         answer:
-          "Legalmente hasta 7 días hábiles, aunque en la práctica puede alargarse 2-3 semanas. Tu gestor lo solicita en los primeros días del servicio.",
+          "No. Madrid eliminó la exigencia de cédula de habitabilidad para transmitir vivienda. Lo que sí puede ser obligatorio es la ITE en edificios de más de 50 años y el certificado energético vigente. Tu gestor lo comprueba en el checklist inicial.",
       },
       {
-        question: "¿El Ayuntamiento de Madrid exige algún certificado específico para vender entre particulares?",
+        question: "¿Cuánto tarda el banco en dar el certificado de deuda pendiente de la hipoteca en Madrid?",
         answer:
-          "No hay certificado municipal extra más allá del energético y el ITE si aplica. El gestor comprueba afecciones urbanísticas y protección oficial en el checklist.",
+          "Legalmente hasta 7 días hábiles, aunque en la práctica puede alargarse 2-3 semanas. Tu gestor lo solicita en los primeros días del servicio para no comprometer la fecha de escritura.",
       },
     ],
   },
   valencia: {
     precioMedio: 220_000,
     heroSubtitle:
-      "Vendiste en Valencia o el área metropolitana y tienes comprador particular. Entre arras y escritura necesitas nota simple, comunidad al día, certificado energético vigente y —en muchos casos— verificar licencias o el estado real del inmueble. Tu gestor Livendia organiza todo el expediente desde 24 h.",
+      "Vendiste tu piso en Valencia en un mercado en fuerte alza donde muchos vendedores son particulares sin experiencia previa. Entre arras y notaría descubres que hay más papeles de los que pensabas: comunidad, cédula de habitabilidad, energético y nota registral. Tu gestor Livendia lo organiza desde 24 h para que la operación no se enfríe.",
     localProblemIntro:
-      "En Valencia es frecuente que el certificado energético esté caducado o que la licencia de primera ocupación no se tramitó correctamente en promociones de los 2000-2010.",
+      "En Valencia abundan fincas con régimen de propiedad horizontal y estatutos antiguos, sobre todo en Ruzafa o Benimaclet, donde la comunidad no tiene administrador profesional y conseguir el certificado de deuda cero depende de un vecino que tarda semanas en responder.",
     step2LocalNote:
-      "Verificación de cédula de habitabilidad y licencia de primera ocupación en obra nueva del área metropolitana.",
+      "Gestión de certificado de comunidad en bloques sin administrador profesional y verificación de cédula según la Llei 8/2004 de la Comunitat Valenciana.",
     casuistica: [
       {
-        title: "Zonas afectadas por la DANA (nov 2024)",
+        title: "Estatutos antiguos y comunidades sin administrador",
         body:
-          "En Paiporta, Sedaví, Catarroja o Alfafar el gestor verifica que la documentación refleja el estado real y que no hay procedimientos municipales abiertos derivados de los daños.",
+          "En Ruzafa, Benimaclet o Ciutat Vella el presidente de la comunidad gestiona el papeleo a tiempo parcial. El gestor contacta, hace seguimiento y evita que el certificado de deuda frene la escritura.",
       },
       {
-        title: "Licencia de primera ocupación pendiente",
+        title: "Cédula de habitabilidad (Llei 8/2004)",
         body:
-          "Sin ella el banco del comprador puede frenar la hipoteca. El gestor lo detecta en las primeras semanas, no a última hora.",
+          "En la Comunitat Valenciana es obligatoria para transmitir. Si está caducada (validez 10 años), debe renovarse antes de escriturar. El gestor lo verifica en la primera semana.",
       },
       {
         title: "Certificado energético caducado",
         body:
-          "Obligatorio para escriturar en la Comunitat Valenciana. El gestor comprueba vigencia y orienta si hay que renovarlo.",
+          "Muchos vendedores primerizos no saben que sin certificado vigente no se puede ir a notaría. El gestor lo detecta en el checklist y orienta la renovación si hace falta.",
       },
       {
-        title: "Cargas de promotoras extintas",
+        title: "Zonas del área metropolitana con licencias pendientes",
         body:
-          "Urbanizaciones de los 2000 pueden conservar afecciones no canceladas. Se cruzan registro y urbanismo.",
+          "Promociones de los 2000-2010 en municipios del cinturón pueden carecer de licencia de primera ocupación correctamente tramitada. El gestor lo revisa antes de que el banco del comprador lo pida.",
       },
     ],
     faqLocal: [
       {
-        question: "¿Puedo vender un piso en zona afectada por la DANA sin problemas documentales?",
+        question: "¿Es obligatoria la cédula de habitabilidad en Valencia para vender?",
         answer:
-          "Sí, si la documentación refleja el estado real. El gestor verifica anotaciones registrales y certificado energético vigente antes de escriturar.",
+          "Sí. La Llei 8/2004 de la Comunitat Valenciana exige la cèdula d'habitabilitat vigente para transmitir la propiedad. Si está caducada, debe renovarse antes de escriturar. Tu gestor Livendia lo verifica en el checklist inicial.",
       },
       {
-        question: "¿La Comunitat Valenciana exige algún documento específico para la compraventa?",
+        question: "¿Qué pasa si mi comunidad en Ruzafa no tiene administrador de fincas?",
         answer:
-          "Sí: la cèdula d'habitabilitat es obligatoria para transmitir. Si está caducada (10 años), debe renovarse. Tu gestor lo verifica en el checklist inicial.",
+          "El certificado de deuda cero lo debe firmar el presidente o el administrador designado por la junta. Tu gestor contacta a la comunidad, hace seguimiento y te indica qué documentación adicional puede pedir el notario.",
       },
     ],
   },

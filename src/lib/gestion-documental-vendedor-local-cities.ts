@@ -12,7 +12,17 @@ import { GESTION_VENDEDOR_FAQ_FIXED } from "@/lib/gestion-documental-vendedor-lo
 export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE = "/servicios/gestion-documental-vendedor";
 
 /** Publicación gradual: amplía cuando publiques cada ciudad. */
-export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_PUBLISHED_SLUGS: readonly string[] = ["barcelona"];
+export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
+  "barcelona",
+  "madrid",
+  "valencia",
+  "malaga",
+  "sevilla",
+  "bilbao",
+  "zaragoza",
+  "alicante",
+  "murcia",
+];
 
 export type GestionDocumentalVendedorLocalLandingConfig = {
   slug: string;
@@ -104,7 +114,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "Barcelona",
       "Cataluña",
       `Gestor documental vendedor en Barcelona — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste tu piso en Barcelona y no sabes qué documentos necesitas para escriturar? Un gestor te los gestiona todos. 350 € IVA incl. Arras a escritura.",
+      "¿Vendiste tu piso en Barcelona sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor barcelona",
@@ -120,13 +130,13 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "Madrid",
       "Comunidad de Madrid",
       `Gestor documental vendedor en Madrid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Madrid con comprador particular? Gestor de arras a escritura: hipoteca, comunidad, ITE. 350 € IVA incl.",
+      "¿Vendiste tu piso en Madrid sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor madrid",
-      "documentos vender piso madrid",
-      "cancelar hipoteca venta particular madrid",
+      "documentos vender piso madrid particular",
       "preparar escritura venta madrid",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -135,14 +145,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "valencia",
       "Valencia",
       "Comunidad Valenciana",
-      `Gestor vendedor Valencia: DANA y licencias — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Valencia? Gestor de arras a escritura: cédula, energético, comunidad. 350 € IVA incl.",
+      `Gestor documental vendedor en Valencia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Valencia sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor valencia",
-      "documentos vender piso valencia",
-      "cedula habitabilidad venta valencia",
-      "preparar escritura valencia particular",
+      "documentos vender piso valencia particular",
+      "preparar escritura venta valencia",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -151,14 +161,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "malaga",
       "Málaga",
       "Andalucía",
-      `Gestor vendedor Málaga y Costa del Sol — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Málaga o Marbella? Gestor documental arras a escritura. Comunidad, VFT, ITE. 350 € IVA incl.",
+      `Gestor documental vendedor en Málaga — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Málaga sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor malaga",
-      "documentos vender piso marbella",
-      "preparar escritura costa del sol",
-      "vender piso particular malaga documentacion",
+      "documentos vender piso malaga particular",
+      "preparar escritura venta malaga",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -167,14 +177,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "sevilla",
       "Sevilla",
       "Andalucía",
-      `Gestor vendedor Sevilla: herencias y Triana — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Sevilla entre particulares? Gestor arras a escritura: herencias, derramas, ITE. 350 € IVA incl.",
+      `Gestor documental vendedor en Sevilla — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Sevilla sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor sevilla",
-      "documentos vender piso sevilla",
-      "herencia venta vivienda sevilla",
-      "preparar escritura sevilla particular",
+      "documentos vender piso sevilla particular",
+      "preparar escritura venta sevilla",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -183,14 +193,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "bilbao",
       "Bilbao",
       "País Vasco",
-      `Gestor vendedor Bilbao: RENOVE y foral — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Bilbao? Gestor documental arras a escritura: hipoteca, RENOVE, comunidad. 350 € IVA incl.",
+      `Gestor documental vendedor en Bilbao — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Bilbao sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor bilbao",
-      "documentos vender piso bilbao",
-      "preparar escritura venta bizkaia",
-      "gestionar venta particular bilbao",
+      "documentos vender piso bilbao particular",
+      "preparar escritura venta bilbao",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -199,14 +209,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "zaragoza",
       "Zaragoza",
       "Aragón",
-      `Gestor vendedor Zaragoza: PAUs y herencias — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Zaragoza? Gestor arras a escritura: urbanización, herencias, ITE. 350 € IVA incl.",
+      `Gestor documental vendedor en Zaragoza — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Zaragoza sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor zaragoza",
-      "documentos vender piso zaragoza",
-      "valdespartera venta documentacion",
-      "preparar escritura zaragoza particular",
+      "documentos vender piso zaragoza particular",
+      "preparar escritura venta zaragoza",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -215,14 +225,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "alicante",
       "Alicante",
       "Comunidad Valenciana",
-      `Gestor vendedor Costa Blanca — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Alicante o Costa Blanca? Gestor documental arras a escritura. Deudas comunidad. 350 € IVA incl.",
+      `Gestor documental vendedor en Alicante — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Alicante sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor alicante",
-      "documentos vender piso torrevieja",
-      "preparar escritura costa blanca",
-      "vender piso particular alicante documentacion",
+      "documentos vender piso alicante particular",
+      "preparar escritura venta alicante",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -232,13 +242,13 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "Murcia",
       "Región de Murcia",
       `Gestor documental vendedor en Murcia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Murcia con comprador particular? Gestor arras a escritura: comunidad, herencias. 350 € IVA incl.",
+      "¿Vendiste tu piso en Murcia sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor murcia",
-      "documentos vender piso murcia",
-      "preparar escritura murcia particular",
-      "gestionar venta piso sin agencia murcia",
+      "documentos vender piso murcia particular",
+      "preparar escritura venta murcia",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {

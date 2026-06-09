@@ -6,7 +6,7 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 import { getPublicServices } from "@/lib/catalog";
 import {
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
-  GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR,
+  GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL,
   GESTION_DOCUMENTAL_VENDEDOR_SLUG,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
@@ -32,7 +32,7 @@ import {
   isServicioCompletoVentaLocalSlugPublished,
   localServicioCompletoVentaHref,
 } from "@/lib/servicio-completo-venta-local-cities";
-import { getSiteUrl } from "@/lib/site-url";
+import { buildGestionVendedorLocalSchemaGraph } from "@/lib/service-schema";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -58,38 +58,15 @@ function LocalGestionVendedorJsonLd({
   city: string;
   administrativeArea: string;
 }) {
-  const base = getSiteUrl().replace(/\/$/, "");
+  const { service, breadcrumb } = buildGestionVendedorLocalSchemaGraph({
+    path,
+    city,
+    administrativeArea,
+    priceCents: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
+  });
   const graph = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: `Gestión documental vendedor — arras a escritura en ${city}`,
-    description: `Gestor dedicado que obtiene y verifica toda la documentación necesaria para que el vendedor particular pueda escriturar su piso en ${city} sin retrasos ni sorpresas.`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Livendia",
-      url: base,
-      telephone: "+34600367742",
-      areaServed: `${city}, España`,
-    },
-    offers: {
-      "@type": "Offer",
-      price: GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR,
-      priceCurrency: "EUR",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR,
-        priceCurrency: "EUR",
-        description: "IVA incluido. Pago único.",
-      },
-    },
-    serviceType: "Gestión documental inmobiliaria",
-    url: `${base}${path}`,
-    areaServed: {
-      "@type": "City",
-      name: city,
-      containedInPlace: { "@type": "AdministrativeArea", name: administrativeArea },
-    },
-    inLanguage: "es-ES",
+    "@graph": [service, breadcrumb],
   };
 
   return (
