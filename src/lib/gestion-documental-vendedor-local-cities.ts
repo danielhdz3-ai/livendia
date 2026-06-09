@@ -22,6 +22,8 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_PUBLISHED_SLUGS: readonly string[
   "zaragoza",
   "alicante",
   "murcia",
+  "valladolid",
+  "granada",
 ];
 
 export type GestionDocumentalVendedorLocalLandingConfig = {
@@ -257,14 +259,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "valladolid",
       "Valladolid",
       "Castilla y León",
-      `Gestor vendedor Valladolid: herencias — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Valladolid entre particulares? Gestor arras a escritura: herencia, comunidad. 350 € IVA incl.",
+      `Gestor documental vendedor en Valladolid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Valladolid sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor valladolid",
-      "documentos vender piso valladolid",
-      "herencia venta vivienda valladolid",
-      "preparar escritura valladolid particular",
+      "documentos vender piso valladolid particular",
+      "preparar escritura venta valladolid",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
   {
@@ -273,14 +275,14 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "granada",
       "Granada",
       "Andalucía",
-      `Gestor vendedor Granada: Albaicín e inquilinos — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
-      "¿Vendiste en Granada? Gestor documental arras a escritura: patrimonio, regantes, alquiler. 350 € IVA incl.",
+      `Gestor documental vendedor en Granada — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Granada sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
       "gestor documental vendedor granada",
-      "documentos vender piso granada",
-      "albaicin venta documentacion",
-      "preparar escritura granada particular",
+      "documentos vender piso granada particular",
+      "preparar escritura venta granada",
+      "gestionar documentacion venta piso sin agencia",
     ],
   },
 ];
