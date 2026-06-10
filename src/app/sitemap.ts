@@ -38,6 +38,10 @@ import {
   getPublishedGestionDocumentalVendedorLocalCities,
 } from "@/lib/gestion-documental-vendedor-local-cities";
 import {
+  CONTRATO_ALQUILER_HABITACION_LOCAL_BASE,
+  getPublishedContratoAlquilerHabitacionLocalCities,
+} from "@/lib/contrato-alquiler-habitacion-local-cities";
+import {
   getPublishedVenderPisoSinAgenciaCities,
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
@@ -181,6 +185,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
+  const habitacionLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedContratoAlquilerHabitacionLocalCities().map((c) => ({
+      url: `${base}${CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.82,
+    }));
+
   return [
     ...core,
     ...servicios,
@@ -193,6 +205,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ventaSeoLocal,
     ...revisionPostArrasLocalCiudades,
     ...gestionVendedorLocalCiudades,
+    ...habitacionLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...blogArticles,

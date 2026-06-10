@@ -199,3 +199,55 @@ export function buildGestionVendedorLocalSchemaGraph(params: {
 
   return { service, breadcrumb, pageUrl };
 }
+
+/** Schema local habitación: Service + Offer + Breadcrumb (Inicio → Servicios → hub → ciudad). */
+export function buildContratoHabitacionLocalSchemaGraph(params: {
+  path: string;
+  city: string;
+  administrativeArea: string;
+  hubPath?: string;
+  hubName?: string;
+  priceCents: number;
+  serviceName?: string;
+}) {
+  const base = getSiteUrl().replace(/\/$/, "");
+  const pageUrl = `${base}${params.path}`;
+  const hubPath = params.hubPath ?? "/servicios/contrato-alquiler-habitacion";
+  const hubUrl = `${base}${hubPath}`;
+  const hubName = params.hubName ?? "Contrato de alquiler de habitación";
+  const serviceName =
+    params.serviceName ?? `Contrato de alquiler de habitación en ${params.city}`;
+
+  const service = {
+    "@type": "Service" as const,
+    "@id": `${pageUrl}#service`,
+    name: serviceName,
+    description: `Redacción profesional de contrato de alquiler de habitación en piso compartido en ${params.city}: convivencia, gastos, fianza e inventario.`,
+    serviceType: "Contrato de alquiler de habitación",
+    areaServed: {
+      "@type": "City" as const,
+      name: params.city,
+      containedInPlace: {
+        "@type": "AdministrativeArea" as const,
+        name: params.administrativeArea,
+      },
+    },
+    provider: { "@id": `${base}/#organization` },
+    offers: buildOffer(pageUrl, params.priceCents, false),
+    url: pageUrl,
+    inLanguage: "es-ES",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList" as const,
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem" as const, position: 1, name: "Inicio", item: base },
+      { "@type": "ListItem" as const, position: 2, name: "Servicios", item: `${base}/servicios` },
+      { "@type": "ListItem" as const, position: 3, name: hubName, item: hubUrl },
+      { "@type": "ListItem" as const, position: 4, name: params.city, item: pageUrl },
+    ],
+  };
+
+  return { service, breadcrumb, pageUrl };
+}

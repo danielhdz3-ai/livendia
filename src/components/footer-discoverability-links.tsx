@@ -28,6 +28,10 @@ import {
   getPublishedGestionDocumentalVendedorLocalCities,
 } from "@/lib/gestion-documental-vendedor-local-cities";
 import {
+  CONTRATO_ALQUILER_HABITACION_LOCAL_BASE,
+  getPublishedContratoAlquilerHabitacionLocalCities,
+} from "@/lib/contrato-alquiler-habitacion-local-cities";
+import {
   SERVICIO_COMPLETO_VENTA_LOCAL_BASE,
   getPublishedServicioCompletoVentaLocalCities,
 } from "@/lib/servicio-completo-venta-local-cities";
@@ -74,6 +78,7 @@ export function FooterDiscoverabilityLinks() {
   const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
   const revisionPostArrasLocal = getPublishedRevisionDocumentalPostArrasLocalCities();
   const gestionVendedorLocal = getPublishedGestionDocumentalVendedorLocalCities();
+  const habitacionLocal = getPublishedContratoAlquilerHabitacionLocalCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -164,6 +169,11 @@ export function FooterDiscoverabilityLinks() {
           title="Gestión vendedor post-arras por ciudad"
           hub={GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE}
           cities={gestionVendedorLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Contrato habitación por ciudad"
+          hub={CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}
+          cities={habitacionLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
       </div>
     </nav>

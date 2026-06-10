@@ -153,7 +153,14 @@ export default async function ContratoHabitacionPage() {
               </p>
               <p>
                 Livendia trabaja en toda España: el contrato se tramita online y el inmueble puede estar en Madrid,
-                Barcelona, Valencia, Málaga, Sevilla o cualquier municipio. Si buscas revisión LAU de vivienda completa,
+                Barcelona, Valencia, Málaga, Sevilla o cualquier municipio. Si el piso está en Barcelona, consulta la{" "}
+                <Link
+                  href="/servicios/contrato-alquiler-habitacion/barcelona"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  landing de contrato de habitación en Barcelona
+                </Link>{" "}
+                (Eixample, Gràcia, Poblenou y más distritos). Si buscas revisión LAU de vivienda completa,
                 consulta nuestro{" "}
                 <Link href="/servicios/contrato-de-alquiler" className="font-semibold text-[#1A4FBF] hover:underline">
                   contrato de alquiler

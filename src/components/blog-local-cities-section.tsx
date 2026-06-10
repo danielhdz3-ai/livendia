@@ -1,5 +1,6 @@
 import { AdministracionAlquilerLocalCityLinks } from "@/components/administracion-alquiler-local-city-links";
 import { ContratoAlquilerTemporadaLocalCityLinks } from "@/components/contrato-alquiler-temporada-local-city-links";
+import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
 import { ContratoAlquilerLocalCityLinks } from "@/components/contrato-alquiler-local-city-links";
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
 import { GestoriaInmobiliariaLocalCityLinks } from "@/components/gestoria-inmobiliaria-local-city-links";
@@ -40,6 +41,9 @@ export function BlogLocalCitiesSection() {
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <ContratoAlquilerLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <ContratoAlquilerHabitacionLocalCityLinks />
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <ContratoArrasLocalCityLinks />
