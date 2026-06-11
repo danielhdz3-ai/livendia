@@ -1,3 +1,4 @@
+import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,7 +13,26 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Users, FileText, Clock, CheckCircle } from "lucide-react";
+import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import {
+  HABITACION_PROCESS_INTRO,
+  HABITACION_PROCESS_STEPS,
+  HABITACION_TESTIMONIALS_NATIONAL,
+} from "@/lib/contrato-alquiler-habitacion-local-shared";
+import {
+  CreditCard,
+  FileCheck,
+  Users,
+  FileText,
+  Clock,
+  CheckCircle,
+  MessageCircle,
+  Phone,
+  PhoneCall,
+  UserRound,
+} from "lucide-react";
+
+const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
 const canonical = `${getSiteUrl()}/servicios/contrato-alquiler-habitacion`;
 
@@ -35,6 +55,13 @@ export default async function ContratoHabitacionPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "contrato-alquiler-habitacion") ?? null;
   const priceLabel = resolveServicePriceLabel(service, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
+
+  const telHref = getContactPhoneTelHref();
+  const phoneDisplay = getContactPhoneDisplay();
+  const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
+    "Hola, quiero una llamada con un gestor para un contrato de alquiler de habitación.",
+  )}`;
+  const processIcons = [PhoneCall, CreditCard, UserRound, FileCheck] as const;
 
   const features = [
     {
@@ -152,15 +179,9 @@ export default async function ContratoHabitacionPage() {
                 real del piso.
               </p>
               <p>
-                Livendia trabaja en toda España: el contrato se tramita online y el inmueble puede estar en Madrid,
-                Barcelona, Valencia, Málaga, Sevilla o cualquier municipio. Si el piso está en Barcelona, consulta la{" "}
-                <Link
-                  href="/servicios/contrato-alquiler-habitacion/barcelona"
-                  className="font-semibold text-[#1A4FBF] hover:underline"
-                >
-                  landing de contrato de habitación en Barcelona
-                </Link>{" "}
-                (Eixample, Gràcia, Poblenou y más distritos). Si buscas revisión LAU de vivienda completa,
+                Livendia trabaja en toda España: el contrato se tramita online y el inmueble puede estar en cualquier
+                municipio. Consulta las landings por ciudad con barrios, comparativas y casos típicos de particulares
+                en la sección siguiente. Si buscas revisión LAU de vivienda completa,
                 consulta nuestro{" "}
                 <Link href="/servicios/contrato-de-alquiler" className="font-semibold text-[#1A4FBF] hover:underline">
                   contrato de alquiler
@@ -219,39 +240,130 @@ export default async function ContratoHabitacionPage() {
           </div>
         </section>
 
+        <section className="border-t border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">Proceso en cuatro pasos</h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#475569]">{HABITACION_PROCESS_INTRO}</p>
+            </div>
+
+            <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+              <ol className="space-y-5">
+                {HABITACION_PROCESS_STEPS.map((step, i) => {
+                  const Icon = processIcons[i] ?? FileCheck;
+                  return (
+                    <li
+                      key={step.title}
+                      className="flex gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6"
+                    >
+                      <div className="flex shrink-0 flex-col items-center gap-2">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-lg font-bold text-white shadow-md">
+                          {i + 1}
+                        </span>
+                        <Icon className="h-5 w-5 text-[#06B6D4]" aria-hidden />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-[#1E293B]">{step.title}</h3>
+                        <p className="mt-2 leading-relaxed text-[#475569]">{step.description}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+
+              <aside className="lg:sticky lg:top-24">
+                <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-cyan-200">
+                    Asesoramiento antes de contratar
+                  </p>
+                  <h3 className="mt-3 text-xl font-extrabold leading-snug">
+                    Habla con tu gestor especializado
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-blue-100">
+                    Cuéntanos tu caso por teléfono o WhatsApp. Te orientamos sobre convivencia, gastos y fianza
+                    antes de pagar {priceLabel}.
+                  </p>
+                  <a
+                    href={telHref}
+                    className="mt-6 block text-2xl font-extrabold tracking-tight text-white transition hover:text-cyan-200"
+                  >
+                    {phoneDisplay}
+                  </a>
+                  <p className="mt-1 text-xs text-blue-200/90">L–V · 9:00 – 19:30</p>
+                  <div className="mt-6 flex flex-col gap-3">
+                    <a
+                      href={telHref}
+                      className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl border-2 border-white bg-white/10 px-5 py-3 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20"
+                    >
+                      <Phone className="h-5 w-5 shrink-0" aria-hidden />
+                      Llamar ahora
+                    </a>
+                    <a
+                      href={waConsultHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#20bd5a]"
+                    >
+                      <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
+                      WhatsApp con gestor
+                    </a>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-16 sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+              {HABITACION_TESTIMONIALS_NATIONAL.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-[#64748b]">
+              Propietarios e inquilinos que tramitaron su contrato de habitación en piso compartido con asesoramiento
+              del gestor.
+            </p>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {HABITACION_TESTIMONIALS_NATIONAL.items.map((testimonial, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200 sm:p-8"
+                >
+                  <div className="flex gap-1 text-[#D4AF37]" aria-hidden>
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-base italic leading-relaxed text-[#475569] sm:text-lg">
+                    <span aria-hidden>&ldquo;</span>
+                    {testimonial.quote}
+                    <span aria-hidden>&rdquo;</span>
+                  </p>
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="h-11 w-11 shrink-0 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]" />
+                    <div>
+                      <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
+                      <p className="text-sm text-[#64748b]">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1E293B]">Proceso en cuatro pasos</h2>
-            <ol className="mt-8 space-y-6">
-              {[
-                {
-                  t: "Contratas online",
-                  d: `Pagas ${priceLabel} IVA incl. con tarjeta; se abre tu expediente en el área de cliente.`,
-                },
-                {
-                  t: "Briefing del piso y las partes",
-                  d: "Indicas dirección, habitación, renta, gastos, normas de convivencia y si hay más inquilinos.",
-                },
-                {
-                  t: "Redacción o revisión gestora",
-                  d: "El gestor adapta cláusulas al régimen de habitación y al inventario acordado.",
-                },
-                {
-                  t: "Entrega y dudas previas a firmar",
-                  d: "Recibes el contrato listo; resolvemos preguntas de propiedad e inquilino antes de la firma.",
-                },
-              ].map((step, i) => (
-                <li key={step.t} className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-lg font-bold text-white">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-[#1E293B]">{step.t}</h3>
-                    <p className="mt-1 text-[#475569]">{step.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <h2 className="text-2xl font-bold text-[#1E293B]">Contrato de habitación por ciudad</h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#475569]">
+              Landings locales para particulares: barrios habituales de piso compartido, perfiles típicos (propietario,
+              inquilino, estudiante), comparativa con otras ciudades y testimonios por mercado.
+            </p>
+            <div className="mt-8">
+              <ContratoAlquilerHabitacionLocalCityLinks showTitle={false} />
+            </div>
           </div>
         </section>
 

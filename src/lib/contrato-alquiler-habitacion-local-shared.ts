@@ -27,36 +27,58 @@ export const HABITACION_INCLUDES = [
   },
 ] as const;
 
+export const HABITACION_PROCESS_INTRO =
+  "Primero hablas con un gestor especializado; después contratas y envías la documentación. En todo el proceso tienes asesoramiento personalizado por llamada o WhatsApp.";
+
 export const HABITACION_PROCESS_STEPS = [
   {
-    title: "Contratas online",
-    description: "Pagas con tarjeta y se abre tu expediente en el área de cliente Livendia.",
+    title: "Solicita una llamada con tu gestor",
+    description:
+      "Antes de pagar, puedes reservar una llamada con un gestor especializado en alquiler de habitación. Le explicas tu caso — piso compartido, convivencia, gastos, fianza — y te asesoramos sin compromiso.",
   },
   {
-    title: "Briefing del piso en Barcelona",
-    description: "Indicas barrio, habitación, renta, gastos, convivencia y si hay más inquilinos.",
+    title: "Paga el servicio y envía la documentación",
+    description:
+      "Cuando decidas contratar, pagas online y nos envías la documentación del inquilino y del propietario: DNI, datos del piso, renta acordada y condiciones de convivencia.",
   },
   {
-    title: "Redacción gestora",
-    description: "Un gestor adapta el contrato al régimen de habitación y a la realidad del piso.",
+    title: "El gestor tramita tu contrato",
+    description:
+      "Un gestor redacta y adapta el contrato a tu situación real. En todo momento tienes asesoramiento por llamada o WhatsApp: estudiamos tu caso y nos adaptamos a las circunstancias del piso.",
   },
   {
-    title: "Entrega y dudas previas a firmar",
-    description: "Recibes el documento listo; resolvemos preguntas antes de entregar llaves.",
+    title: "Entrega lista para firmar",
+    description:
+      "Recibes el contrato revisado en tu expediente. Resolvemos las dudas de propietario e inquilino antes de firmar o entregar llaves.",
   },
 ] as const;
 
-export const WHY_CONTRACT_MATTERS = [
-  {
-    title: "El acuerdo verbal no protege",
-    body: "En Barcelona la rotación de inquilinos es alta. Sin contrato, disputas sobre fianza, gastos o preaviso acaban en conflicto.",
-  },
-  {
-    title: "No es un contrato LAU de piso entero",
-    body: "Usar una plantilla de vivienda completa deja fuera convivencia, zonas comunes y reparto de suministros — lo que más se litiga en pisos compartidos.",
-  },
-  {
-    title: "Varios inquilinos en el mismo piso",
-    body: "En Eixample, Gràcia o Poblenou es habitual convivir con 2-4 personas. El contrato debe definir quién paga qué y qué pasa si uno se va.",
-  },
-] as const;
+export const HABITACION_TESTIMONIALS_NATIONAL = {
+  title: "Casos reales de contratos de habitación tramitados con Livendia",
+  items: [
+    {
+      quote:
+        "Alquilaba una habitación en un piso compartido sin contrato escrito. El gestor nos llamó antes de cobrar, aclaró cómo repartir luz e internet y dejó el preaviso por escrito. Firmamos sin tensiones.",
+      author: "Laura M.",
+      role: "Propietaria — piso compartido en Barcelona",
+    },
+    {
+      quote:
+        "Entré en un piso con tres compañeros y solo teníamos un acuerdo verbal. Livendia redactó un contrato con normas de cocina, visitas y limpieza. Me lo explicaron por WhatsApp línea a línea.",
+      author: "Carlos R.",
+      role: "Inquilino — habitación en Eixample",
+    },
+    {
+      quote:
+        "Necesitábamos contratos individuales para dos habitaciones del mismo piso. El gestor adaptó cada uno con su fianza e inventario y coordinó todo por teléfono en dos días.",
+      author: "Jordi P.",
+      role: "Arrendador — dos habitaciones en Poblenou",
+    },
+    {
+      quote:
+        "Llegué de otra ciudad y el propietario no sabía qué poner en el contrato de habitación. Livendia lo tramitó online, revisó el borrador que teníamos y lo dejó listo para firmar en 48 horas.",
+      author: "Marina S.",
+      role: "Inquilina — habitación en Sants",
+    },
+  ],
+} as const;
