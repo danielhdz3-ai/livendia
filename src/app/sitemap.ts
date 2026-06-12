@@ -55,6 +55,7 @@ const SERVICIO_SLUGS = [
   "contrato-arras-confirmatorias",
   "contrato-arras-penitenciales",
   "servicio-completo-compra",
+  "acompanamiento-compra-parking-trastero",
   "servicio-completo-venta",
   "revision-documental-post-arras",
   "gestion-documental-vendedor",

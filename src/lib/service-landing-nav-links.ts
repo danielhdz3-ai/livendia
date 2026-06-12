@@ -21,6 +21,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
       { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento reserva hasta arras" },
       { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
+      { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
       { href: "/servicios/servicio-completo-venta", label: "Servicio completo de venta" },
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental comprador post-arras" },
       { href: "/servicios/gestion-documental-vendedor", label: "Gestión documental vendedor post-arras" },

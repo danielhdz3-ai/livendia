@@ -48,6 +48,13 @@ export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS = GESTION_DOCUMENTAL_VENDED
 export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL = `${GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR} €`;
 export const GESTION_DOCUMENTAL_VENDEDOR_SLUG = "gestion-documental-vendedor" as const;
 
+/** Acompañamiento de compra de parking o trastero — precio comercial IVA incl. */
+export const ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_EUR = 298;
+export const ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS =
+  ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_EUR * 100;
+export const ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL = `${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_EUR} €`;
+export const ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG = "acompanamiento-compra-parking-trastero" as const;
+
 /** Contrato de arras local — tarifa publicada IVA incl. */
 export const CONTRATO_ARRAS_LOCAL_PRICE_EUR = 145;
 export const CONTRATO_ARRAS_LOCAL_PRICE_LABEL = `${CONTRATO_ARRAS_LOCAL_PRICE_EUR} €`;
@@ -80,6 +87,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
   [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
+  [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
 };
@@ -162,6 +170,26 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Post-arras · Vendedor",
   },
+  {
+    slug: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG,
+    name: "Acompañamiento de compra de parking o trastero",
+    description:
+      "Servicio integral de compra con gestor dedicado: nota simple, IBI, comunidad, notaría, ITP y registro. Un profesional se encarga de todos los trámites hasta la entrega de la documentación final.",
+    category: "compraventa",
+    price_cents: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Nota simple registral y revisión de cargas",
+      "Revisión IBI y deuda de comunidad",
+      "Coordinación con oficial de notaría",
+      "Preparación documentación comprador y vendedor",
+      "Solicitud copia autorizada electrónica al notario",
+      "Liquidación ITP (modelo 600) en ATC",
+      "Presentación telemática en registradores.org",
+      "Entrega documentación final inscrita",
+    ],
+    badge: "Parking y trastero",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -219,6 +247,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
         "contrato-arras-confirmatorias",
         "revision-documental-post-arras",
         "gestion-documental-vendedor",
+        "acompanamiento-compra-parking-trastero",
         "reserva-de-compra",
       ];
       const i = order.indexOf(s.slug);
@@ -257,6 +286,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "servicio-completo-venta": "/images/servicio-completo-venta-hero.jpg",
   "revision-documental-post-arras": "/images/gestoria20.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
+  "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
   "contrato-de-alquiler": "/images/contratodealquiler.jpg",
