@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
+import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL } from "@/lib/catalog.public";
 
 type HomeCoverageCitiesProps = {
   /** Variante compacta para páginas internas (servicios, gestoría). */
@@ -67,6 +68,13 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                   <li>
                     <Link href={city.temporadaHref} className="font-semibold text-[#1A4FBF] hover:underline">
                       Contrato alquiler temporada — 200 €
+                    </Link>
+                  </li>
+                ) : null}
+                {city.parkingTrasteroHref ? (
+                  <li>
+                    <Link href={city.parkingTrasteroHref} className="font-semibold text-[#1A4FBF] hover:underline">
+                      Compra parking o trastero — {ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL}
                     </Link>
                   </li>
                 ) : null}
