@@ -11,6 +11,11 @@ import {
 } from "@/lib/acompanamiento-compra-parking-trastero-shared";
 import { getPublicServices } from "@/lib/catalog";
 import {
+  ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE,
+  getPublishedParkingTrasteroLocalCities,
+  localAcompanamientoCompraParkingTrasteroHref,
+} from "@/lib/acompanamiento-compra-parking-trastero-local-cities";
+import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL,
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG,
   resolveServicePriceLabel,
@@ -58,6 +63,7 @@ export default async function AcompanamientoCompraParkingTrasteroPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL);
+  const publishedCities = getPublishedParkingTrasteroLocalCities();
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -223,12 +229,47 @@ export default async function AcompanamientoCompraParkingTrasteroPage() {
             </div>
           </section>
 
+          {publishedCities.length > 0 ? (
+            <section className="border-t border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-2xl font-bold text-[#1E293B]">Compra parking o trastero por ciudad y barrio</h2>
+                <p className="mt-2 max-w-3xl text-[#64748b]">
+                  Landings locales en Madrid, Barcelona y barrios (Eixample, Gràcia, Poblenou, Sants, Sarrià, Sant Martí)
+                  con testimonios, calculadora de ahorro vs agencia y FAQ específica.
+                </p>
+                <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {publishedCities.map((c) => (
+                    <li key={c.slug}>
+                      <Link
+                        href={localAcompanamientoCompraParkingTrasteroHref(c.slug)}
+                        className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
+                      >
+                        <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
+                        <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">
+                          Ver servicio en {c.city} →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Link
+                    href={ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE}
+                    className="text-sm font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    Ver índice de ciudades y barrios →
+                  </Link>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-8 py-12 text-center text-white shadow-xl">
               <Car className="mx-auto h-10 w-10 text-cyan-200" aria-hidden />
               <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl">Compra tu parking o trastero sin estrés</h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
-                Contrata online y deja los trámites en manos de un gestor. Notaría, ITP y Registro gestionados por
+                Contrata online y deja los trámites en manos de un gestor. Notaría, ITP y Registro gestionados por{" "}
                 {priceLabel}.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">

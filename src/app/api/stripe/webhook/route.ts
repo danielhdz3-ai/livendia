@@ -74,6 +74,9 @@ async function sendConfirmationEmailsSafe(
     const customerEmail = contact?.email ?? session.customer_email ?? null;
     const customerName = contact?.fullName ?? "";
 
+    const paidAt = new Date().toISOString();
+    const totalCents = session.amount_total ?? null;
+
     if (customerEmail) {
       await sendOrderConfirmedEmail({
         to: customerEmail,
@@ -85,6 +88,10 @@ async function sendConfirmationEmailsSafe(
         serviceName,
         orderId,
         clientEmail: customerEmail,
+        clientName: customerName,
+        clientPhone: contact?.phone ?? null,
+        totalCents,
+        paidAt,
       });
     }
   } catch {

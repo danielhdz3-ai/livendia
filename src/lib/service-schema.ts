@@ -251,3 +251,53 @@ export function buildContratoHabitacionLocalSchemaGraph(params: {
 
   return { service, breadcrumb, pageUrl };
 }
+
+/** Schema local parking/trastero: Service + Offer + BreadcrumbList. */
+export function buildParkingTrasteroLocalSchemaGraph(params: {
+  path: string;
+  city: string;
+  administrativeArea: string;
+  hubPath?: string;
+  hubName?: string;
+  priceCents: number;
+}) {
+  const base = getSiteUrl().replace(/\/$/, "");
+  const pageUrl = `${base}${params.path}`;
+  const hubPath = params.hubPath ?? "/servicios/acompanamiento-compra-parking-trastero";
+  const hubUrl = `${base}${hubPath}`;
+  const hubName = params.hubName ?? "Acompañamiento compra parking o trastero";
+  const serviceName = `Acompañamiento compra parking o trastero en ${params.city}`;
+
+  const service = {
+    "@type": "Service" as const,
+    "@id": `${pageUrl}#service`,
+    name: serviceName,
+    description: `Gestor dedicado para comprar plaza de garaje o trastero en ${params.city}: nota simple, IBI, comunidad, notaría, ITP y registro telemático.`,
+    serviceType: "Acompañamiento integral compraventa de anexo inmobiliario",
+    areaServed: {
+      "@type": "City" as const,
+      name: params.city,
+      containedInPlace: {
+        "@type": "AdministrativeArea" as const,
+        name: params.administrativeArea,
+      },
+    },
+    provider: { "@id": `${base}/#organization` },
+    offers: buildOffer(pageUrl, params.priceCents, false),
+    url: pageUrl,
+    inLanguage: "es-ES",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList" as const,
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem" as const, position: 1, name: "Inicio", item: base },
+      { "@type": "ListItem" as const, position: 2, name: "Servicios", item: `${base}/servicios` },
+      { "@type": "ListItem" as const, position: 3, name: hubName, item: hubUrl },
+      { "@type": "ListItem" as const, position: 4, name: params.city, item: pageUrl },
+    ],
+  };
+
+  return { service, breadcrumb, pageUrl };
+}

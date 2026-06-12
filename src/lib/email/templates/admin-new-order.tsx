@@ -14,6 +14,10 @@ type Props = {
   serviceName: string;
   orderId: string;
   clientEmail: string;
+  clientName: string;
+  clientPhone: string;
+  totalLabel: string;
+  paidAtLabel: string;
   adminOrderUrl: string;
 };
 
@@ -21,12 +25,18 @@ export function AdminNewOrderEmail({
   serviceName,
   orderId,
   clientEmail,
+  clientName,
+  clientPhone,
+  totalLabel,
+  paidAtLabel,
   adminOrderUrl,
 }: Props) {
   return (
     <Html>
       <Head />
-      <Preview>Nuevo pedido: {serviceName}</Preview>
+      <Preview>
+        Nuevo pedido: {serviceName} — {totalLabel}
+      </Preview>
       <Body style={body}>
         <Container style={card}>
           <Section style={inner}>
@@ -35,7 +45,20 @@ export function AdminNewOrderEmail({
               <strong>Servicio:</strong> {serviceName}
             </Text>
             <Text style={p}>
-              <strong>Cliente:</strong> {clientEmail}
+              <strong>Importe:</strong> {totalLabel}
+            </Text>
+            <Text style={p}>
+              <strong>Fecha de pago:</strong> {paidAtLabel}
+            </Text>
+            <Text style={sectionTitle}>Cliente</Text>
+            <Text style={p}>
+              <strong>Nombre:</strong> {clientName}
+            </Text>
+            <Text style={p}>
+              <strong>Email:</strong> {clientEmail}
+            </Text>
+            <Text style={p}>
+              <strong>Teléfono:</strong> {clientPhone}
             </Text>
             <Text style={meta}>Pedido: {orderId}</Text>
             <Button style={button} href={adminOrderUrl}>
@@ -64,6 +87,14 @@ const card = {
 
 const inner = { padding: "24px" };
 const h1 = { color: "#1e293b", fontSize: "20px", margin: "0 0 16px" };
+const sectionTitle = {
+  color: "#1e293b",
+  fontSize: "14px",
+  fontWeight: 700 as const,
+  margin: "16px 0 8px",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.04em",
+};
 const p = { color: "#475569", fontSize: "15px", lineHeight: "1.5", margin: "0 0 8px" };
 const meta = { color: "#94a3b8", fontSize: "12px", margin: "12px 0 16px" };
 

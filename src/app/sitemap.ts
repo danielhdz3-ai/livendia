@@ -38,6 +38,10 @@ import {
   getPublishedGestionDocumentalVendedorLocalCities,
 } from "@/lib/gestion-documental-vendedor-local-cities";
 import {
+  ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE,
+  getPublishedParkingTrasteroLocalCities,
+} from "@/lib/acompanamiento-compra-parking-trastero-local-cities";
+import {
   CONTRATO_ALQUILER_HABITACION_LOCAL_BASE,
   getPublishedContratoAlquilerHabitacionLocalCities,
 } from "@/lib/contrato-alquiler-habitacion-local-cities";
@@ -56,6 +60,7 @@ const SERVICIO_SLUGS = [
   "contrato-arras-penitenciales",
   "servicio-completo-compra",
   "acompanamiento-compra-parking-trastero",
+  "acompanamiento-compra-parking-trastero-local",
   "servicio-completo-venta",
   "revision-documental-post-arras",
   "gestion-documental-vendedor",
@@ -186,6 +191,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
+  const parkingTrasteroLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedParkingTrasteroLocalCities().map((c) => ({
+      url: `${base}${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE}/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.82,
+    }));
+
   const habitacionLocalCiudades: MetadataRoute.Sitemap =
     getPublishedContratoAlquilerHabitacionLocalCities().map((c) => ({
       url: `${base}${CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}/${c.slug}`,
@@ -206,6 +219,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ventaSeoLocal,
     ...revisionPostArrasLocalCiudades,
     ...gestionVendedorLocalCiudades,
+    ...parkingTrasteroLocalCiudades,
     ...habitacionLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,

@@ -16,11 +16,26 @@ import WelcomeEmail from "./templates/welcome";
 import { getResend } from "./resend-client";
 
 export async function getAuthUserContact(supabase: SupabaseClient, userId: string) {
-  const { data, error } = await supabase.auth.admin.getUserById(userId);
+  const [{ data, error }, { data: profile }] = await Promise.all([
+    supabase.auth.admin.getUserById(userId),
+    supabase.from("profiles").select("full_name, phone").eq("id", userId).maybeSingle(),
+  ]);
   if (error || !data.user) return null;
   const email = data.user.email ?? null;
-  const fullName = (data.user.user_metadata?.full_name as string | undefined) ?? "";
-  return { email, fullName };
+  const metaName = (data.user.user_metadata?.full_name as string | undefined) ?? "";
+  const fullName = (profile?.full_name as string | undefined)?.trim() || metaName;
+  const phone = (profile?.phone as string | undefined)?.trim() || null;
+  return { email, fullName, phone };
+}
+
+function formatOrderTotalEur(totalCents: number | null | undefined): string {
+  if (totalCents == null) return "—";
+  return `${(totalCents / 100).toFixed(2).replace(".", ",")} €`;
+}
+
+function formatPaidAtEs(iso: string | null | undefined): string {
+  if (!iso) return "—";
+  return new Date(iso).toLocaleString("es-ES", { dateStyle: "short", timeStyle: "short" });
 }
 
 export async function sendWelcomeEmail(opts: { to: string; customerName: string }) {
@@ -85,6 +100,10 @@ export async function sendAdminNewOrderEmail(opts: {
   serviceName: string;
   orderId: string;
   clientEmail: string;
+  clientName?: string;
+  clientPhone?: string | null;
+  totalCents?: number | null;
+  paidAt?: string | null;
 }) {
   const resend = getResend();
   if (!resend) return;
@@ -97,6 +116,10 @@ export async function sendAdminNewOrderEmail(opts: {
       serviceName: opts.serviceName,
       orderId: opts.orderId,
       clientEmail: opts.clientEmail,
+      clientName: opts.clientName?.trim() || "—",
+      clientPhone: opts.clientPhone?.trim() || "—",
+      totalLabel: formatOrderTotalEur(opts.totalCents),
+      paidAtLabel: formatPaidAtEs(opts.paidAt),
       adminOrderUrl,
     }),
   });
