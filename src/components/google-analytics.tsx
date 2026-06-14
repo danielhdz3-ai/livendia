@@ -9,7 +9,8 @@ import { getGoogleAdsId } from "@/lib/google-ads-id";
 export function GoogleAnalytics() {
   const gaId = getGaMeasurementId();
   const adsId = getGoogleAdsId();
-  const loaderId = gaId ?? adsId;
+  // Google Ads verifica que gtag/js?id=AW-… esté en el HTML (no basta con gtag config).
+  const loaderId = adsId ?? gaId;
   if (!loaderId) return null;
 
   const configLines = [
