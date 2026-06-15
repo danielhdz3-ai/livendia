@@ -78,6 +78,20 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                     </Link>
                   </li>
                 ) : null}
+                {city.habitacionHref ? (
+                  <li>
+                    <Link href={city.habitacionHref} className="font-semibold text-[#1A4FBF] hover:underline">
+                      Contrato alquiler habitación — 120 €
+                    </Link>
+                  </li>
+                ) : null}
+                {city.arrasLocalHref ? (
+                  <li>
+                    <Link href={city.arrasLocalHref} className="font-semibold text-[#1A4FBF] hover:underline">
+                      Contrato de arras — 145 €
+                    </Link>
+                  </li>
+                ) : null}
               </ul>
             </li>
           ))}

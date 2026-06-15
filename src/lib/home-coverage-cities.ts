@@ -21,6 +21,10 @@ export type HomeCoverageCity = {
   temporadaHref?: string;
   /** Compra parking o trastero (local o nacional). */
   parkingTrasteroHref?: string;
+  /** Contrato de habitación local publicado. */
+  habitacionHref?: string;
+  /** Contrato de arras local publicado. */
+  arrasLocalHref?: string;
 };
 
 export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
@@ -34,6 +38,8 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     ventaLocalHref: "/servicios/servicio-completo-venta-local/madrid",
     temporadaHref: "/servicios/contrato-alquiler-temporada-local/madrid",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero-local/madrid",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/madrid",
+    arrasLocalHref: "/servicios/contrato-arras-local/madrid",
   },
   {
     slug: "valencia",
@@ -44,6 +50,8 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     compraHref: "/servicios/servicio-completo-compra-local/valencia",
     ventaLocalHref: "/servicios/servicio-completo-venta-local/valencia",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/valencia",
+    arrasLocalHref: "/servicios/contrato-arras-local/valencia",
   },
   {
     slug: "barcelona",
@@ -55,6 +63,8 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     ventaLocalHref: "/servicios/servicio-completo-venta-local/barcelona",
     temporadaHref: "/servicios/contrato-alquiler-temporada-local/barcelona",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero-local/barcelona",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/barcelona",
+    arrasLocalHref: "/servicios/contrato-arras-local/barcelona",
   },
   {
     slug: "malaga",
@@ -65,6 +75,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     compraHref: "/servicios/servicio-completo-compra-local/malaga",
     ventaLocalHref: "/servicios/servicio-completo-venta-local/malaga",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/malaga",
   },
   {
     slug: "sevilla",
@@ -75,6 +86,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     compraHref: "/servicios/servicio-completo-compra-local/sevilla",
     ventaLocalHref: "/servicios/servicio-completo-venta-local/sevilla",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/sevilla",
   },
 ];
 
@@ -91,6 +103,12 @@ export function getHomeCoverageCityFlatLinks(): { href: string; label: string }[
       : []),
     ...(c.parkingTrasteroHref
       ? [{ href: c.parkingTrasteroHref, label: `Compra parking o trastero ${c.name}` }]
+      : []),
+    ...(c.habitacionHref
+      ? [{ href: c.habitacionHref, label: `Contrato habitación ${c.name}` }]
+      : []),
+    ...(c.arrasLocalHref
+      ? [{ href: c.arrasLocalHref, label: `Contrato arras ${c.name}` }]
       : []),
   ]);
 }

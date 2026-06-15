@@ -82,7 +82,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Barcelona",
     metaTitle: `Contrato alquiler habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Barcelona? Contrato para particulares en piso compartido: convivencia, gastos y fianza. Eixample, Gràcia, Poblenou. 120 € IVA incl.",
+      "¿Alquilas una habitación en Barcelona? Contrato para particulares 120 € IVA incl.: convivencia, gastos y fianza. Gestor por teléfono antes de pagar. Eixample, Gràcia, Poblenou. Entrega 48-72 h.",
     keywords: [
       "contrato alquiler habitacion barcelona",
       "alquilar habitacion barcelona contrato",

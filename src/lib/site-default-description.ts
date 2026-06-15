@@ -1,3 +1,3 @@
 /** Descripción por defecto del sitio (layout, Organization, WebSite JSON-LD). */
 export const SITE_DEFAULT_DESCRIPTION =
-  "Gestoría inmobiliaria online en Madrid, Valencia, Barcelona y toda España: administración de alquileres, venta entre particulares, compraventa y contratos LAU/arras. Gestores expertos, proceso digital y pago seguro.";
+  "Gestoría inmobiliaria online para particulares en España: contrato habitación 120 €, LAU y arras 145 €, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono, IVA incluido.";

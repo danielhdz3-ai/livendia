@@ -1,5 +1,6 @@
 import { FaqSection } from "@/components/faq-section";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { HomeMobileHero } from "@/components/home-mobile-hero";
 import { HomeMobileQuickActions } from "@/components/home-mobile-quick-actions";
 import { HomeSitelinksNav } from "@/components/home-sitelinks-nav";
@@ -18,7 +19,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 
 export const metadata: Metadata = {
-  title: "Livendia — Gestoría inmobiliaria online en España",
+  title: "Gestoría inmobiliaria para particulares — contratos y venta sin agencia | Livendia",
   description: SITE_DEFAULT_DESCRIPTION,
   alternates: { canonical: getSiteUrl() },
   openGraph: {
@@ -109,6 +110,8 @@ export default async function Home() {
         <HomeMobileQuickActions />
 
         <HomeCoverageCities />
+
+        <HomeParticularesServicios />
 
         <div className="hidden sm:block">
           <HomeSitelinksNav />

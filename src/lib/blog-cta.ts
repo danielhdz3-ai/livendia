@@ -15,13 +15,13 @@ export function getCategoryCta(category: BlogCategory): BlogCategoryCta {
   switch (category) {
     case "alquiler":
       return {
-        headline: "¿Necesitas un contrato de alquiler bien hecho?",
-        subline: `Redacción o revisión LAU por gestores expertos. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl., entrega 48–72 h.`,
-        contratarHref: "/servicios/contrato-alquiler-lau",
-        contratarLabel: "Contratar contrato LAU",
+        headline: "¿Necesitas un contrato de alquiler o de habitación?",
+        subline: `LAU o habitación en piso compartido por gestor. Desde 120 € habitación / ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} LAU IVA incl., llamada antes de contratar.`,
+        contratarHref: "/servicios/contrato-alquiler-habitacion",
+        contratarLabel: "Contratar contrato habitación",
         infoHref: "/servicios/contrato-de-alquiler",
-        infoLabel: "Guía de contratos de alquiler",
-        whatsappPrefill: "Hola, leo el blog y necesito ayuda con un contrato de alquiler (LAU).",
+        infoLabel: "Contrato LAU piso completo",
+        whatsappPrefill: "Hola, leo el blog y necesito ayuda con un contrato de alquiler o habitación.",
       };
     case "compraventa":
       return {

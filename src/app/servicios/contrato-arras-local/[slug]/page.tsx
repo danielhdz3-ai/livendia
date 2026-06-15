@@ -35,8 +35,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : `Contrato de arras en ${city.city} — 145 € | Livendia`;
   const description =
     slug === "madrid"
-      ? `Contrato de arras en Madrid por gestoría profesional: penitenciales o confirmatorias, 145 € IVA incl. Revisión legal antes de firmar. Entrega 48-72 h. Livendia.`
-      : `Contrato de arras en ${city.city} por profesional: 145 € IVA incl., revisión penitenciales y confirmatorias. Entrega 48-72 h. Gestoría inmobiliaria Livendia.`;
+      ? `Contrato de arras en Madrid por gestoría: penitenciales o confirmatorias, 145 € IVA incl. Gestor por teléfono antes de firmar. Entrega 48-72 h. Livendia.`
+      : slug === "barcelona"
+        ? `Contrato de arras en Barcelona 145 € IVA incl. Penitenciales o confirmatorias para particulares. Gestor revisa antes de firmar. Eixample, Gràcia. Entrega 48-72 h.`
+        : `Contrato de arras en ${city.city} por profesional: 145 € IVA incl., revisión penitenciales y confirmatorias. Entrega 48-72 h. Gestoría inmobiliaria Livendia.`;
 
   return {
     title,

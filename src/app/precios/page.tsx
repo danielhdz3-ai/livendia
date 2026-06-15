@@ -11,9 +11,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Precios gestoría inmobiliaria desde 49 €/mes | Livendia",
+  title: "Precios gestoría inmobiliaria para particulares | Livendia",
   description:
-    `Tarifas fijas IVA incl.: LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, compraventa 424 € y 890 €, administración alquileres 49 €/mes sin permanencia. Livendia.`,
+    `Tarifas fijas IVA incl. para particulares: habitación 120 €, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
 };
 
 export default async function PreciosPage() {
