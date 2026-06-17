@@ -3,7 +3,11 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { ServiceModal } from "@/components/service-modal";
 import type { PublicService } from "@/lib/catalog.public";
-import { analyticsFromService, checkoutServiceSession } from "@/lib/checkout-service-session";
+import {
+  analyticsFromService,
+  checkoutServiceSession,
+  ensureLoggedInForCheckout,
+} from "@/lib/checkout-service-session";
 
 type SingleCtx = { openCheckout: () => void };
 
@@ -19,11 +23,13 @@ export function ServicePurchaseProvider({
   const [open, setOpen] = useState(false);
 
   const openCheckout = () => {
-    if (service) {
-      setOpen(true);
-      return;
-    }
-    window.location.href = "/servicios";
+    void (async () => {
+      if (!service) {
+        window.location.href = "/servicios";
+        return;
+      }
+      if (await ensureLoggedInForCheckout()) setOpen(true);
+    })();
   };
 
   return (
@@ -82,9 +88,14 @@ export function MultiServicePurchaseProvider({
   const service = activeSlug ? servicesBySlug[activeSlug] : undefined;
 
   const openCheckoutForSlug = (slug: string) => {
-    const next = servicesBySlug[slug];
-    if (next) setActiveSlug(slug);
-    else window.location.href = "/servicios";
+    void (async () => {
+      const next = servicesBySlug[slug];
+      if (!next) {
+        window.location.href = "/servicios";
+        return;
+      }
+      if (await ensureLoggedInForCheckout()) setActiveSlug(slug);
+    })();
   };
 
   return (

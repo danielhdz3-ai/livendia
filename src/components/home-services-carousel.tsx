@@ -5,7 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import type { PublicService } from "@/lib/catalog.public";
 import { ServiceModal } from "@/components/service-modal";
 import { ServicePurchaseCard } from "@/components/service-purchase-card";
-import { analyticsFromService, checkoutServiceSession } from "@/lib/checkout-service-session";
+import {
+  analyticsFromService,
+  checkoutServiceSession,
+  ensureLoggedInForCheckout,
+} from "@/lib/checkout-service-session";
 
 const INTERVAL_MS = 7200;
 const GAP_PX = 24;
@@ -120,7 +124,11 @@ export function HomeServicesCarousel({ services }: HomeServicesCarouselProps) {
                 >
                   <ServicePurchaseCard
                     service={service}
-                    onSelect={() => setSelectedService(service)}
+                    onSelect={() => {
+                      void (async () => {
+                        if (await ensureLoggedInForCheckout()) setSelectedService(service);
+                      })();
+                    }}
                     className={
                       isCenter && visible === 3
                         ? "shadow-[0_28px_50px_-28px_rgb(26_79_191/0.35)] ring-[rgb(26_79_191/0.35)]"

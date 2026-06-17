@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, Check, Mail, MessageCircle, Phone } from "lucide-react";
 import type { PublicService } from "@/lib/catalog.public";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 const WA_MODAL = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHrefModal = `https://wa.me/${WA_MODAL.replace(/\D/g, "")}`;
@@ -35,6 +36,15 @@ export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps
       document.body.classList.remove("livendia-modal-open");
       document.body.style.overflow = "";
     };
+  }, []);
+
+  useEffect(() => {
+    const supabase = createBrowserSupabaseClient();
+    void supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.email) setEmail(user.email);
+      const name = user?.user_metadata?.full_name;
+      if (typeof name === "string" && name.trim()) setFullName(name.trim());
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -125,8 +135,8 @@ export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps
             <div className="p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-8 md:p-10">
               <h3 className="text-lg font-bold text-[#1E293B] sm:text-xl">Completa tu pedido</h3>
               <p className="mt-2 text-sm text-[#64748b]">
-                Introduce tus datos y continúa al <strong>pago seguro con tarjeta</strong>. Si aún no tienes cuenta,
-                la creamos automáticamente.
+                Revisa tus datos y continúa al <strong>pago seguro con tarjeta</strong>. Debes tener sesión iniciada
+                en Livendia (si acabas de registrarte, confirma el email antes de pagar).
               </p>
 
               <form onSubmit={handleSubmit} className="mt-5 space-y-4 sm:mt-6 sm:space-y-5">

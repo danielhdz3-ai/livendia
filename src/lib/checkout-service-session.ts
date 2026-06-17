@@ -1,6 +1,7 @@
 "use client";
 
 import { trackBeginCheckout } from "@/lib/analytics";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { utmForStripeMetadata } from "@/lib/utm";
 
 type CheckoutBody = {
@@ -16,6 +17,27 @@ export type CheckoutAnalytics = {
   priceCents: number;
   category?: string | null;
 };
+
+export function checkoutReturnPath(): string {
+  if (typeof window === "undefined") return "/dashboard";
+  return window.location.pathname + window.location.search;
+}
+
+export function loginUrlForCheckout(nextPath?: string): string {
+  const next = encodeURIComponent(nextPath ?? checkoutReturnPath());
+  return `/login?next=${next}`;
+}
+
+/** Redirige a login si no hay sesión; necesario porque Stripe checkout exige usuario autenticado. */
+export async function ensureLoggedInForCheckout(): Promise<boolean> {
+  const supabase = createBrowserSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user?.email) return true;
+  window.location.href = loginUrlForCheckout();
+  return false;
+}
 
 /** Inicia Stripe Checkout desde el navegador. */
 export async function checkoutServiceSession(
@@ -35,6 +57,7 @@ export async function checkoutServiceSession(
   try {
     const response = await fetch("/api/stripe/checkout", {
       method: "POST",
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         serviceId,
@@ -46,6 +69,11 @@ export async function checkoutServiceSession(
     });
 
     const data = (await response.json()) as { url?: string; error?: string };
+
+    if (response.status === 401) {
+      window.location.href = loginUrlForCheckout();
+      return;
+    }
 
     if (!response.ok) {
       window.alert(data.error ?? "No se pudo iniciar el pago.");

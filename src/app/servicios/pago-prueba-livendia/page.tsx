@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  "Regístrate o inicia sesión con un usuario nuevo",
-  "Pulsa «Contratar» y completa tus datos",
-  "Paga con tarjeta en Stripe (modo live o test según entorno)",
+  "Crea cuenta en /register o inicia sesión (confirma el email si Supabase te lo pide)",
+  "Vuelve a esta página y pulsa «Contratar»",
+  "Completa tus datos y paga con tarjeta en Stripe",
   "Comprueba el email de confirmación y el pedido en tu panel",
 ];
 

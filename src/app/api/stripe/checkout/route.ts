@@ -17,7 +17,10 @@ export async function POST(req: Request) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user?.email) {
-    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Debes iniciar sesión para pagar. Si acabas de registrarte, confirma tu email primero." },
+      { status: 401 },
+    );
   }
 
   let body: { serviceId?: string; utm?: Record<string, string> };
