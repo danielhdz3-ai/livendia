@@ -1,4 +1,5 @@
 import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
+import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
 import {
   orderGrantsRentalAccess,
   RENTAL_SERVICE_SLUG,
@@ -28,8 +29,14 @@ import {
   Eye,
   type LucideIcon,
 } from "lucide-react";
+import { Suspense } from "react";
 
-export default async function DashboardPage() {
+type DashboardPageProps = {
+  searchParams: Promise<{ pedido?: string }>;
+};
+
+export default async function DashboardPage({ searchParams }: DashboardPageProps) {
+  const { pedido: highlightOrderId } = await searchParams;
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
@@ -98,6 +105,16 @@ export default async function DashboardPage() {
   const totalOrders = orders?.length ?? 0;
   const pendingOrders = orders?.filter(o => o.status === "pending_docs" || o.status === "in_progress").length ?? 0;
   const completedOrders = orders?.filter((o) => o.status === "completed" || o.status === "delivered").length ?? 0;
+
+  let highlightServiceName: string | null = null;
+  if (highlightOrderId) {
+    const highlighted = orders?.find((o) => o.id === highlightOrderId);
+    if (highlighted) {
+      const svc = highlighted.services;
+      const row = Array.isArray(svc) ? svc[0] : svc;
+      highlightServiceName = (row?.name as string | undefined) ?? null;
+    }
+  }
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
@@ -228,6 +245,10 @@ export default async function DashboardPage() {
 
         {/* Content Area */}
         <main className="flex-1 overflow-y-auto p-6 lg:p-8">
+          <Suspense fallback={null}>
+            <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
+          </Suspense>
+
           {/* Stats Cards */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg shadow-blue-500/30">
@@ -379,10 +400,18 @@ export default async function DashboardPage() {
                   };
                   const StatusIcon = statusIcons[order.status] || FileText;
 
+                  const needsDocsUpload =
+                    order.status === "pending_docs" || order.status === "paid";
+
                   return (
                     <div
                       key={order.id}
-                      className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg"
+                      id={`pedido-${order.id}`}
+                      className={`flex flex-col gap-4 rounded-2xl bg-white p-5 shadow ring-1 transition hover:shadow-lg sm:flex-row sm:items-center ${
+                        highlightOrderId === order.id
+                          ? "ring-2 ring-[#1A4FBF] shadow-lg"
+                          : "ring-slate-200"
+                      }`}
                     >
                       <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB]">
                         <FileSignature className="h-6 w-6 text-white" />
@@ -411,10 +440,23 @@ export default async function DashboardPage() {
 
                       <Link
                         href={`/mis-pedidos/${order.id}`}
-                        className="flex items-center gap-2 rounded-xl border-2 border-[#1A4FBF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] transition hover:bg-[#1A4FBF] hover:text-white"
+                        className={`flex shrink-0 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+                          needsDocsUpload
+                            ? "bg-[#1A4FBF] text-white hover:bg-[#2563EB]"
+                            : "border-2 border-[#1A4FBF] text-[#1A4FBF] hover:bg-[#1A4FBF] hover:text-white"
+                        }`}
                       >
-                        <Eye className="h-4 w-4" />
-                        <span>Ver expediente</span>
+                        {needsDocsUpload ? (
+                          <>
+                            <Upload className="h-4 w-4" />
+                            <span>Subir documentación</span>
+                          </>
+                        ) : (
+                          <>
+                            <Eye className="h-4 w-4" />
+                            <span>Ver expediente</span>
+                          </>
+                        )}
                       </Link>
                     </div>
                   );
