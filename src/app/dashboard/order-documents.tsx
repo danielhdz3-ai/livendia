@@ -41,56 +41,30 @@ type UploadItem = {
 async function uploadSingleFile(
   file: File,
   orderId: string,
-  userId: string,
   docType: string,
 ): Promise<{ ok: true; row: DocRow } | { ok: false; error: string }> {
   if (file.size > MAX_BYTES) {
     return { ok: false, error: `${file.name}: máximo 10 MB` };
   }
 
-  const supabase = createBrowserSupabaseClient();
-  const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-  const path = `${userId}/${orderId}/${crypto.randomUUID()}_${safe}`;
+  const body = new FormData();
+  body.append("orderId", orderId);
+  body.append("documentType", docType);
+  body.append("file", file);
 
-  const { error: upErr } = await supabase.storage.from("documents").upload(path, file, {
-    contentType: file.type || "application/octet-stream",
-    upsert: false,
-  });
-
-  if (upErr) {
-    return { ok: false, error: `${file.name}: ${upErr.message}` };
-  }
-
-  const { data: row, error: insErr } = await supabase
-    .from("documents")
-    .insert({
-      order_id: orderId,
-      client_id: userId,
-      file_name: file.name,
-      file_path: path,
-      file_type: file.type || null,
-      file_size: file.size,
-      document_type: docType,
-    })
-    .select("id, file_name, file_path, document_type, created_at")
-    .single();
-
-  if (insErr) {
-    await supabase.storage.from("documents").remove([path]);
-    return { ok: false, error: `${file.name}: ${insErr.message}` };
-  }
-
-  void fetch("/api/email/doc-uploaded", {
+  const response = await fetch("/api/orders/document", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      orderId,
-      fileName: file.name,
-      docTypeLabel: typeLabel(docType),
-    }),
+    credentials: "same-origin",
+    body,
   });
 
-  return { ok: true, row: row as DocRow };
+  const data = (await response.json()) as { document?: DocRow; error?: string };
+
+  if (!response.ok || !data.document) {
+    return { ok: false, error: `${file.name}: ${data.error ?? "error al subir"}` };
+  }
+
+  return { ok: true, row: data.document };
 }
 
 export function OrderDocuments({
@@ -114,6 +88,7 @@ export function OrderDocuments({
   const [docType, setDocType] = useState("otro");
   const [dragOver, setDragOver] = useState(false);
   const [queue, setQueue] = useState<UploadItem[]>([]);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const processFiles = useCallback(
     async (fileList: FileList | File[]) => {
@@ -122,6 +97,7 @@ export function OrderDocuments({
       if (files.length === 0) return;
 
       setErr(null);
+      setSuccess(null);
       setBusy(true);
 
       const items: UploadItem[] = files.map((f) => ({
@@ -139,7 +115,7 @@ export function OrderDocuments({
         const itemId = items[i].id;
         setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "uploading" } : x)));
 
-        const result = await uploadSingleFile(file, orderId, userId, docType);
+        const result = await uploadSingleFile(file, orderId, docType);
         if (result.ok) {
           newRows.push(result.row);
           setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "done" } : x)));
@@ -153,6 +129,11 @@ export function OrderDocuments({
 
       if (newRows.length) {
         setDocs((d) => [...newRows, ...d]);
+        setSuccess(
+          newRows.length === 1
+            ? "Archivo guardado correctamente."
+            : `${newRows.length} archivos guardados correctamente.`,
+        );
         router.refresh();
       }
       if (errors.length) {
@@ -162,7 +143,7 @@ export function OrderDocuments({
       setBusy(false);
       window.setTimeout(() => setQueue([]), 2500);
     },
-    [busy, canUpload, docType, orderId, router, userId],
+    [busy, canUpload, docType, orderId, router],
   );
 
   function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -250,26 +231,26 @@ export function OrderDocuments({
                 Arrastra aquí varios archivos o selecciónalos
               </p>
               <p className="mt-2 max-w-md text-sm text-[#64748B]">
-                Fotos, PDF, Word… hasta <strong>25 archivos</strong> a la vez y <strong>10 MB</strong> por archivo.
+                Fotos del móvil (incl. iPhone), PDF o Word. Hasta <strong>25 archivos</strong> y{" "}
+                <strong>10 MB</strong> por archivo.
               </p>
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => inputRef.current?.click()}
-                className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] disabled:opacity-60"
+              <label
+                className={`mt-5 inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] ${
+                  busy ? "pointer-events-none opacity-60" : ""
+                }`}
               >
                 <FileUp className="h-4 w-4" />
-                {busy ? "Subiendo archivos…" : "Elegir archivos"}
-              </button>
-              <input
-                ref={inputRef}
-                type="file"
-                className="sr-only"
-                multiple
-                disabled={busy}
-                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt"
-                onChange={onInputChange}
-              />
+                {busy ? "Subiendo archivos…" : "Elegir archivos o fotos"}
+                <input
+                  ref={inputRef}
+                  type="file"
+                  className="sr-only"
+                  multiple
+                  disabled={busy}
+                  accept="image/*,.heic,.heif,.pdf,.doc,.docx,.xls,.xlsx,.txt,application/pdf"
+                  onChange={onInputChange}
+                />
+              </label>
             </div>
           </div>
 
@@ -297,7 +278,8 @@ export function OrderDocuments({
         <p className="mt-2 text-sm text-[#64748b]">No puedes subir archivos en este estado.</p>
       )}
 
-      {err ? <p className="mt-3 text-sm text-red-600">{err}</p> : null}
+      {err ? <p className="mt-3 text-sm font-medium text-red-600">{err}</p> : null}
+      {success ? <p className="mt-3 text-sm font-medium text-emerald-700">{success}</p> : null}
 
       <div className="mt-6">
         <h4 className="text-sm font-semibold text-[#1E293B]">
