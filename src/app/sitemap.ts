@@ -74,6 +74,7 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
+  "pago-prueba-livendia",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
