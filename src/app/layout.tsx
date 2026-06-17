@@ -7,6 +7,7 @@ import { GtmScripts } from "@/components/gtm-scripts";
 import { WebsiteStructuredData } from "@/components/website-structured-data";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
+import { ClientAreaChrome } from "@/components/client-area-chrome";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import "./globals.css";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
         <AnalyticsBootstrap />
         {children}
         <PublicMobileChrome />
+        <ClientAreaChrome />
         <FloatingWhatsAppButton />
       </body>
     </html>

@@ -8,7 +8,14 @@ const DEFAULT_PREFILL = "Hola, me gustaría hablar con un gestor de Livendia.";
 /** FAB de WhatsApp animado, visible en todas las páginas públicas (oculto en /admin). */
 export function FloatingWhatsAppButton() {
   const pathname = usePathname() ?? "";
-  if (pathname.startsWith("/admin") || pathname.startsWith("/contacto")) return null;
+  if (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/contacto") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/mis-pedidos")
+  ) {
+    return null;
+  }
 
   const waHref = getWhatsAppHref(DEFAULT_PREFILL);
 

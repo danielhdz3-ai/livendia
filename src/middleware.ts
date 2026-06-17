@@ -53,7 +53,10 @@ export async function middleware(request: NextRequest) {
     }
   }
   if ((path === "/login" || path === "/register") && user) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    const cambiar = request.nextUrl.searchParams.get("cambiar");
+    if (cambiar !== "1") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
   }
 
   return response;

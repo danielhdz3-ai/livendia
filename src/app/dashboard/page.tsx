@@ -1,5 +1,6 @@
 import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
+import { DashboardMobileHero } from "@/components/dashboard-mobile-hero";
 import {
   orderGrantsRentalAccess,
   RENTAL_SERVICE_SLUG,
@@ -116,6 +117,18 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     }
   }
 
+  const mobileOrders =
+    orders?.map((order) => {
+      const svc = order.services;
+      const serviceRow = Array.isArray(svc) ? svc[0] : svc;
+      return {
+        id: order.id as string,
+        status: order.status as string,
+        serviceName: (serviceRow?.name as string | undefined) ?? "Servicio",
+        docCount: docCountByOrder[order.id as string] ?? 0,
+      };
+    }) ?? [];
+
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
       {/* Sidebar — mismo estilo que administración de alquiler */}
@@ -211,7 +224,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
       {/* Main Content */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Header */}
-        <header className="border-b border-slate-200 bg-white">
+        <header className="hidden border-b border-slate-200 bg-white lg:block">
           <div className="flex items-center justify-between px-6 py-4">
             <div>
               <h1 className="text-2xl font-bold text-[#1E293B]">¡Hola, {firstName}! 👋</h1>
@@ -244,13 +257,21 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         </header>
 
         {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8">
-          <Suspense fallback={null}>
-            <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
-          </Suspense>
+        <main className="flex-1 overflow-y-auto p-4 pb-6 lg:p-8">
+          <div className="hidden lg:block">
+            <Suspense fallback={null}>
+              <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
+            </Suspense>
+          </div>
 
-          {/* Stats Cards */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <DashboardMobileHero
+            firstName={firstName}
+            orders={mobileOrders}
+            highlightOrderId={highlightOrderId}
+          />
+
+          {/* Stats Cards — escritorio / tablet */}
+          <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg shadow-blue-500/30">
               <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-white/10"></div>
               <div className="relative">
@@ -311,8 +332,8 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             </div>
           </div>
 
-          {/* Services CTA */}
-          <section className="mt-8">
+          {/* Services CTA — escritorio */}
+          <section className="mt-8 hidden lg:block">
             <Link
               href="/dashboard/servicios"
               className="group block overflow-hidden rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200 transition hover:shadow-xl hover:ring-[#1A4FBF]"
@@ -338,8 +359,8 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             </Link>
           </section>
 
-          {/* Recent Orders */}
-          <section className="mt-8">
+          {/* Recent Orders — escritorio */}
+          <section className="mt-8 hidden lg:block">
             <div className="mb-6 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-[#1E293B]">Pedidos recientes</h2>
@@ -465,8 +486,8 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             )}
           </section>
 
-          {/* Quick Actions */}
-          <section className="mt-8">
+          {/* Quick Actions — escritorio */}
+          <section className="mt-8 hidden lg:block">
             <h2 className="mb-6 text-xl font-bold text-[#1E293B]">Acciones rápidas</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <Link

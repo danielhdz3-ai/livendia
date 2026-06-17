@@ -82,8 +82,16 @@ body {
   }
 }
 
-@media (min-width: 640px) {
-  body.livendia-mobile-nav {
-    padding-bottom: 0;
+@media (max-width: 1023px) {
+  body.livendia-client-mobile-nav {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.livendia-client-mobile-nav .livendia-wa-fab-anchor {
+    display: none;
+  }
+
+  body.livendia-client-mobile-nav .client-mobile-bottom-nav {
+    display: flex;
   }
 }

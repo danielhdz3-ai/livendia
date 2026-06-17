@@ -1,32 +1,42 @@
 "use client";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { performClientLogout } from "@/lib/auth-logout";
 import { GoogleAuthButton } from "@/components/google-auth-button";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
-import { ShieldCheck, Users, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Users, Sparkles, CheckCircle2, LogOut } from "lucide-react";
 
 export function LoginForm() {
-  const router = useRouter();
   const search = useSearchParams();
   const next = search.get("next") ?? "/dashboard";
   const oauthError = search.get("error");
+  const cambiar = search.get("cambiar") === "1";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [activeSessionEmail, setActiveSessionEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const supabase = createBrowserSupabaseClient();
+    void supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.email) setActiveSessionEmail(user.email);
+    });
+  }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setLoading(true);
     const supabase = createBrowserSupabaseClient();
+    await supabase.auth.signOut({ scope: "global" });
     const { data, error: err } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
     if (err) {
+      setLoading(false);
       setError(err.message);
       return;
     }
@@ -36,8 +46,7 @@ export function LoginForm() {
         headers: { Authorization: `Bearer ${data.session.access_token}` },
       });
     }
-    router.push(next);
-    router.refresh();
+    window.location.href = next;
   }
 
   return (
@@ -179,6 +188,23 @@ export function LoginForm() {
                 Accede a tu panel de gestión inmobiliaria
               </p>
             </div>
+
+            {activeSessionEmail ? (
+              <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+                <p>
+                  Sesión activa: <strong>{activeSessionEmail}</strong>
+                  {cambiar ? " — entra con otra cuenta abajo o cierra sesión." : "."}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => void performClientLogout()}
+                  className="mt-3 inline-flex min-h-10 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold text-[#1A4FBF] ring-1 ring-amber-200"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Cerrar sesión
+                </button>
+              </div>
+            ) : null}
 
             <div className="mb-6">
               <GoogleAuthButton next={next} />
