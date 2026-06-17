@@ -1,4 +1,10 @@
+import {
+  resolveOrCreateCheckoutUser,
+  validateCheckoutCustomer,
+  type CheckoutCustomerInput,
+} from "@/lib/checkout-account";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/service";
 import { getStripe } from "@/lib/stripe/server";
 import { NextResponse } from "next/server";
 
@@ -11,24 +17,38 @@ function fallbackRecurringPriceId(slug: string | null | undefined): string | und
   return undefined;
 }
 
+type CheckoutBody = {
+  serviceId?: string;
+  email?: string;
+  fullName?: string;
+  phone?: string;
+  utm?: Record<string, string>;
+};
+
+async function syncProfileFromForm(userId: string, input: CheckoutCustomerInput) {
+  const admin = createServiceRoleClient();
+  await admin
+    .from("profiles")
+    .update({
+      full_name: input.fullName.trim(),
+      phone: input.phone.replace(/\s+/g, "").trim(),
+    })
+    .eq("id", userId);
+}
+
 export async function POST(req: Request) {
   const supabase = await createServerSupabaseClient();
   const {
-    data: { user },
+    data: { user: sessionUser },
   } = await supabase.auth.getUser();
-  if (!user?.email) {
-    return NextResponse.json(
-      { error: "Debes iniciar sesión para pagar. Si acabas de registrarte, confirma tu email primero." },
-      { status: 401 },
-    );
-  }
 
-  let body: { serviceId?: string; utm?: Record<string, string> };
+  let body: CheckoutBody;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
   }
+
   const serviceId = body.serviceId;
   const utmMeta =
     body.utm && typeof body.utm === "object"
@@ -38,11 +58,52 @@ export async function POST(req: Request) {
           ),
         )
       : {};
+
   if (!serviceId || typeof serviceId !== "string") {
     return NextResponse.json({ error: "Falta serviceId" }, { status: 400 });
   }
 
-  const { data: service, error: sErr } = await supabase
+  const customerInput: CheckoutCustomerInput = {
+    email: typeof body.email === "string" ? body.email : "",
+    fullName: typeof body.fullName === "string" ? body.fullName : "",
+    phone: typeof body.phone === "string" ? body.phone : "",
+  };
+
+  let checkoutUserId: string;
+  let checkoutEmail: string;
+
+  if (sessionUser?.email) {
+    checkoutUserId = sessionUser.id;
+    checkoutEmail = sessionUser.email;
+    const formError = validateCheckoutCustomer({
+      ...customerInput,
+      email: customerInput.email || sessionUser.email,
+    });
+    if (formError) {
+      return NextResponse.json({ error: formError }, { status: 400 });
+    }
+    await syncProfileFromForm(checkoutUserId, {
+      email: checkoutEmail,
+      fullName: customerInput.fullName,
+      phone: customerInput.phone,
+    });
+  } else {
+    const formError = validateCheckoutCustomer(customerInput);
+    if (formError) {
+      return NextResponse.json({ error: formError }, { status: 400 });
+    }
+    try {
+      const resolved = await resolveOrCreateCheckoutUser(customerInput);
+      checkoutUserId = resolved.userId;
+      checkoutEmail = resolved.email;
+    } catch (e) {
+      const message = e instanceof Error ? e.message : "No se pudo preparar la cuenta";
+      return NextResponse.json({ error: message }, { status: 400 });
+    }
+  }
+
+  const admin = createServiceRoleClient();
+  const { data: service, error: sErr } = await admin
     .from("services")
     .select("id, name, price_cents, is_active, is_recurring, slug, stripe_price_id")
     .eq("id", serviceId)
@@ -75,19 +136,19 @@ export async function POST(req: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
-      customer_email: user.email,
+      customer_email: checkoutEmail,
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${appUrl}/gracias?session_id={CHECKOUT_SESSION_ID}&dest=rental`,
-      cancel_url: `${appUrl}/dashboard/servicios`,
+      cancel_url: `${appUrl}/servicios`,
       subscription_data: {
         metadata: {
-          supabase_user_id: user.id,
+          supabase_user_id: checkoutUserId,
           service_id: service.id,
           ...utmMeta,
         },
       },
       metadata: {
-        supabase_user_id: user.id,
+        supabase_user_id: checkoutUserId,
         service_id: service.id,
         ...utmMeta,
       },
@@ -102,7 +163,7 @@ export async function POST(req: Request) {
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    customer_email: user.email,
+    customer_email: checkoutEmail,
     line_items: [
       {
         price_data: {
@@ -117,9 +178,9 @@ export async function POST(req: Request) {
       },
     ],
     success_url: `${appUrl}/gracias?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${appUrl}/dashboard`,
+    cancel_url: `${appUrl}/servicios`,
     metadata: {
-      supabase_user_id: user.id,
+      supabase_user_id: checkoutUserId,
       service_id: service.id,
       ...utmMeta,
     },

@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { ServiceModal } from "@/components/service-modal";
 import { ServicePurchaseCard } from "@/components/service-purchase-card";
-import {
-  analyticsFromService,
-  checkoutServiceSession,
-  ensureLoggedInForCheckout,
-} from "@/lib/checkout-service-session";
+import { analyticsFromService, checkoutServiceSession } from "@/lib/checkout-service-session";
 import type { PublicService } from "@/lib/catalog.public";
 
 interface ServiceCardsClientProps {
@@ -29,15 +25,7 @@ export function ServiceCardsClient({ services }: ServiceCardsClientProps) {
       <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <li key={service.id} className="min-w-0">
-            <ServicePurchaseCard
-              service={service}
-              onSelect={() => {
-                void (async () => {
-                  if (await ensureLoggedInForCheckout()) setSelectedService(service);
-                })();
-              }}
-              className="h-full"
-            />
+            <ServicePurchaseCard service={service} onSelect={() => setSelectedService(service)} className="h-full" />
           </li>
         ))}
       </ul>

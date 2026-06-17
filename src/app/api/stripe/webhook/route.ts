@@ -183,7 +183,7 @@ export async function POST(req: Request) {
       .insert({
         client_id: userId,
         service_id: serviceId,
-        status: "paid",
+        status: "pending_docs",
         stripe_session_id: session.id,
         stripe_payment_intent_id: paymentIntentId,
         total_cents: session.amount_total ?? null,

@@ -70,11 +70,6 @@ export async function checkoutServiceSession(
 
     const data = (await response.json()) as { url?: string; error?: string };
 
-    if (response.status === 401) {
-      window.location.href = loginUrlForCheckout();
-      return;
-    }
-
     if (!response.ok) {
       window.alert(data.error ?? "No se pudo iniciar el pago.");
       return;

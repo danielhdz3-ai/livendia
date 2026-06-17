@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  "Crea cuenta en /register o inicia sesión (confirma el email si Supabase te lo pide)",
-  "Vuelve a esta página y pulsa «Contratar»",
-  "Completa tus datos y paga con tarjeta en Stripe",
-  "Comprueba el email de confirmación y el pedido en tu panel",
+  "Rellena nombre, email y teléfono en el formulario de contratación",
+  "Paga con tarjeta en Stripe (se crea tu cuenta Livendia automáticamente)",
+  "Tras el pago entras en tu expediente para subir la documentación",
+  "El gestor revisa los archivos y tramita tu contrato",
 ];
 
 export default async function PagoPruebaLivendiaPage() {

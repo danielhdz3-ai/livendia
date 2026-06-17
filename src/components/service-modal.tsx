@@ -40,11 +40,29 @@ export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps
 
   useEffect(() => {
     const supabase = createBrowserSupabaseClient();
-    void supabase.auth.getUser().then(({ data: { user } }) => {
+    void (async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       if (user?.email) setEmail(user.email);
-      const name = user?.user_metadata?.full_name;
-      if (typeof name === "string" && name.trim()) setFullName(name.trim());
-    });
+
+      const metaName = user?.user_metadata?.full_name;
+      const nameFromMeta = typeof metaName === "string" ? metaName.trim() : "";
+
+      if (user?.id) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("full_name, phone")
+          .eq("id", user.id)
+          .maybeSingle();
+        const profileName = (profile?.full_name as string | undefined)?.trim();
+        if (profileName) setFullName(profileName);
+        else if (nameFromMeta) setFullName(nameFromMeta);
+        if (profile?.phone) setPhone(profile.phone as string);
+      } else if (nameFromMeta) {
+        setFullName(nameFromMeta);
+      }
+    })();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -135,8 +153,8 @@ export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps
             <div className="p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-8 md:p-10">
               <h3 className="text-lg font-bold text-[#1E293B] sm:text-xl">Completa tu pedido</h3>
               <p className="mt-2 text-sm text-[#64748b]">
-                Revisa tus datos y continúa al <strong>pago seguro con tarjeta</strong>. Debes tener sesión iniciada
-                en Livendia (si acabas de registrarte, confirma el email antes de pagar).
+                Introduce tus datos y continúa al <strong>pago seguro con tarjeta</strong>. Si aún no tienes cuenta,
+                la creamos automáticamente al pagar.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-5 space-y-4 sm:mt-6 sm:space-y-5">

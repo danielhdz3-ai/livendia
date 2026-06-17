@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { PublicService } from "@/lib/catalog.public";
 import { ServiceModal } from "@/components/service-modal";
 import { ServicePurchaseCard } from "@/components/service-purchase-card";
-import { checkoutServiceSession, ensureLoggedInForCheckout } from "@/lib/checkout-service-session";
+import { checkoutServiceSession } from "@/lib/checkout-service-session";
 
 interface MobileServicesListProps {
   services: PublicService[];
@@ -30,11 +30,7 @@ export function MobileServicesList({ services }: MobileServicesListProps) {
           <li key={service.id}>
             <ServicePurchaseCard
               service={service}
-              onSelect={() => {
-                void (async () => {
-                  if (await ensureLoggedInForCheckout()) setSelectedService(service);
-                })();
-              }}
+              onSelect={() => setSelectedService(service)}
               className="shadow-sm"
               imageHeightClass="h-40"
             />
