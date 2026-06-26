@@ -1,5 +1,7 @@
 "use client";
 
+import { TurnstileField } from "@/components/turnstile-field";
+import { resolvePostLoginPath } from "@/lib/admin-access";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import {
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
@@ -10,6 +12,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Zap, Target, Award, CheckCircle2 } from "lucide-react";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 function safeNext(raw: string | null): string {
   const n = raw ?? "/dashboard";
@@ -27,25 +31,41 @@ export function RegisterClient() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [companyUrl, setCompanyUrl] = useState("");
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setMessage(null);
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setError("Completa la verificación anti-spam antes de registrarte.");
+      return;
+    }
     setLoading(true);
-    const supabase = createBrowserSupabaseClient();
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? window.location.origin;
-    const { data, error: err } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${appUrl}${next}`,
-        data: { full_name: fullName },
-      },
+    const regRes = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fullName,
+        email,
+        password,
+        turnstileToken: turnstileToken ?? undefined,
+        companyUrl,
+      }),
     });
+    const regBody = (await regRes.json().catch(() => ({}))) as { error?: string };
+    if (!regRes.ok) {
+      setLoading(false);
+      setError(regBody.error ?? "No se pudo crear la cuenta.");
+      return;
+    }
+
+    const supabase = createBrowserSupabaseClient();
+    const { data, error: err } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (err) {
-      setError(err.message);
+      setMessage("Cuenta creada. Inicia sesión con tu email y contraseña.");
       return;
     }
     
@@ -72,11 +92,16 @@ export function RegisterClient() {
     }
     
     if (data.session?.access_token) {
-      router.push(next);
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user!.id)
+        .maybeSingle();
+      router.push(resolvePostLoginPath(data.user?.email, profile?.role, next));
       router.refresh();
       return;
     }
-    setMessage("✅ Registro exitoso. Revisa tu email para confirmar tu cuenta.");
+    setMessage("✅ Registro exitoso. Ya puedes iniciar sesión.");
   }
 
   return (
@@ -222,6 +247,16 @@ export function RegisterClient() {
             </div>
 
             <form onSubmit={onSubmit} className="space-y-5">
+              <input
+                type="text"
+                name="companyUrl"
+                value={companyUrl}
+                onChange={(e) => setCompanyUrl(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="pointer-events-none absolute left-[-9999px] h-0 w-0 opacity-0"
+                aria-hidden
+              />
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-[#1E293B]">
                   Nombre completo
@@ -236,6 +271,7 @@ export function RegisterClient() {
                   className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-[#1E293B] outline-none transition focus:border-[#1A4FBF] focus:ring-2 focus:ring-[#1A4FBF]/20"
                   placeholder="Juan Pérez"
                 />
+                <p className="mt-1.5 text-xs text-[#64748B]">Nombre y apellidos, como en tu DNI.</p>
               </div>
 
               <div>
@@ -284,6 +320,10 @@ export function RegisterClient() {
                 <div className="rounded-xl bg-blue-50 px-4 py-3 text-sm text-[#1A4FBF]">
                   {message}
                 </div>
+              ) : null}
+
+              {TURNSTILE_SITE_KEY ? (
+                <TurnstileField siteKey={TURNSTILE_SITE_KEY} onToken={setTurnstileToken} />
               ) : null}
 
               <button

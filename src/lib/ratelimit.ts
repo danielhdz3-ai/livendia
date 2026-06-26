@@ -7,6 +7,17 @@ function redisConfigured(): boolean {
 
 /** Rate limit opcional (Upstash). Sin env configurado → no limita y devuelve success. */
 
+export async function rateLimitRegister(ip: string): Promise<{ ok: boolean }> {
+  if (!redisConfigured()) return { ok: true };
+  const rl = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, "1 h"),
+    prefix: "rl:register",
+  });
+  const { success } = await rl.limit(ip);
+  return { ok: success };
+}
+
 export async function rateLimitContact(ip: string): Promise<{ ok: boolean }> {
   if (!redisConfigured()) return { ok: true };
   const rl = new Ratelimit({
