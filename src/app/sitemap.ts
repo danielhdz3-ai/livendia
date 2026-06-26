@@ -49,6 +49,13 @@ import {
   getPublishedVenderPisoSinAgenciaCities,
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
+import {
+  getPublishedVenderPisoSinInmobiliariaCities,
+  localVenderPisoSinInmobiliariaHref,
+  VENDER_PISO_SIN_INMOBILIARIA_BASE,
+} from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
+import { PILLAR_BARCELONA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
+import { PILLAR_MADRID_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-madrid";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -74,7 +81,6 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
-  "pago-prueba-livendia",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -176,6 +182,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.88,
   }));
 
+  const venderSinInmobiliariaHub: MetadataRoute.Sitemap = [
+    {
+      url: `${base}${VENDER_PISO_SIN_INMOBILIARIA_BASE}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.92,
+    },
+  ];
+
+  const pillarPaths: Record<string, string> = {
+    barcelona: PILLAR_BARCELONA_PATH,
+    madrid: PILLAR_MADRID_PATH,
+  };
+
+  const venderSinInmobiliariaLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinInmobiliariaCities().map(
+    (c) => ({
+      url: `${base}${pillarPaths[c.slug] ?? localVenderPisoSinInmobiliariaHref(c.slug)}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: pillarPaths[c.slug] ? 0.94 : 0.9,
+    }),
+  );
+
   const revisionPostArrasLocalCiudades: MetadataRoute.Sitemap =
     getPublishedRevisionDocumentalPostArrasLocalCities().map((c) => ({
       url: `${base}${REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE}/${c.slug}`,
@@ -218,6 +247,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
+    ...venderSinInmobiliariaHub,
+    ...venderSinInmobiliariaLocal,
     ...revisionPostArrasLocalCiudades,
     ...gestionVendedorLocalCiudades,
     ...parkingTrasteroLocalCiudades,

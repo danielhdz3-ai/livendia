@@ -16,11 +16,24 @@ export function SiteFooter() {
     <footer className="mt-auto">
       <GestorContactCta placement="footer" />
       <FooterParticularesTestimonials />
-      {/* Footer principal con fondo azul */}
+
+      {/* Bloque 1: enlaces SEO — separado para no estirar la imagen del footer */}
+      <section
+        className="border-t border-white/10 bg-[#172554] px-4 py-8 text-white sm:px-6 lg:px-10"
+        aria-label="Explora Livendia"
+      >
+        <div className="mx-auto max-w-7xl">
+          <FooterDiscoverabilityLinks />
+          <div className="mt-4 border-t border-white/15 pt-4">
+            <ServicioCompletoVentaLocalCityLinks variant="footer" />
+          </div>
+        </div>
+      </section>
+
+      {/* Bloque 2: marca, imagen, servicios, contacto y legal */}
       <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
-        <div className="grid items-stretch lg:grid-cols-2">
-          {/* Foto a ras de celda: cover + overflow (sin márgenes tipo “marco”) */}
-          <div className="relative hidden h-[280px] w-full min-[480px]:h-[340px] lg:block lg:h-full lg:min-h-[24rem] overflow-hidden">
+        <div className="grid items-start lg:grid-cols-2">
+          <div className="relative hidden h-[280px] w-full min-[480px]:h-[340px] lg:block lg:h-[22rem] xl:h-[24rem] overflow-hidden">
             <Image
               src="/images/chicasofa4.png"
               alt="Gestiona tranquila desde casa con Livendia"
@@ -31,7 +44,6 @@ export function SiteFooter() {
             />
           </div>
 
-          {/* Contenido del footer */}
           <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-8">
             {/* Título principal */}
             <div className="mb-5">
@@ -185,11 +197,6 @@ export function SiteFooter() {
                   info@livendia.com
                 </a>
               </div>
-            </div>
-
-            <FooterDiscoverabilityLinks />
-            <div className="mt-4 border-t border-white/20 pt-4">
-              <ServicioCompletoVentaLocalCityLinks variant="footer" />
             </div>
 
             {/* Legal y copyright */}

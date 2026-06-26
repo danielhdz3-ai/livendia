@@ -85,11 +85,8 @@ export function FooterDiscoverabilityLinks() {
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
   return (
-    <nav
-      className="mt-4 border-t border-white/20 pt-4 text-xs"
-      aria-label="Servicios y guías locales"
-    >
-      <h3 className="mb-2 font-bold uppercase tracking-wider text-cyan-300">Explora Livendia</h3>
+    <nav className="text-xs" aria-label="Servicios y guías locales">
+      <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-cyan-300">Explora Livendia</h3>
       <ul className="flex flex-wrap gap-x-3 gap-y-1 text-blue-100">
         {CORE_SERVICES.map((item) => (
           <li key={item.href}>
