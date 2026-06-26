@@ -17,6 +17,8 @@ export const ADMINISTRACION_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "mallorca",
   "sevilla",
   "malaga",
+  "oviedo",
+  "gijon",
 ];
 
 export function isAdministracionAlquilerLocalSlugPublished(slug: string): boolean {
@@ -38,6 +40,9 @@ export type AdministracionAlquilerLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
+  heroImage?: string;
+  barriosIntro?: string;
+  barrios?: readonly string[];
 };
 
 export type AdministracionAlquilerLocalCityDefinition = Omit<
@@ -235,5 +240,102 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     ],
     finalCtaLead:
       "Contrata administración profesional en Málaga desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+  },
+  {
+    slug: "oviedo",
+    city: "Oviedo",
+    schemaAdministrativeArea: "Principado de Asturias",
+    heroImage: "/images/oviedo2.jpg",
+    heroLead:
+      "Oviedo concentra demanda de alquiler universitario, familias en expansión y propietarios que viven fuera del Principado. Entre La Ería, Los Pilares y el casco histórico surgen incidencias de humedades, ascensores antiguos y dudas sobre comunidad que no entienden de horario laboral. Livendia es vuestro único interlocutor ante el inquilino: filtramos urgencias, coordinamos técnicos y solo os avisamos cuando hace falta vuestra firma o autorización de gasto.",
+    whyIntro:
+      "En Oviedo es habitual alquilar pisos amueblados cerca del campus o en Ciudad Naranco mientras el propietario reside en Madrid, León o la costa. Sin canal profesional, WhatsApp personal y el presidente de la comunidad acaban mediando antes que un gestor. Centralizamos comunicaciones, pedimos certificados de comunidad cuando toca y documentamos cada incidencia — útil en El Cristo, Pumarín, La Florida o municipios del área como Siero y Lugones.",
+    howIntro:
+      "Cuatro fases idénticas al servicio nacional: intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando requiere decisión vuestra — en Oviedo capital y área metropolitana.",
+    barriosIntro:
+      "Administramos alquileres en los barrios donde más rotación hay entre estudiantes, familias y segundas residencias en el Principado.",
+    barrios: [
+      "Centro",
+      "El Cristo",
+      "La Florida",
+      "Los Pilares",
+      "Ciudad Naranco",
+      "Pumarín",
+      "La Ería",
+      "Ventanueva",
+      "Tenderina",
+      "Fonsovel",
+      "Vallobín",
+      "Corredoria",
+      "Siero",
+      "Lugones",
+      "Langreo",
+    ],
+    testimonialsTitle: "Propietarios en Oviedo que delegaron el día a día del alquiler en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilo un piso en La Ería cerca de la uni y vivo en Madrid. Antes perdía tardes con averías de caldera; ahora Livendia coordina fontanero y comunidad y yo solo apruebo cuando el gasto supera lo pactado.",
+        author: "María S.",
+        role: "Propietaria, La Ería",
+      },
+      {
+        quote:
+          "Piso en Los Pilares con inquilino joven. Filtran consultas menores y cuando hubo humedad en fachada explicaron al inquilino qué era responsabilidad suya y qué tocaba comunidad.",
+        author: "Roberto G.",
+        role: "Propietario, Los Pilares",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Oviedo desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+  },
+  {
+    slug: "gijon",
+    city: "Gijón",
+    schemaAdministrativeArea: "Principado de Asturias",
+    heroImage: "/images/gijon.jpg",
+    heroLead:
+      "Gijón mezcla alquiler residencial en La Arena y El Natahoyo, pisos cerca del campus en Somió y propietarios en la península que no pueden desplazarse en 24 horas cuando salta una avería. Entre Cimadevilla, Laviada y Montevil conviven edificios históricos, comunidades con derramas y inquilinos que llaman fuera de horario. Livendia canaliza todo con el arrendatario para que no perdáis fines de semana en llamadas.",
+    whyIntro:
+      "En Gijón la fricción habitual es distinguir avería interior de problema de fachada o ascensor comunitario — sobre todo en La Arena, El Natahoyo y el Centro. Un gestor profesional amortigua conflictos con el vecindario, filtra incidencias reales y mantiene trazabilidad antes de que escalen a la junta de propietarios.",
+    howIntro:
+      "Mismo protocolo Livendia en cuatro hitos: onboarding, intermediación con el arrendatario, ejecución de incidencias y reporting — válido en Gijón capital, litoral y concejos limítrofes como Carreño o Avilés cuando el piso está en el área.",
+    barriosIntro:
+      "Cubrimos administración de alquiler en los barrios y zonas donde más propietarios delegan el contacto con el inquilino.",
+    barrios: [
+      "Centro",
+      "Cimadevilla",
+      "La Arena",
+      "El Natahoyo",
+      "Laviada",
+      "Somió",
+      "Viesques",
+      "Montevil",
+      "La Calzada",
+      "Pumarín",
+      "El Llano",
+      "Ceares",
+      "Contrueces",
+      "Roces",
+      "Carreño",
+      "Avilés",
+    ],
+    testimonialsTitle: "Propietarios en Gijón que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Tengo piso en La Arena y trabajo en Bilbao. Livendia atiende al inquilino, coordina cerrajero y fontanería y yo solo veo el resumen cuando toca autorizar.",
+        author: "Patricia L.",
+        role: "Propietaria, La Arena",
+      },
+      {
+        quote:
+          "Alquilo en Somió cerca del campus. Ellos gestionan entradas de inquilinos nuevos en septiembre y yo no recibo llamadas un domingo a las once de la noche.",
+        author: "Ignacio M.",
+        role: "Propietario, Somió",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Gijón desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
 ];

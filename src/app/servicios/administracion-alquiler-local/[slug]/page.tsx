@@ -40,7 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? `Gestión de alquileres en Valencia desde 49 €/mes IVA incl. sin permanencia. Incidencias, averías y mediación: el propietario no habla con el inquilino. Livendia.`
       : slug === "mallorca"
         ? `Administración de alquileres en Mallorca y Palma desde 49 €/mes IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Baleares. Livendia.`
-        : `Administración de alquileres en ${city.city} desde 49 €/mes sin permanencia. Gestión integral de incidencias, averías y mediación con el inquilino. Livendia.`;
+        : slug === "oviedo"
+          ? `Administración de alquileres en Oviedo desde 49 €/mes IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Asturias. Livendia.`
+          : slug === "gijon"
+            ? `Administración de alquileres en Gijón desde 49 €/mes IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Asturias. Livendia.`
+            : `Administración de alquileres en ${city.city} desde 49 €/mes sin permanencia. Gestión integral de incidencias, averías y mediación con el inquilino. Livendia.`;
+  const ogImage = city.heroImage ?? "/images/modelo3.jpg";
 
   return {
     title,
@@ -52,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       locale: "es_ES",
       type: "website",
+      images: [{ url: ogImage, alt: `Administración de alquiler en ${city.city} — Livendia` }],
     },
   };
 }

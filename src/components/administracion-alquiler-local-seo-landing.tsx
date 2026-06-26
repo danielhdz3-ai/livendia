@@ -23,6 +23,7 @@ import {
   Phone,
   FileText,
   Wrench,
+  MapPin,
 } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
@@ -157,6 +158,8 @@ export async function AdministracionAlquilerLocalSeoLanding({
     "/images/gestoria5.jpg",
   ];
 
+  const heroImage = config.heroImage ?? "/images/modelo3.jpg";
+
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <LocalAdministracionJsonLd
@@ -240,12 +243,12 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative h-44 sm:h-56 lg:h-auto">
+                <div className="relative order-2 h-56 sm:h-72 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/modelo3.jpg"
+                    src={heroImage}
                     alt={`Administración de alquiler en ${config.city}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
@@ -286,6 +289,32 @@ export async function AdministracionAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.barrios?.length ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-4xl text-center">
+                <MapPin className="mx-auto h-8 w-8 text-[#1A4FBF]" aria-hidden />
+                <h2 className="mt-4 text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Barrios y zonas donde administramos alquileres en {config.city}
+                </h2>
+                {config.barriosIntro ? (
+                  <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#64748b] sm:text-lg">
+                    {config.barriosIntro}
+                  </p>
+                ) : null}
+                <ul className="mt-8 flex flex-wrap justify-center gap-2">
+                  {config.barrios.map((zone) => (
+                    <li
+                      key={zone}
+                      className="rounded-full bg-[#F8FAFC] px-4 py-2 text-sm font-medium text-[#1E293B] ring-1 ring-slate-200"
+                    >
+                      {zone}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
