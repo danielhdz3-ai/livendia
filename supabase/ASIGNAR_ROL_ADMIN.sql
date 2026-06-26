@@ -2,13 +2,13 @@
 -- ⚡ ASIGNAR ROL DE ADMIN ⚡
 -- ============================================
 -- Este script te convierte en administrador
--- Email configurado: info@livendia.com
+-- Email configurado: admin.livendia@gmail.com
 -- ============================================
 
 DO $$
 DECLARE
   v_user_id uuid;
-  v_user_email text := 'info@livendia.com';
+  v_user_email text := 'admin.livendia@gmail.com';
 BEGIN
   RAISE NOTICE '';
   RAISE NOTICE '╔══════════════════════════════════════════════════════╗';

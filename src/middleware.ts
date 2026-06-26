@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { shouldRedirectToAdminPanel } from "@/lib/admin-access";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
@@ -32,30 +33,59 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
+
+  let profileRole: string | null = null;
+  async function loadProfileRole() {
+    if (!user) return null;
+    if (profileRole !== null) return profileRole;
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+    profileRole = profile?.role ?? null;
+    return profileRole;
+  }
+
   if ((path.startsWith("/dashboard") || path.startsWith("/mis-pedidos")) && !user) {
     const login = new URL("/login", request.url);
     login.searchParams.set("next", path);
     return NextResponse.redirect(login);
   }
+
+  if (user) {
+    const role = await loadProfileRole();
+    if (shouldRedirectToAdminPanel(user.email, role)) {
+      if (path === "/login" || path === "/register") {
+        const cambiar = request.nextUrl.searchParams.get("cambiar");
+        if (cambiar !== "1") {
+          return NextResponse.redirect(new URL("/admin", request.url));
+        }
+      }
+      if (path === "/dashboard" || path.startsWith("/dashboard/")) {
+        return NextResponse.redirect(new URL("/admin", request.url));
+      }
+    }
+  }
+
   if (path.startsWith("/admin")) {
     if (!user) {
       const login = new URL("/login", request.url);
       login.searchParams.set("next", path);
       return NextResponse.redirect(login);
     }
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .maybeSingle();
-    if (profile?.role !== "admin") {
+    const role = await loadProfileRole();
+    if (role !== "admin") {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   }
+
   if ((path === "/login" || path === "/register") && user) {
     const cambiar = request.nextUrl.searchParams.get("cambiar");
     if (cambiar !== "1") {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      const role = await loadProfileRole();
+      const dest = shouldRedirectToAdminPanel(user.email, role) ? "/admin" : "/dashboard";
+      return NextResponse.redirect(new URL(dest, request.url));
     }
   }
 

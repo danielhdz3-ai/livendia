@@ -1,3 +1,4 @@
+import { resolvePostLoginPath } from "@/lib/admin-access";
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
@@ -47,10 +48,20 @@ export async function GET(request: NextRequest) {
     /* email opcional */
   }
 
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", data.session.user.id)
+    .maybeSingle();
+
+  const resolvedNext = resolvePostLoginPath(data.session.user.email, profile?.role, next);
+
   const forwardedHost = request.headers.get("x-forwarded-host");
   const isDev = process.env.NODE_ENV === "development";
   const dest =
-    !isDev && forwardedHost ? `https://${forwardedHost}${next}` : `${requestUrl.origin}${next}`;
+    !isDev && forwardedHost
+      ? `https://${forwardedHost}${resolvedNext}`
+      : `${requestUrl.origin}${resolvedNext}`;
 
   return NextResponse.redirect(dest);
 }
