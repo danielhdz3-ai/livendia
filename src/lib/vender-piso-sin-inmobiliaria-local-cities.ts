@@ -82,17 +82,23 @@ export type VenderPisoSinInmobiliariaLandingConfig = {
 
 export type VenderPisoSinInmobiliariaCityDefinition = Omit<VenderPisoSinInmobiliariaLandingConfig, "path">;
 
-export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao"];
 
 /** Ciudades con guía pilar editorial (no landing comercial genérica). */
-export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao"];
 
 export function isVenderPisoSinInmobiliariaPillarSlug(slug: string): boolean {
   return (VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS as readonly string[]).includes(slug);
 }
 
 export function getVenderPisoSinInmobiliariaPillarCityLabel(slug: string): string {
-  const labels: Record<string, string> = { barcelona: "Barcelona", madrid: "Madrid", valencia: "Valencia" };
+  const labels: Record<string, string> = {
+    barcelona: "Barcelona",
+    madrid: "Madrid",
+    valencia: "Valencia",
+    sevilla: "Sevilla",
+    bilbao: "Bilbao",
+  };
   return labels[slug] ?? slug;
 }
 
@@ -120,7 +126,15 @@ export function getPublishedVenderPisoSinInmobiliariaCities(): VenderPisoSinInmo
         slug,
         city: getVenderPisoSinInmobiliariaPillarCityLabel(slug),
         schemaAdministrativeArea:
-          slug === "madrid" ? "Comunidad de Madrid" : slug === "valencia" ? "Comunidad Valenciana" : "Cataluña",
+          slug === "madrid"
+            ? "Comunidad de Madrid"
+            : slug === "valencia"
+              ? "Comunidad Valenciana"
+              : slug === "sevilla"
+                ? "Andalucía"
+                : slug === "bilbao"
+                  ? "País Vasco"
+                  : "Cataluña",
         metaTitle: "",
         metaDescription: "",
         keywords: [],
