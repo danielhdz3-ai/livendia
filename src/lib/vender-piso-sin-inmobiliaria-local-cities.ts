@@ -82,17 +82,17 @@ export type VenderPisoSinInmobiliariaLandingConfig = {
 
 export type VenderPisoSinInmobiliariaCityDefinition = Omit<VenderPisoSinInmobiliariaLandingConfig, "path">;
 
-export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia"];
 
 /** Ciudades con guía pilar editorial (no landing comercial genérica). */
-export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia"];
 
 export function isVenderPisoSinInmobiliariaPillarSlug(slug: string): boolean {
   return (VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS as readonly string[]).includes(slug);
 }
 
 export function getVenderPisoSinInmobiliariaPillarCityLabel(slug: string): string {
-  const labels: Record<string, string> = { barcelona: "Barcelona", madrid: "Madrid" };
+  const labels: Record<string, string> = { barcelona: "Barcelona", madrid: "Madrid", valencia: "Valencia" };
   return labels[slug] ?? slug;
 }
 
@@ -119,7 +119,8 @@ export function getPublishedVenderPisoSinInmobiliariaCities(): VenderPisoSinInmo
       ({
         slug,
         city: getVenderPisoSinInmobiliariaPillarCityLabel(slug),
-        schemaAdministrativeArea: slug === "madrid" ? "Comunidad de Madrid" : "Cataluña",
+        schemaAdministrativeArea:
+          slug === "madrid" ? "Comunidad de Madrid" : slug === "valencia" ? "Comunidad Valenciana" : "Cataluña",
         metaTitle: "",
         metaDescription: "",
         keywords: [],

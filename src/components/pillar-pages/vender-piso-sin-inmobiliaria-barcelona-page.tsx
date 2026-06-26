@@ -25,6 +25,10 @@ import {
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
+import {
+  VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
+  VenderPisoSinInmobiliariaSigningFigure,
+} from "@/components/vender-piso-sin-inmobiliaria-images";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
@@ -277,7 +281,7 @@ export async function VenderPisoSinInmobiliariaBarcelonaPillarPage() {
             <div className="relative mx-auto max-w-6xl px-4 pb-8 sm:px-6">
               <div className="relative aspect-[21/9] max-h-72 w-full overflow-hidden rounded-2xl bg-slate-200">
                 <Image
-                  src="/images/servicio-completo-venta-hero.jpg"
+                  src={VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE}
                   alt="Vender piso sin comisiones en Barcelona entre particulares con gestor legal Livendia"
                   fill
                   className="object-cover"
@@ -398,6 +402,7 @@ export async function VenderPisoSinInmobiliariaBarcelonaPillarPage() {
                     ))}
                   </ol>
                   <InlineCta priceLabelCompact={priceLabelCompact} waHref={waHref} />
+                  <VenderPisoSinInmobiliariaSigningFigure city="Barcelona" />
                 </section>
 
                 {/* Documentación */}

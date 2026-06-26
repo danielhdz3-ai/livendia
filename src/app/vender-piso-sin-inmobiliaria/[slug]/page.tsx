@@ -1,4 +1,5 @@
 import { VenderPisoSinInmobiliariaSeoLanding } from "@/components/vender-piso-sin-inmobiliaria-seo-landing";
+import { VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE } from "@/components/vender-piso-sin-inmobiliaria-images";
 import {
   getPublishedVenderPisoSinInmobiliariaCities,
   getVenderPisoSinInmobiliariaLandingConfig,
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/images/servicio-completo-venta-hero.jpg",
+          url: VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
           alt: config.imageAlt,
         },
       ],

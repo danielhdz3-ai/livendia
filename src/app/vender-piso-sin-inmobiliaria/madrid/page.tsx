@@ -3,6 +3,7 @@ import {
   PILLAR_MADRID_META,
   PILLAR_MADRID_PATH,
 } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-madrid";
+import { VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE } from "@/components/vender-piso-sin-inmobiliaria-images";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/images/servicio-completo-venta-hero.jpg",
+        url: VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
         alt: "Guía para vender piso sin comisiones en Madrid entre particulares",
       },
     ],

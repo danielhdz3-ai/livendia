@@ -32,13 +32,14 @@ export function SiteFooter() {
 
       {/* Bloque 2: marca, imagen, servicios, contacto y legal */}
       <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
-        <div className="grid items-start lg:grid-cols-2">
-          <div className="relative hidden h-[280px] w-full min-[480px]:h-[340px] lg:block lg:h-[22rem] xl:h-[24rem] overflow-hidden">
+        <div className="grid lg:grid-cols-2 lg:items-start">
+          <div className="relative hidden min-[480px]:block lg:bg-[#1a3780]">
             <Image
               src="/images/chicasofa4.png"
               alt="Gestiona tranquila desde casa con Livendia"
-              fill
-              className="object-cover object-[center_30%] lg:object-[center_25%] rounded-none"
+              width={1536}
+              height={1024}
+              className="block h-auto w-full max-h-none"
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />

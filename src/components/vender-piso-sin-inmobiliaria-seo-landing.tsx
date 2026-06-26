@@ -18,6 +18,10 @@ import {
   VENTA_PARTICULAR_TRAMITES,
 } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import Image from "next/image";
+import {
+  VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
+  VenderPisoSinInmobiliariaSigningFigure,
+} from "@/components/vender-piso-sin-inmobiliaria-images";
 import Link from "next/link";
 import {
   AlertCircle,
@@ -212,7 +216,7 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/servicio-completo-venta-hero.jpg"
+                    src={VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE}
                     alt={config.imageAlt}
                     fill
                     className="object-cover"
@@ -262,6 +266,9 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
                   </li>
                 ))}
               </ol>
+              <div className="mx-auto mt-10 max-w-3xl">
+                <VenderPisoSinInmobiliariaSigningFigure city={config.city} />
+              </div>
             </div>
           </section>
 

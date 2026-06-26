@@ -8,20 +8,20 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
 } from "@/lib/catalog.public";
 import {
-  PILLAR_MADRID_CASE_STUDIES,
-  PILLAR_MADRID_COMPARE_ROWS,
-  PILLAR_MADRID_DOCUMENTS,
-  PILLAR_MADRID_FAQ,
-  PILLAR_MADRID_MADRID_EXTRA,
-  PILLAR_MADRID_NEIGHBORHOODS,
-  PILLAR_MADRID_PATH,
-  PILLAR_MADRID_PROCESS,
-  PILLAR_MADRID_RELATED,
-  PILLAR_MADRID_RISKS,
-  PILLAR_MADRID_SAVINGS_ROWS,
-  PILLAR_MADRID_SECTIONS,
-  PILLAR_MADRID_TOC,
-} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-madrid";
+  PILLAR_VALENCIA_CASE_STUDIES,
+  PILLAR_VALENCIA_COMPARE_ROWS,
+  PILLAR_VALENCIA_DOCUMENTS,
+  PILLAR_VALENCIA_FAQ,
+  PILLAR_VALENCIA_VALENCIA_EXTRA,
+  PILLAR_VALENCIA_NEIGHBORHOODS,
+  PILLAR_VALENCIA_PATH,
+  PILLAR_VALENCIA_PROCESS,
+  PILLAR_VALENCIA_RELATED,
+  PILLAR_VALENCIA_RISKS,
+  PILLAR_VALENCIA_SAVINGS_ROWS,
+  PILLAR_VALENCIA_SECTIONS,
+  PILLAR_VALENCIA_TOC,
+} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-valencia";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
@@ -46,7 +46,7 @@ import {
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const WA_PREFILL =
-  "Hola, estoy vendiendo mi piso en Madrid entre particulares (sin comisiones) y quiero saber cómo funciona el servicio completo de venta Livendia.";
+  "Hola, estoy vendiendo mi piso en Valencia entre particulares (sin comisiones) y quiero saber cómo funciona el servicio completo de venta Livendia.";
 
 function formatEur(n: number): string {
   return `${n.toLocaleString("es-ES")} €`;
@@ -68,15 +68,15 @@ function PillarJsonLd({
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: "Vender piso sin comisiones en Madrid entre particulares con gestor legal Livendia",
+        name: "Vender piso sin comisiones en Valencia entre particulares con gestor legal Livendia",
         description:
-          "Acompañamiento jurídico-documental para propietarios que venden en Madrid sin inmobiliaria: contratos, documentación y coordinación hasta notaría.",
+          "Acompañamiento jurídico-documental para propietarios que venden en Valencia sin inmobiliaria: contratos, documentación y coordinación hasta notaría.",
         serviceType: "Venta de vivienda entre particulares",
         provider: { "@type": "Organization", name: "Livendia", url: base },
         areaServed: {
           "@type": "City",
-          name: "Madrid",
-          containedInPlace: { "@type": "AdministrativeArea", name: "Comunidad de Madrid" },
+          name: "Valencia",
+          containedInPlace: { "@type": "AdministrativeArea", name: "Comunidad de Valencia" },
         },
         offers: {
           "@type": "Offer",
@@ -99,7 +99,7 @@ function PillarJsonLd({
             name: "Vender sin inmobiliaria",
             item: `${base}${VENDER_PISO_SIN_INMOBILIARIA_BASE}`,
           },
-          { "@type": "ListItem", position: 3, name: "Madrid", item: pageUrl },
+          { "@type": "ListItem", position: 3, name: "Valencia", item: pageUrl },
         ],
       },
       {
@@ -130,7 +130,7 @@ function InlineCta({
     return (
       <aside className="my-8 rounded-xl border border-blue-200 bg-blue-50/80 p-5 text-center sm:p-6">
         <p className="text-sm font-semibold text-[#1E293B] sm:text-base">
-          ¿Ya tienes comprador en Madrid? Contrata gestoría por {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. — sin
+          ¿Ya tienes comprador en Valencia? Contrata gestoría por {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. — sin
           comisión sobre el precio de venta.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
@@ -152,7 +152,7 @@ function InlineCta({
 
   return (
     <aside className="my-10 rounded-2xl bg-[#1E3A8A] p-6 text-center text-white sm:p-8">
-      <p className="text-lg font-bold sm:text-xl">Vende entre particulares con gestor legal en Madrid</p>
+      <p className="text-lg font-bold sm:text-xl">Vende entre particulares con gestor legal en Valencia</p>
       <p className="mt-2 text-sm leading-relaxed text-blue-100 sm:text-base">
         Tarifa plana {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. · Sin comisión del 3–5 % · Gestor dedicado hasta
         notaría
@@ -199,19 +199,19 @@ function ProseSection({
   );
 }
 
-export async function VenderPisoSinInmobiliariaMadridPillarPage() {
+export async function VenderPisoSinInmobiliariaValenciaPillarPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceEur = service ? service.price_cents / 100 : SERVICIO_COMPLETO_CV_PRICE_EUR;
   const priceLabelCompact = service
     ? `${(service.price_cents / 100).toFixed(0)}€`
     : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
-  const pageUrl = `${getSiteUrl()}${PILLAR_MADRID_PATH}`;
+  const pageUrl = `${getSiteUrl()}${PILLAR_VALENCIA_PATH}`;
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(WA_PREFILL)}`;
 
   return (
     <ServicePurchaseProvider service={service}>
-      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} faq={PILLAR_MADRID_FAQ} />
+      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} faq={PILLAR_VALENCIA_FAQ} />
       <div className="flex min-h-screen flex-col bg-[#fafaf9]">
         <PublicHeader />
 
@@ -233,7 +233,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     </Link>
                   </li>
                   <ChevronRight className="mx-1 h-3.5 w-3.5" aria-hidden />
-                  <li className="font-medium text-slate-800">Madrid</li>
+                  <li className="font-medium text-slate-800">Valencia</li>
                 </ol>
               </nav>
 
@@ -241,7 +241,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 Guía completa · Actualizada 2026
               </p>
               <h1 className="mt-3 font-serif text-3xl font-bold leading-tight text-[#0f172a] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-                Cómo vender piso sin comisiones en Madrid: guía entre particulares con seguridad jurídica
+                Cómo vender piso sin comisiones en Valencia: guía entre particulares con seguridad jurídica
               </h1>
               <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
                 Todo lo que necesitas saber para{" "}
@@ -257,7 +257,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <MapPin className="h-4 w-4" aria-hidden />
-                  Madrid capital y área metropolitana
+                  Valencia capital y área metropolitana
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Scale className="h-4 w-4" aria-hidden />
@@ -282,7 +282,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
               <div className="relative aspect-[21/9] max-h-64 w-full overflow-hidden rounded-2xl bg-slate-200">
                 <Image
                   src={VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE}
-                  alt="Vender piso sin comisiones en Madrid entre particulares con gestor legal Livendia"
+                  alt="Vender piso sin comisiones en Valencia entre particulares con gestor legal Livendia"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 1152px"
@@ -299,10 +299,10 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
             >
               <p className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-500">
                 <List className="h-4 w-4" aria-hidden />
-                En esta guía — Madrid
+                En esta guía — Valencia
               </p>
               <ul className="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
-                {PILLAR_MADRID_TOC.map((item) => (
+                {PILLAR_VALENCIA_TOC.map((item) => (
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
@@ -317,7 +317,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
 
             <div className="pb-16 sm:pb-24">
 
-                {PILLAR_MADRID_SECTIONS.map((section, idx) => (
+                {PILLAR_VALENCIA_SECTIONS.map((section, idx) => (
                   <ProseSection key={section.id} id={section.id} title={section.title} paragraphs={section.paragraphs}>
                     {section.id === "que-hace-livendia" ? (
                       <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -358,7 +358,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 {/* Proceso completo */}
                 <section id="proceso-completo" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Proceso completo para vender piso directamente a un particular en Madrid
+                    Proceso completo para vender piso directamente a un particular en Valencia
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Esta cronología recoge una venta típica entre particulares en la ciudad: desde que fijas precio hasta
@@ -366,7 +366,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     documentación.
                   </p>
                   <ol className="mt-8 space-y-6">
-                    {PILLAR_MADRID_PROCESS.map((step) => (
+                    {PILLAR_VALENCIA_PROCESS.map((step) => (
                       <li
                         key={step.title}
                         className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
@@ -385,13 +385,13 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     ))}
                   </ol>
                   <InlineCta priceLabelCompact={priceLabelCompact} waHref={waHref} />
-                  <VenderPisoSinInmobiliariaSigningFigure city="Madrid" />
+                  <VenderPisoSinInmobiliariaSigningFigure city="Valencia" />
                 </section>
 
                 {/* Documentación */}
                 <section id="documentacion" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Documentación necesaria para vender sin agencia en Madrid
+                    Documentación necesaria para vender sin agencia en Valencia
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     El comprador particular y, sobre todo, su banco pedirán estos documentos. Tenerlos listos antes de
@@ -407,7 +407,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MADRID_DOCUMENTS.map((doc) => (
+                        {PILLAR_VALENCIA_DOCUMENTS.map((doc) => (
                           <tr key={doc.name} className="align-top">
                             <td className="px-4 py-3 font-medium text-[#0f172a]">{doc.name}</td>
                             <td className="px-4 py-3 text-slate-600">{doc.whoProvides}</td>
@@ -429,7 +429,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     Estos son los escenarios que más consultas generan en operaciones madrileñas.
                   </p>
                   <ul className="mt-8 space-y-4">
-                    {PILLAR_MADRID_RISKS.map((r) => (
+                    {PILLAR_VALENCIA_RISKS.map((r) => (
                       <li key={r.risk} className="rounded-xl border border-slate-200 bg-white p-5">
                         <p className="flex items-start gap-2 font-bold text-[#0f172a]">
                           <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden />
@@ -469,7 +469,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MADRID_COMPARE_ROWS.map((row) => (
+                        {PILLAR_VALENCIA_COMPARE_ROWS.map((row) => (
                           <tr key={row.aspect}>
                             <td className="px-4 py-3 font-medium text-[#0f172a]">{row.aspect}</td>
                             <td className="bg-blue-50/40 px-4 py-3 font-medium text-[#1A4FBF]">{row.livendia}</td>
@@ -485,7 +485,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 {/* Ahorro */}
                 <section id="ahorro-comisiones" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Cuánto puedes ahorrar en comisiones al vender sin inmobiliaria en Madrid
+                    Cuánto puedes ahorrar en comisiones al vender sin inmobiliaria en Valencia
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Las cifras siguientes comparan comisión de agencia (3 % y 5 % más IVA) con la tarifa plana Livendia
@@ -505,7 +505,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MADRID_SAVINGS_ROWS.map((row) => (
+                        {PILLAR_VALENCIA_SAVINGS_ROWS.map((row) => (
                           <tr key={row.price} className={row.price === 450_000 ? "bg-emerald-50/50" : undefined}>
                             <td className="px-4 py-3 font-medium">{formatEur(row.price)}</td>
                             <td className="px-4 py-3 text-slate-600">{formatEur(row.agency3)}</td>
@@ -528,13 +528,13 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                   </p>
                 </section>
 
-                {PILLAR_MADRID_MADRID_EXTRA.map((section) => (
+                {PILLAR_VALENCIA_VALENCIA_EXTRA.map((section) => (
                   <ProseSection key={section.id} id={section.id} title={section.title} paragraphs={section.paragraphs}>
-                    {section.id === "madrid-mercado" ? (
+                    {section.id === "valencia-mercado" ? (
                       <div className="mt-6 text-center">
-                        <p className="text-sm font-semibold text-slate-700">Barrios y municipios donde operamos en Madrid:</p>
+                        <p className="text-sm font-semibold text-slate-700">Barrios y municipios donde operamos en Valencia:</p>
                         <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                          {PILLAR_MADRID_NEIGHBORHOODS.map((z) => (
+                          {PILLAR_VALENCIA_NEIGHBORHOODS.map((z) => (
                             <li
                               key={z}
                               className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700"
@@ -551,7 +551,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 {/* Casos ejemplo */}
                 <section id="casos-ejemplo" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Ejemplos representativos de venta entre particulares en Madrid
+                    Ejemplos representativos de venta entre particulares en Valencia
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Escenarios compuestos a partir de operaciones habituales en la ciudad. No son testimonios
@@ -559,7 +559,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     legal.
                   </p>
                   <div className="mt-8 space-y-6">
-                    {PILLAR_MADRID_CASE_STUDIES.map((c) => (
+                    {PILLAR_VALENCIA_CASE_STUDIES.map((c) => (
                       <article key={c.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h3 className="text-lg font-bold text-[#0f172a]">{c.title}</h3>
                         <dl className="mt-4 space-y-3 text-sm sm:text-base">
@@ -591,12 +591,12 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     Servicios Livendia y guías relacionadas
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
-                    Esta página es el <strong>pilar editorial</strong> para vender sin inmobiliaria en Madrid. Desde
+                    Esta página es el <strong>pilar editorial</strong> para vender sin inmobiliaria en Valencia. Desde
                     aquí enlazamos las fichas de servicio, otras landings locales y el hub nacional para compraventa
                     entre particulares.
                   </p>
                   <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                    {PILLAR_MADRID_RELATED.map((link) => (
+                    {PILLAR_VALENCIA_RELATED.map((link) => (
                       <li key={link.href}>
                         <Link
                           href={link.href}
@@ -618,13 +618,13 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                 {/* FAQ */}
                 <section id="preguntas-frecuentes" className="scroll-mt-24 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Preguntas frecuentes sobre vender sin comisiones en Madrid
+                    Preguntas frecuentes sobre vender sin comisiones en Valencia
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base text-slate-600">
                     Respuestas sobre venta entre particulares, trámites, ahorro y el papel de Livendia.
                   </p>
                   <ul className="mt-8 space-y-3">
-                    {PILLAR_MADRID_FAQ.map((item) => (
+                    {PILLAR_VALENCIA_FAQ.map((item) => (
                       <li key={item.question}>
                         <details className="group rounded-xl border border-slate-200 bg-white open:shadow-sm">
                           <summary className="cursor-pointer list-none px-5 py-4 font-semibold text-[#0f172a] marker:content-none [&::-webkit-details-marker]:hidden">
@@ -648,7 +648,7 @@ export async function VenderPisoSinInmobiliariaMadridPillarPage() {
                     <FileText className="h-10 w-10 shrink-0 text-cyan-200" aria-hidden />
                     <div>
                       <h2 className="text-xl font-bold sm:text-2xl">
-                        Vende tu piso en Madrid entre particulares — con gestor legal, sin comisión del 3–5 %
+                        Vende tu piso en Valencia entre particulares — con gestor legal, sin comisión del 3–5 %
                       </h2>
                       <p className="mt-3 text-sm leading-relaxed text-blue-100 sm:text-base">
                         Contrata el servicio completo de venta Livendia: {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.,

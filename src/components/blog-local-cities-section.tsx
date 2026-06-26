@@ -8,6 +8,7 @@ import { ServicioCompletoCompraLocalCityLinks } from "@/components/servicio-comp
 import { GestionDocumentalVendedorLocalCityLinks } from "@/components/gestion-documental-vendedor-local-city-links";
 import { RevisionDocumentalPostArrasLocalCityLinks } from "@/components/revision-documental-post-arras-local-city-links";
 import { VentaParticularesLocalCityLinks } from "@/components/venta-particulares-local-city-links";
+import { VenderPisoSinInmobiliariaLocalCityLinks } from "@/components/vender-piso-sin-inmobiliaria-local-city-links";
 
 /**
  * Enlaces a landings locales: viven en el blog, no en Servicios (estructura comercial limpia).
@@ -24,7 +25,8 @@ export function BlogLocalCitiesSection() {
           Guías y servicios por ciudad
         </h2>
         <p className="mt-3 max-w-3xl text-[#64748b]">
-          Contenido local con precios fijos: compraventa,{" "}
+          Contenido local con precios fijos:{" "}
+          <strong className="font-semibold text-[#1E293B]">vender piso sin inmobiliaria</strong>, compraventa,{" "}
           <strong className="font-semibold text-[#1E293B]">revisión comprador post-arras</strong> y{" "}
           <strong className="font-semibold text-[#1E293B]">gestión vendedor post-arras</strong>, contratos LAU,{" "}
           <strong className="font-semibold text-[#1E293B]">alquiler por temporada</strong> y administración de
@@ -63,8 +65,11 @@ export function BlogLocalCitiesSection() {
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <GestionDocumentalVendedorLocalCityLinks />
           </div>
-          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <VentaParticularesLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2">
+            <VenderPisoSinInmobiliariaLocalCityLinks />
           </div>
         </div>
       </div>
