@@ -24,9 +24,8 @@ import {
 } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
-import Image from "next/image";
 import {
-  VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
+  VenderPisoSinInmobiliariaPillarHeroImage,
   VenderPisoSinInmobiliariaSigningFigure,
 } from "@/components/vender-piso-sin-inmobiliaria-images";
 import Link from "next/link";
@@ -237,57 +236,49 @@ export async function VenderPisoSinInmobiliariaBarcelonaPillarPage() {
                 </ol>
               </nav>
 
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#1A4FBF]">
-                Guía completa · Actualizada 2026
-              </p>
-              <h1 className="mt-3 max-w-4xl font-serif text-3xl font-bold leading-tight text-[#0f172a] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-                Cómo vender piso sin comisiones en Barcelona: guía entre particulares con seguridad jurídica
-              </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600">
-                Todo lo que necesitas saber para{" "}
-                <strong className="font-semibold text-slate-800">vender vivienda entre particulares</strong>,{" "}
-                <strong className="font-semibold text-slate-800">ahorrar la comisión inmobiliaria</strong> y cerrar en
-                notaría sin improvisar contratos —con o sin Livendia como gestor legal.
-              </p>
+              <div className="grid items-center gap-8 lg:grid-cols-[1fr_min(100%,480px)] lg:gap-12 xl:grid-cols-[1fr_520px]">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[#1A4FBF]">
+                    Guía completa · Barcelona · 2026
+                  </p>
+                  <h1 className="mt-3 max-w-4xl font-serif text-3xl font-bold leading-tight text-[#0f172a] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+                    Vender piso sin comisiones en Barcelona
+                  </h1>
+                  <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+                    Guía entre particulares para{" "}
+                    <strong className="font-semibold text-slate-800">ahorrar la comisión inmobiliaria</strong> y cerrar
+                    en notaría con contratos y documentación en orden — con o sin Livendia como gestor legal.
+                  </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <BookOpen className="h-4 w-4" aria-hidden />
-                  Lectura ~18 min
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="h-4 w-4" aria-hidden />
-                  Barcelona y área metropolitana
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Scale className="h-4 w-4" aria-hidden />
-                  {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. · sin % sobre venta
-                </span>
-              </div>
+                  <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                    <span className="flex items-center gap-1.5">
+                      <BookOpen className="h-4 w-4" aria-hidden />
+                      Lectura ~18 min
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="h-4 w-4" aria-hidden />
+                      Barcelona y área metropolitana
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Scale className="h-4 w-4" aria-hidden />
+                      {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. · sin % sobre venta
+                    </span>
+                  </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-lg bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-[#153d99]">
-                  Contratar gestoría · {priceLabelCompact}
-                </ContratarServicioButton>
-                <a
-                  href="#proceso-completo"
-                  className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-[#1A4FBF]"
-                >
-                  Ver proceso paso a paso
-                </a>
-              </div>
-            </div>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-lg bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-[#153d99]">
+                      Contratar gestoría · {priceLabelCompact}
+                    </ContratarServicioButton>
+                    <a
+                      href="#proceso-completo"
+                      className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-[#1A4FBF]"
+                    >
+                      Ver proceso paso a paso
+                    </a>
+                  </div>
+                </div>
 
-            <div className="relative mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-              <div className="relative aspect-[21/9] max-h-72 w-full overflow-hidden rounded-2xl bg-slate-200">
-                <Image
-                  src={VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE}
-                  alt="Vender piso sin comisiones en Barcelona entre particulares con gestor legal Livendia"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 1152px"
-                  priority
-                />
+                <VenderPisoSinInmobiliariaPillarHeroImage alt="Vender piso sin comisiones en Barcelona entre particulares con gestor legal Livendia" />
               </div>
             </div>
           </header>
