@@ -12,6 +12,8 @@ export * from "@/lib/catalog.public";
 const SERVICE_SELECT =
   "id, slug, name, description, category, price_cents, is_recurring, features, badge";
 
+const HIDDEN_SLUGS = new Set(["pago-prueba-livendia"]);
+
 function normalizeServiceCategory(service: PublicService): PublicService {
   if (
     service.slug === "revision-documental-post-arras" ||
@@ -106,7 +108,9 @@ export async function getPublicServices(): Promise<PublicService[]> {
     .order("category", { ascending: true })
     .order("price_cents", { ascending: true });
 
-  const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
+  const services = ((data ?? []) as PublicService[])
+    .filter((s) => !HIDDEN_SLUGS.has(s.slug))
+    .map(normalizeServiceCategory);
   const withSeeds = await syncMissingCatalogSeeds(services);
   const withPrices = await syncFixedCatalogPrices(withSeeds);
   return withPrices.map(normalizeServiceCategory);
