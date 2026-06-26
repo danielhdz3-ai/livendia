@@ -71,7 +71,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
   const heroBullets = config.heroBullets ?? [];
 
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
-    `Hola, quiero contratar un contrato de alquiler de habitación en ${config.city} (120 €).`,
+    `Hola, quiero contratar un contrato de alquiler de habitación en ${config.city} (${priceLabel}).`,
   )}`;
   const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
     `Hola, quiero una llamada con un gestor para un contrato de habitación en ${config.city}.`,

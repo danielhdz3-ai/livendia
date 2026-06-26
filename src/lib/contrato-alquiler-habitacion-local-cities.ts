@@ -82,7 +82,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Barcelona",
     metaTitle: `Contrato alquiler habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Barcelona? Contrato para particulares 120 € IVA incl.: convivencia, gastos y fianza. Gestor por teléfono antes de pagar. Eixample, Gràcia, Poblenou. Entrega 48-72 h.",
+      `¿Alquilas una habitación en Barcelona? Contrato para particulares ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.: convivencia, gastos y fianza. Gestor por teléfono antes de pagar. Eixample, Gràcia, Poblenou. Entrega 48-72 h.`,
     keywords: [
       "contrato alquiler habitacion barcelona",
       "alquilar habitacion barcelona contrato",
@@ -131,7 +131,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Madrid",
     metaTitle: `Contrato alquiler habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Madrid? Contrato para particulares: Chamberí, Moncloa, Tetuán, Lavapiés. Convivencia, gastos y fianza. 120 € IVA incl. Gestor por teléfono.",
+      `¿Alquilas una habitación en Madrid? Contrato para particulares: Chamberí, Moncloa, Tetuán, Lavapiés. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Gestor por teléfono.`,
     keywords: [
       "contrato alquiler habitacion madrid",
       "alquilar habitacion madrid contrato",
@@ -180,7 +180,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Valencia",
     metaTitle: `Contrato alquiler habitación Valencia — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Valencia? Contrato para particulares en Ruzafa, Benimaclet, Ciutat Vella. Convivencia, gastos y fianza. 120 € IVA incl.",
+      `¿Alquilas una habitación en Valencia? Contrato para particulares en Ruzafa, Benimaclet, Ciutat Vella. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
       "contrato alquiler habitacion valencia",
       "alquilar habitacion valencia contrato",
@@ -228,7 +228,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Málaga",
     metaTitle: `Contrato alquiler habitación Málaga — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Málaga? Contrato para particulares en Teatinos, El Palo, centro. Convivencia, gastos y fianza. 120 € IVA incl.",
+      `¿Alquilas una habitación en Málaga? Contrato para particulares en Teatinos, El Palo, centro. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
       "contrato alquiler habitacion malaga",
       "alquilar habitacion malaga contrato",
@@ -275,7 +275,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Sevilla",
     metaTitle: `Contrato alquiler habitación Sevilla — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Sevilla? Contrato para particulares en Nervión, Triana, Los Remedios. Convivencia, gastos y fianza. 120 € IVA incl.",
+      `¿Alquilas una habitación en Sevilla? Contrato para particulares en Nervión, Triana, Los Remedios. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
       "contrato alquiler habitacion sevilla",
       "alquilar habitacion sevilla contrato",
@@ -323,7 +323,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     heroH1: "Contrato de alquiler de habitación en Bilbao",
     metaTitle: `Contrato alquiler habitación Bilbao — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
     metaDescription:
-      "¿Alquilas una habitación en Bilbao? Contrato para particulares en Deusto, Indautxu, Casco Viejo. Convivencia, gastos y fianza. 120 € IVA incl.",
+      `¿Alquilas una habitación en Bilbao? Contrato para particulares en Deusto, Indautxu, Casco Viejo. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
       "contrato alquiler habitacion bilbao",
       "alquilar habitacion bilbao contrato",

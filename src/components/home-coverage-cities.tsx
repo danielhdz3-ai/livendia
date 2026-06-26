@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
-import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL } from "@/lib/catalog.public";
+import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
 
 type HomeCoverageCitiesProps = {
   /** Variante compacta para páginas internas (servicios, gestoría). */
@@ -81,7 +81,7 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                 {city.habitacionHref ? (
                   <li>
                     <Link href={city.habitacionHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Contrato alquiler habitación — 120 €
+                      Contrato alquiler habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
                     </Link>
                   </li>
                 ) : null}

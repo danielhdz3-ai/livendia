@@ -1,3 +1,5 @@
+import { CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
+
 export type HabitacionCityComparisonRow = {
   aspect: string;
   enEstaCiudad: string;
@@ -34,7 +36,7 @@ export type HabitacionLocalSeoContent = {
 export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoContent> = {
   barcelona: {
     heroSubtitle:
-      "¿Alquilas o alquilas una habitación en Barcelona? Un contrato verbal o un PDF de piso entero no cubre convivencia, gastos compartidos ni preaviso. Por 120 € un gestor Livendia redacta un contrato específico para habitación en piso compartido, con normas claras para propietario e inquilino, en 48-72 h laborables.",
+      `¿Alquilas o alquilas una habitación en Barcelona? Un contrato verbal o un PDF de piso entero no cubre convivencia, gastos compartidos ni preaviso. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} un gestor Livendia redacta un contrato específico para habitación en piso compartido, con normas claras para propietario e inquilino, en 48-72 h laborables.`,
     localMarketIntro:
       "Barcelona concentra uno de los mercados de habitaciones más dinámicos de España: estudiantes en zona universitaria, jóvenes profesionales en el 22@ o Poblenou, expatriados en Eixample y propietarios que comparten piso en Gràcia o Sants. La demanda es alta y la rotación también — por eso firmar sin contrato adaptado es el error más caro.",
     zonesHeading: "Contrato de habitación en todos los distritos de Barcelona",
@@ -160,7 +162,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 
   madrid: {
     heroSubtitle:
-      "¿Alquilas una habitación en Madrid como particular? En Chamberí, Moncloa o Tetuán miles de pisos compartidos funcionan sin contrato adaptado — hasta que hay conflicto con la fianza o los gastos. Por 120 € un gestor Livendia redacta un contrato de habitación con convivencia, suministros y preaviso claros, en 48-72 h.",
+      `¿Alquilas una habitación en Madrid como particular? En Chamberí, Moncloa o Tetuán miles de pisos compartidos funcionan sin contrato adaptado — hasta que hay conflicto con la fianza o los gastos. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} un gestor Livendia redacta un contrato de habitación con convivencia, suministros y preaviso claros, en 48-72 h.`,
     localMarketIntro:
       "Madrid es la ciudad con más demanda de habitaciones de España: universitarios en Moncloa y Ciudad Universitaria, jóvenes profesionales en Chamberí y Salamanca, trabajadores temporales en Usera o Tetuán y propietarios que rentabilizan una o dos habitaciones de su vivienda. La rotación es rápida; un PDF genérico o un acuerdo verbal no aguanta.",
     zonesHeading: "Contrato de habitación por distritos y barrios de Madrid",
@@ -287,7 +289,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 
   valencia: {
     heroSubtitle:
-      "¿Alquilas una habitación en Valencia? En Ruzafa, Benimaclet o Ciutat Vella muchos particulares comparten piso sin contrato específico. Por 120 € Livendia redacta un contrato de habitación con normas de convivencia, gastos y fianza adaptados a tu piso, en 48-72 h laborables.",
+      `¿Alquilas una habitación en Valencia? En Ruzafa, Benimaclet o Ciutat Vella muchos particulares comparten piso sin contrato específico. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} Livendia redacta un contrato de habitación con normas de convivencia, gastos y fianza adaptados a tu piso, en 48-72 h laborables.`,
     localMarketIntro:
       "Valencia mezcla universitarios en Benimaclet y Tarongers, jóvenes profesionales en Ruzafa y El Carmen, y propietarios que alquilan habitaciones en pisos de Extramurs o Campanar. El mercado es más asequible que Madrid o Barcelona, pero la informalidad sin contrato genera los mismos conflictos de fianza y preaviso.",
     zonesHeading: "Contrato de habitación por distritos y barrios de Valencia",
@@ -408,7 +410,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 
   malaga: {
     heroSubtitle:
-      "¿Alquilas una habitación en Málaga? En Teatinos, El Palo o el centro muchos pisos compartidos funcionan sin contrato de habitación. Por 120 € un gestor Livendia redacta cláusulas de convivencia, gastos y fianza para particulares, en 48-72 h.",
+      `¿Alquilas una habitación en Málaga? En Teatinos, El Palo o el centro muchos pisos compartidos funcionan sin contrato de habitación. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} un gestor Livendia redacta cláusulas de convivencia, gastos y fianza para particulares, en 48-72 h.`,
     localMarketIntro:
       "Málaga combina estudiantes de la UMA en Teatinos, jóvenes profesionales en el centro y temporada alta en El Palo o La Malagueta. Propietarios particulares alquilan habitaciones todo el año; en verano la rotación se dispara. Sin contrato adaptado, la fianza y los gastos compartidos son el primer foco de conflicto.",
     zonesHeading: "Contrato de habitación por zonas de Málaga",
@@ -526,7 +528,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 
   sevilla: {
     heroSubtitle:
-      "¿Alquilas una habitación en Sevilla? En Nervión, Triana o Los Remedios miles de particulares comparten piso sin contrato de habitación. Por 120 € Livendia redacta normas de convivencia, gastos y fianza adaptadas a tu caso, en 48-72 h laborables.",
+      `¿Alquilas una habitación en Sevilla? En Nervión, Triana o Los Remedios miles de particulares comparten piso sin contrato de habitación. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} Livendia redacta normas de convivencia, gastos y fianza adaptadas a tu caso, en 48-72 h laborables.`,
     localMarketIntro:
       "Sevilla vive del mercado universitario en Reina Mercedes y Macarena, jóvenes profesionales en Nervión y Los Remedios, y propietarios que alquilan habitaciones en Triana o el centro. Los precios son más bajos que en Madrid o Barcelona, pero la informalidad sin contrato genera los mismos problemas de fianza, preaviso y gastos compartidos.",
     zonesHeading: "Contrato de habitación por distritos y barrios de Sevilla",
@@ -645,7 +647,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 
   bilbao: {
     heroSubtitle:
-      "¿Alquilas una habitación en Bilbao? En Deusto, Indautxu o el Casco Viejo muchos pisos compartidos van sin contrato de habitación adaptado. Por 120 € un gestor Livendia redacta convivencia, gastos y fianza para particulares, en 48-72 h.",
+      `¿Alquilas una habitación en Bilbao? En Deusto, Indautxu o el Casco Viejo muchos pisos compartidos van sin contrato de habitación adaptado. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} un gestor Livendia redacta convivencia, gastos y fianza para particulares, en 48-72 h.`,
     localMarketIntro:
       "Bilbao concentra estudiantes en Deusto y Basurto, jóvenes profesionales en Indautxu y Abando, y propietarios que alquilan habitaciones en Santutxu o el Casco Viejo. El mercado es más pequeño que Madrid o Barcelona, pero la convivencia en pisos compartidos exige las mismas cláusulas por escrito.",
     zonesHeading: "Contrato de habitación por zonas de Bilbao y Gran Bilbao",

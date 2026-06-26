@@ -5,6 +5,7 @@
 
 import {
   CONTRATO_ALQUILER_HABITACION_PRICE_EUR,
+  CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_EUR,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR,
@@ -109,7 +110,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Comunidad de Madrid",
     metaTitle: "Gestoría inmobiliaria en Madrid para particulares | Livendia",
     metaDescription:
-      `Gestoría inmobiliaria Madrid particulares: contrato habitación 120 €, LAU/arras 145 €, venta sin agencia 890 €, ${REVISION_META_SNIPPET} y administración 49 €/mes. Gestor por teléfono. Sin comisiones.`,
+      `Gestoría inmobiliaria Madrid particulares: contrato habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU/arras 145 €, venta sin agencia 890 €, ${REVISION_META_SNIPPET} y administración 49 €/mes. Gestor por teléfono. Sin comisiones.`,
     keywords: [
       "gestoría inmobiliaria madrid particulares",
       "tramites compra piso madrid entre particulares",
@@ -184,7 +185,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Cataluña",
     metaTitle: "Gestoría inmobiliaria en Barcelona para particulares | Livendia",
     metaDescription:
-      `Gestoría inmobiliaria Barcelona particulares: contrato habitación 120 €, arras 145 €, venta sin agencia 890 €, ${REVISION_META_SNIPPET} y administración 49 €/mes. Gestor dedicado, sin comisión 3-5 %.`,
+      `Gestoría inmobiliaria Barcelona particulares: contrato habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, arras 145 €, venta sin agencia 890 €, ${REVISION_META_SNIPPET} y administración 49 €/mes. Gestor dedicado, sin comisión 3-5 %.`,
     keywords: [
       "gestoría inmobiliaria barcelona particulares",
       "venta de particular a particular barcelona gestoría",
@@ -259,7 +260,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Comunidad Valenciana",
     metaTitle: "Gestoría inmobiliaria en Valencia para particulares | Livendia",
     metaDescription:
-      `Gestoría inmobiliaria Valencia particulares: contrato habitación 120 €, LAU/arras 145 €, administración alquiler 49 €/mes, ${REVISION_META_SNIPPET}. Ruzafa, Benimaclet, online en toda la ciudad.`,
+      `Gestoría inmobiliaria Valencia particulares: contrato habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU/arras 145 €, administración alquiler 49 €/mes, ${REVISION_META_SNIPPET}. Ruzafa, Benimaclet, online en toda la ciudad.`,
     keywords: [
       "gestoría inmobiliaria valencia particulares",
       "venta entre particulares valencia gestoría",

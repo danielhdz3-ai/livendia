@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { ServiceCardsClient } from "@/app/servicios/service-cards-client";
 import {
+  CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
@@ -13,7 +14,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Precios gestoría inmobiliaria para particulares | Livendia",
   description:
-    `Tarifas fijas IVA incl. para particulares: habitación 120 €, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
+    `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
 };
 
 export default async function PreciosPage() {

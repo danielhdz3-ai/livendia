@@ -6,6 +6,7 @@ import {
   localContratoAlquilerHabitacionHref,
   toHabitacionLandingConfig,
 } from "@/lib/contrato-alquiler-habitacion-local-cities";
+import { CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = config.metaTitle ?? `Contrato alquiler habitación en ${city.city} | Livendia`;
   const description =
     config.metaDescription ??
-    `Contrato de alquiler de habitación en ${city.city}. Piso compartido con cláusulas de convivencia. 120 € IVA incl.`;
+    `Contrato de alquiler de habitación en ${city.city}. Piso compartido con cláusulas de convivencia. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`;
 
   return {
     title,
