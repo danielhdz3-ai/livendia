@@ -43,6 +43,7 @@ import {
   Phone,
   Shield,
   UserCheck,
+  MapPin,
 } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
@@ -94,6 +95,8 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
     `Hola, vendí mi piso en ${config.city} entre particulares y quiero contratar el gestor documental Livendia (350 €) de arras a escritura.`,
   )}`;
 
+  const heroImage = config.heroImage ?? "/images/gestoria20.jpg";
+
   const arrasHref = showArrasLocal
     ? localContratoArrasHref(arrasSlug)
     : `${CONTRATO_ARRAS_LOCAL_BASE}`;
@@ -110,24 +113,24 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
 
         <main className="flex-1">
           {/* Bloque 1 — Hero */}
-          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
-            <div className="mx-auto max-w-6xl">
-              <div className="grid items-center gap-10 lg:grid-cols-2">
-                <div>
-                  <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+            <div className="mx-auto max-w-7xl">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+                  <div className="mb-6 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     {config.heroBadge ?? `Vendedor · ${config.city}`}
                   </div>
-                  <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-5xl">
                     {config.heroH1}
                   </h1>
                   {seo ? (
-                    <p className="mt-5 text-lg leading-relaxed text-blue-100 sm:text-xl">{seo.heroSubtitle}</p>
+                    <p className="mt-6 text-lg leading-relaxed text-blue-50 sm:text-xl">{seo.heroSubtitle}</p>
                   ) : null}
-                  <div className="mt-6 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-blue-50">
+                  <div className="mt-8 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-blue-50">
                     {priceLabel} IVA incluido · Gestor dedicado · Arras a escritura
                   </div>
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
+                  <div className="mt-10 flex flex-wrap gap-4">
+                    <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50">
                       Contratar gestor — {priceLabel}
                     </ContratarServicioButton>
                     <a
@@ -135,17 +138,17 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
                       target="_blank"
                       rel="noopener noreferrer"
                       data-analytics-placement={`gestion_vendedor_${config.slug}_whatsapp`}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
                     >
                       <MessageCircle className="h-5 w-5" aria-hidden />
                       Consultar antes de contratar
                     </a>
                   </div>
                 </div>
-                <div className="relative h-[280px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20 lg:h-[380px]">
+                <div className="relative order-2 h-56 sm:h-72 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/gestoria20.jpg"
-                    alt={`Gestor documental para vendedor en ${config.city} — arras a escritura`}
+                    src={heroImage}
+                    alt={`Gestor documental para vendedor en ${config.city} — arras a escritura entre particulares`}
                     fill
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -275,6 +278,33 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
                     </div>
                   ))}
                 </div>
+              </div>
+            </section>
+          ) : null}
+
+          {/* Barrios y zonas */}
+          {seo?.barrios?.length ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-4xl text-center">
+                <MapPin className="mx-auto h-8 w-8 text-[#1A4FBF]" aria-hidden />
+                <h2 className="mt-4 text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Barrios y zonas donde gestionamos la venta entre particulares en {config.city}
+                </h2>
+                {seo.barriosIntro ? (
+                  <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#64748b] sm:text-lg">
+                    {seo.barriosIntro}
+                  </p>
+                ) : null}
+                <ul className="mt-8 flex flex-wrap justify-center gap-2">
+                  {seo.barrios.map((zone) => (
+                    <li
+                      key={zone}
+                      className="rounded-full bg-white px-4 py-2 text-sm font-medium text-[#1E293B] ring-1 ring-slate-200"
+                    >
+                      {zone}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </section>
           ) : null}

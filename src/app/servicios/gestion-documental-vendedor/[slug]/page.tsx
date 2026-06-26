@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     config.metaDescription ??
     `Gestor documental para vendedor en ${city.city}: de arras a escritura. 350 € IVA incl.`;
+  const ogImage = config.heroImage ?? "/images/gestoria20.jpg";
 
   return {
     title,
@@ -47,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       locale: "es_ES",
       type: "website",
+      images: [{ url: ogImage, alt: `Gestor documental vendedor en ${city.city} — Livendia` }],
     },
   };
 }

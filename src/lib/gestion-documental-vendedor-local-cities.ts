@@ -24,6 +24,8 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_PUBLISHED_SLUGS: readonly string[
   "murcia",
   "valladolid",
   "granada",
+  "oviedo",
+  "gijon",
 ];
 
 export type GestionDocumentalVendedorLocalLandingConfig = {
@@ -283,6 +285,44 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "documentos vender piso granada particular",
       "preparar escritura venta granada",
       "gestionar documentacion venta piso sin agencia",
+    ],
+  },
+  {
+    slug: "oviedo",
+    ...cityMeta(
+      "oviedo",
+      "Oviedo",
+      "Principado de Asturias",
+      `Gestor documental vendedor en Oviedo — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Oviedo entre particulares? Gestor Livendia de arras a escritura: comunidad, ITE, cédula y nota simple. 350 € IVA incl.",
+    ),
+    heroImage: "/images/oviedo2.jpg",
+    arrasLocalSlug: "asturias",
+    keywords: [
+      "gestor documental vendedor oviedo",
+      "documentos vender piso oviedo particular",
+      "preparar escritura venta oviedo",
+      "vender piso sin agencia oviedo documentacion",
+      "gestionar papeles venta piso oviedo",
+    ],
+  },
+  {
+    slug: "gijon",
+    ...cityMeta(
+      "gijon",
+      "Gijón",
+      "Principado de Asturias",
+      `Gestor documental vendedor en Gijón — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      "¿Vendiste tu piso en Gijón entre particulares? Gestor Livendia de arras a escritura: comunidad, ITE, cédula y nota simple. 350 € IVA incl.",
+    ),
+    heroImage: "/images/gijon.jpg",
+    arrasLocalSlug: "asturias",
+    keywords: [
+      "gestor documental vendedor gijon",
+      "documentos vender piso gijon particular",
+      "preparar escritura venta gijon",
+      "vender piso sin agencia gijon documentacion",
+      "gestionar papeles venta piso gijon",
     ],
   },
 ];

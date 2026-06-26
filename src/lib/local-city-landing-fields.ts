@@ -21,6 +21,8 @@ export type LocalCityLandingFields = {
   /** Párrafo de zonas / barrios / municipios atendidos. */
   localZonesHeading?: string;
   localZones?: string;
+  /** Imagen del hero (ruta bajo /images). */
+  heroImage?: string;
   /** Beneficios Livendia redactados para el mercado local (sustituyen la cuadrícula genérica). */
   localBenefits?: readonly LocalCityBenefit[];
 };

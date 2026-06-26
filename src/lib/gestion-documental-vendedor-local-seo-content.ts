@@ -7,6 +7,9 @@ export type GestionVendedorSeoContent = {
   casuistica: readonly GestionVendedorCasuistica[];
   faqLocal: readonly { question: string; answer: string }[];
   precioMedio: number;
+  /** Barrios y zonas atendidas — chips en la landing. */
+  barrios?: readonly string[];
+  barriosIntro?: string;
 };
 
 export const GESTION_VENDEDOR_SEO_CONTENT: Record<string, GestionVendedorSeoContent> = {
@@ -480,6 +483,154 @@ export const GESTION_VENDEDOR_SEO_CONTENT: Record<string, GestionVendedorSeoCont
         question: "¿Vendo en el Albaicín — hay requisitos documentales extra?",
         answer:
           "Sí. Protección patrimonial y registro pueden exigir documentación adicional. Tu gestor lo incluye en el checklist desde el día 1.",
+      },
+    ],
+  },
+  oviedo: {
+    precioMedio: 195_000,
+    heroSubtitle:
+      "Vendiste tu piso en Oviedo entre particulares — vecino, compañero de trabajo o comprador de Idealista — y ya firmaste arras. Ahora toca demostrar que la comunidad está al día, que la cédula de habitabilidad y el certificado energético son válidos y que la nota simple no esconde cargas. En Oviedo, donde muchas ventas son sin agencia, el cuello de botella casi siempre es el papeleo. Tu gestor Livendia lo organiza desde 24 h.",
+    localProblemIntro:
+      "En Oviedo el retraso más habitual en ventas entre particulares es el certificado de deuda cero de la comunidad: en bloques de La Ería, Los Pilares o Pumarín, con administradores saturados o comunidades sin gestor profesional, pueden pasar dos o tres semanas hasta tener el documento que el notario y el banco del comprador exigen.",
+    step2LocalNote:
+      "Seguimiento de certificados en comunidades de La Ería, Los Pilares, Ciudad Naranco y edificios del Ensanche con ITE o derramas de rehabilitación energética.",
+    barriosIntro:
+      "Atendemos ventas entre particulares en todo Oviedo capital y municipios del área metropolitana donde el comprador ya está y la documentación frena la firma.",
+    barrios: [
+      "Centro",
+      "El Cristo",
+      "La Florida",
+      "Tenderina",
+      "Los Pilares",
+      "Ciudad Naranco",
+      "Pumarín",
+      "La Ería",
+      "Fonsovel",
+      "Ventanueva",
+      "Corredoria",
+      "Vallobín",
+      "La Manjoya",
+      "Trubia",
+      "Lugones",
+      "Siero",
+      "Langreo",
+    ],
+    casuistica: [
+      {
+        title: "Comunidades sin administrador en La Ería y Pumarín",
+        body:
+          "Muchos bloques de los 70-80 dependen del presidente vecinal para emitir el certificado de deuda. El gestor contacta, hace seguimiento y evita que la operación se enfríe mientras el comprador espera fecha en notaría.",
+      },
+      {
+        title: "Cédula de habitabilidad en el Principado de Asturias",
+        body:
+          "Para transmitir vivienda en Oviedo hace falta cédula vigente (Decreto 85/2006). Si caducó, debe renovarse antes de escriturar. El gestor lo detecta en el checklist de la primera semana.",
+      },
+      {
+        title: "ITE y derramas en el Ensanche y Ciudad Naranco",
+        body:
+          "Edificios de más de 50 años con inspección técnica pendiente o derramas de fachada aprobadas en junta. El gestor cruza actas, certificado de comunidad e informe de edificio antes de fijar fecha.",
+      },
+      {
+        title: "Ventas entre familiares y herencias en el casco",
+        body:
+          "Operaciones en El Cristo, La Florida o el Centro donde varios herederos deben alinear titularidad registral. La nota simple se revisa al inicio para no llegar tarde al notario.",
+      },
+      {
+        title: "Garaje o trastero no inscritos",
+        body:
+          "En promociones de Ciudad Naranco o Ensanche es frecuente vender plaza o trastero junto al piso. El gestor verifica que consten en registro y coincidan con lo pactado en arras.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Cuánto tarda la comunidad en Oviedo en dar el certificado de deuda cero?",
+        answer:
+          "En comunidades pequeñas del centro puede salir en 3-5 días; en bloques grandes de La Ería, Los Pilares o Pumarín con administrador externo, suele tardar 2-3 semanas. Por eso conviene contratar el gestor justo tras firmar arras.",
+      },
+      {
+        question: "¿Gestionáis ventas en Siero, Lugones o el área metropolitana?",
+        answer:
+          "Sí. El servicio cubre Oviedo capital y operaciones en municipios del área donde el inmueble esté en el Principado de Asturias, con el mismo checklist adaptado al edificio.",
+      },
+      {
+        question: "¿Hace falta cédula de habitabilidad para vender en Oviedo?",
+        answer:
+          "Sí. En Asturias es obligatoria para transmitir la vivienda. Si está caducada (validez 10 años), debe renovarse antes de la escritura. Tu gestor Livendia lo verifica en el diagnóstico inicial.",
+      },
+    ],
+  },
+  gijon: {
+    precioMedio: 185_000,
+    heroSubtitle:
+      "Vendiste tu piso en Gijón sin inmobiliaria y ya tienes comprador. Entre arras y notaría descubres que el banco pide comunidad al día, certificado energético, cédula de habitabilidad y nota simple reciente — y que en edificios de La Arena, El Natahoyo o Cimadevilla los plazos de administrador se alargan. Tu gestor Livendia centraliza todo el expediente desde 24 h para que la venta entre particulares no se caiga.",
+    localProblemIntro:
+      "En Gijón abundan ventas directas entre particulares en barrios consolidados como Laviada, Cimadevilla o El Natahoyo, donde edificios antiguos tienen ITE con deficiencias o derramas de rehabilitación que el vendedor no había previsto y el comprador financiado descubre tarde.",
+    step2LocalNote:
+      "Gestión de certificados en bloques de La Arena, El Natahoyo, Montevil y verificación de cargas en promociones de Somió y Viesques.",
+    barriosIntro:
+      "Cubrimos ventas entre particulares en Gijón capital, el litoral y concejos limítrofes donde el comprador ya está y falta ordenar la documentación hacia escritura.",
+    barrios: [
+      "Centro",
+      "Cimadevilla",
+      "La Arena",
+      "El Natahoyo",
+      "Laviada",
+      "Somió",
+      "Viesques",
+      "Montevil",
+      "La Calzada",
+      "Pumarín",
+      "El Llano",
+      "Ceares",
+      "Contrueces",
+      "Roces",
+      "Carreño",
+      "Villaviciosa",
+      "Avilés",
+    ],
+    casuistica: [
+      {
+        title: "Edificios históricos en Cimadevilla y el Centro",
+        body:
+          "Fincas con registro complejo, terrazas o anejos mal descritos. El gestor revisa nota simple y coherencia con arras antes de que el notario fije fecha.",
+      },
+      {
+        title: "Derramas en La Arena y El Natahoyo",
+        body:
+          "Rehabilitaciones de fachada o ascensor aprobadas en junta con cuotas de miles de euros. El gestor cruza actas de los últimos dos años con el certificado de deuda cero.",
+      },
+      {
+        title: "Compradores con hipoteca y plazos cortos",
+        body:
+          "En Somió, Viesques o Montevil el comprador suele financiar. Sin documentación lista, el banco retrasa la aprobación y puede renegociar condiciones. El gestor mantiene el calendario alineado.",
+      },
+      {
+        title: "Certificado energético caducado en pisos de reventa",
+        body:
+          "Muchos vendedores particulares en Gijón no saben que sin certificado vigente no hay escritura. Se detecta en la primera semana y se orienta la renovación si hace falta.",
+      },
+      {
+        title: "Segunda residencia o vendedor fuera de Asturias",
+        body:
+          "Piso en Gijón pero vives en Madrid u otra provincia: el gestor solicita certificados y tú los subes al área de cliente sin desplazarte a cada oficina.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis la documentación si vendo en La Arena o El Natahoyo?",
+        answer:
+          "Sí. El checklist se adapta al edificio: comunidad, ITE si aplica, cédula, energético, hipoteca pendiente y coherencia con tu contrato de arras. Mismo servicio y tarifa en todo Gijón.",
+      },
+      {
+        question: "¿Puedo contratar si vivo fuera de Gijón pero el piso está ahí?",
+        answer:
+          "Sí. Todo el expediente es online: tu gestor solicita documentos, hace seguimiento con la comunidad y tú centralizas archivos en el panel Livendia.",
+      },
+      {
+        question: "¿El contrato de arras está incluido?",
+        answer:
+          "No. Este servicio va de arras firmadas a escritura. Si aún no tienes arras, puedes contratarlas en /servicios/contrato-arras-local/asturias por 145 € IVA incluido.",
       },
     ],
   },
