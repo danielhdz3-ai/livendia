@@ -29,25 +29,9 @@ export function HomeSitelinksNav() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-center text-xs font-bold uppercase tracking-wider text-[#64748b]">Acceso rápido</p>
 
-        {/* Ciudades prioritarias — visibles en todas las pantallas */}
-        <nav className="mt-3" aria-label="Gestoría por ciudad">
-          <p className="text-center text-xs font-semibold text-[#475569]">Madrid · Valencia · Barcelona · toda España</p>
-          <div className="mt-2 flex flex-wrap justify-center gap-2">
-            {HOME_COVERAGE_CITIES.map((city) => (
-              <Link
-                key={city.slug}
-                href={city.gestoriaHref}
-                className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1E3A8A]"
-              >
-                Gestoría {city.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
-
-        {/* Móvil: chips deslizables */}
+        {/* Móvil: secciones principales (candidatas a sitelinks) */}
         <nav
-          className="mt-4 -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scroll-smooth snap-x snap-mandatory sm:hidden"
+          className="mt-3 -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scroll-smooth snap-x snap-mandatory sm:hidden"
           aria-label="Acceso rápido móvil"
         >
           {mobileLinks.map((item) => (
@@ -62,7 +46,7 @@ export function HomeSitelinksNav() {
         </nav>
 
         {/* Tablet/desktop: secciones generales */}
-        <nav className="mt-4 hidden flex-wrap justify-center gap-2 sm:flex sm:gap-3">
+        <nav className="mt-3 hidden flex-wrap justify-center gap-2 sm:flex sm:gap-3">
           {SITE_GENERAL_SITELINKS.map((item) => (
             <Link
               key={item.path}
@@ -72,6 +56,22 @@ export function HomeSitelinksNav() {
               {item.name}
             </Link>
           ))}
+        </nav>
+
+        {/* Ciudades prioritarias — debajo de secciones generales */}
+        <nav className="mt-4" aria-label="Gestoría por ciudad">
+          <p className="text-center text-xs font-semibold text-[#475569]">Madrid · Valencia · Barcelona · toda España</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            {HOME_COVERAGE_CITIES.map((city) => (
+              <Link
+                key={city.slug}
+                href={city.gestoriaHref}
+                className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1E3A8A]"
+              >
+                Gestoría {city.name}
+              </Link>
+            ))}
+          </div>
         </nav>
       </div>
     </section>

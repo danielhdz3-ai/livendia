@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_LOCAL_BASE}/${slug}`;
   const title =
     slug === "valencia"
-      ? `Gestión de alquileres Valencia — 49 €/mes | Livendia`
+      ? `Gestión de alquileres Valencia — 49 €/mes sin permanencia | Livendia`
       : slug === "mallorca"
         ? `Administración de alquileres Mallorca — 49 €/mes | Livendia`
         : `Administración del alquiler en ${city.city} — 49 €/mes`;
   const description =
     slug === "valencia"
-      ? `Gestión de alquileres en Valencia desde 49 €/mes IVA incl. sin permanencia. Incidencias, averías y mediación: el propietario no habla con el inquilino. Livendia.`
+      ? `Gestión de alquileres en Valencia desde 49 €/mes IVA incl. sin permanencia. Incidencias, averías y mediación: tú no hablas con el inquilino. Gestor en 24 h. Livendia.`
       : slug === "mallorca"
         ? `Administración de alquileres en Mallorca y Palma desde 49 €/mes IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Baleares. Livendia.`
         : slug === "oviedo"

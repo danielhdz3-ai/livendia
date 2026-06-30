@@ -100,6 +100,35 @@ export function HomeParticularesServicios() {
 
         <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
+            Servicios más buscados por ciudad
+          </p>
+          <p className="mt-2 text-sm text-[#475569]">
+            Landings locales con precio cerrado, gestor por teléfono y contratación online.
+          </p>
+          <nav aria-label="Servicios locales destacados" className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href="/servicios/administracion-alquiler-local/valencia"
+              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+            >
+              Gestión alquileres Valencia — 49 €/mes
+            </Link>
+            <Link
+              href="/servicios/vender-piso-sin-agencia-barcelona"
+              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+            >
+              Vender sin comisiones Barcelona — 890 €
+            </Link>
+            <Link
+              href="/servicios/contrato-alquiler-habitacion/barcelona"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Contrato habitación Barcelona
+            </Link>
+          </nav>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
             Contrato de habitación por ciudad
           </p>
           <p className="mt-2 text-sm text-[#475569]">

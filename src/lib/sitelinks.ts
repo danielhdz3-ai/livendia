@@ -3,7 +3,7 @@ import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
 /**
  * Candidatas a sitelinks de Google para livendia.com.
  * Google decide qué enlaces muestra; esto alinea JSON-LD, navegación visible y anchor text.
- * Orden = prioridad (ItemList position). Madrid y Valencia van antes que Barcelona.
+ * SITE_SITELINKS prioriza secciones generales (Precios, Servicios, Contacto…) antes que ciudades.
  */
 export type SiteSitelink = {
   /** Texto del enlace (corto, como en SERP) */
@@ -36,5 +36,5 @@ export const SITE_GENERAL_SITELINKS: readonly SiteSitelink[] = [
   { name: "Equipo", path: "/equipo" },
 ] as const;
 
-/** JSON-LD ItemList: ciudades primero, luego secciones generales. */
-export const SITE_SITELINKS: readonly SiteSitelink[] = [...SITE_CITY_SITELINKS, ...SITE_GENERAL_SITELINKS];
+/** JSON-LD ItemList: secciones generales primero (candidatas a sitelinks en SERP de marca). */
+export const SITE_SITELINKS: readonly SiteSitelink[] = [...SITE_GENERAL_SITELINKS, ...SITE_CITY_SITELINKS];

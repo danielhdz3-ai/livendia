@@ -210,9 +210,9 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Venta de particular a particular en Barcelona | Gestoría sin comisiones | Livendia",
+    metaTitle: "Vender piso sin comisiones Barcelona — 890 € IVA incl. | Livendia",
     metaDescription:
-      "¿Vendes tu piso en Barcelona sin agencia? Gestoría para particulares: reserva, arras y escritura 890 € IVA incl. Sin comisión 3-5 %. Gestor por teléfono. Eixample, Gràcia, Sant Martí.",
+      "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin agencia del 3–5 %. Eixample, Gràcia, Sant Martí.",
     keywords: [
       "venta de particular a particular barcelona",
       "venta entre particulares barcelona",

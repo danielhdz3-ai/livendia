@@ -64,6 +64,10 @@ export default async function ParaPropietariosPage() {
               <p className="mt-4 text-sm text-blue-200">
                 Horario {businessNap.openingHours.opens}–{businessNap.openingHours.closes} (L–V) · Tel.{" "}
                 {businessNap.telephoneDisplay()}
+                {" · "}
+                <Link href="/servicios/administracion-alquiler-local/valencia" className="underline hover:text-white">
+                  Gestión de alquileres en Valencia
+                </Link>
               </p>
             </div>
             <div className="relative h-56 sm:h-72 lg:h-auto lg:min-h-[320px]">
@@ -94,13 +98,19 @@ export default async function ParaPropietariosPage() {
               </div>
               <div className="flex flex-col gap-2 sm:items-end">
                 <Link
-                  href="/servicios/servicio-completo-venta"
+                  href="/servicios/vender-piso-sin-agencia-barcelona"
                   className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-3.5 text-center text-base font-bold text-white hover:bg-[#2563EB]"
+                >
+                  Vender sin comisiones en Barcelona
+                </Link>
+                <Link
+                  href="/servicios/servicio-completo-venta"
+                  className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border-2 border-[#1A4FBF] px-6 py-3.5 text-center text-base font-bold text-[#1A4FBF] hover:bg-amber-50"
                 >
                   Servicio completo de venta
                 </Link>
                 <p className="text-xs text-amber-900/80">
-                  Madrid · Barcelona · Valencia —{" "}
+                  Madrid · Valencia · Barcelona —{" "}
                   <Link href="/servicios/servicio-completo-venta-local" className="font-semibold underline">
                     ver por ciudad
                   </Link>

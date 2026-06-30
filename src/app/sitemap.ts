@@ -61,6 +61,7 @@ import { PILLAR_SEVILLA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobili
 import { PILLAR_BILBAO_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-bilbao";
 import { PILLAR_MALAGA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
 import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-granada";
+import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -90,36 +91,41 @@ const SERVICIO_SLUGS = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
-  const now = new Date();
+  const coreDate = toSitemapDate(SITEMAP_LAST_MODIFIED.core);
+  const serviciosDate = toSitemapDate(SITEMAP_LAST_MODIFIED.servicios);
+  const localDate = toSitemapDate(SITEMAP_LAST_MODIFIED.localLandings);
+  const gestoriaDate = toSitemapDate(SITEMAP_LAST_MODIFIED.gestoria);
+  const ventaSeoDate = toSitemapDate(SITEMAP_LAST_MODIFIED.ventaSeo);
+  const venderSinInmobiliariaDate = toSitemapDate(SITEMAP_LAST_MODIFIED.venderSinInmobiliaria);
 
   const core: MetadataRoute.Sitemap = [
-    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/servicios`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
-    { url: `${base}/precios`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
-    { url: `${base}/para-propietarios`, lastModified: now, changeFrequency: "weekly", priority: 0.92 },
-    { url: `${base}/contacto`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/equipo`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.82 },
-    { url: `${base}/mapa-del-sitio`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: base, lastModified: coreDate, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/servicios`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${base}/precios`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/para-propietarios`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.92 },
+    { url: `${base}/contacto`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/equipo`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/blog`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.82 },
+    { url: `${base}/mapa-del-sitio`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const servicios: MetadataRoute.Sitemap = SERVICIO_SLUGS.map((slug) => ({
     url: `${base}/servicios/${slug}`,
-    lastModified: now,
+    lastModified: serviciosDate,
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
 
   const contratoLocalCiudades: MetadataRoute.Sitemap = getPublishedContratoAlquilerLocalCities().map((c) => ({
     url: `${base}${CONTRATO_ALQUILER_LOCAL_BASE}/${c.slug}`,
-    lastModified: now,
+    lastModified: localDate,
     changeFrequency: "weekly" as const,
     priority: 0.82,
   }));
 
   const contratoArrasLocalCiudades: MetadataRoute.Sitemap = getPublishedContratoArrasLocalCities().map((c) => ({
     url: `${base}${CONTRATO_ARRAS_LOCAL_BASE}/${c.slug}`,
-    lastModified: now,
+    lastModified: localDate,
     changeFrequency: "weekly" as const,
     priority: 0.82,
   }));
@@ -127,7 +133,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const administracionAlquilerLocalCiudades: MetadataRoute.Sitemap =
     getPublishedAdministracionAlquilerLocalCities().map((c) => ({
       url: `${base}${ADMINISTRACION_ALQUILER_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
     }));
@@ -135,7 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const contratoAlquilerTemporadaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedContratoAlquilerTemporadaLocalCities().map((c) => ({
       url: `${base}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
     }));
@@ -143,7 +149,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const compraCompletaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedServicioCompletoCompraLocalCities().map((c) => ({
       url: `${base}${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
     }));
@@ -151,7 +157,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const ventaCompletaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedServicioCompletoVentaLocalCities().map((c) => ({
       url: `${base}${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.84,
     }));
@@ -159,7 +165,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const gestoriaHub: MetadataRoute.Sitemap = [
     {
       url: `${base}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`,
-      lastModified: now,
+      lastModified: gestoriaDate,
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
@@ -168,7 +174,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const gestoriaInmobiliariaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedGestoriaInmobiliariaLocalCities().map((c) => ({
       url: `${base}${GESTORIA_INMOBILIARIA_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: gestoriaDate,
       changeFrequency: "weekly" as const,
       priority: 0.88,
     }));
@@ -182,7 +188,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const ventaSeoLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinAgenciaCities().map((c) => ({
     url: `${base}${localVenderPisoSinAgenciaHref(c.slug)}`,
-    lastModified: now,
+    lastModified: ventaSeoDate,
     changeFrequency: "weekly" as const,
     priority: 0.88,
   }));
@@ -190,7 +196,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const venderSinInmobiliariaHub: MetadataRoute.Sitemap = [
     {
       url: `${base}${VENDER_PISO_SIN_INMOBILIARIA_BASE}`,
-      lastModified: now,
+      lastModified: venderSinInmobiliariaDate,
       changeFrequency: "weekly" as const,
       priority: 0.92,
     },
@@ -209,7 +215,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const venderSinInmobiliariaLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinInmobiliariaCities().map(
     (c) => ({
       url: `${base}${pillarPaths[c.slug] ?? localVenderPisoSinInmobiliariaHref(c.slug)}`,
-      lastModified: now,
+      lastModified: venderSinInmobiliariaDate,
       changeFrequency: "weekly" as const,
       priority: pillarPaths[c.slug] ? 0.94 : 0.9,
     }),
@@ -218,7 +224,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const revisionPostArrasLocalCiudades: MetadataRoute.Sitemap =
     getPublishedRevisionDocumentalPostArrasLocalCities().map((c) => ({
       url: `${base}${REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.84,
     }));
@@ -226,7 +232,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const gestionVendedorLocalCiudades: MetadataRoute.Sitemap =
     getPublishedGestionDocumentalVendedorLocalCities().map((c) => ({
       url: `${base}${GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }));
@@ -234,7 +240,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const parkingTrasteroLocalCiudades: MetadataRoute.Sitemap =
     getPublishedParkingTrasteroLocalCities().map((c) => ({
       url: `${base}${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
     }));
@@ -242,7 +248,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const habitacionLocalCiudades: MetadataRoute.Sitemap =
     getPublishedContratoAlquilerHabitacionLocalCities().map((c) => ({
       url: `${base}${CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}/${c.slug}`,
-      lastModified: now,
+      lastModified: localDate,
       changeFrequency: "monthly" as const,
       priority: 0.82,
     }));

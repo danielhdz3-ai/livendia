@@ -80,9 +80,9 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Barcelona",
     heroH1: "Contrato de alquiler de habitación en Barcelona",
-    metaTitle: `Contrato alquiler habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
     metaDescription:
-      `¿Alquilas una habitación en Barcelona? Contrato para particulares ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.: convivencia, gastos y fianza. Gestor por teléfono antes de pagar. Eixample, Gràcia, Poblenou. Entrega 48-72 h.`,
+      `Contrato alquiler habitación Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.: piso compartido, convivencia y fianza. Gestor por teléfono antes de firmar. Eixample, Gràcia, Poblenou. 48-72 h.`,
     keywords: [
       "contrato alquiler habitacion barcelona",
       "alquilar habitacion barcelona contrato",
