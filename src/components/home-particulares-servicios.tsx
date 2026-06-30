@@ -132,7 +132,7 @@ export function HomeParticularesServicios() {
             Contrato de arras — área metropolitana de Barcelona
           </p>
           <p className="mt-2 text-sm text-[#475569]">
-            Gestor asignado a tu caso · CC español y Codi civil de Catalunya (621-4) · arras justas sin perder la señal.
+            Gestor asignado a tu caso · CCCat: arras (621-4 a 621-9) y financiación (621-49) · arras justas sin perder la señal.
           </p>
           <nav aria-label="Contrato arras área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
             <Link

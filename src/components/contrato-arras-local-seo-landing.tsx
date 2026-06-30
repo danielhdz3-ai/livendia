@@ -204,7 +204,8 @@ export async function ContratoArrasLocalSeoLanding({
                       <p className="text-sm font-semibold text-[#F4E4A6]">Gestor asignado a tu expediente</p>
                       <p className="mt-2 text-sm leading-relaxed text-blue-50">{seo.gestorPitch}</p>
                       <p className="mt-2 text-xs text-blue-200">
-                        Especialistas en CC español y Codi civil de Catalunya (arts. {seo.cccatArticles})
+                        CCCat: arras (arts. {seo.cccatArrasArticles}) · financiación hipotecaria (art.{" "}
+                        {seo.cccatFinancingArticle})
                       </p>
                     </div>
                   ) : null}
@@ -301,9 +302,16 @@ export async function ContratoArrasLocalSeoLanding({
                     <div className="rounded-xl bg-white/5 p-5 ring-1 ring-[#D4AF37]/30">
                       <div className="flex items-center gap-2 text-[#F4E4A6]">
                         <Scale className="h-5 w-5" aria-hidden />
-                        <h3 className="font-semibold">Codi civil de Catalunya</h3>
+                        <h3 className="font-semibold">Arras — arts. {seo.cccatArrasArticles} CCCat</h3>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalan}</p>
+                    </div>
+                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-cyan-400/30">
+                      <div className="flex items-center gap-2 text-cyan-200">
+                        <Gavel className="h-5 w-5" aria-hidden />
+                        <h3 className="font-semibold">Financiación — art. {seo.cccatFinancingArticle} CCCat</h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalanFinancing}</p>
                     </div>
                   </div>
                 </div>

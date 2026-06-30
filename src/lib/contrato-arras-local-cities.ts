@@ -134,7 +134,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     heroH1: "Gestor que tramita tu contrato de arras en L'Hospitalet",
     metaTitle: `Tramitar contrato de arras L'Hospitalet — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
     metaDescription:
-      `¿Buscas gestor para tramitar arras en L'Hospitalet? Gestor asignado, CC + CCCat (621-4). Arras justas sin perder la señal. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Bellvitge, Collblanc.`,
+      `¿Buscas gestor para tramitar arras en L'Hospitalet? Gestor asignado, CCCat 621-4 a 621-9 y cláusula 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Bellvitge, Collblanc.`,
     keywords: [
       "contrato de arras hospitalet",
       "tramitar arras l hospitalet de llobregat",
@@ -176,7 +176,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     heroH1: "Tramitar contrato de arras en Cornellà con gestor especializado",
     metaTitle: `Contrato de arras Cornellà — gestor asignado ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
     metaDescription:
-      `Gestor que tramita arras en Cornellà de Llobregat. CC + CCCat 621-4, arras justas para particulares. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader.`,
+      `Gestor que tramita arras en Cornellà de Llobregat. CCCat 621-4 a 621-9 y art. 621-49 (financiación). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader.`,
     keywords: [
       "contrato arras cornella",
       "tramitar arras cornella de llobregat",
@@ -217,7 +217,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     heroH1: "¿Buscas gestor para tu contrato de arras en Sabadell?",
     metaTitle: `Tramitar arras Sabadell — gestor CC + CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
     metaDescription:
-      `Gestor asignado tramita contrato de arras en Sabadell. Arras justas (621-4 CCCat), sin perder la señal. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Feu.`,
+      `Gestor asignado tramita contrato de arras en Sabadell. Arras 621-4 a 621-9 y desistimiento por financiación (621-49). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Feu.`,
     keywords: [
       "contrato arras sabadell",
       "tramitar arras sabadell",
@@ -259,7 +259,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     heroH1: "Contrato de arras en Terrassa con gestor asignado",
     metaTitle: `Contrato arras Terrassa — gestor especialista ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
     metaDescription:
-      `Tramita arras en Terrassa con gestor asignado. CC + CCCat 621-4, arras justas para particulares. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Pere, La Maurina.`,
+      `Tramita arras en Terrassa con gestor asignado. CCCat 621-4 a 621-9 y art. 621-49 hipoteca. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Pere, La Maurina.`,
     keywords: [
       "contrato arras terrassa",
       "tramitar arras terrassa",
@@ -284,7 +284,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
       },
       {
         quote:
-          "Vendíamos piso familiar en Sant Pere. Confirmatorias con calendario de cancelación de hipoteca claro — art. 621-4 explicado en la llamada.",
+          "Vendíamos piso familiar en Sant Pere. Confirmatorias con calendario de cancelación de hipoteca claro — art. 621-49 explicado en la llamada.",
         author: "Carme D.",
         role: "Vendedora, Sant Pere",
       },

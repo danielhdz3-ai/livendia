@@ -7,7 +7,9 @@ export type ArrasLocalSeoContent = {
   fairArrasIntro: string;
   legalSpanish: string;
   legalCatalan: string;
-  cccatArticles: string;
+  legalCatalanFinancing: string;
+  cccatArrasArticles: string;
+  cccatFinancingArticle: string;
   localMarketIntro: string;
   zonesHeading: string;
   zonesParagraph: string;
@@ -30,7 +32,10 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       "El Código Civil español (art. 1454 y ss.) regula las arras penitenciales a nivel estatal. En operaciones inmobiliarias en Catalunya, además aplican las reglas del Codi civil de Catalunya sobre compraventa y señal.",
     legalCatalan:
       "En L'Hospitalet rige el Codi civil de Catalunya. Los arts. 621-4 a 621-9 definen arras penitenciarias y confirmatòries, sus efectos si una parte incumple y cómo se vincula la señal al contrato definitivo.",
-    cccatArticles: "621-4 a 621-9",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat regula el desistimiento del comprador cuando no obtiene la financiación bancaria en los términos pactados en el contrato. Si compras con hipoteca, el gestor asignado redacta o revisa esta cláusula para que no pierdas la señal si el banco deniega el préstamo.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
     localMarketIntro:
       "L'Hospitalet concentra compraventas rápidas entre particulares: pisos en Bellvitge, Collblanc, La Florida o Sant Josep. Muchos borradores mezclan plantillas de agencia con cláusulas pensadas para Barcelona capital — y ahí empiezan las pérdidas de señal mal calibradas.",
     zonesHeading: "Contrato de arras en barrios de L'Hospitalet",
@@ -49,8 +54,8 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
         body: "Plantillas que fijan el doble de la señal sin explicar el régimen del art. 621-4 CCCat — el gestor equilibra consecuencias para ambas partes.",
       },
       {
-        title: "Plazo imposible hasta escritura",
-        body: "Financiación o licencias pendientes con calendario irreal: si falla el plazo, alguien pierde dinero injustamente.",
+        title: "Financiación mal amarrada",
+        body: "Sin cláusula conforme al art. 621-49 CCCat, el comprador puede perder la señal aunque el banco deniegue la hipoteca — el gestor la redacta con plazos y condiciones exigibles.",
       },
       {
         title: "Objeto del inmueble ambiguo",
@@ -67,6 +72,11 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
         question: "¿Qué dice el artículo 621-4 del Código Civil catalán?",
         answer:
           "Regula las arras penitenciarias: si quien entregó la señal no formaliza la compraventa, la pierde; si quien la recibió incumple, devuelve el doble. El gestor calibra la cláusula para que sea justa y comprensible.",
+      },
+      {
+        question: "¿Qué regula el artículo 621-49 del CCCat?",
+        answer:
+          "El desistimiento del comprador cuando no obtiene la financiación bancaria prevista en el contrato, en plazo y condiciones legales. El gestor asignado incluye o revisa esta cláusula para proteger al comprador con hipoteca.",
       },
       {
         question: "¿Sirve si compro o vendo en Bellvitge o Collblanc?",
@@ -91,7 +101,10 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       "Complementamos la base del Código Civil español en materia de obligaciones y compraventa con el marco autonómico aplicable en Catalunya.",
     legalCatalan:
       "El Codi civil de Catalunya (Llibre VI, arts. 621-4 a 621-9) regula arras penitenciarias y confirmatòries. En Cornellà aplicamos este régimen para calibrar penalidades y efectos del incumplimiento.",
-    cccatArticles: "621-4 a 621-9",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat ampara al comprador que no consigue la financiación bancaria pactada: puede desistir del contrato sin perder la señal si se cumplen los requisitos legales. Lo redactamos cuando la operación depende de hipoteca.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
     localMarketIntro:
       "Cornellà combina pisos de segunda mano, operaciones con reforma pendiente y compradores que llegan desde Barcelona. Los borradores circulan entre particulares sin revisión jurídica — hasta que alguien pierde la señal.",
     zonesHeading: "Contrato de arras por zonas de Cornellà",
@@ -114,8 +127,8 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
         body: "Deudas de comunidad o hipoteca no reflejadas antes de arras — el gestor exige coherencia mínima documental.",
       },
       {
-        title: "Financiación mal amarrada",
-        body: "Cláusula de hipoteca genérica que no protege al comprador si el banco deniega el préstamo.",
+        title: "Financiación sin art. 621-49",
+        body: "Cláusula de hipoteca genérica que no ampara al comprador si el banco deniega el préstamo — el gestor adapta el desistimiento al CCCat.",
       },
     ],
     faqLocal: [
@@ -125,9 +138,9 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
           "Sí. Muchos compradores contratan Livendia porque el vendedor trae un borrador desequilibrado. El gestor asignado defiende un texto justo antes de transferir la señal.",
       },
       {
-        question: "¿Aplicáis el Código Civil catalán?",
+        question: "¿Aplicáis el artículo 621-49 si compro con hipoteca?",
         answer:
-          "Sí. En Cornellà aplicamos el CCCat (arts. 621-4 a 621-9) junto con el marco del Código Civil español, según corresponda a la operación.",
+          "Sí. El art. 621-49 CCCat regula el desistimiento del comprador cuando no obtiene la financiación bancaria en los términos del contrato. El gestor asignado lo incluye o revisa en Cornellà.",
       },
       {
         question: "¿Evitáis cláusulas que hagan perder todo el depósito?",
@@ -153,7 +166,10 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       "El Código Civil español aporta el marco general de obligaciones; en compraventa de vivienda en Catalunya prevalece la disciplina del Codi civil de Catalunya.",
     legalCatalan:
       "Arts. 621-4 a 621-9 CCCat: régimen de arras penitenciarias (pérdida o restitución doble de la señal) y confirmatòries. Tu gestor traduce esto a cláusulas concretas en castellano claro.",
-    cccatArticles: "621-4 a 621-9",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat permite al comprador desistir si no obtiene la financiación bancaria en plazo y condiciones pactadas. En Sabadell, donde muchas operaciones van con hipoteca, esta cláusula evita perder la señal por denegación del banco.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
     localMarketIntro:
       "En Sabadell hay compraventas con herencia, pisos con varios propietarios y operaciones con hipoteca en curso. Plantillas madrileñas o barcelonesas sin adaptar son un riesgo directo para tu bolsillo.",
     zonesHeading: "Arras en barrios de Sabadell",
@@ -187,9 +203,9 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
           "Sí. El gestor asignado redacta arras desde cero con los datos de la operación en Sabadell.",
       },
       {
-        question: "¿Qué diferencia hay entre penitenciales y confirmatorias?",
+        question: "¿Qué es el artículo 621-49 del CCCat?",
         answer:
-          "Te lo explica tu gestor en la llamada: penitenciales permiten desistir con régimen de señal (621-4 CCCat); confirmatorias vinculan más fuerte al contrato definitivo.",
+          "Regula el desistimiento del comprador cuando no consigue la financiación bancaria prevista. Si compras con hipoteca, el gestor redacta esta cláusula conforme a la ley catalana.",
       },
       {
         question: "¿Atendéis vendedores particulares?",
@@ -214,7 +230,10 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       "Aplicamos el Código Civil español en lo que corresponda y el régimen catalán de compraventa inmobiliaria para operaciones en Terrassa.",
     legalCatalan:
       "Los arts. 621-4 a 621-9 del Codi civil de Catalunya regulan las arras en Catalunya. Calibramos la señal para que las consecuencias del incumplimiento sean previsibles y proporcionadas.",
-    cccatArticles: "621-4 a 621-9",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat protege al comprador que no obtiene financiación bancaria: puede desistir del contrato de compraventa en las condiciones legales, sin perder indebidamente la señal. Es clave en operaciones con hipoteca en Terrassa.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
     localMarketIntro:
       "Terrassa combina pisos de barrio obrero rehabilitado, chalets en Les Fonts y operaciones familiares entre particulares. El error más caro: arras penitenciales mal explicadas que acaban en demanda.",
     zonesHeading: "Contrato de arras en barrios de Terrassa",
@@ -229,8 +248,8 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       "Explicamos en la llamada cómo afecta el 621-4 CCCat a tu señal si eliges arras penitenciales, o qué implica firmar confirmatorias en una operación en Terrassa.",
     moneyLossRisks: [
       {
-        title: "Señal sin condición de hipoteca",
-        body: "Comprador que pierde la señal aunque el banco no preste — cláusula salvadora mal redactada.",
+        title: "Señal sin cláusula 621-49",
+        body: "Comprador que pierde la señal aunque el banco no preste — el gestor redacta el desistimiento por falta de financiación conforme al CCCat.",
       },
       {
         title: "Vendedor con carga no cancelable a tiempo",
@@ -248,9 +267,9 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
           "Revisamos penalidades, plazos y coherencia registral para que la señal esté protegida según CC y CCCat. No garantizamos resultado judicial, sí gestión profesional y justa.",
       },
       {
-        question: "¿Gestor especialista en derecho catalán?",
+        question: "¿El art. 621-49 protege si no me dan la hipoteca?",
         answer:
-          "Sí. Trabajamos compraventa en Catalunya aplicando Codi civil de Catalunya (621-4 a 621-9) y Código Civil español.",
+          "Sí, en los términos del Codi civil de Catalunya: regula el desistimiento del comprador cuando no obtiene la financiación bancaria pactada. Tu gestor asignado adapta plazos y condiciones al contrato.",
       },
       {
         question: "¿Comprador o vendedor?",
