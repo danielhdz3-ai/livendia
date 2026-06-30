@@ -1,5 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
+import { FaqSection } from "@/components/faq-section";
 import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
@@ -21,7 +23,11 @@ import {
   Scale,
   FileSearch,
   ClipboardCheck,
+  MapPin,
+  BookOpen,
+  Gavel,
 } from "lucide-react";
+import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
@@ -79,6 +85,13 @@ export async function ContratoArrasLocalSeoLanding({
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (pen) servicesBySlug["contrato-arras-penitenciales"] = pen;
   if (conf) servicesBySlug["contrato-arras-confirmatorias"] = conf;
+
+  const seo = config.seoContent;
+  const heroTitle =
+    config.heroH1 ??
+    (seo ? `Gestor que tramita tu contrato de arras en ${config.city}` : "¿Necesitas redactar un contrato de arras por un profesional?");
+  const heroBadge = config.heroBadge ?? `Contrato de arras · ${config.city}`;
+  const heroLead = seo?.heroSubtitle ?? config.heroLead;
 
   const howItWorks = [
     {
@@ -179,14 +192,22 @@ export async function ContratoArrasLocalSeoLanding({
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Contrato de arras · {config.city}
+                    {heroBadge}
                   </div>
 
-                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
-                    ¿Necesitas redactar un contrato de arras por un profesional?
-                  </h1>
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">{heroTitle}</h1>
 
-                  <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
+                  <p className="mt-6 text-xl leading-relaxed text-blue-50">{heroLead}</p>
+
+                  {seo ? (
+                    <div className="mt-6 rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-5 py-4">
+                      <p className="text-sm font-semibold text-[#F4E4A6]">Gestor asignado a tu expediente</p>
+                      <p className="mt-2 text-sm leading-relaxed text-blue-50">{seo.gestorPitch}</p>
+                      <p className="mt-2 text-xs text-blue-200">
+                        Especialistas en CC español y Codi civil de Catalunya (arts. {seo.cccatArticles})
+                      </p>
+                    </div>
+                  ) : null}
 
                   <div className="mt-10 rounded-xl bg-white/10 px-5 py-4 backdrop-blur-sm">
                     <p className="text-lg font-semibold text-white">Contrata arras con tarjeta — panel después del pago</p>
@@ -256,6 +277,81 @@ export async function ContratoArrasLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {seo ? (
+            <>
+              <section className="border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#1E293B] via-[#334155] to-[#1E293B] px-4 py-14 text-white sm:px-6">
+                <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-start">
+                  <div>
+                    <div className="flex items-center gap-2 text-[#D4AF37]">
+                      <Gavel className="h-6 w-6" aria-hidden />
+                      <h2 className="text-xl font-bold sm:text-2xl">{seo.fairArrasHeading}</h2>
+                    </div>
+                    <p className="mt-4 leading-relaxed text-slate-200">{seo.fairArrasIntro}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-300">{seo.arrasTypesIntro}</p>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-white/10">
+                      <div className="flex items-center gap-2 text-cyan-300">
+                        <BookOpen className="h-5 w-5" aria-hidden />
+                        <h3 className="font-semibold">Código Civil español</h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalSpanish}</p>
+                    </div>
+                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-[#D4AF37]/30">
+                      <div className="flex items-center gap-2 text-[#F4E4A6]">
+                        <Scale className="h-5 w-5" aria-hidden />
+                        <h3 className="font-semibold">Codi civil de Catalunya</h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalan}</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+                <div className="mx-auto max-w-5xl">
+                  <div className="flex items-center gap-2 text-[#1A4FBF]">
+                    <MapPin className="h-6 w-6" aria-hidden />
+                    <h2 className="text-2xl font-bold text-[#1E293B]">{seo.zonesHeading}</h2>
+                  </div>
+                  <p className="mt-4 text-lg text-[#475569]">{seo.zonesParagraph}</p>
+                  <p className="mt-3 text-[#475569]">{seo.localMarketIntro}</p>
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {seo.zoneGroups.map((z) => (
+                      <div key={z.district} className="rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-slate-200">
+                        <p className="font-bold text-[#1E293B]">{z.district}</p>
+                        <p className="mt-1 text-sm text-[#64748b]">{z.areas}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section className="border-b border-red-100 bg-red-50/60 px-4 py-14 sm:px-6">
+                <div className="mx-auto max-w-5xl">
+                  <h2 className="text-2xl font-bold text-[#1E293B]">
+                    Riesgos de perder la señal en {config.city}
+                  </h2>
+                  <p className="mt-3 text-[#475569]">
+                    Sin gestor especializado, estas cláusulas suelen costar miles de euros en arras mal calibradas:
+                  </p>
+                  <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+                    {seo.moneyLossRisks.map((risk) => (
+                      <li key={risk.title} className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-red-100">
+                        <h3 className="font-semibold text-[#991B1B]">{risk.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#475569]">{risk.body}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 text-center text-sm font-medium text-[#64748b]">
+                    Tarifa cerrada {CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. · penitenciales o confirmatorias · gestor
+                    asignado
+                  </p>
+                </div>
+              </section>
+            </>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
@@ -374,6 +470,26 @@ export async function ContratoArrasLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.faq?.length ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  title={`Preguntas sobre arras en ${config.city}`}
+                  subtitle="CC español, Codi civil de Catalunya y gestor asignado — respuestas antes de firmar."
+                  items={[...config.faq]}
+                />
+              </div>
+            </section>
+          ) : null}
+
+          {seo ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <ContratoArrasLocalCityLinks />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

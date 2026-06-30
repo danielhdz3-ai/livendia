@@ -129,6 +129,47 @@ export function HomeParticularesServicios() {
 
         <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
+            Contrato de arras — área metropolitana de Barcelona
+          </p>
+          <p className="mt-2 text-sm text-[#475569]">
+            Gestor asignado a tu caso · CC español y Codi civil de Catalunya (621-4) · arras justas sin perder la señal.
+          </p>
+          <nav aria-label="Contrato arras área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href="/servicios/contrato-arras-local/barcelona"
+              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+            >
+              Barcelona
+            </Link>
+            <Link
+              href="/servicios/contrato-arras-local/hospitalet-de-llobregat"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              L&apos;Hospitalet
+            </Link>
+            <Link
+              href="/servicios/contrato-arras-local/cornella-de-llobregat"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Cornellà
+            </Link>
+            <Link
+              href="/servicios/contrato-arras-local/sabadell"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Sabadell
+            </Link>
+            <Link
+              href="/servicios/contrato-arras-local/terrassa"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Terrassa
+            </Link>
+          </nav>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
             Contrato habitación — área metropolitana de Barcelona
           </p>
           <p className="mt-2 text-sm text-[#475569]">

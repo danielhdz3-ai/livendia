@@ -6,6 +6,10 @@ import {
   BARCELONA_METRO_HABITACION_CITIES,
   barcelonaMetroHabitacionHref,
 } from "@/lib/contrato-alquiler-habitacion-barcelona-metro";
+import {
+  BARCELONA_METRO_ARRAS_CITIES,
+  barcelonaMetroArrasHref,
+} from "@/lib/contrato-arras-barcelona-metro";
 
 type HomeCoverageCitiesProps = {
   /** Variante compacta para páginas internas (servicios, gestoría). */
@@ -108,6 +112,20 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                     <Link href={city.arrasLocalHref} className="font-semibold text-[#1A4FBF] hover:underline">
                       Contrato de arras — 145 €
                     </Link>
+                    {city.slug === "barcelona" ? (
+                      <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
+                        {BARCELONA_METRO_ARRAS_CITIES.map((metro) => (
+                          <li key={metro.slug}>
+                            <Link
+                              href={barcelonaMetroArrasHref(metro.slug)}
+                              className="text-[#1A4FBF] hover:underline"
+                            >
+                              Arras {metro.shortName}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </li>
                 ) : null}
               </ul>

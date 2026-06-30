@@ -6,6 +6,7 @@ import {
   isContratoArrasLocalSlugPublished,
   toArrasLandingConfig,
 } from "@/lib/contrato-arras-local-cities";
+import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -30,26 +31,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${getSiteUrl()}${CONTRATO_ARRAS_LOCAL_BASE}/${slug}`;
   const title =
-    slug === "madrid"
-      ? `Contrato de arras Madrid — 145 € IVA incl. | Livendia`
+    city.metaTitle ??
+    (slug === "madrid"
+      ? `Contrato de arras Madrid — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`
       : slug === "asturias"
-        ? `Contrato de arras Asturias — 145 € IVA incl. | Livendia`
-        : `Contrato de arras en ${city.city} — 145 € | Livendia`;
+        ? `Contrato de arras Asturias — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`
+        : `Contrato de arras en ${city.city} — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`);
   const description =
-    slug === "madrid"
-      ? `Contrato de arras en Madrid por gestoría: penitenciales o confirmatorias, 145 € IVA incl. Gestor por teléfono antes de firmar. Entrega 48-72 h. Livendia.`
+    city.metaDescription ??
+    (slug === "madrid"
+      ? `Contrato de arras en Madrid por gestoría: penitenciales o confirmatorias, ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor por teléfono antes de firmar. Entrega 48-72 h. Livendia.`
       : slug === "barcelona"
-        ? `Contrato de arras en Barcelona 145 € IVA incl. Penitenciales o confirmatorias para particulares. Gestor revisa antes de firmar. Eixample, Gràcia. Entrega 48-72 h.`
+        ? `Contrato de arras en Barcelona ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Penitenciales o confirmatorias para particulares. Gestor revisa antes de firmar. Eixample, Gràcia. Entrega 48-72 h.`
         : slug === "asturias"
-          ? `Contrato de arras en Asturias 145 € IVA incl. Oviedo, Gijón y Avilés. Penitenciales o confirmatorias revisadas por gestor antes de firmar. Entrega 48-72 h. Livendia.`
-          : `Contrato de arras en ${city.city} por profesional: 145 € IVA incl., revisión penitenciales y confirmatorias. Entrega 48-72 h. Gestoría inmobiliaria Livendia.`;
+          ? `Contrato de arras en Asturias ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Oviedo, Gijón y Avilés. Penitenciales o confirmatorias revisadas por gestor antes de firmar. Entrega 48-72 h. Livendia.`
+          : `Contrato de arras en ${city.city} por profesional: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl., revisión penitenciales y confirmatorias. Entrega 48-72 h. Gestoría inmobiliaria Livendia.`);
 
   return {
     title,
     description,
+    ...(city.keywords?.length ? { keywords: [...city.keywords] } : {}),
     alternates: { canonical },
     openGraph: {
-      title: `Contrato de arras en ${city.city} por un profesional | Livendia`,
+      title,
       description,
       url: canonical,
       locale: "es_ES",
