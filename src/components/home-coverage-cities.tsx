@@ -2,6 +2,10 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
 import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
+import {
+  BARCELONA_METRO_HABITACION_CITIES,
+  barcelonaMetroHabitacionHref,
+} from "@/lib/contrato-alquiler-habitacion-barcelona-metro";
 
 type HomeCoverageCitiesProps = {
   /** Variante compacta para páginas internas (servicios, gestoría). */
@@ -83,6 +87,20 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                     <Link href={city.habitacionHref} className="font-semibold text-[#1A4FBF] hover:underline">
                       Contrato alquiler habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
                     </Link>
+                    {city.slug === "barcelona" ? (
+                      <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
+                        {BARCELONA_METRO_HABITACION_CITIES.map((metro) => (
+                          <li key={metro.slug}>
+                            <Link
+                              href={barcelonaMetroHabitacionHref(metro.slug)}
+                              className="text-[#1A4FBF] hover:underline"
+                            >
+                              Habitación {metro.shortName}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </li>
                 ) : null}
                 {city.arrasLocalHref ? (

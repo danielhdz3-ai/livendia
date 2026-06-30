@@ -17,7 +17,7 @@ import {
   CONTRATO_ALQUILER_HABITACION_SLUG,
   resolveServicePriceLabel,
 } from "@/lib/catalog.public";
-import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
+import { localContratoAlquilerHref, isContratoAlquilerLocalSlugPublished } from "@/lib/contrato-alquiler-local-cities";
 import { buildContratoHabitacionLocalSchemaGraph } from "@/lib/service-schema";
 import Image from "next/image";
 import Link from "next/link";
@@ -79,6 +79,14 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
   const telHref = getContactPhoneTelHref();
   const phoneDisplay = getContactPhoneDisplay();
   const processIcons = [PhoneCall, CreditCard, UserRound, FileCheck] as const;
+  const lauLocalHref = isContratoAlquilerLocalSlugPublished(config.slug)
+    ? localContratoAlquilerHref(config.slug)
+    : isContratoAlquilerLocalSlugPublished("barcelona")
+      ? localContratoAlquilerHref("barcelona")
+      : "/servicios/contrato-de-alquiler";
+  const lauLocalLabel = isContratoAlquilerLocalSlugPublished(config.slug)
+    ? config.city
+    : "Barcelona y área metropolitana";
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -439,10 +447,10 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
               <p className="mt-3">
                 ¿Alquilas el piso entero? Ver{" "}
                 <Link
-                  href={localContratoAlquilerHref(config.slug)}
+                  href={lauLocalHref}
                   className="font-semibold text-[#1A4FBF] hover:underline"
                 >
-                  contrato de alquiler LAU en {config.city}
+                  contrato de alquiler LAU en {lauLocalLabel}
                 </Link>
                 . Servicio nacional:{" "}
                 <Link

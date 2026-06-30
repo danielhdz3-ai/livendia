@@ -9,6 +9,10 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_BASE = "/servicios/contrato-alqu
 
 export const CONTRATO_ALQUILER_HABITACION_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona",
+  "hospitalet-de-llobregat",
+  "cornella-de-llobregat",
+  "sabadell",
+  "terrassa",
   "madrid",
   "valencia",
   "malaga",
@@ -120,6 +124,171 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
           "Éramos dos compañeras en Sants y el propietario no sabía qué poner en el contrato. Livendia lo tramitó con fianza, inventario y normas de convivencia.",
         author: "Marina S.",
         role: "Inquilina — habitación en Sants",
+      },
+    ],
+  },
+  {
+    slug: "hospitalet-de-llobregat",
+    city: "L'Hospitalet de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Piso compartido · L'Hospitalet",
+    heroH1: "Contrato de alquiler de habitación en L'Hospitalet de Llobregat",
+    metaTitle: `Contrato habitación L'Hospitalet — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `¿Necesitas un contrato de alquiler de habitación en L'Hospitalet? Gestor especializado te asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Bellvitge, Collblanc, Florida. 48-72 h.`,
+    keywords: [
+      "contrato alquiler habitacion hospitalet",
+      "contrato habitacion l hospitalet de llobregat",
+      "alquilar habitacion hospitalet contrato",
+      "contrato piso compartido hospitalet",
+      "modelo contrato habitacion hospitalet",
+      "contrato habitacion bellvitge",
+      "contrato alquiler habitacion collblanc",
+    ],
+    heroBullets: HERO_BULLETS_DEFAULT,
+    finalCtaLead: "Contrato de habitación en L'Hospitalet — gestor especializado en 48-72 h",
+    testimonialsTitle: "Particulares que tramitaron su contrato de habitación en L'Hospitalet",
+    testimonials: [
+      {
+        quote:
+          "Alquilaba dos habitaciones en Collblanc sin contrato escrito. El gestor nos llamó, repartió gastos de luz y dejó normas de cocina claras antes de firmar.",
+        author: "Marc T.",
+        role: "Propietario — piso compartido en Collblanc",
+      },
+      {
+        quote:
+          "Entré en un piso de Bellvitge con acuerdo verbal. Livendia redactó fianza, preaviso y convivencia; me lo explicaron por WhatsApp línea a línea.",
+        author: "Aina R.",
+        role: "Inquilina — habitación en Bellvitge",
+      },
+      {
+        quote:
+          "Compartía piso en La Florida y el propietario no sabía qué poner. El gestor especializado lo tramitó en 48 horas con inventario incluido.",
+        author: "Pol S.",
+        role: "Inquilino — habitación en La Florida",
+      },
+    ],
+  },
+  {
+    slug: "cornella-de-llobregat",
+    city: "Cornellà de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Piso compartido · Cornellà",
+    heroH1: "Contrato de alquiler de habitación en Cornellà de Llobregat",
+    metaTitle: `Contrato habitación Cornellà — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `¿Necesitas contrato de alquiler de habitación en Cornellà? Gestor Livendia te ayuda y asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader. 48-72 h.`,
+    keywords: [
+      "contrato alquiler habitacion cornella",
+      "contrato habitacion cornella de llobregat",
+      "alquilar habitacion cornella contrato",
+      "contrato piso compartido cornella",
+      "contrato habitacion sant ildefons",
+      "modelo contrato habitacion cornella",
+    ],
+    heroBullets: HERO_BULLETS_DEFAULT,
+    finalCtaLead: "Contrato de habitación en Cornellà — asesoramiento del gestor incluido",
+    testimonialsTitle: "Particulares que tramitaron su contrato de habitación en Cornellà",
+    testimonials: [
+      {
+        quote:
+          "Tenía una habitación en Sant Ildefons y solo acuerdos por WhatsApp. El gestor redactó convivencia, fianza y preaviso antes de cobrar la primera renta.",
+        author: "Núria V.",
+        role: "Propietaria — habitación en Sant Ildefons",
+      },
+      {
+        quote:
+          "Llegué a Cornellà por trabajo y el piso no tenía contrato. Livendia lo preparó con normas de cocina y gastos compartidos en dos días.",
+        author: "Javier M.",
+        role: "Inquilino — Can Mercader",
+      },
+      {
+        quote:
+          "Éramos tres compañeros en un piso cerca del metro y necesitábamos documento serio. El gestor especializado nos orientó por teléfono antes de contratar.",
+        author: "Laia C.",
+        role: "Inquilina — Cornellà centre",
+      },
+    ],
+  },
+  {
+    slug: "sabadell",
+    city: "Sabadell",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Piso compartido · Sabadell",
+    heroH1: "Contrato de alquiler de habitación en Sabadell",
+    metaTitle: `Contrato habitación Sabadell — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `¿Necesitas un contrato de alquiler de habitación en Sabadell? Gestor especializado te ayuda y asesora. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Feu. 48-72 h.`,
+    keywords: [
+      "contrato alquiler habitacion sabadell",
+      "alquilar habitacion sabadell contrato",
+      "contrato piso compartido sabadell",
+      "modelo contrato habitacion sabadell",
+      "contrato habitacion creu alta sabadell",
+      "contrato alquiler habitacion can feu",
+    ],
+    heroBullets: HERO_BULLETS_DEFAULT,
+    finalCtaLead: "Contrato de habitación en Sabadell — gestor por teléfono o WhatsApp",
+    testimonialsTitle: "Particulares que tramitaron su contrato de habitación en Sabadell",
+    testimonials: [
+      {
+        quote:
+          "Alquilaba habitaciones en Creu Alta sin reparto de gastos claro. El gestor nos llamó antes de contratar y dejó luz, internet y preaviso por escrito.",
+        author: "Oriol P.",
+        role: "Propietario — piso compartido en Creu Alta",
+      },
+      {
+        quote:
+          "Entré en un piso de Gràcia (Sabadell) sin contrato. Livendia redactó normas de convivencia y me lo explicaron por teléfono antes de pagar la fianza.",
+        author: "Marta L.",
+        role: "Inquilina — Gràcia, Sabadell",
+      },
+      {
+        quote:
+          "Compartía piso en Can Feu con estudiantes del campus UAB. El gestor incluyó duración de curso y cláusula de salida en junio.",
+        author: "Arnau D.",
+        role: "Arrendador — Can Feu",
+      },
+    ],
+  },
+  {
+    slug: "terrassa",
+    city: "Terrassa",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Piso compartido · Terrassa",
+    heroH1: "Contrato de alquiler de habitación en Terrassa",
+    metaTitle: `Contrato habitación Terrassa — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `¿Necesitas contrato de alquiler de habitación en Terrassa? Gestor especializado te ayuda y asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Sant Pere, La Maurina. 48-72 h.`,
+    keywords: [
+      "contrato alquiler habitacion terrassa",
+      "alquilar habitacion terrassa contrato",
+      "contrato piso compartido terrassa",
+      "modelo contrato habitacion terrassa",
+      "contrato habitacion sant pere terrassa",
+      "contrato alquiler habitacion la maurina",
+    ],
+    heroBullets: HERO_BULLETS_DEFAULT,
+    finalCtaLead: "Contrato de habitación en Terrassa — listo en 48-72 h laborables",
+    testimonialsTitle: "Particulares que tramitaron su contrato de habitación en Terrassa",
+    testimonials: [
+      {
+        quote:
+          "Alquilaba dos habitaciones en Sant Pere sin contrato adaptado. El gestor especializado fijó fianza, inventario y normas de limpieza en 48 horas.",
+        author: "Silvia G.",
+        role: "Propietaria — Sant Pere, Terrassa",
+      },
+      {
+        quote:
+          "Entré en un piso de La Maurina con acuerdo verbal. Livendia redactó convivencia y gastos; el propietario y yo firmamos con tranquilidad.",
+        author: "Héctor N.",
+        role: "Inquilino — La Maurina",
+      },
+      {
+        quote:
+          "Necesitaba contrato antes de pagar depósito en Ca n'Anglada. El gestor me asesoró por WhatsApp y lo tuvimos listo en el plazo prometido.",
+        author: "Claudia F.",
+        role: "Inquilina — Ca n'Anglada",
       },
     ],
   },

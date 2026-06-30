@@ -53,7 +53,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
       { district: "Nou Barris", areas: "Vilapicina, Porta, Roquetes, Trinitat Vella" },
       { district: "Sant Andreu", areas: "Sant Andreu de Palomar, La Sagrera, Navas" },
       { district: "Sant Martí", areas: "Poblenou, El Clot, La Verneda, Diagonal Mar" },
-      { district: "Área metropolitana", areas: "L'Hospitalet, Badalona, Cornellà, Esplugues" },
+      { district: "Área metropolitana", areas: "L'Hospitalet, Cornellà, Sabadell, Terrassa (landings propias)" },
     ],
     whyContractMatters: [
       {
@@ -145,7 +145,7 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
       {
         question: "¿El contrato vale si el piso está en L'Hospitalet o Badalona?",
         answer:
-          "Sí. El gestor adapta el contrato a la dirección real del inmueble, ya esté en Barcelona capital o en municipios del área metropolitana.",
+          "Sí. Tenemos landings específicas para L'Hospitalet, Cornellà, Sabadell y Terrassa, además de Barcelona capital. El gestor adapta el contrato a la dirección real del inmueble.",
       },
       {
         question: "¿Qué pasa si alquilo dos habitaciones del mismo piso en Gràcia?",
@@ -156,6 +156,447 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
         question: "¿Es obligatorio un contrato por escrito para alquilar una habitación en Barcelona?",
         answer:
           "La ley no exige forma escrita en todos los casos, pero sin contrato no tienes prueba de renta, fianza, preaviso ni normas de convivencia.",
+      },
+    ],
+  },
+
+  "hospitalet-de-llobregat": {
+    heroSubtitle:
+      `¿Necesitas un contrato de alquiler de habitación en L'Hospitalet de Llobregat? Entre particulares, un PDF genérico o un acuerdo verbal no cubre convivencia ni gastos compartidos. Por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. un gestor especializado Livendia te ayuda, te asesora por teléfono y redacta el contrato en 48-72 h.`,
+    localMarketIntro:
+      "L'Hospitalet es el municipio más poblado del área metropolitana de Barcelona: miles de pisos compartidos en Bellvitge, Collblanc, La Florida, Pubilla Cases y Sant Josep. Propietarios e inquilinos particulares buscan habitación cerca de metro, hospital o campus — y muchos firman sin contrato adaptado hasta que hay conflicto con la fianza.",
+    zonesHeading: "Contrato de habitación en barrios de L'Hospitalet",
+    zonesParagraph:
+      "Tramitamos contratos para habitaciones en L'Hospitalet de Llobregat. Estas son las zonas donde más consultas recibimos:",
+    zoneGroups: [
+      { district: "Collblanc — La Torrassa", areas: "Collblanc, La Torrassa, metro L1/L5" },
+      { district: "Bellvitge", areas: "Bellvitge, hospital, zona universitaria sur" },
+      { district: "Centre", areas: "Centre, Sant Josep, Granvia" },
+      { district: "La Florida — Les Planes", areas: "La Florida, Pubilla Cases, Les Planes" },
+      { district: "Can Serra — Gornal", areas: "Can Serra, Gornal, Santa Eulàlia" },
+    ],
+    whyContractMatters: [
+      {
+        title: "Pisos compartidos junto a Barcelona",
+        body: "Muchos inquilinos eligen L'Hospitalet por precio y metro directo a Barcelona. Sin contrato de habitación, el reparto de gastos y el preaviso se discuten en el segundo mes.",
+      },
+      {
+        title: "Propietarios particulares sin plantilla",
+        body: "Alquilar una o dos habitaciones en tu piso no es lo mismo que un LAU de vivienda entera. Hace falta un gestor que adapte convivencia, fianza e inventario.",
+      },
+      {
+        title: "Rotación alta entre particulares",
+        body: "Estudiantes, sanitarios del Bellvitge y jóvenes profesionales rotan con frecuencia. El contrato debe fijar preaviso y devolución de fianza por escrito.",
+      },
+    ],
+    typicalProfiles: {
+      title: "Particulares que necesitan contrato de habitación en L'Hospitalet",
+      intro: "Si buscas alquilar o alquilar una habitación sin agencia, estos son los casos más habituales:",
+      profiles: [
+        {
+          title: "Propietario con habitación libre en el piso",
+          body: "Quieres alquilar entre particulares con normas claras de cocina, visitas y limpieza antes de entregar llaves.",
+          barrios: "Collblanc, Bellvitge, La Florida",
+        },
+        {
+          title: "Inquilino que entra en piso ya habitado",
+          body: "Necesitas contrato con fianza, gastos y preaviso antes de transferir la primera mensualidad.",
+          barrios: "Centre, Sant Josep, Pubilla Cases",
+        },
+        {
+          title: "Arrendador con dos habitaciones",
+          body: "Alquilas a personas distintas y necesitas contratos coherentes sobre suministros e internet.",
+          barrios: "Can Serra, Gornal, Les Planes",
+        },
+      ],
+    },
+    cityComparison: {
+      title: "Alquiler de habitación en L'Hospitalet frente a Barcelona capital",
+      intro: "L'Hospitalet comparte demanda con Barcelona pero con dinámica propia de municipio limítrofe:",
+      rows: [
+        {
+          aspect: "Precio habitación",
+          enEstaCiudad: "Suele ser más asequible que Eixample o Gràcia con buena conexión metro.",
+          otrasCiudades: "Barcelona capital más cara; Cornellà y Terrassa perfil similar.",
+        },
+        {
+          aspect: "Perfil inquilino",
+          enEstaCiudad: "Estudiantes, personal sanitario y trabajadores que van a Barcelona diariamente.",
+          otrasCiudades: "Sabadell y Terrassa más pendientes del Vallès; menos turismo.",
+        },
+        {
+          aspect: "Formalidad",
+          enEstaCiudad: "Alto porcentaje de acuerdos verbales entre particulares.",
+          otrasCiudades: "El riesgo legal es el mismo en toda el área metropolitana.",
+        },
+        {
+          aspect: "Solución Livendia",
+          enEstaCiudad: "Gestor especializado por teléfono; contrato en 48-72 h sin desplazarte.",
+          otrasCiudades: "Mismo servicio y precio en Cornellà, Sabadell, Terrassa y Barcelona.",
+        },
+      ],
+    },
+    localRisks: [
+      {
+        title: "Contrato LAU de piso entero copiado",
+        body: "Plantillas de vivienda completa no regulan habitación en piso compartido ni convivencia real.",
+      },
+      {
+        title: "Gastos de luz mal repartidos",
+        body: "En pisos de 3-4 habitaciones en Collblanc o Bellvitge, sin cláusula de suministros el conflicto es habitual.",
+      },
+      {
+        title: "Fianza sin inventario",
+        body: "Pedir dos meses de depósito sin inventario de la habitación genera disputas al finalizar.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Necesito ir a una gestoría presencial en L'Hospitalet?",
+        answer:
+          "No. Contratas online; un gestor especializado te llama, resuelve dudas y entrega el contrato adaptado a tu dirección en L'Hospitalet.",
+      },
+      {
+        question: "¿Sirve si soy inquilino y el propietario no tiene contrato?",
+        answer:
+          "Sí. Muchos particulares contratan Livendia para tener un documento equilibrado antes de pagar la fianza.",
+      },
+      {
+        question: "¿Puedo alquilar dos habitaciones del mismo piso?",
+        answer: "Sí. El gestor alinea cláusulas de gastos comunes y convivencia entre ambos contratos.",
+      },
+      {
+        question: "¿Atendéis Bellvitge y Collblanc?",
+        answer: "Sí. Cubrimos todo el municipio de L'Hospitalet de Llobregat.",
+      },
+    ],
+  },
+
+  "cornella-de-llobregat": {
+    heroSubtitle:
+      `¿Necesitas un contrato de alquiler de habitación en Cornellà de Llobregat? Nuestro gestor especializado te ayuda y te asesora por teléfono antes de firmar. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl., contrato para piso compartido en 48-72 h — no una plantilla LAU genérica.`,
+    localMarketIntro:
+      "Cornellà concentra pisos compartidos en Sant Ildefons, Can Mercader, Almeda y zona metro: familias que alquilan una habitación, jóvenes que trabajan en Barcelona y propietarios que comparten piso. Entre particulares, firmar sin asesoramiento suele dejar fuera preaviso, fianza e inventario.",
+    zonesHeading: "Contrato de habitación en Cornellà de Llobregat",
+    zonesParagraph: "Redactamos contratos de habitación para particulares en estos barrios y zonas de Cornellà:",
+    zoneGroups: [
+      { district: "Sant Ildefons", areas: "Sant Ildefons, metro L5, zona residencial densa" },
+      { district: "Centre — Almeda", areas: "Centre, Almeda, Can Pelà" },
+      { district: "Can Mercader", areas: "Can Mercader, Sant Joan Despí limítrofe" },
+      { district: "La Guàrdia", areas: "La Guàrdia, polígonos y vivienda mixta" },
+    ],
+    whyContractMatters: [
+      {
+        title: "Municipio limítrofe con alta demanda",
+        body: "Cornellà atrae inquilinos que buscan precio y metro. Un contrato verbal no prueba renta, gastos ni normas de convivencia.",
+      },
+      {
+        title: "Piso compartido entre desconocidos",
+        body: "Convivir con inquilinos previos exige cláusulas de cocina, limpieza y visitas — no un modelo de internet.",
+      },
+      {
+        title: "Gestor antes de pagar fianza",
+        body: "Tanto propietarios como inquilinos nos contratan para revisar condiciones antes de entregar llaves o depósito.",
+      },
+    ],
+    typicalProfiles: {
+      title: "Particulares en Cornellà que contratan contrato de habitación",
+      intro: "Perfiles frecuentes sin agencia de por medio:",
+      profiles: [
+        {
+          title: "Propietario particular",
+          body: "Alquilas una habitación en tu vivienda y quieres asesoramiento del gestor antes de cobrar.",
+          barrios: "Sant Ildefons, Centre",
+        },
+        {
+          title: "Inquilino en piso compartido",
+          body: "Entras en Cornellà por trabajo y necesitas contrato escrito con gastos incluidos definidos.",
+          barrios: "Can Mercader, Almeda",
+        },
+        {
+          title: "Piso de tres habitaciones",
+          body: "Varios inquilinos en el mismo piso: hace falta reparto de suministros por escrito.",
+          barrios: "Sant Ildefons, La Guàrdia",
+        },
+      ],
+    },
+    cityComparison: {
+      title: "Cornellà frente a Barcelona y L'Hospitalet",
+      intro: "Cornellà comparte mercado metropolitano con municipios vecinos:",
+      rows: [
+        {
+          aspect: "Conexión",
+          enEstaCiudad: "Metro L5 y cercanías; muchos inquilinos trabajan en Barcelona.",
+          otrasCiudades: "L'Hospitalet mayor volumen; Sabadell perfil más Vallès.",
+        },
+        {
+          aspect: "Precio",
+          enEstaCiudad: "Intermedio entre Barcelona centro y ciudades del Vallès.",
+          otrasCiudades: "Terrassa y Sabadell algo más asequibles en conjunto.",
+        },
+        {
+          aspect: "Contrato",
+          enEstaCiudad: "Misma necesidad de régimen de habitación que en capital.",
+          otrasCiudades: "Livendia: mismo precio y gestor especializado en todo el área.",
+        },
+        {
+          aspect: "Plazo entrega",
+          enEstaCiudad: "48-72 h laborables tras contratar online.",
+          otrasCiudades: "Igual en L'Hospitalet, Sabadell y Terrassa.",
+        },
+      ],
+    },
+    localRisks: [
+      {
+        title: "Acuerdos solo por WhatsApp",
+        body: "Muy habitual entre particulares; no sustituye contrato con fianza, preaviso e inventario.",
+      },
+      {
+        title: "Plantilla descargada de otra ciudad",
+        body: "Modelos de Madrid o Valencia no contemplan convivencia en piso compartido en Cornellà.",
+      },
+      {
+        title: "Entrada sin revisión del gestor",
+        body: "Firmar sin asesoramiento deja lagunas sobre gastos de comunidad e internet compartido.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Cómo me asesora el gestor especializado?",
+        answer:
+          "Tras contratar online, un gestor Livendia te llama por teléfono o WhatsApp, revisa tu caso y redacta el contrato adaptado a Cornellà.",
+      },
+      {
+        question: "¿Puedo contratar si aún no tengo inquilino?",
+        answer: "Sí. Preparamos el contrato con los datos que tengas; puedes completar antes de firmar.",
+      },
+      {
+        question: "¿Vale para Sant Ildefons?",
+        answer: "Sí. Cubrimos todo el término municipal de Cornellà de Llobregat.",
+      },
+      {
+        question: "¿Cuánto cuesta?",
+        answer: `${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incluido, tarifa cerrada con llamada del gestor incluida.`,
+      },
+    ],
+  },
+
+  sabadell: {
+    heroSubtitle:
+      `¿Necesitas un contrato de alquiler de habitación en Sabadell? Nuestro gestor especializado te ayuda y te asesora: convivencia, fianza y gastos claros por ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Contrato para particulares en 48-72 h, sin plantilla LAU de piso entero.`,
+    localMarketIntro:
+      "Sabadell mueve un mercado intenso de habitaciones en Creu Alta, Gràcia, Can Feu y Eixample: estudiantes del campus UAB, jóvenes profesionales del Vallès y propietarios que alquilan entre particulares. Sin contrato adaptado, la rotación anual trae conflictos de fianza cada junio.",
+    zonesHeading: "Contrato de habitación en barrios de Sabadell",
+    zonesParagraph: "Tramitamos contratos de alquiler de habitación en Sabadell para particulares en:",
+    zoneGroups: [
+      { district: "Centre — Eixample", areas: "Centre, Eixample, Passeig de la Plaça Major" },
+      { district: "Creu Alta", areas: "Creu Alta, Concòrdia, zona densa de pisos compartidos" },
+      { district: "Gràcia — Can Puiggener", areas: "Gràcia, Can Puiggener, Can Deu" },
+      { district: "Can Feu — Can Rull", areas: "Can Feu, Can Rull, proximidad UAB" },
+      { district: "La Concòrdia — Sant Oleguer", areas: "La Concòrdia, Sant Oleguer, Ferreres" },
+    ],
+    whyContractMatters: [
+      {
+        title: "Universidad y rotación",
+        body: "Cerca del Vallès y UAB, muchos alquileres duran un curso. Sin contrato, el preaviso de junio y la fianza se discuten cada año.",
+      },
+      {
+        title: "Particulares sin intermediarios",
+        body: "En Sabadell muchos alquileres son directos entre propietario e inquilino. Un gestor especializado evita lagunas legales.",
+      },
+      {
+        title: "Pisos de 3-4 habitaciones",
+        body: "En Creu Alta y Gràcia es habitual maximizar habitaciones. Hace falta reparto de luz, calefacción e internet por escrito.",
+      },
+    ],
+    typicalProfiles: {
+      title: "Particulares que buscan contrato de habitación en Sabadell",
+      intro: "Casos típicos entre particulares en el Vallès Occidental:",
+      profiles: [
+        {
+          title: "Estudiante o becario UAB",
+          body: "Buscas habitación con contrato de curso, fianza y gastos definidos antes de pagar.",
+          barrios: "Can Feu, Creu Alta",
+        },
+        {
+          title: "Propietario con habitación libre",
+          body: "Alquilas en tu piso habitual y quieres normas de convivencia sin conflictos.",
+          barrios: "Gràcia, Centre",
+        },
+        {
+          title: "Inquilino que llega al Vallès",
+          body: "Entras en piso compartido y necesitas asesoramiento del gestor antes de firmar.",
+          barrios: "Eixample, Can Rull",
+        },
+      ],
+    },
+    cityComparison: {
+      title: "Sabadell frente a Terrassa y Barcelona",
+      intro: "Sabadell y Terrassa comparten mercado del Vallès con matices:",
+      rows: [
+        {
+          aspect: "Demanda",
+          enEstaCiudad: "Fuerte enlace UAB y industria del Vallès; pisos compartidos en Creu Alta.",
+          otrasCiudades: "Terrassa perfil similar; Barcelona más expatriado y turismo.",
+        },
+        {
+          aspect: "Precio habitación",
+          enEstaCiudad: "Por debajo de Barcelona; comparable a Terrassa.",
+          otrasCiudades: "L'Hospitalet intermedio por proximidad a BCN.",
+        },
+        {
+          aspect: "Asesoramiento gestor",
+          enEstaCiudad: "Llamada incluida antes de contratar; mismo servicio en todo Cataluña.",
+          otrasCiudades: `Precio único ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
+        },
+        {
+          aspect: "Sin contrato",
+          enEstaCiudad: "Riesgo alto en junio (salidas de curso).",
+          otrasCiudades: "Contrato de habitación evita litigios en todos los municipios.",
+        },
+      ],
+    },
+    localRisks: [
+      {
+        title: "Curso escolar sin cláusula de salida",
+        body: "En Can Feu y Creu Alta muchos contratos duran 9-10 meses; debe constar preaviso y fianza.",
+      },
+      {
+        title: "Calefacción en invierno",
+        body: "En el Vallès el consumo invernal importa; incluir o repartir gastos debe quedar claro.",
+      },
+      {
+        title: "Borrador del propietario sin revisar",
+        body: "Copiar un LAU de piso entero no protege al arrendador que comparte vivienda.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Atendéis estudiantes de la UAB?",
+        answer: "Sí. Incluimos duración de curso, preaviso y cláusulas de convivencia para pisos compartidos.",
+      },
+      {
+        question: "¿Necesito contrato de alquiler de habitación urgente?",
+        answer: "Entrega habitual en 48-72 h laborables tras la llamada con el gestor especializado.",
+      },
+      {
+        question: "¿Puedo contratar como inquilino?",
+        answer: "Sí. Te asesoramos antes de pagar fianza si el propietario no tiene contrato adaptado.",
+      },
+      {
+        question: "¿También hacéis contrato LAU de piso entero?",
+        answer: "Sí. Si alquilas el piso completo, ver contrato LAU en Barcelona y área metropolitana.",
+      },
+    ],
+  },
+
+  terrassa: {
+    heroSubtitle:
+      `¿Necesitas un contrato de alquiler de habitación en Terrassa? Nuestro gestor especializado te ayuda y te asesora por teléfono: ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl., contrato para piso compartido entre particulares en 48-72 h.`,
+    localMarketIntro:
+      "Terrassa mueve habitaciones en Sant Pere, La Maurina, Ca n'Anglada, Sant Pere Nord y Eixample: jóvenes del Vallès, estudiantes de FP/universidad en Barcelona y propietarios que alquilan sin agencia. Entre particulares, el error más caro sigue siendo firmar sin contrato de habitación adaptado.",
+    zonesHeading: "Contrato de habitación en barrios de Terrassa",
+    zonesParagraph: "Redactamos contratos para particulares en las zonas de Terrassa donde más demanda hay de piso compartido:",
+    zoneGroups: [
+      { district: "Sant Pere", areas: "Sant Pere, centre històric, Plaça Major" },
+      { district: "La Maurina — Sant Pere Nord", areas: "La Maurina, Sant Pere Nord, Vallparadís" },
+      { district: "Ca n'Anglada — Montserrat", areas: "Ca n'Anglada, Montserrat, Les Fonts" },
+      { district: "Can Jofresa — Segle XX", areas: "Can Jofresa, Segle XX, Ègara" },
+      { district: "Can Parellada — Sant Pere", areas: "Can Parellada, industrial rehabilitada" },
+    ],
+    whyContractMatters: [
+      {
+        title: "Mercado del Vallès entre particulares",
+        body: "Terrassa comparte dinámica con Sabadell: muchos alquileres directos. Sin gestor, las plantillas genéricas dejan fuera convivencia y gastos.",
+      },
+      {
+        title: "Varias habitaciones en el mismo piso",
+        body: "Pisos de 3-4 habitaciones en La Maurina o Sant Pere necesitan normas de cocina y limpieza por escrito.",
+      },
+      {
+        title: "Asesoramiento antes de firmar",
+        body: "Propietarios e inquilinos contratan Livendia para tener un gestor especializado que revise condiciones antes del depósito.",
+      },
+    ],
+    typicalProfiles: {
+      title: "Particulares en Terrassa que necesitan contrato de habitación",
+      intro: "Si alquilas o buscas habitación sin inmobiliaria:",
+      profiles: [
+        {
+          title: "Propietario con una habitación",
+          body: "Quieres contrato profesional con fianza, inventario y preaviso antes de publicar el anuncio.",
+          barrios: "Sant Pere, Ègara",
+        },
+        {
+          title: "Inquilino en piso compartido",
+          body: "Entras en Terrassa y necesitas documento escrito de renta y gastos compartidos.",
+          barrios: "La Maurina, Ca n'Anglada",
+        },
+        {
+          title: "Piso compartido de jóvenes profesionales",
+          body: "Convivencia con desconocidos: el gestor define normas antes de la entrada.",
+          barrios: "Centre, Les Fonts",
+        },
+      ],
+    },
+    cityComparison: {
+      title: "Terrassa frente a Sabadell y área de Barcelona",
+      intro: "Terrassa forma parte del corredor del Vallès con demanda estable de habitaciones:",
+      rows: [
+        {
+          aspect: "Precio",
+          enEstaCiudad: "Habitaciones más asequibles que Barcelona; similar a Sabadell.",
+          otrasCiudades: "Cornellà e L'Hospitalet suben por proximidad metro BCN.",
+        },
+        {
+          aspect: "Perfil",
+          enEstaCiudad: "Jóvenes del Vallès y pendulares a Barcelona.",
+          otrasCiudades: "Sabadell más marcado por UAB.",
+        },
+        {
+          aspect: "Servicio Livendia",
+          enEstaCiudad: `Online, gestor por teléfono, ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
+          otrasCiudades: "Misma tarifa en todo el área metropolitana catalana.",
+        },
+        {
+          aspect: "Riesgo sin contrato",
+          enEstaCiudad: "Conflictos de fianza y preaviso entre particulares.",
+          otrasCiudades: "El contrato de habitación es la protección en cualquier municipio.",
+        },
+      ],
+    },
+    localRisks: [
+      {
+        title: "Contrato verbal entre conocidos",
+        body: "Aunque confíes en el inquilino, sin documento no hay prueba de condiciones al terminar.",
+      },
+      {
+        title: "Gastos de comunidad incluidos sin límite",
+        body: "Si la renta «incluye todo», debe constar qué suministros cubre y qué pasa si hay overconsumo.",
+      },
+      {
+        title: "PDF de internet no adaptado",
+        body: "Un modelo LAU de vivienda entera no sirve para habitación en piso compartido en Terrassa.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Necesito un contrato de alquiler de habitación en Terrassa?",
+        answer:
+          "Si alquilas o alquilas una habitación entre particulares, sí conviene: fianza, preaviso, convivencia y gastos quedan por escrito. Nuestro gestor te asesora antes de firmar.",
+      },
+      {
+        question: "¿Cómo funciona el servicio online?",
+        answer:
+          "Contratas en la web, un gestor especializado te llama, recopila datos del piso y entrega el contrato en 48-72 h laborables.",
+      },
+      {
+        question: "¿Atendéis La Maurina y Sant Pere?",
+        answer: "Sí. Todo el municipio de Terrassa.",
+      },
+      {
+        question: "¿Cuánto cuesta el contrato?",
+        answer: `${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incluido, con llamada del gestor incluida.`,
       },
     ],
   },
