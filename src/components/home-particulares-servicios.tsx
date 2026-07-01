@@ -5,6 +5,8 @@ import {
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
 } from "@/lib/catalog.public";
+import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
+import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
 
 const SERVICIOS_PARTICULARES = [
   {
@@ -57,15 +59,6 @@ const SERVICIOS_PARTICULARES = [
   },
 ] as const;
 
-const CIUDADES_HABITACION = [
-  { name: "Barcelona", href: "/servicios/contrato-alquiler-habitacion/barcelona" },
-  { name: "Madrid", href: "/servicios/contrato-alquiler-habitacion/madrid" },
-  { name: "Valencia", href: "/servicios/contrato-alquiler-habitacion/valencia" },
-  { name: "Málaga", href: "/servicios/contrato-alquiler-habitacion/malaga" },
-  { name: "Sevilla", href: "/servicios/contrato-alquiler-habitacion/sevilla" },
-  { name: "Bilbao", href: "/servicios/contrato-alquiler-habitacion/bilbao" },
-] as const;
-
 /**
  * Enlaces internos desde la home hacia servicios de gestoría para particulares (SEO + conversión).
  */
@@ -98,201 +91,30 @@ export function HomeParticularesServicios() {
           ))}
         </ul>
 
-        <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
-            Servicios más buscados por ciudad
+            Servicios por ciudad
           </p>
-          <p className="mt-2 text-sm text-[#475569]">
-            Landings locales con precio cerrado, gestor por teléfono y contratación online.
+          <p className="mx-auto mt-2 max-w-xl text-sm text-[#475569]">
+            Arras, habitación, venta sin agencia y área metropolitana de Barcelona — con precio cerrado y gestor por
+            teléfono.
           </p>
-          <nav aria-label="Servicios locales destacados" className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/servicios/administracion-alquiler-local/valencia"
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
-            >
-              Gestión alquileres Valencia — 49 €/mes
-            </Link>
-            <Link
-              href="/servicios/vender-piso-sin-agencia-barcelona"
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
-            >
-              Vender sin comisiones Barcelona — 890 €
-            </Link>
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/barcelona"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Contrato habitación Barcelona
-            </Link>
-          </nav>
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
-            Contrato de arras — área metropolitana de Barcelona
-          </p>
-          <p className="mt-2 text-sm text-[#475569]">
-            Gestor asignado a tu caso · CCCat: arras (621-4 a 621-9) y financiación (621-49) · arras justas sin perder la señal.
-          </p>
-          <nav aria-label="Contrato arras área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/servicios/contrato-arras-local/barcelona"
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
-            >
-              Barcelona
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/hospitalet-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              L&apos;Hospitalet
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/cornella-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Cornellà
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/badalona"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Badalona
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/sant-cugat-del-valles"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Sant Cugat
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/sabadell"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Sabadell
-            </Link>
-            <Link
-              href="/servicios/contrato-arras-local/terrassa"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Terrassa
-            </Link>
-          </nav>
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
-            Venta entre particulares — ya tienes comprador
-          </p>
-          <p className="mt-2 text-sm text-[#475569]">
-            Gestor inmobiliario Livendia: arras, documentación y notaría. Sin comisión de agencia · 890 € IVA incl.
-          </p>
-          <nav aria-label="Venta piso particular sin agencia área metropolitana" className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/servicios/vender-piso-sin-agencia-barcelona"
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
-            >
-              Barcelona
-            </Link>
-            <Link
-              href="/servicios/venta-piso-particular-sin-agencia/hospitalet-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              L&apos;Hospitalet
-            </Link>
-            <Link
-              href="/servicios/venta-piso-particular-sin-agencia/cornella-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Cornellà
-            </Link>
-            <Link
-              href="/servicios/venta-piso-particular-sin-agencia/esplugues-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Esplugues
-            </Link>
-            <Link
-              href="/servicios/venta-piso-particular-sin-agencia/sabadell"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Sabadell
-            </Link>
-            <Link
-              href="/servicios/venta-piso-particular-sin-agencia/terrassa"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Terrassa
-            </Link>
-          </nav>
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
-            Contrato habitación — área metropolitana de Barcelona
-          </p>
-          <p className="mt-2 text-sm text-[#475569]">
-            ¿Necesitas un contrato de alquiler de habitación? Gestor especializado te ayuda y asesora por teléfono
-            antes de firmar.
-          </p>
-          <nav aria-label="Contrato habitación área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/barcelona"
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
-            >
-              Barcelona
-            </Link>
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/hospitalet-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              L&apos;Hospitalet
-            </Link>
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/cornella-de-llobregat"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Cornellà
-            </Link>
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/sabadell"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Sabadell
-            </Link>
-            <Link
-              href="/servicios/contrato-alquiler-habitacion/terrassa"
-              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
-            >
-              Terrassa
-            </Link>
-          </nav>
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
-            Contrato de habitación por ciudad
-          </p>
-          <p className="mt-2 text-sm text-[#475569]">
-            Landings locales con barrios, casos típicos de piso compartido y asesoramiento del gestor.
-          </p>
-          <nav aria-label="Contrato habitación por ciudad" className="mt-4 flex flex-wrap gap-2">
-            {CIUDADES_HABITACION.map((c) => (
+          <nav aria-label="Ciudades con servicios locales" className="mt-4 flex flex-wrap justify-center gap-2">
+            {HOME_COVERAGE_CITIES.map((city) => (
               <Link
-                key={c.href}
-                href={c.href}
+                key={city.slug}
+                href={cityHubHref(city.slug)}
                 className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
               >
-                {c.name}
+                {city.name}
               </Link>
             ))}
-            <Link
-              href="/servicios/contrato-alquiler-habitacion"
-              className="rounded-full px-4 py-2 text-sm font-semibold text-[#64748b] hover:text-[#1A4FBF] hover:underline"
-            >
-              Servicio nacional →
-            </Link>
           </nav>
+          <p className="mt-4">
+            <Link href={CIUDADES_HUB_BASE} className="text-sm font-semibold text-[#1A4FBF] hover:underline">
+              Ver índice completo de ciudades →
+            </Link>
+          </p>
         </div>
       </div>
     </section>

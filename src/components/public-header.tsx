@@ -30,6 +30,13 @@ export function PublicHeader() {
           </Link>
           <NavServicesDropdown />
           <Link
+            href="/ciudades"
+            className="text-sm font-medium hover:text-cyan-300"
+            title="Gestoría inmobiliaria por ciudad"
+          >
+            Ciudades
+          </Link>
+          <Link
             href="/precios"
             className="text-sm font-medium hover:text-cyan-300"
             title="Precios de servicios de gestoría inmobiliaria"

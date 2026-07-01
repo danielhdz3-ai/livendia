@@ -3,7 +3,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { FooterDiscoverabilityLinks } from "@/components/footer-discoverability-links";
 import { getAllPosts } from "@/lib/blog-content";
 import { getPublicServices } from "@/lib/catalog";
-import { getHomeCoverageCityFlatLinks } from "@/lib/home-coverage-cities";
+import { getHomeCoverageCityFlatLinks, HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
+import { cityHubHref } from "@/lib/ciudades-hub";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -73,11 +74,42 @@ export default async function MapaDelSitioPage() {
                 </Link>
               </li>
               <li>
+                <Link href="/ciudades" className="font-semibold text-[#1A4FBF] hover:underline">
+                  Ciudades
+                </Link>
+              </li>
+              <li>
                 <Link href="/gestoria" className="font-semibold text-[#1A4FBF] hover:underline">
                   Gestoría por ciudad
                 </Link>
               </li>
             </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-[#1E293B]">Hub de ciudades</h2>
+            <p className="mt-2 text-sm text-[#475569]">
+              Índice de servicios locales por ciudad y área metropolitana de Barcelona.
+            </p>
+            <ul className="mt-3 space-y-1 text-sm">
+              <li>
+                <Link href="/ciudades" className="font-semibold text-[#1A4FBF] hover:underline">
+                  Todas las ciudades
+                </Link>
+              </li>
+              {HOME_COVERAGE_CITIES.map((city) => (
+                <li key={city.slug}>
+                  <Link href={cityHubHref(city.slug)} className="text-[#1A4FBF] hover:underline">
+                    Servicios en {city.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2">
+              <Link href="/ciudades" className="text-sm font-semibold text-[#1A4FBF] hover:underline">
+                Ver índice completo →
+              </Link>
+            </p>
           </section>
 
           <section>

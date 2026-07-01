@@ -1,31 +1,23 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
-import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
-import {
-  BARCELONA_METRO_HABITACION_CITIES,
-  barcelonaMetroHabitacionHref,
-} from "@/lib/contrato-alquiler-habitacion-barcelona-metro";
-import {
-  BARCELONA_METRO_ARRAS_CITIES,
-  barcelonaMetroArrasHref,
-} from "@/lib/contrato-arras-barcelona-metro";
-import {
-  BARCELONA_METRO_VENTA_PARTICULAR_CITIES,
-  barcelonaMetroVentaParticularHref,
-} from "@/lib/venta-piso-particular-barcelona-metro";
+import { CIUDADES_HUB_BASE, CITY_HUB_TAGLINES, cityHubHref } from "@/lib/ciudades-hub";
 
 type HomeCoverageCitiesProps = {
-  /** Variante compacta para páginas internas (servicios, gestoría). */
-  variant?: "default" | "compact";
+  /** teaser = home (5 tarjetas); compact = páginas internas (pills). */
+  variant?: "teaser" | "compact";
 };
 
-export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesProps) {
+export function HomeCoverageCities({ variant = "teaser" }: HomeCoverageCitiesProps) {
   const compact = variant === "compact";
 
   return (
     <section
-      className={compact ? "border-t border-slate-200 bg-[#F8FAFC] py-10 sm:py-12" : "border-b border-slate-200 bg-white py-12 sm:py-16"}
+      className={
+        compact
+          ? "border-t border-slate-200 bg-[#F8FAFC] py-10 sm:py-12"
+          : "border-b border-slate-200 bg-white py-12 sm:py-16"
+      }
       aria-labelledby="cobertura-ciudades"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -43,121 +35,46 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {HOME_COVERAGE_CITIES.map((city) => (
-            <li
-              key={city.slug}
-              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100"
-            >
-              <h3 className="text-xl font-bold text-[#1E293B]">{city.name}</h3>
-              <ul className="mt-4 flex flex-1 flex-col gap-2 text-sm">
-                <li>
-                  <Link href={city.gestoriaHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                    Gestoría inmobiliaria
-                  </Link>
-                </li>
-                <li>
-                  <Link href={city.venderSinAgenciaHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                    Vender sin agencia
-                  </Link>
-                </li>
-                <li>
-                  <Link href={city.ventaLocalHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                    Servicio completo de venta
-                  </Link>
-                </li>
-                <li>
-                  <Link href={city.compraHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                    Comprar con garantías
-                  </Link>
-                </li>
-                <li>
-                  <Link href={city.administracionHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                    Administración de alquiler — 49 €/mes
-                  </Link>
-                </li>
-                {city.temporadaHref ? (
-                  <li>
-                    <Link href={city.temporadaHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Contrato alquiler temporada — 200 €
-                    </Link>
-                  </li>
-                ) : null}
-                {city.parkingTrasteroHref ? (
-                  <li>
-                    <Link href={city.parkingTrasteroHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Compra parking o trastero — {ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL}
-                    </Link>
-                  </li>
-                ) : null}
-                {city.habitacionHref ? (
-                  <li>
-                    <Link href={city.habitacionHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Contrato alquiler habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
-                    </Link>
-                    {city.slug === "barcelona" ? (
-                      <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
-                        {BARCELONA_METRO_HABITACION_CITIES.map((metro) => (
-                          <li key={metro.slug}>
-                            <Link
-                              href={barcelonaMetroHabitacionHref(metro.slug)}
-                              className="text-[#1A4FBF] hover:underline"
-                            >
-                              Habitación {metro.shortName}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </li>
-                ) : null}
-                {city.arrasLocalHref ? (
-                  <li>
-                    <Link href={city.arrasLocalHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Contrato de arras — 145 €
-                    </Link>
-                    {city.slug === "barcelona" ? (
-                      <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
-                        {BARCELONA_METRO_ARRAS_CITIES.map((metro) => (
-                          <li key={metro.slug}>
-                            <Link
-                              href={barcelonaMetroArrasHref(metro.slug)}
-                              className="text-[#1A4FBF] hover:underline"
-                            >
-                              Arras {metro.shortName}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </li>
-                ) : null}
-                {city.slug === "barcelona" ? (
-                  <li>
-                    <Link
-                      href="/servicios/vender-piso-sin-agencia-barcelona"
-                      className="font-semibold text-[#1A4FBF] hover:underline"
-                    >
-                      Venta particular sin agencia — 890 €
-                    </Link>
-                    <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
-                      {BARCELONA_METRO_VENTA_PARTICULAR_CITIES.map((metro) => (
-                        <li key={metro.slug}>
-                          <Link
-                            href={barcelonaMetroVentaParticularHref(metro.slug)}
-                            className="text-[#1A4FBF] hover:underline"
-                          >
-                            Venta particular {metro.shortName}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : null}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        {compact ? (
+          <nav
+            aria-label="Ciudades con servicios locales"
+            className="mt-8 flex flex-wrap justify-center gap-2"
+          >
+            {HOME_COVERAGE_CITIES.map((city) => (
+              <Link
+                key={city.slug}
+                href={cityHubHref(city.slug)}
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+              >
+                {city.name}
+              </Link>
+            ))}
+          </nav>
+        ) : (
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {HOME_COVERAGE_CITIES.map((city) => (
+              <li key={city.slug}>
+                <Link
+                  href={cityHubHref(city.slug)}
+                  className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-[#1A4FBF] hover:shadow-md"
+                >
+                  <h3 className="text-lg font-bold text-[#1E293B]">{city.name}</h3>
+                  <p className="mt-2 flex-1 text-sm text-[#64748b]">{CITY_HUB_TAGLINES[city.slug]}</p>
+                  <span className="mt-4 text-sm font-semibold text-[#1A4FBF]">Ver servicios →</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <p className="mt-8 text-center">
+          <Link
+            href={CIUDADES_HUB_BASE}
+            className="text-sm font-semibold text-[#1A4FBF] hover:underline"
+          >
+            Ver todas las ciudades y área metropolitana →
+          </Link>
+        </p>
       </div>
     </section>
   );

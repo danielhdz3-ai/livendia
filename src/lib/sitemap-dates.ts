@@ -9,6 +9,7 @@ export const SITEMAP_LAST_MODIFIED = {
   gestoria: "2026-05-15",
   ventaSeo: "2026-06-30",
   venderSinInmobiliaria: "2026-06-01",
+  ciudades: "2026-06-30",
 } as const;
 
 export function toSitemapDate(isoDate: string): Date {

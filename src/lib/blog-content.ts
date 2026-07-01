@@ -7,6 +7,8 @@ import {
   type BlogPost,
   type BlogPostFrontmatter,
 } from "@/lib/blog-types";
+import { getCityHub } from "@/lib/ciudades-hub";
+import type { HomeCoverageCitySlug } from "@/lib/home-coverage-cities";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -76,6 +78,21 @@ export function getPostsByCategory(category: BlogCategory | "all"): BlogPost[] {
   const all = getAllPosts();
   if (category === "all") return all;
   return all.filter((p) => p.category === category);
+}
+
+/** Posts con campo `city` que coincide con el slug del hub (p. ej. barcelona, madrid). */
+export function getPostsByCitySlug(slug: HomeCoverageCitySlug): BlogPost[] {
+  const city = getCityHub(slug);
+  if (!city) return [];
+
+  const slugNorm = slug.toLowerCase();
+  const nameNorm = city.name.toLowerCase();
+
+  return getAllPosts().filter((p) => {
+    if (!p.city) return false;
+    const postCity = p.city.toLowerCase();
+    return postCity === slugNorm || postCity === nameNorm;
+  });
 }
 
 export function getAdjacentPosts(slug: string): {

@@ -1,0 +1,138 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { CityHubServices } from "@/components/city-hub-services";
+import { PublicHeader } from "@/components/public-header";
+import { SiteFooter } from "@/components/site-footer";
+import { getPostsByCitySlug } from "@/lib/blog-content";
+import {
+  CIUDADES_HUB_BASE,
+  CITY_HUB_TAGLINES,
+  cityHubHref,
+  getCityHub,
+  getCityHubMeta,
+  isCityHubSlug,
+} from "@/lib/ciudades-hub";
+import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
+import { getSiteUrl } from "@/lib/site-url";
+import type { Metadata } from "next";
+
+type Props = { params: Promise<{ slug: string }> };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return HOME_COVERAGE_CITY_SLUGS.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  if (!isCityHubSlug(slug)) return {};
+  const city = getCityHub(slug);
+  if (!city) return {};
+
+  const meta = getCityHubMeta(city);
+  const canonical = `${getSiteUrl()}${cityHubHref(slug)}`;
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      locale: "es_ES",
+      type: "website",
+    },
+  };
+}
+
+export default async function CiudadHubPage({ params }: Props) {
+  const { slug } = await params;
+  if (!isCityHubSlug(slug)) notFound();
+
+  const city = getCityHub(slug);
+  if (!city) notFound();
+
+  const posts = getPostsByCitySlug(slug);
+  const pageUrl = `${getSiteUrl()}${cityHubHref(slug)}`;
+  const meta = getCityHubMeta(city);
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: getSiteUrl() },
+      { "@type": "ListItem", position: 2, name: "Ciudades", item: `${getSiteUrl()}${CIUDADES_HUB_BASE}` },
+      { "@type": "ListItem", position: 3, name: city.name, item: pageUrl },
+    ],
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <PublicHeader />
+      <main className="flex-1">
+        <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
+          <div className="mx-auto max-w-4xl">
+            <nav aria-label="Breadcrumb" className="text-sm text-[#64748b]">
+              <ol className="flex flex-wrap items-center gap-1">
+                <li>
+                  <Link href="/" className="hover:text-[#1A4FBF] hover:underline">
+                    Inicio
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li>
+                  <Link href={CIUDADES_HUB_BASE} className="hover:text-[#1A4FBF] hover:underline">
+                    Ciudades
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li className="font-semibold text-[#1E293B]">{city.name}</li>
+              </ol>
+            </nav>
+            <h1 className="mt-4 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
+              Gestoría inmobiliaria en {city.name}
+            </h1>
+            <p className="mt-3 max-w-2xl text-lg text-[#475569]">{CITY_HUB_TAGLINES[city.slug]}</p>
+            <p className="mt-2 max-w-2xl text-[#64748b]">{meta.description}</p>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+          <CityHubServices city={city} />
+
+          {posts.length > 0 ? (
+            <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100">
+              <h2 className="text-lg font-bold text-[#1E293B]">Guías del blog en {city.name}</h2>
+              <ul className="mt-4 space-y-2 text-sm">
+                {posts.map((post) => (
+                  <li key={post.slug}>
+                    <Link href={`/blog/${post.slug}`} className="font-semibold text-[#1A4FBF] hover:underline">
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
+          <p className="mt-10 text-center text-sm text-[#64748b]">
+            <Link href={CIUDADES_HUB_BASE} className="font-semibold text-[#1A4FBF] hover:underline">
+              ← Ver todas las ciudades
+            </Link>
+            {" · "}
+            <Link href="/servicios" className="font-semibold text-[#1A4FBF] hover:underline">
+              Catálogo nacional
+            </Link>
+          </p>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}

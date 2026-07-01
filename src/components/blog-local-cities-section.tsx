@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AdministracionAlquilerLocalCityLinks } from "@/components/administracion-alquiler-local-city-links";
 import { ContratoAlquilerTemporadaLocalCityLinks } from "@/components/contrato-alquiler-temporada-local-city-links";
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
@@ -30,11 +31,15 @@ export function BlogLocalCitiesSection() {
           <strong className="font-semibold text-[#1E293B]">revisión comprador post-arras</strong> y{" "}
           <strong className="font-semibold text-[#1E293B]">gestión vendedor post-arras</strong>, contratos LAU,{" "}
           <strong className="font-semibold text-[#1E293B]">alquiler por temporada</strong> y administración de
-          alquileres adaptados a cada mercado. Las páginas de contratación siguen en{" "}
-          <a href="/servicios" className="font-semibold text-[#1A4FBF] hover:underline">
+          alquileres adaptados a cada mercado. El índice por ciudad está en{" "}
+          <Link href="/ciudades" className="font-semibold text-[#1A4FBF] hover:underline">
+            Ciudades
+          </Link>
+          ; las páginas de contratación siguen en{" "}
+          <Link href="/servicios" className="font-semibold text-[#1A4FBF] hover:underline">
             Servicios
-          </a>
-          ; aquí encontrarás el detalle territorial.
+          </Link>
+          .
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

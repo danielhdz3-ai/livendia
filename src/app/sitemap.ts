@@ -67,6 +67,8 @@ import { PILLAR_BILBAO_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobilia
 import { PILLAR_MALAGA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
 import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-granada";
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
+import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
+import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -103,6 +105,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const gestoriaDate = toSitemapDate(SITEMAP_LAST_MODIFIED.gestoria);
   const ventaSeoDate = toSitemapDate(SITEMAP_LAST_MODIFIED.ventaSeo);
   const venderSinInmobiliariaDate = toSitemapDate(SITEMAP_LAST_MODIFIED.venderSinInmobiliaria);
+  const ciudadesDate = toSitemapDate(SITEMAP_LAST_MODIFIED.ciudades);
 
   const core: MetadataRoute.Sitemap = [
     { url: base, lastModified: coreDate, changeFrequency: "weekly", priority: 1 },
@@ -113,6 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/equipo`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/blog`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.82 },
     { url: `${base}/mapa-del-sitio`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}${CIUDADES_HUB_BASE}`, lastModified: ciudadesDate, changeFrequency: "weekly", priority: 0.9 },
   ];
 
   const servicios: MetadataRoute.Sitemap = SERVICIO_SLUGS.map((slug) => ({
@@ -277,6 +281,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const ciudadesHubPages: MetadataRoute.Sitemap = HOME_COVERAGE_CITY_SLUGS.map((slug) => ({
+    url: `${base}${cityHubHref(slug)}`,
+    lastModified: ciudadesDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.88,
+  }));
+
   return [
     ...core,
     ...servicios,
@@ -297,6 +308,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...habitacionLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
+    ...ciudadesHubPages,
     ...blogArticles,
   ];
 }
