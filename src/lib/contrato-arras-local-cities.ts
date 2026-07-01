@@ -15,6 +15,8 @@ export const CONTRATO_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
+  "badalona",
+  "sant-cugat-del-valles",
   "sabadell",
   "terrassa",
   "valencia",
@@ -48,7 +50,7 @@ export function localContratoArrasHref(slug: string): string {
 }
 
 export function toArrasLandingConfig(def: ContratoArrasLocalCityDefinition): ContratoArrasLocalLandingConfig {
-  const seoContent = getArrasLocalSeoContent(def.slug);
+  const seoContent = getArrasLocalSeoContent(def.slug, def.city);
   return {
     ...def,
     path: localContratoArrasHref(def.slug),
@@ -291,6 +293,90 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     ],
     finalCtaLead:
       "Gestión de arras justa en Terrassa — gestor asignado, penitenciales o confirmatorias, panel Livendia.",
+  },
+  {
+    slug: "badalona",
+    city: "Badalona",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Badalona",
+    heroH1: "Gestor que tramita tu contrato de arras en Badalona",
+    metaTitle: `Contrato de arras Badalona — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      `Tramita arras en Badalona con gestor asignado. CCCat 621-4 a 621-9 y art. 621-49 (hipoteca). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Centre, Montigalà, La Salut.`,
+    keywords: [
+      "contrato arras badalona",
+      "tramitar arras badalona",
+      "gestor contrato arras badalona",
+      "arras penitenciales badalona",
+      "contrato arras entre particulares badalona",
+      "firmar arras montigala",
+      "gestoria arras badalona",
+    ],
+    heroLead:
+      "En Badalona, entre particulares, las arras mal redactadas son la vía más rápida a perder la señal. Un gestor Livendia asignado domina CC español y Codi civil de Catalunya (621-4 a 621-9) y te explica el art. 621-49 si compras con hipoteca.",
+    whyIntro:
+      "Centre, Montigalà, La Salut o el Gorg: operaciones con borradores de agencia barcelonesa sin adaptar. Calibramos penalidades, plazos hasta escritura y cláusula de financiación para una gestión justa de la señal.",
+    howIntro:
+      "Cuatro fases con gestor dedicado: diagnóstico, riesgos de pérdida de señal, redacción equilibrada y firma informada en Badalona.",
+    testimonialsTitle: "Particulares en Badalona que tramitaron sus arras con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Montigalà con hipoteca y el borrador no tenía cláusula 621-49. El gestor la redactó y entonces transferimos la señal con tranquilidad.",
+        author: "Marc & Laura",
+        role: "Compradores, Montigalà",
+      },
+      {
+        quote:
+          "Vendía en el centre entre particulares. Livendia dejó confirmatorias claras con plazo de cancelación de hipoteca realista.",
+        author: "Teresa G.",
+        role: "Vendedora, centre de Badalona",
+      },
+    ],
+    finalCtaLead:
+      "Contrata arras en Badalona con gestor asignado — 621-49 explicado en la llamada, 145 € IVA incl., panel digital.",
+  },
+  {
+    slug: "sant-cugat-del-valles",
+    city: "Sant Cugat del Vallès",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Sant Cugat",
+    heroH1: "Contrato de arras en Sant Cugat del Vallès con gestor especializado",
+    metaTitle: `Tramitar arras Sant Cugat del Vallès — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      `Gestor asignado tramita contrato de arras en Sant Cugat del Vallès. CCCat 621-4 a 621-9 y art. 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Centre, Mira-sol, Valldoreix.`,
+    keywords: [
+      "contrato arras sant cugat",
+      "tramitar arras sant cugat del valles",
+      "gestor arras sant cugat",
+      "arras penitenciales sant cugat",
+      "contrato arras particulares sant cugat",
+      "firmar arras mira sol",
+      "gestoria arras valles",
+    ],
+    heroLead:
+      "Sant Cugat del Vallès: compraventa entre particulares con gestor Livendia asignado. Especialista en Código Civil español y CCCat — arras justas (621-4 a 621-9) y cláusula 621-49 si necesitas hipoteca, sin perder la señal por plantillas genéricas.",
+    whyIntro:
+      "En Mira-sol, Valldoreix o el centre histórico las operaciones suelen ir con hipoteca y plazos ajustados. Revisamos arras penitenciales o confirmatorias y la cláusula de desistimiento por falta de financiación antes de ingresar la señal.",
+    howIntro:
+      "Tu gestor analiza el borrador, aplica CC y CCCat, y entrega contrato listo para firmar en 48-72 h laborables.",
+    testimonialsTitle: "Compradores y vendedores en Sant Cugat que pasaron sus arras por Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprador con hipoteca en Valldoreix: el gestor explicó 621-4 vs 621-49 en la llamada y redactó todo el contrato antes de la señal.",
+        author: "Albert & Núria",
+        role: "Compradores, Valldoreix",
+      },
+      {
+        quote:
+          "Vendíamos chalet en Mira-sol entre particulares. Confirmatorias con hitos de documentación y calendario de cancelación de hipoteca claro.",
+        author: "Jordi M.",
+        role: "Vendedor, Mira-sol",
+      },
+    ],
+    finalCtaLead:
+      "Arras justas en Sant Cugat del Vallès — gestor asignado, penitenciales o confirmatorias, trámite 621-49 incluido si lo necesitas.",
   },
   {
     slug: "valencia",

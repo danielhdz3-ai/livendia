@@ -154,6 +154,18 @@ export function HomeParticularesServicios() {
               Cornellà
             </Link>
             <Link
+              href="/servicios/contrato-arras-local/badalona"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Badalona
+            </Link>
+            <Link
+              href="/servicios/contrato-arras-local/sant-cugat-del-valles"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Sant Cugat
+            </Link>
+            <Link
               href="/servicios/contrato-arras-local/sabadell"
               className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
             >
@@ -161,6 +173,53 @@ export function HomeParticularesServicios() {
             </Link>
             <Link
               href="/servicios/contrato-arras-local/terrassa"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Terrassa
+            </Link>
+          </nav>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">
+            Venta entre particulares — ya tienes comprador
+          </p>
+          <p className="mt-2 text-sm text-[#475569]">
+            Gestor inmobiliario Livendia: arras, documentación y notaría. Sin comisión de agencia · 890 € IVA incl.
+          </p>
+          <nav aria-label="Venta piso particular sin agencia área metropolitana" className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href="/servicios/vender-piso-sin-agencia-barcelona"
+              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+            >
+              Barcelona
+            </Link>
+            <Link
+              href="/servicios/venta-piso-particular-sin-agencia/hospitalet-de-llobregat"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              L&apos;Hospitalet
+            </Link>
+            <Link
+              href="/servicios/venta-piso-particular-sin-agencia/cornella-de-llobregat"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Cornellà
+            </Link>
+            <Link
+              href="/servicios/venta-piso-particular-sin-agencia/esplugues-de-llobregat"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Esplugues
+            </Link>
+            <Link
+              href="/servicios/venta-piso-particular-sin-agencia/sabadell"
+              className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Sabadell
+            </Link>
+            <Link
+              href="/servicios/venta-piso-particular-sin-agencia/terrassa"
               className="rounded-full bg-[#F1F5F9] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
             >
               Terrassa

@@ -1,5 +1,18 @@
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 
+export type ArrasFinancingEducation = {
+  heading: string;
+  intro: string;
+  withoutClauseTitle: string;
+  withoutClauseBody: string;
+  withClauseTitle: string;
+  withClauseBody: string;
+  gestorHeading: string;
+  gestorIntro: string;
+  steps: readonly { title: string; body: string }[];
+  disclaimer: string;
+};
+
 export type ArrasLocalSeoContent = {
   heroSubtitle: string;
   gestorPitch: string;
@@ -10,6 +23,7 @@ export type ArrasLocalSeoContent = {
   legalCatalanFinancing: string;
   cccatArrasArticles: string;
   cccatFinancingArticle: string;
+  financingEducation: ArrasFinancingEducation;
   localMarketIntro: string;
   zonesHeading: string;
   zonesParagraph: string;
@@ -19,12 +33,50 @@ export type ArrasLocalSeoContent = {
   faqLocal: readonly { question: string; answer: string }[];
 };
 
-export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
+/** Bloque educativo compartido sobre art. 621-49 CCCat (financiación hipotecaria). */
+export function buildArrasFinancingEducation(city: string): ArrasFinancingEducation {
+  return {
+    heading: `¿Compras con hipoteca en ${city}? El art. 621-49 CCCat puede salvarte la señal`,
+    intro:
+      "Muchos compradores particulares no saben que, en Catalunya, el Codi civil de Catalunya distingue el régimen de las arras (621-4 a 621-9) del desistimiento por falta de financiación (621-49). Si firmas arras sin esta cláusula y el banco te deniega la hipoteca, puedes perder la señal. Con la cláusula bien redactada, la ley catalana te permite desistir en los términos pactados y recuperar lo entregado.",
+    withoutClauseTitle: "Sin cláusula art. 621-49 en el contrato",
+    withoutClauseBody:
+      "Firmas arras penitenciales (621-4 CCCat) y solicitas hipoteca después. Si el banco deniega el préstamo, el vendedor puede exigirte cumplir o perder la señal entregada — salvo que otra cláusula te proteja, que rara vez está en plantillas genéricas.",
+    withClauseTitle: "Con cláusula art. 621-49 redactada por un gestor",
+    withClauseBody:
+      "El contrato recoge plazo, importe de financiación y documentación bancaria exigible. Si no obtienes la hipoteca en esas condiciones, puedes desistir conforme al 621-49 CCCat y recuperar las arras, sin quedar atrapado en una penalidad del 621-4 por un hecho ajeno a tu voluntad.",
+    gestorHeading: "Cómo te ayuda el gestor especializado Livendia",
+    gestorIntro:
+      "Un gestor se asigna a tu expediente en Livendia. No es un PDF automático: te explica el trámite, redacta o corrige la cláusula 621-49 y la integra con el resto del contrato de arras antes de que transfieras la señal.",
+    steps: [
+      {
+        title: "Diagnóstico de tu operación",
+        body: "En la llamada previa analizamos si compras con hipoteca, el calendario del banco y si conviene penitenciales o confirmatorias junto al 621-49.",
+      },
+      {
+        title: "Redacción de la cláusula 621-49",
+        body: "Incluimos plazo para obtener financiación, condiciones del préstamo (importe, entidad, resolución escrita) y efecto del desistimiento: recuperación de la señal si no hay hipoteca.",
+      },
+      {
+        title: "Coherencia con las arras (621-4 a 621-9)",
+        body: "Evitamos contradicciones: la cláusula de financiación no puede quedar anulada por una penalidad genérica mal ubicada. Todo el contrato se lee en conjunto.",
+      },
+      {
+        title: "Firma informada",
+        body: "Resolvemos dudas con comprador y vendedor en lenguaje claro. Llegas a la firma sabiendo qué pasa con tu dinero si el banco dice no.",
+      },
+    ],
+    disclaimer:
+      "Información general sobre el CCCat, no asesoramiento jurídico personalizado. Cada operación tiene matices; el gestor Livendia adapta el contrato a tu caso concreto.",
+  };
+}
+
+export const ARRAS_LOCAL_SEO_CONTENT: Record<string, Omit<ArrasLocalSeoContent, "financingEducation">> = {
   "hospitalet-de-llobregat": {
     heroSubtitle:
       `¿Buscas un gestor que te tramite el contrato de arras en L'Hospitalet entre particulares? Por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. tendrás un gestor asignado a tu caso, especialista en Código Civil español y Código Civil de Catalunya — con arras justas y sin perder la señal por cláusulas desequilibradas.`,
     gestorPitch:
-      "No firmes arras copiadas de internet. En Livendia un gestor inmobiliario-jurídico se asigna a tu expediente: revisa penitenciales o confirmatorias, te explica consecuencias en lenguaje claro y redacta un contrato equilibrado antes de ingresar un euro de señal.",
+      "No firmes arras copiadas de internet. En Livendia un gestor inmobiliario-jurídico se asigna a tu expediente: te explica la diferencia entre arras (621-4) y cláusula de financiación (621-49), redacta el contrato y te acompaña en el trámite antes de ingresar la señal.",
     fairArrasHeading: "Gestión de arras justa en L'Hospitalet",
     fairArrasIntro:
       "Las arras no son un trámite menor: fijan qué pasa con tu dinero si alguien se echa atrás. En Livendia contrastamos penalidades, plazos hasta escritura y coherencia registral para que comprador y vendedor particulares firmen sin sorpresas entre Collblanc, Bellvitge o el centre.",
@@ -76,7 +128,7 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       {
         question: "¿Qué regula el artículo 621-49 del CCCat?",
         answer:
-          "El desistimiento del comprador cuando no obtiene la financiación bancaria prevista en el contrato, en plazo y condiciones legales. El gestor asignado incluye o revisa esta cláusula para proteger al comprador con hipoteca.",
+          "El desistimiento del comprador cuando no obtiene la financiación bancaria en el plazo y condiciones pactadas en el contrato. Si incluimos esta cláusula, no quedas expuesto solo al régimen de pérdida de señal del 621-4 cuando el banco deniega la hipoteca. El gestor Livendia te lo explica y lo redacta.",
       },
       {
         question: "¿Sirve si compro o vendo en Bellvitge o Collblanc?",
@@ -93,7 +145,7 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
     heroSubtitle:
       `Gestor que tramita tu contrato de arras en Cornellà de Llobregat: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl., gestor asignado especialista en Código Civil español y catalán. Arras justas conforme al CCCat (arts. 621-4 a 621-9), sin perder la señal por cláusulas abusivas.`,
     gestorPitch:
-      "Comprador o vendedor particular: tu gestor Livendia analiza el borrador, detecta cláusulas que te harían perder dinero y redacta arras equilibradas antes de la firma. Especialistas en compraventa en Catalunya, no plantillas genéricas.",
+      "Comprador o vendedor particular: tu gestor Livendia te enseña la diferencia entre arras (621-4) y cláusula de hipoteca (621-49), redacta el contrato completo y te acompaña en el trámite — sin plantillas que te hagan perder la señal.",
     fairArrasHeading: "Arras equilibradas en Cornellà",
     fairArrasIntro:
       "En Sant Ildefons, Can Mercader o el centre de Cornellà las operaciones van entre particulares con frecuencia. Una arras mal redactada puede costarte la señal entera — nos encargamos de que la gestión sea justa y transparente.",
@@ -158,7 +210,7 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
     heroSubtitle:
       `¿Necesitas un gestor que tramite tu contrato de arras en Sabadell? ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl., gestor asignado experto en CC español y Codi civil de Catalunya. Gestión justa de la señal (arts. 621-4 a 621-9 CCCat) para particulares en Creu Alta, Gràcia o Can Feu.`,
     gestorPitch:
-      "En Livendia no compartes gestor anónimo: uno se asigna a tu compraventa, revisa arras penitenciales o confirmatorias y te guía hasta una firma informada — sin perder dinero por cláusulas copiadas de otra operación.",
+      "En Livendia un gestor se asigna a tu compraventa: te explica el 621-49 si compras con hipoteca, redacta arras equilibradas (621-4 a 621-9) y coordina todo el trámite hasta la firma.",
     fairArrasHeading: "Gestión de arras justa en el Vallès",
     fairArrasIntro:
       "Sabadell mueve operaciones entre particulares en Creu Alta, Eixample o Can Feu. Las arras mal calibradas son la principal causa de pérdida de señal antes de notaría — las redactamos con equilibrio y base en CCCat.",
@@ -222,7 +274,7 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
     heroSubtitle:
       `Tramita tu contrato de arras en Terrassa con gestor asignado: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Especialistas en Código Civil español y Código Civil de Catalunya (arts. 621-4 a 621-9). Arras justas para particulares — sin perder la señal por penalidades abusivas.`,
     gestorPitch:
-      "Tu gestor Livendia conoce compraventa entre particulares en Terrassa: Sant Pere, La Maurina, Ca n'Anglada… Revisa o redacta tus arras, alinea cláusulas con CCCat y te acompaña por teléfono hasta la firma.",
+      "Tu gestor Livendia en Terrassa te explica en la llamada qué es el art. 621-49, si lo necesitas con hipoteca, y redacta el contrato de arras completo antes de que entregues la señal.",
     fairArrasHeading: "Arras transparentes en Terrassa",
     fairArrasIntro:
       "En Terrassa, como en el resto del Vallès, firmar arras sin gestor especializado es apostar tu señal a un Word de internet. Nos encargamos de una gestión justa: plazos, penalidades y objeto del inmueble coherentes.",
@@ -281,8 +333,141 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, ArrasLocalSeoContent> = {
       },
     ],
   },
+
+  badalona: {
+    heroSubtitle:
+      `¿Buscas gestor para tramitar arras en Badalona entre particulares? ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl., gestor asignado experto en CC español y Codi civil de Catalunya. Arras justas (621-4 a 621-9) y cláusula 621-49 si compras con hipoteca.`,
+    gestorPitch:
+      "En Livendia un gestor se asigna a tu expediente en Badalona: te explica la diferencia entre arras (621-4) y cláusula de financiación (621-49), redacta el contrato y te acompaña en el trámite antes de ingresar la señal.",
+    fairArrasHeading: "Arras equilibradas en Badalona",
+    fairArrasIntro:
+      "Badalona mueve operaciones rápidas entre particulares en Centre, Montigalà o La Salut. Una arras mal calibrada puede costarte toda la señal — la redactamos con equilibrio y base en CCCat.",
+    legalSpanish:
+      "El Código Civil español regula las obligaciones y la señal a nivel estatal; en compraventa de vivienda en Catalunya prevalece el marco del Codi civil de Catalunya.",
+    legalCatalan:
+      "Arts. 621-4 a 621-9 CCCat: arras penitenciarias (pérdida o restitución doble de la señal) y confirmatòries. Tu gestor traduce esto a cláusulas concretas para operaciones en Badalona.",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat regula el desistimiento del comprador cuando no obtiene la financiación bancaria pactada. En Badalona, donde muchas compraventas van con hipoteca, esta cláusula evita perder la señal si el banco deniega el préstamo.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
+    localMarketIntro:
+      "Badalona combina pisos de segunda mano, operaciones con reforma pendiente y compradores que llegan desde Barcelona capital. Los borradores circulan sin revisión jurídica — hasta que alguien pierde la señal por no incluir el 621-49.",
+    zonesHeading: "Contrato de arras por zonas de Badalona",
+    zonesParagraph: "Tramitamos arras para particulares en:",
+    zoneGroups: [
+      { district: "Centre — Dalt de la Vila", areas: "Centre, Dalt de la Vila, Rambla" },
+      { district: "Montigalà — Bufalà", areas: "Montigalà, Bufalà, Sant Pere de Sant Pau" },
+      { district: "La Salut — Lloreda", areas: "La Salut, Lloreda, Sant Roc" },
+      { district: "Gorg — Progrés", areas: "Gorg, Progrés, Sant Joan de Déu" },
+    ],
+    arrasTypesIntro:
+      "Penitenciales o confirmatorias: el gestor asignado explica la diferencia práctica (621-4 CCCat) y redacta lo pactado, incluyendo cláusula 621-49 si la operación depende de hipoteca.",
+    moneyLossRisks: [
+      {
+        title: "Plantilla barcelonesa sin adaptar",
+        body: "Borradores pensados para Eixample aplicados a Badalona — penalidades o plazos que no encajan con tu operación real.",
+      },
+      {
+        title: "Financiación sin art. 621-49",
+        body: "Comprador que pierde la señal aunque el banco no preste — el gestor redacta el desistimiento conforme al CCCat.",
+      },
+      {
+        title: "Cargas de comunidad ocultas",
+        body: "Deudas o derramas no reflejadas antes de arras — el gestor exige coherencia mínima documental.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Tramitáis arras para compradores particulares en Badalona?",
+        answer:
+          "Sí. Muchos compradores contratan Livendia porque el vendedor trae un borrador desequilibrado. El gestor asignado defiende un texto justo antes de transferir la señal.",
+      },
+      {
+        question: "¿Qué regula el artículo 621-49 del CCCat?",
+        answer:
+          "El desistimiento del comprador cuando no obtiene la financiación bancaria en plazo y condiciones pactadas. Si incluimos esta cláusula, no quedas expuesto solo al régimen de pérdida de señal del 621-4 cuando el banco deniega la hipoteca. El gestor Livendia te lo explica y lo redacta.",
+      },
+      {
+        question: "¿Sirve si compro o vendo en Montigalà o La Salut?",
+        answer: "Sí. Adaptamos el contrato a la dirección real del inmueble en Badalona.",
+      },
+      {
+        question: "¿Cuánto cuesta tramitar las arras?",
+        answer: `${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incluido por contrato, con gestor asignado y llamada previa incluidas.`,
+      },
+    ],
+  },
+
+  "sant-cugat-del-valles": {
+    heroSubtitle:
+      `Tramita tu contrato de arras en Sant Cugat del Vallès con gestor asignado: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Especialistas en CC español y CCCat (621-4 a 621-9). Cláusula 621-49 si compras con hipoteca — sin perder la señal.`,
+    gestorPitch:
+      "Tu gestor Livendia en Sant Cugat te explica en la llamada qué es el art. 621-49, si lo necesitas con hipoteca, y redacta el contrato de arras completo antes de que entregues la señal.",
+    fairArrasHeading: "Arras transparentes en Sant Cugat del Vallès",
+    fairArrasIntro:
+      "En Sant Cugat, como en el resto del Vallès Occidental, firmar arras sin gestor especializado es apostar tu señal a un Word de internet. Nos encargamos de plazos, penalidades y cláusula de financiación coherentes con CCCat.",
+    legalSpanish:
+      "Aplicamos el Código Civil español en lo que corresponda y el régimen catalán de compraventa inmobiliaria para operaciones en Sant Cugat del Vallès.",
+    legalCatalan:
+      "Los arts. 621-4 a 621-9 del Codi civil de Catalunya regulan las arras en Catalunya. Calibramos la señal para que las consecuencias del incumplimiento sean previsibles y proporcionadas.",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat protege al comprador que no obtiene financiación bancaria: puede desistir del contrato en las condiciones legales, sin perder indebidamente la señal. Es clave en operaciones con hipoteca en Sant Cugat.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
+    localMarketIntro:
+      "Sant Cugat combina pisos de alta demanda en el centre, chalets en Mira-sol o Valldoreix y operaciones familiares entre particulares. El error más caro: arras penitenciales mal explicadas o sin cláusula 621-49 cuando hay hipoteca.",
+    zonesHeading: "Contrato de arras en barrios de Sant Cugat del Vallès",
+    zonesParagraph: "Gestor asignado para operaciones en:",
+    zoneGroups: [
+      { district: "Centre — Plaça Mercat", areas: "Centre històric, Plaça Mercat, Rambla" },
+      { district: "Mira-sol — Volpelleres", areas: "Mira-sol, Volpelleres, estación FGC" },
+      { district: "Valldoreix", areas: "Valldoreix, Les Planes, entorno Collserola" },
+      { district: "Parc Central — Can Matas", areas: "Parc Central, Can Matas, Sant Cugat nord" },
+    ],
+    arrasTypesIntro:
+      "Explicamos en la llamada cómo afecta el 621-4 CCCat a tu señal si eliges arras penitenciales, o qué implica firmar confirmatorias, y si conviene incluir el 621-49 por hipoteca.",
+    moneyLossRisks: [
+      {
+        title: "Señal sin cláusula 621-49",
+        body: "Comprador que pierde la señal aunque el banco no preste — el gestor redacta el desistimiento por falta de financiación conforme al CCCat.",
+      },
+      {
+        title: "Vendedor con carga no cancelable a tiempo",
+        body: "Hipoteca o embargo no previsto en calendario de arras — el gestor exige hitos verificables.",
+      },
+      {
+        title: "Arras confirmatorias mal identificadas",
+        body: "Texto que dice penitenciales pero aplica efectos de confirmatorias — confusión costosa.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Evitáis perder dinero en las arras en Sant Cugat?",
+        answer:
+          "Revisamos penalidades, plazos y coherencia registral para que la señal esté protegida según CC y CCCat. No garantizamos resultado judicial, sí gestión profesional y justa.",
+      },
+      {
+        question: "¿El art. 621-49 protege si no me dan la hipoteca?",
+        answer:
+          "Sí, en los términos del Codi civil de Catalunya: regula el desistimiento del comprador cuando no obtiene la financiación bancaria pactada. Tu gestor asignado adapta plazos y condiciones al contrato.",
+      },
+      {
+        question: "¿Comprador o vendedor?",
+        answer: "Ambos. Cualquier particular puede contratar; el gestor se asigna a tu expediente.",
+      },
+      {
+        question: "¿Precio cerrado?",
+        answer: `${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. con gestor asignado.`,
+      },
+    ],
+  },
 };
 
-export function getArrasLocalSeoContent(slug: string): ArrasLocalSeoContent | undefined {
-  return ARRAS_LOCAL_SEO_CONTENT[slug];
+export function getArrasLocalSeoContent(slug: string, city?: string): ArrasLocalSeoContent | undefined {
+  const base = ARRAS_LOCAL_SEO_CONTENT[slug];
+  if (!base) return undefined;
+  return {
+    ...base,
+    financingEducation: buildArrasFinancingEducation(city ?? slug),
+  };
 }

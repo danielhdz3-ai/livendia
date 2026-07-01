@@ -301,3 +301,55 @@ export function buildParkingTrasteroLocalSchemaGraph(params: {
 
   return { service, breadcrumb, pageUrl };
 }
+
+/** Schema local venta piso particular sin agencia (comprador ya encontrado). */
+export function buildVentaPisoParticularLocalSchemaGraph(params: {
+  path: string;
+  city: string;
+  administrativeArea: string;
+  hubPath?: string;
+  hubName?: string;
+  priceCents: number;
+  serviceName?: string;
+}) {
+  const base = getSiteUrl().replace(/\/$/, "");
+  const pageUrl = `${base}${params.path}`;
+  const hubPath = params.hubPath ?? "/servicios/venta-piso-particular-sin-agencia";
+  const hubUrl = `${base}${hubPath}`;
+  const hubName = params.hubName ?? "Venta piso particular sin agencia";
+  const serviceName =
+    params.serviceName ?? `Venta de piso de particular sin agencia en ${params.city}`;
+
+  const service = {
+    "@type": "Service" as const,
+    "@id": `${pageUrl}#service`,
+    name: serviceName,
+    description: `Gestor inmobiliario dedicado para vendedores particulares en ${params.city} que ya tienen comprador: arras, documentación y coordinación hasta notaría. Sin comisión de agencia.`,
+    serviceType: "Acompañamiento venta entre particulares",
+    areaServed: {
+      "@type": "City" as const,
+      name: params.city,
+      containedInPlace: {
+        "@type": "AdministrativeArea" as const,
+        name: params.administrativeArea,
+      },
+    },
+    provider: { "@id": `${base}/#organization` },
+    offers: buildOffer(pageUrl, params.priceCents, false),
+    url: pageUrl,
+    inLanguage: "es-ES",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList" as const,
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem" as const, position: 1, name: "Inicio", item: base },
+      { "@type": "ListItem" as const, position: 2, name: "Servicios", item: `${base}/servicios` },
+      { "@type": "ListItem" as const, position: 3, name: hubName, item: hubUrl },
+      { "@type": "ListItem" as const, position: 4, name: params.city, item: pageUrl },
+    ],
+  };
+
+  return { service, breadcrumb, pageUrl };
+}

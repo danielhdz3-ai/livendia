@@ -10,6 +10,10 @@ import {
   BARCELONA_METRO_ARRAS_CITIES,
   barcelonaMetroArrasHref,
 } from "@/lib/contrato-arras-barcelona-metro";
+import {
+  BARCELONA_METRO_VENTA_PARTICULAR_CITIES,
+  barcelonaMetroVentaParticularHref,
+} from "@/lib/venta-piso-particular-barcelona-metro";
 
 type HomeCoverageCitiesProps = {
   /** Variante compacta para páginas internas (servicios, gestoría). */
@@ -126,6 +130,28 @@ export function HomeCoverageCities({ variant = "default" }: HomeCoverageCitiesPr
                         ))}
                       </ul>
                     ) : null}
+                  </li>
+                ) : null}
+                {city.slug === "barcelona" ? (
+                  <li>
+                    <Link
+                      href="/servicios/vender-piso-sin-agencia-barcelona"
+                      className="font-semibold text-[#1A4FBF] hover:underline"
+                    >
+                      Venta particular sin agencia — 890 €
+                    </Link>
+                    <ul className="mt-1.5 space-y-1 pl-3 text-xs font-medium text-[#64748b]">
+                      {BARCELONA_METRO_VENTA_PARTICULAR_CITIES.map((metro) => (
+                        <li key={metro.slug}>
+                          <Link
+                            href={barcelonaMetroVentaParticularHref(metro.slug)}
+                            className="text-[#1A4FBF] hover:underline"
+                          >
+                            Venta particular {metro.shortName}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 ) : null}
               </ul>

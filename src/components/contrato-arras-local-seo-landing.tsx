@@ -317,6 +317,77 @@ export async function ContratoArrasLocalSeoLanding({
                 </div>
               </section>
 
+              <section className="border-b border-cyan-200 bg-gradient-to-b from-cyan-50 to-white px-4 py-16 sm:px-6">
+                <div className="mx-auto max-w-5xl">
+                  <p className="text-center text-xs font-bold uppercase tracking-wider text-[#0E7490]">
+                    Guía educativa · CCCat
+                  </p>
+                  <h2 className="mt-3 text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                    {seo.financingEducation.heading}
+                  </h2>
+                  <p className="mx-auto mt-5 max-w-3xl text-center text-lg leading-relaxed text-[#475569]">
+                    {seo.financingEducation.intro}
+                  </p>
+
+                  <div className="mt-10 grid gap-6 md:grid-cols-2">
+                    <div className="rounded-2xl border border-red-200 bg-red-50/80 p-6 ring-1 ring-red-100">
+                      <p className="text-sm font-bold uppercase tracking-wide text-[#991B1B]">Riesgo</p>
+                      <h3 className="mt-2 text-lg font-bold text-[#1E293B]">
+                        {seo.financingEducation.withoutClauseTitle}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[#475569]">
+                        {seo.financingEducation.withoutClauseBody}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6 ring-1 ring-emerald-100">
+                      <p className="text-sm font-bold uppercase tracking-wide text-[#047857]">Protección</p>
+                      <h3 className="mt-2 text-lg font-bold text-[#1E293B]">
+                        {seo.financingEducation.withClauseTitle}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[#475569]">
+                        {seo.financingEducation.withClauseBody}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-12 rounded-2xl bg-[#1A4FBF] p-8 text-white shadow-lg sm:p-10">
+                    <h3 className="text-xl font-bold sm:text-2xl">{seo.financingEducation.gestorHeading}</h3>
+                    <p className="mt-3 text-blue-100">{seo.financingEducation.gestorIntro}</p>
+                    <ol className="mt-8 space-y-5">
+                      {seo.financingEducation.steps.map((step, i) => (
+                        <li key={step.title} className="flex gap-4">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-sm font-bold text-[#1E293B]">
+                            {i + 1}
+                          </span>
+                          <div>
+                            <p className="font-semibold">{step.title}</p>
+                            <p className="mt-1 text-sm leading-relaxed text-blue-100">{step.body}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <ContratarSlugButton
+                        slug="contrato-arras-penitenciales"
+                        className="rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50"
+                      >
+                        Contratar con gestor asignado
+                      </ContratarSlugButton>
+                      <a
+                        href={waHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
+                      >
+                        Preguntar por el 621-49
+                      </a>
+                    </div>
+                  </div>
+
+                  <p className="mt-6 text-center text-xs text-[#64748b]">{seo.financingEducation.disclaimer}</p>
+                </div>
+              </section>
+
               <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
                 <div className="mx-auto max-w-5xl">
                   <div className="flex items-center gap-2 text-[#1A4FBF]">

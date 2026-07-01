@@ -50,6 +50,11 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import {
+  getPublishedVentaPisoParticularCities,
+  localVentaPisoParticularSinAgenciaHref,
+  VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE,
+} from "@/lib/venta-piso-particular-sin-agencia-local-cities";
+import {
   getPublishedVenderPisoSinInmobiliariaCities,
   localVenderPisoSinInmobiliariaHref,
   VENDER_PISO_SIN_INMOBILIARIA_BASE,
@@ -87,6 +92,7 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
+  "venta-piso-particular-sin-agencia",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -253,6 +259,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     }));
 
+  const ventaParticularMetroHub: MetadataRoute.Sitemap = [
+    {
+      url: `${base}${VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE}`,
+      lastModified: ventaSeoDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+  ];
+
+  const ventaParticularMetroCiudades: MetadataRoute.Sitemap = getPublishedVentaPisoParticularCities().map(
+    (c) => ({
+      url: `${base}${localVentaPisoParticularSinAgenciaHref(c.slug)}`,
+      lastModified: ventaSeoDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.89,
+    }),
+  );
+
   return [
     ...core,
     ...servicios,
@@ -263,6 +287,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
+    ...ventaParticularMetroHub,
+    ...ventaParticularMetroCiudades,
     ...venderSinInmobiliariaHub,
     ...venderSinInmobiliariaLocal,
     ...revisionPostArrasLocalCiudades,
