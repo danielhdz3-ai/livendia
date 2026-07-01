@@ -8,15 +8,69 @@ export type VentaPisoParticularBarrio = { name: string; description: string };
 
 export type VentaPisoParticularSeoContent = {
   heroSubtitle: string;
+  heroProblemLine: string;
   introParagraphs: readonly string[];
   localHeading: string;
   localParagraphs: readonly string[];
   barriosIntro: string;
   barrios: readonly VentaPisoParticularBarrio[];
   casuistica: readonly { title: string; body: string }[];
+  commonMistakesLocal: readonly { title: string; body: string }[];
   precioMedio: number;
   faqLocal: readonly { question: string; answer: string }[];
 };
+
+function faqExtended(city: string): VentaPisoParticularSeoContent["faqLocal"] {
+  return [
+    {
+      question: "¿Qué pasa si el comprador no consigue la hipoteca?",
+      answer: `Si redactamos cláusula conforme al art. 621-49 CCCat, el comprador puede desistir en los términos pactados sin perder indebidamente la señal. Sin esa cláusula, el conflicto recae sobre las arras penitenciales. Tu gestor en ${city} lo incluye cuando la operación depende de financiación.`,
+    },
+    {
+      question: "¿Quién paga la plusvalía municipal al vender?",
+      answer:
+        "El vendedor. Livendia no liquida la plusvalía, pero te orienta sobre plazos de presentación en el ayuntamiento correspondiente y qué documentación necesitas para la escritura.",
+    },
+    {
+      question: "¿Puedo elegir la notaría para firmar?",
+      answer:
+        "Sí, vendedor y comprador acordáis notaría. Tu gestor prepara la documentación para la que elijáis, en el municipio que corresponda.",
+    },
+    {
+      question: "¿Qué impuestos paga el vendedor en una compraventa entre particulares?",
+      answer:
+        "Principalmente plusvalía municipal (IIVTNU) e, en su caso, IRPF si hay ganancia patrimonial. El ITP lo paga el comprador. Te orientamos sobre plazos; la declaración fiscal la realiza el vendedor o su asesor.",
+    },
+    {
+      question: "¿Cuánto tarda realmente una venta entre particulares hasta notaría?",
+      answer: `En ${city} y el área metropolitana, lo habitual son 6 a 12 semanas desde arras hasta escritura, según hipoteca del comprador, cancelación de hipoteca del vendedor y velocidad de la comunidad. Tu gestor fija calendario realista desde la primera llamada.`,
+    },
+    {
+      question: "¿Qué diferencia hay entre arras penitenciales y confirmatorias?",
+      answer:
+        "Las penitenciales permiten desistir perdiendo o recuperando la señal según CCCat (621-4); las confirmatorias vinculan más a las partes. Tu gestor te explica cuál conviene en tu operación antes de firmar.",
+    },
+    {
+      question: "¿Puedo vender si tengo hipoteca pendiente?",
+      answer:
+        "Sí. El gestor coordina certificado de deuda del banco y cancelación en notaría el mismo día de la venta, alineado con lo pactado en arras.",
+    },
+    {
+      question: "¿Qué documentos debe aportar el vendedor frente al comprador?",
+      answer:
+        "Nota simple, escrituras, certificado energético, cédula de habitabilidad, certificado de deuda de comunidad, IBI, y documentación de cancelación de hipoteca si aplica. Tu gestor genera checklist exacto y persigue cada certificado.",
+    },
+    {
+      question: "¿Livendia me representa en notaría?",
+      answer:
+        "No comparecemos en tu lugar. Preparamos toda la documentación y resolvemos incidencias previas para que tú firmes con seguridad.",
+    },
+    {
+      question: "¿Puedo contratar solo para revisar un borrador de arras?",
+      answer: `Sí. Si solo necesitas revisión o redacción de arras, existe el servicio de contrato de arras local por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}. El servicio completo (${SERVICIO_COMPLETO_CV_PRICE_LABEL}) cubre arras más toda la gestión hasta escritura.`,
+    },
+  ] as const;
+}
 
 function faqCore(city: string): VentaPisoParticularSeoContent["faqLocal"] {
   return [
@@ -63,8 +117,10 @@ function faqCore(city: string): VentaPisoParticularSeoContent["faqLocal"] {
 export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoParticularSeoContent, never>> = {
   "hospitalet-de-llobregat": {
     precioMedio: 240_000,
+    heroProblemLine:
+      "Has encontrado comprador en L'Hospitalet — por Idealista, por un vecino o porque ya os conocíais. El precio está acordado. Y ahora empieza la parte que asusta: arras, comunidad, cédula, hipoteca y notaría.",
     heroSubtitle:
-      "Vende tu vivienda directamente a un particular sin pagar comisiones de inmobiliaria y con el acompañamiento de un gestor inmobiliario especializado durante todo el proceso en L'Hospitalet de Llobregat.",
+      "Livendia entra cuando tú ya tienes comprador. Un gestor inmobiliario especializado se asigna a tu expediente y coordina toda la gestión documental y jurídica hasta la firma — sin comisión de inmobiliaria.",
     introParagraphs: [
       "Has encontrado comprador para tu piso en L'Hospitalet — por Idealista, por recomendación o porque ya conocíais al comprador. Esa es la parte que muchos propietarios resuelven solos y bien. Lo que viene después es donde se complica: contrato de arras, certificado de deuda de la comunidad, cédula de habitabilidad, nota simple, hipoteca pendiente y coordinación con notaría. Sin gestor, descubres la lista de papeles cuando el comprador ya te presiona por fecha.",
       "Livendia no es una inmobiliaria. No publicamos tu anuncio ni buscamos comprador. Somos gestoría inmobiliaria digital para propietarios que venden entre particulares y quieren un profesional al otro lado del teléfono durante toda la operación. Por una tarifa plana de 890 € IVA incluido, un gestor se asigna a tu expediente y coordina la venta documental hasta la firma.",
@@ -175,13 +231,26 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
         answer:
           "Sí. Coordinamos con el asesor del comprador para alinear contratos y plazos. Tu gestor Livendia defiende tus intereses como vendedor particular.",
       },
+      ...faqExtended("L'Hospitalet de Llobregat"),
+    ],
+    commonMistakesLocal: [
+      {
+        title: "Arras barcelonesas sin adaptar a L'Hospitalet",
+        body: "Copiar plantillas de Eixample sin plazos realistas para comunidades grandes de Bellvitge o La Florida es la causa más frecuente de retrasos antes de notaría.",
+      },
+      {
+        title: "Subestimar el certificado de comunidad en bloques densos",
+        body: "En Collblanc o Pubilla Cases, administradores saturados pueden tardar tres semanas. Firmar arras con fecha de escritura en un mes sin haber pedido el certificado es un error evitable.",
+      },
     ],
   },
 
   "cornella-de-llobregat": {
     precioMedio: 250_000,
+    heroProblemLine:
+      "En Cornellà has cerrado venta con un particular — quizá de Sant Ildefons o del centre — y sientes alivio. Hasta que te piden arras mañana y no sabes si el Word que te pasaron protege tu señal.",
     heroSubtitle:
-      "Vende en Cornellà de Llobregat directamente a tu comprador particular — sin comisión de inmobiliaria — con un gestor Livendia que coordina arras, documentos y firma en notaría.",
+      "Tú ya tienes comprador; Livendia se encarga del resto. Gestor inmobiliario asignado, documentación en orden y acompañamiento hasta la firma en notaría por tarifa plana.",
     introParagraphs: [
       "En Cornellà cada vez más propietarios cierran venta sin agencia: el comprador llega por portal, por contacto directo o por recomendación en el barrio. Ahorras miles de euros en comisión, pero la responsabilidad documental recae en ti. Un error en las arras, un certificado de comunidad caducado o una hipoteca mal calendarizada puede costarte la operación entera.",
       "Livendia existe para ese momento. No vamos a enseñarte el piso ni a negociar el precio por ti. Vamos a ser tu gestor inmobiliario de confianza: revisar la operación, redactar o corregir contratos, pedir nota simple y certificados, hablar con la comunidad si hace falta y acompañarte hasta que firmes en notaría.",
@@ -287,13 +356,26 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
         question: "¿Enlazáis con contrato de arras solo si no contrato el servicio completo?",
         answer: `Sí. Arras sueltas por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} en Cornellà si solo necesitas ese trámite. Para venta integral hasta notaría, servicio completo ${SERVICIO_COMPLETO_CV_PRICE_LABEL}.`,
       },
+      ...faqExtended("Cornellà de Llobregat"),
+    ],
+    commonMistakesLocal: [
+      {
+        title: "Herencia sin adjudicación antes de arras",
+        body: "En Fontsanta o el centre, vender sin que todos los herederos figuren correctamente en contrato frena la operación en notaría.",
+      },
+      {
+        title: "Ocultar derramas aprobadas al comprador",
+        body: "En Gavarra o Sant Ildefons es habitual encontrar derramas de fachada en actas recientes. El comprador particular las descubre y reclama.",
+      },
     ],
   },
 
   "esplugues-de-llobregat": {
     precioMedio: 340_000,
+    heroProblemLine:
+      "En Esplugues has encontrado comprador — a menudo en Finestrelles, Can Clota o cerca de Ciudad Diagonal — y el ahorro de no pagar comisión de agencia es enorme. Pero una operación de 350.000 € mal documentada puede costarte mucho más que esos miles.",
     heroSubtitle:
-      "En Esplugues de Llobregat vende a tu comprador particular con seguridad jurídica: gestor Livendia, tarifa plana y cero comisión de agencia.",
+      "Livendia actúa cuando el acuerdo ya está hecho: gestor inmobiliario especializado, gestión documental completa y acompañamiento humano hasta la entrega de llaves.",
     introParagraphs: [
       "Esplugues combina perfil residencial de alto poder adquisitivo con ventas directas entre particulares — sobre todo cuando el vendedor ya conoce al comprador o cuando el piso no necesita marketing agresivo. En Can Clota, Finestrelles o Ciudad Diagonal, una comisión del 3 % puede superar fácilmente los 10.000 € sin aportar valor si el comprador ya está.",
       "Livendia cubre el vacío entre 'vendo solo' y 'pago agencia'. Asignamos gestor inmobiliario a tu expediente: alguien que ha visto cientos de operaciones entre particulares y sabe qué documentos pide notaría en Catalunya, qué cláusulas equilibran arras y qué plazos son realistas cuando hay hipoteca de por medio.",
@@ -312,27 +394,27 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
       {
         name: "Can Clota",
         description:
-          "Chalets y adosados con operaciones de mayor ticket. Revisión de parcela, límites y anejos en registro antes de arras.",
+          "Zona de chalets y adosados con operaciones de ticket alto entre particulares conocidos. Aquí revisamos con especial rigor parcela, lindes, anejos y coherencia entre catastro y registro — un error en arras sobre qué se transmite puede tumbar la venta en notaría.",
       },
       {
         name: "La Plana",
         description:
-          "Comunidades más pequeñas; plazos de certificado más ágiles, pero exigencia alta del comprador en documentación.",
+          "Barrio residencial tranquilo donde muchas ventas van sin agencia entre vecinos. Comunidades más pequeñas permiten certificados más ágiles, pero el comprador suele ser exigente: el gestor adelanta energético, cédula e ITE antes de fijar señal.",
       },
       {
         name: "Finestrelles",
         description:
-          "Ventas directas frecuentes entre conocidos. El gestor formaliza lo pactado verbalmente en contratos ejecutables.",
+          "Ventas directas muy frecuentes entre conocidos del trabajo o del barrio. El gestor formaliza lo pactado verbalmente en contratos ejecutables y explica al comprador y al vendedor qué pasa con la señal si el banco tarda.",
       },
       {
         name: "Centre",
         description:
-          "Pisos en el núcleo urbano con ITE y cédula a verificar. Coordinación con notarías del Baix Llobregat.",
+          "Núcleo urbano de Esplugues con pisos de segunda mano e edificios que exigen ITE y cédula al día. Coordinamos con notarías del Baix Llobregat y adaptamos plazos de comunidad al calendario real de la operación.",
       },
       {
         name: "Ciudad Diagonal",
         description:
-          "Operaciones con compradores exigentes y a menudo financiación compleja. Cláusula 621-49 CCCat redactada con precisión.",
+          "Operaciones con compradores profesionales y financiación compleja. Cláusula 621-49 CCCat redactada con precisión; parking y trastero incluidos en registro se verifican antes de arras.",
       },
     ],
     casuistica: [
@@ -389,13 +471,26 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
         answer:
           "Contratas online, pero puedes escribir por WhatsApp o contacto previo. Tras pago, llamada de diagnóstico incluida.",
       },
+      ...faqExtended("Esplugues de Llobregat"),
+    ],
+    commonMistakesLocal: [
+      {
+        title: "No describir parking en arras en Finestrelles o Ciudad Diagonal",
+        body: "Plazas de garaje con título registral separado deben figurar expresamente en contrato. Si no, el comprador puede exigir ajuste de precio en notaría.",
+      },
+      {
+        title: "Confiar en acuerdos verbales en Can Clota",
+        body: "Reformas, muebles incluidos o plazos de obra pactados de palabra sin cláusula escrita generan conflictos costosos en operaciones de ticket alto.",
+      },
     ],
   },
 
   sabadell: {
     precioMedio: 260_000,
+    heroProblemLine:
+      "En Sabadell has encontrado comprador — en Creu Alta, el centre o Can Rull — y quieres cerrar sin regalar miles en comisión. Pero las arras, la herencia o la hipoteca del comprador pueden complicarlo todo si nadie coordina.",
     heroSubtitle:
-      "Vende tu piso en Sabadell a un comprador particular sin comisión de inmobiliaria. Gestor Livendia: arras, documentación y acompañamiento hasta notaría.",
+      "Livendia entra cuando ya hay acuerdo entre particulares. Tu gestor inmobiliario especializado gestiona arras, documentación y notaría hasta que firmes con tranquilidad.",
     introParagraphs: [
       "Sabadell mueve un volumen importante de compraventas entre particulares en el Vallès Occidental: herencias en Creu Alta, pisos en el centre, operaciones familiares en Can Rull o Gràcia del Vallès. Muchos propietarios encuentran comprador por boca a boca o por portal, evitan agencia, y se encuentran solos frente a arras, comunidad y notaría.",
       "Livendia no sustituye tu acuerdo con el comprador — lo protege. Un gestor inmobiliario se asigna a tu caso, revisa si el calendario es viable, redacta contratos conforme al Codi civil de Catalunya y persigue certificados mientras tú sigues con tu vida.",
@@ -499,13 +594,26 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
         question: "¿Enlazáis con arras en Sabadell?",
         answer: `Sí, tenemos landing de contrato de arras en Sabadell por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} si solo necesitas ese trámite.`,
       },
+      ...faqExtended("Sabadell"),
+    ],
+    commonMistakesLocal: [
+      {
+        title: "Vender piso en herencia sin todos los titulares",
+        body: "En Creu Alta y el centre es frecuente. Si un hermano no firma arras o no comparece en notaría, la operación se para.",
+      },
+      {
+        title: "Calendario imposible por hipoteca del comprador",
+        body: "Compradores del Vallès con financiación lenta necesitan cláusula 621-49; sin ella, la señal queda en riesgo si el banco deniega.",
+      },
     ],
   },
 
   terrassa: {
     precioMedio: 250_000,
+    heroProblemLine:
+      "En Terrassa ya tienes comprador — quizá en Sant Pere, Les Arenes o Ca n'Aurell — y la parte difícil empieza ahora: papeles, arras y la presión de una fecha de notaría que quizá no es realista.",
     heroSubtitle:
-      "En Terrassa vende tu vivienda a un particular con gestor inmobiliario Livendia: documentación, arras y firma en notaría por tarifa plana, sin comisión.",
+      "Tú cierras la venta directa; Livendia asegura el camino hasta la firma. Gestor inmobiliario asignado, acompañamiento continuo y gestión documental completa.",
     introParagraphs: [
       "Terrassa tiene un mercado activo de venta entre particulares: pisos en Sant Pere, Les Arenes, Ca n'Aurell o Can Palet cambian de manos sin agencia cuando el vendedor ya tiene comprador — a menudo vecino, familiar o contacto de trabajo en el Vallès.",
       "El error más caro no es no vender; es vender mal documentado. Arras penitenciales mal explicadas, cédula caducada, certificado de comunidad que tarda un mes o hipoteca del vendedor mal calendarizada pueden tumbar una operación que en precio ya estaba cerrada.",
@@ -610,6 +718,17 @@ export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoPar
         question: "¿Por qué no usar solo plantillas de internet?",
         answer:
           "Porque en Terrassa, como en toda Catalunya, arras mal redactadas y ausencia de 621-49 son la primera causa de pérdida de señal o conflicto pre-notaría. Un gestor cuesta menos que un litigio.",
+      },
+      ...faqExtended("Terrassa"),
+    ],
+    commonMistakesLocal: [
+      {
+        title: "Confundir arras penitenciales y confirmatorias en el centre",
+        body: "En Sant Pere y el centre histórico, textos ambiguos generan demandas. El gestor unifica criterio CCCat antes de firmar.",
+      },
+      {
+        title: "Prometer entrega de llaves antes de escritura",
+        body: "Sin protección contractual, ceder posesión antes de cobrar es un riesgo grave para el vendedor particular.",
       },
     ],
   },

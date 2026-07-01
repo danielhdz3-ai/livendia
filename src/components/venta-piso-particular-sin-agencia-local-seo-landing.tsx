@@ -7,7 +7,6 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 import { getPublicServices } from "@/lib/catalog";
 import {
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
-  GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_CENTS,
   SERVICIO_COMPLETO_CV_PRICE_EUR,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
@@ -31,17 +30,29 @@ import { buildVentaPisoParticularLocalSchemaGraph } from "@/lib/service-schema";
 import type { VentaPisoParticularLocalLandingConfig } from "@/lib/venta-piso-particular-sin-agencia-local-cities";
 import {
   VENTA_PARTICULAR_BENEFITS,
+  VENTA_PARTICULAR_COMMON_MISTAKES,
   VENTA_PARTICULAR_COMPARISON_ROWS,
   VENTA_PARTICULAR_DOCUMENTATION,
+  VENTA_PARTICULAR_GESTOR_HUMAN,
+  VENTA_PARTICULAR_INTERNAL_LINKS,
   VENTA_PARTICULAR_NOT_AGENCY,
   VENTA_PARTICULAR_PROCESS_STEPS,
+  VENTA_PARTICULAR_TIMELINE,
   VENTA_PARTICULAR_WHAT_LIVENDIA_DOES,
+  LIVENDIA_DIFFERENTIATOR,
 } from "@/lib/venta-piso-particular-sin-agencia-local-shared";
-import { localVenderPisoSinAgenciaHref } from "@/lib/vender-piso-sin-agencia-local-cities";
+import {
+  agencyCommissionWithVat,
+  formatEur,
+  localVenderPisoSinAgenciaHref,
+} from "@/lib/vender-piso-sin-agencia-local-cities";
 import { PILLAR_BARCELONA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  AlertTriangle,
+  ArrowRight,
+  Calendar,
   CheckCircle,
   ClipboardList,
   FileSearch,
@@ -58,6 +69,61 @@ const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const HERO_IMAGE = "/images/contratodealquiler.jpg";
 
 const STEP_ICONS = [ClipboardList, FileSearch, Shield, UserCheck, Handshake, Shield, CheckCircle] as const;
+
+function GestorStrip({ city }: { city: string }) {
+  return (
+    <div className="border-y border-[#D4AF37]/30 bg-[#FFFBEB] px-4 py-4 sm:px-6">
+      <p className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-2 text-center text-sm font-medium text-[#1E293B]">
+        <UserCheck className="h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
+        <span>
+          En <strong>{city}</strong>, un <strong>gestor inmobiliario especializado</strong> se asigna a tu
+          expediente y te acompaña en cada llamada hasta la entrega de llaves.
+        </span>
+      </p>
+    </div>
+  );
+}
+
+function SavingsVisual({
+  city,
+  salePrice,
+  priceEur,
+  priceLabel,
+}: {
+  city: string;
+  salePrice: number;
+  priceEur: number;
+  priceLabel: string;
+}) {
+  const agency3 = agencyCommissionWithVat(salePrice, 3);
+  const saving = agency3 - priceEur;
+
+  return (
+    <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200">
+      <div className="bg-[#1A4FBF] px-6 py-4 text-center text-white">
+        <p className="text-sm font-semibold uppercase tracking-wide text-blue-100">Ejemplo en {city}</p>
+        <p className="mt-1 text-lg font-bold">Piso vendido a {formatEur(salePrice)} entre particulares</p>
+      </div>
+      <div className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <div className="p-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#64748b]">Inmobiliaria 3 % + IVA</p>
+          <p className="mt-2 text-2xl font-extrabold text-red-600">{formatEur(agency3)}</p>
+          <p className="mt-1 text-xs text-[#64748b]">Comisión por captar comprador que ya tienes</p>
+        </div>
+        <div className="bg-[#F0FDF4] p-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#047857]">Livendia</p>
+          <p className="mt-2 text-2xl font-extrabold text-[#047857]">{priceLabel}</p>
+          <p className="mt-1 text-xs text-[#64748b]">IVA incl. · Gestor asignado · Sin comisión</p>
+        </div>
+        <div className="p-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#64748b]">Ahorro estimado</p>
+          <p className="mt-2 text-2xl font-extrabold text-[#1A4FBF]">{formatEur(saving)}</p>
+          <p className="mt-1 text-xs text-[#64748b]">Mismo acompañamiento, sin % sobre precio</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function LocalVentaParticularJsonLd({
   path,
@@ -129,7 +195,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
 
         <main className="flex-1">
           {/* Hero */}
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1E3A8A] to-[#1E40AF] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[680px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -139,8 +205,12 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                   <h1 className="text-2xl font-extrabold leading-snug sm:text-4xl lg:text-5xl">
                     {config.heroH1}
                   </h1>
+                  <p className="mt-5 text-lg leading-relaxed text-blue-100 sm:text-xl">{seo.heroProblemLine}</p>
                   <p className="mt-4 text-xl font-semibold text-[#F4E4A6] sm:text-2xl">{config.heroH2}</p>
-                  <p className="mt-6 text-base leading-relaxed text-blue-50 sm:text-lg">{seo.heroSubtitle}</p>
+                  <p className="mt-4 text-base leading-relaxed text-blue-50 sm:text-lg">{seo.heroSubtitle}</p>
+                  <p className="mt-4 rounded-xl bg-white/10 px-4 py-3 text-sm leading-relaxed text-blue-50 ring-1 ring-white/20">
+                    {LIVENDIA_DIFFERENTIATOR}
+                  </p>
                   <div className="mt-8 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-blue-50">
                     {priceLabel} IVA incl. · Gestor dedicado · Sin comisión de agencia
                   </div>
@@ -168,21 +238,23 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 to-transparent lg:bg-gradient-to-l lg:from-[#1E40AF]/30 lg:to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A4FBF]/25 to-transparent lg:bg-gradient-to-l lg:from-[#1A4FBF]/20 lg:to-transparent" />
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Qué NO somos / qué SÍ */}
+          <GestorStrip city={config.city} />
+
+          {/* Cuándo entra Livendia */}
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl">
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                Qué hace Livendia cuando ya tienes comprador en {config.city}
+                ¿Cuándo entra Livendia en tu venta en {config.city}?
               </h2>
               <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-[#475569]">
-                No somos inmobiliaria. No buscamos compradores. Coordinamos toda la gestión documental y jurídica
-                hasta la firma en notaría.
+                Cuando <strong>ya has encontrado comprador particular</strong> y necesitas que un profesional
+                coordine arras, documentación y firma — sin pagar comisión de inmobiliaria.
               </p>
               <div className="mt-10 grid gap-8 lg:grid-cols-2">
                 <div className="rounded-2xl border border-red-100 bg-red-50/50 p-6">
@@ -223,6 +295,63 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                   </p>
                 ))}
               </div>
+              <SavingsVisual
+                city={config.city}
+                salePrice={config.highlightSalePrice}
+                priceEur={priceEur}
+                priceLabel={priceLabel}
+              />
+            </div>
+          </section>
+
+          {/* Acompañamiento humano del gestor */}
+          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                No es solo gestión documental: es acompañamiento humano
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-[#475569]">
+                Tu gestor inmobiliario en {config.city} resuelve dudas, explica consecuencias y te guía cuando
+                surgen imprevistos — no desaparece tras enviarte un PDF.
+              </p>
+              <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                {VENTA_PARTICULAR_GESTOR_HUMAN.map((item) => (
+                  <div key={item.title} className="rounded-2xl bg-white p-6 ring-1 ring-slate-200">
+                    <UserCheck className="h-8 w-8 text-[#1A4FBF]" aria-hidden />
+                    <h3 className="mt-4 font-bold text-[#1E293B]">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mx-auto mt-8 max-w-2xl text-center text-sm font-medium text-[#1A4FBF]">
+                {LIVENDIA_DIFFERENTIATOR}
+              </p>
+            </div>
+          </section>
+
+          {/* Línea temporal */}
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-5xl">
+              <div className="flex items-center justify-center gap-2 text-[#1A4FBF]">
+                <Calendar className="h-6 w-6" aria-hidden />
+                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Línea temporal de tu venta entre particulares
+                </h2>
+              </div>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-[#475569]">
+                Desde el acuerdo con tu comprador hasta la entrega de llaves — con gestor Livendia en cada hito.
+              </p>
+              <ol className="relative mt-12 space-y-0 border-l-2 border-[#1A4FBF]/30 pl-8 sm:pl-10">
+                {VENTA_PARTICULAR_TIMELINE.map((item, i) => (
+                  <li key={item.step} className={`relative pb-10 ${i === VENTA_PARTICULAR_TIMELINE.length - 1 ? "pb-0" : ""}`}>
+                    <span className="absolute -left-[1.65rem] flex h-8 w-8 items-center justify-center rounded-full bg-[#1A4FBF] text-sm font-bold text-white sm:-left-[1.85rem]">
+                      {item.step}
+                    </span>
+                    <h3 className="text-lg font-bold text-[#1E293B]">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{item.body}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </section>
 
@@ -232,6 +361,9 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
                 Proceso paso a paso con tu gestor en {config.city}
               </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[#64748b]">
+                El mismo gestor inmobiliario especializado te acompaña en cada fase — no cambia de interlocutor.
+              </p>
               <ol className="mt-12 space-y-6">
                 {VENTA_PARTICULAR_PROCESS_STEPS.map((step, i) => {
                   const Icon = STEP_ICONS[i] ?? ClipboardList;
@@ -272,7 +404,13 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                   <li key={doc.title} className="flex gap-3 rounded-xl bg-[#F8FAFC] p-5 ring-1 ring-slate-200">
                     <FileSearch className="mt-0.5 h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
                     <div>
-                      <p className="font-semibold text-[#1E293B]">{doc.title}</p>
+                      {"href" in doc && doc.href ? (
+                        <Link href={doc.href} className="font-semibold text-[#1A4FBF] hover:underline">
+                          {doc.title}
+                        </Link>
+                      ) : (
+                        <p className="font-semibold text-[#1E293B]">{doc.title}</p>
+                      )}
                       <p className="mt-1 text-sm text-[#64748b]">{doc.body}</p>
                     </div>
                   </li>
@@ -342,6 +480,36 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
               </h2>
               <div className="mt-10">
                 <CalculadoraAhorroVendedor city={config.city} precioMedio={seo.precioMedio} />
+              </div>
+            </div>
+          </section>
+
+          {/* Errores frecuentes */}
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <div className="flex items-center gap-2 text-[#991B1B]">
+                <AlertTriangle className="h-7 w-7" aria-hidden />
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Errores frecuentes al vender un piso entre particulares
+                </h2>
+              </div>
+              <p className="mt-4 text-[#475569]">
+                En {config.city} vemos estos fallos una y otra vez cuando el vendedor no tiene gestor. Evitarlos
+                es más barato que resolver un conflicto después.
+              </p>
+              <div className="mt-8 space-y-4">
+                {VENTA_PARTICULAR_COMMON_MISTAKES.map((mistake) => (
+                  <div key={mistake.title} className="rounded-xl border border-red-100 bg-red-50/40 p-5">
+                    <h3 className="font-bold text-[#991B1B]">{mistake.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#475569]">{mistake.body}</p>
+                  </div>
+                ))}
+                {seo.commonMistakesLocal.map((mistake) => (
+                  <div key={mistake.title} className="rounded-xl border border-amber-200 bg-amber-50/50 p-5">
+                    <h3 className="font-bold text-[#92400E]">{mistake.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#475569]">{mistake.body}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -416,39 +584,71 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           {/* Enlaces internos */}
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">
-              <h2 className="text-lg font-bold text-[#1E293B]">Servicios relacionados</h2>
-              <nav aria-label="Enlaces servicios relacionados" className="mt-4 flex flex-wrap gap-3 text-sm">
-                <Link href={gestoriaHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                  Gestoría inmobiliaria
-                </Link>
-                <Link href={arrasHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                  Contrato de arras{showArrasLocal ? ` en ${config.city}` : ""}
-                </Link>
-                <Link href={gestionDocHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                  Gestión documental vendedor ({GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL})
-                </Link>
-                <Link
-                  href={localVenderPisoSinAgenciaHref("barcelona")}
-                  className="font-semibold text-[#1A4FBF] hover:underline"
-                >
-                  Vender sin agencia Barcelona
-                </Link>
-                <Link href={PILLAR_BARCELONA_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
-                  Guía vender sin inmobiliaria
-                </Link>
-                <Link href="/blog" className="font-semibold text-[#1A4FBF] hover:underline">
-                  Blog Livendia
-                </Link>
-                <Link href="/servicios/revision-documental-post-arras" className="font-semibold text-[#1A4FBF] hover:underline">
-                  Revisión documental post-arras
-                </Link>
-              </nav>
+              <h2 className="text-xl font-bold text-[#1E293B]">Recursos para cerrar tu venta con seguridad</h2>
+              <p className="mt-2 text-sm text-[#64748b]">
+                Enlaces a servicios y guías relacionadas con arras, documentación y compraventa entre particulares.
+              </p>
+              <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                {VENTA_PARTICULAR_INTERNAL_LINKS.map((link) => {
+                  const href =
+                    link.href === "/servicios/contrato-de-arras" && showArrasLocal
+                      ? arrasHref
+                      : link.href === "/gestoria/barcelona" && showGestoria
+                        ? gestoriaHref
+                        : link.href === "/servicios/gestion-documental-vendedor" && showGestionDoc
+                          ? gestionDocHref
+                          : link.href;
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={href}
+                        className="group flex h-full flex-col rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-slate-200 hover:ring-[#1A4FBF]/40"
+                      >
+                        <span className="flex items-center gap-1 font-semibold text-[#1A4FBF] group-hover:underline">
+                          {link.label}
+                          <ArrowRight className="h-4 w-4" aria-hidden />
+                        </span>
+                        <span className="mt-1 text-xs leading-relaxed text-[#64748b]">{link.description}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+                <li>
+                  <Link
+                    href={localVenderPisoSinAgenciaHref("barcelona")}
+                    className="group flex h-full flex-col rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-slate-200 hover:ring-[#1A4FBF]/40"
+                  >
+                    <span className="flex items-center gap-1 font-semibold text-[#1A4FBF] group-hover:underline">
+                      Vender sin agencia Barcelona
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </span>
+                    <span className="mt-1 text-xs leading-relaxed text-[#64748b]">
+                      Landing de referencia para venta entre particulares en la capital.
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={PILLAR_BARCELONA_PATH}
+                    className="group flex h-full flex-col rounded-xl bg-[#F8FAFC] p-4 ring-1 ring-slate-200 hover:ring-[#1A4FBF]/40"
+                  >
+                    <span className="flex items-center gap-1 font-semibold text-[#1A4FBF] group-hover:underline">
+                      Guía vender sin inmobiliaria
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </span>
+                    <span className="mt-1 text-xs leading-relaxed text-[#64748b]">
+                      Pilar SEO con trámites, impuestos y checklist completo.
+                    </span>
+                  </Link>
+                </li>
+              </ul>
               <p className="mt-4 text-xs text-[#64748b]">
-                Arras sueltas desde {CONTRATO_ARRAS_LOCAL_PRICE_LABEL} si solo necesitas ese trámite. Servicio
-                completo de venta: {priceLabel} IVA incl.
+                Arras sueltas desde {CONTRATO_ARRAS_LOCAL_PRICE_LABEL} · Servicio completo: {priceLabel} IVA incl.
               </p>
             </div>
           </section>
+
+          <GestorStrip city={config.city} />
 
           {/* FAQ */}
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
@@ -465,7 +665,8 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-3xl">{config.finalCtaLead}</h2>
-              <p className="mt-4 text-lg text-blue-100">
+              <p className="mt-4 text-lg text-blue-100">{LIVENDIA_DIFFERENTIATOR}</p>
+              <p className="mt-3 text-base text-blue-200">
                 Contrata el servicio completo por {priceLabel} IVA incl. — gestor asignado en 24 h laborables.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">

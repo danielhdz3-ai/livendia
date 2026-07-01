@@ -3,6 +3,10 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
 } from "@/lib/catalog.public";
 
+/** Mensaje diferenciador principal — repetir de forma natural en la landing. */
+export const LIVENDIA_DIFFERENTIATOR =
+  "Tú encuentras al comprador; nosotros nos ocupamos de que la compraventa entre particulares llegue a buen puerto con total seguridad jurídica.";
+
 export const VENTA_PARTICULAR_NOT_AGENCY = [
   "No somos una inmobiliaria ni captamos compradores por ti.",
   "No publicamos anuncios ni cobramos comisión sobre el precio de venta.",
@@ -12,20 +16,105 @@ export const VENTA_PARTICULAR_NOT_AGENCY = [
 
 export const VENTA_PARTICULAR_WHAT_LIVENDIA_DOES = [
   {
-    title: "Mantienes el control de la venta",
-    body: "Tú negociaste el precio con tu comprador. Nosotros no intervenimos en la captación ni en la comercialización del inmueble.",
+    title: "Entramos cuando ya tienes comprador",
+    body: "Livendia no interviene en la búsqueda ni en la negociación del precio. Nuestro trabajo empieza en el momento en que tú y tu comprador particular tenéis un acuerdo y necesitáis cerrarlo con seguridad.",
   },
   {
     title: "Tarifa plana, sin comisión",
     body: `El servicio completo cuesta ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — no un 3 % ni un 5 % sobre el precio de tu piso.`,
   },
   {
-    title: "Gestor dedicado de principio a fin",
-    body: "Un gestor inmobiliario se asigna a tu expediente y te acompaña en cada hito: arras, documentación, incidencias y firma en notaría.",
+    title: "Un gestor asignado durante todo el proceso",
+    body: "No es un PDF automático ni un call center: una persona conoce tu caso, responde tus dudas por teléfono y te guía desde las arras hasta la entrega de llaves.",
   },
   {
-    title: "Seguridad jurídica y documental",
-    body: "Revisamos o redactamos contratos, contrastamos registro y comunidad, y detectamos problemas antes de que comprometas la señal o llegues a notaría.",
+    title: "Acompañamiento humano, no solo papeles",
+    body: "Te explicamos en lenguaje claro qué significa cada cláusula, qué pasa si el banco tarda o si la comunidad no responde — y qué opciones tienes en cada momento.",
+  },
+] as const;
+
+export const VENTA_PARTICULAR_GESTOR_HUMAN = [
+  {
+    title: "Llamada de diagnóstico incluida",
+    body: "Tras contratar, tu gestor te llama para entender la operación: precio pactado, plazos, hipoteca del comprador, cargas del inmueble y calendario realista.",
+  },
+  {
+    title: "Disponible cuando surgen dudas",
+    body: "¿El comprador pide modificar una cláusula? ¿La comunidad tarda? ¿El notario solicita un documento extra? Tu gestor responde y coordina — no te deja solo frente al papeleo.",
+  },
+  {
+    title: "Panel digital para seguir el expediente",
+    body: "Subes documentos, ves el estado de cada trámite y compartes información con tu comprador si procede — con un profesional supervisando todo.",
+  },
+  {
+    title: "Hasta el día de la firma",
+    body: "El gestor no desaparece tras redactar las arras: acompaña la obtención de certificados, la preparación pre-notaría y la resolución de incidencias de última hora.",
+  },
+] as const;
+
+/** Línea temporal completa de la venta entre particulares. */
+export const VENTA_PARTICULAR_TIMELINE = [
+  {
+    step: 1,
+    title: "Acuerdo entre particulares",
+    body: "Tú y tu comprador cerráis precio y condiciones. Livendia entra aquí: revisamos que el acuerdo sea viable antes de firmar nada vinculante.",
+  },
+  {
+    step: 2,
+    title: "Revisión documental",
+    body: "Tu gestor genera checklist personalizado: nota simple, comunidad, cédula, energético, IBI e hipoteca pendiente si la hay.",
+  },
+  {
+    step: 3,
+    title: "Contrato de arras",
+    body: "Redactamos o revisamos penitenciales o confirmatorias conforme al CCCat, incluida cláusula de financiación si el comprador pide hipoteca.",
+  },
+  {
+    step: 4,
+    title: "Preparación de la compraventa",
+    body: "Obtenemos certificados pendientes, cruzamos documentación con lo pactado y resolvemos incidencias con margen de tiempo.",
+  },
+  {
+    step: 5,
+    title: "Notaría",
+    body: "Coordinamos fecha, verificamos que no falte ningún documento y resolvemos dudas de última hora con comprador y notario.",
+  },
+  {
+    step: 6,
+    title: "Firma de escritura",
+    body: "Compareces en notaría con la documentación en orden. Tu gestor ha preparado el terreno para que la firma sea un trámite, no una sorpresa.",
+  },
+  {
+    step: 7,
+    title: "Entrega de llaves",
+    body: "Cierre de suministros, liquidación de IBI prorrateado y entrega conforme a lo pactado. Orientación sobre plusvalía e impuestos del vendedor.",
+  },
+] as const;
+
+export const VENTA_PARTICULAR_COMMON_MISTAKES = [
+  {
+    title: "Firmar arras copiadas de internet",
+    body: "Plantillas genéricas omiten plazos, cláusula 621-49 CCCat si hay hipoteca o consecuencias del incumplimiento. Un error aquí puede costarte la señal entera o meses de conflicto.",
+  },
+  {
+    title: "Fijar fecha de notaría sin tener la documentación",
+    body: "El certificado de deuda de la comunidad o la cancelación de hipoteca pueden tardar semanas. Prometer escritura en 30 días sin haber pedido papeles es la principal causa de tensiones con el comprador.",
+  },
+  {
+    title: "No verificar cargas antes de recibir señal",
+    body: "Hipotecas, embargos, derramas aprobadas o discrepancias registrales aparecen en la nota simple — pero muchos vendedores las descubren tarde.",
+  },
+  {
+    title: "Mezclar arras penitenciales y confirmatorias",
+    body: "Un texto que dice una cosa y aplica otra genera disputas sobre quién pierde la señal si alguien se echa atrás.",
+  },
+  {
+    title: "Entregar llaves antes de escritura sin protección",
+    body: "Sin contrato que ampare la posesión, el vendedor asume riesgos si el comprador ocupa el piso y luego falla la operación.",
+  },
+  {
+    title: "Ignorar la cédula de habitabilidad caducada",
+    body: "En Catalunya no se puede transmitir vivienda sin cédula vigente. Detectarlo a la semana de notaría obliga a retrasar la venta.",
   },
 ] as const;
 
@@ -71,6 +160,7 @@ export const VENTA_PARTICULAR_DOCUMENTATION = [
   {
     title: "Nota simple registral",
     body: "Titularidad actual, cargas, hipotecas, afecciones fiscales y coherencia con la escritura que vais a transmitir.",
+    href: "/servicios/revision-documental-post-arras",
   },
   {
     title: "Escrituras y título de propiedad",
@@ -91,6 +181,7 @@ export const VENTA_PARTICULAR_DOCUMENTATION = [
   {
     title: "Certificados de comunidad",
     body: "Certificado de deuda cero, actas recientes, derramas aprobadas y estado de cuotas de comunidad.",
+    href: "/servicios/gestion-documental-vendedor",
   },
   {
     title: "Cargas e hipotecas",
@@ -99,10 +190,49 @@ export const VENTA_PARTICULAR_DOCUMENTATION = [
   {
     title: "Contrato de arras",
     body: "Redacción o revisión de penitenciales o confirmatorias, cláusula 621-49 CCCat si el comprador financia, y plazos hasta escritura.",
+    href: "/servicios/contrato-de-arras",
   },
   {
     title: "Contrato de compraventa",
     body: "Orientación sobre el borrador notarial, condiciones suspensivas y entrega de llaves conforme a lo acordado entre particulares.",
+  },
+] as const;
+
+export const VENTA_PARTICULAR_INTERNAL_LINKS = [
+  {
+    href: "/servicios/contrato-de-arras",
+    label: "Revisión y redacción de contrato de arras",
+    description: "Penitenciales o confirmatorias adaptadas a tu operación y al CCCat.",
+  },
+  {
+    href: "/servicios/revision-documental-post-arras",
+    label: "Revisión documental post-arras",
+    description: "Checklist registral y de comunidad tras firmar la señal.",
+  },
+  {
+    href: "/servicios/gestion-documental-vendedor",
+    label: "Documentación para vender un piso",
+    description: "Gestión documental de arras a escritura si ya firmaste señal.",
+  },
+  {
+    href: "/gestoria/barcelona",
+    label: "Gestoría inmobiliaria",
+    description: "Asesoramiento integral en compraventa en Catalunya.",
+  },
+  {
+    href: "/blog/que-es-un-contrato-de-arras",
+    label: "Qué es un contrato de arras",
+    description: "Guía para entender tipos, plazos y riesgos antes de firmar.",
+  },
+  {
+    href: "/blog/diferencia-arras-penitenciales-confirmatorias",
+    label: "Arras penitenciales vs confirmatorias",
+    description: "Cuál conviene en una venta entre particulares.",
+  },
+  {
+    href: "/blog/cuanto-cuesta-una-gestoria-inmobiliaria",
+    label: "Cuánto cuesta una gestoría inmobiliaria",
+    description: "Comparativa frente a comisiones de agencia tradicional.",
   },
 ] as const;
 
