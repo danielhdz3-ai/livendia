@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CityHubServices } from "@/components/city-hub-services";
 import { PublicHeader } from "@/components/public-header";
@@ -6,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { getPostsByCitySlug } from "@/lib/blog-content";
 import {
   CIUDADES_HUB_BASE,
+  CITY_HUB_IMAGES,
   CITY_HUB_TAGLINES,
   cityHubHref,
   getCityHub,
@@ -57,6 +59,7 @@ export default async function CiudadHubPage({ params }: Props) {
   const posts = getPostsByCitySlug(slug);
   const pageUrl = `${getSiteUrl()}${cityHubHref(slug)}`;
   const meta = getCityHubMeta(city);
+  const image = CITY_HUB_IMAGES[city.slug];
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -76,30 +79,50 @@ export default async function CiudadHubPage({ params }: Props) {
       />
       <PublicHeader />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
+        <section className="relative border-b border-slate-200 bg-[#1E293B]">
+          <div className="relative mx-auto max-w-6xl">
+            <div className="relative aspect-[21/9] min-h-[220px] max-h-[360px] w-full sm:aspect-[3/1]">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                priority
+                className="object-cover opacity-80"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1E293B]/95 via-[#1E293B]/75 to-[#1E293B]/40" />
+            </div>
+            <div className="absolute inset-0 flex items-end">
+              <div className="mx-auto w-full max-w-4xl px-4 pb-8 pt-6 sm:px-6 sm:pb-10">
+                <nav aria-label="Breadcrumb" className="text-sm text-blue-200">
+                  <ol className="flex flex-wrap items-center gap-1">
+                    <li>
+                      <Link href="/" className="hover:text-white hover:underline">
+                        Inicio
+                      </Link>
+                    </li>
+                    <li aria-hidden>/</li>
+                    <li>
+                      <Link href={CIUDADES_HUB_BASE} className="hover:text-white hover:underline">
+                        Ciudades
+                      </Link>
+                    </li>
+                    <li aria-hidden>/</li>
+                    <li className="font-semibold text-white">{city.name}</li>
+                  </ol>
+                </nav>
+                <h1 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">
+                  Gestoría inmobiliaria en {city.name}
+                </h1>
+                <p className="mt-3 max-w-2xl text-lg text-blue-100">{CITY_HUB_TAGLINES[city.slug]}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-slate-200 bg-white px-4 py-8 sm:px-6">
           <div className="mx-auto max-w-4xl">
-            <nav aria-label="Breadcrumb" className="text-sm text-[#64748b]">
-              <ol className="flex flex-wrap items-center gap-1">
-                <li>
-                  <Link href="/" className="hover:text-[#1A4FBF] hover:underline">
-                    Inicio
-                  </Link>
-                </li>
-                <li aria-hidden>/</li>
-                <li>
-                  <Link href={CIUDADES_HUB_BASE} className="hover:text-[#1A4FBF] hover:underline">
-                    Ciudades
-                  </Link>
-                </li>
-                <li aria-hidden>/</li>
-                <li className="font-semibold text-[#1E293B]">{city.name}</li>
-              </ol>
-            </nav>
-            <h1 className="mt-4 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
-              Gestoría inmobiliaria en {city.name}
-            </h1>
-            <p className="mt-3 max-w-2xl text-lg text-[#475569]">{CITY_HUB_TAGLINES[city.slug]}</p>
-            <p className="mt-2 max-w-2xl text-[#64748b]">{meta.description}</p>
+            <p className="text-[#64748b]">{meta.description}</p>
           </div>
         </section>
 
