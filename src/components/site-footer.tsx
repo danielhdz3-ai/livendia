@@ -6,11 +6,13 @@ import { FooterParticularesTestimonials } from "@/components/footer-particulares
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
 import { businessNap, getWhatsAppHref } from "@/lib/business-nap";
+import { getBusinessLegalIdentity } from "@/lib/business-legal";
 
 const waHref = getWhatsAppHref();
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
+  const legal = getBusinessLegalIdentity();
 
   return (
     <footer className="mt-auto">
@@ -153,6 +155,11 @@ export function SiteFooter() {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/equipo" className="text-blue-100 hover:text-white transition-colors">
+                      Equipo
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/contacto" className="text-blue-100 hover:text-white transition-colors">
                       Contacto
                     </Link>
@@ -214,7 +221,8 @@ export function SiteFooter() {
                 </Link>
               </div>
               <p className="text-xs text-blue-100">
-                © {currentYear} Livendia. Todos los derechos reservados.
+                © {currentYear} {legal.legalName}. Todos los derechos reservados.
+                {legal.taxId ? ` · ${legal.taxId}` : null}
               </p>
             </div>
           </div>

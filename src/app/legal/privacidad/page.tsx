@@ -1,6 +1,7 @@
 import { LegalDraftNote } from "@/components/legal-draft-note";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { getBusinessLegalIdentity } from "@/lib/business-legal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacidadPage() {
+  const legal = getBusinessLegalIdentity();
+
   return (
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
@@ -20,8 +23,17 @@ export default function PrivacidadPage() {
             <section>
               <h2 className="text-lg font-semibold text-[#1E293B]">Responsable del tratamiento</h2>
               <p className="mt-2">
-                Livendia (identidad y datos de contacto a completar) es responsable del tratamiento de los datos
-                personales recabados a través de este sitio, formularios y relación contractual con clientes.
+                <strong>{legal.legalName}</strong>
+                {legal.addressLine ? <> ({legal.addressLine})</> : null} — contacto:{" "}
+                <a href={`mailto:${legal.email}`} className="font-semibold text-[#1A4FBF] hover:underline">
+                  {legal.email}
+                </a>
+                , tel.{" "}
+                <a href={legal.phoneTel} className="font-semibold text-[#1A4FBF] hover:underline">
+                  {legal.phoneDisplay}
+                </a>
+                — es responsable del tratamiento de los datos personales recabados a través de este sitio, formularios
+                y relación contractual con clientes.
               </p>
             </section>
             <section>

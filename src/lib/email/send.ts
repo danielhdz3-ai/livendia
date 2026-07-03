@@ -1,7 +1,7 @@
 import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
 import { createServiceRoleClient } from "@/lib/supabase/service";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { getAdminNotifyEmail, getAppUrl, getResendFrom } from "./config";
+import { getAdminNotifyEmails, getAppUrl, getResendFrom } from "./config";
 import AdminDocUploadedEmail from "./templates/admin-doc-uploaded";
 import AdminNewOrderEmail from "./templates/admin-new-order";
 import AdminNewIncidentEmail from "./templates/admin-new-incident";
@@ -106,23 +106,42 @@ export async function sendAdminNewOrderEmail(opts: {
   paidAt?: string | null;
 }) {
   const resend = getResend();
-  if (!resend) return;
+  const adminTo = getAdminNotifyEmails();
+  if (!resend) {
+    console.error("[email] sendAdminNewOrderEmail: RESEND_API_KEY no configurada");
+    return null;
+  }
+  if (adminTo.length === 0) {
+    console.error("[email] sendAdminNewOrderEmail: sin destinatarios admin");
+    return null;
+  }
+
+  const totalLabel = formatOrderTotalEur(opts.totalCents);
   const adminOrderUrl = `${getAppUrl()}/admin/pedidos/${opts.orderId}`;
-  await resend.emails.send({
+  const adminDashboardUrl = `${getAppUrl()}/admin`;
+
+  const result = await resend.emails.send({
     from: getResendFrom(),
-    to: getAdminNotifyEmail(),
-    subject: `[Livendia] Nuevo pedido: ${opts.serviceName}`,
+    to: adminTo,
+    subject: `💰 [Livendia] Nuevo pago: ${opts.serviceName} — ${totalLabel}`,
     react: AdminNewOrderEmail({
       serviceName: opts.serviceName,
       orderId: opts.orderId,
-      clientEmail: opts.clientEmail,
+      clientEmail: opts.clientEmail.trim() || "—",
       clientName: opts.clientName?.trim() || "—",
       clientPhone: opts.clientPhone?.trim() || "—",
-      totalLabel: formatOrderTotalEur(opts.totalCents),
+      totalLabel,
       paidAtLabel: formatPaidAtEs(opts.paidAt),
       adminOrderUrl,
+      adminDashboardUrl,
     }),
   });
+
+  if (result.error) {
+    console.error("[email] sendAdminNewOrderEmail:", result.error);
+  }
+
+  return result;
 }
 
 export async function sendAdminDocUploadedEmail(opts: {
@@ -136,7 +155,7 @@ export async function sendAdminDocUploadedEmail(opts: {
   const adminOrderUrl = `${getAppUrl()}/admin/pedidos/${opts.orderId}`;
   await resend.emails.send({
     from: getResendFrom(),
-    to: getAdminNotifyEmail(),
+    to: getAdminNotifyEmails(),
     subject: `[Livendia] Nueva documentación — pedido ${opts.orderId.slice(0, 8)}…`,
     react: AdminDocUploadedEmail({
       fileName: opts.fileName,
@@ -206,7 +225,7 @@ export async function sendContactInquiryEmail(opts: {
   const submittedAt = new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" });
   await resend.emails.send({
     from: getResendFrom(),
-    to: getAdminNotifyEmail(),
+    to: getAdminNotifyEmails(),
     replyTo: opts.email,
     subject: `[Livendia] Consulta web — ${opts.name.slice(0, 60)}`,
     react: ContactInquiryEmail({
@@ -237,7 +256,7 @@ export async function sendAdminNewIncidentEmail(opts: {
   const adminIncidentUrl = `${getAppUrl()}/admin/incidencias/${opts.incidentId}`;
   await resend.emails.send({
     from: getResendFrom(),
-    to: getAdminNotifyEmail(),
+    to: getAdminNotifyEmails(),
     subject: `[Livendia] Nueva incidencia: ${opts.incidentTitle}`,
     react: AdminNewIncidentEmail({
       incidentTitle: opts.incidentTitle,

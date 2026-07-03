@@ -1,6 +1,12 @@
 "use client";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import {
+  ORDER_DOC_MAX_BYTES,
+  buildOrderDocStoragePath,
+  guessOrderDocContentType,
+  mapStorageUploadError,
+} from "@/lib/order-document-upload";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { CheckCircle2, FileUp, Loader2, Upload } from "lucide-react";
@@ -24,7 +30,7 @@ const DOC_TYPES: { value: string; label: string }[] = [
   { value: "otro", label: "Otro" },
 ];
 
-const MAX_BYTES = 10 * 1024 * 1024;
+const MAX_BYTES = ORDER_DOC_MAX_BYTES;
 const MAX_FILES_PER_BATCH = 25;
 
 function typeLabel(v: string) {
@@ -41,27 +47,54 @@ type UploadItem = {
 async function uploadSingleFile(
   file: File,
   orderId: string,
+  userId: string,
   docType: string,
 ): Promise<{ ok: true; row: DocRow } | { ok: false; error: string }> {
   if (file.size > MAX_BYTES) {
     return { ok: false, error: `${file.name}: máximo 10 MB` };
   }
 
-  const body = new FormData();
-  body.append("orderId", orderId);
-  body.append("documentType", docType);
-  body.append("file", file);
+  const supabase = createBrowserSupabaseClient();
+  const path = buildOrderDocStoragePath(userId, orderId, file.name);
+  const contentType = guessOrderDocContentType(file);
 
-  const response = await fetch("/api/orders/document", {
-    method: "POST",
-    credentials: "same-origin",
-    body,
+  const { error: storageError } = await supabase.storage.from("documents").upload(path, file, {
+    contentType,
+    upsert: false,
   });
 
-  const data = (await response.json()) as { document?: DocRow; error?: string };
+  if (storageError) {
+    return { ok: false, error: `${file.name}: ${mapStorageUploadError(storageError.message)}` };
+  }
+
+  const response = await fetch("/api/orders/document", {
+    method: "PUT",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      orderId,
+      documentType: docType,
+      fileName: file.name,
+      filePath: path,
+      fileType: contentType,
+      fileSize: file.size,
+    }),
+  });
+
+  let data: { document?: DocRow; error?: string };
+  try {
+    data = (await response.json()) as { document?: DocRow; error?: string };
+  } catch {
+    await supabase.storage.from("documents").remove([path]);
+    return {
+      ok: false,
+      error: `${file.name}: no se pudo confirmar la subida. Recarga la página e inténtalo de nuevo.`,
+    };
+  }
 
   if (!response.ok || !data.document) {
-    return { ok: false, error: `${file.name}: ${data.error ?? "error al subir"}` };
+    await supabase.storage.from("documents").remove([path]);
+    return { ok: false, error: `${file.name}: ${data.error ?? "error al registrar el archivo"}` };
   }
 
   return { ok: true, row: data.document };
@@ -115,7 +148,7 @@ export function OrderDocuments({
         const itemId = items[i].id;
         setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "uploading" } : x)));
 
-        const result = await uploadSingleFile(file, orderId, docType);
+        const result = await uploadSingleFile(file, orderId, userId, docType);
         if (result.ok) {
           newRows.push(result.row);
           setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "done" } : x)));
@@ -143,7 +176,7 @@ export function OrderDocuments({
       setBusy(false);
       window.setTimeout(() => setQueue([]), 2500);
     },
-    [busy, canUpload, docType, orderId, router],
+    [busy, canUpload, docType, orderId, router, userId],
   );
 
   function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -232,15 +265,20 @@ export function OrderDocuments({
               </p>
               <p className="mt-2 max-w-md text-sm text-[#64748B]">
                 Fotos del móvil (incl. iPhone), PDF o Word. Hasta <strong>25 archivos</strong> y{" "}
-                <strong>10 MB</strong> por archivo.
+                <strong>10 MB</strong> por archivo. Si falla, prueba una foto más ligera o escríbenos por WhatsApp.
               </p>
-              <label
-                className={`mt-5 inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] ${
-                  busy ? "pointer-events-none opacity-60" : ""
-                }`}
-              >
-                <FileUp className="h-4 w-4" />
-                {busy ? "Subiendo archivos…" : "Elegir archivos o fotos"}
+              <div className="mt-5 flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => inputRef.current?.click()}
+                  className={`inline-flex min-h-12 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] ${
+                    busy ? "pointer-events-none opacity-60" : ""
+                  }`}
+                >
+                  <FileUp className="h-4 w-4" />
+                  {busy ? "Subiendo archivos…" : "Elegir archivos o fotos"}
+                </button>
                 <input
                   ref={inputRef}
                   type="file"
@@ -250,7 +288,7 @@ export function OrderDocuments({
                   accept="image/*,.heic,.heif,.pdf,.doc,.docx,.xls,.xlsx,.txt,application/pdf"
                   onChange={onInputChange}
                 />
-              </label>
+              </div>
             </div>
           </div>
 

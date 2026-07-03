@@ -19,6 +19,7 @@ type Props = {
   totalLabel: string;
   paidAtLabel: string;
   adminOrderUrl: string;
+  adminDashboardUrl: string;
 };
 
 export function AdminNewOrderEmail({
@@ -30,17 +31,22 @@ export function AdminNewOrderEmail({
   totalLabel,
   paidAtLabel,
   adminOrderUrl,
+  adminDashboardUrl,
 }: Props) {
   return (
     <Html>
       <Head />
       <Preview>
-        Nuevo pedido: {serviceName} — {totalLabel}
+        💰 Nuevo pago: {clientName} — {serviceName} ({totalLabel})
       </Preview>
       <Body style={body}>
         <Container style={card}>
           <Section style={inner}>
-            <Heading style={h1}>Nuevo pedido pagado</Heading>
+            <Heading style={h1}>💰 Nuevo pago recibido</Heading>
+            <Text style={lead}>
+              <strong>{clientName}</strong> ha pagado <strong>{totalLabel}</strong> por{" "}
+              <strong>{serviceName}</strong>.
+            </Text>
             <Text style={p}>
               <strong>Servicio:</strong> {serviceName}
             </Text>
@@ -61,9 +67,16 @@ export function AdminNewOrderEmail({
               <strong>Teléfono:</strong> {clientPhone}
             </Text>
             <Text style={meta}>Pedido: {orderId}</Text>
-            <Button style={button} href={adminOrderUrl}>
-              Ver en admin
-            </Button>
+            <Section style={buttons}>
+              <Button style={buttonPrimary} href={adminOrderUrl}>
+                Ver pedido en admin
+              </Button>
+            </Section>
+            <Section style={buttonsSecondary}>
+              <Button style={buttonSecondary} href={adminDashboardUrl}>
+                Abrir panel admin
+              </Button>
+            </Section>
           </Section>
         </Container>
       </Body>
@@ -86,7 +99,17 @@ const card = {
 };
 
 const inner = { padding: "24px" };
-const h1 = { color: "#1e293b", fontSize: "20px", margin: "0 0 16px" };
+const h1 = { color: "#1e293b", fontSize: "22px", margin: "0 0 12px" };
+const lead = {
+  color: "#1e293b",
+  fontSize: "16px",
+  lineHeight: "1.55",
+  margin: "0 0 20px",
+  padding: "12px 14px",
+  backgroundColor: "#ecfdf5",
+  borderRadius: "8px",
+  border: "1px solid #a7f3d0",
+};
 const sectionTitle = {
   color: "#1e293b",
   fontSize: "14px",
@@ -97,8 +120,20 @@ const sectionTitle = {
 };
 const p = { color: "#475569", fontSize: "15px", lineHeight: "1.5", margin: "0 0 8px" };
 const meta = { color: "#94a3b8", fontSize: "12px", margin: "12px 0 16px" };
+const buttons = { margin: "0 0 8px" };
+const buttonsSecondary = { margin: "0" };
 
-const button = {
+const buttonPrimary = {
+  backgroundColor: "#1A4FBF",
+  color: "#ffffff",
+  padding: "12px 20px",
+  borderRadius: "8px",
+  textDecoration: "none",
+  display: "inline-block",
+  fontWeight: 600 as const,
+};
+
+const buttonSecondary = {
   backgroundColor: "#0f172a",
   color: "#ffffff",
   padding: "12px 20px",

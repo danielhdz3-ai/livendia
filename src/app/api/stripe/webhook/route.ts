@@ -67,35 +67,39 @@ async function sendConfirmationEmailsSafe(
   session: Stripe.Checkout.Session,
   orderId: string,
 ) {
-  try {
-    const { data: svc } = await supabase.from("services").select("name").eq("id", serviceId).maybeSingle();
-    const serviceName = (svc?.name as string) ?? "Servicio";
-    const contact = await getAuthUserContact(supabase, userId);
-    const customerEmail = contact?.email ?? session.customer_email ?? null;
-    const customerName = contact?.fullName ?? "";
+  const { data: svc } = await supabase.from("services").select("name").eq("id", serviceId).maybeSingle();
+  const serviceName = (svc?.name as string) ?? "Servicio";
+  const contact = await getAuthUserContact(supabase, userId);
+  const customerEmail = contact?.email ?? session.customer_email ?? null;
+  const customerName = contact?.fullName?.trim() || "—";
+  const paidAt = new Date().toISOString();
+  const totalCents = session.amount_total ?? null;
 
-    const paidAt = new Date().toISOString();
-    const totalCents = session.amount_total ?? null;
-
-    if (customerEmail) {
+  if (customerEmail) {
+    try {
       await sendOrderConfirmedEmail({
         to: customerEmail,
-        customerName,
+        customerName: customerName === "—" ? "" : customerName,
         serviceName,
         orderId,
       });
-      await sendAdminNewOrderEmail({
-        serviceName,
-        orderId,
-        clientEmail: customerEmail,
-        clientName: customerName,
-        clientPhone: contact?.phone ?? null,
-        totalCents,
-        paidAt,
-      });
+    } catch (err) {
+      console.error("[webhook] sendOrderConfirmedEmail:", err);
     }
-  } catch {
-    /* email no debe bloquear el webhook */
+  }
+
+  try {
+    await sendAdminNewOrderEmail({
+      serviceName,
+      orderId,
+      clientEmail: customerEmail ?? "—",
+      clientName: customerName,
+      clientPhone: contact?.phone ?? null,
+      totalCents,
+      paidAt,
+    });
+  } catch (err) {
+    console.error("[webhook] sendAdminNewOrderEmail:", err);
   }
 }
 

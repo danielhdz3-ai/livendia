@@ -1,14 +1,19 @@
 import { LegalDraftNote } from "@/components/legal-draft-note";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { getBusinessLegalIdentity } from "@/lib/business-legal";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Aviso legal",
-  robots: { index: false },
+  title: "Aviso legal | Livendia",
+  description: "Datos identificativos y condiciones de uso del sitio web de Livendia, gestoría inmobiliaria online.",
+  alternates: { canonical: "https://livendia.com/legal/aviso-legal" },
 };
 
 export default function AvisoLegalPage() {
+  const legal = getBusinessLegalIdentity();
+
   return (
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
@@ -19,11 +24,47 @@ export default function AvisoLegalPage() {
             <LegalDraftNote />
             <section>
               <h2 className="text-lg font-semibold text-[#1E293B]">Datos identificativos</h2>
-              <p className="mt-2">
-                En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de
-                la información y de comercio electrónico, se informa de que el titular del sitio web es Livendia
-                (datos societarios, domicilio fiscal y CIF/NIF a completar). Correo de contacto: a través del
-                formulario en la web o del correo indicado como canal oficial cuando esté publicado.
+              <ul className="mt-3 list-none space-y-2">
+                <li>
+                  <strong>Titular:</strong> {legal.legalName}
+                </li>
+                {legal.taxId ? (
+                  <li>
+                    <strong>CIF/NIF:</strong> {legal.taxId}
+                  </li>
+                ) : null}
+                {legal.addressLine ? (
+                  <li>
+                    <strong>Domicilio:</strong> {legal.addressLine}
+                  </li>
+                ) : null}
+                <li>
+                  <strong>Correo electrónico:</strong>{" "}
+                  <a href={`mailto:${legal.email}`} className="font-semibold text-[#1A4FBF] hover:underline">
+                    {legal.email}
+                  </a>
+                </li>
+                <li>
+                  <strong>Teléfono:</strong>{" "}
+                  <a href={legal.phoneTel} className="font-semibold text-[#1A4FBF] hover:underline">
+                    {legal.phoneDisplay}
+                  </a>
+                </li>
+                <li>
+                  <strong>Actividad:</strong> Gestoría inmobiliaria online — contratos, compraventa y administración de
+                  alquileres.
+                </li>
+              </ul>
+              <p className="mt-3">
+                Más información en{" "}
+                <Link href="/equipo" className="font-semibold text-[#1A4FBF] hover:underline">
+                  nuestro equipo
+                </Link>{" "}
+                y en{" "}
+                <Link href="/contacto" className="font-semibold text-[#1A4FBF] hover:underline">
+                  contacto
+                </Link>
+                .
               </p>
             </section>
             <section>

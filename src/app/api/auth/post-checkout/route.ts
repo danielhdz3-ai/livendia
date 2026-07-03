@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
   const orderId = await waitForOrderId(sessionId);
   if (orderId) {
-    return NextResponse.json({ redirectUrl: `/dashboard?pedido=${orderId}` });
+    return NextResponse.json({ redirectUrl: `/mis-pedidos/${orderId}` });
   }
 
   return NextResponse.json({ redirectUrl: "/dashboard" });

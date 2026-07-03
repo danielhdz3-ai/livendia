@@ -1,5 +1,6 @@
 import { OrderDocuments, type DocRow } from "@/app/dashboard/order-documents";
 import { OrderTimeline } from "@/app/mis-pedidos/[id]/order-timeline";
+import { LivendiaTrustPanel } from "@/components/livendia-trust-panel";
 import { LogoutButton } from "@/app/dashboard/logout-button";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
@@ -126,6 +127,8 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
             prominent
           />
         </section>
+
+        <LivendiaTrustPanel />
 
         <section className="hidden rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200 sm:p-8 lg:block">
           <h2 className="text-lg font-semibold text-[#1E293B]">Seguimiento del servicio</h2>
