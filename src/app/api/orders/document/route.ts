@@ -9,6 +9,7 @@ import {
   validateOrderDocFile,
 } from "@/lib/order-document-upload";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { getAuthedSupabaseFromRequest } from "@/lib/supabase/request-auth";
 import { NextResponse } from "next/server";
 
 type RegisterBody = {
@@ -99,14 +100,12 @@ async function insertDocumentRow(
 
 /** Registra un archivo ya subido a Storage desde el navegador (evita límite de tamaño en Vercel). */
 export async function PUT(req: Request) {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user?.email) {
+  const authed = await getAuthedSupabaseFromRequest(req);
+  if (!authed) {
     return NextResponse.json({ error: "Debes iniciar sesión para subir archivos." }, { status: 401 });
   }
+
+  const { supabase, user } = authed;
 
   let body: RegisterBody;
   try {
@@ -149,7 +148,7 @@ export async function PUT(req: Request) {
     fileType,
     fileSize,
     documentType,
-    userEmail: user.email,
+    userEmail: user.email!,
   });
 
   if (!inserted.ok) return inserted.response;
@@ -158,14 +157,12 @@ export async function PUT(req: Request) {
 
 /** Subida clásica vía servidor (respaldo; archivos pequeños). */
 export async function POST(req: Request) {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user?.email) {
+  const authed = await getAuthedSupabaseFromRequest(req);
+  if (!authed) {
     return NextResponse.json({ error: "Debes iniciar sesión para subir archivos." }, { status: 401 });
   }
+
+  const { supabase, user } = authed;
 
   let formData: FormData;
   try {
@@ -225,7 +222,7 @@ export async function POST(req: Request) {
     fileType: contentType,
     fileSize: file.size,
     documentType,
-    userEmail: user.email,
+    userEmail: user.email!,
   });
 
   if (!inserted.ok) {

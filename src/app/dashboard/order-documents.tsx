@@ -66,6 +66,16 @@ async function uploadSingleFile(
   const path = buildOrderDocStoragePath(userId, orderId, file.name);
   const contentType = guessOrderDocContentType(file);
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  if (!session?.access_token) {
+    return {
+      ok: false,
+      error: `${file.name}: tu sesión ha caducado. Cierra sesión, vuelve a entrar e inténtalo de nuevo.`,
+    };
+  }
+
   const { error: storageError } = await supabase.storage.from("documents").upload(path, file, {
     contentType,
     upsert: false,
@@ -78,7 +88,10 @@ async function uploadSingleFile(
   const response = await fetch("/api/orders/document", {
     method: "PUT",
     credentials: "same-origin",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${session.access_token}`,
+    },
     body: JSON.stringify({
       orderId,
       documentType: docType,
