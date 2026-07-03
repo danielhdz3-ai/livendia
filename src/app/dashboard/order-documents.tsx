@@ -2,14 +2,17 @@
 
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import {
+  ORDER_DOC_ACCEPT_DOCUMENTS,
+  ORDER_DOC_ACCEPT_PHOTOS,
   ORDER_DOC_MAX_BYTES,
   buildOrderDocStoragePath,
   guessOrderDocContentType,
   mapStorageUploadError,
+  validateOrderDocFile,
 } from "@/lib/order-document-upload";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
-import { CheckCircle2, FileUp, Loader2, Upload } from "lucide-react";
+import { CheckCircle2, FileText, ImageIcon, Loader2, Upload } from "lucide-react";
 
 export type DocRow = {
   id: string;
@@ -50,6 +53,11 @@ async function uploadSingleFile(
   userId: string,
   docType: string,
 ): Promise<{ ok: true; row: DocRow } | { ok: false; error: string }> {
+  const validation = validateOrderDocFile(file);
+  if (!validation.ok) {
+    return { ok: false, error: validation.error };
+  }
+
   if (file.size > MAX_BYTES) {
     return { ok: false, error: `${file.name}: máximo 10 MB` };
   }
@@ -114,7 +122,8 @@ export function OrderDocuments({
   prominent?: boolean;
 }) {
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
+  const docInputRef = useRef<HTMLInputElement>(null);
   const [docs, setDocs] = useState(initialDocs);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -260,35 +269,61 @@ export function OrderDocuments({
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1A4FBF]/10 text-[#1A4FBF]">
                 {busy ? <Loader2 className="h-7 w-7 animate-spin" /> : <Upload className="h-7 w-7" />}
               </div>
-              <p className="mt-4 text-base font-semibold text-[#1E293B]">
+              <p className="mt-4 hidden text-base font-semibold text-[#1E293B] sm:block">
                 Arrastra aquí varios archivos o selecciónalos
               </p>
-              <p className="mt-2 max-w-md text-sm text-[#64748B]">
-                Fotos del móvil (incl. iPhone), PDF o Word. Hasta <strong>25 archivos</strong> y{" "}
-                <strong>10 MB</strong> por archivo. Si falla, prueba una foto más ligera o escríbenos por WhatsApp.
+              <p className="mt-4 text-base font-semibold text-[#1E293B] sm:hidden">
+                Sube fotos, PDF o Word desde tu móvil
               </p>
-              <div className="mt-5 flex flex-col items-center gap-2">
+              <p className="mt-2 max-w-md text-sm text-[#64748B]">
+                PDF, Word (.doc/.docx), fotos del móvil (incl. iPhone). Hasta{" "}
+                <strong>25 archivos</strong> y <strong>10 MB</strong> por archivo.
+              </p>
+              <div className="mt-5 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
                 <button
                   type="button"
                   disabled={busy}
-                  onClick={() => inputRef.current?.click()}
-                  className={`inline-flex min-h-12 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] ${
+                  onClick={() => photoInputRef.current?.click()}
+                  className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] sm:w-auto ${
                     busy ? "pointer-events-none opacity-60" : ""
                   }`}
                 >
-                  <FileUp className="h-4 w-4" />
-                  {busy ? "Subiendo archivos…" : "Elegir archivos o fotos"}
+                  <ImageIcon className="h-4 w-4" />
+                  {busy ? "Subiendo…" : "Fotos o galería"}
+                </button>
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => docInputRef.current?.click()}
+                  className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:w-auto ${
+                    busy ? "pointer-events-none opacity-60" : ""
+                  }`}
+                >
+                  <FileText className="h-4 w-4" />
+                  PDF o Word
                 </button>
                 <input
-                  ref={inputRef}
+                  ref={photoInputRef}
                   type="file"
                   className="sr-only"
                   multiple
                   disabled={busy}
-                  accept="image/*,.heic,.heif,.pdf,.doc,.docx,.xls,.xlsx,.txt,application/pdf"
+                  accept={ORDER_DOC_ACCEPT_PHOTOS}
+                  onChange={onInputChange}
+                />
+                <input
+                  ref={docInputRef}
+                  type="file"
+                  className="sr-only"
+                  multiple
+                  disabled={busy}
+                  accept={ORDER_DOC_ACCEPT_DOCUMENTS}
                   onChange={onInputChange}
                 />
               </div>
+              <p className="mt-3 text-xs text-[#94a3b8] sm:hidden">
+                En iPhone: «PDF o Word» abre Archivos o iCloud. Si falla, envíanos el documento por WhatsApp.
+              </p>
             </div>
           </div>
 

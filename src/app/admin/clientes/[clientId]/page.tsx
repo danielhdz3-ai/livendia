@@ -3,6 +3,7 @@ import {
   RENTAL_SERVICE_SLUG,
   subscriptionGrantsRentalAccess,
 } from "@/lib/rental-access";
+import { AdminStorageDocLink } from "@/components/admin-storage-doc-link";
 import { ORDER_DOCUMENT_LABEL_ES } from "@/lib/order-document-labels";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
@@ -60,12 +61,15 @@ export default async function AdminClientDetailPage({
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  // Obtener info del cliente
-  const { data: client } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", clientId)
-    .maybeSingle();
+  const [{ data: client }, { data: orders }, { data: rentalSubs }] = await Promise.all([
+    supabase.from("profiles").select("*").eq("id", clientId).maybeSingle(),
+    supabase
+      .from("orders")
+      .select("id, status, total_cents, created_at, updated_at, services(name, slug)")
+      .eq("client_id", clientId)
+      .order("created_at", { ascending: false }),
+    supabase.from("client_subscriptions").select("status, current_period_end, services ( slug )").eq("client_id", clientId),
+  ]);
 
   if (!client) {
     return (
@@ -82,18 +86,6 @@ export default async function AdminClientDetailPage({
       </main>
     );
   }
-
-  // Obtener todos los pedidos del cliente
-  const { data: orders } = await supabase
-    .from("orders")
-    .select("id, status, total_cents, created_at, updated_at, services(name, slug)")
-    .eq("client_id", clientId)
-    .order("created_at", { ascending: false });
-
-  const { data: rentalSubs } = await supabase
-    .from("client_subscriptions")
-    .select("status, current_period_end, services ( slug )")
-    .eq("client_id", clientId);
 
   const hasActiveRentalSub = (rentalSubs ?? []).some((row) => {
     const svc = row.services;
@@ -113,7 +105,6 @@ export default async function AdminClientDetailPage({
     file_path: string;
     document_type: string;
     created_at: string;
-    signedUrl: string | null;
     serviceName: string;
   }> = [];
 
@@ -133,22 +124,15 @@ export default async function AdminClientDetailPage({
       orderToName.set(o.id as string, serviceName ?? "Pedido");
     }
 
-    clientOrderDocs = await Promise.all(
-      (rawDocs ?? []).map(async (d) => {
-        const path = d.file_path as string;
-        const { data } = await supabase.storage.from("documents").createSignedUrl(path, 900);
-        return {
-          id: d.id as string,
-          order_id: d.order_id as string,
-          file_name: d.file_name as string,
-          file_path: path,
-          document_type: d.document_type as string,
-          created_at: d.created_at as string,
-          signedUrl: data?.signedUrl ?? null,
-          serviceName: orderToName.get(d.order_id as string) ?? "Pedido",
-        };
-      }),
-    );
+    clientOrderDocs = (rawDocs ?? []).map((d) => ({
+      id: d.id as string,
+      order_id: d.order_id as string,
+      file_name: d.file_name as string,
+      file_path: d.file_path as string,
+      document_type: d.document_type as string,
+      created_at: d.created_at as string,
+      serviceName: orderToName.get(d.order_id as string) ?? "Pedido",
+    }));
   }
 
   // Calcular stats
@@ -311,18 +295,7 @@ export default async function AdminClientDetailPage({
             {clientOrderDocs.map((d) => (
               <li key={d.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
                 <div className="min-w-0 flex-1">
-                  {d.signedUrl ? (
-                    <a
-                      href={d.signedUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-[#1A4FBF] hover:underline"
-                    >
-                      {d.file_name}
-                    </a>
-                  ) : (
-                    <span className="font-medium text-[#1E293B]">{d.file_name}</span>
-                  )}
+                  <AdminStorageDocLink path={d.file_path}>{d.file_name}</AdminStorageDocLink>
                   <div className="mt-1 text-xs text-[#64748B]">
                     {ORDER_DOCUMENT_LABEL_ES[d.document_type] ?? d.document_type} · {d.serviceName} ·{" "}
                     {new Date(d.created_at).toLocaleString("es-ES")}

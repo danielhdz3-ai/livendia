@@ -6,6 +6,7 @@ import {
   ORDER_DOC_UPLOADABLE_STATUSES,
   buildOrderDocStoragePath,
   guessOrderDocContentType,
+  validateOrderDocFile,
 } from "@/lib/order-document-upload";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
@@ -185,6 +186,11 @@ export async function POST(req: Request) {
 
   if (!orderId || !(file instanceof File) || file.size === 0) {
     return NextResponse.json({ error: "Faltan datos del archivo o del pedido." }, { status: 400 });
+  }
+
+  const fileValidation = validateOrderDocFile(file);
+  if (!fileValidation.ok) {
+    return NextResponse.json({ error: fileValidation.error }, { status: 400 });
   }
 
   if (!ORDER_DOC_ALLOWED_TYPES.has(documentType)) {

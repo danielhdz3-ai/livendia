@@ -39,7 +39,37 @@ export default async function AdminPedidosPage() {
           No hay pedidos todavía.
         </p>
       ) : (
-        <div className="mt-6 overflow-x-auto rounded-xl bg-white shadow ring-1 ring-slate-200">
+        <>
+          <div className="mt-6 space-y-3 md:hidden">
+            {orders.map((row) => {
+              const svc = row.services;
+              const sname = Array.isArray(svc) ? svc[0]?.name : (svc as { name?: string } | null)?.name;
+              const pr = row.profiles;
+              const pname = Array.isArray(pr) ? pr[0]?.full_name : (pr as { full_name?: string } | null)?.full_name;
+              return (
+                <Link
+                  key={row.id}
+                  href={`/admin/pedidos/${row.id}`}
+                  className="block rounded-xl bg-white p-4 shadow ring-1 ring-slate-200"
+                >
+                  <div className="font-semibold text-[#1E293B]">{sname ?? "—"}</div>
+                  <div className="mt-1 text-sm text-[#64748B]">
+                    {(pname as string)?.trim() || String(row.client_id).slice(0, 8) + "…"}
+                  </div>
+                  <div className="mt-2 flex items-center justify-between gap-2">
+                    <span className="rounded-full bg-[#1A4FBF]/10 px-2 py-1 text-xs font-semibold text-[#1A4FBF]">
+                      {statusLabel[row.status] ?? row.status}
+                    </span>
+                    <span className="text-xs text-[#94a3b8]">
+                      {new Date(row.created_at).toLocaleDateString("es-ES")}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 hidden overflow-x-auto rounded-xl bg-white shadow ring-1 ring-slate-200 md:block">
           <table className="w-full min-w-[600px] text-left text-sm">
             <thead>
               <tr className="border-b border-slate-200 bg-slate-50 text-xs font-semibold uppercase text-[#64748b]">
@@ -84,6 +114,7 @@ export default async function AdminPedidosPage() {
             </tbody>
           </table>
         </div>
+        </>
       )}
     </main>
   );

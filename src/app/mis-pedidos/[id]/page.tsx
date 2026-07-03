@@ -90,10 +90,18 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
 
       <main className="mx-auto max-w-5xl space-y-4 px-4 py-4 sm:space-y-6 sm:px-6 sm:py-8">
         <div className="lg:hidden">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748B]">Expediente</p>
+          <Link
+            href="/mis-pedidos"
+            className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-[#1A4FBF]"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Mis pedidos
+          </Link>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-[#64748B]">Expediente</p>
           <h1 className="mt-1 text-xl font-bold text-[#1E293B]">{serviceRow?.name ?? "Pedido"}</h1>
           <p className="mt-1 text-sm text-[#64748B]">
             {ORDER_STATUS_LABEL_ES[order.status as string] ?? order.status}
+            {order.total_cents != null ? ` · ${(order.total_cents / 100).toFixed(2)} €` : null}
           </p>
         </div>
         {needsDocs ? (
@@ -129,6 +137,19 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         </section>
 
         <LivendiaTrustPanel />
+
+        <section className="rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 sm:p-8 lg:hidden">
+          <h2 className="text-lg font-semibold text-[#1E293B]">Seguimiento</h2>
+          <div className="mt-4">
+            <OrderTimeline
+              status={order.status as string}
+              createdAt={order.created_at as string}
+              paidAt={(order.paid_at as string | null) ?? null}
+              completedAt={(order.completed_at as string | null) ?? null}
+              updatedAt={order.updated_at as string}
+            />
+          </div>
+        </section>
 
         <section className="hidden rounded-2xl bg-white p-6 shadow ring-1 ring-slate-200 sm:p-8 lg:block">
           <h2 className="text-lg font-semibold text-[#1E293B]">Seguimiento del servicio</h2>

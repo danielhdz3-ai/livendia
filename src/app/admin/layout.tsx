@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-6 text-sm font-medium">
             <span className="font-bold text-white">Livendia Admin</span>
-            <nav className="flex items-center gap-1">
+            <nav className="flex max-w-[min(100vw,42rem)] items-center gap-1 overflow-x-auto pb-1 sm:max-w-none">
               <Link
                 href="/admin"
                 className="flex items-center gap-2 rounded-lg px-3 py-2 text-slate-200 transition hover:bg-white/10 hover:text-white"

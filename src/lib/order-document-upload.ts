@@ -1,5 +1,27 @@
 export const ORDER_DOC_MAX_BYTES = 10 * 1024 * 1024;
 
+export const ORDER_DOC_ALLOWED_EXTENSIONS = new Set([
+  ".pdf",
+  ".doc",
+  ".docx",
+  ".xls",
+  ".xlsx",
+  ".txt",
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".webp",
+  ".heic",
+  ".heif",
+]);
+
+/** Input fotos/galería (móvil iOS/Android). */
+export const ORDER_DOC_ACCEPT_PHOTOS = "image/*,.heic,.heif";
+
+/** Input documentos (PDF/Word) — separado en móvil para que iOS muestre Archivos. */
+export const ORDER_DOC_ACCEPT_DOCUMENTS =
+  ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
 export const ORDER_DOC_ALLOWED_TYPES = new Set([
   "dni_propietario",
   "dni_inquilino",
@@ -40,7 +62,40 @@ export function guessOrderDocContentType(file: File): string {
   if (lower.endsWith(".webp")) return "image/webp";
   if (lower.endsWith(".doc")) return "application/msword";
   if (lower.endsWith(".docx")) return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  if (lower.endsWith(".xls")) return "application/vnd.ms-excel";
+  if (lower.endsWith(".xlsx")) return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+  if (lower.endsWith(".txt")) return "text/plain";
   return "application/octet-stream";
+}
+
+export function validateOrderDocFile(file: File): { ok: true } | { ok: false; error: string } {
+  if (file.size <= 0) {
+    return { ok: false, error: `${file.name}: el archivo está vacío.` };
+  }
+
+  const lowerName = file.name.toLowerCase();
+  const ext = lowerName.includes(".") ? lowerName.slice(lowerName.lastIndexOf(".")) : "";
+
+  if (ORDER_DOC_ALLOWED_EXTENSIONS.has(ext)) {
+    return { ok: true };
+  }
+
+  const type = file.type.toLowerCase();
+  if (
+    type.startsWith("image/") ||
+    type === "application/pdf" ||
+    type === "application/msword" ||
+    type.includes("wordprocessingml") ||
+    type.includes("spreadsheetml") ||
+    type === "text/plain"
+  ) {
+    return { ok: true };
+  }
+
+  return {
+    ok: false,
+    error: `${file.name}: formato no admitido. Usa PDF, Word (.doc/.docx) o foto (JPG, PNG, HEIC).`,
+  };
 }
 
 export function sanitizeOrderDocFileName(name: string): string {
