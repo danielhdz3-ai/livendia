@@ -28,7 +28,7 @@ export default async function GraciasPage({ searchParams }: Props) {
           <CheckCircle2 className="mx-auto h-14 w-14 text-emerald-500" aria-hidden />
           <h1 className="mt-4 text-2xl font-bold text-[#1E293B]">¡Gracias! Pago recibido</h1>
           <p className="mt-3 text-[#475569]">
-            Tu contratación se ha registrado correctamente. Te llevamos a tu <strong>panel principal</strong> para que
+            Tu contratación se ha registrado correctamente. Te llevamos a tu <strong>expediente</strong> para que
             subas la documentación del contrato.
           </p>
           {sessionId ? <PostCheckoutRedirect sessionId={sessionId} /> : null}
