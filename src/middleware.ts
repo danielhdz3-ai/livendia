@@ -33,6 +33,7 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
+  const viewAsClient = request.cookies.get("livendia_view_as_client")?.value === "1";
 
   let profileRole: string | null = null;
   async function loadProfileRole() {
@@ -62,13 +63,16 @@ export async function middleware(request: NextRequest) {
           return NextResponse.redirect(new URL("/admin", request.url));
         }
       }
-      if (path === "/dashboard" || path.startsWith("/dashboard/")) {
+      if ((path === "/dashboard" || path.startsWith("/dashboard/")) && !viewAsClient) {
         return NextResponse.redirect(new URL("/admin", request.url));
       }
     }
   }
 
   if (path.startsWith("/admin")) {
+    if (viewAsClient) {
+      response.cookies.set("livendia_view_as_client", "", { maxAge: 0, path: "/" });
+    }
     if (!user) {
       const login = new URL("/login", request.url);
       login.searchParams.set("next", path);

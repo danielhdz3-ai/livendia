@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { LayoutDashboard, Users, ShoppingCart, Building2, Home, AlertCircle, MessageCircle } from "lucide-react";
+import { LayoutDashboard, Users, ShoppingCart, Building2, AlertCircle, MessageCircle } from "lucide-react";
+import { AdminExitActions } from "@/components/admin-exit-actions";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -53,15 +54,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </Link>
             </nav>
           </div>
-          <div className="flex items-center gap-3 text-sm">
-            <Link href="/dashboard" className="text-slate-200 hover:text-white">
-              Panel cliente
-            </Link>
-            <Link href="/" className="flex items-center gap-1 text-slate-200 hover:text-white">
-              <Home className="h-4 w-4" />
-              <span>Web</span>
-            </Link>
-          </div>
+          <AdminExitActions />
         </div>
       </header>
       {children}

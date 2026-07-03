@@ -23,50 +23,49 @@ export default async function AdminDashboardPage() {
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  // Stats generales
-  const { count: totalClients } = await supabase
-    .from("profiles")
-    .select("*", { count: "exact", head: true })
-    .eq("role", "client");
-
-  const { count: totalOrders } = await supabase
-    .from("orders")
-    .select("*", { count: "exact", head: true });
-
-  const { count: activeOrders } = await supabase
-    .from("orders")
-    .select("*", { count: "exact", head: true })
-    .in("status", ["paid", "pending_docs", "in_review", "in_progress"]);
-
-  const { count: completedOrders } = await supabase
-    .from("orders")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "completed");
-
-  // Ingresos totales
-  const { data: ordersData } = await supabase
-    .from("orders")
-    .select("total_cents, created_at")
-    .eq("status", "completed");
-
-  const totalRevenue = ordersData?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
-  
-  // Ingresos del mes actual
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-  const { data: monthOrders } = await supabase
-    .from("orders")
-    .select("total_cents")
-    .eq("status", "completed")
-    .gte("created_at", startOfMonth);
+  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
+  const [
+    { count: totalClients },
+    { count: totalOrders },
+    { count: activeOrders },
+    { count: completedOrders },
+    { data: ordersData },
+    { data: monthOrders },
+    { data: topServices },
+    { data: recentOrders },
+    { count: newClientsWeek },
+  ] = await Promise.all([
+    supabase.from("profiles").select("*", { count: "exact", head: true }).eq("role", "client"),
+    supabase.from("orders").select("*", { count: "exact", head: true }),
+    supabase
+      .from("orders")
+      .select("*", { count: "exact", head: true })
+      .in("status", ["paid", "pending_docs", "in_review", "in_progress"]),
+    supabase.from("orders").select("*", { count: "exact", head: true }).eq("status", "completed"),
+    supabase.from("orders").select("total_cents, created_at").eq("status", "completed"),
+    supabase
+      .from("orders")
+      .select("total_cents")
+      .eq("status", "completed")
+      .gte("created_at", startOfMonth),
+    supabase.from("orders").select("service_id, services(name)").eq("status", "completed"),
+    supabase
+      .from("orders")
+      .select("id, status, created_at, total_cents, services(name), profiles(full_name, email)")
+      .order("created_at", { ascending: false })
+      .limit(8),
+    supabase
+      .from("profiles")
+      .select("*", { count: "exact", head: true })
+      .eq("role", "client")
+      .gte("created_at", sevenDaysAgo),
+  ]);
+
+  const totalRevenue = ordersData?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
   const monthRevenue = monthOrders?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
-
-  // Servicios más contratados
-  const { data: topServices } = await supabase
-    .from("orders")
-    .select("service_id, services(name)")
-    .eq("status", "completed");
 
   const serviceCounts: Record<string, { name: string; count: number }> = {};
   topServices?.forEach((order) => {
@@ -83,21 +82,6 @@ export default async function AdminDashboardPage() {
   const topServicesList = Object.values(serviceCounts)
     .sort((a, b) => b.count - a.count)
     .slice(0, 5);
-
-  // Actividad reciente - últimos pedidos
-  const { data: recentOrders } = await supabase
-    .from("orders")
-    .select("id, status, created_at, total_cents, services(name), profiles(full_name, email)")
-    .order("created_at", { ascending: false })
-    .limit(8);
-
-  // Nuevos clientes (últimos 7 días)
-  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
-  const { count: newClientsWeek } = await supabase
-    .from("profiles")
-    .select("*", { count: "exact", head: true })
-    .eq("role", "client")
-    .gte("created_at", sevenDaysAgo);
 
   const statusLabel: Record<string, string> = {
     pending_payment: "Pago pendiente",
