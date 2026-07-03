@@ -67,8 +67,15 @@ async function uploadSingleFile(
   const contentType = guessOrderDocContentType(file);
 
   const {
-    data: { session },
+    data: { session: initialSession },
   } = await supabase.auth.getSession();
+
+  let session = initialSession;
+  if (!session?.access_token) {
+    const { data: refreshed } = await supabase.auth.refreshSession();
+    session = refreshed.session;
+  }
+
   if (!session?.access_token) {
     return {
       ok: false,
@@ -137,6 +144,7 @@ export function OrderDocuments({
   const router = useRouter();
   const photoInputRef = useRef<HTMLInputElement>(null);
   const docInputRef = useRef<HTMLInputElement>(null);
+  const busyRef = useRef(false);
   const [docs, setDocs] = useState(initialDocs);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -144,20 +152,35 @@ export function OrderDocuments({
   const [dragOver, setDragOver] = useState(false);
   const [queue, setQueue] = useState<UploadItem[]>([]);
   const [success, setSuccess] = useState<string | null>(null);
+  const [statusMsg, setStatusMsg] = useState<string | null>(null);
 
   const processFiles = useCallback(
     async (fileList: FileList | File[]) => {
-      if (!canUpload || busy) return;
-      const files = Array.from(fileList).slice(0, MAX_FILES_PER_BATCH);
-      if (files.length === 0) return;
+      if (!canUpload) {
+        setErr("No puedes subir archivos en este estado del pedido.");
+        return;
+      }
+      if (busyRef.current) return;
 
+      const files = Array.from(fileList).slice(0, MAX_FILES_PER_BATCH);
+      if (files.length === 0) {
+        setErr("No se detectó ningún archivo. Vuelve a elegirlo (PDF, Word o foto).");
+        return;
+      }
+
+      busyRef.current = true;
       setErr(null);
       setSuccess(null);
+      setStatusMsg(
+        files.length === 1
+          ? `Subiendo «${files[0].name}»…`
+          : `Subiendo ${files.length} archivos…`,
+      );
       setBusy(true);
 
       const items: UploadItem[] = files.map((f) => ({
         id: crypto.randomUUID(),
-        name: f.name,
+        name: f.name || "archivo",
         status: "pending",
       }));
       setQueue(items);
@@ -165,46 +188,59 @@ export function OrderDocuments({
       const newRows: DocRow[] = [];
       const errors: string[] = [];
 
-      for (let i = 0; i < files.length; i += 1) {
-        const file = files[i];
-        const itemId = items[i].id;
-        setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "uploading" } : x)));
+      try {
+        for (let i = 0; i < files.length; i += 1) {
+          const file = files[i];
+          const itemId = items[i].id;
+          setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "uploading" } : x)));
 
-        const result = await uploadSingleFile(file, orderId, userId, docType);
-        if (result.ok) {
-          newRows.push(result.row);
-          setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "done" } : x)));
-        } else {
-          errors.push(result.error);
-          setQueue((q) =>
-            q.map((x) => (x.id === itemId ? { ...x, status: "error", error: result.error } : x)),
-          );
+          const result = await uploadSingleFile(file, orderId, userId, docType);
+          if (result.ok) {
+            newRows.push(result.row);
+            setQueue((q) => q.map((x) => (x.id === itemId ? { ...x, status: "done" } : x)));
+          } else {
+            errors.push(result.error);
+            setQueue((q) =>
+              q.map((x) => (x.id === itemId ? { ...x, status: "error", error: result.error } : x)),
+            );
+          }
         }
+      } catch (cause) {
+        const message =
+          cause instanceof Error ? cause.message : "Error inesperado al subir. Recarga e inténtalo de nuevo.";
+        errors.push(message);
+        setErr(message);
       }
 
       if (newRows.length) {
         setDocs((d) => [...newRows, ...d]);
         setSuccess(
           newRows.length === 1
-            ? "Archivo guardado correctamente."
+            ? `«${newRows[0].file_name}» guardado correctamente.`
             : `${newRows.length} archivos guardados correctamente.`,
         );
         router.refresh();
       }
       if (errors.length) {
         setErr(errors.slice(0, 3).join(" · ") + (errors.length > 3 ? ` (+${errors.length - 3} más)` : ""));
+      } else if (!newRows.length) {
+        setErr("No se pudo guardar el archivo. Prueba de nuevo o contáctanos por WhatsApp.");
       }
 
+      setStatusMsg(null);
+      busyRef.current = false;
       setBusy(false);
-      window.setTimeout(() => setQueue([]), 2500);
+      window.setTimeout(() => setQueue([]), 8000);
     },
-    [busy, canUpload, docType, orderId, router, userId],
+    [canUpload, docType, orderId, router, userId],
   );
 
   function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const files = e.target.files;
-    e.target.value = "";
-    if (files?.length) void processFiles(files);
+    const input = e.target;
+    const picked = input.files ? Array.from(input.files) : [];
+    input.value = "";
+    if (picked.length) void processFiles(picked);
+    else setErr("No se recibió el archivo. En móvil, prueba «PDF o Word» o «Fotos o galería».");
   }
 
   function onDrop(e: React.DragEvent) {
@@ -293,29 +329,26 @@ export function OrderDocuments({
                 <strong>25 archivos</strong> y <strong>10 MB</strong> por archivo.
               </p>
               <div className="mt-5 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-                <button
-                  type="button"
-                  disabled={busy}
-                  onClick={() => photoInputRef.current?.click()}
-                  className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] sm:w-auto ${
+                <label
+                  htmlFor={`photo-input-${orderId}`}
+                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] sm:w-auto ${
                     busy ? "pointer-events-none opacity-60" : ""
                   }`}
                 >
                   <ImageIcon className="h-4 w-4" />
                   {busy ? "Subiendo…" : "Fotos o galería"}
-                </button>
-                <button
-                  type="button"
-                  disabled={busy}
-                  onClick={() => docInputRef.current?.click()}
-                  className={`inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:w-auto ${
+                </label>
+                <label
+                  htmlFor={`doc-input-${orderId}`}
+                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:w-auto ${
                     busy ? "pointer-events-none opacity-60" : ""
                   }`}
                 >
                   <FileText className="h-4 w-4" />
                   PDF o Word
-                </button>
+                </label>
                 <input
+                  id={`photo-input-${orderId}`}
                   ref={photoInputRef}
                   type="file"
                   className="sr-only"
@@ -325,6 +358,7 @@ export function OrderDocuments({
                   onChange={onInputChange}
                 />
                 <input
+                  id={`doc-input-${orderId}`}
                   ref={docInputRef}
                   type="file"
                   className="sr-only"
@@ -339,6 +373,17 @@ export function OrderDocuments({
               </p>
             </div>
           </div>
+
+          {statusMsg ? (
+            <div
+              className="flex items-center gap-2 rounded-xl border border-[#1A4FBF]/20 bg-blue-50 px-4 py-3 text-sm font-medium text-[#1A4FBF]"
+              role="status"
+              aria-live="polite"
+            >
+              <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
+              {statusMsg}
+            </div>
+          ) : null}
 
           {queue.length > 0 ? (
             <ul className="space-y-2 rounded-xl bg-white p-4 ring-1 ring-slate-200">
@@ -364,8 +409,16 @@ export function OrderDocuments({
         <p className="mt-2 text-sm text-[#64748b]">No puedes subir archivos en este estado.</p>
       )}
 
-      {err ? <p className="mt-3 text-sm font-medium text-red-600">{err}</p> : null}
-      {success ? <p className="mt-3 text-sm font-medium text-emerald-700">{success}</p> : null}
+      {err ? (
+        <p className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700" role="alert">
+          {err}
+        </p>
+      ) : null}
+      {success ? (
+        <p className="mt-3 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800" role="status">
+          {success}
+        </p>
+      ) : null}
 
       <div className="mt-6">
         <h4 className="text-sm font-semibold text-[#1E293B]">

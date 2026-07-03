@@ -59,7 +59,25 @@ async function findServiceBySlug(slug) {
   return rows[0];
 }
 
-async function createUser() {
+async function findUserIdByEmail(targetEmail) {
+  for (let page = 1; page <= 20; page += 1) {
+    const res = await fetch(`${url}/auth/v1/admin/users?page=${page}&per_page=200`, {
+      headers: { Authorization: `Bearer ${key}`, apikey: key },
+    });
+    const body = await res.json();
+    const match = body.users?.find((u) => u.email?.toLowerCase() === targetEmail.toLowerCase());
+    if (match?.id) return match.id;
+    if (!body.users?.length || body.users.length < 200) break;
+  }
+  return null;
+}
+
+async function resolveUserId() {
+  const existingId = await findUserIdByEmail(email);
+  if (existingId) {
+    return { userId: existingId, isNew: false };
+  }
+
   const res = await fetch(`${url}/auth/v1/admin/users`, {
     method: "POST",
     headers,
@@ -74,18 +92,17 @@ async function createUser() {
     console.error("Error creando usuario:", body);
     process.exit(1);
   }
-  return body.id;
+  return { userId: body.id, isNew: true };
 }
 
-async function upsertProfile(userId) {
+async function upsertProfile(userId, isNew) {
+  const patchBody = { full_name: fullName, phone };
+  if (isNew) patchBody.role = "client";
+
   const patchRes = await fetch(`${url}/rest/v1/profiles?id=eq.${userId}`, {
     method: "PATCH",
     headers: { ...headers, Prefer: "return=representation" },
-    body: JSON.stringify({
-      full_name: fullName,
-      phone,
-      role: "client",
-    }),
+    body: JSON.stringify(patchBody),
   });
   const patched = await patchRes.json();
   if (patchRes.ok && Array.isArray(patched) && patched.length > 0) {
@@ -158,11 +175,11 @@ console.log(`Email:    ${email}\n`);
 const service = await findServiceBySlug(serviceSlug);
 console.log(`✓ Servicio: ${service.name} (${(service.price_cents ?? 0) / 100} €)`);
 
-const userId = await createUser();
-console.log(`✓ Usuario creado: ${userId}`);
+const { userId, isNew } = await resolveUserId();
+console.log(isNew ? `✓ Usuario creado: ${userId}` : `✓ Usuario existente: ${userId}`);
 
-await upsertProfile(userId);
-console.log("✓ Perfil cliente creado");
+await upsertProfile(userId, isNew);
+console.log("✓ Perfil cliente listo");
 
 const order = await createOrder(userId, service);
 const orderId = order.id;
@@ -183,8 +200,8 @@ console.log("\n--- EXPEDIENTE DIRECTO (tras login) ---\n");
 console.log(`${publicSiteUrl}/mis-pedidos/${orderId}`);
 
 console.log("\n--- PRUEBA DE SUBIDA ---\n");
-console.log("1. Abre el enlace mágico en el móvil (o escritorio)");
-console.log("2. Deberías ir a Mis pedidos → Ver expediente");
+console.log("1. Abre el enlace mágico (o entra en /login con tu contraseña)");
+console.log("2. Ve al expediente de abajo");
 console.log("3. Pulsa «PDF o Word» o «Fotos o galería» y sube un archivo");
 console.log("4. Comprueba en Admin → Pedidos que aparece el documento");
 console.log("\nPara repetir con otro email: node scripts/simulate-test-client.mjs contrato-alquiler-habitacion tu@email.com\n");
