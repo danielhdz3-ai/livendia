@@ -5,6 +5,35 @@ import { Users, Mail, Phone, Calendar, ShoppingCart, Euro, Search } from "lucide
 
 export const metadata = { title: { absolute: "Clientes — Livendia Admin" } };
 
+type OrderRow = {
+  client_id: string;
+  id: string;
+  status: string;
+  total_cents: number | null;
+  created_at: string;
+  services: { name?: string; slug?: string } | { name?: string; slug?: string }[] | null;
+};
+
+function serviceNameFromOrder(order: OrderRow): string | undefined {
+  const svc = order.services;
+  return Array.isArray(svc) ? svc[0]?.name : svc?.name;
+}
+
+function buildClientStats(orders: OrderRow[]) {
+  const totalOrders = orders.length;
+  const completedOrders = orders.filter((o) => o.status === "completed").length;
+  const totalSpent = orders.reduce((sum, o) => sum + (o.total_cents || 0), 0);
+  const services = [...new Set(orders.map(serviceNameFromOrder).filter(Boolean))] as string[];
+
+  return {
+    totalOrders,
+    completedOrders,
+    totalSpent,
+    lastOrder: orders[0] ?? null,
+    services,
+  };
+}
+
 export default async function AdminClientesPage({
   searchParams,
 }: {
@@ -21,68 +50,49 @@ export default async function AdminClientesPage({
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  // Obtener todos los clientes
-  const clientsQuery = supabase
+  let clientsQuery = supabase
     .from("profiles")
     .select("*")
     .eq("role", "client")
     .order("created_at", { ascending: false });
 
-  const { data: allClients } = await clientsQuery;
+  const searchTerm = search?.trim();
+  if (searchTerm) {
+    const term = `%${searchTerm}%`;
+    clientsQuery = clientsQuery.or(`full_name.ilike.${term},email.ilike.${term}`);
+  }
 
-  // Filtrar por búsqueda en frontend si es necesario
-  const clients = allClients?.filter((client) => {
-    if (search) {
-      const searchLower = search.toLowerCase();
-      return (
-        client.full_name?.toLowerCase().includes(searchLower) ||
-        client.email?.toLowerCase().includes(searchLower)
-      );
-    }
-    return true;
-  });
+  const [{ data: allClients }, { data: allServices }] = await Promise.all([
+    clientsQuery,
+    supabase.from("services").select("name, slug").order("name"),
+  ]);
 
-  // Para cada cliente, obtener sus pedidos y stats
-  const clientsWithStats = await Promise.all(
-    (clients || []).map(async (client) => {
-      // Obtener todos los pedidos del cliente
-      const { data: orders } = await supabase
+  const clientIds = (allClients ?? []).map((client) => client.id);
+
+  const { data: allOrders } = clientIds.length
+    ? await supabase
         .from("orders")
-        .select("id, status, total_cents, created_at, services(name, slug)")
-        .eq("client_id", client.id)
-        .order("created_at", { ascending: false });
+        .select("client_id, id, status, total_cents, created_at, services(name, slug)")
+        .in("client_id", clientIds)
+        .order("created_at", { ascending: false })
+    : { data: [] as OrderRow[] };
 
-      // Calcular stats
-      const totalOrders = orders?.length || 0;
-      const completedOrders = orders?.filter((o) => o.status === "completed").length || 0;
-      const totalSpent = orders?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
-      const lastOrder = orders?.[0];
+  const ordersByClient = new Map<string, OrderRow[]>();
+  for (const order of allOrders ?? []) {
+    const list = ordersByClient.get(order.client_id) ?? [];
+    list.push(order);
+    ordersByClient.set(order.client_id, list);
+  }
 
-      // Servicios contratados (únicos)
-      const services = new Set(
-        orders?.map((o) => {
-          const svc = o.services;
-          return Array.isArray(svc) ? svc[0]?.name : (svc as { name?: string } | null)?.name;
-        }).filter(Boolean)
-      );
-
-      return {
-        ...client,
-        stats: {
-          totalOrders,
-          completedOrders,
-          totalSpent,
-          lastOrder,
-          services: Array.from(services),
-        },
-      };
-    })
-  );
+  const clientsWithStats = (allClients ?? []).map((client) => ({
+    ...client,
+    stats: buildClientStats(ordersByClient.get(client.id) ?? []),
+  }));
 
   // Filtrar por servicio si se especifica
   const filteredClients = servicio
     ? clientsWithStats.filter((c) =>
-        c.stats.services.some((s: string | null | undefined) => s?.toLowerCase().includes(servicio.toLowerCase()))
+        c.stats.services.some((s: string) => s.toLowerCase().includes(servicio.toLowerCase()))
       )
     : clientsWithStats;
 
@@ -91,9 +101,6 @@ export default async function AdminClientesPage({
   const newClientsLast7Days = clientsWithStats.filter(
     (c) => new Date(c.created_at) > statsWeekCutoff,
   ).length;
-
-  // Obtener lista de servicios para el filtro
-  const { data: allServices } = await supabase.from("services").select("name, slug").order("name");
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
@@ -293,7 +300,7 @@ export default async function AdminClientesPage({
                         SERVICIOS CONTRATADOS:
                       </div>
                       <div className="flex flex-wrap gap-2">
-                        {client.stats.services.map((service: string | null | undefined, idx: number) => (
+                        {client.stats.services.map((service: string, idx: number) => (
                           <span
                             key={idx}
                             className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800"
