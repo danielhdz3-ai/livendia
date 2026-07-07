@@ -30,6 +30,16 @@ const founders = [
     image: "/images/fundadores-retrato.png",
     imagePosition: "object-[center_20%] sm:object-left",
     imageAlt: "Arnau Martí, socio fundador de Livendia",
+    seals: [
+      {
+        src: "/images/sello confianza/Logo-ICAB-2023-scaled.jpg",
+        alt: "Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB)",
+      },
+      {
+        src: "/images/sello confianza/banner-consejo.jpg",
+        alt: "Consejo General de Colegios de Gestores Administrativos de España",
+      },
+    ],
     paragraphs: [
       "Arnau Martí es abogado colegiado en el Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB) y gestor administrativo colegiado, con especialización en derecho inmobiliario y en la gestión de operaciones entre particulares.",
       "Lleva más de una década acompañando compradores, vendedores e inversores en operaciones donde el detalle importa: contratos de arras con garantías bien calibradas, alquileres con cláusulas LAU ajustadas al caso real, compraventas con riesgos identificados antes de firmar y revisiones documentales cuando la operación ya está en marcha.",
@@ -43,6 +53,16 @@ const founders = [
     image: "/images/fundadores-retrato.png",
     imagePosition: "object-[center_20%] sm:object-right",
     imageAlt: "Daniel Hernández, socio fundador de Livendia",
+    seals: [
+      {
+        src: "/images/sello confianza/api.jpg",
+        alt: "Asociación Profesional Inmobiliaria (API)",
+      },
+      {
+        src: "/images/sello confianza/banner-consejo.jpg",
+        alt: "Consejo General de Colegios de Gestores Administrativos de España",
+      },
+    ],
     paragraphs: [
       "Daniel Hernández es Agente de la Propiedad Inmobiliaria (API) colegiado y gestor administrativo, con más de quince años de experiencia en compraventas, alquileres y tramitación inmobiliaria.",
       "Domina la redacción de contratos de alquiler y de compraventa, la preparación documental previa a la firma y el acompañamiento integral de compradores y vendedores: desde la revisión de garantías y plazos hasta la coordinación con notaría, registro, entidades financieras y terceros implicados en la operación.",
@@ -349,6 +369,21 @@ export default function EquipoPage() {
                       className={`object-cover ${founder.imagePosition}`}
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center justify-center gap-4 border-b border-slate-200 bg-white px-6 py-5"
+                    aria-label={`Sellos profesionales de ${founder.name}`}
+                  >
+                    {founder.seals.map((seal) => (
+                      <Image
+                        key={seal.src}
+                        src={seal.src}
+                        alt={seal.alt}
+                        width={160}
+                        height={72}
+                        className="h-12 w-auto max-w-[8.5rem] object-contain sm:h-14 sm:max-w-[10rem]"
+                      />
+                    ))}
                   </div>
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-[#1E293B]">{founder.name}</h3>
