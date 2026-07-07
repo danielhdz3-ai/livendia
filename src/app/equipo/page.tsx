@@ -27,8 +27,7 @@ const founders = [
     name: "Arnau Martí",
     role: "Socio fundador",
     credentials: ["Abogado colegiado (ICAB)", "Gestor administrativo colegiado", "Derecho inmobiliario"],
-    image: "/images/fundadores-retrato.png",
-    imagePosition: "object-[center_20%] sm:object-left",
+    image: "/images/fundador-arnau.png",
     imageAlt: "Arnau Martí, socio fundador de Livendia",
     seals: [
       {
@@ -50,8 +49,7 @@ const founders = [
     name: "Daniel Hernández",
     role: "Socio fundador",
     credentials: ["API colegiado", "Gestor administrativo", "+15 años en el sector inmobiliario"],
-    image: "/images/fundadores-retrato.png",
-    imagePosition: "object-[center_20%] sm:object-right",
+    image: "/images/fundador-daniel.png",
     imageAlt: "Daniel Hernández, socio fundador de Livendia",
     seals: [
       {
@@ -366,7 +364,7 @@ export default function EquipoPage() {
                       src={founder.image}
                       alt={founder.imageAlt}
                       fill
-                      className={`object-cover ${founder.imagePosition}`}
+                      className="object-cover object-[center_20%]"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
