@@ -28,6 +28,10 @@ const COMPANY_SEALS = [
     src: "/images/sello confianza/Logo-ICAB-2023-scaled.jpg",
     alt: "Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB)",
   },
+  {
+    src: "/images/sello confianza/banner-consejo.jpg",
+    alt: "Consejo General de Colegios de Gestores Administrativos de España",
+  },
 ] as const;
 
 /** Bloque de confianza en el pie (sin reseñas ni estrellas — evita errores Review snippets en GSC). */
@@ -90,9 +94,9 @@ export function FooterParticularesTestimonials() {
               key={seal.src}
               src={seal.src}
               alt={seal.alt}
-              width={200}
-              height={90}
-              className="h-14 w-auto max-w-[9.5rem] object-contain sm:h-20 sm:max-w-[12.5rem]"
+              width={240}
+              height={108}
+              className="h-16 w-auto max-w-[11rem] object-contain sm:h-24 sm:max-w-[14rem]"
             />
           ))}
         </div>
