@@ -24,6 +24,10 @@ const COMPANY_SEALS = [
     src: "/images/sello confianza/api.jpg",
     alt: "Asociación Profesional Inmobiliaria (API)",
   },
+  {
+    src: "/images/sello confianza/Logo-ICAB-2023-scaled.jpg",
+    alt: "Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB)",
+  },
 ] as const;
 
 /** Bloque de confianza en el pie (sin reseñas ni estrellas — evita errores Review snippets en GSC). */
@@ -78,7 +82,7 @@ export function FooterParticularesTestimonials() {
           </Link>
         </div>
         <div
-          className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6"
+          className="mt-8 flex flex-wrap items-center gap-5 sm:gap-8"
           aria-label="Sellos y certificaciones de empresa"
         >
           {COMPANY_SEALS.map((seal) => (
@@ -86,9 +90,9 @@ export function FooterParticularesTestimonials() {
               key={seal.src}
               src={seal.src}
               alt={seal.alt}
-              width={140}
-              height={64}
-              className="h-11 w-auto max-w-[7.25rem] object-contain sm:h-14 sm:max-w-[8.75rem]"
+              width={200}
+              height={90}
+              className="h-14 w-auto max-w-[9.5rem] object-contain sm:h-20 sm:max-w-[12.5rem]"
             />
           ))}
         </div>
