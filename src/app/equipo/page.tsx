@@ -368,21 +368,6 @@ export default function EquipoPage() {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
-                  <div
-                    className="flex flex-wrap items-center justify-center gap-4 border-b border-slate-200 bg-white px-6 py-5"
-                    aria-label={`Sellos profesionales de ${founder.name}`}
-                  >
-                    {founder.seals.map((seal) => (
-                      <Image
-                        key={seal.src}
-                        src={seal.src}
-                        alt={seal.alt}
-                        width={160}
-                        height={72}
-                        className="h-12 w-auto max-w-[8.5rem] object-contain sm:h-14 sm:max-w-[10rem]"
-                      />
-                    ))}
-                  </div>
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-[#1E293B]">{founder.name}</h3>
                     <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">{founder.role}</p>
@@ -399,6 +384,21 @@ export default function EquipoPage() {
                     <div className="mt-6 space-y-4 leading-relaxed text-[#475569]">
                       {founder.paragraphs.map((paragraph) => (
                         <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                      ))}
+                    </div>
+                    <div
+                      className="mt-8 flex flex-wrap items-center gap-5 sm:gap-8"
+                      aria-label={`Sellos profesionales de ${founder.name}`}
+                    >
+                      {founder.seals.map((seal) => (
+                        <Image
+                          key={seal.src}
+                          src={seal.src}
+                          alt={seal.alt}
+                          width={240}
+                          height={108}
+                          className="h-16 w-auto max-w-[11rem] object-contain sm:h-24 sm:max-w-[14rem]"
+                        />
                       ))}
                     </div>
                   </div>
