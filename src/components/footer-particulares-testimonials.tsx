@@ -1,6 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle, MessageCircle } from "lucide-react";
 import { getWhatsAppHref } from "@/lib/business-nap";
+
+const COMPANY_SEALS = [
+  {
+    src: "/images/sello confianza/Sello-Confianza-Online.png",
+    alt: "Sello Confianza Online",
+  },
+  {
+    src: "/images/sello confianza/pyme_innovadora_meic-SP_web.png",
+    alt: "PYME Innovadora del Ministerio de Economía",
+  },
+  {
+    src: "/images/sello confianza/efqm500.png",
+    alt: "Certificación EFQM 500+",
+  },
+  {
+    src: "/images/sello confianza/RGPD.jpg",
+    alt: "Cumplimiento RGPD",
+  },
+  {
+    src: "/images/sello confianza/api.jpg",
+    alt: "Asociación Profesional Inmobiliaria (API)",
+  },
+] as const;
 
 /** Bloque de confianza en el pie (sin reseñas ni estrellas — evita errores Review snippets en GSC). */
 export function FooterParticularesTestimonials() {
@@ -52,6 +76,21 @@ export function FooterParticularesTestimonials() {
           >
             Ver servicios
           </Link>
+        </div>
+        <div
+          className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6"
+          aria-label="Sellos y certificaciones de empresa"
+        >
+          {COMPANY_SEALS.map((seal) => (
+            <Image
+              key={seal.src}
+              src={seal.src}
+              alt={seal.alt}
+              width={140}
+              height={64}
+              className="h-11 w-auto max-w-[7.25rem] object-contain sm:h-14 sm:max-w-[8.75rem]"
+            />
+          ))}
         </div>
       </div>
     </section>
