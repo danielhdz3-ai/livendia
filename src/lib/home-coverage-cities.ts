@@ -52,6 +52,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
     habitacionHref: "/servicios/contrato-alquiler-habitacion/valencia",
     arrasLocalHref: "/servicios/contrato-arras-local/valencia",
+    temporadaHref: "/servicios/contrato-alquiler-temporada-local/valencia",
   },
   {
     slug: "barcelona",
@@ -76,6 +77,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     ventaLocalHref: "/servicios/servicio-completo-venta-local/malaga",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
     habitacionHref: "/servicios/contrato-alquiler-habitacion/malaga",
+    temporadaHref: "/servicios/contrato-alquiler-temporada-local/malaga",
   },
   {
     slug: "sevilla",
@@ -87,6 +89,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     ventaLocalHref: "/servicios/servicio-completo-venta-local/sevilla",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
     habitacionHref: "/servicios/contrato-alquiler-habitacion/sevilla",
+    temporadaHref: "/servicios/contrato-alquiler-temporada-local/sevilla",
   },
 ];
 

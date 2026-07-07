@@ -15,7 +15,7 @@ const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}`;
 export const metadata: Metadata = {
   title: "Contrato de alquiler por temporada por ciudad | Livendia",
   description:
-    `Landings locales para arrendamientos temporales: estancias estacionales, trabajo o segunda residencia. Redacción gestor desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl.`,
+    `Redacción de contrato de alquiler por temporada entre particulares, ciudad a ciudad. Estudios, desplazamientos laborales y estancias acotadas. Desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl., sin comisión.`,
   alternates: { canonical },
   openGraph: {
     title: "Contrato de alquiler por temporada por ciudad | Livendia",
@@ -37,10 +37,11 @@ export default function ContratoAlquilerTemporadaLocalIndexPage() {
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">SEO local · Temporada</p>
             <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Contrato de alquiler por temporada por ciudad
+              Contrato de alquiler por temporada entre particulares
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
-              Misma base que{" "}
+              Redacción profesional para propietarios e inquilinos que alquilan por meses concretos — sin comisión de
+              agencia. Misma base que{" "}
               <Link
                 href="/servicios/contrato-alquiler-temporada"
                 className="font-semibold text-white underline underline-offset-2 hover:text-cyan-200"

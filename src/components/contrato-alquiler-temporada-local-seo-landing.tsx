@@ -207,7 +207,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Alquiler por temporada · {config.city}
+                    {config.heroBadge ?? `Entre particulares · Temporada · ${config.city}`}
                   </div>
 
                   <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
@@ -262,7 +262,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
 
                 <div className="relative h-44 sm:h-56 lg:h-auto">
                   <Image
-                    src="/images/contratos5.jpg"
+                    src={config.heroImage ?? "/images/contratos5.jpg"}
                     alt={`Contrato de alquiler por temporada en ${config.city}`}
                     fill
                     className="object-cover"
