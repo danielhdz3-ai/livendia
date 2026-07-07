@@ -303,38 +303,50 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="bg-white py-16 sm:py-20">
+        <section className="bg-[#F8FAFC] py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid items-center gap-10 md:grid-cols-2">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-wider text-[#1A4FBF]">Quiénes somos</p>
+                <h2 className="mt-3 text-3xl font-bold text-[#1E293B]">Gestoría inmobiliaria digital en toda España</h2>
+                <p className="mt-4 text-[#475569]">
+                  <strong className="text-[#1E293B]">Livendia</strong> nace para que comprar, vender o alquilar entre
+                  particulares no implique ir a ciegas ni depender de una agencia tradicional. Somos una gestoría
+                  inmobiliaria digital con cobertura en <strong className="text-[#1E293B]">toda España</strong>: expediente
+                  online, gestor dedicado y seguimiento continuo, estés donde estés.
+                </p>
+                <p className="mt-4 text-[#475569]">
+                  Detrás de cada operación hay profesionales colegiados — abogados, gestores y API — con experiencia real
+                  en arras, alquiler, compraventa y administración de alquiler.
+                </p>
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {[
+                    "Tramitación 100 % online en todo el territorio",
+                    "Gestor inmobiliario dedicado a tu expediente",
+                    "Precios fijos publicados, sin comisión de agencia",
+                    "Profesionales colegiados con experiencia real",
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2 text-sm text-[#475569] sm:text-base">
+                      <span className="mt-0.5 font-bold text-[#06B6D4]">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/equipo"
+                  className="mt-8 inline-flex min-h-11 items-center rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#2563EB]"
+                >
+                  Conoce a los fundadores
+                </Link>
+              </div>
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200">
                 <Image
-                  src="/images/gestoria1.jpg"
-                  alt="Atención personalizada en gestoría"
+                  src="/images/fundadores-oficina.png"
+                  alt="Fundadores de Livendia en el despacho"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-[#1E293B]">Gestoría cercana, proceso digital</h2>
-                <p className="mt-4 text-[#475569]">
-                  Combinamos trato directo en despacho con herramientas online para que no pierdas
-                  el hilo de tu expediente: estados del pedido, mensajes y documentos en un solo lugar.
-                </p>
-                <ul className="mt-6 space-y-3 text-[#475569]">
-                  <li className="flex gap-2">
-                    <span className="mt-1 font-bold text-[#06B6D4]">✓</span>
-                    Redacción y revisión de contratos al día de la normativa
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 font-bold text-[#06B6D4]">✓</span>
-                    Compraventa: reservas, arras y acompañamiento hasta notaría
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 font-bold text-[#06B6D4]">✓</span>
-                    Alquiler: contratos LAU, habitación, local y packs
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
@@ -501,6 +513,42 @@ export default async function Home() {
               >
                 Escríbenos por WhatsApp
               </a>
+            </div>
+          </div>
+        </section>
+
+        <section
+          aria-label="Gestoría cercana, proceso digital"
+          className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] py-16 text-white sm:py-20"
+        >
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
+              <Image
+                src="/images/gestoria1.jpg"
+                alt="Atención personalizada en gestoría Livendia"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold">Gestoría cercana, proceso digital</h2>
+              <p className="mt-4 text-lg leading-relaxed text-blue-50">
+                Combinamos trato directo en despacho con herramientas online para que no pierdas el hilo de tu
+                expediente: estados del pedido, mensajes y documentos en un solo lugar.
+              </p>
+              <ul className="mt-6 space-y-3 text-blue-50">
+                {[
+                  "Redacción y revisión de contratos al día de la normativa",
+                  "Compraventa: reservas, arras y acompañamiento hasta notaría",
+                  "Alquiler: contratos LAU, habitación, local y packs",
+                ].map((line) => (
+                  <li key={line} className="flex gap-2">
+                    <span className="mt-1 font-bold text-cyan-300">✓</span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
