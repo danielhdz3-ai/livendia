@@ -25,4 +25,6 @@ export type LocalCityLandingFields = {
   heroImage?: string;
   /** Beneficios Livendia redactados para el mercado local (sustituyen la cuadrícula genérica). */
   localBenefits?: readonly LocalCityBenefit[];
+  /** H2 del CTA final — distinto por ciudad. */
+  finalCtaTitle?: string;
 };

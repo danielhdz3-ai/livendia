@@ -1,3 +1,5 @@
+import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -245,7 +247,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/gestoria3.jpg"
+                    src={config.heroImage ?? "/images/gestoria3.jpg"}
                     alt={`Servicio completo de compra con gestor en ${config.city}`}
                     fill
                     className="object-cover"
@@ -408,10 +410,14 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             </div>
           </section>
 
+          <GestorContactCta placement={`compra_local_${config.slug}`} />
+
+          <LivendiaFoundersBanner />
+
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
-                ¿Listo para comprar con seguridad en {config.city}?
+                {config.finalCtaTitle ?? `¿Listo para comprar con seguridad en ${config.city}?`}
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>
 

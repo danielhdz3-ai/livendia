@@ -59,6 +59,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: `890 € IVA incluido por todo el acompañamiento hasta escritura. Sin porcentaje sobre el precio del inmueble.`,
       },
     ],
+    finalCtaTitle: "Cierra la compra en Madrid con documentación profesional",
   },
   barcelona: {
     keywords: [
@@ -116,6 +117,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido. Sin porcentaje sobre el precio de compra.`,
       },
     ],
+    finalCtaTitle: "Cierra la compra en Barcelona con documentación profesional",
   },
   valencia: {
     keywords: [
@@ -173,6 +175,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: "Un pago, IVA incluido, desde reserva hasta firma en notaría valenciana.",
       },
     ],
+    finalCtaTitle: "Cierra la compra en Valencia con documentación profesional",
   },
   bilbao: {
     keywords: [
@@ -230,6 +233,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: "Un profesional conoce tu expediente de principio a fin.",
       },
     ],
+    finalCtaTitle: "Cierra la compra en Bilbao con documentación profesional",
   },
   sevilla: {
     keywords: [
@@ -287,6 +291,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: "Documentación ordenada y gestor disponible en cada hito previo a escritura.",
       },
     ],
+    finalCtaTitle: "Cierra la compra en Sevilla con documentación profesional",
   },
   malaga: {
     keywords: [
@@ -344,5 +349,242 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
         description: "Todo el camino hasta escritura en notaría malagueña o costera.",
       },
     ],
+    finalCtaTitle: "Cierra la compra en Málaga con documentación profesional",
+  },
+  zaragoza: {
+    keywords: [
+      "comprar piso entre particulares zaragoza",
+      "gestor compra vivienda zaragoza",
+      "comprar piso sin agencia zaragoza",
+      "revisar reserva arras valdespartera",
+      "compraventa particulares delicias actur",
+      "comprar piso particular casco historico zaragoza",
+    ],
+    heroBadge: "Compra entre particulares · Zaragoza y comarca",
+    heroH1: "Compra de particular a particular en Zaragoza — con asesor experto en todo el proceso",
+    metaTitle: "Comprar piso entre particulares en Zaragoza | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras en Zaragoza (Delicias, Actur, Valdespartera, Casco Histórico)? Gestor comprador: reserva, arras y escritura revisadas. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "PAUs recientes: cargas de urbanización revisadas antes de la señal",
+      "Compras a particular por Idealista o herencia familiar",
+      "Gestor fijo hasta firma en notaría zaragozana",
+    ],
+    whyTitle: "Zaragoza: mercado entre particulares con documentación exigente",
+    whySubtitle:
+      "En operaciones sin agencia compradora, lo que no negocias antes de la señal casi nunca se arregla después. Livendia prioriza tu expediente, no la comisión del intermediario.",
+    localZonesHeading: "Zonas donde acompañamos compradores en Aragón",
+    localZones:
+      "Casco Histórico, Delicias, Actur, Universidad, Valdespartera, Parque Goya, Rosales del Canal, Utebo, Cuarte de Huerva y municipios de la comarca — misma gestoría online con gestor de referencia.",
+    heroImage: "/images/zaragoza2.jpg",
+    localBenefits: [
+      {
+        title: "Cargas de urbanización en PAUs recientes",
+        description:
+          "En Valdespartera, Parque Goya o Rosales del Canal revisamos cargas registrales y urbanísticas antes de que la señal quede atada a un inmueble con afecciones ocultas.",
+      },
+      {
+        title: "Herencias y titularidad registral",
+        description:
+          "Muchas compras en Zaragoza proceden de herencias familiares. Verificamos que la titularidad permite transmitir con garantías antes de entregar arras.",
+      },
+      {
+        title: "ITE y derramas en el Casco Histórico",
+        description:
+          "Edificios antiguos con inspección técnica pendiente o acuerdos de rehabilitación en comunidad — los detectamos antes de que firmes.",
+      },
+      {
+        title: "Compra sin comisión de comprador",
+        description:
+          "Encuentras el piso tú; nosotros blindamos el tramo legal con tarifa plana frente a honorarios encadenados de agencias.",
+      },
+      {
+        title: "Plazos de hipoteca realistas",
+        description:
+          "Negociamos condición suspensiva y calendario con vendedor particular y banco para que no pierdas el piso por plazos imposibles.",
+      },
+      {
+        title: "890 € todo el proceso",
+        description: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido. Sin porcentaje sobre el precio de compra.`,
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Zaragoza con documentación profesional",
+  },
+  oviedo: {
+    keywords: [
+      "comprar piso entre particulares oviedo",
+      "gestor compra vivienda oviedo",
+      "comprar piso sin agencia oviedo",
+      "revisar reserva arras oviedo",
+      "compraventa particulares asturias",
+      "comprar piso particular los pilares oviedo",
+    ],
+    heroBadge: "Compra entre particulares · Oviedo y área metropolitana",
+    heroH1: "Compra de particular a particular en Oviedo — con asesor experto en todo el proceso",
+    metaTitle: "Comprar piso entre particulares en Oviedo | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras en Oviedo (La Ería, Los Pilares, Pumarín, Teatinos)? Gestor comprador: reserva, arras y escritura revisadas. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Compras a vecino, compañero o anuncio en portal",
+      "ITE, cédula de habitabilidad y comunidad revisadas antes de la señal",
+      "Gestor fijo hasta firma en notaría ovetense",
+    ],
+    whyTitle: "Oviedo: confianza en la visita, riesgo en el contrato",
+    whySubtitle:
+      "En barrios residenciales y el área metropolitana es habitual comprar a particular sin agencia compradora. Sin gestor, firmas lo que el vendedor envía.",
+    localZonesHeading: "Barrios y municipios donde acompañamos compradores",
+    localZones:
+      "La Ería, Los Pilares, Pumarín, Teatinos, El Llano, Ciudad Naranco, Siero, Langreo, Mieres y municipios del área metropolitana — misma atención gestora online.",
+    heroImage: "/images/oviedo2.jpg",
+    localBenefits: [
+      {
+        title: "Reserva revisada antes del primer ingreso",
+        description:
+          "En operaciones ovetenses con prisa, frenamos cláusulas de penalización abusiva o señal desproporcionada antes de transferir dinero.",
+      },
+      {
+        title: "Cédula de habitabilidad y ITE",
+        description:
+          "Verificamos certificados vigentes y estado del edificio — clave en bloques de Los Pilares o Pumarín con administradores saturados.",
+      },
+      {
+        title: "Comunidad y derramas pendientes",
+        description:
+          "Revisamos actas y certificado de deuda cero antes de arras — el cuello de botella más habitual en ventas entre particulares en Oviedo.",
+      },
+      {
+        title: "Sin pagar comisión al comprador",
+        description:
+          "Tu inversión va a gestoría (890 €), no a un porcentaje sobre el precio del piso por encontrar anuncio.",
+      },
+      {
+        title: "Mediación con vendedor particular",
+        description:
+          "Redactamos o corregimos arras para que el vendedor las acepte sin romper la operación.",
+      },
+      {
+        title: "Seguimiento hasta notaría ovetense",
+        description: "Documentación ordenada y gestor disponible en cada hito previo a escritura.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Oviedo con documentación profesional",
+  },
+  gijon: {
+    keywords: [
+      "comprar piso entre particulares gijon",
+      "gestor compra vivienda gijon",
+      "comprar piso sin agencia gijon",
+      "revisar reserva arras gijon",
+      "compraventa particulares asturias costa",
+      "comprar piso particular cimadevilla gijon",
+    ],
+    heroBadge: "Compra entre particulares · Gijón y costa asturiana",
+    heroH1: "Compra de particular a particular en Gijón — con asesor experto en todo el proceso",
+    metaTitle: "Comprar piso entre particulares en Gijón | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras en Gijón (Cimadevilla, La Calzada, Roces, El Llano, costa)? Gestor comprador: reserva, arras y escritura. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Compras a particular por Idealista o recomendación local",
+      "Edificios costeros con ITE y derramas a revisar antes de la señal",
+      "Plazos de hipoteca negociados antes de entregar arras",
+    ],
+    whyTitle: "Gijón: mercado entre particulares con edificios exigentes",
+    whySubtitle:
+      "En barrios céntricos, universitarios y la franja costera es habitual comprar sin agencia compradora. Livendia equilibra reserva y arras cuando compras a un particular.",
+    localZonesHeading: "Zonas donde acompañamos compradores en Gijón",
+    localZones:
+      "Cimadevilla, Centro, La Calzada, Roces, El Llano, Somió, Playa de San Lorenzo, Villaviciosa oriente y municipios del área con el mismo protocolo documental.",
+    heroImage: "/images/gijon2.jpg",
+    localBenefits: [
+      {
+        title: "Arras equilibradas en mercado local",
+        description:
+          "Con precios en alza, una penalización mal redactada puede costar más que todo el servicio Livendia.",
+      },
+      {
+        title: "ITE y estado del edificio costero",
+        description:
+          "Verificamos inspección técnica, obras en comunidad y licencias antes de que las arras te obliguen a asumir costes no vistos en la visita.",
+      },
+      {
+        title: "Comunidades con obras y fondos de reserva",
+        description:
+          "Revisamos derramas y actas en edificios del centro y bloques recientes en La Calzada o Roces.",
+      },
+      {
+        title: "Compra sin comisión de comprador",
+        description:
+          "Encuentras el piso tú; nosotros blindamos el tramo legal con tarifa plana.",
+      },
+      {
+        title: "Coordinación hasta notaría gijonesa",
+        description:
+          "Checklist pre-escritura y coherencia entre reserva, arras y minuta notarial.",
+      },
+      {
+        title: "Gestor dedicado, no rotación",
+        description: "Un profesional conoce tu expediente de principio a fin.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Gijón con documentación profesional",
+  },
+  murcia: {
+    keywords: [
+      "comprar piso entre particulares murcia",
+      "gestor compra vivienda murcia",
+      "comprar piso sin agencia murcia",
+      "revisar reserva arras murcia",
+      "compraventa particulares espinardo murcia",
+      "comprar piso particular huerta murcia",
+    ],
+    heroBadge: "Compra entre particulares · Murcia y área metropolitana",
+    heroH1: "Compra de particular a particular en Murcia — con asesor experto en todo el proceso",
+    metaTitle: "Comprar piso entre particulares en Murcia | Asesor experto Livendia",
+    metaDescription:
+      "¿Compras en Murcia (Centro, Espinardo, El Carmen, Vistabella, huerta)? Gestor comprador: reserva, arras y escritura. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Urbanizaciones y herencias: documentación alineada antes de la señal",
+      "Compras a particular por Idealista o familia",
+      "Gestor fijo hasta firma en notaría murciana",
+    ],
+    whyTitle: "Murcia: operaciones familiares, contratos copiados",
+    whySubtitle:
+      "En capital y huerta metropolitana es habitual comprar entre particulares sin agencia compradora. Sin gestor, firmas lo que el vendedor envía.",
+    localZonesHeading: "Barrios y municipios donde acompañamos compradores",
+    localZones:
+      "Centro, Espinardo, El Carmen, Vistabella, El Palmar, Alcantarilla, Molina de Segura, Alguazas y municipios del área — misma atención gestora online.",
+    heroImage: "/images/gestoria3.jpg",
+    localBenefits: [
+      {
+        title: "Reserva revisada antes del primer ingreso",
+        description:
+          "En operaciones murcianas con prisa, frenamos cláusulas de penalización abusiva o señal desproporcionada.",
+      },
+      {
+        title: "Urbanizaciones y titularidad en herencias",
+        description:
+          "Muchas ventas entre familias requieren alinear titularidad y certificados antes de la fecha de escritura.",
+      },
+      {
+        title: "Arras que reflejan la financiación real",
+        description:
+          "Condición suspensiva de hipoteca con plazos que los bancos suelen aceptar si se redactan bien.",
+      },
+      {
+        title: "Sin pagar comisión al comprador",
+        description:
+          "Tu inversión va a gestoría (890 €), no a un porcentaje sobre el precio del piso.",
+      },
+      {
+        title: "Mediación con vendedor particular",
+        description:
+          "Redactamos o corregimos arras para que el vendedor las acepte sin romper la operación.",
+      },
+      {
+        title: "Seguimiento hasta notaría murciana",
+        description: "Documentación ordenada y gestor disponible en cada hito previo a escritura.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Murcia con documentación profesional",
   },
 };

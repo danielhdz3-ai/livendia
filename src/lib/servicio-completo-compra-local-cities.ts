@@ -16,10 +16,15 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISHED_SLUGS: readonly string[] =
   "bilbao",
   "malaga",
   "sevilla",
+  "zaragoza",
+  "oviedo",
+  "gijon",
+  "murcia",
 ];
 
 export type ServicioCompletoCompraLocalLandingConfig = {
   path: string;
+  slug: string;
   city: string;
   schemaAdministrativeArea: string;
   heroLead: string;
@@ -49,6 +54,7 @@ export function toCompraCompletaLandingConfig(
     ...def,
     ...diff,
     path: localServicioCompletoCompraHref(def.slug),
+    slug: def.slug,
   };
 }
 
@@ -235,5 +241,117 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     ],
     finalCtaLead:
       `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Málaga con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "zaragoza",
+    city: "Zaragoza",
+    schemaAdministrativeArea: "Aragón",
+    heroLead:
+      "¿Compras piso de particular a particular en Zaragoza o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en Casco Histórico, Delicias, Actur, Valdespartera o la comarca próxima.",
+    whyIntro:
+      "En Zaragoza muchos compradores encuentran vivienda por Idealista, recomendación o vendedor particular, sin agencia que defienda sus intereses. PAUs recientes, herencias familiares y plantillas de arras desequilibradas pueden costarte miles de euros si nadie las lee antes de la señal. Livendia es tu gestor dedicado en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Zaragoza capital, Utebo, Cuarte o municipios del área.",
+    testimonialsTitle: "Compradores en Zaragoza que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Valdespartera a un particular. Livendia revisó cargas de urbanización en el PAU y ajustó plazos de hipoteca antes de entregar la señal.",
+        author: "Elena & Marcos",
+        role: "Compradores, Valdespartera",
+      },
+      {
+        quote:
+          "Herencia familiar con varios titulares: el gestor detectó lagunas registrales y nos guió hasta escritura sin romper la operación.",
+        author: "Javier R.",
+        role: "Comprador, Casco Histórico",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Zaragoza con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "oviedo",
+    city: "Oviedo",
+    schemaAdministrativeArea: "Asturias",
+    heroLead:
+      "¿Compras piso de particular a particular en Oviedo o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en La Ería, Los Pilares, Pumarín, Teatinos o el área metropolitana.",
+    whyIntro:
+      "En Oviedo es habitual comprar entre particulares sin agencia compradora: vecino, compañero de trabajo o anuncio en portal. Las plantillas de reserva y arras suelen proteger al vendedor; sin asesor, ITE, derramas o plazos de hipoteca pueden costarte miles de euros. Livendia es tu gestor dedicado en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal y coordinación con vendedor y notaría en Oviedo, Siero, Langreo o municipios del área.",
+    testimonialsTitle: "Compradores en Oviedo que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos a un particular en Los Pilares. Livendia revisó la reserva, negoció arras equilibradas y nos alertó de una derrama en la comunidad que no nos habían comentado.",
+        author: "Carmen & Luis",
+        role: "Compradores, Los Pilares",
+      },
+      {
+        quote:
+          "Primera compra entre particulares: el gestor explicó la nota simple, la cédula de habitabilidad y qué negociar antes de entregar la señal.",
+        author: "Beatriz M.",
+        role: "Compradora, Teatinos",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Oviedo con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "gijon",
+    city: "Gijón",
+    schemaAdministrativeArea: "Asturias",
+    heroLead:
+      "¿Compras piso de particular a particular en Gijón o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en Cimadevilla, La Calzada, Roces, El Llano o la costa cercana.",
+    whyIntro:
+      "En Gijón muchos compradores encuentran vivienda por Idealista, recomendación o vendedor particular, sin agencia que defienda sus intereses. Edificios con ITE, derramas costeras y arras copiadas de otra operación generan litigios caros si nadie las revisa antes de la señal. Livendia es tu gestor dedicado en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Gijón, Avilés, Villaviciosa o municipios del área.",
+    testimonialsTitle: "Compradores en Gijón que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en La Calzada a un particular. Livendia revisó la reserva que nos pasó el vendedor, ajustó plazos de financiación y redactó arras equilibradas.",
+        author: "Marta & Iván",
+        role: "Compradores, La Calzada",
+      },
+      {
+        quote:
+          "Piso cerca del mar con vendedor particular: el gestor coordinó plazos, revisó la nota simple y nos ahorró firmar una penalización desproporcionada en arras.",
+        author: "Roberto S.",
+        role: "Comprador, Playa de San Lorenzo",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Gijón con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "murcia",
+    city: "Murcia",
+    schemaAdministrativeArea: "Región de Murcia",
+    heroLead:
+      "¿Compras piso de particular a particular en Murcia o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras, detecta cláusulas abusivas y te acompaña hasta la escritura — en Centro, Espinardo, El Carmen, Vistabella o la huerta metropolitana.",
+    whyIntro:
+      "En Murcia capital y área metropolitana es habitual comprar entre particulares sin agencia compradora: familia, vecino o anuncio en portal. Urbanizaciones, herencias y plantillas de arras desequilibradas pueden costarte miles de euros si nadie las lee antes de la señal. Livendia es tu gestor dedicado en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Murcia, Alcantarilla, Molina de Segura o municipios del área.",
+    testimonialsTitle: "Compradores en Murcia que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Espinardo a un particular. Livendia revisó la reserva, negoció arras confirmatorias y nos alertó de una derrama en la comunidad que no nos habían comentado.",
+        author: "Laura & Antonio",
+        role: "Compradores, Espinardo",
+      },
+      {
+        quote:
+          "Primera compra entre particulares en urbanización: el gestor explicó la nota simple, certificado de comunidad y qué negociar antes de entregar la señal.",
+        author: "Francisco G.",
+        role: "Comprador, El Palmar",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Murcia con un asesor experto hasta la escritura.`,
   },
 ];
