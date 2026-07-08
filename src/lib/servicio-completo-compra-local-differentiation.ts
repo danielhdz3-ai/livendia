@@ -587,4 +587,299 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     ],
     finalCtaTitle: "Cierra la compra en Murcia con documentación profesional",
   },
+  "hospitalet-de-llobregat": {
+    keywords: [
+      "comprar piso entre particulares hospitalet",
+      "gestor compra vivienda l hospitalet",
+      "comprar piso sin agencia hospitalet",
+      "revisar reserva arras collblanc",
+      "compraventa particulares bellvitge",
+      "clausula 621-49 cccat comprador hospitalet",
+    ],
+    heroBadge: "Compra entre particulares · L'Hospitalet · CCCat",
+    heroH1: "Compra de particular a particular en L'Hospitalet — con asesor experto en CCCat",
+    metaTitle: "Comprar piso entre particulares en L'Hospitalet | Gestor comprador Livendia",
+    metaDescription:
+      "¿Compras en L'Hospitalet (Collblanc, Bellvitge, centre)? Gestor comprador: reserva, arras CCCat y art. 621-49. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Compras a particular por Idealista o recomendación local",
+      "Cláusula 621-49 CCCat si compras con hipoteca",
+      "Gestor fijo hasta firma en notaría del Baix Llobregat",
+    ],
+    whyTitle: "L'Hospitalet: compra rápida, contratos copiados de Barcelona",
+    whySubtitle:
+      "En operaciones sin agencia compradora, lo que no negocias antes de la señal casi nunca se arregla después. Livendia adapta reserva y arras al CCCat y a comunidades numerosas del municipio.",
+    localZonesHeading: "Barrios de L'Hospitalet donde acompañamos compradores",
+    localZones:
+      "Centre, Collblanc, Bellvitge, La Florida, Pubilla Cases, Santa Eulàlia, La Torrassa y Sant Josep — misma gestoría online con gestor de referencia en todo el municipio.",
+    heroImage: "/images/barcelona2.jpg",
+    localBenefits: [
+      {
+        title: "Arras conforme al CCCat (621-4 a 621-9)",
+        description:
+          "Traducimos penitenciarias y confirmatorias a decisiones concretas: qué firmar, qué negociar y qué no transferir antes de tiempo.",
+      },
+      {
+        title: "Cláusula 621-49 si pides hipoteca",
+        description:
+          "Evita perder la señal si el banco deniega el préstamo — cláusula redactada conforme al Codi civil de Catalunya.",
+      },
+      {
+        title: "Comunidades numerosas y certificado lento",
+        description:
+          "En bloques densos de Collblanc o Bellvitge, revisamos actas y orientamos sobre certificado de deuda antes de arras.",
+      },
+      {
+        title: "Compra sin comisión de comprador",
+        description:
+          "Encuentras el piso tú; nosotros blindamos el tramo legal con tarifa plana frente a honorarios de agencia.",
+      },
+      {
+        title: "Contratos bilingües explicados",
+        description:
+          "Te aclaramos obligaciones aunque el borrador mezcle castellano y catalán o referencias al CCCat.",
+      },
+      {
+        title: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido`,
+        description: "Todo el camino hasta escritura en notaría del Baix Llobregat.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en L'Hospitalet con documentación profesional",
+  },
+  "baix-llobregat": {
+    keywords: [
+      "comprar piso entre particulares baix llobregat",
+      "gestor compra vivienda baix llobregat",
+      "comprar piso sin agencia cornella esplugues",
+      "revisar reserva arras hospitalet",
+      "compraventa particulares sant boi castelldefels",
+      "clausula 621-49 cccat comprador baix llobregat",
+    ],
+    heroBadge: "Compra entre particulares · Baix Llobregat · CCCat",
+    heroH1: "Compra de particular a particular en el Baix Llobregat — con asesor experto en CCCat",
+    metaTitle: "Comprar piso entre particulares en el Baix Llobregat | Gestor Livendia",
+    metaDescription:
+      "¿Compras en el Baix Llobregat (L'Hospitalet, Cornellà, Esplugues, Sant Boi, El Prat)? Gestor comprador: reserva, arras CCCat y art. 621-49. 890 € IVA incl.",
+    heroBullets: [
+      "Comarca completa: Hospitalet, Cornellà, Esplugues, Castelldefels…",
+      "Cláusula 621-49 CCCat si compras con hipoteca",
+      "Gestor fijo hasta firma en notaría del Baix Llobregat",
+    ],
+    whyTitle: "Baix Llobregat: precio competitivo, mismos riesgos que Barcelona",
+    whySubtitle:
+      "Muchos compradores salen de Barcelona capital buscando metro cuadrado más asequible. Sin gestor, las arras copiadas del distrito condensado siguen siendo peligrosas.",
+    localZonesHeading: "Municipios del Baix Llobregat donde acompañamos compradores",
+    localZones:
+      "L'Hospitalet, Cornellà de Llobregat, Esplugues, Sant Boi de Llobregat, Sant Feliu de Llobregat, El Prat, Castelldefels, Sant Joan Despí, Sant Andreu de la Barca y Gavà — gestoría online con el mismo protocolo CCCat.",
+    heroImage: "/images/barcelona2.jpg",
+    localBenefits: [
+      {
+        title: "Un gestor para toda la comarca",
+        description:
+          "Da igual si compras en Cornellà o Castelldefels: mismo gestor de referencia, revisión CCCat y panel digital.",
+      },
+      {
+        title: "621-49 CCCat para hipoteca",
+        description:
+          "Evita perder la señal si el banco deniega el préstamo — clave en operaciones con compradores que trabajan en Barcelona.",
+      },
+      {
+        title: "Comunidades numerosas y plazos reales",
+        description:
+          "En bloques densos de L'Hospitalet o Cornellà, revisamos actas y calendario de certificado de deuda antes de arras.",
+      },
+      {
+        title: "Compra sin comisión de comprador",
+        description:
+          "Encuentras el piso tú; nosotros blindamos el tramo legal con tarifa plana.",
+      },
+      {
+        title: "Coordinación con notarías del Baix Llobregat",
+        description:
+          "Checklist pre-escritura adaptado al municipio donde firmes.",
+      },
+      {
+        title: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido`,
+        description: "Desde reserva hasta escritura en cualquier municipio de la comarca.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en el Baix Llobregat con documentación profesional",
+  },
+  "sant-andreu": {
+    keywords: [
+      "comprar piso entre particulares sant andreu barcelona",
+      "gestor compra vivienda sant andreu palomar",
+      "comprar piso sin agencia la sagrera",
+      "revisar reserva arras sant andreu barcelona",
+      "compraventa particulares navas barcelona",
+      "clausula 621-49 cccat comprador sant andreu",
+    ],
+    heroBadge: "Compra entre particulares · Sant Andreu (Barcelona) · CCCat",
+    heroH1: "Compra de particular a particular en Sant Andreu — barrio de Barcelona, no el municipio",
+    metaTitle: "Comprar piso entre particulares en Sant Andreu (Barcelona) | Livendia",
+    metaDescription:
+      "¿Compras en Sant Andreu de Palomar, La Sagrera o Navas? Gestor comprador en el distrito barcelonés: reserva, arras CCCat y art. 621-49. 890 € IVA incl.",
+    heroBullets: [
+      "Distrito de Barcelona — Sant Andreu de Palomar, La Sagrera, Navas",
+      "ITE y derramas en edificios del distrito",
+      "621-49 CCCat si compras con hipoteca",
+    ],
+    whyTitle: "Sant Andreu (Barcelona): barrio residencial, contratos genéricos",
+    whySubtitle:
+      "No confundir con Sant Andreu de la Barca (Baix Llobregat). Aquí acompañamos compradores en el distrito norte de Barcelona capital.",
+    localZonesHeading: "Zonas del distrito de Sant Andreu donde acompañamos compradores",
+    localZones:
+      "Sant Andreu de Palomar, La Sagrera, Navas, Trinitat Vella, Bon Pastor (límite) y el eje Fabra i Puig — mismo protocolo CCCat que el resto de Barcelona.",
+    heroImage: "/images/barcelona2.jpg",
+    localBenefits: [
+      {
+        title: "ITE exigente en edificios del distrito",
+        description:
+          "Barcelona aplica inspección técnica estricta; revisamos estado del edificio y derramas de rehabilitación antes de arras.",
+      },
+      {
+        title: "621-49 CCCat bien redactada",
+        description:
+          "Plazos realistas de hipoteca con vendedor particular — perfil habitual en Sant Andreu y La Sagrera.",
+      },
+      {
+        title: "Arras copiadas de otras operaciones",
+        description:
+          "Corregimos penalizaciones y plazos imposibles en borradores que el vendedor trae de plantillas genéricas.",
+      },
+      {
+        title: "Sin pagar comisión al comprador",
+        description:
+          `Inversión en gestoría (${SERVICIO_COMPLETO_CV_PRICE_LABEL}), no en porcentaje sobre el precio del piso.`,
+      },
+      {
+        title: "Distinto de Sant Andreu de la Barca",
+        description:
+          "Landing específica del barrio barcelonés. Para municipios del Baix Llobregat, consulta la landing de Baix Llobregat o L'Hospitalet.",
+      },
+      {
+        title: "Seguimiento hasta notaría barcelonesa",
+        description: "Gestor dedicado y expediente online hasta la firma.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Sant Andreu (Barcelona) con documentación profesional",
+  },
+  sabadell: {
+    keywords: [
+      "comprar piso entre particulares sabadell",
+      "gestor compra vivienda sabadell",
+      "comprar piso sin agencia sabadell",
+      "revisar reserva arras creu alta",
+      "compraventa particulares valles occidental",
+      "clausula 621-49 cccat comprador sabadell",
+    ],
+    heroBadge: "Compra entre particulares · Sabadell · CCCat",
+    heroH1: "Compra de particular a particular en Sabadell — con asesor experto en CCCat",
+    metaTitle: "Comprar piso entre particulares en Sabadell | Gestor comprador Livendia",
+    metaDescription:
+      "¿Compras en Sabadell (Creu Alta, centre, Gràcia, Can Rull)? Gestor comprador: reserva, arras CCCat y art. 621-49. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Herencias y compras familiares en el Vallès",
+      "Cláusula 621-49 CCCat si financias con hipoteca",
+      "Gestor fijo hasta firma en notaría sabadellense",
+    ],
+    whyTitle: "Sabadell: mercado entre particulares con herencias y hipoteca",
+    whySubtitle:
+      "En el Vallès Occidental es habitual comprar sin agencia compradora. Sin gestor, arras copiadas y titularidades registrales imperfectas generan conflictos caros.",
+    localZonesHeading: "Barrios de Sabadell donde acompañamos compradores",
+    localZones:
+      "Centre, Eixample, Creu Alta, Gràcia, Can Feu, Can Rull, La Concòrdia y Sant Oleguer — misma gestoría online en todo el municipio.",
+    heroImage: "/images/barcelona2.jpg",
+    localBenefits: [
+      {
+        title: "Herencias y cotitularidad registral",
+        description:
+          "Verificamos que la titularidad permite transmitir con garantías antes de entregar señal en operaciones familiares.",
+      },
+      {
+        title: "621-49 CCCat bien redactada",
+        description:
+          "En Sabadell, donde muchas operaciones van financiadas, evita perder la señal por denegación bancaria.",
+      },
+      {
+        title: "Arras equilibradas frente a plantillas",
+        description:
+          "Corregimos penalizaciones desproporcionadas y plazos imposibles en borradores del vendedor.",
+      },
+      {
+        title: "Compra sin comisión de comprador",
+        description:
+          "Encuentras el piso tú; nosotros blindamos el tramo legal con tarifa plana.",
+      },
+      {
+        title: "Coordinación con comprador de Terrassa o Barcelona",
+        description:
+          "Operaciones entre municipios del Vallès con el mismo gestor de referencia y calendario realista.",
+      },
+      {
+        title: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido`,
+        description: "Desde reserva hasta escritura en notaría sabadellense.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Sabadell con documentación profesional",
+  },
+  terrassa: {
+    keywords: [
+      "comprar piso entre particulares terrassa",
+      "gestor compra vivienda terrassa",
+      "comprar piso sin agencia terrassa",
+      "revisar reserva arras sant pere",
+      "compraventa particulares valles occidental",
+      "clausula 621-49 cccat comprador terrassa",
+    ],
+    heroBadge: "Compra entre particulares · Terrassa · CCCat",
+    heroH1: "Compra de particular a particular en Terrassa — con asesor experto en CCCat",
+    metaTitle: "Comprar piso entre particulares en Terrassa | Gestor comprador Livendia",
+    metaDescription:
+      "¿Compras en Terrassa (Sant Pere, Les Arenes, Ca n'Aurell)? Gestor comprador: reserva, arras CCCat y art. 621-49. 890 € IVA incl. Sin comisión de agencia.",
+    heroBullets: [
+      "Edificios del centre con ITE y derramas a revisar",
+      "Compras a particular por Idealista o familia",
+      "Gestor fijo hasta firma en notaría terrassenca",
+    ],
+    whyTitle: "Terrassa: pisos de barrio, contratos que no reflejan la visita",
+    whySubtitle:
+      "En Sant Pere, Les Arenes o Can Palet es habitual comprar entre particulares. Livendia deja por escrito lo crítico antes de la señal.",
+    localZonesHeading: "Barrios de Terrassa donde acompañamos compradores",
+    localZones:
+      "Sant Pere, Les Arenes, Ca n'Aurell, Can Palet, Sant Pere Nord, La Maurina, Les Fonts y centre — gestoría online con protocolo CCCat.",
+    heroImage: "/images/barcelona2.jpg",
+    localBenefits: [
+      {
+        title: "ITE en edificios del centre",
+        description:
+          "Revisamos inspección técnica y acuerdos de rehabilitación en actas antes de que firmes arras.",
+      },
+      {
+        title: "621-49 CCCat para hipoteca",
+        description:
+          "Plazos negociables con vendedor particular y bancos del Vallès Occidental.",
+      },
+      {
+        title: "Herencias en Sant Pere y Can Palet",
+        description:
+          "Detectamos lagunas registrales cuando compras a varios herederos o familia ampliada.",
+      },
+      {
+        title: "Sin pagar comisión al comprador",
+        description:
+          `Inversión en gestoría (${SERVICIO_COMPLETO_CV_PRICE_LABEL}), no en porcentaje sobre el precio del piso.`,
+      },
+      {
+        title: "Mediación con vendedor particular",
+        description:
+          "Arras equilibradas que el vendedor puede aceptar sin romper la confianza personal.",
+      },
+      {
+        title: "Seguimiento hasta notaría terrassenca",
+        description: "Documentación ordenada y gestor disponible en cada hito previo a escritura.",
+      },
+    ],
+    finalCtaTitle: "Cierra la compra en Terrassa con documentación profesional",
+  },
 };

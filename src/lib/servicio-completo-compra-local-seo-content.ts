@@ -326,6 +326,166 @@ export const COMPRA_LOCAL_SEO_CONTENT: Record<string, CompraLocalSeoContent> = {
       },
     ],
   },
+  "hospitalet-de-llobregat": {
+    faqTitle: "Preguntas frecuentes sobre comprar en L'Hospitalet entre particulares",
+    faqSubtitle:
+      "CCCat, cláusula 621-49, comunidades numerosas y compra sin comisión de agencia en el Baix Llobregat.",
+    faq: [
+      {
+        question: "¿Puedo comprar en L'Hospitalet sin pagar comisión de agencia compradora?",
+        answer:
+          "Sí. Si encuentras el piso por Idealista o vendedor particular, Livendia revisa reserva y arras por tarifa plana. No cobramos porcentaje sobre el precio de compra ni buscamos anuncios.",
+      },
+      {
+        question: "¿Qué es el artículo 621-49 del CCCat y por qué importa al comprador?",
+        answer:
+          "Regula el desistimiento del comprador si no obtiene la financiación bancaria en plazo y condiciones pactadas. En L'Hospitalet, donde muchas operaciones van con hipoteca, evita perder la señal si el banco deniega el préstamo.",
+      },
+      {
+        question: "¿Revisáis arras copiadas de operaciones en Barcelona capital?",
+        answer:
+          "Sí. Es el caso más frecuente: plantillas que no contemplan plazos realistas de comunidad en bloques densos de Collblanc o Bellvitge. El gestor las adapta al CCCat y a tu operación concreta.",
+      },
+      {
+        question: "¿Atendéis compradores que vienen desde Barcelona a buscar precio en L'Hospitalet?",
+        answer:
+          "Sí. Perfil habitual: comprador del área metropolitana que cierra rápido en precio pero necesita revisión profesional de contrato y documentación antes de la señal.",
+      },
+      {
+        question: "¿Cuándo debo contratar el servicio completo de compra?",
+        answer:
+          "Antes de firmar reserva o transferir señal. Si el vendedor te presiona, el gestor prioriza penalizaciones, 621-49 CCCat y coherencia con lo pactado en la visita.",
+      },
+    ],
+  },
+  "baix-llobregat": {
+    faqTitle: "Preguntas frecuentes sobre comprar en el Baix Llobregat entre particulares",
+    faqSubtitle:
+      "Comarca del Llobregat: CCCat, 621-49, comunidades numerosas y compra sin comisión de agencia.",
+    faq: [
+      {
+        question: "¿Qué municipios cubre la landing de compra del Baix Llobregat?",
+        answer:
+          "Acompañamos compradores en L'Hospitalet, Cornellà, Esplugues, Sant Boi, Sant Feliu, El Prat, Castelldefels, Sant Joan Despí, Gavà, Sant Andreu de la Barca y resto de la comarca — siempre con protocolo CCCat y gestor online.",
+      },
+      {
+        question: "¿Puedo comprar en el Baix Llobregat sin pagar comisión de agencia compradora?",
+        answer:
+          "Sí. Si encuentras piso por Idealista o vendedor particular, Livendia revisa reserva y arras por tarifa plana. No cobramos porcentaje sobre el precio de compra.",
+      },
+      {
+        question: "¿Por qué revisar arras si compro en Cornellà o Esplugues y no en Barcelona?",
+        answer:
+          "Los borradores suelen ser copias barcelonesas que no contemplan plazos realistas de comunidad en bloques del Baix Llobregat ni la cláusula 621-49 CCCat si pides hipoteca.",
+      },
+      {
+        question: "¿Tengo landing específica si compro en L'Hospitalet?",
+        answer:
+          "Sí. Además de esta landing comarcal, existe la página de servicio completo de compra en L'Hospitalet de Llobregat con detalle de barrios como Collblanc o Bellvitge.",
+      },
+      {
+        question: "¿Cuándo debo contratar el servicio completo de compra?",
+        answer:
+          "Antes de firmar reserva o transferir señal. El gestor prioriza penalizaciones, 621-49 CCCat y documentación de comunidad.",
+      },
+    ],
+  },
+  "sant-andreu": {
+    faqTitle: "Preguntas frecuentes sobre comprar en Sant Andreu (Barcelona) entre particulares",
+    faqSubtitle:
+      "Distrito barcelonés — Sant Andreu de Palomar, La Sagrera y Navas. No es Sant Andreu de la Barca.",
+    faq: [
+      {
+        question: "¿Sant Andreu es un municipio o un barrio de Barcelona?",
+        answer:
+          "Es un distrito de Barcelona capital (Sant Andreu de Palomar, La Sagrera, Navas…). No confundir con Sant Andreu de la Barca, municipio del Baix Llobregat — para ese caso consulta la landing del Baix Llobregat.",
+      },
+      {
+        question: "¿Puedo comprar en Sant Andreu sin pagar comisión de agencia compradora?",
+        answer:
+          "Sí. Livendia es gestoría en el bando del comprador: revisa reserva, arras y documentación por tarifa plana, sin porcentaje sobre el precio del inmueble.",
+      },
+      {
+        question: "¿Revisáis ITE y derramas en edificios del distrito?",
+        answer:
+          "Sí. Barcelona exige inspección técnica estricta; en Sant Andreu y La Sagrera revisamos ITE, actas de comunidad y acuerdos de rehabilitación antes de arras.",
+      },
+      {
+        question: "¿Qué es la cláusula 621-49 CCCat en mi compra con hipoteca?",
+        answer:
+          "Permite desistir si no obtienes financiación en plazo pactado, sin perder indebidamente la señal. El gestor la redacta conforme al Codi civil de Catalunya.",
+      },
+      {
+        question: "¿En qué se diferencia de la landing de Barcelona capital?",
+        answer:
+          "Mismo servicio y precio, copy adaptado al mercado del distrito: zonas como Sant Andreu de Palomar, La Sagrera y Navas, con foco en ITE y operaciones entre particulares sin agencia.",
+      },
+    ],
+  },
+  sabadell: {
+    faqTitle: "Preguntas frecuentes sobre comprar en Sabadell entre particulares",
+    faqSubtitle:
+      "Herencias, hipoteca y arras CCCat en el Vallès Occidental — sin comisión de agencia compradora.",
+    faq: [
+      {
+        question: "¿Puedo comprar en Sabadell entre particulares sin pagar comisión al comprador?",
+        answer:
+          "Sí. Livendia es gestoría en el bando del comprador: revisa contratos y documentación por tarifa plana, sin porcentaje sobre el precio del inmueble.",
+      },
+      {
+        question: "¿Revisáis compras a herederos o con varios titulares en Sabadell?",
+        answer:
+          "Sí. Verificamos titularidad registral y que la aceptación de herencia esté inscrita antes de que entregues señal — casuística frecuente en Creu Alta y barrios del centre.",
+      },
+      {
+        question: "¿Qué es la cláusula 621-49 CCCat en una compra con hipoteca?",
+        answer:
+          "Permite desistir si no obtienes financiación en plazo pactado, sin perder indebidamente la señal. En Sabadell, donde muchas operaciones van hipotecadas, es clave redactarla bien.",
+      },
+      {
+        question: "¿Atendéis compradores que vienen desde Terrassa o Barcelona?",
+        answer:
+          "Sí. Operaciones entre municipios del Vallès con gestor online, revisión de contrato CCCat y calendario realista hasta notaría en Sabadell.",
+      },
+      {
+        question: "¿Puedo contratar si el vendedor me envía sus propias arras?",
+        answer:
+          "Sí. El gestor las corrige o redacta alternativa equilibrada para que el vendedor las acepte. No firmes el texto que te pasan sin revisión profesional.",
+      },
+    ],
+  },
+  terrassa: {
+    faqTitle: "Preguntas frecuentes sobre comprar en Terrassa entre particulares",
+    faqSubtitle:
+      "ITE en el centre, herencias en Sant Pere y compra sin agencia en el Vallès Occidental.",
+    faq: [
+      {
+        question: "¿Puedo comprar en Terrassa sin agencia que cobre comisión al comprador?",
+        answer:
+          "Sí. Si encuentras piso por portal o vendedor particular, Livendia blinda el tramo legal por tarifa plana. No somos agencia: no buscamos anuncios ni cobramos un 3 % sobre el precio.",
+      },
+      {
+        question: "¿Revisáis ITE y derramas en edificios del centre de Terrassa?",
+        answer:
+          "Sí. En edificios antiguos del centre y Sant Pere verificamos inspección técnica y acuerdos de rehabilitación en actas de comunidad antes de arras.",
+      },
+      {
+        question: "¿Aplica el CCCat a mi compra en Terrassa?",
+        answer:
+          "Sí. Arras (621-4 a 621-9) y cláusula de financiación (621-49) se redactan conforme al Codi civil de Catalunya. El gestor te lo explica en castellano claro.",
+      },
+      {
+        question: "¿Gestionáis compras con vendedor de Sabadell o del Vallès?",
+        answer:
+          "Sí. Lo relevante es la ubicación del inmueble en Terrassa y la normativa catalana aplicable, con el mismo protocolo Livendia online.",
+      },
+      {
+        question: "¿Cuándo contratar el servicio completo de compra en Terrassa?",
+        answer:
+          "Antes de firmar reserva o transferir señal. En operaciones entre familia o vecinos, conviene dejar por escrito plazos, hipoteca y penalizaciones antes del primer ingreso.",
+      },
+    ],
+  },
 };
 
 export function getCompraLocalSeoContent(slug: string): CompraLocalSeoContent | undefined {

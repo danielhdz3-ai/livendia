@@ -190,8 +190,8 @@ export function CiudadesIndexContent() {
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-[#475569]">
             Además de Barcelona capital, publicamos landings para L&apos;Hospitalet, Cornellà, Badalona, Sant Cugat,
-            Sabadell, Terrassa y Esplugues en contrato de arras (CCCat), venta entre particulares y alquiler de
-            habitación.
+            Sabadell, Terrassa y Esplugues en contrato de arras (CCCat), venta entre particulares, alquiler de
+            habitación y servicio completo de compra (Baix Llobregat, L&apos;Hospitalet, Sant Andreu barrio, Sabadell y Terrassa).
           </p>
           <nav aria-label="Servicios área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
             <Link

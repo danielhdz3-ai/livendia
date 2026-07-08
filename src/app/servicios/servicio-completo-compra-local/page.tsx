@@ -2,6 +2,10 @@ import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
+  COMPRA_LOCAL_BARCELONA_METRO_CITIES,
+  barcelonaMetroCompraHref,
+} from "@/lib/compra-local-barcelona-metro";
+import {
   SERVICIO_COMPLETO_COMPRA_LOCAL_BASE,
   getPublishedServicioCompletoCompraLocalCities,
   localServicioCompletoCompraHref,
@@ -14,7 +18,7 @@ const canonical = `${getSiteUrl()}${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}`;
 export const metadata: Metadata = {
   title: "Servicio completo de compra por ciudad | Gestor experto Livendia",
   description:
-    "¿Necesitas comprar con todas las garantías? Acompañamiento desde reserva a escritura en Madrid, Barcelona, Valencia, Bilbao, Málaga, Sevilla, Zaragoza, Oviedo, Gijón, Murcia y más. Gestor inmobiliario experto para compradores particulares.",
+    "¿Necesitas comprar con todas las garantías? Acompañamiento desde reserva a escritura en Madrid, Barcelona, Cataluña (L'Hospitalet, Sabadell, Terrassa…), Valencia, Bilbao, Málaga, Sevilla y más. Gestor inmobiliario experto para compradores particulares.",
   alternates: { canonical },
   openGraph: {
     title: "Servicio completo de compra por ciudad | Livendia",
@@ -76,6 +80,36 @@ export default function ServicioCompletoCompraLocalIndexPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="border-t border-slate-200 bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div className="rounded-2xl border border-[#1A4FBF]/20 bg-gradient-to-br from-[#EFF6FF] to-white p-6 sm:p-8">
+              <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">Cataluña · Área metropolitana</p>
+              <h2 className="mt-2 text-2xl font-bold text-[#1E293B]">Compra entre particulares en Cataluña: Baix Llobregat, Vallès y Sant Andreu</h2>
+              <p className="mt-3 max-w-3xl text-[#475569]">
+                Además de{" "}
+                <Link href={localServicioCompletoCompraHref("barcelona")} className="font-semibold text-[#1A4FBF] hover:underline">
+                  Barcelona capital
+                </Link>
+                , publicamos landings de compra con gestor experto bajo{" "}
+                <strong className="text-[#1E293B]">Codi civil de Catalunya</strong> (arras 621-4 a 621-9 y cláusula
+                621-49 para hipoteca): comarca del Baix Llobregat, distrito de{" "}
+                <strong className="text-[#1E293B]">Sant Andreu (barrio de Barcelona)</strong> y municipios del Vallès.
+              </p>
+              <nav aria-label="Compra completa área metropolitana Barcelona" className="mt-6 flex flex-wrap gap-2">
+                {COMPRA_LOCAL_BARCELONA_METRO_CITIES.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={barcelonaMetroCompraHref(c.slug)}
+                    className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 transition hover:bg-blue-50 hover:ring-[#1A4FBF]"
+                  >
+                    {c.shortName}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </div>
         </section>
       </main>
       <SiteFooter />

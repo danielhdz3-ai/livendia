@@ -24,6 +24,11 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISHED_SLUGS: readonly string[] =
   "oviedo",
   "gijon",
   "murcia",
+  "hospitalet-de-llobregat",
+  "baix-llobregat",
+  "sant-andreu",
+  "sabadell",
+  "terrassa",
 ];
 
 export type ServicioCompletoCompraLocalLandingConfig = {
@@ -368,5 +373,145 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     ],
     finalCtaLead:
       `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Murcia con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "hospitalet-de-llobregat",
+    city: "L'Hospitalet de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Compras piso de particular a particular en L'Hospitalet o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras bajo Codi civil de Catalunya, detecta cláusulas abusivas y te acompaña hasta la escritura — en Collblanc, Bellvitge, el centre o La Florida.",
+    whyIntro:
+      "En L'Hospitalet muchos compradores encuentran vivienda por Idealista o vendedor particular sin agencia compradora. Los borradores suelen ser copias barcelonesas que no contemplan plazos realistas de comunidad en bloques densos ni el art. 621-49 CCCat si pides hipoteca. Livendia es tu gestor en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal y coordinación con vendedor y notaría en L'Hospitalet o municipios del Baix Llobregat.",
+    testimonialsTitle: "Compradores en L'Hospitalet que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Collblanc a un particular. Livendia revisó la reserva, incluyó cláusula 621-49 CCCat y nos alertó de una derrama en la comunidad que no nos habían comentado.",
+        author: "Laura & Marc",
+        role: "Compradores, Collblanc",
+      },
+      {
+        quote:
+          "Primera compra entre particulares: el gestor explicó arras penitenciarias (621-4 CCCat) y qué negociar antes de entregar la señal en un bloque grande de Bellvitge.",
+        author: "Jordi P.",
+        role: "Comprador, Bellvitge",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en L'Hospitalet con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "baix-llobregat",
+    city: "Baix Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Compras piso de particular a particular en el Baix Llobregat o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras bajo CCCat en L'Hospitalet, Cornellà, Esplugues, Sant Boi, Castelldefels, El Prat o Sant Feliu — detecta cláusulas abusivas y te acompaña hasta la escritura.",
+    whyIntro:
+      "En el Baix Llobregat muchos compradores encuentran vivienda por Idealista o vendedor particular sin agencia compradora. Pisos más asequibles que Barcelona capital, pero mismos riesgos: arras copiadas, plazos de comunidad irreales en bloques densos y ausencia de cláusula 621-49 CCCat si pides hipoteca. Livendia es tu gestor en el bando del comprador en toda la comarca.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal y coordinación con vendedor y notaría en cualquier municipio del Baix Llobregat.",
+    testimonialsTitle: "Compradores en el Baix Llobregat que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Cornellà a un particular. Livendia revisó la reserva, incluyó 621-49 CCCat y nos alertó de plazos de comunidad imposibles en un bloque grande.",
+        author: "Silvia & Arnau",
+        role: "Compradores, Cornellà",
+      },
+      {
+        quote:
+          "Compradores desde Barcelona: el gestor adaptó arras al calendario real del administrador de fincas en Esplugues — algo que el borrador del vendedor no contemplaba.",
+        author: "Miquel T.",
+        role: "Comprador, Esplugues",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en el Baix Llobregat con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "sant-andreu",
+    city: "Sant Andreu",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras piso de particular a particular en Sant Andreu (Barcelona) o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras bajo CCCat en Sant Andreu de Palomar, La Sagrera o Navas — detecta cláusulas abusivas, ITE del edificio y te acompaña hasta la escritura.",
+    whyIntro:
+      "En el distrito de Sant Andreu muchos compradores encuentran vivienda por Idealista o vendedor particular sin agencia compradora. Barrio residencial con edificios que exigen ITE estricta, derramas de rehabilitación y arras copiadas de otras operaciones barcelonesas. Livendia defiende tus intereses con tarifa plana — no confundir con Sant Andreu de la Barca (municipio del Baix Llobregat).",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Sant Andreu y resto de Barcelona.",
+    testimonialsTitle: "Compradores en Sant Andreu (Barcelona) que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Sant Andreu de Palomar a un particular. Livendia revisó la reserva, incluyó 621-49 CCCat y nos alertó de una derrama de rehabilitación energética en la comunidad.",
+        author: "Laia & Pol",
+        role: "Compradores, Sant Andreu de Palomar",
+      },
+      {
+        quote:
+          "Piso en La Sagrera: el gestor explicó el ITE del edificio y qué negociar antes de entregar la señal. Valió cada euro frente a firmar el borrador del vendedor.",
+        author: "Rosa M.",
+        role: "Compradora, La Sagrera",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Sant Andreu (Barcelona) con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "sabadell",
+    city: "Sabadell",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Compras piso de particular a particular en Sabadell o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras bajo CCCat, detecta cláusulas abusivas y te acompaña hasta la escritura — en Creu Alta, el centre, Gràcia, Can Rull o el Vallès Occidental.",
+    whyIntro:
+      "En Sabadell muchos compradores encuentran vivienda por Idealista, recomendación o vendedor particular, sin agencia que defienda sus intereses. Herencias múltiples, arras copiadas y cláusulas sin art. 621-49 CCCat generan litigios caros si nadie las revisa antes de la señal. Livendia es tu gestor dedicado al comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas desequilibradas, gestor personal y coordinación con vendedor y notaría en Sabadell, Terrassa o municipios del Vallès.",
+    testimonialsTitle: "Compradores en Sabadell que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Creu Alta a un particular. Livendia revisó la reserva, negoció arras confirmatorias con 621-49 CCCat y nos alertó de titularidad registral pendiente de herencia.",
+        author: "Marta & Oriol",
+        role: "Compradores, Creu Alta",
+      },
+      {
+        quote:
+          "Comprador desde Terrassa: el gestor explicó la nota simple, derramas pendientes y qué negociar antes de entregar la señal. Valió cada euro del servicio completo.",
+        author: "Pau L.",
+        role: "Comprador, Eixample sabadellenc",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Sabadell con un asesor experto hasta la escritura.`,
+  },
+  {
+    slug: "terrassa",
+    city: "Terrassa",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Compras piso de particular a particular en Terrassa o ya tienes reserva y no quieres firmar a ciegas? Un gestor inmobiliario experto revisa reserva y arras bajo CCCat, detecta cláusulas abusivas y te acompaña hasta la escritura — en Sant Pere, Les Arenes, Ca n'Aurell, Can Palet o el Vallès Occidental.",
+    whyIntro:
+      "En Terrassa es habitual comprar entre particulares sin agencia compradora: familia, vecino o anuncio en portal. Edificios del centre con ITE, herencias en Sant Pere y arras desequilibradas pueden costarte miles de euros si nadie las lee antes de la señal. Livendia equilibra el contrato en el bando del comprador.",
+    howIntro:
+      "Cuatro hitos hasta la firma en notaría: revisión documental, defensa frente a cláusulas perjudiciales, gestor personal y coordinación con vendedor y notaría en Terrassa, Sabadell o municipios del Vallès.",
+    testimonialsTitle: "Compradores en Terrassa que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Sant Pere a un particular. Livendia revisó la reserva, ajustó plazos de hipoteca con cláusula 621-49 CCCat y detectó una derrama en actas de comunidad.",
+        author: "Anna & Sergi",
+        role: "Compradores, Sant Pere",
+      },
+      {
+        quote:
+          "Primera compra entre particulares en Can Palet: el gestor redactó arras equilibradas que el vendedor aceptó sin romper la operación.",
+        author: "Imma R.",
+        role: "Compradora, Can Palet",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Terrassa con un asesor experto hasta la escritura.`,
   },
 ];
