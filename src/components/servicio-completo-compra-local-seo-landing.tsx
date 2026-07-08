@@ -1,4 +1,5 @@
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { FaqSection } from "@/components/faq-section";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -353,6 +354,22 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.faq?.length ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  id={`faq-compra-local-${config.slug}`}
+                  title={config.faqTitle ?? `Preguntas frecuentes sobre comprar en ${config.city} entre particulares`}
+                  subtitle={
+                    config.faqSubtitle ??
+                    "Compra sin agencia compradora, reserva, arras y acompañamiento hasta escritura."
+                  }
+                  items={[...config.faq]}
+                />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

@@ -1,6 +1,10 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { COMPRA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-compra-local-differentiation";
+import {
+  getCompraLocalSeoContent,
+  type CompraLocalFaqItem,
+} from "@/lib/servicio-completo-compra-local-seo-content";
 
 /**
  * Landings SEO locales: servicio completo de compra por ciudad.
@@ -33,6 +37,9 @@ export type ServicioCompletoCompraLocalLandingConfig = {
   testimonialsTitle: string;
   testimonials: { quote: string; author: string; role: string }[];
   finalCtaLead: string;
+  faqTitle?: string;
+  faqSubtitle?: string;
+  faq?: readonly CompraLocalFaqItem[];
 } & LocalCityLandingFields;
 
 export type ServicioCompletoCompraLocalCityDefinition = Omit<
@@ -50,9 +57,17 @@ export function toCompraCompletaLandingConfig(
   def: ServicioCompletoCompraLocalCityDefinition,
 ): ServicioCompletoCompraLocalLandingConfig {
   const diff = COMPRA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
+  const seoContent = getCompraLocalSeoContent(def.slug);
   return {
     ...def,
     ...diff,
+    ...(seoContent
+      ? {
+          faq: seoContent.faq,
+          faqTitle: seoContent.faqTitle,
+          faqSubtitle: seoContent.faqSubtitle,
+        }
+      : {}),
     path: localServicioCompletoCompraHref(def.slug),
     slug: def.slug,
   };
