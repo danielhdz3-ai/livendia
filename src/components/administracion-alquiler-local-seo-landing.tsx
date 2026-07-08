@@ -1,3 +1,7 @@
+import { AlquilerRegulatoryLocalSection } from "@/components/alquiler-regulatory-local-section";
+import { FaqSection } from "@/components/faq-section";
+import { GestorMiniCard } from "@/components/gestor-mini-card";
+import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -11,6 +15,10 @@ import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
+import {
+  ALQUILER_REGULATORY_BY_SLUG,
+  mergeAdministracionFaq,
+} from "@/lib/administracion-alquiler-local-regulatory";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -159,6 +167,9 @@ export async function AdministracionAlquilerLocalSeoLanding({
   ];
 
   const heroImage = config.heroImage ?? "/images/modelo3.jpg";
+  const slug = config.path.split("/").pop() ?? "";
+  const regulatory = ALQUILER_REGULATORY_BY_SLUG[slug];
+  const faqItems = mergeAdministracionFaq(config.faq);
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -223,6 +234,8 @@ export async function AdministracionAlquilerLocalSeoLanding({
                       Más información — WhatsApp
                     </a>
                   </div>
+
+                  <LandingTrustBar className="mt-6 text-blue-100" />
 
                   <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-blue-100">
                     <a
@@ -419,6 +432,21 @@ export async function AdministracionAlquilerLocalSeoLanding({
             </section>
           ) : null}
 
+          {regulatory ? (
+            <AlquilerRegulatoryLocalSection city={config.city} regulatory={regulatory} />
+          ) : null}
+
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-3xl">
+              <FaqSection
+                id={`faq-alquiler-local-${slug}`}
+                title={`Preguntas frecuentes sobre administración de alquiler en ${config.city}`}
+                subtitle="Impagos, seguro, venta con inquilino y recuperación de la vivienda — respuestas claras para propietarios."
+                items={faqItems}
+              />
+            </div>
+          </section>
+
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">
               <div className="flex gap-4">
@@ -435,6 +463,12 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   </p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section className="border-b border-slate-200 bg-slate-50 px-4 py-10 sm:px-6">
+            <div className="mx-auto max-w-lg">
+              <GestorMiniCard />
             </div>
           </section>
 
@@ -460,25 +494,15 @@ export async function AdministracionAlquilerLocalSeoLanding({
                 </a>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-sm text-blue-200">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5" aria-hidden />
-                  <span>Sin permanencia</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5" aria-hidden />
-                  <span>Cancela cuando quieras</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5" aria-hidden />
-                  <span>+500 contratos gestionados</span>
-                </div>
-              </div>
+              <LandingTrustBar
+                className="mt-8 text-blue-100"
+                items={["Sin permanencia", "Respuesta en 24 h", "Profesionales colegiados"]}
+              />
             </div>
           </section>
         </main>
 
-        <SiteFooter />
+        <SiteFooter variant="landing" />
       </div>
     </MultiServicePurchaseProvider>
   );

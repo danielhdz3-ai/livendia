@@ -10,7 +10,12 @@ import { getBusinessLegalIdentity } from "@/lib/business-legal";
 
 const waHref = getWhatsAppHref();
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  /** En landings locales: footer compacto sin mega-menú de ciudades. */
+  variant?: "full" | "landing";
+};
+
+export function SiteFooter({ variant = "full" }: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
   const legal = getBusinessLegalIdentity();
 
@@ -20,17 +25,33 @@ export function SiteFooter() {
       <FooterParticularesTestimonials />
 
       {/* Bloque 1: enlaces SEO — separado para no estirar la imagen del footer */}
-      <section
-        className="border-t border-white/10 bg-[#172554] px-4 py-8 text-white sm:px-6 lg:px-10"
-        aria-label="Explora Livendia"
-      >
-        <div className="mx-auto max-w-7xl">
-          <FooterDiscoverabilityLinks />
-          <div className="mt-4 border-t border-white/15 pt-4">
-            <ServicioCompletoVentaLocalCityLinks variant="footer" />
+      {variant === "full" ? (
+        <section
+          className="border-t border-white/10 bg-[#172554] px-4 py-8 text-white sm:px-6 lg:px-10"
+          aria-label="Explora Livendia"
+        >
+          <div className="mx-auto max-w-7xl">
+            <FooterDiscoverabilityLinks />
+            <div className="mt-4 border-t border-white/15 pt-4">
+              <ServicioCompletoVentaLocalCityLinks variant="footer" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section
+          className="border-t border-white/10 bg-[#172554] px-4 py-6 text-white sm:px-6 lg:px-10"
+          aria-label="Explora Livendia"
+        >
+          <div className="mx-auto max-w-7xl text-center sm:text-left">
+            <p className="text-sm text-blue-100">
+              Livendia opera en decenas de ciudades.{" "}
+              <Link href="/ciudades" className="font-semibold text-cyan-300 hover:text-white hover:underline">
+                Ver todas las ciudades →
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Bloque 2: marca, imagen, servicios, contacto y legal */}
       <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">

@@ -19,6 +19,9 @@ export const ADMINISTRACION_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "malaga",
   "oviedo",
   "gijon",
+  "zaragoza",
+  "murcia",
+  "bilbao",
 ];
 
 export function isAdministracionAlquilerLocalSlugPublished(slug: string): boolean {
@@ -43,6 +46,7 @@ export type AdministracionAlquilerLocalLandingConfig = {
   heroImage?: string;
   barriosIntro?: string;
   barrios?: readonly string[];
+  faq?: readonly { question: string; answer: string }[];
 };
 
 export type AdministracionAlquilerLocalCityDefinition = Omit<
@@ -82,7 +86,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En Madrid muchos conflictos empiezan por mensajes dispersos entre WhatsApp particular y mails de administradores de fincas. Centralizamos el canal hasta el inquilino, ordenamos urgencias desde la incidencia en el portal y documentamos cada paso hasta el cierre, compatible con agendas de distrito Centro, Salamanca o barrios como Lavapiés.",
     howIntro:
-      "Cuatro fases igual que nuestra página general de administración, adaptadas cuando el arrendamiento transcurre entre el ensanche madrileño y municipios cercanos donde también gestionamos el mismo protocolo profesional.",
+      "Onboarding con datos del inmueble y del inquilino, intermediación como único canal de contacto, coordinación de incidencias con técnicos y comunidad, y avisos solo cuando hace falta vuestra firma — en el ensanche madrileño, barrios periféricos o municipios del cinturón donde no podéis desplazaros en 24 horas.",
     testimonialsTitle: "Propietarios en Madrid que ya delegaron el contacto con el inquilino",
     testimonials: [
       {
@@ -110,7 +114,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "Aquí suele aumentar la fricción entre propiedad, comunidad e inquilino por idioma distinto del contrato verbal y la práctica cotidiana. Un administrador profesional amortigua esas diferencias antes de escalarlas: filtros coherentes para incidencias, calendarios de comunidad solicitados cuando toca y trazabilidad que encaja tanto en Eixample como en Nou Barris o municipios próximos al TRAM.",
     howIntro:
-      "Replicamos el flujo Livendia de onboarding, intermediación, ejecución y reporting, con comunicación ágil incluso cuando el uso del piso oscila entre vivienda habitual y estancias acotadas pactadas contractualmente.",
+      "Registramos contrato y contactos, asumimos la intermediación con el arrendatario, gestionamos incidencias con trazabilidad y os informamos solo de pagos, renovaciones o decisiones que requieran vuestra aprobación — en Eixample, Nou Barris o municipios del TRAM.",
     testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",
     testimonials: [
       {
@@ -138,7 +142,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "El ciclo rápido de visitas—contrato suele hacer que lleguen incidencias en los primeros quince días después de entrar muebles nuevos o encender primera vez el electrodoméstico. Anticipamos el caos inicial con checklist y seguimiento, útil igualmente si el bien está en Ciutat Vella, Extramurs o cercanías de Torrent y Paiporta donde muchos propietarios viven fuera.",
     howIntro:
-      "Mismo esquema de cuatro pasos que en Livendia: intermediación continua hasta que la relación lleva orden y los recordatorios sobre renovaciones o IPC no os pillan en silencio de buzón antiguo.",
+      "Alta del arrendamiento en panel, canal único con el inquilino, resolución de averías con proveedores de confianza y resumen periódico de lo relevante — especialmente útil en los primeros quince días tras la entrada de muebles o electrodomésticos.",
     testimonialsTitle: "Propietarios en Valencia que llevaron las incidencias al despacho Livendia",
     testimonials: [
       {
@@ -166,7 +170,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En las Baleares conviven alquiler de larga duración, estancias estacionales y propietarios que viven fuera de la isla. Sin canal profesional, las incidencias se mezclan con WhatsApp personal y el vecino de la finca acaba mediando antes que el gestor. Centralizamos comunicaciones, filtramos urgencias reales —fontanería, climatización, cerrajería en verano— y documentamos cada paso con el mismo protocolo Livendia que en la península, adaptado al ritmo balear.",
     howIntro:
-      "Cuatro fases idénticas al servicio nacional: intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando hace falta vuestra decisión. Útil tanto en Palma ciudad como en municipios costeros donde el propietario no puede desplazarse en 24 horas.",
+      "Intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando hace falta vuestra decisión — en Palma ciudad o municipios costeros donde el propietario no puede desplazarse en 24 horas.",
     testimonialsTitle: "Propietarios en Mallorca que delegaron el día a día del alquiler en Livendia",
     testimonials: [
       {
@@ -194,7 +198,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En barrios como Triana, Nervión o Los Remedios la rotación de inquilinos acelera incidencias en los primeros quince días. Sin canal profesional, WhatsApp personal y el presidente de la comunidad acaban mediando antes que un gestor. Centralizamos comunicaciones y documentamos cada paso.",
     howIntro:
-      "Cuatro fases idénticas al servicio nacional: intermediación, gestión de consultas, coordinación de reparaciones y avisos solo cuando hace falta vuestra firma — en Sevilla, Tomares, Dos Hermanas o municipios cercanos.",
+      "Intermediación con el inquilino, gestión de consultas, coordinación de reparaciones y avisos solo cuando hace falta vuestra firma — en Triana, Nervión, Los Remedios, Tomares, Dos Hermanas o municipios del área metropolitana.",
     testimonialsTitle: "Propietarios en Sevilla que delegaron el día a día del alquiler en Livendia",
     testimonials: [
       {
@@ -222,7 +226,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En Teatinos, El Palo o municipios como Torremolinos o Rincón de la Victoria es frecuente que el propietario no pueda desplazarse en 24 h. Un gestor profesional amortigua conflictos sobre suministros, ocupación y reparaciones antes de que escalen a la junta de vecinos.",
     howIntro:
-      "Mismo protocolo Livendia en cuatro hitos: onboarding, intermediación con el arrendatario, ejecución de incidencias y reporting — válido para vivienda habitual o segunda residencia en la costa.",
+      "Onboarding, intermediación con el arrendatario, ejecución de incidencias y reporting claro — válido para vivienda habitual o segunda residencia en Teatinos, El Palo, Torremolinos o la costa.",
     testimonialsTitle: "Propietarios en Málaga que delegaron el contacto con el inquilino en Livendia",
     testimonials: [
       {
@@ -251,7 +255,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En Oviedo es habitual alquilar pisos amueblados cerca del campus o en Ciudad Naranco mientras el propietario reside en Madrid, León o la costa. Sin canal profesional, WhatsApp personal y el presidente de la comunidad acaban mediando antes que un gestor. Centralizamos comunicaciones, pedimos certificados de comunidad cuando toca y documentamos cada incidencia — útil en El Cristo, Pumarín, La Florida o municipios del área como Siero y Lugones.",
     howIntro:
-      "Cuatro fases idénticas al servicio nacional: intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando requiere decisión vuestra — en Oviedo capital y área metropolitana.",
+      "Intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando requiere decisión vuestra — en Oviedo capital, Siero, Lugones o Langreo.",
     barriosIntro:
       "Administramos alquileres en los barrios donde más rotación hay entre estudiantes, familias y segundas residencias en el Principado.",
     barrios: [
@@ -299,7 +303,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     whyIntro:
       "En Gijón la fricción habitual es distinguir avería interior de problema de fachada o ascensor comunitario — sobre todo en La Arena, El Natahoyo y el Centro. Un gestor profesional amortigua conflictos con el vecindario, filtra incidencias reales y mantiene trazabilidad antes de que escalen a la junta de propietarios.",
     howIntro:
-      "Mismo protocolo Livendia en cuatro hitos: onboarding, intermediación con el arrendatario, ejecución de incidencias y reporting — válido en Gijón capital, litoral y concejos limítrofes como Carreño o Avilés cuando el piso está en el área.",
+      "Alta del contrato, intermediación con el arrendatario, resolución de incidencias y avisos puntuales — en La Arena, El Natahoyo, Somió, litoral o concejos limítrofes como Carreño y Avilés.",
     barriosIntro:
       "Cubrimos administración de alquiler en los barrios y zonas donde más propietarios delegan el contacto con el inquilino.",
     barrios: [
@@ -337,5 +341,140 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     ],
     finalCtaLead:
       "Contrata administración profesional en Gijón desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+  },
+  {
+    slug: "zaragoza",
+    city: "Zaragoza",
+    schemaAdministrativeArea: "Aragón",
+    heroImage: "/images/zaragoza2.jpg",
+    heroLead:
+      "Zaragoza concentra demanda en Centro, Romareda, Actur y barrios universitarios con precios medios en torno a 2.250–2.300 €/m² en 2026. Propietarios con pisos en Delicias, Las Fuentes o Torrero-La Paz reciben llamadas de averías, dudas sobre IRAV en zonas tensionadas y conflictos con la comunidad. Livendia canaliza todo con el inquilino para que solo firméis lo que merece vuestra decisión.",
+    whyIntro:
+      "En barrios como Romareda, Universidad o Casco Histórico (2.600–2.800 €/m²) la rotación acelera incidencias en los primeros quince días. Sin canal profesional, WhatsApp personal y el presidente de la comunidad acaban mediando antes que un gestor. Centralizamos comunicaciones y documentamos cada paso.",
+    howIntro:
+      "Intermediación desde el primer día, gestión de consultas, coordinación de reparaciones y avisos solo cuando hace falta vuestra firma — en Zaragoza capital, Utebo, Cuarte de Huerva o Valdespartera.",
+    barriosIntro:
+      "Administramos alquileres en los barrios con más presión de mercado y rotación de inquilinos en Aragón.",
+    barrios: [
+      "Centro",
+      "Casco Histórico",
+      "Delicias",
+      "Las Fuentes",
+      "Actur",
+      "Romareda",
+      "Universidad",
+      "Parque Goya",
+      "Valdespartera",
+      "Torrero-La Paz",
+      "Rosales del Canal",
+      "Utebo",
+      "Cuarte de Huerva",
+    ],
+    testimonialsTitle: "Propietarios en Zaragoza que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilo en Romareda cerca del campus y vivo en Madrid. Livendia atiende al inquilino, coordina fontanería y yo solo apruebo cuando el gasto supera lo pactado.",
+        author: "Lucía M.",
+        role: "Propietaria, Romareda",
+      },
+      {
+        quote:
+          "Piso en Delicias con inquilino joven. Filtran consultas menores y cuando hubo humedad explicaron qué era responsabilidad suya y qué tocaba comunidad.",
+        author: "Jorge P.",
+        role: "Propietario, Delicias",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Zaragoza desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
+  },
+  {
+    slug: "murcia",
+    city: "Murcia",
+    schemaAdministrativeArea: "Región de Murcia",
+    heroLead:
+      "Murcia capital y pedanías como Sucina o Corvera viven una subida fuerte de precios (media regional ~1.700–2.000 €/m² en 2026). Propietarios en Santa Catalina-San Bartolomé, San Miguel o El Carmen reciben incidencias, dudas sobre renovaciones y conflictos con la comunidad. Livendia es vuestro único interlocutor ante el inquilino.",
+    whyIntro:
+      "En barrios premium como Santa Catalina-San Bartolomé o San Miguel (+3.000 €/m²) y en pedanías en boom inversor, la fricción habitual es distinguir avería interior de problema comunitario. Un gestor profesional amortigua conflictos antes de que escalen a la junta de propietarios.",
+    howIntro:
+      "Onboarding, intermediación con el arrendatario, coordinación de incidencias y avisos puntuales — en Murcia capital, Espinardo, El Palmar, Molina de Segura o pedanías del área metropolitana.",
+    barriosIntro:
+      "Cubrimos administración de alquiler en capital, huerta metropolitana y pedanías con alta rotación.",
+    barrios: [
+      "Centro",
+      "Santa Catalina-San Bartolomé",
+      "San Miguel",
+      "El Carmen",
+      "Espinardo",
+      "Vistabella",
+      "El Palmar",
+      "Sucina",
+      "Corvera",
+      "Alcantarilla",
+      "Molina de Segura",
+      "Alguazas",
+    ],
+    testimonialsTitle: "Propietarios en Murcia que delegaron el día a día del alquiler en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Tengo piso en Espinardo y trabajo fuera. Antes perdía fines de semana con WhatsApp del inquilino; ahora Livendia coordina técnico y comunidad y yo solo veo el resumen cuando toca autorizar.",
+        author: "Carmen R.",
+        role: "Propietaria, Espinardo",
+      },
+      {
+        quote:
+          "Alquilamos en zona cerca de Sucina con contrato LAU bien hecho. Ellos filtran incidencias menores y cuando hubo avería de climatización coordinaron empresa sin que yo llamara al vecino.",
+        author: "Francisco T.",
+        role: "Propietario, pedanía sur",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Murcia desde 49 €/mes sin permanencia: gestor colegiado, panel online y WhatsApp profesional.",
+  },
+  {
+    slug: "bilbao",
+    city: "Bilbao",
+    schemaAdministrativeArea: "País Vasco",
+    heroImage: "/images/bilbao1.jpg",
+    heroLead:
+      "Bizkaia y Bilbao capital tienen mercado comprimido: propietarios en Abando, Deusto, Indautxu o Getxo reciben incidencias, dudas sobre normativa vasca de arrendamientos y conflictos con comunidades de edificios históricos. Livendia actúa como único intermediario ante el inquilino para que vosotros decidáis solo lo que merece vuestra firma.",
+    whyIntro:
+      "En el Gran Bilbao es frecuente que el propietario no pueda desplazarse en 24 h cuando salta una avería en ascensor o fachada. Centralizamos el canal con el inquilino, pedimos certificados de comunidad cuando toca y documentamos cada incidencia — en Abando, Deusto, Barakaldo o Portugalete.",
+    howIntro:
+      "Intermediación desde el primer día, gestión de consultas del inquilino, coordinación de reparaciones y avisos solo cuando requiere decisión vuestra — en Bilbao, Getxo, Barakaldo, Portugalete o municipios del área metropolitana.",
+    barriosIntro:
+      "Administramos alquileres en los barrios y municipios del Gran Bilbao con más demanda residencial.",
+    barrios: [
+      "Abando",
+      "Deusto",
+      "Indautxu",
+      "Basurto",
+      "Rekalde",
+      "Begoña",
+      "Getxo",
+      "Barakaldo",
+      "Portugalete",
+      "Santurtzi",
+      "Leioa",
+      "Erandio",
+    ],
+    testimonialsTitle: "Propietarios en Bilbao que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Tengo piso en Deusto y vivo en Madrid. Livendia atiende al inquilino, coordina cerrajero y fontanería y yo solo veo el resumen cuando toca autorizar gasto.",
+        author: "Ander L.",
+        role: "Propietario, Deusto",
+      },
+      {
+        quote:
+          "Alquilo en Getxo con inquilino estable. Filtran consultas menores y cuando hubo avería de ascensor explicaron al inquilino el protocolo con la comunidad.",
+        author: "Maite S.",
+        role: "Propietaria, Getxo",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Bilbao desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
   },
 ];

@@ -72,7 +72,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     ],
     heroBadge: "Compra entre particulares · Barcelona y área metropolitana",
     heroH1: "Compra en Barcelona con gestor en catalán y castellano — contratos bajo control",
-    metaTitle: "Comprar entre particulares en Barcelona | Gestor comprador Livendia",
+    metaTitle: "Comprar piso entre particulares en Barcelona | Gestor comprador Livendia",
     metaDescription:
       "Compra en Eixample, Gràcia, Poblenou, Sant Martí, L'Hospitalet o Badalona con gestor dedicado. Revisión reserva/arras, ITE y cargas. 890 € IVA incl.",
     heroBullets: [
@@ -163,7 +163,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
       {
         title: "Financiación sin plazos imposibles",
         description:
-          "Negociamos extensiones de hipoteca realistas con bancos valencinos y vendedores particulares.",
+          "Negociamos extensiones de hipoteca realistas con bancos valencianos y vendedores particulares.",
       },
       {
         title: "Gestoría 100 % online",
@@ -375,7 +375,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
       "En operaciones sin agencia compradora, lo que no negocias antes de la señal casi nunca se arregla después. Livendia prioriza tu expediente, no la comisión del intermediario.",
     localZonesHeading: "Zonas donde acompañamos compradores en Aragón",
     localZones:
-      "Casco Histórico, Delicias, Actur, Universidad, Valdespartera, Parque Goya, Rosales del Canal, Utebo, Cuarte de Huerva y municipios de la comarca — misma gestoría online con gestor de referencia.",
+      "Casco Histórico, Delicias, Actur, Universidad, Romareda (2.600–2.800 €/m² en zonas tensionadas), Parque Goya, Rosales del Canal, Valdespartera, Las Fuentes y Torrero-La Paz (barrios más accesibles, ~2.250–2.300 €/m² de media en 2026). Utebo, Cuarte de Huerva y comarca — misma gestoría online con gestor de referencia.",
     heroImage: "/images/zaragoza2.jpg",
     localBenefits: [
       {
@@ -434,7 +434,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
       "En barrios residenciales y el área metropolitana es habitual comprar a particular sin agencia compradora. Sin gestor, firmas lo que el vendedor envía.",
     localZonesHeading: "Barrios y municipios donde acompañamos compradores",
     localZones:
-      "La Ería, Los Pilares, Pumarín, Teatinos, El Llano, Ciudad Naranco, Siero, Langreo, Mieres y municipios del área metropolitana — misma atención gestora online.",
+      "Centro y Casco Histórico (máximos históricos ~1.900–2.250 €/m² en 2026), La Ería, Los Pilares, Pumarín, Teatinos, El Llano, Ciudad Naranco, San Claudio-Trubia-Las Caldas (fuerte subida), Siero, Langreo, Mieres y área metropolitana — misma atención gestora online.",
     heroImage: "/images/oviedo2.jpg",
     localBenefits: [
       {
@@ -493,7 +493,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
       "En barrios céntricos, universitarios y la franja costera es habitual comprar sin agencia compradora. Livendia equilibra reserva y arras cuando compras a un particular.",
     localZonesHeading: "Zonas donde acompañamos compradores en Gijón",
     localZones:
-      "Cimadevilla, Centro, La Calzada, Roces, El Llano, Somió, Playa de San Lorenzo, Villaviciosa oriente y municipios del área con el mismo protocolo documental.",
+      "Cimadevilla, Centro, La Calzada, Roces, El Llano, Somió, La Arena, El Natahoyo, Playa de San Lorenzo (~1.850–2.200 €/m² según barrio en 2026), Villaviciosa oriente y municipios del área con el mismo protocolo documental.",
     heroImage: "/images/gijon2.jpg",
     localBenefits: [
       {
@@ -552,7 +552,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
       "En capital y huerta metropolitana es habitual comprar entre particulares sin agencia compradora. Sin gestor, firmas lo que el vendedor envía.",
     localZonesHeading: "Barrios y municipios donde acompañamos compradores",
     localZones:
-      "Centro, Espinardo, El Carmen, Vistabella, El Palmar, Alcantarilla, Molina de Segura, Alguazas y municipios del área — misma atención gestora online.",
+      "Centro, Santa Catalina-San Bartolomé y San Miguel (+3.000 €/m²), Espinardo, El Carmen, Vistabella, El Palmar, Sucina y Corvera (pedanías en boom inversor), Alcantarilla, Molina de Segura — precio medio regional ~1.700–2.000 €/m² en 2026. Misma atención gestora online.",
     heroImage: "/images/gestoria3.jpg",
     localBenefits: [
       {

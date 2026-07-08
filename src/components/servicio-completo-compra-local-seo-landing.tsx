@@ -1,6 +1,14 @@
+import { CompraDocumentacionRevisamosSection } from "@/components/compra-documentacion-revisamos-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { FaqSection } from "@/components/faq-section";
+import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
+import {
+  COMPRA_LOCAL_IMPORTANTE_SABER,
+  compraLocalPageH1,
+  mergeCompraLocalFaq,
+} from "@/lib/compra-local-template";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -176,6 +184,10 @@ export async function ServicioCompletoCompraLocalSeoLanding({
       return { ...b, icon: style.icon, color: style.color };
     }) ?? defaultBenefits;
 
+  const pageH1 = compraLocalPageH1(config.city);
+  const heroAngle = config.heroH1;
+  const faqItems = mergeCompraLocalFaq(config.faq);
+
   const heroBullets = config.heroBullets ?? [
     "Gestor personal dedicado a tu compra",
     "Protección contra prácticas abusivas",
@@ -209,9 +221,13 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                     {config.heroBadge ?? `Compra con gestor · ${config.city}`}
                   </div>
 
-                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-6xl">
-                    {config.heroH1 ?? "¿Necesitas comprar con todas las garantías para ti?"}
-                  </h1>
+                  <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-5xl">{pageH1}</h1>
+
+                  {heroAngle ? (
+                    <p className="mt-4 text-lg font-semibold leading-relaxed text-cyan-100 sm:text-xl">
+                      {heroAngle}
+                    </p>
+                  ) : null}
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
 
@@ -244,6 +260,8 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                       Consultar por WhatsApp
                     </a>
                   </div>
+
+                  <LandingTrustBar className="mt-6 text-blue-100" />
                 </div>
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
@@ -355,21 +373,19 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             </div>
           </section>
 
-          {config.faq?.length ? (
-            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
-              <div className="mx-auto max-w-3xl">
-                <FaqSection
-                  id={`faq-compra-local-${config.slug}`}
-                  title={config.faqTitle ?? `Preguntas frecuentes sobre comprar en ${config.city} entre particulares`}
-                  subtitle={
-                    config.faqSubtitle ??
-                    "Compra sin agencia compradora, reserva, arras y acompañamiento hasta escritura."
-                  }
-                  items={[...config.faq]}
-                />
-              </div>
-            </section>
-          ) : null}
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-3xl">
+              <FaqSection
+                id={`faq-compra-local-${config.slug}`}
+                title={config.faqTitle ?? `Preguntas frecuentes sobre comprar en ${config.city} entre particulares`}
+                subtitle={
+                  config.faqSubtitle ??
+                  "Compra sin agencia compradora, reserva, arras y acompañamiento hasta escritura."
+                }
+                items={faqItems}
+              />
+            </div>
+          </section>
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
@@ -417,13 +433,17 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[#1E293B]">Importante saber</h3>
-                  <p className="mt-2 leading-relaxed text-[#475569]">
-                    Este servicio cubre el acompañamiento profesional y revisión documental completa. No incluye
-                    tasas notariales, registrales ni gestorías de compraventa (responsabilidad del comprador según
-                    normativa). Te informamos de todos los costes adicionales desde el inicio.
-                  </p>
+                  <p className="mt-2 leading-relaxed text-[#475569]">{COMPRA_LOCAL_IMPORTANTE_SABER}</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <CompraDocumentacionRevisamosSection city={config.city} />
+
+          <section className="border-b border-slate-200 bg-slate-50 px-4 py-10 sm:px-6">
+            <div className="mx-auto max-w-lg">
+              <GestorMiniCard />
             </div>
           </section>
 
@@ -452,14 +472,16 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                 </a>
               </div>
 
-              <p className="mt-8 text-sm text-blue-200">
+              <LandingTrustBar className="mt-8 text-blue-100" />
+
+              <p className="mt-6 text-sm text-blue-200">
                 ¿Tienes dudas? Escríbenos y te asesoramos sin compromiso
               </p>
             </div>
           </section>
         </main>
 
-        <SiteFooter />
+        <SiteFooter variant="landing" />
       </div>
     </ServicePurchaseProvider>
   );
