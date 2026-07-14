@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
@@ -103,17 +104,17 @@ export default async function RevisionContratoAlquilerPage() {
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">
-          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
-            <div className="mx-auto max-w-6xl">
-              <div className="grid items-center gap-10 md:grid-cols-2">
-                <div>
-                  <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
+          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+            <div className="mx-auto max-w-7xl">
+              <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
+                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
+                  <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     Para inquilinos
                   </div>
-                  <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                  <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-6xl">
                     Revisión de contrato de alquiler
                   </h1>
-                  <p className="mt-5 text-xl leading-relaxed text-blue-100">
+                  <p className="mt-6 text-xl leading-relaxed text-blue-50">
                     ¿Eres inquilino y necesitas revisión de un contrato de alquiler? Los especialistas de Livendia se
                     encargan de asesorarte en todos los contratos que existen — temporada o larga duración — detectamos
                     los puntos más vulnerables y malas prácticas, y te enviamos un informe detallado para negociar con el
@@ -123,20 +124,20 @@ export default async function RevisionContratoAlquilerPage() {
                     <strong>Importante:</strong> {REVISION_CONTRATO_ALQUILER_SCOPE_DISCLAIMER}
                   </p>
 
-                  <div className="mt-8 flex items-baseline gap-2">
+                  <div className="mt-10 flex items-baseline gap-3">
                     <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
-                    <span className="text-lg text-blue-200">IVA incluido</span>
+                    <span className="text-lg text-blue-100">IVA incluido</span>
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
+                    <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
                       Contratar por {priceLabel}
                     </ContratarServicioButton>
                     <a
                       href={waConsultHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
                     >
                       <MessageCircle className="h-5 w-5" />
                       Consultar por WhatsApp
@@ -144,13 +145,13 @@ export default async function RevisionContratoAlquilerPage() {
                   </div>
                 </div>
 
-                <div className="relative h-[400px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">
+                <div className="relative h-44 sm:h-56 lg:h-auto">
                   <Image
                     src="/images/gestora2.jpg"
                     alt="Gestora revisando contrato de alquiler con inquilino"
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
                 </div>
@@ -420,30 +421,7 @@ export default async function RevisionContratoAlquilerPage() {
             </div>
           </section>
 
-          <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-3xl font-bold text-[#1E293B]">Nuestro equipo</h2>
-              <p className="mt-3 text-[#475569]">
-                Gestores especializados en alquileres que revisan cada cláusula con rigor y claridad.
-              </p>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {["/images/gestora1.jpg", "/images/gestora3.jpg", "/images/gestora4.jpg"].map((src, idx) => (
-                  <div
-                    key={idx}
-                    className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200"
-                  >
-                    <Image
-                      src={src}
-                      alt={`Equipo Livendia ${idx + 1}`}
-                      fill
-                      className="object-cover transition hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <LivendiaFoundersBanner className="border-t border-slate-200" />
 
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-8 py-12 text-center text-white shadow-xl">
