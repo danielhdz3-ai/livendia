@@ -36,6 +36,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
       { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato de habitación" },
+      { href: "/servicios/revision-contrato-alquiler", label: "Revisión de contrato de alquiler" },
       { href: "/servicios/contrato-de-alquiler", label: "Guía de contratos de alquiler" },
       { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
     ],

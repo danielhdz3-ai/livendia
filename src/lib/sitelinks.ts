@@ -25,6 +25,7 @@ export const SITE_GENERAL_SITELINKS: readonly SiteSitelink[] = [
   { name: "Precios", path: "/precios" },
   { name: "Contrato de habitación", path: "/servicios/contrato-alquiler-habitacion" },
   { name: "Contrato de alquiler", path: "/servicios/contrato-de-alquiler" },
+  { name: "Revisión contrato alquiler", path: "/servicios/revision-contrato-alquiler" },
   { name: "Contrato de arras", path: "/servicios/contrato-de-arras" },
   { name: "Revisión post-arras", path: "/servicios/revision-documental-post-arras" },
   { name: "Servicio completo de compra", path: "/servicios/servicio-completo-compra" },

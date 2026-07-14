@@ -79,6 +79,12 @@ export const CONTRATO_ALQUILER_HABITACION_PRICE_CENTS = CONTRATO_ALQUILER_HABITA
 export const CONTRATO_ALQUILER_HABITACION_PRICE_LABEL = `${CONTRATO_ALQUILER_HABITACION_PRICE_EUR} €`;
 export const CONTRATO_ALQUILER_HABITACION_SLUG = "contrato-alquiler-habitacion" as const;
 
+/** Revisión de contrato de alquiler (inquilinos) — precio comercial IVA incl. */
+export const REVISION_CONTRATO_ALQUILER_PRICE_EUR = 120;
+export const REVISION_CONTRATO_ALQUILER_PRICE_CENTS = REVISION_CONTRATO_ALQUILER_PRICE_EUR * 100;
+export const REVISION_CONTRATO_ALQUILER_PRICE_LABEL = `${REVISION_CONTRATO_ALQUILER_PRICE_EUR} €`;
+export const REVISION_CONTRATO_ALQUILER_SLUG = "revision-contrato-alquiler" as const;
+
 /** Precios fijos en BD (slug → céntimos). */
 export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [REVISION_DOCUMENTAL_POST_ARRAS_SLUG]: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
@@ -86,6 +92,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [CONTRATO_ALQUILER_LAU_SLUG]: CONTRATO_ALQUILER_LAU_PRICE_CENTS,
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
   [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
+  [REVISION_CONTRATO_ALQUILER_SLUG]: REVISION_CONTRATO_ALQUILER_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -190,6 +197,27 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Parking y trastero",
   },
+  {
+    slug: REVISION_CONTRATO_ALQUILER_SLUG,
+    name: "Revisión de contrato de alquiler",
+    description:
+      "Revisión profesional del contrato de alquiler antes de firmar: LAU, temporada o habitación. Informe detallado para negociar. No incluye redacción completa del contrato.",
+    category: "revision",
+    price_cents: REVISION_CONTRATO_ALQUILER_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Revisión cláusula a cláusula del borrador",
+      "Contratos LAU, temporada y habitación",
+      "Detección de cláusulas abusivas o ilegales",
+      "Análisis de fianza, renta y actualizaciones",
+      "Revisión de gastos, suministros y penalizaciones",
+      "Informe detallado PDF con puntos a negociar",
+      "Llamada de veredicto con gestor especializado",
+      "Asesoramiento telefónico antes de firmar",
+      "Entrega en 24-48 h laborables",
+    ],
+    badge: "Para inquilinos",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -285,6 +313,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "servicio-completo-compra": "/images/familia2.jpg",
   "servicio-completo-venta": "/images/servicio-completo-venta-hero.jpg",
   "revision-documental-post-arras": "/images/gestoria20.jpg",
+  "revision-contrato-alquiler": "/images/gestora2.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
   "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
