@@ -336,10 +336,6 @@ export default async function RevisionContratoAlquilerPage() {
                     <h3 className="mt-3 text-xl font-extrabold leading-snug">
                       Habla con tu gestor especializado
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-blue-100">
-                      Cuéntanos tu caso por teléfono o WhatsApp. Te orientamos sobre el tipo de contrato y qué revisar
-                      antes de pagar {priceLabel}.
-                    </p>
                     <a
                       href={telHref}
                       className="mt-6 block text-2xl font-extrabold tracking-tight text-white transition hover:text-cyan-200"
