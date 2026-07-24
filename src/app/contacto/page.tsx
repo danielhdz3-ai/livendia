@@ -2,12 +2,13 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { OfficeMap } from "@/components/office-map";
 import { ContactForm } from "./contact-form";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import {
+  BUSINESS_EMAIL,
   businessNap,
   getBusinessAddressDisplayLine,
   getBusinessMapsExternalUrl,
@@ -23,6 +24,11 @@ export const metadata: Metadata = {
 };
 
 export default function ContactoPage() {
+  const address = getBusinessAddressDisplayLine();
+  const phoneDisplay = getContactPhoneDisplay();
+  const phoneTel = getContactPhoneTelHref();
+  const mapsUrl = getBusinessMapsExternalUrl();
+
   return (
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
@@ -36,10 +42,10 @@ export default function ContactoPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href={getContactPhoneTelHref()}
+                href={phoneTel}
                 className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1E3A8A] hover:bg-blue-50"
               >
-                Llamar: {getContactPhoneDisplay()}
+                Llamar: {phoneDisplay}
               </a>
               <a
                 href={waHref}
@@ -56,29 +62,14 @@ export default function ContactoPage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-2 sm:px-6">
           <div className="rounded-2xl bg-white p-8 shadow-md ring-1 ring-slate-200">
             <h2 className="text-lg font-bold text-[#1E293B]">Formulario</h2>
-            <p className="mt-2 text-sm text-[#64748b]">Los campos marcados con el navegador como obligatorios son requeridos.</p>
+            <p className="mt-2 text-sm text-[#64748b]">
+              Los campos marcados con el navegador como obligatorios son requeridos.
+            </p>
             <div className="mt-6">
               <ContactForm />
             </div>
           </div>
           <div className="space-y-6">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="font-semibold text-[#1E293B]">Despacho</h2>
-              <p className="mt-2 flex items-start gap-2 text-sm text-[#475569]">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
-                <a
-                  href={getBusinessMapsExternalUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-[#1A4FBF] hover:underline"
-                >
-                  {getBusinessAddressDisplayLine()}
-                </a>
-              </p>
-              <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-slate-200">
-                <OfficeMap minHeightClassName="min-h-[220px]" />
-              </div>
-            </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="font-semibold text-[#1E293B]">Horario</h2>
               <p className="mt-2 text-sm text-[#475569]">
@@ -97,6 +88,37 @@ export default function ContactoPage() {
               >
                 Acceder al panel →
               </Link>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h2 className="font-semibold text-[#1E293B]">Despacho</h2>
+              <ul className="mt-3 space-y-2 text-sm text-[#475569]">
+                <li className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#1A4FBF] hover:underline"
+                  >
+                    {address}
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
+                  <a href={phoneTel} className="font-medium text-[#1A4FBF] hover:underline">
+                    {phoneDisplay}
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
+                  <a href={`mailto:${BUSINESS_EMAIL}`} className="font-medium text-[#1A4FBF] hover:underline">
+                    {BUSINESS_EMAIL}
+                  </a>
+                </li>
+              </ul>
+              <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-slate-200">
+                <OfficeMap showCaption={false} minHeightClassName="min-h-[220px]" />
+              </div>
             </div>
           </div>
         </div>
