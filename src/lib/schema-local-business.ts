@@ -1,10 +1,12 @@
 import {
+  buildBusinessGeoCoordinates,
   buildBusinessPostalAddress,
   businessNap,
   BUSINESS_AREA_SERVED,
   BUSINESS_CATEGORY,
   BUSINESS_EMAIL,
   BUSINESS_NAME,
+  getBusinessMapsExternalUrl,
 } from "@/lib/business-nap";
 import { getContactPhoneE164Plus } from "@/lib/contact";
 
@@ -14,8 +16,8 @@ export function buildLocalBusinessSchema() {
   const hours = businessNap.openingHours;
   const address = buildBusinessPostalAddress();
 
-  const node: Record<string, unknown> = {
-    "@type": address ? ["LocalBusiness", "ProfessionalService"] : "ProfessionalService",
+  return {
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": `${url}/#localbusiness`,
     name: BUSINESS_NAME,
     description: BUSINESS_CATEGORY,
@@ -24,6 +26,9 @@ export function buildLocalBusinessSchema() {
     email: BUSINESS_EMAIL,
     image: `${url}/icon.svg`,
     priceRange: "€€",
+    address,
+    geo: buildBusinessGeoCoordinates(),
+    hasMap: getBusinessMapsExternalUrl(),
     areaServed: BUSINESS_AREA_SERVED.map((name) => ({ "@type": "Country", name })),
     openingHoursSpecification: [
       {
@@ -35,12 +40,6 @@ export function buildLocalBusinessSchema() {
     ],
     sameAs: [url],
   };
-
-  if (address) {
-    node.address = address;
-  }
-
-  return node;
 }
 
 /** Valoración Google Business: un solo AggregateRating enlazado al negocio (no duplicar LocalBusiness). */

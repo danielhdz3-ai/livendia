@@ -1,11 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 import { FooterDiscoverabilityLinks } from "@/components/footer-discoverability-links";
 import { FooterParticularesTestimonials } from "@/components/footer-particulares-testimonials";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { OfficeMap } from "@/components/office-map";
 import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
-import { businessNap, getWhatsAppHref } from "@/lib/business-nap";
+import {
+  businessNap,
+  getBusinessAddressDisplayLine,
+  getBusinessMapsExternalUrl,
+  getWhatsAppHref,
+} from "@/lib/business-nap";
 import { getBusinessLegalIdentity } from "@/lib/business-legal";
 
 const waHref = getWhatsAppHref();
@@ -24,7 +29,7 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
       <GestorContactCta placement="footer" />
       <FooterParticularesTestimonials />
 
-      {/* Bloque 1: enlaces SEO — separado para no estirar la imagen del footer */}
+      {/* Bloque 1: enlaces SEO — separado para no estirar el mapa del footer */}
       {variant === "full" ? (
         <section
           className="border-t border-white/10 bg-[#172554] px-4 py-8 text-white sm:px-6 lg:px-10"
@@ -53,20 +58,14 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
         </section>
       )}
 
-      {/* Bloque 2: marca, imagen, servicios, contacto y legal */}
+      {/* Bloque 2: marca, mapa del despacho, servicios, contacto y legal */}
       <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
-        <div className="grid lg:grid-cols-2 lg:items-start">
-          <div className="relative hidden min-[480px]:block lg:bg-[#1a3780]">
-            <Image
-              src="/images/chicasofa4.png"
-              alt="Gestiona tranquila desde casa con Livendia"
-              width={1536}
-              height={1024}
-              className="block h-auto w-full max-h-none"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              loading="lazy"
-            />
-          </div>
+        <div className="grid lg:grid-cols-2 lg:items-stretch">
+          <OfficeMap
+            className="h-full lg:min-h-full"
+            minHeightClassName="min-h-[240px] sm:min-h-[300px] lg:min-h-[420px]"
+            title="Ubicación del despacho Livendia en Les Corts, Barcelona"
+          />
 
           <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-8">
             {/* Título principal */}
@@ -201,6 +200,17 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
 
             {/* Contacto */}
             <div className="mt-4 space-y-1 text-xs border-t border-white/20 pt-4">
+              <div className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-3 w-3 flex-shrink-0 text-cyan-300" aria-hidden />
+                <a
+                  href={getBusinessMapsExternalUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-100 hover:text-white transition-colors"
+                >
+                  {getBusinessAddressDisplayLine()}
+                </a>
+              </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-3 w-3 flex-shrink-0 text-cyan-300" aria-hidden />
                 <a href={businessNap.telephoneTel()} className="text-blue-100 hover:text-white transition-colors">

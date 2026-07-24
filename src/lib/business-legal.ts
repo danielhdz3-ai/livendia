@@ -1,17 +1,16 @@
-import { BUSINESS_EMAIL, BUSINESS_NAME, businessNap } from "@/lib/business-nap";
+import {
+  BUSINESS_EMAIL,
+  BUSINESS_NAME,
+  businessNap,
+  getBusinessAddressDisplayLine,
+} from "@/lib/business-nap";
 
 /** Datos legales publicables (configurar en Vercel / .env). */
 export function getBusinessLegalIdentity() {
   const legalName =
     process.env.NEXT_PUBLIC_BUSINESS_LEGAL_NAME?.trim() || `${BUSINESS_NAME} — Gestoría inmobiliaria`;
   const taxId = process.env.NEXT_PUBLIC_BUSINESS_TAX_ID?.trim() || null;
-  const streetAddress = process.env.NEXT_PUBLIC_BUSINESS_STREET_ADDRESS?.trim() || null;
-  const locality = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS_LOCALITY?.trim() || null;
-  const region = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS_REGION?.trim() || null;
-  const postalCode = process.env.NEXT_PUBLIC_BUSINESS_POSTAL_CODE?.trim() || null;
-
-  const addressParts = [streetAddress, postalCode, locality, region].filter(Boolean);
-  const addressLine = addressParts.length > 0 ? addressParts.join(", ") : null;
+  const addressLine = getBusinessAddressDisplayLine();
 
   return {
     legalName,

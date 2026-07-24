@@ -2,9 +2,16 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { OfficeMap } from "@/components/office-map";
 import { ContactForm } from "./contact-form";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import {
+  businessNap,
+  getBusinessAddressDisplayLine,
+  getBusinessMapsExternalUrl,
+} from "@/lib/business-nap";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
@@ -12,7 +19,7 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "WhatsApp, teléfono y formulario: consultas sobre contratos de alquiler, arras, compraventa y administración de alquileres.",
+    "WhatsApp, teléfono, despacho en Barcelona y formulario: consultas sobre contratos de alquiler, arras, compraventa y administración de alquileres.",
 };
 
 export default function ContactoPage() {
@@ -56,10 +63,27 @@ export default function ContactoPage() {
           </div>
           <div className="space-y-6">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h2 className="font-semibold text-[#1E293B]">Despacho</h2>
+              <p className="mt-2 flex items-start gap-2 text-sm text-[#475569]">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
+                <a
+                  href={getBusinessMapsExternalUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#1A4FBF] hover:underline"
+                >
+                  {getBusinessAddressDisplayLine()}
+                </a>
+              </p>
+              <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-slate-200">
+                <OfficeMap minHeightClassName="min-h-[220px]" />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="font-semibold text-[#1E293B]">Horario</h2>
               <p className="mt-2 text-sm text-[#475569]">
-                Respondemos consultas por formulario en días laborables. WhatsApp puede ser más rápido para
-                coordinar.
+                L–V {businessNap.openingHours.opens}–{businessNap.openingHours.closes}. Respondemos consultas por
+                formulario en días laborables. WhatsApp puede ser más rápido para coordinar.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
