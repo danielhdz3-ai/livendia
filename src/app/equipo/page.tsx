@@ -1,5 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { OfficeContactBanner } from "@/components/office-contact-banner";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -448,6 +449,8 @@ export default function EquipoPage() {
             </div>
           </div>
         </section>
+
+        <OfficeContactBanner />
       </main>
 
       <SiteFooter />
