@@ -7,6 +7,7 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
 } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   title: "Servicio completo de compra: de la reserva a la escritura",
   description:
     "Acompañamiento profesional completo en tu compra inmobiliaria. Desde la reserva hasta la escritura con gestor experto que cuida de tus intereses. 890€ todo incluido.",
+  alternates: { canonical: `${getSiteUrl()}/servicios/servicio-completo-compra` },
 };
 
 const WA_SERVICIO_COMPLETO = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";

@@ -76,7 +76,7 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-habitacion",
   "contrato-alquiler-lau",
   "contrato-alquiler-temporada",
-  "contrato-arras-confirmatorias",
+  // contrato-arras-confirmatorias: retirada (301 a /servicios/contrato-de-arras, ver next.config.ts).
   "contrato-arras-penitenciales",
   "servicio-completo-compra",
   "acompanamiento-compra-parking-trastero",
@@ -116,7 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contacto`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/equipo`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/blog`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.82 },
-    { url: `${base}/mapa-del-sitio`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.7 },
+    // /mapa-del-sitio es noindex (página utilitaria) y no debe listarse en el sitemap.
     { url: `${base}${CIUDADES_HUB_BASE}`, lastModified: ciudadesDate, changeFrequency: "weekly", priority: 0.9 },
   ];
 

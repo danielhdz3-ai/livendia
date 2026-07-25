@@ -4,6 +4,7 @@ import { ServiceStructuredDataFromCatalog } from "@/components/service-structure
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import { RESERVA_DE_COMPRA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: `Reserva de compra — ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incl. | Livendia`,
   description:
     `Documento de reserva de compraventa personalizado: plazos, señal, condiciones y protección de tu dinero. Entrega 48–72 h. ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incluido. Livendia.`,
+  alternates: { canonical: `${getSiteUrl()}/servicios/reserva-de-compra` },
 };
 
 const INCLUDED = [

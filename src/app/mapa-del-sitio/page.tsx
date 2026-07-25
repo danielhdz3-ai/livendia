@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description:
     "Índice de servicios de gestoría inmobiliaria, guías por ciudad, blog y páginas principales de Livendia.",
   alternates: { canonical: "https://livendia.com/mapa-del-sitio" },
+  // Página utilitaria de navegación: no debe competir en resultados de búsqueda
+  // con las landing pages reales (captaba impresiones genéricas sin apenas clics).
+  // `follow: true` mantiene el rastreo de los ~150+ enlaces internos que contiene.
+  robots: { index: false, follow: true },
 };
 
 export default async function MapaDelSitioPage() {

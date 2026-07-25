@@ -4,6 +4,7 @@ import { ServiceStructuredDataFromCatalog } from "@/components/service-structure
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
   title: `Revisión documental post-arras — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
   description:
     `Verificación documental tras firmar arras y antes de escriturar: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl.`,
+  alternates: { canonical: `${getSiteUrl()}/servicios/revision-documental-post-arras` },
 };
 
 const INCLUDED = [

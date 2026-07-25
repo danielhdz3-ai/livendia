@@ -13,6 +13,7 @@ import {
   getBusinessAddressDisplayLine,
   getBusinessMapsExternalUrl,
 } from "@/lib/business-nap";
+import { getSiteUrl } from "@/lib/site-url";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "WhatsApp, teléfono, despacho en Barcelona y formulario: consultas sobre contratos de alquiler, arras, compraventa y administración de alquileres.",
+  alternates: { canonical: `${getSiteUrl()}/contacto` },
 };
 
 export default function ContactoPage() {

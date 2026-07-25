@@ -15,6 +15,10 @@ import {
 import type { GestoriaInmobiliariaLocalLandingConfig } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
+import {
+  isAdministracionAlquilerLocalSlugPublished,
+  localAdministracionAlquilerHref,
+} from "@/lib/administracion-alquiler-local-cities";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -32,6 +36,18 @@ import {
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
+
+/** Fase 4 (enlazado interno): ciudades con contenido único ya reescrito en administracion-alquiler-local. */
+const ADMINISTRACION_LOCAL_LINK_PHASE_SLUGS = [
+  "madrid",
+  "barcelona",
+  "valencia",
+  "malaga",
+  "gijon",
+  "zaragoza",
+  "murcia",
+  "sevilla",
+];
 
 function GestoriaLocalJsonLd({
   path,
@@ -167,6 +183,11 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
       servicesBySlug[s.slug] = s;
     }
   }
+
+  const showAdministracionLocalLink =
+    ADMINISTRACION_LOCAL_LINK_PHASE_SLUGS.includes(config.slug) &&
+    isAdministracionAlquilerLocalSlugPublished(config.slug);
+  const administracionLocalHref = localAdministracionAlquilerHref(config.slug);
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -342,6 +363,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                       </li>
                     ))}
                   </ul>
+                  {showAdministracionLocalLink ? (
+                    <p className="mt-6 text-sm text-[#64748b]">
+                      Si ya tienes claro que quieres delegar el contacto con el inquilino, consulta la{" "}
+                      <Link
+                        href={administracionLocalHref}
+                        className="font-semibold text-[#1A4FBF] hover:underline"
+                      >
+                        guía completa de administración de alquiler en {config.city}
+                      </Link>
+                      : precio medio de alquiler, barrios donde operamos y preguntas frecuentes de tu ciudad.
+                    </p>
+                  ) : null}
                 </div>
                 <article className="rounded-2xl bg-white p-8 shadow-md ring-1 ring-slate-200">
                   <h3 className="text-xl font-bold text-[#1E293B]">{config.administracion.h3Precio}</h3>
@@ -364,6 +397,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                       Acceder
                     </Link>
                   </div>
+                  {showAdministracionLocalLink ? (
+                    <p className="mt-4 text-center text-xs text-[#64748b]">
+                      ¿Dudas antes de contratar? Consulta la{" "}
+                      <Link
+                        href={administracionLocalHref}
+                        className="font-semibold text-[#1A4FBF] hover:underline"
+                      >
+                        ficha de administración de alquiler en {config.city}
+                      </Link>
+                      .
+                    </p>
+                  ) : null}
                 </article>
               </div>
             </div>

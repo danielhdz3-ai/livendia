@@ -12,6 +12,7 @@ import {
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   resolveServicePriceLabel,
 } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
   title: "Contrato de alquiler con revisión LAU profesional",
   description:
     "Gestor inmobiliario especializado en LAU revisa tu contrato de alquiler: cláusulas, garantías e inventario del inmueble. Asesoramiento cercano para firmar con seguridad.",
+  alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-alquiler` },
 };
 
 export default async function ContratoDeAlquilerPage() {

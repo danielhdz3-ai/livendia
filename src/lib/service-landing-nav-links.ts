@@ -26,8 +26,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental comprador post-arras" },
       { href: "/servicios/gestion-documental-vendedor", label: "Gestión documental vendedor post-arras" },
       { href: "/servicios/contrato-arras-penitenciales", label: "Arras penitenciales" },
-      { href: "/servicios/contrato-arras-confirmatorias", label: "Arras confirmatorias" },
-      { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras" },
+      { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras (penitenciales y confirmatorias)" },
     ],
   },
   {

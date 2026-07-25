@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { OfficeContactBanner } from "@/components/office-contact-banner";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   title: "Equipo",
   description:
     "Conoce al equipo y a los fundadores de Livendia: gestoría inmobiliaria digital en toda España. Abogados, gestores y API colegiados especializados en derecho inmobiliario.",
+  alternates: { canonical: `${getSiteUrl()}/equipo` },
 };
 
 const founders = [

@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
+import { getSiteUrl } from "@/lib/site-url";
 import { ServiceCardsClient } from "./service-cards-client";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,6 +11,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Servicios de gestoría inmobiliaria: alquiler, compraventa y packs",
   description: SITE_DEFAULT_DESCRIPTION,
+  alternates: { canonical: `${getSiteUrl()}/servicios` },
 };
 
 export default async function ServiciosPage() {

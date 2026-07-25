@@ -2,6 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getPublicServices } from "@/lib/catalog";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: "Administración de alquileres para propietarios desde 49 €/mes",
   description:
     "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y mediación. Sin permanencia. Gestoría inmobiliaria Livendia.",
+  alternates: { canonical: `${getSiteUrl()}/servicios/administracion-alquiler` },
 };
 
 export default async function AdministracionAlquilerPage() {

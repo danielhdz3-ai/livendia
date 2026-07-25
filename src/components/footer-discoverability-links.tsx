@@ -40,6 +40,22 @@ import {
   getPublishedVenderPisoSinAgenciaCities,
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
+import {
+  ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE,
+  getPublishedParkingTrasteroLocalCities,
+} from "@/lib/acompanamiento-compra-parking-trastero-local-cities";
+import {
+  VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE,
+  getPublishedVentaPisoParticularCities,
+} from "@/lib/venta-piso-particular-sin-agencia-local-cities";
+import {
+  GESTORIA_INMOBILIARIA_LOCAL_BASE,
+  getPublishedGestoriaInmobiliariaLocalCities,
+} from "@/lib/gestoria-inmobiliaria-local-cities";
+import {
+  VENDER_PISO_SIN_INMOBILIARIA_BASE,
+  getPublishedVenderPisoSinInmobiliariaCities,
+} from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 
 const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios", label: "Todos los servicios" },
@@ -50,7 +66,6 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/servicio-completo-venta", label: "Acompañamiento de venta" },
   { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato alquiler habitación" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
-  { href: "/servicios/contrato-arras-confirmatorias", label: "Arras confirmatorias" },
   { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },
   { href: "/servicios/gestion-documental-vendedor", label: "Gestión vendedor post-arras" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
@@ -81,6 +96,10 @@ export function FooterDiscoverabilityLinks() {
   const revisionPostArrasLocal = getPublishedRevisionDocumentalPostArrasLocalCities();
   const gestionVendedorLocal = getPublishedGestionDocumentalVendedorLocalCities();
   const habitacionLocal = getPublishedContratoAlquilerHabitacionLocalCities();
+  const parkingTrasteroLocal = getPublishedParkingTrasteroLocalCities();
+  const ventaParticularMetroLocal = getPublishedVentaPisoParticularCities();
+  const gestoriaLocal = getPublishedGestoriaInmobiliariaLocalCities();
+  const venderSinInmobiliariaLocal = getPublishedVenderPisoSinInmobiliariaCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -173,6 +192,26 @@ export function FooterDiscoverabilityLinks() {
           title="Contrato habitación por ciudad"
           hub={CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}
           cities={habitacionLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Parking y trastero por ciudad/barrio"
+          hub={ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE}
+          cities={parkingTrasteroLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Venta entre particulares (área metropolitana)"
+          hub={VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE}
+          cities={ventaParticularMetroLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Gestoría integral por ciudad"
+          hub={GESTORIA_INMOBILIARIA_LOCAL_BASE}
+          cities={gestoriaLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Vender sin inmobiliaria (guías pilar)"
+          hub={VENDER_PISO_SIN_INMOBILIARIA_BASE}
+          cities={venderSinInmobiliariaLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
       </div>
     </nav>

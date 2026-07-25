@@ -4,6 +4,7 @@ import { ServiceStructuredDataFromCatalog } from "@/components/service-structure
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: `Contrato de alquiler LAU — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. | Livendia`,
   description:
     `Redacción y revisión legal del contrato de alquiler LAU. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incluido, entrega 48-72 h. Inventario fotográfico y cláusulas personalizadas. Gestoría Livendia.`,
+  alternates: { canonical: `${getSiteUrl()}/servicios/contrato-alquiler-lau` },
 };
 
 export default async function ContratoLAUPage() {

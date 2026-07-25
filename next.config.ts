@@ -23,6 +23,17 @@ const nextConfig: NextConfig = {
         destination: "/gestoria/:slug",
         permanent: true,
       },
+      {
+        // Fase 7 (Grupo D): página plana previa al hub /servicios/contrato-de-arras y al clúster
+        // contrato-arras-local (ambos creados 16 días después). El hub ya vende el mismo producto
+        // (mismo slug de catálogo "contrato-arras-confirmatorias") con más contenido y mejor
+        // posición. `statusCode: 301` explícito porque aquí queremos el código HTTP exacto 301
+        // (los redirects de arriba con `permanent: true` devuelven 308 en esta versión de Next.js,
+        // que es igualmente permanente mas no es literalmente "301").
+        source: "/servicios/contrato-arras-confirmatorias",
+        destination: "/servicios/contrato-de-arras",
+        statusCode: 301,
+      },
     ];
   },
 };

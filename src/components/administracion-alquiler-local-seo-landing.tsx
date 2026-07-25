@@ -13,12 +13,14 @@ import type { PublicService } from "@/lib/catalog.public";
 import type { AdministracionAlquilerLocalLandingConfig } from "@/lib/administracion-alquiler-local-cities";
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
-import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import { getContactPhoneDisplay, getContactPhoneE164Plus, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
+import { BUSINESS_EMAIL, buildBusinessPostalAddress } from "@/lib/business-nap";
 import {
   ALQUILER_REGULATORY_BY_SLUG,
   mergeAdministracionFaq,
 } from "@/lib/administracion-alquiler-local-regulatory";
+import { AdministracionAlquilerLocalRelatedServices } from "@/components/administracion-alquiler-local-related-services";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -47,9 +49,19 @@ function LocalAdministracionJsonLd({
   administrativeArea: string;
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
-  const graph = {
-    "@context": "https://schema.org",
+  const pageUrl = `${base}${path}`;
+  const areaServed = {
+    "@type": "City",
+    name: city,
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: administrativeArea,
+    },
+  };
+
+  const service = {
     "@type": "Service",
+    "@id": `${pageUrl}#service`,
     name: `Administración profesional del alquiler en ${city}`,
     description:
       "Intermediación con el arrendatario, gestión coordinada de incidencias y reparaciones, seguimiento de fechas contratuales y mediación hasta lo que debe decidir el propietario. Gestoría inmobiliaria Livendia.",
@@ -59,16 +71,33 @@ function LocalAdministracionJsonLd({
       name: "Livendia",
       url: base,
     },
-    areaServed: {
-      "@type": "City",
-      name: city,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: administrativeArea,
-      },
-    },
-    url: `${base}${path}`,
+    areaServed,
+    url: pageUrl,
     inLanguage: "es-ES",
+  };
+
+  // LocalBusiness adicional (no sustituye el Service anterior ni el LocalBusiness global del
+  // sitio): Livendia no tiene oficina física en cada ciudad, así que `address` usa la sede real
+  // (Barcelona) y `areaServed` marca la cobertura de la ciudad de esta landing — evita crear una
+  // ficha de negocio local engañosa que podría generar warnings en la validación de Google.
+  const localBusiness = {
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": `${pageUrl}#localbusiness`,
+    name: `Livendia — Administración de alquiler en ${city}`,
+    description: `Gestoría inmobiliaria Livendia: administración profesional de alquiler para propietarios en ${city}, sin contacto directo con el inquilino.`,
+    url: pageUrl,
+    telephone: getContactPhoneE164Plus(),
+    email: BUSINESS_EMAIL,
+    image: `${base}/icon.svg`,
+    priceRange: "€€",
+    address: buildBusinessPostalAddress(),
+    areaServed,
+    parentOrganization: { "@id": `${base}/#organization` },
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [service, localBusiness],
   };
 
   return (
@@ -500,6 +529,8 @@ export async function AdministracionAlquilerLocalSeoLanding({
               />
             </div>
           </section>
+
+          <AdministracionAlquilerLocalRelatedServices slug={slug} city={config.city} />
         </main>
 
         <SiteFooter variant="landing" />

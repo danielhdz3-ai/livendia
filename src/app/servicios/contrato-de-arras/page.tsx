@@ -8,6 +8,7 @@ import {
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
   title: "Contrato de arras con revisión profesional",
   description:
     "Gestor inmobiliario que revisa tu contrato de arras: fechas, objeto, penalidades y malas prácticas antes de firmar. Blindaje jurídico-práctico para compradores y vendedores.",
+  alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-arras` },
 };
 
 export default async function ContratoDeArrasPage() {

@@ -4,6 +4,7 @@ import { ServiceStructuredDataFromCatalog } from "@/components/service-structure
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: `Contrato de alquiler por temporada — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. | Livendia`,
   description:
     `Para estancias temporales, estudios o trabajo. Regulación específica fuera de la LAU estándar. ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido.`,
+  alternates: { canonical: `${getSiteUrl()}/servicios/contrato-alquiler-temporada` },
 };
 
 export default async function ContratoTemporadaPage() {

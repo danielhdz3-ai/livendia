@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAnonSupabaseClient } from "@/lib/supabase/server";
 import { createServiceRoleClient } from "@/lib/supabase/service";
 import {
   CATALOG_SERVICE_SEEDS,
@@ -100,7 +100,12 @@ async function syncFixedCatalogPrices(services: PublicService[]): Promise<Public
 }
 
 export async function getPublicServices(): Promise<PublicService[]> {
-  const supabase = await createServerSupabaseClient();
+  // Cliente anónimo (sin cookies()): permite que las ~10 rutas -local/[slug]
+  // que consumen este catálogo se prerendericen de forma estática en vez de
+  // servirse dinámicamente en cada petición. Rollback de 1 línea si algo
+  // falla: volver a `await createServerSupabaseClient()` (importar desde
+  // "@/lib/supabase/server").
+  const supabase = createAnonSupabaseClient();
   const { data } = await supabase
     .from("services")
     .select(SERVICE_SELECT)

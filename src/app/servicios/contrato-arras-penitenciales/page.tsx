@@ -2,6 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Contrato de arras penitenciales (compraventa)",
   description:
     "El contrato más habitual en compraventa. Permite desistir pagando o reteniendo las arras. 145€ IVA incluido.",
+  alternates: { canonical: `${getSiteUrl()}/servicios/contrato-arras-penitenciales` },
 };
 
 export default async function ArrasPenitencialesPage() {
