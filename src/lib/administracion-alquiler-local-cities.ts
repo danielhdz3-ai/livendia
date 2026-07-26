@@ -41,7 +41,12 @@ export type AdministracionAlquilerLocalLandingConfig = {
   whyIntro: string;
   howIntro: string;
   testimonialsTitle: string;
-  testimonials: { quote: string; author: string; role: string }[];
+  /**
+   * Puntos de confianza reales sobre el servicio (NO citas atribuidas a personas).
+   * No hay tabla de testimonios/reseñas verificables en BD/CRM (ver SEO_ROADMAP.md):
+   * hasta que existan, no se inventan nombres ni citas personales por ciudad.
+   */
+  trustPoints: readonly string[];
   finalCtaLead: string;
   heroImage?: string;
   barriosIntro?: string;
@@ -126,20 +131,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "La combinación de demanda, transporte, oferta de vivienda y renta media del distrito explica diferencias de hasta el doble entre zonas como Salamanca (26-28 €/m²) y Villaverde o Usera (13-16 €/m²). Livendia adapta la gestión de incidencias al perfil de cada zona.",
       },
     ],
-    testimonialsTitle: "Propietarios en Madrid que ya delegaron el contacto con el inquilino",
-    testimonials: [
-      {
-        quote:
-          "Tengo tres pisos entre Chamartín y Tetuán. Antes perdía noches revisando chats; ahora solo me llaman cuando hace falta firmar algo o cuando entra una renta. La cuota compensa el tiempo que ya no pierdo.",
-        author: "Fernando R.",
-        role: "Propietario, Madrid norte",
-      },
-      {
-        quote:
-          "Vivimos fuera y el vecindario suele tener ruidos o ascensores viejos. Livendia filtraba lo menor y cuando hubo avería grave coordinaron empresa y avisos sin que yo llamara tres veces a la comunidad.",
-        author: "Cristina V.",
-        role: "Propietaria en alquiler, distrito Retiro",
-      },
+    testimonialsTitle: "Por qué propietarios en Madrid eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata desde 49 € al mes sin permanencia: nos convertimos en vuestro interlocutor con el inquilino en Madrid, con mismo panel y WhatsApp profesional que en el servicio nacional.",
@@ -177,20 +173,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "La combinación de nueva oferta regulada, cambios normativos y el ajuste tras varios años de subidas explica la corrección del 7,6 % interanual (Idealista, abril de 2026). Aun así, la ciudad mantiene algunas de las rentas más altas de España y una gestión de incidencias más compleja que la media.",
       },
     ],
-    testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",
-    testimonials: [
-      {
-        quote:
-          "Piso turístico regularizado también lo alquilo por temporadas intermedias cuando la norma lo permite. Livendia supo distinguir qué consulta tocaba cada canal y nos evitamos cruce de mensajes con el vecino del rellano.",
-        author: "Jordi L.",
-        role: "Propietario, Sant Martí",
-      },
-      {
-        quote:
-          "Alquilo habitaciones con normas escritas desde el día uno. Livendia atiende llamadas cuando una compañera nueva entra el fin de semana y yo trabajo en sector retail sin poder coger el teléfono.",
-        author: "Miriam K.",
-        role: "Propietaria, zona universitaria Besòs",
-      },
+    testimonialsTitle: "Por qué propietarios en Barcelona eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Activa administración profesional Livendia en Barcelona con un solo clic al checkout: mismo precio publicado sin permanencia, contacto WhatsApp igual que vuestra página /servicios/administracion-alquiler.",
@@ -239,20 +226,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "Un piso bien ubicado y con precio de mercado suele encontrar inquilino en 8-12 días, uno de los ciclos más rápidos de España. Esa alta rotación es justo lo que hace más valioso un canal profesional que filtre incidencias desde el primer día.",
       },
     ],
-    testimonialsTitle: "Propietarios en Valencia que llevaron las incidencias al despacho Livendia",
-    testimonials: [
-      {
-        quote:
-          "Soy médico residente fuera desde hace año y medio y el apartamento junto mercado lo alquilo amueblado. Ellos llamaron cerrajero válido comunidad antes de autorizar obra y yo solo vi el parte final consolidado.",
-        author: "Héctor G.",
-        role: "Propietario en alquiler, Cabanyal",
-      },
-      {
-        quote:
-          "Comparten edificios con segunda residencia; los vecinos llaman comunidad rápido. Livendia explicaba al inquilino cuando era su tubería interior y cuando procedía comunicar al presidente: menos malentendidos en el grupo del vecindario.",
-        author: "Inés & Pedro",
-        role: "Copropiedad en alquiler, Benimaclet",
-      },
+    testimonialsTitle: "Por qué propietarios en Valencia eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Suscripciones Stripe como en cualquier ciudad: activáis administración profesional Valencia con soporte igual al resto del territorio español donde opera Livendia.",
@@ -290,20 +268,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "La combinación de proximidad al centro de Palma, reforma de edificios y fuerte demanda turística y residencial explica la revalorización del barrio, que atrae tanto a inquilinos de larga duración como a estancias de temporada.",
       },
     ],
-    testimonialsTitle: "Propietarios en Mallorca que delegaron el día a día del alquiler en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Tengo un piso en Palma que alquilo todo el año y paso temporadas en la península. Antes perdía fines de semana con llamadas de averías; ahora Livendia coordina técnico y comunidad y yo solo veo el resumen cuando toca autorizar gasto.",
-        author: "Margarita S.",
-        role: "Propietaria, Palma — Son Espanyolet",
-      },
-      {
-        quote:
-          "Alquilamos apartamento en zona turística con contrato LAU bien hecho, pero las incidencias no entienden de calendario. Ellos atienden al inquilino en verano cuando nosotros estamos fuera y filtran lo que no es nuestra responsabilidad.",
-        author: "Tomás & Elena",
-        role: "Propietarios, Calvià — segunda residencia",
-      },
+    testimonialsTitle: "Por qué propietarios en Palma de Mallorca eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Mallorca desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
@@ -353,20 +322,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "Casco Antiguo, Triana y Nervión concentran las rentas más altas de la capital. Norte, Cerro-Amate, Alcosa y Torreblanca son, en cambio, las zonas más asequibles.",
       },
     ],
-    testimonialsTitle: "Propietarios en Sevilla que delegaron el día a día del alquiler en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Alquilo en Macarena y trabajo fuera de la ciudad. Livendia atiende al inquilino, coordina fontanería y yo solo apruebo cuando el gasto supera el umbral que pactamos.",
-        author: "Elena R.",
-        role: "Propietaria, Macarena",
-      },
-      {
-        quote:
-          "Piso en Los Remedios con contrato LAU bien hecho, pero las averías no entienden de horario. Ellos filtran lo urgente y me resumen por WhatsApp lo importante.",
-        author: "Javier M.",
-        role: "Propietario, Los Remedios",
-      },
+    testimonialsTitle: "Por qué propietarios en Sevilla eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Sevilla desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
@@ -413,20 +373,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "Victoria, por su fuerte revalorización reciente, junto con Teatinos y El Palo, concentran buena parte de la rotación. Administramos también en Torremolinos, Rincón de la Victoria y el resto de la Costa del Sol.",
       },
     ],
-    testimonialsTitle: "Propietarios en Málaga que delegaron el contacto con el inquilino en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Tengo piso en Teatinos y vivo en Madrid. Antes perdía noches con WhatsApp del inquilino; ahora Livendia coordina técnico y comunidad y yo solo veo el resumen cuando toca autorizar.",
-        author: "Laura P.",
-        role: "Propietaria, Teatinos",
-      },
-      {
-        quote:
-          "Apartamento en la costa alquilado todo el año. Filtran incidencias menores y cuando hubo humedad coordinaron empresa sin que yo llamara tres veces al vecino.",
-        author: "Antonio R.",
-        role: "Propietario, Torremolinos",
-      },
+    testimonialsTitle: "Por qué propietarios en Málaga eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Málaga desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
@@ -481,20 +432,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Lugones",
       "Langreo",
     ],
-    testimonialsTitle: "Propietarios en Oviedo que delegaron el día a día del alquiler en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Alquilo un piso en La Ería cerca de la uni y vivo en Madrid. Antes perdía tardes con averías de caldera; ahora Livendia coordina fontanero y comunidad y yo solo apruebo cuando el gasto supera lo pactado.",
-        author: "María S.",
-        role: "Propietaria, La Ería",
-      },
-      {
-        quote:
-          "Piso en Los Pilares con inquilino joven. Filtran consultas menores y cuando hubo humedad en fachada explicaron al inquilino qué era responsabilidad suya y qué tocaba comunidad.",
-        author: "Roberto G.",
-        role: "Propietario, Los Pilares",
-      },
+    testimonialsTitle: "Por qué propietarios en Oviedo eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Oviedo desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
@@ -548,20 +490,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Carreño",
       "Avilés",
     ],
-    testimonialsTitle: "Propietarios en Gijón que delegaron el contacto con el inquilino en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Tengo piso en La Arena y trabajo en Bilbao. Livendia atiende al inquilino, coordina cerrajero y fontanería y yo solo veo el resumen cuando toca autorizar.",
-        author: "Patricia L.",
-        role: "Propietaria, La Arena",
-      },
-      {
-        quote:
-          "Alquilo en Somió cerca del campus. Ellos gestionan entradas de inquilinos nuevos en septiembre y yo no recibo llamadas un domingo a las once de la noche.",
-        author: "Ignacio M.",
-        role: "Propietario, Somió",
-      },
+    testimonialsTitle: "Por qué propietarios en Gijón eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Gijón desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
@@ -613,20 +546,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "Actur-Rey Fernando destaca por combinar buenas comunicaciones, servicios y un precio más contenido que Centro Histórico o Universidad-Romareda.",
       },
     ],
-    testimonialsTitle: "Propietarios en Zaragoza que delegaron el contacto con el inquilino en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Alquilo en Romareda cerca del campus y vivo en Madrid. Livendia atiende al inquilino, coordina fontanería y yo solo apruebo cuando el gasto supera lo pactado.",
-        author: "Lucía M.",
-        role: "Propietaria, Romareda",
-      },
-      {
-        quote:
-          "Piso en Delicias con inquilino joven. Filtran consultas menores y cuando hubo humedad explicaron qué era responsabilidad suya y qué tocaba comunidad.",
-        author: "Jorge P.",
-        role: "Propietario, Delicias",
-      },
+    testimonialsTitle: "Por qué propietarios en Zaragoza eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Zaragoza desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
@@ -678,20 +602,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
           "Santa Eulalia y El Carmen concentran actualmente los principales proyectos de regeneración urbana de la capital, lo que está atrayendo a nuevos inquilinos y elevando la rotación en esas zonas.",
       },
     ],
-    testimonialsTitle: "Propietarios en Murcia que delegaron el día a día del alquiler en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Tengo piso en Espinardo y trabajo fuera. Antes perdía fines de semana con WhatsApp del inquilino; ahora Livendia coordina técnico y comunidad y yo solo veo el resumen cuando toca autorizar.",
-        author: "Carmen R.",
-        role: "Propietaria, Espinardo",
-      },
-      {
-        quote:
-          "Alquilamos en zona cerca de Sucina con contrato LAU bien hecho. Ellos filtran incidencias menores y cuando hubo avería de climatización coordinaron empresa sin que yo llamara al vecino.",
-        author: "Francisco T.",
-        role: "Propietario, pedanía sur",
-      },
+    testimonialsTitle: "Por qué propietarios en Murcia eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Murcia desde 49 €/mes sin permanencia: gestor colegiado, panel online y WhatsApp profesional.",
@@ -745,20 +660,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Leioa",
       "Erandio",
     ],
-    testimonialsTitle: "Propietarios en Bilbao que delegaron el contacto con el inquilino en Livendia",
-    testimonials: [
-      {
-        quote:
-          "Tengo piso en Deusto y vivo en Madrid. Livendia atiende al inquilino, coordina cerrajero y fontanería y yo solo veo el resumen cuando toca autorizar gasto.",
-        author: "Ander L.",
-        role: "Propietario, Deusto",
-      },
-      {
-        quote:
-          "Alquilo en Getxo con inquilino estable. Filtran consultas menores y cuando hubo avería de ascensor explicaron al inquilino el protocolo con la comunidad.",
-        author: "Maite S.",
-        role: "Propietaria, Getxo",
-      },
+    testimonialsTitle: "Por qué propietarios en Bilbao eligen delegar la gestión del alquiler",
+    trustPoints: [
+      "Un único interlocutor con tu inquilino: filtramos llamadas, WhatsApp y avisos de incidencias.",
+      "Sin permanencia: puedes cancelar el servicio cuando quieras, sin penalización.",
+      "Panel online con trazabilidad de cada gestión: solo te contactamos por lo que requiere tu decisión.",
     ],
     finalCtaLead:
       "Contrata administración profesional en Bilbao desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",

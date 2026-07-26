@@ -118,13 +118,14 @@ export async function AdministracionAlquilerLocalSeoLanding({
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (rental) servicesBySlug["administracion-alquiler"] = rental;
 
+  // Paso 1 y 4 mencionan la ciudad para que el bloque no sea idéntico letra por letra
+  // entre landings (estructura de 4 pasos sin cambios, ver SEO_ROADMAP.md).
   const howItWorks = [
     {
       icon: Users,
       step: "1",
       title: "Nos convertimos en tu intermediario",
-      description:
-        "Desde el primer día, Livendia es el único punto de contacto entre tú y tu inquilino. No recibirás llamadas, emails ni mensajes directos.",
+      description: `Desde el primer día, Livendia es tu único punto de contacto en ${config.city} entre tú y tu inquilino. No recibirás llamadas, emails ni mensajes directos.`,
     },
     {
       icon: MessageCircle,
@@ -144,8 +145,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
       icon: FileText,
       step: "4",
       title: "Te mantenemos informado",
-      description:
-        "Solo te contactamos para lo importante: pagos recibidos, decisiones que requieren tu aprobación o novedades relevantes del contrato.",
+      description: `Solo te contactamos para lo importante: pagos recibidos, decisiones que requieren tu aprobación o novedades relevantes de tu contrato en ${config.city}.`,
     },
   ];
 
@@ -407,39 +407,32 @@ export async function AdministracionAlquilerLocalSeoLanding({
           </section>
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-5xl">
               <div className="text-center">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">{config.testimonialsTitle}</h2>
               </div>
 
-              <div className="mt-12 grid gap-8 lg:grid-cols-2">
-                {config.testimonials.map((testimonial, idx) => (
+              {/*
+                Puntos de confianza sobre el servicio, no citas atribuidas a personas: todavía no
+                hay testimonios/reseñas verificables por ciudad en BD/CRM (ver SEO_ROADMAP.md), y no
+                se inventan nombres ni opiniones para simular reseñas reales.
+              */}
+              <div className="mt-12 grid gap-6 sm:grid-cols-3">
+                {config.trustPoints.map((point, idx) => (
                   <div
                     key={idx}
-                    className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200"
+                    className="flex items-start gap-3 rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200"
                   >
-                    <div className="flex gap-1 text-[#D4AF37]">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <p className="mt-4 text-lg italic leading-relaxed text-[#475569]">
-                      <span aria-hidden>&ldquo;</span>
-                      {testimonial.quote}
-                      <span aria-hidden>&rdquo;</span>
-                    </p>
-                    <div className="mt-6 flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]"></div>
-                      <div>
-                        <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
-                        <p className="text-sm text-[#64748b]">{testimonial.role}</p>
-                      </div>
-                    </div>
+                    <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-[#1A4FBF]" strokeWidth={2} />
+                    <p className="text-base leading-relaxed text-[#475569]">{point}</p>
                   </div>
                 ))}
               </div>
+
+              <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-[#64748b]">
+                Aún no publicamos aquí opiniones de clientes concretos de {config.city}: iremos
+                incorporando reseñas verificadas a medida que estén disponibles.
+              </p>
             </div>
           </section>
 

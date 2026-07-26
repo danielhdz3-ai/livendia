@@ -1,6 +1,6 @@
 # Hoja de ruta — Plan de posicionamiento SEO Livendia
 
-> Documento vivo. Se actualiza al cerrar cada tarea. Última actualización: **25/07/2026 (fix render dinámico)**.
+> Documento vivo. Se actualiza al cerrar cada tarea. Última actualización: **26/07/2026 (ISR de precios + pulido de contenido genérico)**.
 > Alcance: plan de 7 fases sobre clústeres `/servicios/[servicio]/[ciudad]` y `/gestoria/[ciudad]`, derivado del análisis de Search Console.
 
 ## Estado por fase
@@ -87,6 +87,25 @@ No hace falta tocar `supabase/server.ts` (se puede dejar `createAnonSupabaseClie
 
 Al pasar estas páginas a estáticas, el catálogo que muestran queda "congelado" en el momento del build en vez de reflejar la base de datos al instante. Si un admin cambia un precio o desactiva un servicio desde el panel, el cambio no se verá en estas páginas públicas hasta el próximo despliegue — antes sí se veía al instante porque cada petición consultaba la base de datos en vivo. No se ha tocado esto porque estaba fuera del alcance pedido ("no tocar ningún otro caller"), pero si el equipo cambia precios con frecuencia sin redesplegar, conviene añadir revalidación (`export const revalidate = 3600` o `revalidatePath` desde el panel de admin al guardar) como tarea de seguimiento.
 
+## ISR: los precios ya se actualizan solos (26/07/2026)
+
+Seguimiento directo de la nota operativa del fix de render dinámico: se añadió revalidación por tiempo (`export const revalidate = 300;`, 5 minutos) en las **46 páginas** que dependen de `getPublicServices()` (home, `/servicios`, `/precios`, las 13 landings "hub", los 11 clústeres `-local/[slug]`, `/gestoria/[slug]` y las 12 pillar pages de venta particular). No se tocó `/dashboard/servicios` (protegida por sesión, ya dinámica por diseño).
+
+- **Intervalo elegido: 300 segundos (5 minutos).** Es el punto intermedio entre "el cliente ve su cambio de precio casi al instante" y "no hay presión extra sobre Supabase" (con tráfico normal, como mucho 1 consulta a la base de datos cada 5 min por página, no por visita). **Para cambiarlo**: editar el número en `export const revalidate = 300;` en los archivos afectados (buscar `ISR: revalida cada` en el repo para localizarlos todos) — ej. `revalidate = 60` para 1 minuto si se necesita más inmediatez, o `revalidate = 3600` para 1 hora si se prefiere minimizar carga.
+- **Verificado con `next build`**: todas las rutas siguen `○`/`●` (estáticas/SSG); el build ahora muestra explícitamente una columna `Revalidate: 5m` / `Expire: 1y` en cada una. Ninguna volvió a `ƒ` dinámica.
+- **Prueba end-to-end real**: se cambió el precio de "Contrato de Arras Penitenciales" de 145 € a 146 € directamente en la base de datos (sin tocar código ni redesplegar), sirviendo `/servicios` desde un build de producción local. Resultado: la primera petición justo después del cambio siguió mostrando 145 € (confirma que la página estaba realmente cacheada, no se consultaba en vivo); tras esperar la ventana de 5 minutos, la siguiente petición ya devolvió 146 €. Precio revertido a 145 € en la base de datos al terminar la prueba. No se ejecutó ninguna compra ni sesión de Stripe (las claves activas son LIVE, se omitió esa parte por petición explícita).
+
+## Pulido de contenido genérico: "cómo funciona" y testimonios (26/07/2026)
+
+Cierre del último punto pendiente de la Fase 1 (el ~51 % de solapamiento de prosa residual detectado en el informe de duplicación de plantilla venía justo de estos dos bloques). Aplicado a las **11 ciudades** de `administracion-alquiler-local`.
+
+- **"¿Cómo funciona?"**: se mantiene la estructura de 4 pasos sin cambios, pero los pasos 1 y 4 ahora mencionan la ciudad de la landing (`src/components/administracion-alquiler-local-seo-landing.tsx`), así que el bloque ya no es idéntico letra por letra entre ciudades.
+- **Testimonios — hallazgo importante**: al revisar la fuente de los testimonios encontré que **no existe ninguna tabla de reseñas/testimonios reales** en Supabase ni integración con un CRM o API externa (Google Reviews, Trustpilot, etc.) — todo estaba redactado a mano en `src/lib/testimonials.ts` y en los archivos "-cities.ts" de cada clúster, incluidos los que ya existían en `administracion-alquiler-local-cities.ts` con nombres inventados (ej. "Fernando R.", "Cristina V.") y citas personales ficticias, con estrellas de valoración simuladas. Esto es exactamente lo que pediste evitar.
+- **Corrección aplicada**: en las 11 ciudades de `administracion-alquiler-local` sustituí las citas con nombre inventado por un bloque neutro y honesto: 3 puntos de confianza reales sobre el servicio (sin atribuir a ninguna persona, sin estrellas simuladas) + una nota transparente que dice explícitamente que aún no hay opiniones verificadas publicadas para esa ciudad. Título de sección también reescrito para no insinuar que ya existen clientes citados.
+- **Páginas con formato neutro (sin testimonios reales)**: las 11 — Madrid, Barcelona, Valencia, Mallorca, Sevilla, Málaga, Oviedo, Gijón, Zaragoza, Murcia y Bilbao. Ninguna usa testimonios reales todavía porque no hay fuente verificable.
+- **Fuera de alcance de esta tarea (tal y como pediste)**: el mismo patrón de testimonios inventados existe en otros clústeres (`contrato-arras-local`, `contrato-alquiler-temporada-local`, `contrato-alquiler-habitacion-local`, `servicio-completo-compra-local`, `servicio-completo-venta-local`, `acompanamiento-compra-parking-trastero-local`, `venta-piso-particular-sin-agencia-local`, y las páginas hub `administracion-alquiler`, `contrato-de-alquiler`, `contrato-de-arras`, `servicio-completo-compra`) y en el bloque de confianza de la home (`src/lib/testimonials.ts`, que ya tiene un comentario propio admitiendo que son placeholders). Recomendación: aplicar la misma corrección ahí en cuanto se decida extender esta fase, o en cuanto existan testimonios reales que sustituyan el formato neutro en las 11 ciudades ya corregidas.
+- **Verificado**: `next build` sin errores de TypeScript, contenido confirmado en producción local (`next start`) para Madrid.
+
 ## Otras tareas cerradas (fuera de la numeración original)
 
 - **Auditoría Grupo D** (`contrato-arras-confirmatorias`, `vender-piso-sin-agencia-malaga`): informe entregado, redirect 301 ejecutado para la primera, la segunda se deja intacta.
@@ -95,11 +114,12 @@ Al pasar estas páginas a estáticas, el catálogo que muestran queda "congelado
 
 ## Próximos pasos (por orden sugerido de impacto/esfuerzo)
 
-1. **Verificar 1 compra real por clúster tras desplegar** el fix de render dinámico (administración de alquiler, arras, venta completa) — la única parte de esa tarea no verificable de forma autónoma y segura (ver nota de checkout más arriba).
-2. **Checkpoint de Search Console** (dentro de 3-4 semanas desde los cambios de Fase 2/4/Grupo D): decidir sobre consolidación del Grupo A (municipios metropolitanos de Barcelona) y revisión de `contrato-arras-penitenciales`. También es el momento de comprobar si el salto a páginas estáticas mueve posiciones/CTR del clúster de administración de alquiler.
-3. **Revalidación del catálogo** (seguimiento del fix de render dinámico): si el equipo cambia precios/estado de servicios sin redesplegar, añadir `revalidate`/`revalidatePath` para que las páginas ahora estáticas reflejen esos cambios sin esperar al próximo build.
-4. **Pulido opcional de la duplicación residual de Fase 1**: localizar testimonios reales por ciudad y variar la redacción del bloque "¿Cómo funciona?" y de la frase de "zona no tensionada" — bajo impacto, medio día de trabajo, no urgente.
-5. **Fase 3 del plan original (autoridad externa)**: no iniciada — enlaces desde fuentes locales (colegios de gestores, directorios, medios). Fuera del alcance técnico, requiere gestión externa.
+1. **Checkpoint de Search Console** (dentro de 3-4 semanas desde los cambios de Fase 2/4/Grupo D): decidir sobre consolidación del Grupo A (municipios metropolitanos de Barcelona) y revisión de `contrato-arras-penitenciales`. También es el momento de comprobar si el salto a páginas estáticas mueve posiciones/CTR del clúster de administración de alquiler.
+2. **Testimonios reales por ciudad**: en las 11 ciudades de `administracion-alquiler-local` se dejó un formato neutro ("opiniones verificadas", sin nombre inventado) porque no hay testimonios reales por ciudad en la base de datos/CRM todavía. En cuanto existan, sustituir por testimonios reales — ver detalle en la sección dedicada más abajo.
+3. **Fase 3 del plan original (autoridad externa)**: no iniciada — enlaces desde fuentes locales (colegios de gestores, directorios, medios). Fuera del alcance técnico, requiere gestión externa.
+4. **Verificación manual de compra**: por decisión explícita del cliente, no se ejecuta ninguna compra de prueba (claves de Stripe en modo LIVE). Si en algún momento se quiere verificar el checkout de extremo a extremo, hacerlo manualmente con una tarjeta real y un servicio de bajo coste, nunca de forma automatizada.
+
+> Nota: la tarea de revalidación del catálogo (ISR) que aparecía aquí ya está completada — ver sección "ISR: los precios ya se actualizan solos" más arriba.
 
 ## Entregables de referencia (canvases)
 
