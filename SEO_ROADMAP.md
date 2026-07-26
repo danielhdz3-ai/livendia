@@ -105,6 +105,29 @@ Cierre del último punto pendiente de la Fase 1 (el ~51 % de solapamiento de pro
 - **Nota pendiente (no bloqueante)**: estas citas siguen sin ser testimonios verificables (no hay fuente/CRM detrás). Si en el futuro se dispone de reseñas reales por ciudad, sustituir estos textos por las reales.
 - **Verificado**: `next build` sin errores de TypeScript, todas las rutas siguen `○`/`●` con `Revalidate: 5m`.
 
+## CWV (tamaños de imagen) + formulario de contacto + WhatsApp mid-page + informes (26/07/2026)
+
+Cierre de la tanda de mejoras de CRO/SEO priorizada tras el análisis de "qué más implementar para ganar posiciones y clientes que contacten". Tres bloques de código + dos informes de solo lectura.
+
+### 1. Core Web Vitals — tamaños de imagen (hallazgo de la auditoría CWV, ahora corregido)
+
+- `next.config.ts`: `images.deviceSizes`/`imageSizes` explícitos (`[390, 640, 750, 828, 1080, 1200, 1280, 1920]` / `[16..384, 420]`) en vez del default de Next (que llegaba hasta 3840px, innecesario en este sitio).
+- Corregido el atributo `sizes` de **~70 instancias de `<Image>`** en todo el sitio (los 13 clústeres `-local-seo-landing.tsx`, las páginas nacionales `/servicios/*`, home, equipo, ciudades, blog, tarjetas de servicio) que decían `50vw`/`33vw`/`25vw` sin límite superior — en contenedores `max-w-7xl`/`max-w-6xl` eso hacía que, en pantallas anchas, se pidiera una imagen ~2-3× más grande que el hueco real donde se pinta. Ahora cada `sizes` incluye el límite en píxeles del ancho real de columna (ej. `(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px`).
+- **Verificado con Lighthouse mobile** antes/después: la home pasó a `uses-responsive-images` con score perfecto (0 bytes de desperdicio). En Madrid queda un hallazgo residual menor en el hero (ligado a cómo Lighthouse simula la densidad de píxel en este entorno, no al `sizes` — la rama `100vw` de móvil no cambió con este fix). Detalle completo verificado con `next build` (rutas siguen `○`/`●`, sin errores de TypeScript).
+
+### 2. Formulario "pedir información" + WhatsApp a mitad de página
+
+- **Nuevo componente `src/components/service-info-request-form.tsx`**: formulario ligero (nombre, email, teléfono, mensaje opcional) que reutiliza el mismo endpoint `/api/contact` que ya usa `/contacto` (misma validación, mismo email al equipo, mismo Turnstile anti-spam) — no crea flujo, tabla ni endpoint nuevo. El mensaje enviado incluye automáticamente el contexto (servicio + ciudad) para que el equipo sepa desde qué landing llegó el lead.
+- **Nuevo componente `src/components/service-mid-page-contact-section.tsx`**: sección "¿Aún tienes dudas?" con WhatsApp + teléfono + el formulario anterior, colocada justo después de la sección de FAQ (un punto de contacto adicional a los que ya había en el hero y en el CTA final).
+- **Integrado en los 13 clústeres `-local-seo-landing.tsx`** (administración de alquiler, contrato de arras, contrato de alquiler, temporada, habitación, servicio completo compra/venta, venta particular, vender sin agencia ×2, gestión/revisión documental, parking y trastero) — verificado con `tsc --noEmit` y `next build` sin errores, y comprobado visualmente en 5 páginas de clústeres distintos (Madrid, Barcelona, Valencia + Sevilla + Bilbao) sin errores de consola.
+- **`/contacto`**: añadido un enlace recíproco ("¿Buscas un servicio concreto?" → `/servicios`) para quien prefiera pedir información ya con el contexto de un servicio+ciudad concretos.
+- **No se ha tocado** el botón "Contratar", el modal de checkout ni ningún flujo de Stripe. No se ha enviado ningún email de prueba real (para no generar ruido en la bandeja de `info@livendia.com`) — la validación se hizo revisando que reutiliza exactamente el mismo endpoint ya probado en producción por el formulario de `/contacto`.
+
+### 3. Informes de solo lectura (sin cambios de código)
+
+- **`INFORME_UNICIDAD_CONTENIDO_CLUSTERS.md`**: auditoría de los 13 clústeres `-local` restantes (fuera de `administracion-alquiler-local`). Ninguno alcanza aún el nivel de referencia. Hallazgo destacable: `servicio-completo-venta-local-cities.ts` tiene **Valladolid y Granada con campos de texto vacíos** (`heroLead`/`whyIntro`/`agencyIntro: ""`). Prioridad sugerida para la próxima ronda de Fase 2: 1) `servicio-completo-venta-local` (por los huecos + tráfico ya confirmado), 2) `vender-piso-sin-agencia-local` (Barcelona ya tenía 562 impresiones en el último export), 3) `servicio-completo-compra-local`.
+- **`MATERIALES_ENLACES_EXTERNOS.md`**: argumentario + lista de colegios de gestores administrativos por ciudad (verificados contra el directorio oficial del Consejo General) + 3 plantillas de email (colegios, directorios, medios locales). Solo redacción — no se ha contactado a nadie.
+
 ## Otras tareas cerradas (fuera de la numeración original)
 
 - **Auditoría Grupo D** (`contrato-arras-confirmatorias`, `vender-piso-sin-agencia-malaga`): informe entregado, redirect 301 ejecutado para la primera, la segunda se deja intacta.
@@ -113,10 +136,13 @@ Cierre del último punto pendiente de la Fase 1 (el ~51 % de solapamiento de pro
 
 ## Próximos pasos (por orden sugerido de impacto/esfuerzo)
 
-1. **Checkpoint de Search Console** (dentro de 3-4 semanas desde los cambios de Fase 2/4/Grupo D): decidir sobre consolidación del Grupo A (municipios metropolitanos de Barcelona) y revisión de `contrato-arras-penitenciales`. También es el momento de comprobar si el salto a páginas estáticas mueve posiciones/CTR del clúster de administración de alquiler.
-2. **Testimonios reales por ciudad**: por decisión del cliente se mantiene el formato con nombre/rol (mejorado con detalle de zona) en las 11 ciudades de `administracion-alquiler-local`, aunque no hay fuente verificable detrás (no hay tabla de reseñas en BD/CRM). Si en el futuro se dispone de testimonios reales por ciudad, sustituir estos textos — ver detalle en la sección dedicada más arriba.
-3. **Fase 3 del plan original (autoridad externa)**: no iniciada — enlaces desde fuentes locales (colegios de gestores, directorios, medios). Fuera del alcance técnico, requiere gestión externa.
-4. **Verificación manual de compra**: por decisión explícita del cliente, no se ejecuta ninguna compra de prueba (claves de Stripe en modo LIVE). Si en algún momento se quiere verificar el checkout de extremo a extremo, hacerlo manualmente con una tarjeta real y un servicio de bajo coste, nunca de forma automatizada.
+1. **Checkpoint de Search Console** (dentro de 3-4 semanas desde los cambios de Fase 2/4/Grupo D): decidir sobre consolidación del Grupo A (municipios metropolitanos de Barcelona) y revisión de `contrato-arras-penitenciales`. También es el momento de comprobar si el salto a páginas estáticas mueve posiciones/CTR del clúster de administración de alquiler, y de confirmar si el orden de prioridad de `INFORME_UNICIDAD_CONTENIDO_CLUSTERS.md` sigue vigente con datos frescos.
+2. **Rellenar los huecos de `servicio-completo-venta-local-cities.ts`** (Valladolid y Granada sin texto) — es el arreglo más urgente y barato detectado en el informe de unicidad de contenido, antes de invertir en el resto del clúster.
+3. **Extender Fase 2 al resto de clústeres**, empezando por `servicio-completo-venta-local` → `vender-piso-sin-agencia-local` → `servicio-completo-compra-local` (ver justificación en `INFORME_UNICIDAD_CONTENIDO_CLUSTERS.md`).
+4. **Fase 3 del plan original (autoridad externa)**: materiales ya redactados (`MATERIALES_ENLACES_EXTERNOS.md`), pendiente de que el cliente apruebe y se empiece a enviar los emails — empezar por los colegios de gestores administrativos de Madrid, Barcelona, Valencia y Málaga.
+5. **Testimonios reales por ciudad**: por decisión del cliente se mantiene el formato con nombre/rol (mejorado con detalle de zona) en las 11 ciudades de `administracion-alquiler-local`, aunque no hay fuente verificable detrás (no hay tabla de reseñas en BD/CRM). Si en el futuro se dispone de testimonios reales por ciudad, sustituir estos textos — ver detalle en la sección dedicada más arriba.
+6. **Verificación manual de compra**: por decisión explícita del cliente, no se ejecuta ninguna compra de prueba (claves de Stripe en modo LIVE). Si en algún momento se quiere verificar el checkout de extremo a extremo, hacerlo manualmente con una tarjeta real y un servicio de bajo coste, nunca de forma automatizada.
+7. **Reseñas de Google** (`trust-reviews-block.tsx` / `business-nap.ts`): sigue fuera de alcance por instrucción explícita — la cifra "5.0 · 3 reseñas" está hardcodeada y no verificada contra una ficha real. Pendiente de decisión del cliente sobre si conectar una ficha real o retirar la cifra.
 
 > Nota: la tarea de revalidación del catálogo (ISR) que aparecía aquí ya está completada — ver sección "ISR: los precios ya se actualizan solos" más arriba.
 
