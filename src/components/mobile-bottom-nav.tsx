@@ -27,10 +27,10 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="mobile-bottom-nav fixed inset-x-0 bottom-0 z-[60] border-t border-slate-200/90 bg-white/95 backdrop-blur-md sm:hidden"
+      className="mobile-bottom-nav fixed inset-x-0 bottom-0 z-[60] w-full max-w-full overflow-x-clip border-t border-slate-200/90 bg-white/95 backdrop-blur-md sm:hidden"
       aria-label="Navegación principal móvil"
     >
-      <ul className="mx-auto flex max-w-lg items-stretch justify-around px-1 pt-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))]">
+      <ul className="mx-auto flex w-full max-w-lg items-stretch justify-around px-1 pt-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))]">
         {NAV_ITEMS.map(({ href, label, icon: Icon, match }) => {
           const active = match(pathname);
           return (

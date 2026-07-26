@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-[#1E293B]">
+      <body className="min-h-full w-full max-w-full overflow-x-clip flex flex-col bg-white text-[#1E293B]">
         <WebsiteStructuredData />
         <GoogleAnalytics />
         <GtmScripts />

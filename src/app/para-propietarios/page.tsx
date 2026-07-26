@@ -41,14 +41,14 @@ export default async function ParaPropietariosPage() {
 
   return (
     <ServicePurchaseProvider service={rental}>
-      <div className="flex flex-col">
+      <div className="flex min-w-0 w-full flex-col overflow-x-clip">
         <PublicHeader />
 
         <section className="bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
-            <div className="flex flex-col justify-center">
+          <div className="mx-auto grid min-w-0 max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
+            <div className="flex min-w-0 flex-col justify-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">Para propietarios</p>
-              <h1 className="mt-3 text-3xl font-bold leading-snug sm:text-4xl lg:text-5xl">
+              <h1 className="mt-3 text-3xl font-bold leading-snug text-balance sm:text-4xl lg:text-5xl">
                 Delega la administración de tu alquiler y recupera tu tranquilidad
               </h1>
               <p className="mt-4 text-base leading-relaxed text-blue-50 sm:text-lg">
@@ -69,7 +69,7 @@ export default async function ParaPropietariosPage() {
                   Hablar por WhatsApp
                 </a>
               </div>
-              <p className="mt-4 text-sm text-blue-200">
+              <p className="mt-4 break-words text-sm text-blue-200">
                 Horario {businessNap.openingHours.opens}–{businessNap.openingHours.closes} (L–V) · Tel.{" "}
                 {businessNap.telephoneDisplay()}
                 {" · "}
@@ -231,9 +231,11 @@ export default async function ParaPropietariosPage() {
                 WhatsApp
               </a>
             </p>
-            <p className="text-xs text-[#64748B]">
+            <p className="max-w-full break-words text-xs text-[#64748B]">
               Enlace de campaña ejemplo:{" "}
-              <code className="rounded bg-slate-100 px-1">{CAMPAIGN_URLS.administracionPropietarios}</code>
+              <code className="inline-block max-w-full break-all rounded bg-slate-100 px-1 text-left">
+                {CAMPAIGN_URLS.administracionPropietarios}
+              </code>
             </p>
           </div>
         </section>

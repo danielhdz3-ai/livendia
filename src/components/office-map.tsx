@@ -39,7 +39,7 @@ export function OfficeMap({
           href={externalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute bottom-3 left-3 right-3 z-10 truncate rounded-lg bg-white/95 px-3 py-2 text-xs font-semibold text-[#1E3A8A] shadow-md backdrop-blur-sm transition hover:bg-white sm:right-auto sm:max-w-[min(100%,28rem)]"
+          className="absolute bottom-3 left-3 z-10 max-w-[calc(100%-1.5rem)] truncate rounded-lg bg-white/95 px-3 py-2 text-xs font-semibold text-[#1E3A8A] shadow-md backdrop-blur-sm transition hover:bg-white sm:right-auto sm:max-w-[min(100%,28rem)]"
         >
           {address} · Abrir en Google Maps
         </a>

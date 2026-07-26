@@ -21,7 +21,7 @@ export function FloatingWhatsAppButton() {
 
   return (
     <div
-      className="livendia-wa-fab-anchor pointer-events-none fixed z-[55] flex flex-col items-end gap-2 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-6 sm:right-6"
+      className="livendia-wa-fab-anchor pointer-events-none fixed z-[55] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] sm:bottom-6 sm:right-6"
       aria-hidden={false}
     >
       <span className="pointer-events-none hidden rounded-full bg-[#1E293B] px-3 py-1.5 text-xs font-semibold text-white shadow-lg sm:block">
