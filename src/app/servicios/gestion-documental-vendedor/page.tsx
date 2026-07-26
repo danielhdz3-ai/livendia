@@ -42,6 +42,14 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent
 
 const STEP_ICONS = [ClipboardList, FileSearch, Shield, Phone] as const;
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
   description:

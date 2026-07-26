@@ -9,6 +9,14 @@ import type { Metadata } from "next";
 
 const canonical = `${getSiteUrl()}${PILLAR_GRANADA_PATH}`;
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: PILLAR_GRANADA_META.title,
   description: PILLAR_GRANADA_META.description,

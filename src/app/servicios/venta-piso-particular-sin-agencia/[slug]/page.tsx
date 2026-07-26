@@ -14,6 +14,14 @@ type Props = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export function generateStaticParams() {
   return getPublishedVentaPisoParticularCities().map((c) => ({ slug: c.slug }));
 }

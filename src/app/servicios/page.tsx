@@ -8,6 +8,14 @@ import { ServiceCardsClient } from "./service-cards-client";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Servicios de gestoría inmobiliaria: alquiler, compraventa y packs",
   description: SITE_DEFAULT_DESCRIPTION,

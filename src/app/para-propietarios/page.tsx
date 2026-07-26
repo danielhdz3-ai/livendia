@@ -9,6 +9,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Shield, Clock, Wrench, Users, CheckCircle2, Phone } from "lucide-react";
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Administración de alquiler para propietarios — delega el contacto con el inquilino",
   description:

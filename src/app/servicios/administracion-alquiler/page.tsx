@@ -10,6 +10,14 @@ import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, F
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Administración de alquileres para propietarios desde 49 €/mes",
   description:

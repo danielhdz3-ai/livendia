@@ -18,6 +18,14 @@ import type { Metadata } from "next";
 import { getSiteUrl } from "@/lib/site-url";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Gestoría inmobiliaria para particulares — contratos y venta sin agencia | Livendia",
   description: SITE_DEFAULT_DESCRIPTION,

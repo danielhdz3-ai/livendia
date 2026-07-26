@@ -43,6 +43,14 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent
 
 const PHASE_ICONS = [ClipboardList, Landmark, FileText, Building2] as const;
 
+/**
+ * ISR: revalida cada 5 min para que los precios/estado del catalogo
+ * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
+ * el proximo despliegue. Cambiar este numero (segundos) si se necesita
+ * otra frecuencia -- ver SEO_ROADMAP.md.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL} | Livendia`,
   description:
