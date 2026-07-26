@@ -320,3 +320,20 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "contrato-de-arras": "/images/contratodearras.jpg",
   "contrato-de-alquiler": "/images/contratodealquiler.jpg",
 };
+
+/**
+ * Excepciones al patrón /servicios/{slug}: slugs de catálogo cuya landing dedicada
+ * se retiró (ver redirect 301 en next.config.ts) y cuya información vive ahora en
+ * otra página del mismo clúster.
+ */
+const SERVICE_LANDING_PATH_OVERRIDES: Record<string, string> = {
+  "contrato-arras-confirmatorias": "/servicios/contrato-de-arras",
+};
+
+/**
+ * Ruta de la ficha informativa pública de un servicio del catálogo (botón "Ver
+ * información" en /servicios). Por defecto sigue la convención /servicios/{slug}.
+ */
+export function servicePublicLandingPath(slug: string): string {
+  return SERVICE_LANDING_PATH_OVERRIDES[slug] ?? `/servicios/${slug}`;
+}

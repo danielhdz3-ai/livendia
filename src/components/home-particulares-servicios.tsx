@@ -47,9 +47,9 @@ const SERVICIOS_PARTICULARES = [
   },
   {
     href: "/precios",
-    title: "Todos los precios",
+    title: "Contratar",
     price: "IVA incl.",
-    note: "Tarifas cerradas",
+    note: "Todas las tarifas",
   },
   {
     href: "/blog/particular-alquila-habitacion-guia-contrato-2026",

@@ -34,15 +34,16 @@ export default async function ServiciosPage() {
           <div className="mx-auto max-w-6xl">
             <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">Servicios</h1>
             <p className="mt-3 max-w-2xl text-base text-blue-100 sm:text-lg">
-              Elige servicio abajo y contrata con <strong>pago seguro por tarjeta</strong>. Operamos online en Madrid,
-              Valencia, Barcelona y toda España con los mismos precios y gestor dedicado.
+              Consulta toda la información de cada servicio y, cuando quieras, contrata con{" "}
+              <strong>pago seguro por tarjeta</strong>. Operamos online en Madrid, Valencia, Barcelona y toda España
+              con los mismos precios y gestor dedicado.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/precios"
                 className="inline-flex min-h-11 items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-slate-100"
               >
-                Ver precios
+                Contratar
               </Link>
               <Link
                 href="/login?next=/dashboard"
@@ -64,7 +65,7 @@ export default async function ServiciosPage() {
               {groups.map((group) => (
                 <section key={group.key}>
                   <h2 className="text-2xl font-bold text-[#1E293B]">{group.label}</h2>
-                  <ServiceCardsClient services={group.items} />
+                  <ServiceCardsClient services={group.items} mode="landing" />
                 </section>
               ))}
             </div>

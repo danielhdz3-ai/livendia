@@ -171,7 +171,7 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
                   </li>
                   <li>
                     <Link href="/precios" className="text-blue-100 hover:text-white transition-colors">
-                      Precios
+                      Contratar
                     </Link>
                   </li>
                   <li>

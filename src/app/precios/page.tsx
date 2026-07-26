@@ -21,7 +21,7 @@ import Link from "next/link";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Precios gestoría inmobiliaria para particulares | Livendia",
+  title: "Contratar gestoría inmobiliaria: precios y tarifas | Livendia",
   description:
     `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
   alternates: { canonical: `${getSiteUrl()}/precios` },
@@ -37,10 +37,10 @@ export default async function PreciosPage() {
       <main className="flex-1">
         <section className="border-b border-slate-200 bg-[#1A4FBF] px-4 py-10 text-white sm:px-6 sm:py-14">
           <div className="mx-auto max-w-6xl">
-            <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">Precios</h1>
+            <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">Contratar</h1>
             <p className="mt-3 max-w-2xl text-base text-blue-100 sm:text-lg">
-              Importes con <strong>IVA incluido</strong>. Elige un servicio y contrata con{" "}
-              <strong>pago seguro por tarjeta</strong>; el flujo es el mismo que en Servicios.
+              Importes con <strong>IVA incluido</strong>. Elige un servicio, registra tus datos y contrata al momento
+              con <strong>pago seguro por tarjeta</strong>.
             </p>
           </div>
         </section>

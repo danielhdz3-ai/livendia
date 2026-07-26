@@ -62,7 +62,7 @@ export default async function MapaDelSitioPage() {
               </li>
               <li>
                 <Link href="/precios" className="font-semibold text-[#1A4FBF] hover:underline">
-                  Precios
+                  Contratar
                 </Link>
               </li>
               <li>

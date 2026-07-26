@@ -14,7 +14,7 @@ const SERVICIO_LINKS = [
 const INFO_LINKS = [
   { href: "/servicios", label: "Todos los contratos" },
   { href: "/ciudades", label: "Ciudades", hint: "Servicios por ciudad" },
-  { href: "/precios", label: "Precios" },
+  { href: "/precios", label: "Contratar" },
   { href: "/blog", label: "Blog y guías" },
   { href: "/equipo", label: "Equipo" },
   { href: "/contacto", label: "Contacto" },

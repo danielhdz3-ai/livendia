@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Briefcase, CircleUser, Home, MessageCircle, Tag } from "lucide-react";
+import { Briefcase, CircleUser, Home, MessageCircle, ShoppingCart } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/", label: "Inicio", icon: Home, match: (p: string) => p === "/" },
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
     icon: Briefcase,
     match: (p: string) => p.startsWith("/servicios"),
   },
-  { href: "/precios", label: "Precios", icon: Tag, match: (p: string) => p === "/precios" },
+  { href: "/precios", label: "Contratar", icon: ShoppingCart, match: (p: string) => p === "/precios" },
   { href: "/contacto", label: "Contacto", icon: MessageCircle, match: (p: string) => p === "/contacto" },
   {
     href: "/login",

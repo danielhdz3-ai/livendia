@@ -274,7 +274,7 @@ export function CiudadesIndexContent() {
               href="/precios"
               className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-white px-6 py-3 text-sm font-semibold hover:bg-white/10"
             >
-              Ver precios
+              Contratar
             </Link>
           </div>
         </div>

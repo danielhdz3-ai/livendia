@@ -39,9 +39,9 @@ export function PublicHeader() {
           <Link
             href="/precios"
             className="text-sm font-medium hover:text-cyan-300"
-            title="Precios de servicios de gestoría inmobiliaria"
+            title="Contratar servicios de gestoría inmobiliaria"
           >
-            Precios
+            Contratar
           </Link>
           <Link
             href="/contacto"

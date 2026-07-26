@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { PublicService } from "@/lib/catalog.public";
 import { CATEGORY_LABEL, SERVICE_IMAGES } from "@/lib/catalog.public";
@@ -12,7 +13,12 @@ function categoryBadgeLabel(service: PublicService): string {
 
 export type ServicePurchaseCardProps = {
   service: PublicService;
-  onSelect: () => void;
+  /** Abre el modal de contratación (nombre/email/teléfono → Stripe). Ignorado si se pasa `href`. */
+  onSelect?: () => void;
+  /** Si se indica, la tarjeta es un enlace a esta ruta (ficha informativa) en vez de abrir el modal. */
+  href?: string;
+  /** Texto del botón inferior. Por defecto: "Ver detalles y contratar" (modal) o "Ver información" (enlace). */
+  ctaLabel?: string;
   className?: string;
   style?: CSSProperties;
   /** Altura de la franja de imagen (grid estándar: h-48; carrusel: h-52) */
@@ -20,33 +26,25 @@ export type ServicePurchaseCardProps = {
 };
 
 /**
- * Tarjeta única de contratación (mismo diseño en /servicios, /precios, /dashboard/servicios y home).
- * Clic → abre ServiceModal en el contenedor padre.
+ * Tarjeta única de servicio (mismo diseño en /servicios, /precios, /dashboard/servicios y home).
+ * - Con `onSelect` (por defecto): clic → abre ServiceModal en el contenedor padre (contratación directa).
+ * - Con `href`: clic → navega a la ficha informativa del servicio (landing SEO), sin abrir el modal.
  */
 export function ServicePurchaseCard({
   service,
   onSelect,
+  href,
+  ctaLabel,
   className = "",
   style,
   imageHeightClass = "h-48",
 }: ServicePurchaseCardProps) {
   const imageUrl = SERVICE_IMAGES[service.slug] || "/images/gestoria.jpg";
+  const label = ctaLabel ?? (href ? "Ver información" : "Ver detalles y contratar");
+  const cardClassName = `group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all hover:shadow-xl hover:ring-[#1A4FBF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A4FBF] ${className}`;
 
-  return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={onSelect}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSelect();
-        }
-      }}
-      style={style}
-      className={`group flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all hover:shadow-xl hover:ring-[#1A4FBF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A4FBF] ${className}`}
-      aria-label={`Contratar: ${service.name}`}
-    >
+  const content = (
+    <>
       <div className={`relative overflow-hidden bg-slate-100 ${imageHeightClass}`}>
         <Image
           src={imageUrl}
@@ -104,12 +102,39 @@ export function ServicePurchaseCard({
         </div>
 
         <div className="mt-5 flex w-full min-h-11 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-4 py-3 text-sm font-semibold text-white shadow-md pointer-events-none sm:mt-6">
-          <span>Ver detalles y contratar</span>
+          <span>{label}</span>
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
       </div>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} style={style} className={cardClassName} aria-label={`${label}: ${service.name}`}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect?.();
+        }
+      }}
+      style={style}
+      className={cardClassName}
+      aria-label={`${label}: ${service.name}`}
+    >
+      {content}
     </div>
   );
 }
