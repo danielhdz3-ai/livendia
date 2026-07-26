@@ -22,10 +22,14 @@ export function ServiceCardsClient({ services }: ServiceCardsClientProps) {
 
   return (
     <>
-      <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-6 grid list-none items-stretch gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <li key={service.id} className="min-w-0">
-            <ServicePurchaseCard service={service} onSelect={() => setSelectedService(service)} className="h-full" />
+            <ServicePurchaseCard
+              service={service}
+              onSelect={() => setSelectedService(service)}
+              className="h-full w-full"
+            />
           </li>
         ))}
       </ul>
