@@ -1,5 +1,6 @@
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { VentaPisoParticularSinAgenciaLocalCityLinks } from "@/components/venta-piso-particular-sin-agencia-local-city-links";
@@ -235,7 +236,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                     alt={`Venta de piso entre particulares en ${config.city} — gestor Livendia`}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A4FBF]/25 to-transparent lg:bg-gradient-to-l lg:from-[#1A4FBF]/20 lg:to-transparent" />
@@ -660,6 +661,8 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
               />
             </div>
           </section>
+
+          <ServiceMidPageContactSection serviceLabel={`Venta de piso sin agencia en ${config.city}`} />
 
           {/* CTA final */}
           <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">

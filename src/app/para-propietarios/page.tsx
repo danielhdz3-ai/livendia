@@ -84,7 +84,7 @@ export default async function ParaPropietariosPage() {
                 alt="Propietaria gestionando su alquiler desde el móvil con Livendia"
                 fill
                 className="rounded-2xl object-cover lg:rounded-none"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                 priority
               />
             </div>

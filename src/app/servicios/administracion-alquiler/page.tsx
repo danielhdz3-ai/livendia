@@ -201,7 +201,7 @@ export default async function AdministracionAlquilerPage() {
                   alt="Confianza que se construye"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                   priority
                 />
               </div>
@@ -294,7 +294,7 @@ export default async function AdministracionAlquilerPage() {
                           alt={item.title}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                         />
                       </div>
                       {/* Icon badge */}

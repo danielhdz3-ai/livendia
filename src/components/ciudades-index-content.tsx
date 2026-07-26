@@ -38,7 +38,7 @@ export function CiudadesIndexContent() {
                         alt={image.alt}
                         fill
                         className="object-cover transition duration-300 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1152px) 33vw, 368px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1E293B]/70 via-transparent to-transparent" />
                       <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">{city.name}</h3>

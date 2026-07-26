@@ -1,5 +1,6 @@
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -146,7 +147,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
                     alt={`Contrato de alquiler de habitación en ${config.city}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                     priority
                   />
                 </div>
@@ -434,6 +435,8 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <ServiceMidPageContactSection serviceLabel={`Contrato de alquiler de habitación en ${config.city}`} />
 
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

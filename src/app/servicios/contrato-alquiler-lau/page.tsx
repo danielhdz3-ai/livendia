@@ -98,7 +98,7 @@ export default async function ContratoLAUPage() {
                   alt="Contrato de alquiler LAU"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                 />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default async function ContratoLAUPage() {
                       alt={`Documentación contrato ${idx + 1}`}
                       fill
                       className="object-cover transition hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1152px) 33vw, 373px"
                     />
                   </div>
                 )

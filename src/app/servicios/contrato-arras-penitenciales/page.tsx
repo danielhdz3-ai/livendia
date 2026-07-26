@@ -95,7 +95,7 @@ export default async function ArrasPenitencialesPage() {
                   alt="Contrato de arras penitenciales"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                 />
               </div>
             </div>
@@ -182,7 +182,7 @@ export default async function ArrasPenitencialesPage() {
                       alt={`Documentación ${idx + 1}`}
                       fill
                       className="object-cover transition hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1152px) 33vw, 373px"
                     />
                   </div>
                 )

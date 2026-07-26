@@ -91,7 +91,7 @@ export function BlogIndexFilters({
                     alt=""
                     fill
                     className="object-cover transition group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1152px) 33vw, 368px"
                   />
                   <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-[#1A4FBF] shadow">
                     {BLOG_CATEGORY_LABEL[post.category]}

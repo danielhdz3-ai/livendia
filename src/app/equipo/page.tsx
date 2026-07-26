@@ -210,7 +210,7 @@ export default function EquipoPage() {
                   alt="Equipo Livendia — trabajo y cercanía en el día a día"
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                   priority
                 />
               </div>
@@ -274,7 +274,7 @@ export default function EquipoPage() {
                       alt={item.title}
                       fill
                       className="object-cover transition duration-500 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 33vw, 405px"
                     />
                   </div>
                   <div className="p-6">
@@ -336,7 +336,7 @@ export default function EquipoPage() {
                   alt="Fundadores de Livendia en el despacho"
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                 />
               </div>
             </div>
@@ -368,7 +368,7 @@ export default function EquipoPage() {
                       alt={founder.imageAlt}
                       fill
                       className="object-cover object-[center_20%]"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     />
                   </div>
                   <div className="p-8">

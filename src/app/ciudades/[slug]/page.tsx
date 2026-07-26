@@ -88,7 +88,7 @@ export default async function CiudadHubPage({ params }: Props) {
                 fill
                 priority
                 className="object-cover opacity-80"
-                sizes="100vw"
+                sizes="(max-width: 1152px) 100vw, 1152px"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1E293B]/95 via-[#1E293B]/75 to-[#1E293B]/40" />
             </div>

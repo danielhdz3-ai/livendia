@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -283,7 +284,7 @@ export async function ContratoAlquilerLocalSeoLanding({
                     alt={`Gestor revisando contrato de alquiler en ${config.city}`}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -370,7 +371,7 @@ export async function ContratoAlquilerLocalSeoLanding({
                             alt={item.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                           />
                         </div>
                         <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">
@@ -428,6 +429,8 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <ServiceMidPageContactSection serviceLabel={`Contrato de alquiler en ${config.city}`} />
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

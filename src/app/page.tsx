@@ -108,7 +108,7 @@ export default async function Home() {
                   fill
                   priority
                   className="object-cover object-center"
-                  sizes="50vw"
+                  sizes="(max-width: 1280px) 50vw, 640px"
                 />
               </div>
             </div>
@@ -162,7 +162,7 @@ export default async function Home() {
                   alt="Administración de Alquileres"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                 />
               </div>
 
@@ -304,7 +304,7 @@ export default async function Home() {
                   alt="Servicio Completo de Compra"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                 />
               </div>
             </div>
@@ -353,7 +353,7 @@ export default async function Home() {
                   alt="Fundadores de Livendia en el despacho"
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                 />
               </div>
             </div>
@@ -382,7 +382,7 @@ export default async function Home() {
                     alt={img.alt}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 100vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1152px) 25vw, 270px"
                   />
                 </div>
               ))}
@@ -418,7 +418,7 @@ export default async function Home() {
                     alt="Vida en la gestoría Livendia"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1152px) 25vw, 270px"
                   />
                 </div>
               ))}
@@ -487,7 +487,7 @@ export default async function Home() {
                   alt="Gestor revisando contratos y documentación inmobiliaria"
                   fill
                   className="object-cover object-[center_right] sm:object-center lg:object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                   priority={false}
                 />
               </div>
@@ -503,7 +503,7 @@ export default async function Home() {
                 alt="Clientes y equipo en un encuentro"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
               />
             </div>
             <div>
@@ -536,7 +536,7 @@ export default async function Home() {
                 alt="Atención personalizada en gestoría Livendia"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
               />
             </div>
             <div>

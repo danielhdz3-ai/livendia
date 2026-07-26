@@ -80,6 +80,16 @@ export default function ContactoPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h2 className="font-semibold text-[#1E293B]">¿Buscas un servicio concreto?</h2>
+              <p className="mt-2 text-sm text-[#475569]">
+                En la página de cada servicio también puedes pedir información sin compromiso, ya con el
+                contexto de tu ciudad.
+              </p>
+              <Link href="/servicios" className="mt-3 inline-block text-sm font-semibold text-[#06B6D4] hover:underline">
+                Ver todos los servicios →
+              </Link>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="font-semibold text-[#1E293B]">Ya soy cliente</h2>
               <p className="mt-2 text-sm text-[#475569]">
                 Para el seguimiento de un pedido concreto, entra a tu panel y abre el expediente del servicio.

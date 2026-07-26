@@ -105,7 +105,7 @@ export default async function AcompanamientoReservaArrasPage() {
                     alt="Acompañamiento en compra de vivienda"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                   />
                 </div>
               </div>

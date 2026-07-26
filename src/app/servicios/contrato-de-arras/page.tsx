@@ -242,7 +242,7 @@ export default async function ContratoDeArrasPage() {
                   alt="Revisión profesional de contrato de arras entre profesional y cliente"
                   fill
                   className="object-cover object-[center_25%]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                   priority
                 />
               </div>
@@ -332,7 +332,7 @@ export default async function ContratoDeArrasPage() {
                           alt={item.title}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                         />
                       </div>
                       <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">
@@ -411,7 +411,7 @@ export default async function ContratoDeArrasPage() {
                   alt="Gestor revisando documentación con lupa antes de la escritura"
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                 />
               </div>
               <div>

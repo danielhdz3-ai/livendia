@@ -183,7 +183,7 @@ export default async function ServicioCompletoVentaPage() {
                     alt="Acuerdo de venta de vivienda entre particulares con gestoría Livendia"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>

@@ -1,6 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    // Listas explícitas en vez del default de Next (que llega hasta 3840px).
+    // El layout más ancho del sitio es max-w-7xl (1280px) y ninguna imagen
+    // ocupa más de ese ancho en pantalla (ver `sizes` en los componentes de
+    // landing, ya corregidos para no pedir más resolución de la necesaria).
+    // - deviceSizes: cubre desde móvil pequeño hasta el ancho máximo real de
+    //   contenedor (1280px), más 1920 para servir nítido en pantallas de
+    //   alta densidad (2x) en los bloques de ancho fijo mayor (banners de
+    //   ~1152px). Se elimina 2048 y 3840 del default de Next: nada en este
+    //   sitio se renderiza a ese ancho, así que nunca aportaban valor.
+    // - imageSizes: para imágenes pequeñas de layout fijo (avatares, iconos,
+    //   miniaturas de equipo/ciudades) usadas con `sizes="Npx"`.
+    deviceSizes: [390, 640, 750, 828, 1080, 1200, 1280, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 192, 256, 384, 420],
+  },
   async redirects() {
     return [
       {

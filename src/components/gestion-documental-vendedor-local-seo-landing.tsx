@@ -1,5 +1,6 @@
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -151,7 +152,7 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
                     alt={`Gestor documental para vendedor en ${config.city} — arras a escritura entre particulares`}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -350,6 +351,8 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <ServiceMidPageContactSection serviceLabel={`Gestión documental para vendedores en ${config.city}`} />
 
           {/* Bloque 9 — CTA final */}
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">

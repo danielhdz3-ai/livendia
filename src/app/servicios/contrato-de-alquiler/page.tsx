@@ -250,7 +250,7 @@ export default async function ContratoDeAlquilerPage() {
                     alt="Gestor revisando contrato de alquiler con cliente"
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -329,7 +329,7 @@ export default async function ContratoDeAlquilerPage() {
                             alt={item.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                           />
                         </div>
                         <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">

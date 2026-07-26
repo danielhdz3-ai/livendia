@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -173,7 +174,7 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
                     alt={`Revisión documental post-arras en ${config.city} antes de escriturar`}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -320,6 +321,8 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <ServiceMidPageContactSection serviceLabel={`Revisión documental post-arras en ${config.city}`} />
 
           <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
             <div className="mx-auto max-w-4xl text-center text-sm text-[#475569]">

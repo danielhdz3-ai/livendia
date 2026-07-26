@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
@@ -271,7 +272,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                     alt={`Vender piso en ${config.city} con gestor Livendia sin agencia`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -437,7 +438,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                             alt={item.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                           />
                         </div>
                         <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">
@@ -461,6 +462,8 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <ServiceMidPageContactSection serviceLabel={`Servicio completo de venta en ${config.city}`} />
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

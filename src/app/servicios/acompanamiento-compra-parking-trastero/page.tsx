@@ -120,7 +120,7 @@ export default async function AcompanamientoCompraParkingTrasteroPage() {
                     alt="Gestor acompañando la compra de un parking o trastero"
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>

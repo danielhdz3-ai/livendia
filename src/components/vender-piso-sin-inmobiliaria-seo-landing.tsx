@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -220,7 +221,7 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
                     alt={config.imageAlt}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -537,6 +538,8 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
               />
             </div>
           </section>
+
+          <ServiceMidPageContactSection serviceLabel={`Venta sin inmobiliaria en ${config.city}`} />
 
           <GestorContactCta placement={config.gestorCtaPlacement} />
 

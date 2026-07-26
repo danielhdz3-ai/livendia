@@ -2,6 +2,7 @@ import { CompraDocumentacionRevisamosSection } from "@/components/compra-documen
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import {
@@ -270,7 +271,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                     alt={`Servicio completo de compra con gestor en ${config.city}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
@@ -359,7 +360,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
                             alt={item.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                           />
                         </div>
                         <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">
@@ -386,6 +387,8 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               />
             </div>
           </section>
+
+          <ServiceMidPageContactSection serviceLabel={`Servicio completo de compra en ${config.city}`} />
 
           <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
