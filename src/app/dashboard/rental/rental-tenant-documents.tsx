@@ -137,9 +137,15 @@ export function RentalTenantDocuments({
             ))}
           </select>
         </div>
-        <label className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:opacity-60">
+        <label className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:opacity-60">
           {busy ? "Subiendo…" : "Subir archivo"}
-          <input type="file" className="sr-only" disabled={busy} onChange={onFile} />
+          <input
+            type="file"
+            className="sr-only"
+            disabled={busy}
+            accept=".pdf,.doc,.docx,image/*,.heic,.heif"
+            onChange={onFile}
+          />
         </label>
       </div>
 

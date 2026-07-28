@@ -5,7 +5,9 @@ import {
   ORDER_DOC_ACCEPT_DOCUMENTS,
   ORDER_DOC_ACCEPT_PHOTOS,
   ORDER_DOC_MAX_BYTES,
+  ORDER_DOC_MAX_MB,
   buildOrderDocStoragePath,
+  formatOrderDocBytes,
   guessOrderDocContentType,
   mapStorageUploadError,
   validateOrderDocFile,
@@ -59,7 +61,10 @@ async function uploadSingleFile(
   }
 
   if (file.size > MAX_BYTES) {
-    return { ok: false, error: `${file.name}: máximo 10 MB` };
+    return {
+      ok: false,
+      error: `${file.name}: máximo ${ORDER_DOC_MAX_MB} MB (${formatOrderDocBytes(file.size)})`,
+    };
   }
 
   const supabase = createBrowserSupabaseClient();
@@ -249,22 +254,40 @@ export function OrderDocuments({
     if (e.dataTransfer.files?.length) void processFiles(e.dataTransfer.files);
   }
 
-  async function download(path: string) {
-    const supabase = createBrowserSupabaseClient();
-    const { data, error } = await supabase.storage.from("documents").createSignedUrl(path, 120);
-    if (error || !data?.signedUrl) return;
-    window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+  async function download(path: string, fileName: string) {
+    setErr(null);
+    try {
+      const supabase = createBrowserSupabaseClient();
+      const { data, error } = await supabase.storage.from("documents").createSignedUrl(path, 180);
+      if (error || !data?.signedUrl) {
+        setErr(`No se pudo abrir «${fileName}». Recarga e inténtalo de nuevo.`);
+        return;
+      }
+      window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      setErr(`Error de red al abrir «${fileName}». Comprueba la conexión.`);
+    }
   }
 
   async function removeDoc(d: DocRow) {
     if (!globalThis.confirm("¿Eliminar este archivo?")) return;
     setBusy(true);
-    const supabase = createBrowserSupabaseClient();
-    await supabase.storage.from("documents").remove([d.file_path]);
-    await supabase.from("documents").delete().eq("id", d.id);
-    setDocs((x) => x.filter((y) => y.id !== d.id));
-    setBusy(false);
-    router.refresh();
+    setErr(null);
+    try {
+      const supabase = createBrowserSupabaseClient();
+      await supabase.storage.from("documents").remove([d.file_path]);
+      const { error } = await supabase.from("documents").delete().eq("id", d.id);
+      if (error) {
+        setErr(`No se pudo eliminar «${d.file_name}»: ${error.message}`);
+      } else {
+        setDocs((x) => x.filter((y) => y.id !== d.id));
+        router.refresh();
+      }
+    } catch {
+      setErr("Error de red al eliminar. Inténtalo de nuevo.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   const dropZoneClass = prominent
@@ -325,13 +348,13 @@ export function OrderDocuments({
                 Sube fotos, PDF o Word desde tu móvil
               </p>
               <p className="mt-2 max-w-md text-sm text-[#64748B]">
-                PDF, Word (.doc/.docx), fotos del móvil (incl. iPhone). Hasta{" "}
-                <strong>25 archivos</strong> y <strong>10 MB</strong> por archivo.
+                PDF, Word (.doc/.docx), fotos del móvil (incl. iPhone HEIC). Hasta{" "}
+                <strong>25 archivos</strong> y <strong>{ORDER_DOC_MAX_MB} MB</strong> por archivo.
               </p>
-              <div className="mt-5 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+              <div className="mt-5 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
                 <label
                   htmlFor={`photo-input-${orderId}`}
-                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow hover:bg-[#2563EB] sm:w-auto ${
+                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3.5 text-sm font-bold text-white shadow hover:bg-[#2563EB] active:scale-[0.98] sm:w-auto ${
                     busy ? "pointer-events-none opacity-60" : ""
                   }`}
                 >
@@ -340,7 +363,7 @@ export function OrderDocuments({
                 </label>
                 <label
                   htmlFor={`doc-input-${orderId}`}
-                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:w-auto ${
+                  className={`inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-6 py-3.5 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 active:scale-[0.98] sm:w-auto ${
                     busy ? "pointer-events-none opacity-60" : ""
                   }`}
                 >
@@ -431,26 +454,26 @@ export function OrderDocuments({
             {docs.map((d) => (
               <li
                 key={d.id}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm ring-1 ring-slate-100"
+                className="flex flex-col gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm ring-1 ring-slate-100 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
               >
                 <div className="min-w-0">
-                  <span className="font-medium text-[#1E293B]">{d.file_name}</span>
+                  <span className="font-medium text-[#1E293B] break-words">{d.file_name}</span>
                   <span className="ml-2 text-xs text-[#64748B]">({typeLabel(d.document_type)})</span>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex w-full gap-2 sm:w-auto">
                   <button
                     type="button"
-                    className="text-sm font-semibold text-[#1A4FBF] hover:underline"
-                    onClick={() => download(d.file_path)}
+                    className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-[#1A4FBF] px-4 text-sm font-semibold text-white hover:bg-[#2563EB] sm:flex-none"
+                    onClick={() => void download(d.file_path, d.file_name)}
                   >
-                    Descargar
+                    Abrir / descargar
                   </button>
                   {canUpload ? (
                     <button
                       type="button"
                       disabled={busy}
-                      className="text-sm font-semibold text-red-600 hover:underline disabled:opacity-50"
-                      onClick={() => removeDoc(d)}
+                      className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full border border-red-200 bg-white px-4 text-sm font-semibold text-red-600 hover:bg-red-50 disabled:opacity-50 sm:flex-none"
+                      onClick={() => void removeDoc(d)}
                     >
                       Eliminar
                     </button>

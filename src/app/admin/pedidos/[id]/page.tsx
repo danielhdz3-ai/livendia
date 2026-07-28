@@ -98,26 +98,34 @@ export default async function AdminPedidoDetailPage({
         </div>
       </div>
 
-      <section className="mt-6 rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
-        <h2 className="text-lg font-semibold text-[#1E293B]">Documentos</h2>
+      <section className="mt-6 rounded-xl bg-white p-4 shadow ring-1 ring-slate-200 sm:p-6">
+        <h2 className="text-lg font-semibold text-[#1E293B]">Documentos del cliente</h2>
+        <p className="mt-1 text-sm text-[#64748b]">
+          Abre cada archivo con el enlace (URL firmada temporal). PDF, Word e imágenes del expediente.
+        </p>
         {!docs?.length ? (
           <p className="mt-4 text-sm text-[#64748b]">Sin archivos subidos.</p>
         ) : (
           <ul className="mt-4 divide-y divide-slate-100">
             {docs.map((d) => (
-              <li key={d.id} className="flex flex-wrap items-center justify-between gap-2 py-3">
-                <div>
-                  <AdminStorageDocLink path={d.file_path as string}>
+              <li
+                key={d.id}
+                className="flex flex-col gap-2 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+              >
+                <div className="min-w-0">
+                  <AdminStorageDocLink
+                    path={d.file_path as string}
+                    className="inline-flex min-h-11 items-center break-all text-base font-semibold text-[#1A4FBF] hover:underline"
+                  >
                     {d.file_name as string}
                   </AdminStorageDocLink>
-                  <span className="ml-2 text-xs text-[#64748b]">
+                  <p className="mt-1 text-xs text-[#64748b]">
                     {ORDER_DOCUMENT_LABEL_ES[d.document_type as string] ?? d.document_type}
-                  </span>
+                    {d.file_size != null ? ` · ${Math.round(Number(d.file_size) / 1024)} KB` : null}
+                    {" · "}
+                    {new Date(d.created_at as string).toLocaleString("es-ES")}
+                  </p>
                 </div>
-                <span className="text-xs text-[#94a3b8]">
-                  {new Date(d.created_at as string).toLocaleString("es-ES")}
-                  {d.file_size != null ? ` · ${Math.round(Number(d.file_size) / 1024)} KB` : null}
-                </span>
               </li>
             ))}
           </ul>

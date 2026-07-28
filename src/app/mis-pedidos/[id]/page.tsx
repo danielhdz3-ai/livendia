@@ -113,8 +113,8 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
               <div>
                 <h2 className="text-lg font-bold text-amber-950">Sube la documentación de tu contrato</h2>
                 <p className="mt-1 text-sm leading-relaxed text-amber-900/90">
-                  Puedes arrastrar varios archivos a la vez (DNI, escrituras, borrador, etc.). El gestor los revisará
-                  en cuanto los reciba.
+                  Puedes subir varios archivos a la vez (DNI, escrituras, PDF, Word o fotos del móvil, hasta 25&nbsp;MB
+                  cada uno). El gestor los verá en cuanto los recibamos.
                 </p>
               </div>
             </div>
@@ -124,8 +124,8 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         <section className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200 sm:p-8">
           <h2 className="text-xl font-bold text-[#1E293B]">Documentación del expediente</h2>
           <p className="mt-2 text-sm text-[#64748B]">
-            Sube todos los archivos que necesitemos para redactar o revisar tu contrato. Solo tú y Livendia tienen
-            acceso.
+            Sube PDF, Word o fotos (también desde el móvil). Solo tú y Livendia tenéis acceso. Máximo 25&nbsp;MB por
+            archivo.
           </p>
           <OrderDocuments
             orderId={order.id as string}

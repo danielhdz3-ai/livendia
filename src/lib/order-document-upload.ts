@@ -1,4 +1,5 @@
-export const ORDER_DOC_MAX_BYTES = 10 * 1024 * 1024;
+export const ORDER_DOC_MAX_BYTES = 25 * 1024 * 1024;
+export const ORDER_DOC_MAX_MB = 25;
 
 export const ORDER_DOC_ALLOWED_EXTENSIONS = new Set([
   ".pdf",
@@ -11,6 +12,7 @@ export const ORDER_DOC_ALLOWED_EXTENSIONS = new Set([
   ".jpeg",
   ".png",
   ".webp",
+  ".gif",
   ".heic",
   ".heif",
 ]);
@@ -51,6 +53,12 @@ export const ORDER_DOC_UPLOADABLE_STATUSES = new Set([
   "in_progress",
 ]);
 
+export function formatOrderDocBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 export function guessOrderDocContentType(file: File): string {
   if (file.type) return file.type;
   const lower = file.name.toLowerCase();
@@ -60,6 +68,7 @@ export function guessOrderDocContentType(file: File): string {
   if (lower.endsWith(".png")) return "image/png";
   if (lower.endsWith(".jpg") || lower.endsWith(".jpeg")) return "image/jpeg";
   if (lower.endsWith(".webp")) return "image/webp";
+  if (lower.endsWith(".gif")) return "image/gif";
   if (lower.endsWith(".doc")) return "application/msword";
   if (lower.endsWith(".docx")) return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
   if (lower.endsWith(".xls")) return "application/vnd.ms-excel";
@@ -71,6 +80,13 @@ export function guessOrderDocContentType(file: File): string {
 export function validateOrderDocFile(file: File): { ok: true } | { ok: false; error: string } {
   if (file.size <= 0) {
     return { ok: false, error: `${file.name}: el archivo está vacío.` };
+  }
+
+  if (file.size > ORDER_DOC_MAX_BYTES) {
+    return {
+      ok: false,
+      error: `${file.name}: supera ${ORDER_DOC_MAX_MB} MB (${formatOrderDocBytes(file.size)}). Comprime el PDF o la foto e inténtalo de nuevo.`,
+    };
   }
 
   const lowerName = file.name.toLowerCase();
@@ -109,14 +125,17 @@ export function buildOrderDocStoragePath(userId: string, orderId: string, fileNa
 /** Mensajes claros para el cliente (móvil / panel). */
 export function mapStorageUploadError(message: string): string {
   const lower = message.toLowerCase();
-  if (lower.includes("payload too large") || lower.includes("entity too large")) {
-    return "El archivo supera el límite permitido (10 MB). Prueba con una foto más ligera o un PDF comprimido.";
+  if (lower.includes("payload too large") || lower.includes("entity too large") || lower.includes("maximum allowed size")) {
+    return `El archivo supera el límite permitido (${ORDER_DOC_MAX_MB} MB). Prueba con una foto más ligera o un PDF comprimido.`;
   }
   if (lower.includes("row-level security") || lower.includes("policy")) {
     return "No pudimos guardar el archivo en tu expediente. Cierra sesión, vuelve a entrar e inténtalo de nuevo. Si persiste, escríbenos por WhatsApp.";
   }
-  if (lower.includes("jwt") || lower.includes("session")) {
+  if (lower.includes("jwt") || lower.includes("session") || lower.includes("auth")) {
     return "Tu sesión ha caducado. Vuelve a iniciar sesión y sube el archivo otra vez.";
+  }
+  if (lower.includes("network") || lower.includes("fetch")) {
+    return "Fallo de red al subir. Comprueba tu conexión (mejor Wi‑Fi con archivos grandes) e inténtalo de nuevo.";
   }
   return message || "No se pudo subir el archivo. Prueba de nuevo o contacta con nosotros.";
 }

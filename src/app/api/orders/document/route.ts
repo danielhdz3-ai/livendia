@@ -130,7 +130,7 @@ export async function PUT(req: Request) {
   }
 
   if (fileSize > ORDER_DOC_MAX_BYTES) {
-    return NextResponse.json({ error: "Máximo 10 MB por archivo." }, { status: 400 });
+    return NextResponse.json({ error: `Máximo ${ORDER_DOC_MAX_BYTES / (1024 * 1024)} MB por archivo.` }, { status: 400 });
   }
 
   if (!validateFilePathForUser(filePath, user.id, orderId)) {
@@ -195,7 +195,7 @@ export async function POST(req: Request) {
   }
 
   if (file.size > ORDER_DOC_MAX_BYTES) {
-    return NextResponse.json({ error: "Máximo 10 MB por archivo." }, { status: 400 });
+    return NextResponse.json({ error: `Máximo ${ORDER_DOC_MAX_BYTES / (1024 * 1024)} MB por archivo.` }, { status: 400 });
   }
 
   const orderCheck = await assertOrderUploadable(supabase, orderId, user.id);
