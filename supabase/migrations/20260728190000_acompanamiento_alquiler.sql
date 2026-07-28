@@ -5,7 +5,7 @@ VALUES (
   'acompanamiento-alquiler',
   'Acompañamiento de alquiler',
   'Gestor especializado para inquilinos que ya tienen piso de alquiler (o lo van a firmar): documentación requerida, asesoramiento, revisión y redacción de contratos, firma digital electrónica certificada, expediente online y mediación con la parte propietaria hasta que tú decidas cerrar el servicio.',
-  'alquiler',
+  'acompanamiento',
   18900,
   false,
   ARRAY[

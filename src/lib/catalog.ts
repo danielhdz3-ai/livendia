@@ -21,6 +21,9 @@ function normalizeServiceCategory(service: PublicService): PublicService {
   ) {
     return { ...service, category: "compraventa" };
   }
+  if (service.slug === "acompanamiento-alquiler") {
+    return { ...service, category: "acompanamiento" };
+  }
   return service;
 }
 
@@ -28,10 +31,15 @@ async function syncMissingCatalogSeeds(services: PublicService[]): Promise<Publi
   const missingSeeds = CATALOG_SERVICE_SEEDS.filter(
     (seed) => !services.some((service) => service.slug === seed.slug),
   );
-  if (missingSeeds.length === 0) return services;
+
+  // Actualiza metadatos de seeds ya existentes (categoría, nombre, features…) si diverge.
+  const existingSeeds = CATALOG_SERVICE_SEEDS.filter((seed) =>
+    services.some((service) => service.slug === seed.slug),
+  );
 
   try {
     const admin = createServiceRoleClient();
+
     for (const seed of missingSeeds) {
       const { error } = await admin.from("services").upsert(toUpsertRow(seed), { onConflict: "slug" });
       if (error) {
@@ -39,7 +47,44 @@ async function syncMissingCatalogSeeds(services: PublicService[]): Promise<Publi
       }
     }
 
-    const slugs = missingSeeds.map((seed) => seed.slug);
+    for (const seed of existingSeeds) {
+      const current = services.find((s) => s.slug === seed.slug);
+      if (!current) continue;
+      const needsMeta =
+        current.category !== seed.category ||
+        current.name !== seed.name ||
+        current.price_cents !== seed.price_cents;
+      if (!needsMeta) continue;
+      const { error } = await admin
+        .from("services")
+        .update({
+          category: seed.category,
+          name: seed.name,
+          description: seed.description,
+          price_cents: seed.price_cents,
+          features: seed.features,
+          badge: seed.badge,
+          is_active: true,
+        })
+        .eq("slug", seed.slug);
+      if (error) {
+        console.error("[catalog] update seed meta failed", seed.slug, error.message);
+      }
+    }
+
+    if (missingSeeds.length === 0 && existingSeeds.every((seed) => {
+      const current = services.find((s) => s.slug === seed.slug);
+      return (
+        current &&
+        current.category === seed.category &&
+        current.name === seed.name &&
+        current.price_cents === seed.price_cents
+      );
+    })) {
+      return services;
+    }
+
+    const slugs = CATALOG_SERVICE_SEEDS.map((seed) => seed.slug);
     const { data, error } = await admin
       .from("services")
       .select(SERVICE_SELECT)

@@ -230,7 +230,7 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     name: "Acompañamiento de alquiler",
     description:
       "Gestor especializado para inquilinos que ya tienen piso de alquiler (o lo van a firmar): documentación requerida, asesoramiento, revisión y redacción de contratos, firma digital certificada, expediente online y mediación con la parte propietaria hasta que tú decidas cerrar el servicio.",
-    category: "alquiler",
+    category: "acompanamiento",
     price_cents: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
     is_recurring: false,
     features: [
@@ -316,6 +316,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
     }
     if (category === "acompanamiento") {
       const order = [
+        "acompanamiento-alquiler",
         "servicio-completo-compra",
         "servicio-completo-venta",
         "acompanamiento-reserva-arras",
