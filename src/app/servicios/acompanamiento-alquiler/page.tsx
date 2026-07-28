@@ -211,17 +211,6 @@ export default async function AcompanamientoAlquilerPage() {
                   También si te han pedido documentación a destiempo, te han enviado un contrato genérico, hay dudas
                   sobre fianza, gastos o duración, o quieres dejar constancia de todo en un expediente digital seguro.
                 </p>
-                <p>
-                  Si solo necesitas una <strong>auditoría puntual del borrador</strong> (informe, sin redacción ni
-                  mediación continua), encaja mejor la{" "}
-                  <Link
-                    href="/servicios/revision-contrato-alquiler"
-                    className="font-semibold text-[#1A4FBF] hover:underline"
-                  >
-                    revisión de contrato de alquiler (120 €)
-                  </Link>
-                  .
-                </p>
               </div>
             </div>
           </section>

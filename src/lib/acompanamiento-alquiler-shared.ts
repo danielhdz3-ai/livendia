@@ -124,11 +124,6 @@ export const ACOMPANAMIENTO_ALQUILER_FAQ = [
       "Te apoyamos a plantear y aclarar puntos delicados (cláusulas, fianza, gastos, plazos) con la parte propietaria o su representante, siempre dentro del marco de asesoramiento de gestoría inmobiliaria.",
   },
   {
-    question: "¿En qué se diferencia de la revisión de contrato a 120 €?",
-    answer:
-      "La revisión analiza un borrador y te entrega un informe. El acompañamiento es más amplio: gestor continuo, documentación, redacción cuando haga falta, firma digital, expediente y mediación hasta que tú cierres el servicio.",
-  },
-  {
     question: "¿El precio de 189 € incluye IVA?",
     answer: `Sí. ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} IVA incluido. Pago único online; sin suscripción mensual.`,
   },
