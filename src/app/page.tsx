@@ -39,6 +39,7 @@ export const metadata: Metadata = {
 };
 
 const HOME_SERVICES_ORDER = [
+  "acompanamiento-alquiler",
   "contrato-alquiler-lau",
   "contrato-arras-penitenciales",
   "revision-documental-post-arras",
