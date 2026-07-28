@@ -221,6 +221,7 @@ export default async function AcompanamientoAlquilerPage() {
                     revisión de contrato de alquiler (120 €)
                   </Link>
                   .
+                </p>
               </div>
             </div>
           </section>
