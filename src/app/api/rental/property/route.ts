@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { assertAllowedUpload } from "@/lib/uploads";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -62,7 +63,13 @@ export async function POST(request: NextRequest) {
 
     for (const docType of documentTypes) {
       const file = formData.get(docType) as File | null;
-      if (!file) continue;
+      if (!file || !(file instanceof File) || file.size <= 0) continue;
+
+      const check = assertAllowedUpload(file);
+      if (!check.ok) {
+        uploadErrors.push(`${propertyDocLabel(docType)}: ${check.error}`);
+        continue;
+      }
 
       const fileExt = file.name.split(".").pop();
       const fileName = `${user.id}/${property.id}/${docType}_${Date.now()}.${fileExt}`;

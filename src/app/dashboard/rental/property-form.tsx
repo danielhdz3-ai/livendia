@@ -15,7 +15,7 @@ function PropertyDocumentButton({
   label,
   type,
   inputRef,
-  accept = ".pdf,.jpg,.jpeg,.png",
+  accept = ".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.heic,.heif,image/*",
   doc,
   onPick,
   onRemove,

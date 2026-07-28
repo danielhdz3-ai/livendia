@@ -63,6 +63,20 @@ export function ChatBox({
     setAttachments(prev => prev.filter((_, i) => i !== index));
   };
 
+  async function openAttachment(filePath: string, fileName: string) {
+    setError(null);
+    try {
+      const response = await fetch(`/api/documents/download?filePath=${encodeURIComponent(filePath)}`);
+      const data = (await response.json()) as { url?: string; error?: string };
+      if (!response.ok || !data.url) {
+        throw new Error(data.error || `No se pudo abrir «${fileName}»`);
+      }
+      window.open(data.url, "_blank", "noopener,noreferrer");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al abrir el adjunto");
+    }
+  }
+
   const handleSend = async () => {
     if (!newMessage.trim() && attachments.length === 0) return;
 
@@ -156,15 +170,17 @@ export function ChatBox({
                   {msg.attachments && msg.attachments.length > 0 && (
                     <div className="mt-2 space-y-1">
                       {msg.attachments.map((att, idx) => (
-                        <div
+                        <button
                           key={idx}
-                          className={`flex items-center gap-2 rounded p-2 text-xs ${
+                          type="button"
+                          onClick={() => void openAttachment(att.file_path, att.file_name)}
+                          className={`flex w-full items-center gap-2 rounded p-2 text-left text-xs underline-offset-2 hover:underline ${
                             isOwn ? "bg-white/20" : "bg-white"
                           }`}
                         >
-                          <Paperclip className="h-3 w-3" />
-                          <span className="flex-1 truncate">{att.file_name}</span>
-                        </div>
+                          <Paperclip className="h-3 w-3 shrink-0" />
+                          <span className="min-w-0 flex-1 truncate font-medium">{att.file_name}</span>
+                        </button>
                       ))}
                     </div>
                   )}

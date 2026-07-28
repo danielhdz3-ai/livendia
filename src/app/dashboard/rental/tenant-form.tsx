@@ -134,7 +134,7 @@ export function TenantForm({ propertyId }: { propertyId: string }) {
               <input
                 ref={dniFileRef}
                 type="file"
-                accept=".pdf"
+                accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,image/*"
                 className="hidden"
                 onChange={(e) => handleDniFileSelect(e.target.files?.[0] || null)}
               />

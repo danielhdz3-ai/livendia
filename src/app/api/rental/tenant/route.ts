@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { assertAllowedUpload } from "@/lib/uploads";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -79,7 +80,11 @@ export async function POST(request: NextRequest) {
     const dniFile = formData.get("dniDocument") as File | null;
     let tenantDocWarning: string | null = null;
 
-    if (dniFile) {
+    if (dniFile && dniFile instanceof File && dniFile.size > 0) {
+      const check = assertAllowedUpload(dniFile);
+      if (!check.ok) {
+        tenantDocWarning = `DNI: ${check.error}`;
+      } else {
       const fileExt = dniFile.name.split(".").pop();
       const fileName = `${user.id}/${propertyId}/tenant_dni_${Date.now()}.${fileExt}`;
 
@@ -114,6 +119,7 @@ export async function POST(request: NextRequest) {
           tenantDocWarning = `DNI (BD): ${insertDocError.message}`;
           await supabase.storage.from("documents").remove([uploadData.path]);
         }
+      }
       }
     }
 
