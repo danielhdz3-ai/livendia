@@ -251,8 +251,16 @@ export default async function RevisionContratoAlquilerPage() {
                   antes de que transfieras la fianza o firmes en una oficina.
                 </p>
                 <p>
-                  Si lo que necesitas es que Livendia <strong>redacte el contrato completo desde cero</strong> —no solo
-                  revisarlo—, este no es el servicio adecuado. Contrata la redacción en el{" "}
+                  Si lo que necesitas es un <strong>gestor contigo en todo el trámite</strong> (documentación,
+                  redacción cuando haga falta, firma digital, mediación y expediente), mira el{" "}
+                  <Link
+                    href="/servicios/acompanamiento-alquiler"
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    acompañamiento de alquiler (189 €)
+                  </Link>
+                  . Si solo quieres que Livendia <strong>redacte el contrato completo desde cero</strong> —no solo
+                  revisarlo—, contrata la redacción en el{" "}
                   <Link href="/servicios/contrato-alquiler-lau" className="font-semibold text-[#1A4FBF] hover:underline">
                     contrato LAU
                   </Link>

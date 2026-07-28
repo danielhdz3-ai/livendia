@@ -104,6 +104,14 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
                   </li>
                   <li>
                     <Link
+                      href="/servicios/acompanamiento-alquiler"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Acompañamiento de alquiler
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/servicios/administracion-alquiler"
                       className="text-blue-100 hover:text-white transition-colors"
                     >

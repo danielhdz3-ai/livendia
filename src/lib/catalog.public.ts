@@ -85,6 +85,12 @@ export const REVISION_CONTRATO_ALQUILER_PRICE_CENTS = REVISION_CONTRATO_ALQUILER
 export const REVISION_CONTRATO_ALQUILER_PRICE_LABEL = `${REVISION_CONTRATO_ALQUILER_PRICE_EUR} €`;
 export const REVISION_CONTRATO_ALQUILER_SLUG = "revision-contrato-alquiler" as const;
 
+/** Acompañamiento de alquiler (gestor + docs + firma) — precio comercial IVA incl. */
+export const ACOMPANAMIENTO_ALQUILER_PRICE_EUR = 189;
+export const ACOMPANAMIENTO_ALQUILER_PRICE_CENTS = ACOMPANAMIENTO_ALQUILER_PRICE_EUR * 100;
+export const ACOMPANAMIENTO_ALQUILER_PRICE_LABEL = `${ACOMPANAMIENTO_ALQUILER_PRICE_EUR} €`;
+export const ACOMPANAMIENTO_ALQUILER_SLUG = "acompanamiento-alquiler" as const;
+
 /** Precios fijos en BD (slug → céntimos). */
 export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [REVISION_DOCUMENTAL_POST_ARRAS_SLUG]: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
@@ -93,6 +99,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
   [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
   [REVISION_CONTRATO_ALQUILER_SLUG]: REVISION_CONTRATO_ALQUILER_PRICE_CENTS,
+  [ACOMPANAMIENTO_ALQUILER_SLUG]: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -218,6 +225,27 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Para inquilinos",
   },
+  {
+    slug: ACOMPANAMIENTO_ALQUILER_SLUG,
+    name: "Acompañamiento de alquiler",
+    description:
+      "Gestor especializado para inquilinos que ya tienen piso de alquiler (o lo van a firmar): documentación requerida, asesoramiento, revisión y redacción de contratos, firma digital certificada, expediente online y mediación con la parte propietaria hasta que tú decidas cerrar el servicio.",
+    category: "alquiler",
+    price_cents: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Gestor especializado asignado en todo momento",
+      "Checklist y revisión de la documentación requerida",
+      "Asesoramiento continuo del trámite de alquiler",
+      "Revisión y redacción de contratos de alquiler",
+      "Firma digital electrónica certificada",
+      "Plataforma Livendia: expediente y documentos seguros",
+      "Mediación y apoyo con la parte propietaria",
+      "Control de coherencia con la normativa vigente",
+      "El servicio finaliza cuando tú lo decides",
+    ],
+    badge: "Para inquilinos",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -281,6 +309,11 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
       const i = order.indexOf(s.slug);
       if (i !== -1) return i;
     }
+    if (category === "alquiler") {
+      const order = ["acompanamiento-alquiler", "contrato-alquiler-lau", "contrato-alquiler-temporada", "contrato-alquiler-habitacion"];
+      const i = order.indexOf(s.slug);
+      if (i !== -1) return i;
+    }
     if (category === "acompanamiento") {
       const order = [
         "servicio-completo-compra",
@@ -303,6 +336,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
 /** Imagen de portada por slug de servicio */
 export const SERVICE_IMAGES: Record<string, string> = {
   "administracion-alquiler": "/images/gestoria.jpg",
+  "acompanamiento-alquiler": "/images/tipo1.jpg",
   "contrato-alquiler-lau": "/images/contratos.jpg",
   "contrato-alquiler-temporada": "/images/contratos5.jpg",
   "contrato-alquiler-habitacion": "/images/contratos2.jpg",
