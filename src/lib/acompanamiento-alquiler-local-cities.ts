@@ -86,7 +86,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     regulatoryBlock:
       "En Barcelona la fianza del alquiler no se queda en manos del propietario: debe depositarse en el INCASÒL (Institut Català del Sòl), el organismo de la Generalitat que gestiona las fianzas de alquiler en toda Cataluña, en un plazo máximo de dos meses desde la firma del contrato. Además, Barcelona está declarada zona de mercado residencial tensionado desde marzo de 2024 (vigente hasta marzo de 2027), lo que significa que los contratos nuevos tienen un tope de renta vinculado al contrato anterior o al índice de referencia, y el anuncio y el contrato deben informar obligatoriamente de la renta previa. Nuestro gestor revisa que tu contrato en Les Corts cumpla con estos límites antes de que firmes.",
     marketContext:
-      "Les Corts es un distrito residencial y familiar, con demanda estable de inquilinos que buscan proximidad a Diagonal, centros universitarios y buena conexión con el resto de Barcelona. El perfil habitual combina parejas, familias y profesionales que priorizan tranquilidad frente a barrios más turísticos del centro.",
+      "Les Corts es un distrito residencial y familiar, con demanda estable cerca de Diagonal, la zona universitaria y el entorno del Camp Nou. Según datos de oferta de Idealista (alrededor de 21,4 €/m² en 2026), el alquiler se sitúa en la franja alta de Barcelona, aunque por debajo de picos de publicación del Eixample. El perfil habitual combina parejas, familias y profesionales que priorizan tranquilidad frente a barrios más turísticos del centro.",
     proximityNote:
       "Nuestro equipo trabaja desde Les Corts (Carrer de Mejía Lequerica, 44): proximidad real si tu piso está en el distrito o en la zona limítrofe.",
     heroImage: "/images/tipo1.jpg",
@@ -132,7 +132,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     regulatoryBlock:
       "Al igual que en Barcelona capital, en L'Hospitalet de Llobregat la fianza del alquiler se deposita en el INCASÒL, con un plazo máximo de dos meses desde la firma del contrato. L'Hospitalet forma parte de los municipios catalanes declarados zona de mercado residencial tensionado, por lo que los contratos nuevos también están sujetos a tope de renta y a la obligación de informar de la renta del contrato anterior. Nuestro gestor comprueba estos límites antes de que cierres el contrato.",
     marketContext:
-      "Muchos inquilinos eligen L'Hospitalet como alternativa metropolitana a Barcelona capital: buena conexión en transporte y un mercado de alquiler muy activo. El perfil suele ser laboral y familiar, con rotación frecuente de contratos LAU.",
+      "Muchos inquilinos eligen L'Hospitalet como alternativa metropolitana a Barcelona capital: buena conexión y un mercado muy activo. Idealista situaba el alquiler medio en torno a 17,3 €/m² en febrero de 2026, frente a unos 23,4 €/m² en Barcelona ciudad el mismo mes: suele ser más asequible que la capital, con alta presión de demanda y mucha rotación de contratos LAU.",
     heroImage: "/images/tipo1.jpg",
     heroImageAlt: "Acompañamiento de alquiler en L'Hospitalet de Llobregat — Livendia",
     testimonialsTitle: "Inquilinos en L'Hospitalet con gestor Livendia",
@@ -175,7 +175,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     regulatoryBlock:
       "En la Comunidad de Madrid la fianza del alquiler se deposita en la Agencia de Vivienda Social (AVS). A diferencia de Barcelona, Madrid no está declarada zona de mercado residencial tensionado, por lo que no existe tope legal de renta en los contratos nuevos — el precio se fija libremente entre las partes. Aun así, nuestro gestor revisa que el resto de cláusulas (duración, actualización de renta, gastos) cumplan con la LAU.",
     marketContext:
-      "Madrid concentra una demanda alta de contratos LAU de larga duración, con fuerte peso de profesionales y estudiantes en distritos céntricos y coronas bien conectadas. Conviene revisar bien gastos, actualizaciones de renta y preavisos aunque no haya tope de zona tensionada.",
+      "Madrid concentra una demanda alta de contratos LAU. Fotocasa situaba el alquiler en Madrid capital en torno a 22,3 €/m² en febrero de 2026 (Idealista cerca de 21–22 €/m² según el informe autonómico del mismo mes). El contraste entre distritos es fuerte: zonas premium frente a sur y sureste más asequibles. Conviene revisar gastos, actualizaciones de renta y preavisos aunque no haya tope de zona tensionada.",
     heroImage: "/images/tipo1.jpg",
     heroImageAlt: "Acompañamiento de alquiler en Madrid — gestoría Livendia",
     adminLocalHref: localAdministracionAlquilerHref("madrid"),
@@ -219,7 +219,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     regulatoryBlock:
       "En la Comunidad Valenciana la fianza se deposita a través de los registros de la Dirección Territorial de Hacienda (en la ciudad de Valencia, en el Registro General de la Consellería de Hacienda), en un plazo de 15 días hábiles desde la firma del contrato — bastante más corto que en Cataluña o Madrid, por lo que conviene no dejarlo pasar. Valencia, igual que Madrid, no está declarada zona de mercado residencial tensionado a día de hoy, así que no hay tope legal de renta en los contratos nuevos.",
     marketContext:
-      "Valencia concentra demanda en zonas céntricas y barrios con alta rotación (como entornos de Ruzafa o Ciutat Vella), con mix de contratos LAU y alguna temporada. El plazo corto de fianza hace especialmente útil tener gestor y expediente ordenado desde el primer día.",
+      "Idealista situaba el alquiler medio en Valencia capital en torno a 16,3 €/m² en enero de 2026. Zonas de alta demanda como Ruzafa o Ciutat Vella se mueven por encima (a menudo cerca de 18–21 €/m² según barrios). El mix de LAU y alguna temporada, más el plazo corto de fianza (15 días hábiles), hace especialmente útil tener gestor y expediente ordenado desde el primer día.",
     heroImage: "/images/tipo1.jpg",
     heroImageAlt: "Acompañamiento de alquiler en Valencia — gestoría Livendia",
     adminLocalHref: localAdministracionAlquilerHref("valencia"),
