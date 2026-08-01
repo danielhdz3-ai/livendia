@@ -35,8 +35,9 @@ export function DashboardPostPaymentBanner({
           <div>
             <h2 className="text-xl font-bold sm:text-2xl">¡Pago confirmado!</h2>
             <p className="mt-1 max-w-xl text-sm leading-relaxed text-emerald-50 sm:text-base">
-              Tu cuenta Livendia está activa. El siguiente paso es subir la documentación de{" "}
-              <strong className="text-white">{title}</strong> para que el gestor pueda tramitarlo.
+              Tu cuenta Livendia está activa. Sube la documentación de{" "}
+              <strong className="text-white">{title}</strong> en el panel o envíala a{" "}
+              <strong className="text-white">info@livendia.com</strong>.
             </p>
           </div>
         </div>

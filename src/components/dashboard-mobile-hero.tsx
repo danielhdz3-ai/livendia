@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, FileSignature, Upload } from "lucide-react";
+import { ArrowRight, FileSignature, Mail, Upload } from "lucide-react";
+import { OrderStatusBadge } from "@/components/order-status-badge";
 
 type OrderRow = {
   id: string;
@@ -33,7 +34,11 @@ export function DashboardMobileHero({
         <p className="text-sm text-[#64748B]">Hola, {firstName}</p>
         <h2 className="mt-1 text-xl font-bold text-[#1E293B]">Tu panel Livendia</h2>
         <p className="mt-2 text-sm leading-relaxed text-[#64748B]">
-          Contrata, sube documentos y sigue tu contrato desde el móvil en pocos pasos.
+          Contrata, sube documentos y sigue tu expediente desde el móvil. También puedes enviarnos archivos a{" "}
+          <a href="mailto:info@livendia.com" className="font-semibold text-[#1A4FBF] hover:underline">
+            info@livendia.com
+          </a>
+          .
         </p>
       </div>
 
@@ -84,12 +89,14 @@ export function DashboardMobileHero({
                 href={`/mis-pedidos/${order.id}`}
                 className="flex items-center justify-between gap-3 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200"
               >
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold text-[#1E293B]">{order.serviceName}</p>
-                  <p className="mt-0.5 text-xs text-[#64748B]">
-                    {needsDocs ? "Falta documentación" : "Ver expediente"}
-                    {order.docCount > 0 ? ` · ${order.docCount} doc.` : ""}
-                  </p>
+                  <div className="mt-1 flex flex-wrap items-center gap-2">
+                    <OrderStatusBadge status={order.status} size="sm" />
+                    {order.docCount > 0 ? (
+                      <span className="text-xs text-[#64748B]">{order.docCount} doc.</span>
+                    ) : null}
+                  </div>
                 </div>
                 <span
                   className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold ${
@@ -103,6 +110,17 @@ export function DashboardMobileHero({
           })}
         </div>
       ) : null}
+
+      <Link
+        href="mailto:info@livendia.com"
+        className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-[#475569] shadow-sm"
+      >
+        <Mail className="h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
+        <span>
+          ¿Prefieres email? Envía tu documentación a{" "}
+          <span className="font-semibold text-[#1A4FBF]">info@livendia.com</span>
+        </span>
+      </Link>
     </section>
   );
 }

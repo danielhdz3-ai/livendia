@@ -47,6 +47,71 @@ function flowIndex(status: string): number {
   return i >= 0 ? i : 0;
 }
 
+const COMPACT_STEP_LABELS = ["Pago", "Docs", "Revisión", "Entrega"] as const;
+
+function compactStepIndex(status: string): number {
+  const fullIdx = flowIndex(normalizeOrderStatus(status));
+  if (fullIdx <= 0) return 0;
+  if (fullIdx <= 2) return 1;
+  if (fullIdx <= 4) return 2;
+  return 3;
+}
+
+/** Stepper horizontal compacto para móvil (4 pasos). */
+export function OrderTimelineCompact({ status: rawStatus }: { status: string }) {
+  const status = normalizeOrderStatus(rawStatus);
+
+  if (status === "cancelled") {
+    return (
+      <p className="text-sm font-semibold text-red-700">Expediente cancelado</p>
+    );
+  }
+
+  const active = compactStepIndex(status);
+
+  return (
+    <ol className="flex items-center gap-1" aria-label="Progreso del expediente">
+      {COMPACT_STEP_LABELS.map((label, idx) => {
+        const done = idx < active;
+        const current = idx === active;
+        return (
+          <li key={label} className="flex min-w-0 flex-1 items-center gap-1">
+            <div className="flex min-w-0 flex-1 flex-col items-center gap-1">
+              <span
+                className={`flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold ${
+                  done
+                    ? "bg-emerald-500 text-white"
+                    : current
+                      ? "bg-[#1A4FBF] text-white ring-4 ring-[#1A4FBF]/20"
+                      : "bg-slate-200 text-slate-500"
+                }`}
+                aria-current={current ? "step" : undefined}
+              >
+                {done ? "✓" : idx + 1}
+              </span>
+              <span
+                className={`max-w-full truncate text-center text-[10px] font-bold leading-none ${
+                  current ? "text-[#1A4FBF]" : done ? "text-emerald-700" : "text-slate-400"
+                }`}
+              >
+                {label}
+              </span>
+            </div>
+            {idx < COMPACT_STEP_LABELS.length - 1 ? (
+              <span
+                className={`mb-4 h-0.5 min-w-[0.35rem] flex-1 rounded-full ${
+                  idx < active ? "bg-emerald-400" : "bg-slate-200"
+                }`}
+                aria-hidden
+              />
+            ) : null}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
 export function OrderTimeline({
   status: rawStatus,
   createdAt,

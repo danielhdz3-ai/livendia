@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LogOut } from "lucide-react";
-import { performClientLogout } from "@/lib/auth-logout";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export function ClientMobileTopBar() {
@@ -37,18 +35,10 @@ export function ClientMobileTopBar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur lg:hidden">
       <div className="flex min-h-14 items-center justify-between gap-3 px-4">
-        <Link href="/dashboard" className="min-w-0">
+        <Link href="/dashboard" className="min-w-0 flex-1">
           <span className="block text-lg font-extrabold leading-tight text-[#1A4FBF]">Livendia</span>
           <span className="block truncate text-xs text-[#64748B]">{userLabel}</span>
         </Link>
-        <button
-          type="button"
-          onClick={() => void performClientLogout()}
-          className="inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-[#64748B]"
-        >
-          <LogOut className="h-4 w-4" />
-          Salir
-        </button>
       </div>
     </header>
   );

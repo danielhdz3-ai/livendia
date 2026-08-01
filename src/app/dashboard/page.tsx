@@ -1,6 +1,7 @@
-import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
 import { DashboardMobileHero } from "@/components/dashboard-mobile-hero";
+import { DashboardMobileQuickActions } from "@/components/dashboard-mobile-quick-actions";
+import { OrderStatusBadge } from "@/components/order-status-badge";
 import {
   orderGrantsRentalAccess,
   RENTAL_SERVICE_SLUG,
@@ -17,7 +18,6 @@ import {
   Settings,
   Clock,
   CheckCircle2,
-  AlertCircle,
   ShoppingBag,
   User,
   CreditCard,
@@ -28,7 +28,6 @@ import {
   Package,
   Upload,
   Eye,
-  type LucideIcon,
 } from "lucide-react";
 import { Suspense } from "react";
 
@@ -128,6 +127,13 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         docCount: docCountByOrder[order.id as string] ?? 0,
       };
     }) ?? [];
+
+  const uploadFocusOrder =
+    orders?.find((o) => o.status === "pending_docs" || o.status === "paid") ??
+    orders?.[0];
+  const mobileUploadHref = uploadFocusOrder
+    ? `/mis-pedidos/${uploadFocusOrder.id as string}`
+    : "/mis-pedidos";
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
@@ -258,17 +264,17 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
 
         {/* Content Area */}
         <main className="flex-1 overflow-y-auto p-4 pb-6 lg:p-8">
-          <div className="hidden lg:block">
-            <Suspense fallback={null}>
-              <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
-            </Suspense>
-          </div>
+          <Suspense fallback={null}>
+            <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
+          </Suspense>
 
           <DashboardMobileHero
             firstName={firstName}
             orders={mobileOrders}
             highlightOrderId={highlightOrderId}
           />
+
+          <DashboardMobileQuickActions uploadHref={mobileUploadHref} />
 
           {/* Stats Cards — escritorio / tablet */}
           <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
@@ -399,27 +405,6 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
                 {orders.slice(0, 5).map((order) => {
                   const svc = order.services;
                   const serviceRow = Array.isArray(svc) ? svc[0] : svc;
-                  const statusColors: Record<string, string> = {
-                    pending_payment: "bg-slate-100 text-slate-900",
-                    paid: "bg-cyan-100 text-cyan-900",
-                    pending_docs: "bg-amber-100 text-amber-900",
-                    in_review: "bg-violet-100 text-violet-900",
-                    in_progress: "bg-blue-100 text-blue-900",
-                    completed: "bg-green-100 text-green-900",
-                    delivered: "bg-green-100 text-green-900",
-                    cancelled: "bg-red-100 text-red-900",
-                  };
-                  const statusIcons: Record<string, LucideIcon> = {
-                    pending_payment: Clock,
-                    paid: CheckCircle2,
-                    pending_docs: Upload,
-                    in_review: Clock,
-                    in_progress: Clock,
-                    completed: CheckCircle2,
-                    delivered: CheckCircle2,
-                    cancelled: AlertCircle,
-                  };
-                  const StatusIcon = statusIcons[order.status] || FileText;
 
                   const needsDocsUpload =
                     order.status === "pending_docs" || order.status === "paid";
@@ -439,12 +424,9 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
                       </div>
 
                       <div className="flex-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <h3 className="font-bold text-[#1E293B]">{serviceRow?.name ?? "Servicio"}</h3>
-                          <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusColors[order.status] || "bg-slate-100 text-slate-900"}`}>
-                            <StatusIcon className="mb-0.5 mr-1 inline h-3 w-3" />
-                            {ORDER_STATUS_LABEL_ES[order.status] ?? order.status}
-                          </span>
+                          <OrderStatusBadge status={order.status as string} size="sm" />
                         </div>
                         <div className="mt-1 flex items-center gap-4 text-xs text-[#64748B]">
                           <span>{new Date(order.created_at).toLocaleDateString("es-ES")}</span>

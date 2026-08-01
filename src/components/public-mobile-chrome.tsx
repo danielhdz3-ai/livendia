@@ -4,7 +4,7 @@ import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const HIDDEN_PREFIXES = ["/admin", "/dashboard", "/login", "/register", "/auth"];
+const HIDDEN_PREFIXES = ["/admin", "/dashboard", "/mis-pedidos", "/login", "/register", "/auth"];
 
 function shouldShowMobileNav(pathname: string): boolean {
   return !HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix));

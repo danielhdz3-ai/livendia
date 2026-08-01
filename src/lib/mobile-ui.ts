@@ -10,3 +10,9 @@ export const MOBILE_PRICE = "text-4xl font-extrabold sm:text-5xl lg:text-6xl";
 export const MOBILE_SECTION_H2 = "text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl";
 export const MOBILE_CTA_H2 = "text-2xl font-extrabold sm:text-4xl lg:text-5xl";
 export const MOBILE_BTN = "inline-flex min-h-11 items-center justify-center";
+
+/** Panel cliente móvil */
+export const CLIENT_PANEL_CARD = "rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6";
+export const CLIENT_PANEL_SECTION_TITLE = "text-base font-bold text-[#1E293B] sm:text-lg";
+export const CLIENT_PANEL_MUTED = "text-sm text-[#64748B]";
+export const CLIENT_STICKY_SUBHEADER = "sticky top-14 z-40 border-b border-slate-200 bg-white/95 backdrop-blur";
