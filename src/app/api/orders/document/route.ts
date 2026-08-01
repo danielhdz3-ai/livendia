@@ -8,6 +8,7 @@ import {
   guessOrderDocContentType,
   validateOrderDocFile,
 } from "@/lib/order-document-upload";
+import { logOrderActivity } from "@/lib/order-activity-log";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { getAuthedSupabaseFromRequest } from "@/lib/supabase/request-auth";
 import { NextResponse } from "next/server";
@@ -94,6 +95,13 @@ async function insertDocumentRow(
     orderId: params.orderId,
     clientEmail: params.userEmail,
   }).catch(() => undefined);
+
+  void logOrderActivity({
+    orderId: params.orderId,
+    kind: "document",
+    title: "Documento subido",
+    description: `${ORDER_DOC_TYPE_LABELS[params.documentType] ?? params.documentType}: ${params.fileName}`,
+  });
 
   return { ok: true as const, row };
 }

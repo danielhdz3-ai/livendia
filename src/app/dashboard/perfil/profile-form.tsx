@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FileText, Mail, MapPin, Phone, Save, User } from "lucide-react";
+import { useToast } from "@/components/toast-provider";
+import { PANEL_CARD } from "@/lib/client-panel-ui";
 
 export type ProfileFormInitial = {
   fullName: string;
@@ -16,21 +18,18 @@ export type ProfileFormInitial = {
 
 export function ProfileForm({ initial }: { initial: ProfileFormInitial }) {
   const router = useRouter();
+  const { toast } = useToast();
   const [fullName, setFullName] = useState(initial.fullName);
   const [phone, setPhone] = useState(initial.phone);
   const [dniNie, setDniNie] = useState(initial.dniNie);
   const [fiscalAddress, setFiscalAddress] = useState(initial.fiscalAddress);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   const avatarLetter = (fullName.trim().charAt(0) || initial.email.charAt(0) || "U").toUpperCase();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
-    setError(null);
-    setSuccess(null);
 
     try {
       const res = await fetch("/api/profile", {
@@ -52,17 +51,17 @@ export function ProfileForm({ initial }: { initial: ProfileFormInitial }) {
         setFiscalAddress(profile.fiscalAddress);
       }
 
-      setSuccess("Tus datos se han guardado correctamente.");
+      toast("Perfil actualizado correctamente.", "success");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error al guardar");
+      toast(err instanceof Error ? err.message : "Error al guardar", "error");
     } finally {
       setSaving(false);
     }
   }
 
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-lg ring-1 ring-slate-200 sm:p-8">
+    <div className={PANEL_CARD}>
       <div className="mb-6 flex items-center gap-4">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-2xl font-bold text-white sm:h-20 sm:w-20 sm:text-3xl">
           {avatarLetter}
@@ -74,21 +73,6 @@ export function ProfileForm({ initial }: { initial: ProfileFormInitial }) {
           <p className="text-sm text-[#64748B]">{initial.role === "admin" ? "Administrador" : "Cliente"}</p>
         </div>
       </div>
-
-      {error ? (
-        <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
-          {error}
-        </div>
-      ) : null}
-
-      {success ? (
-        <div
-          className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
-          role="status"
-        >
-          {success}
-        </div>
-      ) : null}
 
       <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
         <div>

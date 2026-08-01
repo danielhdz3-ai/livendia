@@ -2,10 +2,16 @@ import { OrderDocuments, type DocRow } from "@/app/dashboard/order-documents";
 import { OrderTimeline, OrderTimelineCompact } from "@/app/mis-pedidos/[id]/order-timeline";
 import { ClientExpedienteContactPanel } from "@/components/client-expediente-contact-panel";
 import { LivendiaTrustPanel } from "@/components/livendia-trust-panel";
+import { OrderActivityFeed } from "@/components/order-activity-feed";
+import { OrderDeliverablesPanel } from "@/components/order-deliverables-panel";
 import { OrderDetailMobileTabs } from "@/components/order-detail-mobile-tabs";
 import { OrderDocChecklist } from "@/components/order-doc-checklist";
+import { OrderProgressRing } from "@/components/order-progress-ring";
 import { OrderStatusBadge } from "@/components/order-status-badge";
 import { LogoutButton } from "@/app/dashboard/logout-button";
+import { mergeOrderActivity } from "@/lib/order-activity";
+import { calculateOrderProgress } from "@/lib/order-progress";
+import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -52,9 +58,53 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   const serviceSlug = (serviceRow?.slug as string | undefined) ?? null;
   const uploadedTypes = docRows.map((d) => d.document_type);
   const showChecklist = canUpload && (order.status === "pending_docs" || order.status === "paid");
+  const progress = calculateOrderProgress({
+    status: order.status as string,
+    serviceSlug,
+    uploadedTypes,
+    docCount: docRows.length,
+  });
+
+  const activityResult = await supabase
+    .from("order_activity")
+    .select("id, kind, title, description, created_at")
+    .eq("order_id", id)
+    .order("created_at", { ascending: false })
+    .limit(20);
+
+  const deliverablesResult = await supabase
+    .from("order_deliverables")
+    .select("id, title, message, file_name, file_path, created_at")
+    .eq("order_id", id)
+    .order("created_at", { ascending: false });
+
+  const activityItems = mergeOrderActivity(
+    activityResult.error ? [] : (activityResult.data ?? []),
+    {
+    status: order.status as string,
+    createdAt: order.created_at as string,
+    paidAt: (order.paid_at as string | null) ?? null,
+    completedAt: (order.completed_at as string | null) ?? null,
+    docCount: docRows.length,
+  });
+
+  const progressBlock = (
+    <OrderProgressRing percent={progress.percent} label={progress.label} />
+  );
+
+  const deliverableRows = deliverablesResult.error ? [] : (deliverablesResult.data ?? []);
+
+  const deliverablesBlock =
+    deliverableRows.length > 0 ? (
+      <OrderDeliverablesPanel items={deliverableRows} />
+    ) : null;
+
+  const activityBlock = <OrderActivityFeed items={activityItems} />;
 
   const summaryBlock = (
     <div className="space-y-4">
+      {progressBlock}
+      {deliverablesBlock}
       {showChecklist ? (
         <OrderDocChecklist serviceSlug={serviceSlug} uploadedTypes={uploadedTypes} />
       ) : (
@@ -107,15 +157,18 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   );
 
   const trackingBlock = (
-    <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-8">
-      <OrderTimeline
-        status={order.status as string}
-        createdAt={order.created_at as string}
-        paidAt={(order.paid_at as string | null) ?? null}
-        completedAt={(order.completed_at as string | null) ?? null}
-        updatedAt={order.updated_at as string}
-      />
-    </section>
+    <div className="space-y-4">
+      <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-8">
+        <OrderTimeline
+          status={order.status as string}
+          createdAt={order.created_at as string}
+          paidAt={(order.paid_at as string | null) ?? null}
+          completedAt={(order.completed_at as string | null) ?? null}
+          updatedAt={order.updated_at as string}
+        />
+      </section>
+      {activityBlock}
+    </div>
   );
 
   const helpBlock = (
@@ -126,7 +179,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/40 to-slate-50 pb-6 lg:pb-0">
+    <div className={`min-h-screen pb-6 lg:pb-0 ${PANEL_PAGE_BG}`}>
       <header className="hidden border-b border-slate-200 bg-white shadow-sm lg:block">
         <div className="mx-auto max-w-5xl px-4 py-4 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -184,6 +237,9 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         <div className="mt-4">
           <OrderTimelineCompact status={order.status as string} />
         </div>
+        <div className="mt-4 lg:hidden">
+          <OrderProgressRing percent={progress.percent} label={progress.label} size="sm" />
+        </div>
       </div>
 
       <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
@@ -198,6 +254,8 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         />
 
         <div className="hidden space-y-4 lg:block">
+          {progressBlock}
+          {deliverablesBlock}
           {showChecklist ? (
             <OrderDocChecklist serviceSlug={serviceSlug} uploadedTypes={uploadedTypes} />
           ) : null}

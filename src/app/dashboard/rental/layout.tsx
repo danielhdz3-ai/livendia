@@ -135,7 +135,7 @@ export default async function RentalDashboardLayout({
               <span>Métodos de pago</span>
             </Link>
 
-            <BillingPortalButton navItemClassName={billingNavOnBrand} />
+            <BillingPortalButton navItemClassName={billingNavOnBrand} returnPath="/dashboard/rental" />
 
             <Link href="/dashboard/configuracion" className={navBase}>
               <Settings className="h-5 w-5 shrink-0 opacity-95" />

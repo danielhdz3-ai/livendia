@@ -1,7 +1,9 @@
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
-import { DashboardMobileHero } from "@/components/dashboard-mobile-hero";
 import { DashboardMobileQuickActions } from "@/components/dashboard-mobile-quick-actions";
+import { ClientPanelKpiStrip, ClientPanelPremiumHero } from "@/components/client-panel-premium";
 import { OrderStatusBadge } from "@/components/order-status-badge";
+import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { calculateOrderProgress } from "@/lib/order-progress";
 import {
   orderGrantsRentalAccess,
   RENTAL_SERVICE_SLUG,
@@ -120,11 +122,20 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     orders?.map((order) => {
       const svc = order.services;
       const serviceRow = Array.isArray(svc) ? svc[0] : svc;
+      const serviceSlug = (serviceRow?.slug as string | undefined) ?? null;
+      const docCount = docCountByOrder[order.id as string] ?? 0;
+      const { percent } = calculateOrderProgress({
+        status: order.status as string,
+        serviceSlug,
+        uploadedTypes: [],
+        docCount,
+      });
       return {
         id: order.id as string,
         status: order.status as string,
         serviceName: (serviceRow?.name as string | undefined) ?? "Servicio",
-        docCount: docCountByOrder[order.id as string] ?? 0,
+        docCount,
+        progressPercent: percent,
       };
     }) ?? [];
 
@@ -135,8 +146,14 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     ? `/mis-pedidos/${uploadFocusOrder.id as string}`
     : "/mis-pedidos";
 
+  const heroFocus =
+    (highlightOrderId ? mobileOrders.find((o) => o.id === highlightOrderId) : null) ??
+    mobileOrders.find((o) => o.status === "pending_docs" || o.status === "paid") ??
+    mobileOrders[0] ??
+    null;
+
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+    <div className={`flex min-h-screen ${PANEL_PAGE_BG}`}>
       {/* Sidebar — mismo estilo que administración de alquiler */}
       <aside className="hidden w-64 shrink-0 border-r border-[#1547a8]/80 bg-[#1A4FBF] shadow-xl shadow-slate-900/15 lg:flex">
         <div className="flex h-full min-h-screen w-full flex-col">
@@ -268,78 +285,27 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
           </Suspense>
 
-          <DashboardMobileHero
+          <ClientPanelPremiumHero
             firstName={firstName}
-            orders={mobileOrders}
-            highlightOrderId={highlightOrderId}
+            focus={heroFocus}
+            stats={{ total: totalOrders, active: pendingOrders, completed: completedOrders }}
           />
 
           <DashboardMobileQuickActions uploadHref={mobileUploadHref} />
 
-          {/* Stats Cards — escritorio / tablet */}
-          <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg shadow-blue-500/30">
-              <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-white/10"></div>
-              <div className="relative">
-                <div className="flex items-center gap-2">
-                  <ShoppingBag className="h-5 w-5" />
-                  <span className="text-sm font-medium opacity-90">Total pedidos</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{totalOrders}</div>
-                <div className="mt-1 text-xs opacity-75">
-                  {completedOrders} completados
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 p-6 text-white shadow-lg shadow-cyan-500/30">
-              <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-white/10"></div>
-              <div className="relative">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
-                  <span className="text-sm font-medium opacity-90">En proceso</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{pendingOrders}</div>
-                <div className="mt-1 text-xs opacity-75">
-                  Requieren atención
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg shadow-green-500/30">
-              <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-white/10"></div>
-              <div className="relative">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5" />
-                  <span className="text-sm font-medium opacity-90">Completados</span>
-                </div>
-                <div className="mt-2 text-3xl font-bold">{completedOrders}</div>
-                <div className="mt-1 text-xs opacity-75">
-                  Servicios finalizados
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 p-6 text-white shadow-lg shadow-violet-500/30">
-              <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-white/10"></div>
-              <Link href="/dashboard/servicios" className="relative block transition hover:opacity-95">
-                <div className="flex items-center gap-2">
-                  <FileSignature className="h-5 w-5" />
-                  <span className="text-sm font-medium">Contratar contratos</span>
-                </div>
-                <p className="mt-2 text-lg font-bold leading-snug">
-                  Contratos LAU, arras, revisión registral…
-                </p>
-                <div className="mt-3 flex items-center gap-1 text-xs font-semibold">
-                  Ver servicios en tu panel
-                  <ArrowRight className="h-4 w-4" />
-                </div>
-              </Link>
-            </div>
+          <div className="mb-6 hidden sm:grid">
+            <ClientPanelKpiStrip
+              items={[
+                { label: "Total pedidos", value: totalOrders, hint: `${completedOrders} completados`, tone: "blue" },
+                { label: "En proceso", value: pendingOrders, hint: "Requieren atención", tone: "amber" },
+                { label: "Completados", value: completedOrders, hint: "Servicios finalizados", tone: "green" },
+                { label: "Servicios", value: "Ver", hint: "Contratar contratos online", tone: "violet" },
+              ]}
+            />
           </div>
 
-          {/* Services CTA — escritorio */}
-          <section className="mt-8 hidden lg:block">
+          {/* Recent Orders — escritorio */}
+          <section className="mt-2 hidden lg:block">
             <Link
               href="/dashboard/servicios"
               className="group block overflow-hidden rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200 transition hover:shadow-xl hover:ring-[#1A4FBF]"

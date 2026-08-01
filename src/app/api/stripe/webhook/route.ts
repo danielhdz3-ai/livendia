@@ -1,4 +1,5 @@
 import { getAuthUserContact, sendAdminNewOrderEmail, sendOrderConfirmedEmail } from "@/lib/email/send";
+import { logOrderActivity } from "@/lib/order-activity-log";
 import { createServiceRoleClient } from "@/lib/supabase/service";
 import { getStripe } from "@/lib/stripe/server";
 import { headers } from "next/headers";
@@ -178,6 +179,12 @@ export async function POST(req: Request) {
 
       if (!insErr && inserted?.id) {
         await sendConfirmationEmailsSafe(supabase, userId, serviceId, session, inserted.id as string);
+        await logOrderActivity({
+          orderId: inserted.id as string,
+          kind: "payment",
+          title: "Pago confirmado",
+          description: "Suscripción activada correctamente.",
+        });
       }
       return new NextResponse("ok");
     }
@@ -198,6 +205,12 @@ export async function POST(req: Request) {
 
     if (!insErr && inserted?.id) {
       await sendConfirmationEmailsSafe(supabase, userId, serviceId, session, inserted.id as string);
+      await logOrderActivity({
+        orderId: inserted.id as string,
+        kind: "payment",
+        title: "Pago confirmado",
+        description: "Ya puedes subir la documentación de tu expediente.",
+      });
     }
   }
 

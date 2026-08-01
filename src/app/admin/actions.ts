@@ -5,6 +5,8 @@ import {
   sendDocumentDeliveredEmail,
   sendOrderStatusUpdatedEmail,
 } from "@/lib/email/send";
+import { logOrderActivity, logOrderDeliverable } from "@/lib/order-activity-log";
+import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
@@ -39,6 +41,13 @@ export async function updateOrderStatus(orderId: string, status: string) {
 
   const { error } = await supabase.from("orders").update({ status }).eq("id", orderId);
   if (error) return { error: error.message };
+
+  await logOrderActivity({
+    orderId,
+    kind: "status",
+    title: ORDER_STATUS_LABEL_ES[status] ?? "Estado actualizado",
+    description: "Tu gestor ha actualizado el estado de tu expediente.",
+  });
 
   try {
     if (order?.client_id) {
@@ -97,6 +106,11 @@ export async function notifyDocumentDelivered(orderId: string, message: string) 
       to: contact.email,
       customerName: contact.fullName,
       serviceName,
+      message: trimmed,
+    });
+    await logOrderDeliverable({
+      orderId,
+      title: "Entrega de tu gestor",
       message: trimmed,
     });
   } catch {

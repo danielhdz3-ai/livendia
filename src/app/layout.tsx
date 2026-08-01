@@ -8,6 +8,7 @@ import { WebsiteStructuredData } from "@/components/website-structured-data";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
 import { ClientAreaChrome } from "@/components/client-area-chrome";
+import { ToastProvider } from "@/components/toast-provider";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import "./globals.css";
 
@@ -62,7 +63,9 @@ export default function RootLayout({
         <GoogleAnalytics />
         <GtmScripts />
         <AnalyticsBootstrap />
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
         <PublicMobileChrome />
         <ClientAreaChrome />
         <FloatingWhatsAppButton />

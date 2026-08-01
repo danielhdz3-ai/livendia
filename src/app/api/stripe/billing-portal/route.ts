@@ -2,7 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { getStripe } from "@/lib/stripe/server";
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function POST(req: Request) {
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
@@ -33,11 +33,21 @@ export async function POST() {
     return NextResponse.json({ error: "NEXT_PUBLIC_APP_URL no configurada" }, { status: 500 });
   }
 
+  let returnPath = "/dashboard/pagos";
+  try {
+    const body = (await req.json()) as { returnPath?: string | null };
+    if (typeof body.returnPath === "string" && body.returnPath.startsWith("/")) {
+      returnPath = body.returnPath;
+    }
+  } catch {
+    /* body opcional */
+  }
+
   try {
     const stripe = getStripe();
     const session = await stripe.billingPortal.sessions.create({
       customer: customerId,
-      return_url: `${appUrl}/dashboard/rental`,
+      return_url: `${appUrl}${returnPath}`,
     });
     return NextResponse.json({ url: session.url });
   } catch {
