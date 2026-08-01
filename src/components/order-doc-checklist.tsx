@@ -1,4 +1,5 @@
 import { buildOrderDocChecklist, countUploadedRecommended } from "@/lib/order-doc-checklist";
+import { PANEL_CARD } from "@/lib/client-panel-ui";
 import { CheckCircle2, Circle } from "lucide-react";
 
 export function OrderDocChecklist({
@@ -14,7 +15,7 @@ export function OrderDocChecklist({
   if (items.length === 0) return null;
 
   return (
-    <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6">
+    <section className={`${PANEL_CARD}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 className="text-base font-bold text-[#1E293B] sm:text-lg">Documentación recomendada</h2>
@@ -27,7 +28,7 @@ export function OrderDocChecklist({
         </span>
       </div>
 
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
         {items.map((item) => (
           <li
             key={item.type}

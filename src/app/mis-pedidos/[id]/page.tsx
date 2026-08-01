@@ -1,6 +1,7 @@
 import { OrderDocuments, type DocRow } from "@/app/dashboard/order-documents";
 import { OrderTimeline, OrderTimelineCompact } from "@/app/mis-pedidos/[id]/order-timeline";
 import { ClientExpedienteContactPanel } from "@/components/client-expediente-contact-panel";
+import { ExpedienteDesktopHero } from "@/components/expediente-desktop-hero";
 import { LivendiaTrustPanel } from "@/components/livendia-trust-panel";
 import { OrderActivityFeed } from "@/components/order-activity-feed";
 import { OrderDeliverablesPanel } from "@/components/order-deliverables-panel";
@@ -11,7 +12,7 @@ import { OrderStatusBadge } from "@/components/order-status-badge";
 import { LogoutButton } from "@/app/dashboard/logout-button";
 import { mergeOrderActivity } from "@/lib/order-activity";
 import { calculateOrderProgress } from "@/lib/order-progress";
-import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { PANEL_CARD, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -78,9 +79,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
     .eq("order_id", id)
     .order("created_at", { ascending: false });
 
-  const activityItems = mergeOrderActivity(
-    activityResult.error ? [] : (activityResult.data ?? []),
-    {
+  const activityItems = mergeOrderActivity(activityResult.error ? [] : (activityResult.data ?? []), {
     status: order.status as string,
     createdAt: order.created_at as string,
     paidAt: (order.paid_at as string | null) ?? null,
@@ -88,61 +87,44 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
     docCount: docRows.length,
   });
 
-  const progressBlock = (
-    <OrderProgressRing percent={progress.percent} label={progress.label} />
-  );
-
   const deliverableRows = deliverablesResult.error ? [] : (deliverablesResult.data ?? []);
-
   const deliverablesBlock =
-    deliverableRows.length > 0 ? (
-      <OrderDeliverablesPanel items={deliverableRows} />
+    deliverableRows.length > 0 ? <OrderDeliverablesPanel items={deliverableRows} /> : null;
+
+  const statusSummaryBlock = !showChecklist ? (
+    <section className={PANEL_CARD}>
+      <h2 className="text-base font-bold text-[#1E293B] sm:text-lg">Estado del expediente</h2>
+      <p className="mt-2 text-sm text-[#64748B]">
+        Tu gestor está trabajando en este trámite. Te avisaremos por email ante cualquier novedad.
+      </p>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm text-[#64748B]">
+        <span className="inline-flex items-center gap-1.5">
+          <Calendar className="h-4 w-4" aria-hidden />
+          {new Date(order.created_at).toLocaleDateString("es-ES", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </span>
+        {order.total_cents != null ? (
+          <span className="font-semibold text-[#1A4FBF]">
+            {(order.total_cents / 100).toFixed(2)} € IVA incl.
+          </span>
+        ) : null}
+      </div>
+    </section>
+  ) : null;
+
+  const checklistBlock =
+    showChecklist ? (
+      <OrderDocChecklist serviceSlug={serviceSlug} uploadedTypes={uploadedTypes} />
     ) : null;
 
-  const activityBlock = <OrderActivityFeed items={activityItems} />;
-
-  const summaryBlock = (
-    <div className="space-y-4">
-      {progressBlock}
-      {deliverablesBlock}
-      {showChecklist ? (
-        <OrderDocChecklist serviceSlug={serviceSlug} uploadedTypes={uploadedTypes} />
-      ) : (
-        <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-          <h2 className="text-base font-bold text-[#1E293B]">Estado del expediente</h2>
-          <p className="mt-2 text-sm text-[#64748B]">
-            Tu gestor está trabajando en este trámite. Te avisaremos por email ante cualquier novedad.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3 text-sm text-[#64748B]">
-            <span className="inline-flex items-center gap-1.5">
-              <Calendar className="h-4 w-4" aria-hidden />
-              {new Date(order.created_at).toLocaleDateString("es-ES", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </span>
-            {order.total_cents != null ? (
-              <span className="font-semibold text-[#1A4FBF]">
-                {(order.total_cents / 100).toFixed(2)} € IVA incl.
-              </span>
-            ) : null}
-          </div>
-        </section>
-      )}
-    </div>
-  );
-
   const documentsBlock = (
-    <section className="rounded-2xl bg-white p-5 shadow-lg ring-1 ring-slate-200 sm:p-8">
-      <h2 className="text-lg font-bold text-[#1E293B] sm:text-xl">Documentación del expediente</h2>
+    <section id="documentos" className={`${PANEL_CARD} scroll-mt-28`}>
+      <h2 className="text-lg font-bold text-[#1E293B] sm:text-xl">Sube tu documentación</h2>
       <p className="mt-2 text-sm leading-relaxed text-[#64748B]">
-        Sube PDF, Word o fotos desde el móvil (hasta 25&nbsp;MB por archivo). Si lo prefieres, también puedes
-        enviar la documentación a{" "}
-        <a href="mailto:info@livendia.com" className="font-semibold text-[#1A4FBF] hover:underline">
-          info@livendia.com
-        </a>{" "}
-        y la incorporaremos a este expediente.
+        Arrastra archivos o elige desde tu ordenador. PDF, Word e imágenes hasta 25&nbsp;MB por archivo.
       </p>
       <div className="mt-5">
         <OrderDocuments
@@ -157,17 +139,24 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   );
 
   const trackingBlock = (
+    <section className={PANEL_CARD}>
+      <OrderTimeline
+        status={order.status as string}
+        createdAt={order.created_at as string}
+        paidAt={(order.paid_at as string | null) ?? null}
+        completedAt={(order.completed_at as string | null) ?? null}
+        updatedAt={order.updated_at as string}
+      />
+    </section>
+  );
+
+  const activityBlock = <OrderActivityFeed items={activityItems} />;
+
+  const summaryBlock = (
     <div className="space-y-4">
-      <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-8">
-        <OrderTimeline
-          status={order.status as string}
-          createdAt={order.created_at as string}
-          paidAt={(order.paid_at as string | null) ?? null}
-          completedAt={(order.completed_at as string | null) ?? null}
-          updatedAt={order.updated_at as string}
-        />
-      </section>
-      {activityBlock}
+      <OrderProgressRing percent={progress.percent} label={progress.label} />
+      {deliverablesBlock}
+      {checklistBlock ?? statusSummaryBlock}
     </div>
   );
 
@@ -180,48 +169,45 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
 
   return (
     <div className={`min-h-screen pb-6 lg:pb-0 ${PANEL_PAGE_BG}`}>
-      <header className="hidden border-b border-slate-200 bg-white shadow-sm lg:block">
-        <div className="mx-auto max-w-5xl px-4 py-4 sm:px-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/dashboard"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#1A4FBF] px-5 py-2.5 text-sm font-bold text-white shadow hover:bg-[#2563EB]"
-              >
-                <LayoutDashboard className="h-4 w-4" />
-                Panel principal
-              </Link>
-              <Link
-                href="/mis-pedidos"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[#1E293B] hover:border-[#1A4FBF]/30 hover:text-[#1A4FBF]"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Mis pedidos
-              </Link>
-            </div>
-            <LogoutButton />
+      <header className="hidden border-b border-slate-200 bg-white/90 backdrop-blur lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 xl:px-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/dashboard"
+              className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-bold text-white shadow hover:bg-[#2563EB]"
+            >
+              <LayoutDashboard className="h-4 w-4" aria-hidden />
+              Panel principal
+            </Link>
+            <Link
+              href="/mis-pedidos"
+              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-[#1E293B] hover:border-[#1A4FBF]/30 hover:text-[#1A4FBF]"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden />
+              Mis pedidos
+            </Link>
           </div>
-
-          <div className="mt-5">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#64748B]">Expediente</p>
-            <div className="mt-2 flex flex-wrap items-center gap-3">
-              <h1 className="text-2xl font-bold text-[#1E293B] sm:text-3xl">{serviceName}</h1>
-              <OrderStatusBadge status={order.status as string} />
-            </div>
-            <p className="mt-2 text-sm text-[#64748B]">
-              {new Date(order.created_at).toLocaleString("es-ES")}
-              {order.total_cents != null ? ` · ${(order.total_cents / 100).toFixed(2)} €` : null}
-            </p>
-          </div>
+          <LogoutButton />
         </div>
       </header>
+
+      <ExpedienteDesktopHero
+        serviceName={serviceName}
+        orderId={order.id as string}
+        status={order.status as string}
+        createdAt={order.created_at as string}
+        totalCents={order.total_cents as number | null}
+        progressPercent={progress.percent}
+        progressLabel={progress.label}
+        docCount={docRows.length}
+      />
 
       <div className="sticky top-14 z-40 border-b border-slate-200 bg-white/95 px-4 py-4 backdrop-blur lg:hidden">
         <Link
           href="/mis-pedidos"
           className="inline-flex min-h-9 items-center gap-2 text-sm font-semibold text-[#1A4FBF]"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" aria-hidden />
           Mis expedientes
         </Link>
         <div className="mt-3 flex flex-wrap items-start justify-between gap-2">
@@ -237,39 +223,49 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         <div className="mt-4">
           <OrderTimelineCompact status={order.status as string} />
         </div>
-        <div className="mt-4 lg:hidden">
+        <div className="mt-4">
           <OrderProgressRing percent={progress.percent} label={progress.label} size="sm" />
         </div>
       </div>
 
-      <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
-        <OrderDetailMobileTabs
-          defaultTab={showChecklist ? "documentos" : "resumen"}
-          tabs={[
-            { id: "resumen", label: "Resumen", content: summaryBlock },
-            { id: "documentos", label: "Documentos", content: documentsBlock },
-            { id: "seguimiento", label: "Seguimiento", content: trackingBlock },
-            { id: "ayuda", label: "Ayuda", content: helpBlock },
-          ]}
-        />
-
-        <div className="hidden space-y-4 lg:block">
-          {progressBlock}
-          {deliverablesBlock}
-          {showChecklist ? (
-            <OrderDocChecklist serviceSlug={serviceSlug} uploadedTypes={uploadedTypes} />
-          ) : null}
-          {documentsBlock}
-          {helpBlock}
-          {trackingBlock}
+      <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8 xl:px-8">
+        <div className="lg:hidden">
+          <OrderDetailMobileTabs
+            defaultTab={showChecklist ? "documentos" : "resumen"}
+            tabs={[
+              { id: "resumen", label: "Resumen", content: summaryBlock },
+              { id: "documentos", label: "Documentos", content: documentsBlock },
+              { id: "seguimiento", label: "Seguimiento", content: (
+                <div className="space-y-4">
+                  {trackingBlock}
+                  {activityBlock}
+                </div>
+              ) },
+              { id: "ayuda", label: "Ayuda", content: helpBlock },
+            ]}
+          />
         </div>
 
-        <div className="hidden justify-center pb-8 lg:flex">
+        <div className="hidden lg:grid lg:grid-cols-12 lg:items-start lg:gap-8">
+          <div className="space-y-6 lg:col-span-8">
+            {deliverablesBlock}
+            {checklistBlock ?? statusSummaryBlock}
+            {documentsBlock}
+          </div>
+
+          <aside className="space-y-6 lg:col-span-4 lg:sticky lg:top-6">
+            {trackingBlock}
+            {activityBlock}
+            <LivendiaTrustPanel variant="compact" />
+          </aside>
+        </div>
+
+        <div className="mt-8 hidden justify-center pb-8 lg:flex">
           <Link
             href="/dashboard"
             className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
           >
-            <Home className="h-4 w-4" />
+            <Home className="h-4 w-4" aria-hidden />
             Volver al panel principal
           </Link>
         </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { BUSINESS_EMAIL, getWhatsAppHref } from "@/lib/business-nap";
+import { ExpedienteDocChannels } from "@/components/expediente-doc-channels";
 import { PANEL_CARD, PANEL_HERO } from "@/lib/client-panel-ui";
-import { ArrowRight, Mail, MessageCircle, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 type FocusOrder = {
   id: string;
@@ -22,48 +22,6 @@ export function ClientPanelPremiumHero({
 }) {
   const platformHref = focus ? `/mis-pedidos/${focus.id}` : "/mis-pedidos";
 
-  const mailSubject = focus
-    ? `Documentación expediente · ${focus.serviceName} · ${focus.id.slice(0, 8)}`
-    : "Documentación expediente Livendia";
-  const mailHref = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(mailSubject)}`;
-  const waPrefill = focus
-    ? `Hola, soy cliente de Livendia. Quiero enviar documentación de mi expediente "${focus.serviceName}" (ref. ${focus.id.slice(0, 8)}).`
-    : "Hola, quiero enviar documentación de mi expediente en Livendia.";
-  const waHref = getWhatsAppHref(waPrefill);
-
-  const docOptions = [
-    {
-      step: "1",
-      title: "En la plataforma",
-      description: focus
-        ? `Sube PDF o fotos en tu expediente${focus.docCount > 0 ? ` · ${focus.docCount} archivo(s) ya subido(s)` : ""}.`
-        : "Sube PDF o fotos desde Mis expedientes.",
-      href: platformHref,
-      icon: Upload,
-      iconBg: "bg-[#EFF6FF] text-[#1A4FBF]",
-      external: false,
-    },
-    {
-      step: "2",
-      title: "Por WhatsApp",
-      description: "Envía tus archivos o fotos directamente a tu gestor.",
-      href: waHref,
-      icon: MessageCircle,
-      iconBg: "bg-[#DCFCE7] text-[#128C7E]",
-      external: true,
-      analytics: "dashboard_hero_whatsapp",
-    },
-    {
-      step: "3",
-      title: "Por email",
-      description: `Escríbenos a ${BUSINESS_EMAIL} con tus archivos adjuntos.`,
-      href: mailHref,
-      icon: Mail,
-      iconBg: "bg-slate-100 text-[#475569]",
-      external: false,
-    },
-  ] as const;
-
   return (
     <section className={`${PANEL_HERO} mb-6 lg:hidden`}>
       <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
@@ -74,71 +32,28 @@ export function ClientPanelPremiumHero({
         </div>
 
         <h2 className="mt-4 text-2xl font-extrabold tracking-tight">Hola, {firstName}</h2>
-        <p className="mt-2 text-sm font-medium text-blue-50">
-          Puedes enviar tu documentación de <span className="font-bold text-white">3 formas</span>:
-        </p>
 
-        <ul className="mt-4 space-y-2.5" aria-label="Formas de enviar documentación">
-          {docOptions.map((option) => {
-            const Icon = option.icon;
-            const inner = (
-              <>
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-xs font-extrabold text-white">
-                  {option.step}
-                </span>
-                <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${option.iconBg}`}>
-                  <Icon className="h-5 w-5" aria-hidden />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="font-bold text-[#1E293B]">{option.title}</p>
-                  <p className="mt-0.5 text-xs leading-snug text-[#64748B]">{option.description}</p>
-                  {option.step === "1" && focus ? (
-                    <p className="mt-1 truncate text-xs font-semibold text-[#1A4FBF]">
-                      {focus.serviceName} · {focus.progressPercent}%
-                    </p>
-                  ) : null}
-                </div>
-                <ArrowRight className="h-5 w-5 shrink-0 text-[#94A3B8]" aria-hidden />
-              </>
-            );
-            const className =
-              "flex w-full items-center gap-3 rounded-2xl bg-white p-3.5 text-left shadow-md transition active:scale-[0.99]";
-
-            if (option.external) {
-              return (
-                <li key={option.step}>
-                  <a
-                    href={option.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-analytics-placement={"analytics" in option ? option.analytics : undefined}
-                    className={className}
-                  >
-                    {inner}
-                  </a>
-                </li>
-              );
-            }
-
-            if (option.href.startsWith("mailto:")) {
-              return (
-                <li key={option.step}>
-                  <a href={option.href} className={className}>
-                    {inner}
-                  </a>
-                </li>
-              );
-            }
-
-            return (
-              <li key={option.step}>
-                <Link href={option.href} className={className}>
-                  {inner}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {focus ? (
+          <ExpedienteDocChannels
+            serviceName={focus.serviceName}
+            orderId={focus.id}
+            docCount={focus.docCount}
+            progressPercent={focus.progressPercent}
+            platformHref={platformHref}
+            variant="stack"
+            theme="brand"
+            showHeading
+          />
+        ) : (
+          <ExpedienteDocChannels
+            serviceName="Livendia"
+            orderId="panel"
+            platformHref={platformHref}
+            variant="stack"
+            theme="brand"
+            showHeading
+          />
+        )}
 
         {stats.total > 0 ? (
           <div className="mt-5 grid grid-cols-3 gap-2">
