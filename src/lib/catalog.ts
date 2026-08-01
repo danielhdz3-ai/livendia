@@ -12,8 +12,6 @@ export * from "@/lib/catalog.public";
 const SERVICE_SELECT =
   "id, slug, name, description, category, price_cents, is_recurring, features, badge";
 
-const HIDDEN_SLUGS = new Set(["pago-prueba-livendia"]);
-
 function normalizeServiceCategory(service: PublicService): PublicService {
   if (
     service.slug === "revision-documental-post-arras" ||
@@ -144,6 +142,20 @@ async function syncFixedCatalogPrices(services: PublicService[]): Promise<Public
   );
 }
 
+/** Servicio activo por slug. */
+export async function getServiceBySlug(slug: string): Promise<PublicService | null> {
+  const supabase = createAnonSupabaseClient();
+  const { data } = await supabase
+    .from("services")
+    .select(SERVICE_SELECT)
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+
+  if (!data) return null;
+  return normalizeServiceCategory(data as PublicService);
+}
+
 export async function getPublicServices(): Promise<PublicService[]> {
   // Cliente anónimo (sin cookies()): permite que las ~10 rutas -local/[slug]
   // que consumen este catálogo se prerendericen de forma estática en vez de
@@ -158,9 +170,7 @@ export async function getPublicServices(): Promise<PublicService[]> {
     .order("category", { ascending: true })
     .order("price_cents", { ascending: true });
 
-  const services = ((data ?? []) as PublicService[])
-    .filter((s) => !HIDDEN_SLUGS.has(s.slug))
-    .map(normalizeServiceCategory);
+  const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
   const withSeeds = await syncMissingCatalogSeeds(services);
   const withPrices = await syncFixedCatalogPrices(withSeeds);
   return withPrices.map(normalizeServiceCategory);
