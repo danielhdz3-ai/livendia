@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
 import { OrderStatusBadge } from "@/components/order-status-badge";
 import { PANEL_CARD, PANEL_MUTED, PANEL_SECTION_TITLE } from "@/lib/client-panel-ui";
 import { ArrowRight, Receipt } from "lucide-react";
@@ -24,18 +25,14 @@ export function PaymentsHistoryList({ rows }: { rows: PaymentHistoryRow[] }) {
       </div>
 
       {!rows.length ? (
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50/60 px-6 py-10 text-center">
-          <p className="font-semibold text-[#1E293B]">Sin pagos registrados</p>
-          <p className={`mt-2 ${PANEL_MUTED}`}>
-            Cuando contrates un servicio, aparecerá aquí con el importe y la fecha.
-          </p>
-          <Link
-            href="/dashboard/servicios"
-            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#1A4FBF] px-5 py-2.5 text-sm font-bold text-white"
-          >
-            Ver servicios
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="mt-6">
+          <ClientPanelEmptyState
+            icon={Receipt}
+            title="Sin pagos registrados"
+            description="Cuando contrates un servicio, aparecerá aquí con el importe, la fecha y enlace a tu expediente."
+            actionHref="/dashboard/servicios"
+            actionLabel="Ver servicios"
+          />
         </div>
       ) : (
         <ul className="mt-5 divide-y divide-slate-100">

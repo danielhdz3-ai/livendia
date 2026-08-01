@@ -103,3 +103,69 @@ body {
     display: flex;
   }
 }
+
+@keyframes livendia-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes livendia-check-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes livendia-progress-shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes livendia-ring-draw {
+  from {
+    stroke-dashoffset: var(--ring-circumference);
+  }
+}
+
+.livendia-panel-enter {
+  animation: livendia-fade-up 0.45s ease-out both;
+}
+
+.livendia-page-enter {
+  animation: livendia-fade-up 0.5s ease-out both;
+}
+
+.livendia-check-pop {
+  animation: livendia-check-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.livendia-progress-bar-shine {
+  background-size: 200% 100%;
+  animation: livendia-progress-shine 2.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .livendia-panel-enter,
+  .livendia-page-enter,
+  .livendia-check-pop,
+  .livendia-progress-bar-shine {
+    animation: none;
+  }
+}

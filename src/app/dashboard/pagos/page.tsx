@@ -1,3 +1,4 @@
+import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
 import { ClientPanelShell } from "@/components/client-panel-shell";
 import { PaymentsBillingCard } from "@/components/payments-billing-card";
 import { PaymentsHistoryList } from "@/components/payments-history-list";
@@ -46,12 +47,12 @@ export default async function PagosPage() {
   return (
     <ClientPanelShell
       title="Pagos y facturación"
-      subtitle="Consulta tu historial de cobros y gestiona métodos de pago de forma segura."
+      subtitle="Consulta tu historial de cobros y gestiona métodos de pago de forma segura con Stripe."
+      eyebrow="Facturación"
     >
-      <div className="space-y-6">
-        <PaymentsBillingCard hasStripeCustomer={hasStripeCustomer} />
-        <PaymentsHistoryList rows={historyRows} />
-      </div>
+      <PaymentsBillingCard hasStripeCustomer={hasStripeCustomer} />
+      <PaymentsHistoryList rows={historyRows} />
+      <LivendiaGestorCard compact />
     </ClientPanelShell>
   );
 }

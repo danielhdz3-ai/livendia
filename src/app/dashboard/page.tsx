@@ -1,5 +1,7 @@
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
 import { ClientPanelKpiStrip, ClientPanelPremiumHero } from "@/components/client-panel-premium";
+import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
+import { PanelContentEnter } from "@/components/panel-content-enter";
 import { OrderStatusBadge } from "@/components/order-status-badge";
 import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
 import { calculateOrderProgress } from "@/lib/order-progress";
@@ -272,6 +274,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         </header>
 
         {/* Content Area */}
+        <PanelContentEnter>
         <main className="flex-1 overflow-y-auto p-4 pb-6 lg:p-8">
           <Suspense fallback={null}>
             <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
@@ -340,22 +343,13 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             </div>
 
             {!orders?.length ? (
-              <div className="rounded-2xl border-2 border-dashed border-slate-200 bg-white p-12 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100">
-                  <Package className="h-8 w-8 text-[#64748B]" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Aún no tienes pedidos</h3>
-                <p className="mt-2 text-sm text-[#64748B]">
-                  Cuando contrates un servicio, aparecerá aquí con todo el seguimiento
-                </p>
-                <Link
-                  href="/servicios"
-                  className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#2563EB]"
-                >
-                  <Sparkles className="h-4 w-4" />
-                  <span>Explorar servicios</span>
-                </Link>
-              </div>
+              <ClientPanelEmptyState
+                icon={Package}
+                title="Aún no tienes pedidos"
+                description="Cuando contrates un servicio, aparecerá aquí con seguimiento y progreso de tu expediente."
+                actionHref="/dashboard/servicios"
+                actionLabel="Explorar servicios"
+              />
             ) : (
               <div className="space-y-4">
                 {orders.slice(0, 5).map((order) => {
@@ -482,6 +476,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             </div>
           </section>
         </main>
+        </PanelContentEnter>
       </div>
     </div>
   );

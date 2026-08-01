@@ -81,7 +81,7 @@ export function OrderUploadProgressPanel({
                 {item.error ? <p className="mt-1 text-xs text-red-600">{item.error}</p> : null}
               </div>
               {item.status === "done" ? (
-                <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
+                <span className="livendia-check-pop shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
                   OK
                 </span>
               ) : null}
@@ -99,7 +99,7 @@ export function OrderUploadSuccessBanner({ message }: { message: string }) {
       className="flex items-start gap-3 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white px-4 py-4 shadow-sm ring-1 ring-emerald-100"
       role="status"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 livendia-check-pop">
         <CheckCircle2 className="h-6 w-6 text-emerald-600" aria-hidden />
       </div>
       <div>

@@ -1,38 +1,63 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { PANEL_MUTED, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { PanelContentEnter } from "@/components/panel-content-enter";
+import { PANEL_HERO_STRIP, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { ArrowLeft, LayoutDashboard, Sparkles } from "lucide-react";
 
 export function ClientPanelShell({
   title,
   subtitle,
+  eyebrow = "Panel Livendia",
   backHref = "/dashboard",
   backLabel = "Volver al panel",
+  wide = false,
   children,
 }: {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   backHref?: string;
   backLabel?: string;
+  wide?: boolean;
   children: React.ReactNode;
 }) {
+  const maxW = wide ? "max-w-7xl" : "max-w-4xl";
+
   return (
     <div className={PANEL_PAGE_BG}>
-      <header className="border-b border-white/70 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-6">
-          <Link
-            href={backHref}
-            className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-[#1A4FBF] transition hover:text-[#06B6D4]"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden />
-            {backLabel}
-          </Link>
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-[#1E293B] sm:mt-4 sm:text-3xl">
-            {title}
-          </h1>
-          {subtitle ? <p className={`mt-1 ${PANEL_MUTED}`}>{subtitle}</p> : null}
+      <section className={`${PANEL_HERO_STRIP} relative overflow-hidden`}>
+        <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cyan-400/15 blur-3xl" />
+        <div className={`relative mx-auto ${maxW} px-4 py-6 sm:px-6 lg:py-8 xl:px-8`}>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link
+              href={backHref}
+              className="inline-flex min-h-10 items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm transition hover:bg-white/25"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden />
+              {backLabel}
+            </Link>
+            <Link
+              href="/dashboard"
+              className="hidden items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold text-blue-100 ring-1 ring-white/15 sm:inline-flex"
+            >
+              <LayoutDashboard className="h-3.5 w-3.5" aria-hidden />
+              Panel
+            </Link>
+          </div>
+
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-blue-100">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden />
+            {eyebrow}
+          </div>
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">{title}</h1>
+          {subtitle ? <p className={`mt-2 max-w-2xl text-sm text-blue-100 lg:text-base`}>{subtitle}</p> : null}
         </div>
-      </header>
-      <main className="mx-auto max-w-4xl px-4 py-6 pb-24 sm:px-6 sm:py-8 lg:pb-8">{children}</main>
+      </section>
+
+      <PanelContentEnter>
+        <main className={`mx-auto ${maxW} space-y-6 px-4 py-6 pb-24 sm:px-6 sm:py-8 lg:pb-8 xl:px-8`}>
+          {children}
+        </main>
+      </PanelContentEnter>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { MisPedidosListHero } from "@/components/mis-pedidos-list-hero";
 import { MisPedidosOrderCard } from "@/components/mis-pedidos-order-card";
+import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
+import { PanelContentEnter } from "@/components/panel-content-enter";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import { PANEL_CARD, PANEL_PAGE_BG, PANEL_SECTION_TITLE } from "@/lib/client-panel-ui";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { FileText, Package, Sparkles } from "lucide-react";
+import { FileText, Package } from "lucide-react";
 
 export const metadata = { title: "Mis expedientes" };
 
@@ -106,25 +108,19 @@ export default async function MisPedidosPage() {
         }
       />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8 xl:px-8">
-        {!enrichedOrders.length ? (
-          <div className={`${PANEL_CARD} border-2 border-dashed border-slate-200 bg-white/80 p-10 text-center lg:p-14`}>
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] shadow-lg lg:h-20 lg:w-20">
-              <Package className="h-8 w-8 text-white lg:h-10 lg:w-10" aria-hidden />
-            </div>
-            <h2 className="mt-6 text-xl font-extrabold text-[#1E293B] lg:text-2xl">Aún no tienes expedientes</h2>
-            <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#64748B]">
-              Cuando contrates un servicio, aparecerá aquí con seguimiento, progreso y subida de documentación.
-            </p>
-            <Link
-              href="/dashboard/servicios"
-              className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-2xl bg-gradient-to-r from-[#1A4FBF] to-[#2563EB] px-6 py-3 text-sm font-bold text-white shadow-lg"
-            >
-              <Sparkles className="h-4 w-4" aria-hidden />
-              Contratar servicio
-            </Link>
-          </div>
-        ) : (
+      <PanelContentEnter>
+        <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8 xl:px-8">
+          {!enrichedOrders.length ? (
+            <ClientPanelEmptyState
+              icon={Package}
+              title="Aún no tienes expedientes"
+              description="Cuando contrates un servicio, aparecerá aquí con seguimiento, progreso y subida de documentación."
+              actionHref="/dashboard/servicios"
+              actionLabel="Contratar servicio"
+              secondaryHref="/contacto"
+              secondaryLabel="Hablar con Daniel, tu gestor"
+            />
+          ) : (
           <div className="space-y-8">
             {activeOrders.length > 0 ? (
               <section>
@@ -183,7 +179,8 @@ export default async function MisPedidosPage() {
             </section>
           </div>
         )}
-      </main>
+        </main>
+      </PanelContentEnter>
     </div>
   );
 }

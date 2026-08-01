@@ -1,5 +1,6 @@
 import { ProfileForm } from "@/app/dashboard/perfil/profile-form";
 import { ClientPanelShell } from "@/components/client-panel-shell";
+import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -21,7 +22,8 @@ export default async function PerfilPage() {
   return (
     <ClientPanelShell
       title="Mi perfil"
-      subtitle="Actualiza tus datos de contacto y facturación para tus expedientes en Livendia."
+      subtitle="Tus datos de contacto y facturación para contratos y comunicaciones con tu gestor."
+      eyebrow="Datos personales"
     >
       <ProfileForm
         initial={{
@@ -33,14 +35,7 @@ export default async function PerfilPage() {
           role: profile?.role ?? "client",
         }}
       />
-
-      <p className="mt-6 text-center text-xs text-[#64748B] sm:text-sm">
-        Estos datos se usan en tus contratos y comunicaciones con tu gestor. Si necesitas ayuda, escribe a{" "}
-        <a href="mailto:info@livendia.com" className="font-semibold text-[#1A4FBF] hover:underline">
-          info@livendia.com
-        </a>
-        .
-      </p>
+      <LivendiaGestorCard compact />
     </ClientPanelShell>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Building2, Clock, Mail, Phone, ShieldCheck } from "lucide-react";
+import { Building2, Clock, Mail, Phone, ShieldCheck, UserRound } from "lucide-react";
 import { getBusinessLegalIdentity } from "@/lib/business-legal";
+import { LIVENDIA_GESTOR } from "@/lib/livendia-gestor";
 
 type LivendiaTrustPanelProps = {
   variant?: "default" | "compact";
@@ -36,6 +37,13 @@ export function LivendiaTrustPanel({ variant = "default" }: LivendiaTrustPanelPr
       </div>
 
       <ul className="mt-4 space-y-2 text-sm text-[#475569]">
+        <li className="flex items-start gap-2 rounded-xl bg-[#EFF6FF]/80 px-3 py-2.5 ring-1 ring-[#1A4FBF]/10">
+          <UserRound className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
+          <span>
+            <strong className="text-[#1E293B]">{LIVENDIA_GESTOR.name}</strong>
+            <span className="text-[#64748B]"> · {LIVENDIA_GESTOR.role.toLowerCase()}</span>
+          </span>
+        </li>
         <li className="flex items-start gap-2">
           <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
           <span>

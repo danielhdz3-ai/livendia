@@ -2,6 +2,7 @@ import { OrderDocuments, type DocRow } from "@/app/dashboard/order-documents";
 import { OrderTimeline, OrderTimelineCompact } from "@/app/mis-pedidos/[id]/order-timeline";
 import { ClientExpedienteContactPanel } from "@/components/client-expediente-contact-panel";
 import { ExpedienteDesktopHero } from "@/components/expediente-desktop-hero";
+import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
 import { LivendiaTrustPanel } from "@/components/livendia-trust-panel";
 import { OrderActivityFeed } from "@/components/order-activity-feed";
 import { OrderDeliverablesPanel } from "@/components/order-deliverables-panel";
@@ -12,8 +13,9 @@ import { OrderStatusBadge } from "@/components/order-status-badge";
 import { LogoutButton } from "@/app/dashboard/logout-button";
 import { mergeOrderActivity } from "@/lib/order-activity";
 import { calculateOrderProgress } from "@/lib/order-progress";
-import { PANEL_CARD, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { PanelContentEnter } from "@/components/panel-content-enter";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { PANEL_CARD, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, Calendar, Home, LayoutDashboard } from "lucide-react";
@@ -163,7 +165,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   const helpBlock = (
     <div className="space-y-4">
       <ClientExpedienteContactPanel serviceName={serviceName} orderId={order.id as string} />
-      <LivendiaTrustPanel variant="compact" />
+      <LivendiaGestorCard compact />
     </div>
   );
 
@@ -228,7 +230,8 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
         </div>
       </div>
 
-      <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8 xl:px-8">
+      <PanelContentEnter>
+        <main className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8 xl:px-8">
         <div className="lg:hidden">
           <OrderDetailMobileTabs
             defaultTab={showChecklist ? "documentos" : "resumen"}
@@ -256,6 +259,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
           <aside className="space-y-6 lg:col-span-4 lg:sticky lg:top-6">
             {trackingBlock}
             {activityBlock}
+            <LivendiaGestorCard compact />
             <LivendiaTrustPanel variant="compact" />
           </aside>
         </div>
@@ -270,6 +274,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
           </Link>
         </div>
       </main>
+      </PanelContentEnter>
     </div>
   );
 }

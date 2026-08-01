@@ -1,5 +1,5 @@
 import PanelPageSkeleton from "@/components/panel-page-skeleton";
 
-export default function MisPedidosLoading() {
+export default function MisPedidoDetalleLoading() {
   return <PanelPageSkeleton wide />;
 }
