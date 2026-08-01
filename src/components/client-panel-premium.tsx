@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { BUSINESS_EMAIL, getWhatsAppHref } from "@/lib/business-nap";
 import { PANEL_CARD, PANEL_HERO } from "@/lib/client-panel-ui";
-import { ArrowRight, Sparkles, Upload } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle, Sparkles, Upload } from "lucide-react";
 
 type FocusOrder = {
   id: string;
@@ -19,7 +20,49 @@ export function ClientPanelPremiumHero({
   focus: FocusOrder | null;
   stats: { total: number; active: number; completed: number };
 }) {
-  const needsDocs = focus && (focus.status === "pending_docs" || focus.status === "paid");
+  const platformHref = focus ? `/mis-pedidos/${focus.id}` : "/mis-pedidos";
+
+  const mailSubject = focus
+    ? `Documentación expediente · ${focus.serviceName} · ${focus.id.slice(0, 8)}`
+    : "Documentación expediente Livendia";
+  const mailHref = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(mailSubject)}`;
+  const waPrefill = focus
+    ? `Hola, soy cliente de Livendia. Quiero enviar documentación de mi expediente "${focus.serviceName}" (ref. ${focus.id.slice(0, 8)}).`
+    : "Hola, quiero enviar documentación de mi expediente en Livendia.";
+  const waHref = getWhatsAppHref(waPrefill);
+
+  const docOptions = [
+    {
+      step: "1",
+      title: "En la plataforma",
+      description: focus
+        ? `Sube PDF o fotos en tu expediente${focus.docCount > 0 ? ` · ${focus.docCount} archivo(s) ya subido(s)` : ""}.`
+        : "Sube PDF o fotos desde Mis expedientes.",
+      href: platformHref,
+      icon: Upload,
+      iconBg: "bg-[#EFF6FF] text-[#1A4FBF]",
+      external: false,
+    },
+    {
+      step: "2",
+      title: "Por WhatsApp",
+      description: "Envía tus archivos o fotos directamente a tu gestor.",
+      href: waHref,
+      icon: MessageCircle,
+      iconBg: "bg-[#DCFCE7] text-[#128C7E]",
+      external: true,
+      analytics: "dashboard_hero_whatsapp",
+    },
+    {
+      step: "3",
+      title: "Por email",
+      description: `Escríbenos a ${BUSINESS_EMAIL} con tus archivos adjuntos.`,
+      href: mailHref,
+      icon: Mail,
+      iconBg: "bg-slate-100 text-[#475569]",
+      external: false,
+    },
+  ] as const;
 
   return (
     <section className={`${PANEL_HERO} mb-6 lg:hidden`}>
@@ -29,52 +72,93 @@ export function ClientPanelPremiumHero({
           <Sparkles className="h-3.5 w-3.5" aria-hidden />
           Panel Livendia
         </div>
+
         <h2 className="mt-4 text-2xl font-extrabold tracking-tight">Hola, {firstName}</h2>
-        <p className="mt-2 max-w-md text-sm leading-relaxed text-blue-100">
-          {stats.active > 0
-            ? `Tienes ${stats.active} expediente(s) activo(s). Sigue el progreso y sube documentación desde aquí.`
-            : "Contrata online, sube documentación y habla con tu gestor desde un solo lugar."}
+        <p className="mt-2 text-sm font-medium text-blue-50">
+          Puedes enviar tu documentación de <span className="font-bold text-white">3 formas</span>:
         </p>
 
-        <div className="mt-5 grid grid-cols-3 gap-2">
-          {[
-            { label: "Pedidos", value: stats.total },
-            { label: "Activos", value: stats.active },
-            { label: "Cerrados", value: stats.completed },
-          ].map((item) => (
-            <div key={item.label} className="rounded-2xl bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
-              <p className="text-xl font-extrabold">{item.value}</p>
-              <p className="text-[11px] font-medium text-blue-100">{item.label}</p>
-            </div>
-          ))}
-        </div>
+        <ul className="mt-4 space-y-2.5" aria-label="Formas de enviar documentación">
+          {docOptions.map((option) => {
+            const Icon = option.icon;
+            const inner = (
+              <>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-xs font-extrabold text-white">
+                  {option.step}
+                </span>
+                <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${option.iconBg}`}>
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold text-[#1E293B]">{option.title}</p>
+                  <p className="mt-0.5 text-xs leading-snug text-[#64748B]">{option.description}</p>
+                  {option.step === "1" && focus ? (
+                    <p className="mt-1 truncate text-xs font-semibold text-[#1A4FBF]">
+                      {focus.serviceName} · {focus.progressPercent}%
+                    </p>
+                  ) : null}
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-[#94A3B8]" aria-hidden />
+              </>
+            );
+            const className =
+              "flex w-full items-center gap-3 rounded-2xl bg-white p-3.5 text-left shadow-md transition active:scale-[0.99]";
 
-        {focus ? (
-          <Link
-            href={`/mis-pedidos/${focus.id}`}
-            className="mt-5 flex items-center gap-4 rounded-2xl bg-white p-4 text-[#1E293B] shadow-lg"
-          >
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EFF6FF] text-[#1A4FBF]">
-              <Upload className="h-6 w-6" aria-hidden />
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold uppercase tracking-wide text-[#64748B]">
-                {needsDocs ? "Siguiente paso" : "Expediente activo"}
-              </p>
-              <p className="truncate font-bold">{focus.serviceName}</p>
-              <p className="mt-1 text-xs text-[#64748B]">
-                Progreso {focus.progressPercent}%
-                {focus.docCount > 0 ? ` · ${focus.docCount} doc.` : ""}
-              </p>
-            </div>
-            <ArrowRight className="h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
-          </Link>
+            if (option.external) {
+              return (
+                <li key={option.step}>
+                  <a
+                    href={option.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-analytics-placement={"analytics" in option ? option.analytics : undefined}
+                    className={className}
+                  >
+                    {inner}
+                  </a>
+                </li>
+              );
+            }
+
+            if (option.href.startsWith("mailto:")) {
+              return (
+                <li key={option.step}>
+                  <a href={option.href} className={className}>
+                    {inner}
+                  </a>
+                </li>
+              );
+            }
+
+            return (
+              <li key={option.step}>
+                <Link href={option.href} className={className}>
+                  {inner}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {stats.total > 0 ? (
+          <div className="mt-5 grid grid-cols-3 gap-2">
+            {[
+              { label: "Pedidos", value: stats.total },
+              { label: "Activos", value: stats.active },
+              { label: "Cerrados", value: stats.completed },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl bg-white/10 px-3 py-3 text-center backdrop-blur-sm">
+                <p className="text-xl font-extrabold">{item.value}</p>
+                <p className="text-[11px] font-medium text-blue-100">{item.label}</p>
+              </div>
+            ))}
+          </div>
         ) : (
           <Link
             href="/dashboard/servicios"
-            className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-[#1A4FBF] shadow-lg"
+            className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-white/15 px-5 py-3 text-sm font-bold text-white ring-1 ring-white/25"
           >
-            Contratar servicio
+            Contratar tu primer servicio
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         )}

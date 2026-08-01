@@ -1,5 +1,4 @@
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
-import { DashboardMobileQuickActions } from "@/components/dashboard-mobile-quick-actions";
 import { ClientPanelKpiStrip, ClientPanelPremiumHero } from "@/components/client-panel-premium";
 import { OrderStatusBadge } from "@/components/order-status-badge";
 import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
@@ -138,13 +137,6 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
         progressPercent: percent,
       };
     }) ?? [];
-
-  const uploadFocusOrder =
-    orders?.find((o) => o.status === "pending_docs" || o.status === "paid") ??
-    orders?.[0];
-  const mobileUploadHref = uploadFocusOrder
-    ? `/mis-pedidos/${uploadFocusOrder.id as string}`
-    : "/mis-pedidos";
 
   const heroFocus =
     (highlightOrderId ? mobileOrders.find((o) => o.id === highlightOrderId) : null) ??
@@ -290,8 +282,6 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             focus={heroFocus}
             stats={{ total: totalOrders, active: pendingOrders, completed: completedOrders }}
           />
-
-          <DashboardMobileQuickActions uploadHref={mobileUploadHref} />
 
           <div className="mb-6 hidden sm:grid">
             <ClientPanelKpiStrip

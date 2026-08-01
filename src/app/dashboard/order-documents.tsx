@@ -6,6 +6,7 @@ import {
   ORDER_DOC_ACCEPT_PHOTOS,
   ORDER_DOC_MAX_BYTES,
   ORDER_DOC_MAX_MB,
+  ORDER_DOC_TYPE_LABELS,
   buildOrderDocStoragePath,
   formatOrderDocBytes,
   guessOrderDocContentType,
@@ -24,16 +25,9 @@ export type DocRow = {
   created_at: string;
 };
 
-const DOC_TYPES: { value: string; label: string }[] = [
-  { value: "dni_propietario", label: "DNI propietario" },
-  { value: "dni_inquilino", label: "DNI inquilino" },
-  { value: "escrituras", label: "Escrituras" },
-  { value: "nota_simple", label: "Nota simple" },
-  { value: "contrato_actual", label: "Contrato actual" },
-  { value: "recibos", label: "Recibos" },
-  { value: "poder_notarial", label: "Poder notarial" },
-  { value: "otro", label: "Otro" },
-];
+const DOC_TYPES: { value: string; label: string }[] = Object.entries(ORDER_DOC_TYPE_LABELS).map(
+  ([value, label]) => ({ value, label }),
+);
 
 const MAX_BYTES = ORDER_DOC_MAX_BYTES;
 const MAX_FILES_PER_BATCH = 25;

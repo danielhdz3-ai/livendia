@@ -2,10 +2,40 @@ import { ORDER_DOC_TYPE_LABELS } from "@/lib/order-document-upload";
 
 /** Documentos recomendados por slug de servicio (orientación al cliente, no bloqueo). */
 const RECOMMENDED_BY_SLUG: Record<string, string[]> = {
-  "pago-prueba-livendia": ["dni_propietario", "otro"],
-  "contrato-alquiler-lau": ["dni_propietario", "dni_inquilino", "contrato_actual", "recibos"],
-  "contrato-alquiler-temporada": ["dni_propietario", "dni_inquilino", "contrato_actual"],
-  "contrato-alquiler-habitacion": ["dni_propietario", "dni_inquilino", "contrato_actual"],
+  "pago-prueba-livendia": [
+    "dni_propietario",
+    "contrato_alquiler",
+    "cedula_habitabilidad",
+    "certificado_energetico",
+    "facturas",
+    "otro",
+  ],
+  "contrato-alquiler-lau": [
+    "dni_propietario",
+    "dni_inquilino",
+    "contrato_alquiler",
+    "cedula_habitabilidad",
+    "certificado_energetico",
+    "facturas",
+    "contrato_actual",
+    "recibos",
+  ],
+  "contrato-alquiler-temporada": [
+    "dni_propietario",
+    "dni_inquilino",
+    "contrato_alquiler",
+    "cedula_habitabilidad",
+    "certificado_energetico",
+    "facturas",
+  ],
+  "contrato-alquiler-habitacion": [
+    "dni_propietario",
+    "dni_inquilino",
+    "contrato_alquiler",
+    "cedula_habitabilidad",
+    "certificado_energetico",
+    "facturas",
+  ],
   "contrato-arras-penitenciales": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple"],
   "contrato-arras-confirmatorias": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple"],
   "reserva-de-compra": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple"],
@@ -15,7 +45,17 @@ const RECOMMENDED_BY_SLUG: Record<string, string[]> = {
   "servicio-completo-venta": ["dni_propietario", "escrituras", "nota_simple", "recibos"],
 };
 
-const DEFAULT_RECOMMENDED = ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple", "recibos"];
+const DEFAULT_RECOMMENDED = [
+  "dni_propietario",
+  "dni_inquilino",
+  "contrato_alquiler",
+  "cedula_habitabilidad",
+  "certificado_energetico",
+  "facturas",
+  "escrituras",
+  "nota_simple",
+  "recibos",
+];
 
 export type OrderDocChecklistItem = {
   type: string;
