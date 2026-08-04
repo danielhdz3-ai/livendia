@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { AdminStorageDocLink } from "@/components/admin-storage-doc-link";
+import { AdminDocumentActions } from "@/components/admin/admin-document-actions";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { ORDER_DOCUMENT_LABEL_ES } from "@/lib/order-document-labels";
 import { fetchClientEmails } from "@/lib/admin-data";
@@ -118,13 +118,12 @@ export default async function AdminDocumentosPage({
                       })}
                     </td>
                     <td className="px-4 py-3">
-                      <AdminStorageDocLink path={d.filePath} className="text-xs font-semibold text-[#1A4FBF] hover:underline">
-                        Ver
-                      </AdminStorageDocLink>
-                      {" · "}
-                      <Link href={`/admin/expedientes/${d.orderId}`} className="text-xs font-semibold text-[#64748B] hover:underline">
-                        Expediente
-                      </Link>
+                      <div className="flex items-center gap-2">
+                        <AdminDocumentActions filePath={d.filePath} fileName={d.fileName} />
+                        <Link href={`/admin/expedientes/${d.orderId}`} className="text-xs font-semibold text-[#64748B] hover:underline">
+                          Expediente
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))

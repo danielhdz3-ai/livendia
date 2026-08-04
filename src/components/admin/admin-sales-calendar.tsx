@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { SalesDayBucket } from "@/lib/admin-data";
-import { ADMIN_CARD_PAD, ADMIN_MONEY } from "@/lib/admin-ui";
+import { ADMIN_CARD_COMPACT, ADMIN_CARD_PAD, ADMIN_MONEY } from "@/lib/admin-ui";
 
 const WEEKDAYS = ["L", "M", "X", "J", "V", "S", "D"];
 
@@ -21,10 +21,12 @@ export function AdminSalesCalendar({
   salesByDate,
   title = "Calendario de ventas",
   detailBaseHref = "/admin/expedientes",
+  compact = false,
 }: {
   salesByDate: Record<string, SalesDayBucket>;
   title?: string;
   detailBaseHref?: string;
+  compact?: boolean;
 }) {
   const today = new Date();
   const [viewYear, setViewYear] = useState(today.getFullYear());
@@ -55,6 +57,7 @@ export function AdminSalesCalendar({
 
   const todayKey = dateKeyLocal(today);
   const selectedBucket = selectedDate ? salesByDate[selectedDate] : null;
+  const cardClass = compact ? ADMIN_CARD_COMPACT : ADMIN_CARD_PAD;
 
   function prevMonth() {
     if (viewMonth === 0) {
@@ -73,37 +76,37 @@ export function AdminSalesCalendar({
   }
 
   return (
-    <div className={ADMIN_CARD_PAD}>
-      <div className="flex items-start justify-between gap-3">
+    <div className={`${cardClass} ${compact ? "flex h-full flex-col" : ""}`}>
+      <div className="flex items-center justify-between gap-2">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-[#64748B]">Calendario</p>
-          <h2 className="mt-1 text-lg font-bold text-[#1E293B]">{title}</h2>
-          <p className="mt-1 text-sm text-[#64748B]">
+          {!compact ? <p className="text-[11px] font-semibold uppercase tracking-wide text-[#64748B]">Calendario</p> : null}
+          <h2 className={`font-bold text-[#1E293B] ${compact ? "text-sm" : "mt-1 text-lg"}`}>{title}</h2>
+          <p className={`text-[#64748B] ${compact ? "text-[11px]" : "mt-1 text-sm"}`}>
             <span className={ADMIN_MONEY}>{(monthTotal / 100).toFixed(2)} €</span> este mes
           </p>
         </div>
-        <div className="flex items-center gap-1">
-          <button type="button" onClick={prevMonth} className="rounded-lg border border-slate-200 p-2 hover:bg-slate-50" aria-label="Mes anterior">
-            <ChevronLeft className="h-4 w-4" />
+        <div className="flex items-center gap-0.5">
+          <button type="button" onClick={prevMonth} className="rounded border border-slate-200 p-1 hover:bg-slate-50" aria-label="Mes anterior">
+            <ChevronLeft className="h-3.5 w-3.5" />
           </button>
-          <span className="min-w-[9rem] text-center text-sm font-semibold capitalize text-[#1E293B]">
+          <span className={`text-center font-semibold capitalize text-[#1E293B] ${compact ? "min-w-[6rem] text-[11px]" : "min-w-[9rem] text-sm"}`}>
             {monthLabel(viewYear, viewMonth)}
           </span>
-          <button type="button" onClick={nextMonth} className="rounded-lg border border-slate-200 p-2 hover:bg-slate-50" aria-label="Mes siguiente">
-            <ChevronRight className="h-4 w-4" />
+          <button type="button" onClick={nextMonth} className="rounded border border-slate-200 p-1 hover:bg-slate-50" aria-label="Mes siguiente">
+            <ChevronRight className="h-3.5 w-3.5" />
           </button>
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-[#94A3B8]">
+      <div className={`grid grid-cols-7 gap-0.5 text-center font-semibold text-[#94A3B8] ${compact ? "mt-2 text-[9px]" : "mt-4 text-[11px]"}`}>
         {WEEKDAYS.map((d) => (
           <div key={d}>{d}</div>
         ))}
       </div>
 
-      <div className="mt-1 grid grid-cols-7 gap-1">
+      <div className="mt-0.5 grid grid-cols-7 gap-0.5">
         {cells.map((cell, idx) => {
-          if (!cell.date || !cell.day) return <div key={`empty-${idx}`} className="aspect-square" />;
+          if (!cell.date || !cell.day) return <div key={`empty-${idx}`} className={compact ? "h-7" : "aspect-square"} />;
           const bucket = salesByDate[cell.date];
           const hasSales = Boolean(bucket?.orders.length);
           const isToday = cell.date === todayKey;
@@ -114,17 +117,19 @@ export function AdminSalesCalendar({
               key={cell.date}
               type="button"
               onClick={() => setSelectedDate(cell.date)}
-              className={`flex aspect-square flex-col items-center justify-center rounded-lg border text-xs transition ${
+              className={`flex flex-col items-center justify-center rounded border transition ${
+                compact ? "h-7 text-[10px]" : "aspect-square text-xs"
+              } ${
                 isSelected
-                  ? "border-[#1A4FBF] bg-[#EFF6FF] ring-2 ring-[#1A4FBF]/30"
+                  ? "border-[#1A4FBF] bg-[#EFF6FF] ring-1 ring-[#1A4FBF]/30"
                   : hasSales
                     ? "border-[#BFDBFE] bg-[#EFF6FF]/70 hover:bg-[#EFF6FF]"
                     : "border-slate-200 bg-white hover:bg-slate-50"
               } ${isToday && !isSelected ? "ring-1 ring-[#1A4FBF]/40" : ""}`}
             >
-              <span className="font-semibold text-[#1E293B]">{cell.day}</span>
-              {hasSales ? (
-                <span className="mt-0.5 text-[10px] font-bold text-[#1A4FBF]">{centsShort(bucket!.totalCents)}</span>
+              <span className="font-semibold leading-none text-[#1E293B]">{cell.day}</span>
+              {hasSales && !compact ? (
+                <span className="mt-0.5 text-[9px] font-bold text-[#1A4FBF]">{centsShort(bucket!.totalCents)}</span>
               ) : null}
             </button>
           );
@@ -132,52 +137,46 @@ export function AdminSalesCalendar({
       </div>
 
       {selectedBucket ? (
-        <div className="mt-5 border-t border-slate-100 pt-4">
+        <div className={`border-t border-slate-100 ${compact ? "mt-2 max-h-24 overflow-y-auto pt-2" : "mt-5 pt-4"}`}>
           <div className="flex items-center justify-between gap-2">
-            <p className="text-sm font-semibold text-[#1E293B]">
-              {new Date(selectedBucket.date).toLocaleDateString("es-ES", {
-                day: "numeric",
-                month: "long",
-              })}{" "}
-              · <span className={ADMIN_MONEY}>{(selectedBucket.totalCents / 100).toFixed(2)} €</span> ·{" "}
-              {selectedBucket.orders.length} venta(s)
+            <p className={`font-semibold text-[#1E293B] ${compact ? "text-[11px]" : "text-sm"}`}>
+              {new Date(selectedBucket.date).toLocaleDateString("es-ES", { day: "numeric", month: "short" })}{" "}
+              · <span className={ADMIN_MONEY}>{(selectedBucket.totalCents / 100).toFixed(2)} €</span>
             </p>
-            <button type="button" onClick={() => setSelectedDate(null)} className="text-xs font-semibold text-[#1A4FBF] hover:underline">
+            <button type="button" onClick={() => setSelectedDate(null)} className="text-[10px] font-semibold text-[#1A4FBF] hover:underline">
               Cerrar
             </button>
           </div>
-          <ul className="mt-3 space-y-2">
-            {selectedBucket.orders.map((o) => (
-              <li key={o.id} className="rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-3">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="font-semibold text-[#1E293B]">{o.clientName}</p>
-                    <p className="mt-0.5 text-xs text-[#64748B]">
-                      {o.serviceName} · {new Date(o.paidAt).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}
-                    </p>
-                    <p className="text-xs text-[#94A3B8]">{o.clientEmail}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className={`text-sm ${ADMIN_MONEY}`}>{(o.totalCents / 100).toFixed(2)} €</p>
-                    <Link href={`${detailBaseHref}/${o.id}`} className="mt-1 inline-block text-xs font-semibold text-[#1A4FBF] hover:underline">
-                      Ver expediente →
+          {!compact ? (
+            <ul className="mt-3 space-y-2">
+              {selectedBucket.orders.map((o) => (
+                <li key={o.id} className="rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#1E293B]">{o.clientName}</p>
+                      <p className="text-xs text-[#64748B]">{o.serviceName}</p>
+                    </div>
+                    <Link href={`${detailBaseHref}/${o.id}`} className="text-xs font-semibold text-[#1A4FBF] hover:underline">
+                      Ver →
                     </Link>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       ) : null}
 
-      <div className="mt-4 flex flex-wrap gap-4 text-[11px] text-[#64748B]">
-        <span className="inline-flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded border border-[#1A4FBF]/40 ring-1 ring-[#1A4FBF]/20" /> Hoy
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded bg-[#EFF6FF] ring-1 ring-[#BFDBFE]" /> Con ventas — click para ver detalle
-        </span>
-      </div>
+      {!compact ? (
+        <div className="mt-4 flex flex-wrap gap-4 text-[11px] text-[#64748B]">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded border border-[#1A4FBF]/40 ring-1 ring-[#1A4FBF]/20" /> Hoy
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded bg-[#EFF6FF] ring-1 ring-[#BFDBFE]" /> Con ventas
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 }

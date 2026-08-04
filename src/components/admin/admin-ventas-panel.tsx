@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { ExternalLink, Search } from "lucide-react";
-import { DeleteManualSaleButton, ManualSaleForm } from "@/components/admin/manual-sale-form";
+import { ManualSaleForm } from "@/components/admin/manual-sale-form";
+import { SalePaymentStatusSelect, SaleRowActions } from "@/components/admin/sale-row-actions";
 import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import type { AdminOrderRow, SalesDayBucket } from "@/lib/admin-data";
 import { formatEuros, isManualOrder } from "@/lib/admin-data";
-import { ADMIN_CARD_PAD, ADMIN_MONEY, ADMIN_TABLE_HEAD, ORDER_STATUS_LABEL, PAID_STATUSES } from "@/lib/admin-ui";
+import { ADMIN_CARD_PAD, ADMIN_MONEY, ADMIN_TABLE_HEAD, PAID_STATUSES } from "@/lib/admin-ui";
 
 type VentaRow = AdminOrderRow & { clientEmail: string };
 
@@ -77,7 +77,9 @@ export function AdminVentasPanel({
     });
   }, [orders, search, filter]);
 
-  const totalCents = filtered.filter((o) => o.paid_at).reduce((s, o) => s + (o.total_cents ?? 0), 0);
+  const totalCents = filtered
+    .filter((o) => o.paid_at && o.status !== "cancelled")
+    .reduce((s, o) => s + (o.total_cents ?? 0), 0);
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_22rem]">
@@ -139,7 +141,6 @@ export function AdminVentasPanel({
                   </tr>
                 ) : (
                   filtered.map((order) => {
-                    const paid = Boolean(order.paid_at);
                     const when = order.paid_at ?? order.created_at;
                     return (
                       <tr key={order.id} className="border-b border-slate-100 last:border-0">
@@ -172,25 +173,11 @@ export function AdminVentasPanel({
                           })}
                         </td>
                         <td className="px-4 py-3">
-                          <span
-                            className={`rounded-full px-2 py-1 text-xs font-semibold ${
-                              paid ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
-                            }`}
-                          >
-                            {paid ? "Pagado" : ORDER_STATUS_LABEL[order.status] ?? order.status}
-                          </span>
+                          <SalePaymentStatusSelect orderId={order.id} status={order.status} paidAt={order.paid_at} />
                         </td>
                         <td className={`px-4 py-3 ${ADMIN_MONEY}`}>{formatEuros(order.total_cents)}</td>
                         <td className="px-4 py-3">
-                          <div className="flex items-center gap-2">
-                            <Link
-                              href={`/admin/expedientes/${order.id}`}
-                              className="text-xs font-semibold text-[#1A4FBF] hover:underline"
-                            >
-                              Ver
-                            </Link>
-                            {isManualOrder(order) ? <DeleteManualSaleButton orderId={order.id} /> : null}
-                          </div>
+                          <SaleRowActions order={order} />
                         </td>
                       </tr>
                     );

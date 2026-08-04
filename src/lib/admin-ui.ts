@@ -1,14 +1,15 @@
 /** Tokens visuales del panel admin Livendia (sobero, azul). */
 
-export const ADMIN_SIDEBAR_BG = "bg-[#0F172A]";
+export const ADMIN_SIDEBAR_BG = "bg-gradient-to-b from-[#2563EB] to-[#1A4FBF]";
 export const ADMIN_PAGE_BG = "min-h-screen bg-[#F1F5F9]";
 export const ADMIN_CARD = "rounded-xl border border-slate-200/80 bg-white shadow-sm";
 export const ADMIN_CARD_PAD = `${ADMIN_CARD} p-5 sm:p-6`;
+export const ADMIN_CARD_COMPACT = `${ADMIN_CARD} p-3 sm:p-4`;
 
 export const ADMIN_NAV_ACTIVE =
-  "border border-[#1A4FBF]/40 bg-[#1A4FBF]/15 text-white shadow-[inset_0_0_0_1px_rgba(26,79,191,0.25)]";
+  "border border-white/30 bg-white/20 text-white shadow-sm";
 export const ADMIN_NAV_IDLE =
-  "border border-transparent text-slate-400 transition hover:border-white/10 hover:bg-white/5 hover:text-slate-200";
+  "border border-transparent text-white/75 transition hover:border-white/20 hover:bg-white/10 hover:text-white";
 
 export const ADMIN_STAT_LABEL = "text-[11px] font-semibold uppercase tracking-wide text-[#64748B]";
 export const ADMIN_TABLE_HEAD = "text-[11px] font-semibold uppercase tracking-wide text-[#64748B]";
@@ -33,3 +34,15 @@ export const ORDER_STATUS_LABEL: Record<string, string> = {
 };
 
 export const PAID_STATUSES = new Set(["paid", "pending_docs", "in_review", "in_progress", "completed", "delivered"]);
+
+export type SalePaymentStatus = "paid" | "refund";
+
+export function isSaleRefunded(order: { status: string }): boolean {
+  return order.status === "cancelled";
+}
+
+export function getSalePaymentLabel(order: { status: string; paid_at?: string | null }): string {
+  if (isSaleRefunded(order)) return "Devolución";
+  if (order.paid_at) return "Pagado";
+  return "Pendiente";
+}

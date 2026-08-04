@@ -1,8 +1,7 @@
-import { AdminStorageDocLink } from "@/components/admin-storage-doc-link";
+import { AdminDocumentCard } from "@/components/admin/admin-document-card";
 import { AdminNotifyDeliveredForm } from "@/app/admin/pedidos/[id]/admin-notify-delivered";
 import { AdminOrderStatusForm } from "@/app/admin/pedidos/[id]/admin-order-status";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
-import { ORDER_DOCUMENT_LABEL_ES } from "@/lib/order-document-labels";
 import { formatEuros } from "@/lib/admin-data";
 import { ADMIN_CARD_PAD, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
@@ -104,19 +103,17 @@ export default async function AdminExpedienteOrderPage({
             {!docs?.length ? (
               <p className="mt-4 text-sm text-[#64748B]">Sin archivos subidos.</p>
             ) : (
-              <ul className="mt-4 divide-y divide-slate-100">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {docs.map((d) => (
-                  <li key={d.id} className="py-4">
-                    <AdminStorageDocLink path={d.file_path as string}>{d.file_name as string}</AdminStorageDocLink>
-                    <p className="mt-1 text-xs text-[#64748B]">
-                      {ORDER_DOCUMENT_LABEL_ES[d.document_type as string] ?? d.document_type}
-                      {d.file_size != null ? ` · ${Math.round(Number(d.file_size) / 1024)} KB` : null}
-                      {" · "}
-                      {new Date(d.created_at as string).toLocaleString("es-ES")}
-                    </p>
-                  </li>
+                  <AdminDocumentCard
+                    key={d.id}
+                    fileName={d.file_name as string}
+                    filePath={d.file_path as string}
+                    documentType={d.document_type as string}
+                    uploadedAt={d.created_at as string}
+                  />
                 ))}
-              </ul>
+              </div>
             )}
           </section>
         </div>

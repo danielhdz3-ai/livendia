@@ -64,7 +64,7 @@ export function groupOrdersByPaidDate(
   const map = new Map<string, SalesDayBucket>();
 
   for (const order of orders) {
-    if (!order.paid_at || order.total_cents == null) continue;
+    if (!order.paid_at || order.total_cents == null || order.status === "cancelled") continue;
     const key = dateKey(order.paid_at);
     const bucket =
       map.get(key) ??

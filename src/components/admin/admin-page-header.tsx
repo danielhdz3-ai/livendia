@@ -25,16 +25,19 @@ export function AdminStatCard({
   label,
   value,
   hint,
+  compact = false,
 }: {
   label: string;
   value: string | number;
   hint?: string;
+  compact?: boolean;
 }) {
+  const cardClass = compact ? "rounded-xl border border-slate-200/80 bg-white p-3 shadow-sm" : ADMIN_CARD_PAD;
   return (
-    <div className={ADMIN_CARD_PAD}>
-      <p className="text-[11px] font-semibold uppercase tracking-wide text-[#64748B]">{label}</p>
-      <p className="mt-2 text-2xl font-bold text-[#1E293B]">{value}</p>
-      {hint ? <p className="mt-1 text-xs text-[#94A3B8]">{hint}</p> : null}
+    <div className={cardClass}>
+      <p className="text-[10px] font-semibold uppercase tracking-wide text-[#64748B]">{label}</p>
+      <p className={`font-bold text-[#1E293B] ${compact ? "mt-1 text-lg" : "mt-2 text-2xl"}`}>{value}</p>
+      {hint ? <p className="mt-0.5 text-[10px] text-[#94A3B8]">{hint}</p> : null}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AdminPageHeader, AdminStatCard } from "@/components/admin/admin-page-header";
+import { AdminStatCard } from "@/components/admin/admin-page-header";
 import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import {
   clientName,
@@ -10,7 +10,7 @@ import {
   serviceName,
   type AdminOrderRow,
 } from "@/lib/admin-data";
-import { ADMIN_CARD_PAD, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
+import { ADMIN_CARD_COMPACT, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -42,7 +42,7 @@ export default async function AdminDashboardPage() {
         "id, client_id, status, created_at, paid_at, total_cents, stripe_session_id, notes, services ( name, slug ), profiles ( full_name, phone )",
       )
       .order("created_at", { ascending: false })
-      .limit(6),
+      .limit(4),
     supabase
       .from("profiles")
       .select("*", { count: "exact", head: true })
@@ -50,7 +50,7 @@ export default async function AdminDashboardPage() {
       .gte("created_at", new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()),
   ]);
 
-  const paidOrders = (paidOrdersResult ?? []) as AdminOrderRow[];
+  const paidOrders = (paidOrdersResult ?? []).filter((o) => o.status !== "cancelled") as AdminOrderRow[];
   const clientIds = [...new Set(paidOrders.map((o) => o.client_id))];
   const emailByClient = await fetchClientEmails(clientIds);
 
@@ -71,51 +71,54 @@ export default async function AdminDashboardPage() {
   }
   const topServices = Object.entries(serviceCounts)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
+    .slice(0, 3);
 
   return (
-    <>
-      <AdminPageHeader title="Dashboard" subtitle="Resumen general de la plataforma" />
+    <div className="-m-2 flex h-[calc(100dvh-5.5rem)] flex-col overflow-hidden sm:-m-4">
+      <div className="mb-3 shrink-0">
+        <h1 className="text-xl font-bold text-[#1E293B] sm:text-2xl">Dashboard</h1>
+        <p className="text-xs text-[#64748B]">Resumen general de la plataforma</p>
+      </div>
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <AdminStatCard label="Total clientes" value={totalClients ?? 0} hint={`+${newClientsWeek ?? 0} esta semana`} />
-        <AdminStatCard label="Ventas registradas" value={salesCount} hint={`${activeOrders ?? 0} expedientes activos`} />
-        <AdminStatCard label="Ingresos del mes" value={formatEuros(monthRevenue)} hint={`Total: ${formatEuros(totalRevenue)}`} />
+      <div className="mb-3 grid shrink-0 grid-cols-2 gap-2 xl:grid-cols-4">
+        <AdminStatCard compact label="Total clientes" value={totalClients ?? 0} hint={`+${newClientsWeek ?? 0} semana`} />
+        <AdminStatCard compact label="Ventas" value={salesCount} hint={`${activeOrders ?? 0} activos`} />
+        <AdminStatCard compact label="Mes" value={formatEuros(monthRevenue)} hint={`Total ${formatEuros(totalRevenue)}`} />
         <AdminStatCard
+          compact
           label="Ticket medio"
           value={salesCount ? formatEuros(Math.round(totalRevenue / salesCount)) : "—"}
-          hint="Por venta pagada"
         />
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-[1fr_22rem]">
-        <div className="space-y-6">
-          <AdminSalesCalendar salesByDate={salesByDate} title="Calendario de ventas" detailBaseHref="/admin/expedientes" />
+      <div className="grid min-h-0 flex-1 gap-3 xl:grid-cols-[1fr_15rem]">
+        <div className="grid min-h-0 grid-rows-[auto_1fr] gap-3">
+          <AdminSalesCalendar compact salesByDate={salesByDate} detailBaseHref="/admin/expedientes" />
 
-          <div className={ADMIN_CARD_PAD}>
-            <div className="mb-4 flex items-center justify-between gap-2">
-              <h2 className="text-lg font-bold text-[#1E293B]">Actividad reciente</h2>
-              <Link href="/admin/ventas" className="text-sm font-semibold text-[#1A4FBF] hover:underline">
+          <div className={`${ADMIN_CARD_COMPACT} min-h-0 overflow-hidden`}>
+            <div className="mb-2 flex items-center justify-between">
+              <h2 className="text-sm font-bold text-[#1E293B]">Actividad reciente</h2>
+              <Link href="/admin/ventas" className="text-[11px] font-semibold text-[#1A4FBF] hover:underline">
                 Ver ventas →
               </Link>
             </div>
             {!recentOrders?.length ? (
-              <p className="py-6 text-center text-sm text-[#64748B]">No hay actividad reciente</p>
+              <p className="text-xs text-[#64748B]">No hay actividad reciente</p>
             ) : (
               <ul className="divide-y divide-slate-100">
                 {(recentOrders as AdminOrderRow[]).map((order) => (
                   <li key={order.id}>
                     <Link
                       href={`/admin/expedientes/${order.id}`}
-                      className="flex items-center justify-between gap-3 py-3 transition hover:bg-slate-50/80"
+                      className="flex items-center justify-between gap-2 py-2 transition hover:bg-slate-50/80"
                     >
                       <div className="min-w-0">
-                        <p className="truncate font-semibold text-[#1E293B]">{serviceName(order)}</p>
-                        <p className="truncate text-sm text-[#64748B]">{clientName(order)}</p>
+                        <p className="truncate text-xs font-semibold text-[#1E293B]">{serviceName(order)}</p>
+                        <p className="truncate text-[11px] text-[#64748B]">{clientName(order)}</p>
                       </div>
                       <div className="shrink-0 text-right">
-                        <p className="text-sm font-semibold text-[#1A4FBF]">{formatEuros(order.total_cents)}</p>
-                        <p className="text-xs text-[#94A3B8]">{ORDER_STATUS_LABEL[order.status] ?? order.status}</p>
+                        <p className="text-xs font-semibold text-[#1A4FBF]">{formatEuros(order.total_cents)}</p>
+                        <p className="text-[10px] text-[#94A3B8]">{ORDER_STATUS_LABEL[order.status] ?? order.status}</p>
                       </div>
                     </Link>
                   </li>
@@ -125,31 +128,31 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        <aside className="space-y-6">
-          <div className={ADMIN_CARD_PAD}>
-            <h2 className="text-sm font-bold text-[#1E293B]">Servicios más contratados</h2>
+        <aside className="flex min-h-0 flex-col gap-3">
+          <div className={`${ADMIN_CARD_COMPACT} min-h-0 flex-1 overflow-hidden`}>
+            <h2 className="text-xs font-bold text-[#1E293B]">Top servicios</h2>
             {!topServices.length ? (
-              <p className="mt-4 text-sm text-[#64748B]">No hay datos disponibles</p>
+              <p className="mt-2 text-xs text-[#64748B]">Sin datos</p>
             ) : (
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2 space-y-1.5">
                 {topServices.map(([name, count], idx) => (
-                  <li key={name} className="flex items-center justify-between gap-2 text-sm">
-                    <span className="flex items-center gap-2 text-[#475569]">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#EFF6FF] text-xs font-bold text-[#1A4FBF]">
+                  <li key={name} className="flex items-center justify-between gap-1 text-[11px]">
+                    <span className="flex min-w-0 items-center gap-1.5 text-[#475569]">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#EFF6FF] text-[10px] font-bold text-[#1A4FBF]">
                         {idx + 1}
                       </span>
-                      {name}
+                      <span className="truncate">{name}</span>
                     </span>
-                    <span className="font-semibold text-[#1A4FBF]">{count}</span>
+                    <span className="shrink-0 font-semibold text-[#1A4FBF]">{count}</span>
                   </li>
                 ))}
               </ul>
             )}
           </div>
 
-          <div className={ADMIN_CARD_PAD}>
-            <h2 className="text-sm font-bold text-[#1E293B]">Accesos rápidos</h2>
-            <div className="mt-3 space-y-2 text-sm">
+          <div className={ADMIN_CARD_COMPACT}>
+            <h2 className="text-xs font-bold text-[#1E293B]">Accesos rápidos</h2>
+            <div className="mt-2 space-y-1">
               {[
                 { href: "/admin/expedientes", label: "Expedientes" },
                 { href: "/admin/ventas", label: "Ventas" },
@@ -159,7 +162,7 @@ export default async function AdminDashboardPage() {
                 <Link
                   key={href}
                   href={href}
-                  className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2.5 font-medium text-[#1E293B] transition hover:border-[#1A4FBF]/30 hover:bg-[#EFF6FF]/40"
+                  className="flex items-center justify-between rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-medium text-[#1E293B] hover:border-[#1A4FBF]/30 hover:bg-[#EFF6FF]/40"
                 >
                   {label}
                   <span className="text-[#1A4FBF]">→</span>
@@ -169,6 +172,6 @@ export default async function AdminDashboardPage() {
           </div>
         </aside>
       </div>
-    </>
+    </div>
   );
 }

@@ -39,10 +39,10 @@ export function AdminSidebar({ adminEmail }: { adminEmail: string }) {
 
   return (
     <aside className={`flex w-64 shrink-0 flex-col ${ADMIN_SIDEBAR_BG} text-white`}>
-      <div className="border-b border-white/10 px-5 py-6">
+      <div className="border-b border-white/20 px-5 py-6">
         <Link href="/admin" className="block">
           <span className="text-xl font-extrabold tracking-tight text-white">Livendia</span>
-          <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#60A5FA]">
+          <span className="mt-1 block text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
             Administración
           </span>
         </Link>
@@ -59,17 +59,17 @@ export function AdminSidebar({ adminEmail }: { adminEmail: string }) {
               href={href}
               className={`flex items-start gap-3 rounded-xl px-3 py-3 ${active ? ADMIN_NAV_ACTIVE : ADMIN_NAV_IDLE}`}
             >
-              <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${active ? "text-[#60A5FA]" : ""}`} aria-hidden />
+              <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${active ? "text-white" : "text-white/70"}`} aria-hidden />
               <span>
                 <span className="block text-sm font-semibold">{label}</span>
-                <span className="block text-[11px] text-slate-500">{subtitle}</span>
+                <span className="block text-[11px] text-white/60">{subtitle}</span>
               </span>
             </Link>
           );
         })}
 
-        <div className="my-4 border-t border-white/10 pt-4">
-          <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-500">Operaciones</p>
+        <div className="my-4 border-t border-white/20 pt-4">
+          <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-white/50">Operaciones</p>
           {OPS_NAV.map(({ href, label, icon: Icon }) => {
             const active = navActive(pathname, href);
             return (
@@ -86,10 +86,10 @@ export function AdminSidebar({ adminEmail }: { adminEmail: string }) {
         </div>
       </nav>
 
-      <div className="border-t border-white/10 p-4">
-        <div className="rounded-xl bg-white/5 px-3 py-3 ring-1 ring-white/10">
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Administrador</p>
-          <p className="mt-1 truncate text-sm text-slate-200">{adminEmail}</p>
+      <div className="border-t border-white/20 p-4">
+        <div className="rounded-xl bg-white/15 px-3 py-3 ring-1 ring-white/20">
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-white/60">Administrador</p>
+          <p className="mt-1 truncate text-sm text-white">{adminEmail}</p>
         </div>
         <div className="mt-3">
           <AdminExitActions variant="sidebar" />

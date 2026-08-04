@@ -193,24 +193,82 @@ export async function createManualSale(input: {
 }
 
 export async function deleteManualSale(orderId: string) {
+  return deleteSaleByAdmin(orderId);
+}
+
+export async function deleteSaleByAdmin(orderId: string) {
   const auth = await assertAdmin();
   if (auth.error || !auth.supabase) return { error: auth.error };
-
-  const { data: order } = await auth.supabase
-    .from("orders")
-    .select("stripe_session_id")
-    .eq("id", orderId)
-    .maybeSingle();
-
-  if (!order) return { error: "Venta no encontrada" };
-  if (order.stripe_session_id) {
-    return { error: "Solo se pueden eliminar ventas manuales (sin Stripe)." };
-  }
 
   const { error } = await auth.supabase.from("orders").delete().eq("id", orderId);
   if (error) return { error: error.message };
 
   revalidateAdminSales();
+  return { ok: true };
+}
+
+export async function updateSaleByAdmin(input: {
+  orderId: string;
+  totalCents: number;
+  notes?: string;
+}) {
+  const auth = await assertAdmin();
+  if (auth.error || !auth.supabase) return { error: auth.error };
+
+  const totalCents = Math.round(input.totalCents);
+  if (totalCents <= 0) return { error: "Importe inválido." };
+
+  const { error } = await auth.supabase
+    .from("orders")
+    .update({
+      total_cents: totalCents,
+      notes: input.notes?.trim() || null,
+    })
+    .eq("id", input.orderId);
+
+  if (error) return { error: error.message };
+
+  revalidateAdminSales();
+  revalidatePath(`/admin/expedientes/${input.orderId}`);
+  return { ok: true };
+}
+
+export async function updateSalePaymentStatus(orderId: string, paymentStatus: "paid" | "refund") {
+  const auth = await assertAdmin();
+  if (auth.error || !auth.supabase) return { error: auth.error };
+
+  const { data: order } = await auth.supabase
+    .from("orders")
+    .select("paid_at, notes, status")
+    .eq("id", orderId)
+    .maybeSingle();
+
+  if (!order) return { error: "Venta no encontrada" };
+
+  if (paymentStatus === "refund") {
+    const note = order.notes?.includes("[Devolución]") ? order.notes : `[Devolución] ${order.notes ?? ""}`.trim();
+    const { error } = await auth.supabase
+      .from("orders")
+      .update({ status: "cancelled", notes: note })
+      .eq("id", orderId);
+    if (error) return { error: error.message };
+  } else {
+    const paidAt = order.paid_at ?? new Date().toISOString();
+    const note = (order.notes ?? "").replace(/^\[Devolución\]\s*/, "").trim() || null;
+    const status = order.status === "cancelled" ? "pending_docs" : order.status;
+    const { error } = await auth.supabase
+      .from("orders")
+      .update({
+        status: status === "cancelled" ? "pending_docs" : status,
+        paid_at: paidAt,
+        notes: note,
+      })
+      .eq("id", orderId);
+    if (error) return { error: error.message };
+  }
+
+  revalidateAdminSales();
+  revalidatePath(`/admin/expedientes/${orderId}`);
   return { ok: true };
 }
 
