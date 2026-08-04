@@ -397,3 +397,33 @@ const SERVICE_LANDING_PATH_OVERRIDES: Record<string, string> = {
 export function servicePublicLandingPath(slug: string): string {
   return SERVICE_LANDING_PATH_OVERRIDES[slug] ?? `/servicios/${slug}`;
 }
+
+/** Títulos breves para tarjetas (grilla/carrusel); la ficha conserva el nombre completo. */
+export const SERVICE_CARD_TITLE: Record<string, string> = {
+  "servicio-completo-compra": "Servicio completo de compra",
+  "servicio-completo-venta": "Servicio completo de venta",
+  "revision-documental-post-arras": "Revisión documental post-arras",
+  "gestion-documental-vendedor": "Gestión documental vendedor",
+  "acompanamiento-compra-parking-trastero": "Compra parking o trastero",
+  "contrato-arras-penitenciales": "Arras penitenciales",
+  "contrato-arras-confirmatorias": "Arras confirmatorias",
+  "reserva-de-compra": "Reserva de compra",
+  "acompanamiento-reserva-arras": "Reserva y arras",
+  "contrato-alquiler-lau": "Contrato alquiler LAU",
+  "contrato-alquiler-temporada": "Alquiler por temporada",
+  "contrato-alquiler-habitacion": "Alquiler de habitación",
+  "revision-contrato-alquiler": "Revisión contrato alquiler",
+  "acompanamiento-alquiler": "Acompañamiento de alquiler",
+  "administracion-alquiler": "Administración de alquiler",
+  [PAGO_PRUEBA_LIVENDIA_SLUG]: "Pago de prueba",
+};
+
+export function getServiceCardTitle(service: Pick<PublicService, "slug" | "name">): string {
+  const mapped = SERVICE_CARD_TITLE[service.slug];
+  if (mapped) return mapped;
+  return service.name
+    .replace(/^Contrato de /i, "")
+    .replace(/^Pack /i, "")
+    .replace(/: reserva a escritura$/i, "")
+    .trim();
+}
