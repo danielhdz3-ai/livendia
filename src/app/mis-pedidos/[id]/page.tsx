@@ -4,7 +4,8 @@ import { ClientExpedienteContactPanel } from "@/components/client-expediente-con
 import { ExpedienteDesktopHero } from "@/components/expediente-desktop-hero";
 import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
 import { LivendiaTrustPanel } from "@/components/livendia-trust-panel";
-import { OrderActivityFeed } from "@/components/order-activity-feed";
+import { OrderActivityFeedLive } from "@/components/order-activity-feed-live";
+import { MisPedidosPullRefresh } from "@/components/mis-pedidos-pull-refresh";
 import { OrderDeliverablesPanel } from "@/components/order-deliverables-panel";
 import { OrderDetailMobileTabs } from "@/components/order-detail-mobile-tabs";
 import { OrderDocChecklist } from "@/components/order-doc-checklist";
@@ -152,7 +153,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
     </section>
   );
 
-  const activityBlock = <OrderActivityFeed items={activityItems} />;
+  const activityBlock = <OrderActivityFeedLive orderId={id} initialItems={activityItems} />;
 
   const summaryBlock = (
     <div className="space-y-4">
@@ -170,6 +171,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
   );
 
   return (
+    <MisPedidosPullRefresh>
     <div className={`min-h-screen pb-6 lg:pb-0 ${PANEL_PAGE_BG}`}>
       <header className="hidden border-b border-slate-200 bg-white/90 backdrop-blur lg:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 xl:px-8">
@@ -276,5 +278,6 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
       </main>
       </PanelContentEnter>
     </div>
+    </MisPedidosPullRefresh>
   );
 }

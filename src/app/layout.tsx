@@ -8,6 +8,7 @@ import { WebsiteStructuredData } from "@/components/website-structured-data";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
 import { ClientAreaChrome } from "@/components/client-area-chrome";
+import { PwaRegister } from "@/components/pwa-register";
 import { ToastProvider } from "@/components/toast-provider";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import "./globals.css";
@@ -49,6 +50,15 @@ export const metadata: Metadata = {
     icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],
     apple: [{ url: "/apple-icon.svg", type: "image/svg+xml", sizes: "180x180" }],
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Livendia",
+    statusBarStyle: "black-translucent",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export default function RootLayout({
@@ -66,6 +76,7 @@ export default function RootLayout({
         <ToastProvider>
           {children}
         </ToastProvider>
+        <PwaRegister />
         <PublicMobileChrome />
         <ClientAreaChrome />
         <FloatingWhatsAppButton />

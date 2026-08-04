@@ -1,6 +1,7 @@
 "use client";
 
 import { MobilePhotoSidesSheet } from "@/components/mobile-photo-sides-sheet";
+import { DocumentPreviewModal } from "@/components/document-preview-modal";
 import {
   OrderUploadProgressPanel,
   OrderUploadSuccessBanner,
@@ -31,6 +32,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
   CheckCircle2,
+  Download,
   FileText,
   ImageIcon,
   ShieldCheck,
@@ -185,6 +187,10 @@ export function OrderDocuments({
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
   const [photoSheetOpen, setPhotoSheetOpen] = useState(false);
   const [recentlyUploadedIds, setRecentlyUploadedIds] = useState<Set<string>>(new Set());
+  const [preview, setPreview] = useState<{ fileName: string; filePath: string } | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [previewError, setPreviewError] = useState<string | null>(null);
 
   const docTypeLabel = typeLabel(docType);
   const requireBothSides = orderDocTypeNeedsTwoSides(docType);
@@ -348,6 +354,33 @@ export function OrderDocuments({
     e.preventDefault();
     setDragOver(false);
     if (e.dataTransfer.files?.length) void processFiles(e.dataTransfer.files);
+  }
+
+  async function openPreview(path: string, fileName: string) {
+    setPreview({ fileName, filePath: path });
+    setPreviewUrl(null);
+    setPreviewError(null);
+    setPreviewLoading(true);
+    try {
+      const supabase = createBrowserSupabaseClient();
+      const { data, error } = await supabase.storage.from("documents").createSignedUrl(path, 3600);
+      if (error || !data?.signedUrl) {
+        setPreviewError(`No se pudo abrir «${fileName}». Recarga e inténtalo de nuevo.`);
+        return;
+      }
+      setPreviewUrl(data.signedUrl);
+    } catch {
+      setPreviewError("Error de red al cargar la vista previa.");
+    } finally {
+      setPreviewLoading(false);
+    }
+  }
+
+  function closePreview() {
+    setPreview(null);
+    setPreviewUrl(null);
+    setPreviewError(null);
+    setPreviewLoading(false);
   }
 
   async function download(path: string, fileName: string) {
@@ -558,10 +591,18 @@ export function OrderDocuments({
                     <button
                       type="button"
                       className="inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#1A4FBF] px-4 text-sm font-semibold text-white hover:bg-[#2563EB] sm:flex-none"
-                      onClick={() => void download(d.file_path, d.file_name)}
+                      onClick={() => void openPreview(d.file_path, d.file_name)}
                     >
                       <CheckCircle2 className="h-4 w-4 opacity-80" aria-hidden />
-                      Abrir
+                      Ver
+                    </button>
+                    <button
+                      type="button"
+                      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#1A4FBF]/30 bg-white px-3 text-sm font-semibold text-[#1A4FBF] hover:bg-blue-50"
+                      onClick={() => void download(d.file_path, d.file_name)}
+                      aria-label={`Descargar ${d.file_name}`}
+                    >
+                      <Download className="h-4 w-4" aria-hidden />
                     </button>
                     {canUpload ? (
                       <button
@@ -581,6 +622,18 @@ export function OrderDocuments({
           </ul>
         )}
       </div>
+
+      <DocumentPreviewModal
+        open={preview !== null}
+        fileName={preview?.fileName ?? ""}
+        signedUrl={previewUrl}
+        loading={previewLoading}
+        error={previewError}
+        onClose={closePreview}
+        onDownload={() => {
+          if (preview) void download(preview.filePath, preview.fileName);
+        }}
+      />
 
       <MobilePhotoSidesSheet
         open={photoSheetOpen}

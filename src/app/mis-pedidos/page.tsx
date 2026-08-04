@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { MisPedidosListHero } from "@/components/mis-pedidos-list-hero";
 import { MisPedidosOrderCard } from "@/components/mis-pedidos-order-card";
 import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
+import { MisPedidosPullRefresh } from "@/components/mis-pedidos-pull-refresh";
 import { PanelContentEnter } from "@/components/panel-content-enter";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import { PANEL_CARD, PANEL_PAGE_BG, PANEL_SECTION_TITLE } from "@/lib/client-panel-ui";
@@ -87,6 +88,7 @@ export default async function MisPedidosPage() {
     null;
 
   return (
+    <MisPedidosPullRefresh>
     <div className={`min-h-screen pb-24 lg:pb-8 ${PANEL_PAGE_BG}`}>
       <MisPedidosListHero
         firstName={firstName}
@@ -182,5 +184,6 @@ export default async function MisPedidosPage() {
         </main>
       </PanelContentEnter>
     </div>
+    </MisPedidosPullRefresh>
   );
 }

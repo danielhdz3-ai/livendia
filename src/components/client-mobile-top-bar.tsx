@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ClientNotificationCenter } from "@/components/client-notification-center";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export function ClientMobileTopBar() {
@@ -39,6 +40,7 @@ export function ClientMobileTopBar() {
           <span className="block text-lg font-extrabold leading-tight text-[#1A4FBF]">Livendia</span>
           <span className="block truncate text-xs text-[#64748B]">{userLabel}</span>
         </Link>
+        <ClientNotificationCenter compact />
       </div>
     </header>
   );

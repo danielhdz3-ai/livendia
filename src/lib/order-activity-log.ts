@@ -1,4 +1,5 @@
 import { createServiceRoleClient } from "@/lib/supabase/service";
+import { mapActivityKindToNotification, notifyOrderClient } from "@/lib/client-notifications";
 
 export type OrderActivityKind = "status" | "document" | "payment" | "deliverable" | "note";
 
@@ -18,6 +19,16 @@ export async function logOrderActivity(input: {
       description: input.description ?? null,
       meta: input.meta ?? {},
     });
+
+    const notifKind = mapActivityKindToNotification(input.kind);
+    if (notifKind) {
+      await notifyOrderClient({
+        orderId: input.orderId,
+        kind: notifKind,
+        title: input.title,
+        message: input.description ?? null,
+      });
+    }
   } catch (error) {
     console.error("[order-activity]", error);
   }

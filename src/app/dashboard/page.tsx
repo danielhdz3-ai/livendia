@@ -1,3 +1,4 @@
+import { ClientNotificationCenter } from "@/components/client-notification-center";
 import { DashboardPostPaymentBanner } from "@/components/dashboard-post-payment-banner";
 import { ClientPanelKpiStrip, ClientPanelPremiumHero } from "@/components/client-panel-premium";
 import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
@@ -17,7 +18,6 @@ import { LogoutButton } from "./logout-button";
 import {
   Home,
   FileText,
-  Bell,
   Settings,
   Clock,
   CheckCircle2,
@@ -249,14 +249,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             </div>
 
             <div className="flex items-center gap-3">
-              <button className="relative rounded-xl border border-slate-200 p-2.5 transition hover:bg-slate-50">
-                <Bell className="h-5 w-5 text-[#64748B]" />
-                {pendingOrders > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#06B6D4] text-[10px] font-bold text-white">
-                    {pendingOrders}
-                  </span>
-                )}
-              </button>
+              <ClientNotificationCenter />
 
               <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-sm font-bold text-white">
