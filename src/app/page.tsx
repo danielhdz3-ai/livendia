@@ -1,5 +1,6 @@
 import { FaqSection } from "@/components/faq-section";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import { HomeHowItWorks } from "@/components/home-how-it-works";
 import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { HomeMobileHero } from "@/components/home-mobile-hero";
 import { HomeMobileQuickActions } from "@/components/home-mobile-quick-actions";
@@ -76,7 +77,7 @@ export default async function Home() {
         <section className="relative hidden overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white lg:block">
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
-              <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+              <div className="livendia-hero-stagger flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                 <h1 className="mb-4 text-3xl font-bold leading-snug sm:mb-6 sm:text-4xl sm:leading-tight md:text-5xl lg:mb-8 lg:text-7xl">
                   La gestoría inmobiliaria que cuida de los tuyos
                 </h1>
@@ -126,32 +127,7 @@ export default async function Home() {
           <HomeSitelinksNav />
         </div>
 
-        <section id="como-funciona" className="border-b border-slate-200 bg-white py-12 sm:py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">Cómo funciona</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-[#475569]">
-              Tres pasos para dejar la parte legal y administrativa en manos expertas.
-            </p>
-            <ol className="mt-12 grid gap-8 md:grid-cols-3">
-              {[
-                { step: "1", title: "Eliges", body: "Servicio o pack según tu operación: alquiler, compraventa o administración." },
-                { step: "2", title: "Pagas", body: "Checkout seguro. Recibes acceso a tu área privada y próximos pasos claros." },
-                { step: "3", title: "Gestionamos", body: "Subes documentación; nosotros redactamos, revisamos y te acompañamos." },
-              ].map((item) => (
-                <li
-                  key={item.step}
-                  className="rounded-2xl border border-slate-200 bg-[#F1F5F9] p-8 shadow-sm"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1A4FBF] text-sm font-bold text-white">
-                    {item.step}
-                  </span>
-                  <h3 className="mt-4 text-xl font-bold text-[#1E293B]">{item.title}</h3>
-                  <p className="mt-2 text-[#475569]">{item.body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <HomeHowItWorks />
 
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">

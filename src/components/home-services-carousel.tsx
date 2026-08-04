@@ -111,7 +111,7 @@ export function HomeServicesCarousel({ services }: HomeServicesCarouselProps) {
               return (
                 <div
                   key={service.id}
-                  className="shrink-0 transition-[transform,opacity] duration-300"
+                  className="flex h-[32rem] shrink-0 transition-[transform,opacity] duration-300"
                   style={{
                     flex: `0 0 ${basisPx}px`,
                     transform: visible === 3 ? (isCenter ? "scale(1.015)" : "scale(0.985)") : undefined,
@@ -121,11 +121,11 @@ export function HomeServicesCarousel({ services }: HomeServicesCarouselProps) {
                   <ServicePurchaseCard
                     service={service}
                     onSelect={() => setSelectedService(service)}
-                    className={
+                    className={`w-full ${
                       isCenter && visible === 3
                         ? "shadow-[0_28px_50px_-28px_rgb(26_79_191/0.35)] ring-[rgb(26_79_191/0.35)]"
                         : ""
-                    }
+                    }`}
                     imageHeightClass="h-48"
                   />
                 </div>

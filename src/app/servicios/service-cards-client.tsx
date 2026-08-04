@@ -30,20 +30,20 @@ export function ServiceCardsClient({ services, mode = "checkout" }: ServiceCards
 
   return (
     <>
-      <ul className="mt-6 grid list-none items-stretch gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-6 grid list-none auto-rows-fr items-stretch gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <li key={service.id} className="min-w-0">
+          <li key={service.id} className="flex min-h-0 min-w-0">
             {mode === "landing" ? (
               <ServicePurchaseCard
                 service={service}
                 href={servicePublicLandingPath(service.slug)}
-                className="h-full w-full"
+                className="w-full"
               />
             ) : (
               <ServicePurchaseCard
                 service={service}
                 onSelect={() => setSelectedService(service)}
-                className="h-full w-full"
+                className="w-full"
               />
             )}
           </li>

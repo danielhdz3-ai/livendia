@@ -31,8 +31,8 @@ export function MobileServicesList({ services }: MobileServicesListProps) {
             <ServicePurchaseCard
               service={service}
               onSelect={() => setSelectedService(service)}
-              className="shadow-sm"
-              imageHeightClass="h-40"
+              className="w-full"
+              imageHeightClass="h-48"
             />
           </li>
         ))}
