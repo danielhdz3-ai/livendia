@@ -52,6 +52,26 @@ const nextConfig: NextConfig = {
         destination: "/servicios/contrato-de-arras",
         statusCode: 301,
       },
+      {
+        source: "/admin/pedidos",
+        destination: "/admin/expedientes",
+        permanent: false,
+      },
+      {
+        source: "/admin/pedidos/:id",
+        destination: "/admin/expedientes/:id",
+        permanent: false,
+      },
+      {
+        source: "/admin/clientes",
+        destination: "/admin/base-datos",
+        permanent: false,
+      },
+      {
+        source: "/admin/clientes/:clientId",
+        destination: "/admin/expedientes/cliente/:clientId",
+        permanent: false,
+      },
     ];
   },
 };

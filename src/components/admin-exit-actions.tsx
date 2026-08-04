@@ -12,7 +12,7 @@ function setViewAsClientCookie() {
 }
 
 type AdminExitActionsProps = {
-  variant?: "header";
+  variant?: "header" | "sidebar";
 };
 
 export function AdminExitActions({ variant = "header" }: AdminExitActionsProps) {
@@ -27,6 +27,38 @@ export function AdminExitActions({ variant = "header" }: AdminExitActionsProps) 
   async function logout() {
     setLoading("logout");
     await performClientLogout();
+  }
+
+  if (variant === "sidebar") {
+    return (
+      <div className="space-y-2 text-sm">
+        <button
+          type="button"
+          onClick={() => void exitAdminMode()}
+          disabled={loading !== null}
+          className="flex w-full items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-slate-300 transition hover:bg-white/5 hover:text-white disabled:opacity-60"
+        >
+          <UserRound className="h-4 w-4" />
+          {loading === "exit" ? "Saliendo..." : "Volver al panel cliente"}
+        </button>
+        <Link
+          href="/"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white"
+        >
+          <Home className="h-4 w-4" />
+          Volver al sitio
+        </Link>
+        <button
+          type="button"
+          onClick={() => void logout()}
+          disabled={loading !== null}
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-400 transition hover:bg-white/5 hover:text-white disabled:opacity-60"
+        >
+          <LogOut className="h-4 w-4" />
+          {loading === "logout" ? "Cerrando..." : "Cerrar sesión"}
+        </button>
+      </div>
+    );
   }
 
   if (variant === "header") {

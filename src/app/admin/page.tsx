@@ -1,269 +1,174 @@
-import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
 import Link from "next/link";
+import { AdminPageHeader, AdminStatCard } from "@/components/admin/admin-page-header";
+import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import {
-  Users,
-  ShoppingCart,
-  TrendingUp,
-  Clock,
-  FileText,
-  Euro,
-  ArrowUpRight,
-} from "lucide-react";
+  clientName,
+  fetchAllPaidOrders,
+  fetchClientEmails,
+  formatEuros,
+  groupOrdersByPaidDate,
+  serviceName,
+  type AdminOrderRow,
+} from "@/lib/admin-data";
+import { ADMIN_CARD_PAD, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
+import { requireAdmin } from "@/lib/admin-auth";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = { title: { absolute: "Dashboard — Livendia Admin" } };
 
 export default async function AdminDashboardPage() {
+  await requireAdmin("/admin");
   const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) redirect("/login?next=/admin");
-
-  const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (me?.role !== "admin") redirect("/dashboard");
 
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
   const [
     { count: totalClients },
-    { count: totalOrders },
     { count: activeOrders },
-    { count: completedOrders },
-    { data: ordersData },
-    { data: monthOrders },
-    { data: topServices },
+    { data: paidOrdersResult },
     { data: recentOrders },
     { count: newClientsWeek },
   ] = await Promise.all([
     supabase.from("profiles").select("*", { count: "exact", head: true }).eq("role", "client"),
-    supabase.from("orders").select("*", { count: "exact", head: true }),
     supabase
       .from("orders")
       .select("*", { count: "exact", head: true })
       .in("status", ["paid", "pending_docs", "in_review", "in_progress"]),
-    supabase.from("orders").select("*", { count: "exact", head: true }).eq("status", "completed"),
-    supabase.from("orders").select("total_cents, created_at").eq("status", "completed"),
+    fetchAllPaidOrders(supabase),
     supabase
       .from("orders")
-      .select("total_cents")
-      .eq("status", "completed")
-      .gte("created_at", startOfMonth),
-    supabase.from("orders").select("service_id, services(name)").eq("status", "completed"),
-    supabase
-      .from("orders")
-      .select("id, status, created_at, total_cents, services(name), profiles(full_name, email)")
+      .select(
+        "id, client_id, status, created_at, paid_at, total_cents, stripe_session_id, notes, services ( name, slug ), profiles ( full_name, phone )",
+      )
       .order("created_at", { ascending: false })
-      .limit(8),
+      .limit(6),
     supabase
       .from("profiles")
       .select("*", { count: "exact", head: true })
       .eq("role", "client")
-      .gte("created_at", sevenDaysAgo),
+      .gte("created_at", new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()),
   ]);
 
-  const totalRevenue = ordersData?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
-  const monthRevenue = monthOrders?.reduce((sum, o) => sum + (o.total_cents || 0), 0) || 0;
+  const paidOrders = (paidOrdersResult ?? []) as AdminOrderRow[];
+  const clientIds = [...new Set(paidOrders.map((o) => o.client_id))];
+  const emailByClient = await fetchClientEmails(clientIds);
 
-  const serviceCounts: Record<string, { name: string; count: number }> = {};
-  topServices?.forEach((order) => {
-    const svc = order.services;
-    const name = Array.isArray(svc) ? svc[0]?.name : (svc as { name?: string } | null)?.name;
-    if (name) {
-      if (!serviceCounts[name]) {
-        serviceCounts[name] = { name, count: 0 };
-      }
-      serviceCounts[name].count++;
-    }
-  });
+  const salesMap = groupOrdersByPaidDate(paidOrders, emailByClient);
+  const salesByDate = Object.fromEntries(salesMap);
 
-  const topServicesList = Object.values(serviceCounts)
-    .sort((a, b) => b.count - a.count)
+  const monthRevenue = paidOrders
+    .filter((o) => o.paid_at && o.paid_at >= startOfMonth)
+    .reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
+
+  const totalRevenue = paidOrders.reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
+  const salesCount = paidOrders.length;
+
+  const serviceCounts: Record<string, number> = {};
+  for (const order of paidOrders) {
+    const name = serviceName(order);
+    serviceCounts[name] = (serviceCounts[name] ?? 0) + 1;
+  }
+  const topServices = Object.entries(serviceCounts)
+    .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
-  const statusLabel: Record<string, string> = {
-    pending_payment: "Pago pendiente",
-    paid: "Pagado",
-    pending_docs: "Falta documentación",
-    in_review: "En revisión",
-    in_progress: "En curso",
-    completed: "Completado",
-    cancelled: "Cancelado",
-  };
-
   return (
-    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#1E293B]">Dashboard</h1>
-        <p className="mt-1 text-sm text-[#64748B]">Resumen general de la plataforma</p>
+    <>
+      <AdminPageHeader title="Dashboard" subtitle="Resumen general de la plataforma" />
+
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <AdminStatCard label="Total clientes" value={totalClients ?? 0} hint={`+${newClientsWeek ?? 0} esta semana`} />
+        <AdminStatCard label="Ventas registradas" value={salesCount} hint={`${activeOrders ?? 0} expedientes activos`} />
+        <AdminStatCard label="Ingresos del mes" value={formatEuros(monthRevenue)} hint={`Total: ${formatEuros(totalRevenue)}`} />
+        <AdminStatCard
+          label="Ticket medio"
+          value={salesCount ? formatEuros(Math.round(totalRevenue / salesCount)) : "—"}
+          hint="Por venta pagada"
+        />
       </div>
 
-      {/* Stats Cards */}
-      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {/* Total Clientes */}
-        <Link
-          href="/admin/clientes"
-          className="group rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg transition hover:shadow-xl"
-        >
-          <div className="mb-2 flex items-center justify-between">
-            <Users className="h-8 w-8" />
-            <ArrowUpRight className="h-5 w-5 opacity-0 transition group-hover:opacity-100" />
-          </div>
-          <div className="text-3xl font-bold">{totalClients || 0}</div>
-          <div className="mt-1 text-sm opacity-90">Total Clientes</div>
-          {(newClientsWeek || 0) > 0 && (
-            <div className="mt-2 text-xs opacity-75">+{newClientsWeek} esta semana</div>
-          )}
-        </Link>
+      <div className="grid gap-6 xl:grid-cols-[1fr_22rem]">
+        <div className="space-y-6">
+          <AdminSalesCalendar salesByDate={salesByDate} title="Calendario de ventas" detailBaseHref="/admin/expedientes" />
 
-        {/* Total Pedidos */}
-        <Link
-          href="/admin/pedidos"
-          className="group rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-white shadow-lg transition hover:shadow-xl"
-        >
-          <div className="mb-2 flex items-center justify-between">
-            <ShoppingCart className="h-8 w-8" />
-            <ArrowUpRight className="h-5 w-5 opacity-0 transition group-hover:opacity-100" />
-          </div>
-          <div className="text-3xl font-bold">{totalOrders || 0}</div>
-          <div className="mt-1 text-sm opacity-90">Total Pedidos</div>
-          <div className="mt-2 text-xs opacity-75">{completedOrders || 0} completados</div>
-        </Link>
-
-        {/* Pedidos Activos */}
-        <div className="rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 p-6 text-white shadow-lg">
-          <div className="mb-2 flex items-center justify-between">
-            <Clock className="h-8 w-8" />
-          </div>
-          <div className="text-3xl font-bold">{activeOrders || 0}</div>
-          <div className="mt-1 text-sm opacity-90">Pedidos Activos</div>
-          <div className="mt-2 text-xs opacity-75">Requieren atención</div>
-        </div>
-
-        {/* Ingresos del Mes */}
-        <div className="rounded-2xl bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg">
-          <div className="mb-2 flex items-center justify-between">
-            <Euro className="h-8 w-8" />
-          </div>
-          <div className="text-3xl font-bold">{(monthRevenue / 100).toFixed(2)} €</div>
-          <div className="mt-1 text-sm opacity-90">Ingresos del Mes</div>
-          <div className="mt-2 text-xs opacity-75">Total: {(totalRevenue / 100).toFixed(2)} €</div>
-        </div>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Actividad Reciente */}
-        <div className="lg:col-span-2">
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-[#1E293B]">Actividad Reciente</h2>
-              <Link
-                href="/admin/pedidos"
-                className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-              >
-                Ver todos →
+          <div className={ADMIN_CARD_PAD}>
+            <div className="mb-4 flex items-center justify-between gap-2">
+              <h2 className="text-lg font-bold text-[#1E293B]">Actividad reciente</h2>
+              <Link href="/admin/ventas" className="text-sm font-semibold text-[#1A4FBF] hover:underline">
+                Ver ventas →
               </Link>
             </div>
-
             {!recentOrders?.length ? (
-              <p className="py-8 text-center text-sm text-[#64748B]">No hay actividad reciente</p>
+              <p className="py-6 text-center text-sm text-[#64748B]">No hay actividad reciente</p>
             ) : (
-              <div className="space-y-3">
-                {recentOrders.map((order) => {
-                  const svc = order.services;
-                  const serviceName = Array.isArray(svc) ? svc[0]?.name : (svc as { name?: string } | null)?.name;
-                  const prof = order.profiles;
-                  const clientName = Array.isArray(prof)
-                    ? prof[0]?.full_name
-                    : (prof as { full_name?: string } | null)?.full_name;
-
-                  return (
+              <ul className="divide-y divide-slate-100">
+                {(recentOrders as AdminOrderRow[]).map((order) => (
+                  <li key={order.id}>
                     <Link
-                      key={order.id}
-                      href={`/admin/pedidos/${order.id}`}
-                      className="flex items-start justify-between rounded-xl border border-slate-200 p-4 transition hover:border-[#1A4FBF] hover:bg-blue-50"
+                      href={`/admin/expedientes/${order.id}`}
+                      className="flex items-center justify-between gap-3 py-3 transition hover:bg-slate-50/80"
                     >
-                      <div className="flex-1">
-                        <div className="font-semibold text-[#1E293B]">{serviceName || "Servicio"}</div>
-                        <div className="mt-1 text-sm text-[#64748B]">{clientName || "Cliente"}</div>
-                        <div className="mt-1 text-xs text-[#94a3b8]">
-                          {new Date(order.created_at).toLocaleString("es-ES")}
-                        </div>
+                      <div className="min-w-0">
+                        <p className="truncate font-semibold text-[#1E293B]">{serviceName(order)}</p>
+                        <p className="truncate text-sm text-[#64748B]">{clientName(order)}</p>
                       </div>
-                      <div className="text-right">
-                        <div className="font-bold text-[#1E293B]">
-                          {((order.total_cents || 0) / 100).toFixed(2)} €
-                        </div>
-                        <div className="mt-1">
-                          <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-800">
-                            {statusLabel[order.status] || order.status}
-                          </span>
-                        </div>
+                      <div className="shrink-0 text-right">
+                        <p className="text-sm font-semibold text-[#1A4FBF]">{formatEuros(order.total_cents)}</p>
+                        <p className="text-xs text-[#94A3B8]">{ORDER_STATUS_LABEL[order.status] ?? order.status}</p>
                       </div>
                     </Link>
-                  );
-                })}
-              </div>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </div>
 
-        {/* Sidebar - Servicios más contratados */}
-        <div className="space-y-6">
-          {/* Top Servicios */}
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <h2 className="mb-4 text-lg font-bold text-[#1E293B]">Servicios Más Contratados</h2>
-            {!topServicesList.length ? (
-              <p className="text-sm text-[#64748B]">No hay datos disponibles</p>
+        <aside className="space-y-6">
+          <div className={ADMIN_CARD_PAD}>
+            <h2 className="text-sm font-bold text-[#1E293B]">Servicios más contratados</h2>
+            {!topServices.length ? (
+              <p className="mt-4 text-sm text-[#64748B]">No hay datos disponibles</p>
             ) : (
-              <div className="space-y-3">
-                {topServicesList.map((service, idx) => (
-                  <div key={service.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-sm font-bold text-[#1A4FBF]">
+              <ul className="mt-4 space-y-3">
+                {topServices.map(([name, count], idx) => (
+                  <li key={name} className="flex items-center justify-between gap-2 text-sm">
+                    <span className="flex items-center gap-2 text-[#475569]">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#EFF6FF] text-xs font-bold text-[#1A4FBF]">
                         {idx + 1}
-                      </div>
-                      <div className="text-sm font-medium text-[#1E293B]">{service.name}</div>
-                    </div>
-                    <div className="text-sm font-bold text-[#1A4FBF]">{service.count}</div>
-                  </div>
+                      </span>
+                      {name}
+                    </span>
+                    <span className="font-semibold text-[#1A4FBF]">{count}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </div>
 
-          {/* Accesos rápidos */}
-          <div className="rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 p-6 ring-1 ring-slate-200">
-            <h2 className="mb-4 text-lg font-bold text-[#1E293B]">Accesos Rápidos</h2>
-            <div className="space-y-2">
-              <Link
-                href="/admin/clientes"
-                className="flex items-center gap-3 rounded-lg bg-white p-3 shadow-sm ring-1 ring-slate-200 transition hover:shadow"
-              >
-                <Users className="h-5 w-5 text-[#1A4FBF]" />
-                <span className="text-sm font-semibold text-[#1E293B]">Ver Clientes</span>
-              </Link>
-              <Link
-                href="/admin/pedidos"
-                className="flex items-center gap-3 rounded-lg bg-white p-3 shadow-sm ring-1 ring-slate-200 transition hover:shadow"
-              >
-                <FileText className="h-5 w-5 text-[#1A4FBF]" />
-                <span className="text-sm font-semibold text-[#1E293B]">Gestionar Pedidos</span>
-              </Link>
-              <Link
-                href="/admin/alquileres"
-                className="flex items-center gap-3 rounded-lg bg-white p-3 shadow-sm ring-1 ring-slate-200 transition hover:shadow"
-              >
-                <TrendingUp className="h-5 w-5 text-[#1A4FBF]" />
-                <span className="text-sm font-semibold text-[#1E293B]">Alquileres</span>
-              </Link>
+          <div className={ADMIN_CARD_PAD}>
+            <h2 className="text-sm font-bold text-[#1E293B]">Accesos rápidos</h2>
+            <div className="mt-3 space-y-2 text-sm">
+              {[
+                { href: "/admin/expedientes", label: "Expedientes" },
+                { href: "/admin/ventas", label: "Ventas" },
+                { href: "/admin/documentos", label: "Documentos" },
+                { href: "/admin/base-datos", label: "Base de datos" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2.5 font-medium text-[#1E293B] transition hover:border-[#1A4FBF]/30 hover:bg-[#EFF6FF]/40"
+                >
+                  {label}
+                  <span className="text-[#1A4FBF]">→</span>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
+        </aside>
       </div>
-    </main>
+    </>
   );
 }
