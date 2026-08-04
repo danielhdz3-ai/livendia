@@ -123,7 +123,7 @@ export function ClientMobileMoreMenu({
               onClose();
               void performClientLogout();
             }}
-            className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl border border-red-200 bg-white px-4 text-sm font-bold text-red-700 shadow-sm"
+            className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-[#64748B] shadow-sm transition hover:border-[#1A4FBF]/30 hover:text-[#1A4FBF]"
           >
             <LogOut className="h-5 w-5" aria-hidden />
             Cerrar sesión

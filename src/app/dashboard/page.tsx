@@ -4,7 +4,7 @@ import { ClientPanelKpiStrip, ClientPanelPremiumHero } from "@/components/client
 import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
 import { PanelContentEnter } from "@/components/panel-content-enter";
 import { OrderStatusBadge } from "@/components/order-status-badge";
-import { PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { PANEL_ACTION_CARD, PANEL_ACTION_ICON } from "@/lib/client-panel-ui";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import {
   orderGrantsRentalAccess,
@@ -15,19 +15,13 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { LogoutButton } from "./logout-button";
 import {
-  Home,
   FileText,
-  Settings,
-  Clock,
-  CheckCircle2,
   ShoppingBag,
   User,
   CreditCard,
   ArrowRight,
   FileSignature,
-  Building,
   Sparkles,
   Package,
   Upload,
@@ -89,13 +83,6 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
   const name = profile?.full_name?.trim() || user.email || "Cliente";
   const firstName = name.split(" ")[0];
 
-  const navBase =
-    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white";
-  const navActive =
-    "flex items-center gap-3 rounded-lg bg-white/[0.17] px-3 py-2 text-sm font-semibold text-white shadow-[inset_4px_0_0_0_#06B6D4]";
-  const sidebarQuickLink =
-    "block rounded-lg bg-white/[0.08] px-3 py-2 text-sm text-white/85 transition hover:bg-white/15 hover:text-white";
-
   const orderIds = (orders ?? []).map((o) => o.id as string);
   const docCountByOrder: Record<string, number> = {};
   if (orderIds.length > 0) {
@@ -152,127 +139,33 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     null;
 
   return (
-    <div className={`flex min-h-screen ${PANEL_PAGE_BG}`}>
-      {/* Sidebar — mismo estilo que administración de alquiler */}
-      <aside className="hidden w-64 shrink-0 border-r border-[#1547a8]/80 bg-[#1A4FBF] shadow-xl shadow-slate-900/15 lg:flex">
-        <div className="flex h-full min-h-screen w-full flex-col">
-          <div className="border-b border-white/15 p-6">
-            <Link href="/dashboard" className="block outline-none ring-white/40 focus-visible:ring-2">
-              <span className="text-3xl font-extrabold leading-tight tracking-tight text-white">Livendia</span>
-              <span className="mt-1.5 block text-sm font-semibold text-white/80">Gestoría Digital</span>
-            </Link>
+    <>
+      <header className="hidden border-b border-slate-200 bg-white lg:block">
+        <div className="flex items-center justify-between px-6 py-4">
+          <div>
+            <h1 className="text-2xl font-bold text-[#1E293B]">¡Hola, {firstName}!</h1>
+            <p className="text-sm text-[#64748B]">Bienvenido a tu panel de gestión inmobiliaria</p>
           </div>
 
-          <nav className="flex-1 space-y-1 p-4">
-            <Link href="/dashboard" className={navActive}>
-              <Home className="h-5 w-5 shrink-0 text-white" />
-              <span>Panel principal</span>
-            </Link>
+          <div className="flex items-center gap-3">
+            <ClientNotificationCenter />
 
-            <Link href="/mis-pedidos" className={navBase}>
-              <ShoppingBag className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Mis pedidos</span>
-              {pendingOrders > 0 && (
-                <span className="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-[#06B6D4] px-1 text-xs font-bold text-white">
-                  {pendingOrders}
-                </span>
-              )}
-            </Link>
-
-            <Link href="/dashboard/servicios" className={navBase}>
-              <Sparkles className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Servicios</span>
-            </Link>
-
-            <Link href="/mis-pedidos" className={navBase}>
-              <FileText className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Documentos</span>
-            </Link>
-
-            <div className="my-4 border-t border-white/15" />
-
-            <Link href="/dashboard/perfil" className={navBase}>
-              <User className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Mi perfil</span>
-            </Link>
-
-            <Link href="/dashboard/pagos" className={navBase}>
-              <CreditCard className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Métodos de pago</span>
-            </Link>
-
-            <Link href="/dashboard/configuracion" className={navBase}>
-              <Settings className="h-5 w-5 shrink-0 opacity-95" />
-              <span>Configuración</span>
-            </Link>
-          </nav>
-
-          <div className="border-t border-white/15 p-4">
-            <div className="mb-4 space-y-2">
-              <div className="text-xs font-semibold uppercase text-white/50">Acciones rápidas</div>
-              <Link href="/dashboard/servicios" className={sidebarQuickLink}>
-                Contratar contratos
-              </Link>
-              <Link href="/dashboard/perfil" className={sidebarQuickLink}>
-                Editar perfil
-              </Link>
-            </div>
-
-            {profile?.role === "admin" && (
-              <Link
-                href="/admin/pedidos"
-                className="mb-3 flex items-center gap-2 rounded-lg bg-amber-400/20 px-3 py-2 text-sm font-semibold text-amber-100 transition hover:bg-amber-400/30"
-              >
-                <Building className="h-4 w-4" />
-                <span>Panel Admin</span>
-              </Link>
-            )}
-
-            <div className="mb-3 flex items-center gap-3 rounded-lg bg-white/[0.1] p-3 ring-1 ring-white/10">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-sm font-bold text-white">
+            <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-sm font-bold text-white">
                 {firstName.charAt(0).toUpperCase()}
               </div>
-              <div className="min-w-0 flex-1">
-                <div className="truncate text-sm font-semibold text-white">{firstName}</div>
-                <div className="text-xs text-white/65">Contratos y servicios</div>
+              <div className="text-left">
+                <div className="text-sm font-semibold text-[#1E293B]">{name}</div>
+                <div className="text-xs text-[#64748B]">
+                  {profile?.role === "admin" ? "Administrador" : "Cliente"}
+                </div>
               </div>
             </div>
-
-            <LogoutButton variant="on-brand" />
           </div>
         </div>
-      </aside>
+      </header>
 
-      {/* Main Content */}
-      <div className="flex min-w-0 flex-1 flex-col">
-        {/* Header */}
-        <header className="hidden border-b border-slate-200 bg-white lg:block">
-          <div className="flex items-center justify-between px-6 py-4">
-            <div>
-              <h1 className="text-2xl font-bold text-[#1E293B]">¡Hola, {firstName}! 👋</h1>
-              <p className="text-sm text-[#64748B]">Bienvenido a tu panel de gestión inmobiliaria</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <ClientNotificationCenter />
-
-              <div className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-sm font-bold text-white">
-                  {firstName.charAt(0).toUpperCase()}
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-semibold text-[#1E293B]">{name}</div>
-                  <div className="text-xs text-[#64748B]">
-                    {profile?.role === "admin" ? "Administrador" : "Cliente"}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Content Area */}
-        <PanelContentEnter>
+      <PanelContentEnter>
         <main className="flex-1 overflow-y-auto p-4 pb-6 lg:p-8">
           <Suspense fallback={null}>
             <DashboardPostPaymentBanner orderId={highlightOrderId ?? null} serviceName={highlightServiceName} />
@@ -287,10 +180,10 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
           <div className="mb-6 hidden sm:grid">
             <ClientPanelKpiStrip
               items={[
-                { label: "Total pedidos", value: totalOrders, hint: `${completedOrders} completados`, tone: "blue" },
-                { label: "En proceso", value: pendingOrders, hint: "Requieren atención", tone: "amber" },
-                { label: "Completados", value: completedOrders, hint: "Servicios finalizados", tone: "green" },
-                { label: "Servicios", value: "Ver", hint: "Contratar contratos online", tone: "violet" },
+                { label: "Total pedidos", value: totalOrders, hint: `${completedOrders} completados` },
+                { label: "En proceso", value: pendingOrders, hint: "Requieren atención" },
+                { label: "Completados", value: completedOrders, hint: "Servicios finalizados" },
+                { label: "Servicios", value: "Ver", hint: "Contratar online", href: "/dashboard/servicios" },
               ]}
             />
           </div>
@@ -420,12 +313,9 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
           <section className="mt-8 hidden lg:block">
             <h2 className="mb-6 text-xl font-bold text-[#1E293B]">Acciones rápidas</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <Link
-                href="/dashboard/perfil"
-                className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 transition group-hover:bg-blue-100">
-                  <User className="h-6 w-6 text-blue-600" />
+              <Link href="/dashboard/perfil" className={PANEL_ACTION_CARD}>
+                <div className={PANEL_ACTION_ICON}>
+                  <User className="h-6 w-6" aria-hidden />
                 </div>
                 <div>
                   <div className="font-semibold text-[#1E293B]">Editar perfil</div>
@@ -433,12 +323,9 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
                 </div>
               </Link>
 
-              <Link
-                href="/dashboard/pagos"
-                className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 transition group-hover:bg-green-100">
-                  <CreditCard className="h-6 w-6 text-green-600" />
+              <Link href="/dashboard/pagos" className={PANEL_ACTION_CARD}>
+                <div className={PANEL_ACTION_ICON}>
+                  <CreditCard className="h-6 w-6" aria-hidden />
                 </div>
                 <div>
                   <div className="font-semibold text-[#1E293B]">Métodos de pago</div>
@@ -446,12 +333,9 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
                 </div>
               </Link>
 
-              <Link
-                href="/mis-pedidos"
-                className="group flex items-center gap-4 rounded-2xl bg-white p-5 shadow ring-1 ring-slate-200 transition hover:shadow-lg hover:ring-[#1A4FBF]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 transition group-hover:bg-violet-100">
-                  <FileText className="h-6 w-6 text-violet-600" />
+              <Link href="/mis-pedidos" className={PANEL_ACTION_CARD}>
+                <div className={PANEL_ACTION_ICON}>
+                  <FileText className="h-6 w-6" aria-hidden />
                 </div>
                 <div>
                   <div className="font-semibold text-[#1E293B]">Mis documentos</div>
@@ -459,23 +343,19 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
                 </div>
               </Link>
 
-              <Link
-                href="/dashboard/servicios"
-                className="group flex items-center gap-4 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#F4E4A6] p-5 shadow-lg transition hover:shadow-xl"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm transition group-hover:bg-white/30">
-                  <Sparkles className="h-6 w-6 text-white" />
+              <Link href="/dashboard/servicios" className={PANEL_ACTION_CARD}>
+                <div className={PANEL_ACTION_ICON}>
+                  <Sparkles className="h-6 w-6" aria-hidden />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">Contratar servicio</div>
-                  <div className="text-xs text-amber-100">Ver catálogo</div>
+                  <div className="font-semibold text-[#1E293B]">Contratar servicio</div>
+                  <div className="text-xs text-[#64748B]">Ver catálogo</div>
                 </div>
               </Link>
             </div>
           </section>
         </main>
         </PanelContentEnter>
-      </div>
-    </div>
+    </>
   );
 }

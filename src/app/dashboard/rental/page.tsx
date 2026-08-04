@@ -1,4 +1,5 @@
 import { DownloadButton } from "@/components/download-button";
+import { ClientPanelKpiStrip } from "@/components/client-panel-premium";
 import {
   PROPERTY_DOCUMENT_LABEL_ES,
   TENANT_DOCUMENT_LABEL_ES,
@@ -140,55 +141,14 @@ export default async function RentalDashboardPage() {
         <p className="mt-1 text-[#64748B]">Bienvenido a tu panel de gestión inmobiliaria</p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {/* Total pedidos (placeholder) */}
-        <div className="rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-white shadow-lg">
-          <div className="mb-2 flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            <span className="text-sm font-medium">Total pedidos</span>
-          </div>
-          <div className="text-3xl font-bold">0</div>
-          <div className="mt-1 text-xs opacity-90">0 completados</div>
-        </div>
-
-        {/* En proceso */}
-        <div className="rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 p-6 text-white shadow-lg">
-          <div className="mb-2 flex items-center gap-2">
-            <Clock className="h-5 w-5" />
-            <span className="text-sm font-medium">En proceso</span>
-          </div>
-          <div className="text-3xl font-bold">0</div>
-          <div className="mt-1 text-xs opacity-90">Requieren atención</div>
-        </div>
-
-        {/* Completados */}
-        <div className="rounded-2xl bg-gradient-to-br from-green-500 to-green-600 p-6 text-white shadow-lg">
-          <div className="mb-2 flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5" />
-            <span className="text-sm font-medium">Completados</span>
-          </div>
-          <div className="text-3xl font-bold">0</div>
-          <div className="mt-1 text-xs opacity-90">Servicios finalizados</div>
-        </div>
-
-        <Link
-          href="/dashboard/servicios"
-          className="group rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 p-6 text-white shadow-lg transition hover:shadow-xl hover:ring-2 hover:ring-white/30"
-        >
-          <div className="mb-2 flex items-center gap-2">
-            <FileSignature className="h-5 w-5" />
-            <span className="text-sm font-medium">Contratar contratos</span>
-          </div>
-          <p className="text-lg font-bold leading-snug">
-            Contratos LAU, arras, revisión registral…
-          </p>
-          <div className="mt-3 flex items-center gap-1 text-xs font-semibold opacity-95">
-            Ver servicios en tu panel
-            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          </div>
-        </Link>
-      </div>
+      <ClientPanelKpiStrip
+        items={[
+          { label: "Total pedidos", value: 0, hint: "0 completados" },
+          { label: "En proceso", value: 0, hint: "Requieren atención" },
+          { label: "Completados", value: 0, hint: "Servicios finalizados" },
+          { label: "Servicios", value: "Ver", hint: "Contratar online", href: "/dashboard/servicios" },
+        ]}
+      />
 
       {/* Datos del Inmueble y del Inquilino */}
       <div className="mb-8 grid gap-6 lg:grid-cols-2">

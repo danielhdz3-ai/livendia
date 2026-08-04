@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { ExpedienteDocChannels } from "@/components/expediente-doc-channels";
-import { PANEL_CARD, PANEL_HERO } from "@/lib/client-panel-ui";
+import {
+  PANEL_CARD,
+  PANEL_HERO,
+  PANEL_KPI_CARD,
+  PANEL_KPI_HINT,
+  PANEL_KPI_LABEL,
+  PANEL_KPI_VALUE,
+} from "@/lib/client-panel-ui";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 type FocusOrder = {
@@ -85,27 +92,37 @@ export function ClientPanelPremiumHero({
 export function ClientPanelKpiStrip({
   items,
 }: {
-  items: { label: string; value: string | number; hint?: string; tone?: "blue" | "amber" | "green" | "violet" }[];
+  items: { label: string; value: string | number; hint?: string; href?: string }[];
 }) {
-  const tones = {
-    blue: "from-blue-500 to-blue-600 shadow-blue-500/20",
-    amber: "from-amber-500 to-orange-500 shadow-amber-500/20",
-    green: "from-emerald-500 to-green-600 shadow-emerald-500/20",
-    violet: "from-violet-600 to-indigo-600 shadow-violet-500/20",
-  };
-
   return (
     <div className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {items.map((item) => (
-        <div
-          key={item.label}
-          className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${tones[item.tone ?? "blue"]} p-4 text-white shadow-lg`}
-        >
-          <p className="text-xs font-medium opacity-90">{item.label}</p>
-          <p className="mt-1 text-2xl font-extrabold">{item.value}</p>
-          {item.hint ? <p className="mt-1 text-[11px] opacity-80">{item.hint}</p> : null}
-        </div>
-      ))}
+      {items.map((item) => {
+        const body = (
+          <>
+            <p className={PANEL_KPI_LABEL}>{item.label}</p>
+            <p className={PANEL_KPI_VALUE}>{item.value}</p>
+            {item.hint ? <p className={PANEL_KPI_HINT}>{item.hint}</p> : null}
+          </>
+        );
+
+        if (item.href) {
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`${PANEL_KPI_CARD} transition hover:border-[#1A4FBF]/30 hover:ring-[#1A4FBF]/15`}
+            >
+              {body}
+            </Link>
+          );
+        }
+
+        return (
+          <div key={item.label} className={PANEL_KPI_CARD}>
+            {body}
+          </div>
+        );
+      })}
     </div>
   );
 }

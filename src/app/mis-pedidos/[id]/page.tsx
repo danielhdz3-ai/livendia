@@ -11,16 +11,15 @@ import { OrderDetailMobileTabs } from "@/components/order-detail-mobile-tabs";
 import { OrderDocChecklist } from "@/components/order-doc-checklist";
 import { OrderProgressRing } from "@/components/order-progress-ring";
 import { OrderStatusBadge } from "@/components/order-status-badge";
-import { LogoutButton } from "@/app/dashboard/logout-button";
+import { PanelContentEnter } from "@/components/panel-content-enter";
 import { mergeOrderActivity } from "@/lib/order-activity";
 import { calculateOrderProgress } from "@/lib/order-progress";
-import { PanelContentEnter } from "@/components/panel-content-enter";
 import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { PANEL_CARD, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
+import { PANEL_CARD } from "@/lib/client-panel-ui";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, Calendar, Home, LayoutDashboard } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 
 const OrderDocuments = dynamic(
   () => import("@/app/dashboard/order-documents").then((m) => ({ default: m.OrderDocuments })),
@@ -188,29 +187,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
 
   return (
     <MisPedidosPullRefresh>
-    <div className={`min-h-screen pb-6 lg:pb-0 ${PANEL_PAGE_BG}`}>
-      <header className="hidden border-b border-slate-200 bg-white/90 backdrop-blur lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 xl:px-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/dashboard"
-              className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-bold text-white shadow hover:bg-[#2563EB]"
-            >
-              <LayoutDashboard className="h-4 w-4" aria-hidden />
-              Panel principal
-            </Link>
-            <Link
-              href="/mis-pedidos"
-              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-[#1E293B] hover:border-[#1A4FBF]/30 hover:text-[#1A4FBF]"
-            >
-              <ArrowLeft className="h-4 w-4" aria-hidden />
-              Mis pedidos
-            </Link>
-          </div>
-          <LogoutButton />
-        </div>
-      </header>
-
+    <div className="min-h-screen pb-6 lg:pb-0">
       <ExpedienteDesktopHero
         serviceName={serviceName}
         orderId={order.id as string}
@@ -280,16 +257,6 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
             <LivendiaGestorCard compact />
             <LivendiaTrustPanel variant="compact" />
           </aside>
-        </div>
-
-        <div className="mt-8 hidden justify-center pb-8 lg:flex">
-          <Link
-            href="/dashboard"
-            className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
-          >
-            <Home className="h-4 w-4" aria-hidden />
-            Volver al panel principal
-          </Link>
         </div>
       </main>
       </PanelContentEnter>

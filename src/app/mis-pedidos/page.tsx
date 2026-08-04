@@ -6,7 +6,7 @@ import { ClientPanelEmptyState } from "@/components/client-panel-empty-state";
 import { MisPedidosPullRefresh } from "@/components/mis-pedidos-pull-refresh";
 import { PanelContentEnter } from "@/components/panel-content-enter";
 import { calculateOrderProgress } from "@/lib/order-progress";
-import { PANEL_CARD, PANEL_PAGE_BG, PANEL_SECTION_TITLE } from "@/lib/client-panel-ui";
+import { PANEL_CARD, PANEL_SECTION_TITLE } from "@/lib/client-panel-ui";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FileText, Package } from "lucide-react";
@@ -89,7 +89,7 @@ export default async function MisPedidosPage() {
 
   return (
     <MisPedidosPullRefresh>
-    <div className={`min-h-screen pb-24 lg:pb-8 ${PANEL_PAGE_BG}`}>
+    <div className="min-h-screen pb-24 lg:pb-8">
       <MisPedidosListHero
         firstName={firstName}
         stats={{
