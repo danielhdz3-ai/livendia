@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   images: {
     // Listas explícitas en vez del default de Next (que llega hasta 3840px).
     // El layout más ancho del sitio es max-w-7xl (1280px) y ninguna imagen

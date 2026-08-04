@@ -29,9 +29,8 @@ export function OrderActivityFeedLive({
         return [row, ...prev];
       });
       toast("Nueva actividad en tu expediente", "info");
-      router.refresh();
     },
-    [toast, router],
+    [toast],
   );
 
   useEffect(() => {
@@ -47,8 +46,7 @@ export function OrderActivityFeedLive({
           filter: `order_id=eq.${orderId}`,
         },
         (payload) => {
-          const row = payload.new as OrderActivityRow;
-          prependActivity(row);
+          prependActivity(payload.new as OrderActivityRow);
         },
       )
       .on(

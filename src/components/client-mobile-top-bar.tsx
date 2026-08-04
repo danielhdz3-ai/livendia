@@ -1,37 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { ClientNotificationCenter } from "@/components/client-notification-center";
-import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { useClientPanel } from "@/components/client-panel-provider";
 
 export function ClientMobileTopBar() {
-  const pathname = usePathname() ?? "";
-  const [userLabel, setUserLabel] = useState("Mi cuenta");
-
-  const isClientArea =
-    pathname.startsWith("/dashboard") || pathname.startsWith("/mis-pedidos");
-
-  useEffect(() => {
-    if (!isClientArea) return;
-    const supabase = createBrowserSupabaseClient();
-    void (async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("full_name")
-        .eq("id", user.id)
-        .maybeSingle();
-      const name = (profile?.full_name as string | undefined)?.trim();
-      setUserLabel(name || user.email || "Mi cuenta");
-    })();
-  }, [isClientArea, pathname]);
-
-  if (!isClientArea) return null;
+  const { userLabel } = useClientPanel();
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur lg:hidden">

@@ -7,7 +7,7 @@ import { GtmScripts } from "@/components/gtm-scripts";
 import { WebsiteStructuredData } from "@/components/website-structured-data";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
-import { ClientAreaChrome } from "@/components/client-area-chrome";
+import { ClientPanelShellRoot } from "@/components/client-panel-shell-root";
 import { PwaRegister } from "@/components/pwa-register";
 import { ToastProvider } from "@/components/toast-provider";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
@@ -16,7 +16,7 @@ import "./globals.css";
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700", "800"],
 });
 
 const siteUrl = getSiteUrl();
@@ -74,11 +74,12 @@ export default function RootLayout({
         <GtmScripts />
         <AnalyticsBootstrap />
         <ToastProvider>
-          {children}
+          <ClientPanelShellRoot>
+            {children}
+          </ClientPanelShellRoot>
         </ToastProvider>
         <PwaRegister />
         <PublicMobileChrome />
-        <ClientAreaChrome />
         <FloatingWhatsAppButton />
       </body>
     </html>

@@ -63,30 +63,37 @@ export async function syncDocReminderNotifications(userId: string) {
       .eq("client_id", userId)
       .in("status", ["paid", "pending_docs"]);
 
-    for (const order of orders ?? []) {
-      const svc = order.services;
-      const serviceRow = Array.isArray(svc) ? svc[0] : svc;
-      const serviceName = (serviceRow?.name as string | undefined) ?? "tu servicio";
-      const orderId = order.id as string;
+    const orderIds = (orders ?? []).map((o) => o.id as string);
+    if (orderIds.length === 0) return;
 
-      const { data: existing } = await admin
-        .from("client_notifications")
-        .select("id")
-        .eq("user_id", userId)
-        .eq("order_id", orderId)
-        .eq("kind", "reminder")
-        .maybeSingle();
+    const { data: existingRows } = await admin
+      .from("client_notifications")
+      .select("order_id")
+      .eq("user_id", userId)
+      .eq("kind", "reminder")
+      .in("order_id", orderIds);
 
-      if (existing?.id) continue;
+    const existingOrderIds = new Set((existingRows ?? []).map((r) => r.order_id as string));
 
-      await admin.from("client_notifications").insert({
-        user_id: userId,
-        order_id: orderId,
-        kind: "reminder",
-        title: "Documentación pendiente",
-        message: `Sube los archivos de ${serviceName} para que Daniel pueda revisar tu expediente.`,
-        href: `/mis-pedidos/${orderId}#documentos`,
+    const toInsert = (orders ?? [])
+      .filter((order) => !existingOrderIds.has(order.id as string))
+      .map((order) => {
+        const svc = order.services;
+        const serviceRow = Array.isArray(svc) ? svc[0] : svc;
+        const serviceName = (serviceRow?.name as string | undefined) ?? "tu servicio";
+        const orderId = order.id as string;
+        return {
+          user_id: userId,
+          order_id: orderId,
+          kind: "reminder" as const,
+          title: "Documentación pendiente",
+          message: `Sube los archivos de ${serviceName} para que Daniel pueda revisar tu expediente.`,
+          href: `/mis-pedidos/${orderId}#documentos`,
+        };
       });
+
+    if (toInsert.length > 0) {
+      await admin.from("client_notifications").insert(toInsert);
     }
   } catch (error) {
     console.error("[client-notifications] syncDocReminderNotifications", error);

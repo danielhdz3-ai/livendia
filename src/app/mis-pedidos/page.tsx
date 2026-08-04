@@ -1,3 +1,4 @@
+import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { MisPedidosListHero } from "@/components/mis-pedidos-list-hero";
 import { MisPedidosOrderCard } from "@/components/mis-pedidos-order-card";
@@ -13,11 +14,10 @@ import { FileText, Package } from "lucide-react";
 export const metadata = { title: "Mis expedientes" };
 
 export default async function MisPedidosPage() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCachedAuthUser();
   if (!user) redirect("/login");
+
+  const supabase = await createServerSupabaseClient();
 
   const [{ data: profile }, { data: orders }] = await Promise.all([
     supabase.from("profiles").select("full_name").eq("id", user.id).maybeSingle(),

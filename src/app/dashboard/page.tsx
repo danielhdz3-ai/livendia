@@ -12,6 +12,7 @@ import {
   subscriptionGrantsRentalAccess,
 } from "@/lib/rental-access";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "./logout-button";
@@ -40,23 +41,27 @@ type DashboardPageProps = {
 
 export default async function DashboardPage({ searchParams }: DashboardPageProps) {
   const { pedido: highlightOrderId } = await searchParams;
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCachedAuthUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase.from("profiles").select("full_name, role").eq("id", user.id).maybeSingle();
+  const supabase = await createServerSupabaseClient();
 
-  const { data: orders } = await supabase
-    .from("orders")
-    .select("id, status, created_at, total_cents, services ( name, slug )")
-    .order("created_at", { ascending: false });
+  const [profileResult, ordersResult, rentalSubsResult] = await Promise.all([
+    supabase.from("profiles").select("full_name, role").eq("id", user.id).maybeSingle(),
+    supabase
+      .from("orders")
+      .select("id, status, created_at, total_cents, services ( name, slug )")
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("client_subscriptions")
+      .select("status, current_period_end, services ( slug )")
+      .eq("client_id", user.id),
+  ]);
 
-  const { data: rentalSubs, error: subsErr } = await supabase
-    .from("client_subscriptions")
-    .select("status, current_period_end, services ( slug )")
-    .eq("client_id", user.id);
+  const profile = profileResult.data;
+  const orders = ordersResult.data;
+  const rentalSubs = rentalSubsResult.data;
+  const subsErr = rentalSubsResult.error;
 
   if (subsErr) {
     console.error("client_subscriptions:", subsErr.message);

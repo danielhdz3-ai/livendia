@@ -1,23 +1,15 @@
 import { ClientPanelShell } from "@/components/client-panel-shell";
 import { ConfiguracionForm } from "@/components/configuracion-form";
 import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { getCachedAuthUser, getCachedUserProfile } from "@/lib/supabase/auth-cache";
 import { redirect } from "next/navigation";
-
 export const metadata = { title: "Configuración" };
 
 export default async function ConfiguracionPage() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCachedAuthUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("notify_email_orders, notify_email_docs, notify_newsletter")
-    .eq("id", user.id)
-    .maybeSingle();
+  const profile = await getCachedUserProfile(user.id);
 
   return (
     <ClientPanelShell

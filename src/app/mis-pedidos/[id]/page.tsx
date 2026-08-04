@@ -1,4 +1,4 @@
-import { OrderDocuments, type DocRow } from "@/app/dashboard/order-documents";
+import dynamic from "next/dynamic";
 import { OrderTimeline, OrderTimelineCompact } from "@/app/mis-pedidos/[id]/order-timeline";
 import { ClientExpedienteContactPanel } from "@/components/client-expediente-contact-panel";
 import { ExpedienteDesktopHero } from "@/components/expediente-desktop-hero";
@@ -15,19 +15,33 @@ import { LogoutButton } from "@/app/dashboard/logout-button";
 import { mergeOrderActivity } from "@/lib/order-activity";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import { PanelContentEnter } from "@/components/panel-content-enter";
+import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { PANEL_CARD, PANEL_PAGE_BG } from "@/lib/client-panel-ui";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, Calendar, Home, LayoutDashboard } from "lucide-react";
 
+const OrderDocuments = dynamic(
+  () => import("@/app/dashboard/order-documents").then((m) => ({ default: m.OrderDocuments })),
+  {
+    loading: () => (
+      <div className="animate-pulse rounded-2xl bg-slate-100 p-8">
+        <div className="mx-auto h-8 w-48 rounded bg-slate-200" />
+        <div className="mx-auto mt-4 h-24 w-full max-w-md rounded-xl bg-slate-200" />
+      </div>
+    ),
+  },
+);
+
+type DocRow = import("@/app/dashboard/order-documents").DocRow;
+
 export default async function MisPedidoDetallePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCachedAuthUser();
   if (!user) redirect("/login?next=/mis-pedidos/" + encodeURIComponent(id));
+
+  const supabase = await createServerSupabaseClient();
 
   const { data: order } = await supabase
     .from("orders")
@@ -41,11 +55,26 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
     notFound();
   }
 
-  const { data: docs } = await supabase
-    .from("documents")
-    .select("id, order_id, file_name, file_path, document_type, created_at")
-    .eq("order_id", id)
-    .order("created_at", { ascending: false });
+  const [docsResult, activityResult, deliverablesResult] = await Promise.all([
+    supabase
+      .from("documents")
+      .select("id, order_id, file_name, file_path, document_type, created_at")
+      .eq("order_id", id)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("order_activity")
+      .select("id, kind, title, description, created_at")
+      .eq("order_id", id)
+      .order("created_at", { ascending: false })
+      .limit(20),
+    supabase
+      .from("order_deliverables")
+      .select("id, title, message, file_name, file_path, created_at")
+      .eq("order_id", id)
+      .order("created_at", { ascending: false }),
+  ]);
+
+  const docs = docsResult.data;
 
   const docRows: DocRow[] = (docs ?? []).map((d) => ({
     id: d.id as string,
@@ -68,19 +97,6 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
     uploadedTypes,
     docCount: docRows.length,
   });
-
-  const activityResult = await supabase
-    .from("order_activity")
-    .select("id, kind, title, description, created_at")
-    .eq("order_id", id)
-    .order("created_at", { ascending: false })
-    .limit(20);
-
-  const deliverablesResult = await supabase
-    .from("order_deliverables")
-    .select("id, title, message, file_name, file_path, created_at")
-    .eq("order_id", id)
-    .order("created_at", { ascending: false });
 
   const activityItems = mergeOrderActivity(activityResult.error ? [] : (activityResult.data ?? []), {
     status: order.status as string,
