@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -300,6 +301,8 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+          <ClientPlatformShowcase city={config.city} />
+
 
           <FaqSection
             title={`Preguntas frecuentes — ${config.placeLabel}`}

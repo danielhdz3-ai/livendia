@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { AcompanamientoAlquilerLocalCityLinks } from "@/components/acompanamiento-alquiler-local-city-links";
 import {
@@ -63,6 +64,8 @@ export default function AcompanamientoAlquilerLocalHubPage() {
           </ul>
         </div>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter variant="landing" />
     </div>
   );

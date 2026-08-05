@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -206,6 +207,8 @@ export default async function ArrasPenitencialesPage() {
           </div>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
     </ServicePurchaseProvider>

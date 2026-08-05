@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
@@ -306,6 +307,8 @@ export default async function AcompanamientoAlquilerPage() {
               ) : null}
             </div>
           </section>
+        <ClientPlatformShowcase />
+
 
           <FaqSection
             title="Preguntas frecuentes"

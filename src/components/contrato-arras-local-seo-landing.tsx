@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import {
@@ -562,6 +563,8 @@ export async function ContratoArrasLocalSeoLanding({
               </div>
             </section>
           ) : null}
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Contrato de arras en ${config.city}`} />
 

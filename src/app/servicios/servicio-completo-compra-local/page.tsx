@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   COMPRA_LOCAL_BARCELONA_METRO_CITIES,
@@ -112,6 +113,8 @@ export default function ServicioCompletoCompraLocalIndexPage() {
           </div>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

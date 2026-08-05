@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -462,6 +463,8 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               </div>
             </section>
           ) : null}
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Servicio completo de venta en ${config.city}`} />
 

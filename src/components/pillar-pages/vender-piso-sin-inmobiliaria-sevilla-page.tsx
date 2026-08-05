@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -345,6 +346,9 @@ export async function VenderPisoSinInmobiliariaSevillaPillarPage() {
                     ) : null}
                   </ProseSection>
                 ))}
+
+                {/* Plataforma cliente */}
+                <ClientPlatformShowcase city="Sevilla" />
 
                 {/* Proceso completo */}
                 <section id="proceso-completo" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">

@@ -1,6 +1,7 @@
 import { FaqSection } from "@/components/faq-section";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeHowItWorks } from "@/components/home-how-it-works";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { HomeMobileHero } from "@/components/home-mobile-hero";
 import { HomeMobileQuickActions } from "@/components/home-mobile-quick-actions";
@@ -128,6 +129,8 @@ export default async function Home() {
         </div>
 
         <HomeHowItWorks />
+
+        <ClientPlatformShowcase />
 
         <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">

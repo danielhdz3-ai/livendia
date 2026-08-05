@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -413,6 +414,8 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <ClientPlatformShowcase city={config.city} />
 
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">

@@ -1,4 +1,5 @@
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -351,6 +352,8 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
               </div>
             </section>
           ) : null}
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Gestión documental para vendedores en ${config.city}`} />
 

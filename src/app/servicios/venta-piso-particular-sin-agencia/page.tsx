@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { VentaPisoParticularSinAgenciaLocalCityLinks } from "@/components/venta-piso-particular-sin-agencia-local-city-links";
 import {
@@ -77,6 +78,8 @@ export default function VentaPisoParticularSinAgenciaHubPage() {
 
         <VentaPisoParticularSinAgenciaLocalCityLinks variant="inline" />
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

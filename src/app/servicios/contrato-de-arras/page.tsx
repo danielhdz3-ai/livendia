@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataMultiOffer } from "@/components/service-structured-data";
 import {
@@ -486,6 +487,8 @@ export default async function ContratoDeArrasPage() {
           </div>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
 
       <SiteFooter />
       </div>

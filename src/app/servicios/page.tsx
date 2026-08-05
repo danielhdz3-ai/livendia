@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
@@ -74,6 +75,8 @@ export default async function ServiciosPage() {
 
         <HomeCoverageCities variant="compact" />
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

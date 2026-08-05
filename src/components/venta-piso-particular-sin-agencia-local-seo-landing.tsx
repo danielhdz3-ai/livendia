@@ -1,4 +1,5 @@
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -661,6 +662,8 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
               />
             </div>
           </section>
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Venta de piso sin agencia en ${config.city}`} />
 

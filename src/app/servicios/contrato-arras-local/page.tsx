@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   CONTRATO_ARRAS_LOCAL_BASE,
@@ -87,6 +88,8 @@ export default function ContratoArrasLocalIndexPage() {
           </ul>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

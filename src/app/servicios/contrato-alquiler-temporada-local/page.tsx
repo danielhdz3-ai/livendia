@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
@@ -72,6 +73,8 @@ export default function ContratoAlquilerTemporadaLocalIndexPage() {
           </ul>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

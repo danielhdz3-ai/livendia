@@ -1,6 +1,7 @@
 import { CompraDocumentacionRevisamosSection } from "@/components/compra-documentacion-revisamos-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
@@ -387,6 +388,8 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               />
             </div>
           </section>
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Servicio completo de compra en ${config.city}`} />
 

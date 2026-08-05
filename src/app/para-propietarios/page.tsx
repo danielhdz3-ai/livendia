@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -239,6 +240,8 @@ export default async function ParaPropietariosPage() {
             </p>
           </div>
         </section>
+        <ClientPlatformShowcase serviceLabel="Administración de alquiler" />
+
 
         <SiteFooter />
       </div>

@@ -1,5 +1,6 @@
 import { AcompanamientoCompraParkingTrasteroLocalCityLinks } from "@/components/acompanamiento-compra-parking-trastero-local-city-links";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE,
@@ -108,6 +109,8 @@ export default function AcompanamientoCompraParkingTrasteroLocalIndexPage() {
           </div>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

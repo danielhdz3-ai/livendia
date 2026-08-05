@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getPublicServices } from "@/lib/catalog";
@@ -308,6 +309,9 @@ export default async function AdministracionAlquilerPage() {
             </div>
           </div>
         </section>
+
+        {/* Plataforma cliente */}
+        <ClientPlatformShowcase />
 
         {/* Testimonios */}
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">

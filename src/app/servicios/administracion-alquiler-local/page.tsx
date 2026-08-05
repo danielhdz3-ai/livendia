@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   ADMINISTRACION_ALQUILER_LOCAL_BASE,
@@ -85,6 +86,8 @@ export default function AdministracionAlquilerLocalIndexPage() {
           </ul>
         </section>
       </main>
+        <ClientPlatformShowcase />
+
       <SiteFooter />
     </div>
   );

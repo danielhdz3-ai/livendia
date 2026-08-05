@@ -1,4 +1,5 @@
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -435,6 +436,8 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
               </div>
             </section>
           ) : null}
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Contrato de alquiler de habitación en ${config.city}`} />
 

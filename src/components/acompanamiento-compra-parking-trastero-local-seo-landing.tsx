@@ -1,5 +1,6 @@
 import { AcompanamientoCompraParkingTrasteroLocalCityLinks } from "@/components/acompanamiento-compra-parking-trastero-local-city-links";
 import { CalculadoraAhorroCompraParking } from "@/components/calculadora-ahorro-compra-parking";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -384,6 +385,8 @@ export async function AcompanamientoCompraParkingTrasteroLocalSeoLanding({
               </div>
             </section>
           ) : null}
+          <ClientPlatformShowcase city={config.city} />
+
 
           <ServiceMidPageContactSection serviceLabel={`Acompañamiento compra de parking y trastero en ${config.city}`} />
 

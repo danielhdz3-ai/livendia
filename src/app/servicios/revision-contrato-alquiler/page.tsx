@@ -1,3 +1,4 @@
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
@@ -426,6 +427,8 @@ export default async function RevisionContratoAlquilerPage() {
 
           <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
+        <ClientPlatformShowcase />
+
               <FaqSection
                 title="Preguntas frecuentes — revisión de contrato de alquiler"
                 items={[...REVISION_CONTRATO_ALQUILER_FAQ]}

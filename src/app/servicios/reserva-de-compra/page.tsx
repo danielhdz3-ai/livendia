@@ -1,4 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
+import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -193,6 +194,8 @@ export default async function ReservaDeCompraPage() {
             </div>
           </section>
         </main>
+        <ClientPlatformShowcase />
+
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>
