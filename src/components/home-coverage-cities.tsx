@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
+import { HOME_COVERAGE_CITIES, HOME_CITY_CARD_IMAGES } from "@/lib/home-coverage-cities";
 import { CIUDADES_HUB_BASE, CITY_HUB_TAGLINES, cityHubHref } from "@/lib/ciudades-hub";
 
 type HomeCoverageCitiesProps = {
@@ -56,11 +57,25 @@ export function HomeCoverageCities({ variant = "teaser" }: HomeCoverageCitiesPro
               <li key={city.slug}>
                 <Link
                   href={cityHubHref(city.slug)}
-                  className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-[#1A4FBF] hover:shadow-md"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-[#1A4FBF] hover:shadow-md"
                 >
-                  <h3 className="text-lg font-bold text-[#1E293B]">{city.name}</h3>
-                  <p className="mt-2 flex-1 text-sm text-[#64748b]">{CITY_HUB_TAGLINES[city.slug]}</p>
-                  <span className="mt-4 text-sm font-semibold text-[#1A4FBF]">Ver servicios →</span>
+                  <div className="relative h-32 overflow-hidden bg-slate-100 sm:h-36">
+                    <Image
+                      src={HOME_CITY_CARD_IMAGES[city.slug]}
+                      alt={`Gestoría inmobiliaria en ${city.name}`}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, 20vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F2A6B]/60 via-[#0F2A6B]/15 to-transparent" />
+                    <h3 className="absolute bottom-3 left-4 text-lg font-bold text-white drop-shadow-sm">
+                      {city.name}
+                    </h3>
+                  </div>
+                  <div className="flex flex-1 flex-col p-4 sm:p-5">
+                    <p className="flex-1 text-sm leading-relaxed text-[#64748b]">{CITY_HUB_TAGLINES[city.slug]}</p>
+                    <span className="mt-4 text-sm font-semibold text-[#1A4FBF]">Ver servicios →</span>
+                  </div>
                 </Link>
               </li>
             ))}

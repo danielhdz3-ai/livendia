@@ -93,6 +93,15 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
   },
 ];
 
+/** Imágenes de ciudad para tarjetas en home (Cobertura online). */
+export const HOME_CITY_CARD_IMAGES: Record<HomeCoverageCitySlug, string> = {
+  madrid: "/images/madrid.jpg",
+  valencia: "/images/valencia.jpg",
+  barcelona: "/images/barcelona.jpg",
+  malaga: "/images/malaga.jpg",
+  sevilla: "/images/sevilla.jpg",
+};
+
 /** Enlaces planos para footer, mapa del sitio, etc. */
 export function getHomeCoverageCityFlatLinks(): { href: string; label: string }[] {
   return HOME_COVERAGE_CITIES.flatMap((c) => [

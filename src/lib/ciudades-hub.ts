@@ -64,7 +64,7 @@ export const CITY_HUB_IMAGES: Record<HomeCoverageCitySlug, { src: string; alt: s
   madrid: { src: "/images/madrid.jpg", alt: "Skyline de Madrid — gestoría inmobiliaria Livendia" },
   valencia: { src: "/images/valencia1.jpg", alt: "Ciudad de Valencia — gestoría inmobiliaria Livendia" },
   barcelona: { src: "/images/barcelona2.jpg", alt: "Barcelona y área metropolitana — gestoría Livendia" },
-  malaga: { src: "/images/mallorca.jpg", alt: "Costa mediterránea — gestoría inmobiliaria en Málaga" },
+  malaga: { src: "/images/malaga.jpg", alt: "Málaga, plaza de toros y puerto — gestoría inmobiliaria Livendia" },
   sevilla: { src: "/images/sevilla2.jpg", alt: "Sevilla — gestoría inmobiliaria Livendia" },
 };
 
