@@ -1,22 +1,25 @@
 import { MessageCircle, Phone } from "lucide-react";
+import { WhatsAppLeadButton } from "@/components/whatsapp-lead-button";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { ServiceInfoRequestForm } from "@/components/service-info-request-form";
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const midPageWaHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
+import type { WhatsAppNeedType } from "@/lib/whatsapp-prefill";
 
 type ServiceMidPageContactSectionProps = {
-  /** Ej. "Contrato de arras en Madrid" — se usa en el título y en el email de contexto. */
   serviceLabel: string;
+  needType?: WhatsAppNeedType;
+  city?: string;
+  placement?: string;
 };
 
 /**
- * Punto de contacto adicional a mitad de página (tras FAQ / precio), distinto del
- * WhatsApp del hero y del CTA final. Combina WhatsApp + teléfono + el formulario
- * ligero de "pedir información" — alternativa a "Contratar" para quien no está
- * listo para pagar en el primer clic. No toca el flujo de checkout.
+ * Punto de contacto a mitad de página: WhatsApp con modal, teléfono y formulario ligero.
  */
-export function ServiceMidPageContactSection({ serviceLabel }: ServiceMidPageContactSectionProps) {
+export function ServiceMidPageContactSection({
+  serviceLabel,
+  needType,
+  city,
+  placement = "mid_page_contact",
+}: ServiceMidPageContactSectionProps) {
   return (
     <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-4xl">
@@ -25,20 +28,23 @@ export function ServiceMidPageContactSection({ serviceLabel }: ServiceMidPageCon
             <div>
               <h2 className="text-2xl font-bold text-[#1E293B]">¿Aún tienes dudas?</h2>
               <p className="mt-3 leading-relaxed text-[#475569]">
-                Habla ahora con un gestor por WhatsApp o pide que te llamemos nosotros — sin coste ni compromiso.
+                Cuéntanos tu caso por WhatsApp o pide que te llamemos — sin coste ni compromiso.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={midPageWaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppLeadButton
+                  placement={`${placement}_whatsapp`}
+                  serviceLabel={serviceLabel}
+                  needType={needType}
+                  city={city}
+                  mode="modal"
                   className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
                 >
                   <MessageCircle className="h-5 w-5" aria-hidden />
                   Escribir por WhatsApp
-                </a>
+                </WhatsAppLeadButton>
                 <a
                   href={getContactPhoneTelHref()}
+                  data-analytics-placement={`${placement}_phone`}
                   className="inline-flex items-center gap-2 rounded-full border-2 border-[#1A4FBF] px-6 py-3 text-sm font-semibold text-[#1A4FBF] transition hover:bg-[#1A4FBF]/5"
                 >
                   <Phone className="h-5 w-5" aria-hidden />
@@ -46,7 +52,7 @@ export function ServiceMidPageContactSection({ serviceLabel }: ServiceMidPageCon
                 </a>
               </div>
             </div>
-            <ServiceInfoRequestForm serviceLabel={serviceLabel} />
+            <ServiceInfoRequestForm serviceLabel={serviceLabel} analyticsSource={`${placement}_form`} />
           </div>
         </div>
       </div>

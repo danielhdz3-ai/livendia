@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 import { GtmScripts } from "@/components/gtm-scripts";
 import { WebsiteStructuredData } from "@/components/website-structured-data";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
+import { WhatsAppLeadProvider } from "@/components/whatsapp-lead-provider";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
 import { ClientPanelShellRoot } from "@/components/client-panel-shell-root";
 import { PwaRegister } from "@/components/pwa-register";
@@ -74,13 +75,15 @@ export default function RootLayout({
         <GtmScripts />
         <AnalyticsBootstrap />
         <ToastProvider>
-          <ClientPanelShellRoot>
-            {children}
-          </ClientPanelShellRoot>
+          <WhatsAppLeadProvider>
+            <ClientPanelShellRoot>
+              {children}
+            </ClientPanelShellRoot>
+            <FloatingWhatsAppButton />
+          </WhatsAppLeadProvider>
         </ToastProvider>
         <PwaRegister />
         <PublicMobileChrome />
-        <FloatingWhatsAppButton />
       </body>
     </html>
   );

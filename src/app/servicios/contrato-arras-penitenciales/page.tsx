@@ -1,5 +1,8 @@
 import { PublicHeader } from "@/components/public-header";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -81,6 +84,15 @@ export default async function ArrasPenitencialesPage() {
                   <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                     Contratar por 145 €
                   </ContratarServicioButton>
+                  <WhatsAppLeadLink
+                    placement="contrato_arras_penitenciales_hero_whatsapp"
+                    serviceLabel="Contrato de arras penitenciales"
+                    needType="arras"
+                    mode="direct"
+                    className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                  >
+                    Consultar por WhatsApp
+                  </WhatsAppLeadLink>
                   <Link
                     href="/servicios"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -164,6 +176,12 @@ export default async function ArrasPenitencialesPage() {
           </div>
         </section>
 
+        <ServiceMidPageContactSection
+          serviceLabel="Contrato de arras penitenciales"
+          needType="arras"
+          placement="contrato_arras_penitenciales_mid"
+        />
+
         {/* Galería */}
         <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
           <div className="mx-auto max-w-6xl">
@@ -206,6 +224,11 @@ export default async function ArrasPenitencialesPage() {
             </div>
           </div>
         </section>
+
+        <GestorContactCta
+          placement="contrato_arras_penitenciales"
+          serviceLabel="Contrato de arras penitenciales"
+        />
       </main>
         <ServiceLandingSharedSections />
 

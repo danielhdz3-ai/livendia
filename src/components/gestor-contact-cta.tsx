@@ -1,17 +1,23 @@
-import { businessNap, getWhatsAppHref } from "@/lib/business-nap";
+"use client";
+
 import { MessageCircle, Phone, UserRound } from "lucide-react";
+import { WhatsAppLeadButton } from "@/components/whatsapp-lead-button";
+import { businessNap } from "@/lib/business-nap";
+import { WHATSAPP_RESPONSE_HOURS } from "@/lib/whatsapp-prefill";
 
 type GestorContactCtaProps = {
-  /** Prefijo analytics: footer, blog, servicio, home… */
   placement?: string;
   className?: string;
+  serviceLabel?: string;
+  city?: string;
 };
 
-const DEFAULT_PREFILL =
-  "Hola, me gustaría hablar con un gestor de Livendia sobre mi operación inmobiliaria.";
-
-export function GestorContactCta({ placement = "gestor_cta", className = "" }: GestorContactCtaProps) {
-  const waHref = getWhatsAppHref(DEFAULT_PREFILL);
+export function GestorContactCta({
+  placement = "gestor_cta",
+  className = "",
+  serviceLabel,
+  city,
+}: GestorContactCtaProps) {
   const telHref = businessNap.telephoneTel();
   const phoneDisplay = businessNap.telephoneDisplay();
 
@@ -40,6 +46,7 @@ export function GestorContactCta({ placement = "gestor_cta", className = "" }: G
           Resolvemos dudas sobre alquiler, compra, venta entre particulares o arras. Sin compromiso antes de
           contratar.
         </p>
+        <p className="mx-auto mt-3 max-w-xl text-sm text-blue-200/95">{WHATSAPP_RESPONSE_HOURS}</p>
 
         <a
           href={telHref}
@@ -51,16 +58,16 @@ export function GestorContactCta({ placement = "gestor_cta", className = "" }: G
         <p className="mt-2 text-sm font-medium text-blue-200/90">L–V · 9:00 – 19:30 · IVA y precios claros</p>
 
         <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-          <a
-            href={waHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-analytics-placement={`${placement}_whatsapp`}
+          <WhatsAppLeadButton
+            placement={`${placement}_whatsapp`}
+            serviceLabel={serviceLabel}
+            city={city}
+            mode="modal"
             className="inline-flex min-h-[3.25rem] flex-1 items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-xl transition hover:scale-[1.02] hover:bg-[#20bd5a] sm:max-w-xs sm:flex-none"
           >
             <MessageCircle className="h-6 w-6 shrink-0" aria-hidden />
             WhatsApp con gestor
-          </a>
+          </WhatsAppLeadButton>
           <a
             href={telHref}
             data-analytics-placement={`${placement}_call`}

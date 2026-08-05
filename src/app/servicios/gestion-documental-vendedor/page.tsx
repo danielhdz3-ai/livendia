@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { LocalCityImageCardGrid } from "@/components/local-city-image-card-grid";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
 import Image from "next/image";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -37,10 +39,7 @@ import {
 } from "lucide-react";
 
 const canonical = `${getSiteUrl()}${GESTION_DOCUMENTAL_VENDEDOR_LOCAL_BASE}`;
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Hola, vendí mi piso entre particulares y quiero contratar el gestor documental Livendia (350 €) de arras a escritura.",
-)}`;
+const SERVICE_LABEL = "Gestión documental vendedor post-arras";
 
 const STEP_ICONS = [ClipboardList, FileSearch, Shield, Phone] as const;
 
@@ -104,15 +103,16 @@ export default async function GestionDocumentalVendedorPage() {
                     <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                       Contratar gestor — {priceLabel}
                     </ContratarServicioButton>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <WhatsAppLeadLink
+                      placement="gestion_documental_vendedor_hero_whatsapp"
+                      serviceLabel={SERVICE_LABEL}
+                      needType="venta"
+                      mode="direct"
                       className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
                     >
                       <MessageCircle className="h-5 w-5" aria-hidden />
                       Consultar por WhatsApp
-                    </a>
+                    </WhatsAppLeadLink>
                   </div>
                 </div>
                 <div className="relative h-[320px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20 lg:h-[400px]">
@@ -175,6 +175,12 @@ export default async function GestionDocumentalVendedorPage() {
               </div>
             </div>
           </section>
+
+          <ServiceMidPageContactSection
+            serviceLabel={SERVICE_LABEL}
+            needType="venta"
+            placement="gestion_documental_vendedor_mid"
+          />
 
           <section className="border-t border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl">
@@ -272,15 +278,16 @@ export default async function GestionDocumentalVendedorPage() {
                 <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                   Contratar por {priceLabel}
                 </ContratarServicioButton>
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppLeadLink
+                  placement="gestion_documental_vendedor_footer_whatsapp"
+                  serviceLabel={SERVICE_LABEL}
+                  needType="venta"
+                  mode="modal"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
                 >
                   <MessageCircle className="h-5 w-5" aria-hidden />
                   WhatsApp
-                </a>
+                </WhatsAppLeadLink>
               </div>
             </div>
           </section>

@@ -1,5 +1,7 @@
 import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { SiteFooter } from "@/components/site-footer";
@@ -92,6 +94,15 @@ export default async function AcompanamientoReservaArrasPage() {
                     <ContratarServicioButton className="rounded-full bg-white px-8 py-4 text-base font-semibold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
                       Contratar por 424 €
                     </ContratarServicioButton>
+                    <WhatsAppLeadLink
+                      placement="acompanamiento_reserva_arras_hero_whatsapp"
+                      serviceLabel="Acompañamiento reserva hasta arras"
+                      needType="arras"
+                      mode="direct"
+                      className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
+                    >
+                      Consultar por WhatsApp
+                    </WhatsAppLeadLink>
                     <Link
                       href="/servicios/servicio-completo-compra"
                       className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
@@ -239,6 +250,12 @@ export default async function AcompanamientoReservaArrasPage() {
               </p>
             </div>
           </section>
+
+          <ServiceMidPageContactSection
+            serviceLabel="Acompañamiento reserva hasta arras"
+            needType="arras"
+            placement="acompanamiento_reserva_arras_mid"
+          />
 
           <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">

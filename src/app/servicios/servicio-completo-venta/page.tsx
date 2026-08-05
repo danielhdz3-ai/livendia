@@ -12,6 +12,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
+import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
 import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
 import {
   AlertCircle,
@@ -47,10 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
-const WA_SERVICIO_VENTA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const waHref = `https://wa.me/${WA_SERVICIO_VENTA.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Hola, soy propietario y quiero vender mi piso entre particulares. Me interesa el servicio completo de venta (reserva a escritura).",
-)}`;
+const SERVICE_LABEL = "Servicio completo de venta";
 
 export default async function ServicioCompletoVentaPage() {
   const catalog = await getPublicServices();
@@ -161,15 +160,15 @@ export default async function ServicioCompletoVentaPage() {
                     <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50">
                       Contratar · {priceLabel}
                     </ContratarServicioButton>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-analytics-placement="servicio_completo_venta_hero_whatsapp"
+                    <WhatsAppLeadLink
+                      placement="servicio_completo_venta_hero_whatsapp"
+                      serviceLabel={SERVICE_LABEL}
+                      needType="venta"
+                      mode="direct"
                       className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
                     >
                       Consultar por WhatsApp
-                    </a>
+                    </WhatsAppLeadLink>
                   </div>
                   <p className="mt-6 text-sm text-blue-200">
                     ¿Compras en lugar de vender?{" "}
@@ -318,6 +317,12 @@ export default async function ServicioCompletoVentaPage() {
             </div>
           </section>
 
+          <ServiceMidPageContactSection
+            serviceLabel={SERVICE_LABEL}
+            needType="venta"
+            placement="servicio_completo_venta_mid"
+          />
+
           <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-2xl font-bold text-[#1E293B] sm:text-3xl">
@@ -333,7 +338,7 @@ export default async function ServicioCompletoVentaPage() {
             </div>
           </section>
 
-          <GestorContactCta placement="servicio_completo_venta" />
+          <GestorContactCta placement="servicio_completo_venta" serviceLabel={SERVICE_LABEL} />
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
             <div className="mx-auto flex max-w-4xl gap-4">

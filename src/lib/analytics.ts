@@ -28,6 +28,8 @@ export function pushDataLayer(event: string, params?: Record<string, unknown>): 
 
 export function trackWhatsAppClick(placement: string, linkUrl?: string): void {
   pushDataLayer("whatsapp_click", {
+    event_category: "engagement",
+    event_label: placement,
     placement,
     link_url: linkUrl,
     page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
