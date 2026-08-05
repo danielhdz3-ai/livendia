@@ -1,6 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
@@ -539,7 +539,6 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
               />
             </div>
           </section>
-          <ClientPlatformShowcase city={config.city} />
 
 
           <ServiceMidPageContactSection serviceLabel={`Venta sin inmobiliaria en ${config.city}`} />
@@ -584,6 +583,8 @@ export async function VenderPisoSinInmobiliariaSeoLanding({
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections city={config.city} />
+
 
         <SiteFooter />
       </div>

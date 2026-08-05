@@ -1,5 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import {
   ContratarSlugButton,
@@ -444,7 +444,7 @@ export default async function ContratoDeAlquilerPage() {
             </div>
           </section>
         </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
 
         <SiteFooter />

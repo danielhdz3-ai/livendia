@@ -1,5 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -430,7 +430,6 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </section>
           ) : null}
-          <ClientPlatformShowcase city={config.city} />
 
 
           <ServiceMidPageContactSection serviceLabel={`Contrato de alquiler en ${config.city}`} />
@@ -498,6 +497,8 @@ export async function ContratoAlquilerLocalSeoLanding({
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections city={config.city} />
+
 
         <SiteFooter />
       </div>

@@ -1,5 +1,5 @@
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { AcompanamientoAlquilerLocalCityLinks } from "@/components/acompanamiento-alquiler-local-city-links";
 import {
@@ -64,7 +64,7 @@ export default function AcompanamientoAlquilerLocalHubPage() {
           </ul>
         </div>
       </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
       <SiteFooter variant="landing" />
     </div>

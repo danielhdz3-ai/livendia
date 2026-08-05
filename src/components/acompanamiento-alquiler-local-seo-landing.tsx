@@ -1,5 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
@@ -301,7 +301,6 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
-          <ClientPlatformShowcase city={config.city} />
 
 
           <FaqSection
@@ -354,6 +353,8 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections city={config.city} />
+
         <SiteFooter variant="landing" />
       </div>
     </ServicePurchaseProvider>

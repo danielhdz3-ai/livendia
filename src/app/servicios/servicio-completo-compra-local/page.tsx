@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { LocalCityImageCardGrid } from "@/components/local-city-image-card-grid";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   COMPRA_LOCAL_BARCELONA_METRO_CITIES,
@@ -66,21 +67,16 @@ export default function ServicioCompletoCompraLocalIndexPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold text-[#1E293B]">Ciudades disponibles ahora</h2>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {publishedCities.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={localServicioCompletoCompraHref(c.slug)}
-                  className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
-                >
-                  <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
-                  <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver landing →</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LocalCityImageCardGrid
+            cities={publishedCities.map((c) => ({
+              slug: c.slug,
+              city: c.city,
+              region: c.schemaAdministrativeArea,
+              href: localServicioCompletoCompraHref(c.slug),
+              linkLabel: "Ver landing →",
+            }))}
+            title="Ciudades disponibles ahora"
+          />
         </section>
 
         <section className="border-t border-slate-200 bg-white">
@@ -113,7 +109,7 @@ export default function ServicioCompletoCompraLocalIndexPage() {
           </div>
         </section>
       </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
       <SiteFooter />
     </div>

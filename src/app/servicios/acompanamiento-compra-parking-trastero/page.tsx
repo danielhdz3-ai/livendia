@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import Image from "next/image";
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -298,7 +298,7 @@ export default async function AcompanamientoCompraParkingTrasteroPage() {
             </div>
           </section>
         </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
         <SiteFooter />
       </div>

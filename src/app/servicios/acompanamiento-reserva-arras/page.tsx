@@ -1,7 +1,7 @@
 import { FaqSection } from "@/components/faq-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
@@ -289,7 +289,7 @@ export default async function AcompanamientoReservaArrasPage() {
             </div>
           </section>
         </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
         <SiteFooter />
       </div>

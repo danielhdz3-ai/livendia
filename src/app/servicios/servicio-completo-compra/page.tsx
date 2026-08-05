@@ -1,5 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -303,7 +303,6 @@ export default async function ServicioCompletoCompraPage() {
         </section>
 
         {/* Plataforma cliente */}
-        <ClientPlatformShowcase />
 
         {/* Testimonios */}
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
@@ -399,7 +398,9 @@ export default async function ServicioCompletoCompraPage() {
             </p>
           </div>
         </section>
-      </main>
+        </main>
+        <ServiceLandingSharedSections />
+
 
       <SiteFooter />
     </div>

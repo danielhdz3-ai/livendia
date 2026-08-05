@@ -1,5 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import {
   ContratarSlugButton,
@@ -415,7 +415,6 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             </div>
           </section>
 
-          <ClientPlatformShowcase city={config.city} />
 
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
@@ -454,6 +453,8 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections city={config.city} />
+
 
         <SiteFooter />
       </div>

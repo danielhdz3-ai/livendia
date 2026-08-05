@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { LocalCityImageCardGrid } from "@/components/local-city-image-card-grid";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
@@ -55,25 +56,20 @@ export default function ContratoAlquilerTemporadaLocalIndexPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {publishedCities.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={localContratoAlquilerTemporadaHref(c.slug)}
-                  className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
-                >
-                  <span className="text-lg font-bold text-[#1E293B]">
-                    {c.slug === "mallorca" ? "Mallorca" : c.city}
-                  </span>
-                  <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver landing →</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LocalCityImageCardGrid
+            cities={publishedCities.map((c) => ({
+              slug: c.slug,
+              city: c.slug === "mallorca" ? "Mallorca" : c.city,
+              region: c.schemaAdministrativeArea,
+              href: localContratoAlquilerTemporadaHref(c.slug),
+              linkLabel: "Ver landing →",
+            }))}
+            title="Ciudades disponibles"
+            description="Contrato de alquiler por temporada con contexto del mercado local: duración, prórroga, suministros e inventario."
+          />
         </section>
       </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
       <SiteFooter />
     </div>

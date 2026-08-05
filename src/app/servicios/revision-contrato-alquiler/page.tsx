@@ -1,6 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
-import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
@@ -427,7 +426,6 @@ export default async function RevisionContratoAlquilerPage() {
 
           <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
-        <ClientPlatformShowcase />
 
               <FaqSection
                 title="Preguntas frecuentes — revisión de contrato de alquiler"
@@ -435,8 +433,6 @@ export default async function RevisionContratoAlquilerPage() {
               />
             </div>
           </section>
-
-          <LivendiaFoundersBanner className="border-t border-slate-200" />
 
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-8 py-12 text-center text-white shadow-xl">
@@ -458,6 +454,8 @@ export default async function RevisionContratoAlquilerPage() {
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections />
+
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>

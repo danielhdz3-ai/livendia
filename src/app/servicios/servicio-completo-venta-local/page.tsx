@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { LocalCityImageCardGrid } from "@/components/local-city-image-card-grid";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import {
   SERVICIO_COMPLETO_VENTA_LOCAL_BASE,
@@ -60,30 +61,21 @@ export default function ServicioCompletoVentaLocalIndexPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold text-[#1E293B]">Ciudades disponibles</h2>
-          <p className="mt-2 text-[#64748b]">
-            Contenido único por mercado: por qué vender sin agencia, comparativa de costes y proceso con gestor
-            asignado.
-          </p>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-3">
-            {publishedCities.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={localServicioCompletoVentaHref(c.slug)}
-                  className="block rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
-                >
-                  <span className="text-xl font-bold text-[#1E293B]">{c.city}</span>
-                  <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">
-                    Vender en {c.city} con gestor →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LocalCityImageCardGrid
+            cities={publishedCities.map((c) => ({
+              slug: c.slug,
+              city: c.city,
+              region: c.schemaAdministrativeArea,
+              href: localServicioCompletoVentaHref(c.slug),
+              linkLabel: `Vender en ${c.city} con gestor →`,
+            }))}
+            title="Ciudades disponibles"
+            description="Contenido único por mercado: por qué vender sin agencia, comparativa de costes y proceso con gestor asignado."
+            listClassName="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          />
         </section>
       </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
       <SiteFooter />
     </div>

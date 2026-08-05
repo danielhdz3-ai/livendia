@@ -1,5 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { getPublicServices } from "@/lib/catalog";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
@@ -311,7 +311,6 @@ export default async function AdministracionAlquilerPage() {
         </section>
 
         {/* Plataforma cliente */}
-        <ClientPlatformShowcase />
 
         {/* Testimonios */}
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
@@ -422,6 +421,8 @@ export default async function AdministracionAlquilerPage() {
           </div>
         </section>
         </main>
+        <ServiceLandingSharedSections />
+
 
         <SiteFooter />
       </div>

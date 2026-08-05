@@ -1,5 +1,5 @@
 import { AlquilerRegulatoryLocalSection } from "@/components/alquiler-regulatory-local-section";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { FaqSection } from "@/components/faq-section";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
@@ -477,7 +477,6 @@ export async function AdministracionAlquilerLocalSeoLanding({
               />
             </div>
           </section>
-          <ClientPlatformShowcase city={config.city} />
 
 
           <ServiceMidPageContactSection serviceLabel={`Administración de alquiler en ${config.city}`} />
@@ -538,6 +537,8 @@ export async function AdministracionAlquilerLocalSeoLanding({
 
           <AdministracionAlquilerLocalRelatedServices slug={slug} city={config.city} />
         </main>
+        <ServiceLandingSharedSections city={config.city} />
+
 
         <SiteFooter variant="landing" />
       </div>

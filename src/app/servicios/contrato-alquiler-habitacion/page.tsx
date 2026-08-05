@@ -1,7 +1,7 @@
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -454,7 +454,7 @@ export default async function ContratoHabitacionPage() {
           </div>
         </section>
       </main>
-        <ClientPlatformShowcase />
+        <ServiceLandingSharedSections />
 
       <SiteFooter />
     </div>

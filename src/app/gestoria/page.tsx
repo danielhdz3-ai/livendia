@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { LocalCityImageCardGrid } from "@/components/local-city-image-card-grid";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
@@ -63,47 +64,37 @@ export default function GestoriaIndexPage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-2xl font-bold text-[#1E293B]">Madrid, Valencia y Barcelona</h2>
-          <p className="mt-2 max-w-2xl text-[#475569]">
-            Misma operativa online en las tres ciudades: gestor dedicado, precios fijos y panel de cliente.
-          </p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-            {featured.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={localGestoriaInmobiliariaHref(c.slug)}
-                  className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-[#1A4FBF]/20 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
-                >
-                  <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
-                  <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                  <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver gestoría →</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LocalCityImageCardGrid
+            cities={featured.map((c) => ({
+              slug: c.slug,
+              city: c.city,
+              region: c.schemaAdministrativeArea,
+              href: localGestoriaInmobiliariaHref(c.slug),
+              linkLabel: "Ver gestoría →",
+            }))}
+            title="Madrid, Valencia y Barcelona"
+            description="Misma operativa online en las tres ciudades: gestor dedicado, precios fijos y panel de cliente."
+            listClassName="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          />
 
           {rest.length > 0 ? (
-            <>
-              <h2 className="mt-14 text-2xl font-bold text-[#1E293B]">Más ciudades</h2>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((c) => (
-                  <li key={c.slug}>
-                    <Link
-                      href={localGestoriaInmobiliariaHref(c.slug)}
-                      className="block rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-[#1A4FBF]"
-                    >
-                      <span className="text-lg font-bold text-[#1E293B]">{c.city}</span>
-                      <span className="mt-1 block text-sm text-[#64748b]">{c.schemaAdministrativeArea}</span>
-                      <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">Ver landing →</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
+            <LocalCityImageCardGrid
+              cities={rest.map((c) => ({
+                slug: c.slug,
+                city: c.city,
+                region: c.schemaAdministrativeArea,
+                href: localGestoriaInmobiliariaHref(c.slug),
+                linkLabel: "Ver landing →",
+              }))}
+              title="Más ciudades"
+              listClassName="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            />
           ) : null}
         </section>
 
-        <HomeCoverageCities variant="compact" />      </main>
+        <HomeCoverageCities variant="compact" />
+      </main>
+      <ServiceLandingSharedSections skipCoverage />
       <SiteFooter />
     </div>
   );

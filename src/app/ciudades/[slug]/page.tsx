@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CityHubServices } from "@/components/city-hub-services";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getPostsByCitySlug } from "@/lib/blog-content";
@@ -127,7 +127,6 @@ export default async function CiudadHubPage({ params }: Props) {
           </div>
         </section>
 
-        <ClientPlatformShowcase city={city.name} />
 
         <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
           <CityHubServices city={city} />
@@ -157,7 +156,9 @@ export default async function CiudadHubPage({ params }: Props) {
             </Link>
           </p>
         </section>
-      </main>
+        </main>
+        <ServiceLandingSharedSections city={city.name} />
+
       <SiteFooter />
     </div>
   );

@@ -1,6 +1,5 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
-import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
@@ -283,8 +282,6 @@ export default async function AcompanamientoAlquilerPage() {
             </div>
           </section>
 
-          <LivendiaFoundersBanner />
-
           <section className="border-t border-slate-200 bg-white px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-6xl text-center">
               <h2 className="text-2xl font-bold text-[#1E293B] sm:text-3xl">Por ciudad y zona</h2>
@@ -307,7 +304,6 @@ export default async function AcompanamientoAlquilerPage() {
               ) : null}
             </div>
           </section>
-        <ClientPlatformShowcase />
 
 
           <FaqSection
@@ -337,6 +333,8 @@ export default async function AcompanamientoAlquilerPage() {
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections />
+
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>

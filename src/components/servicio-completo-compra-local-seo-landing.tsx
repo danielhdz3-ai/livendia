@@ -1,11 +1,10 @@
 import { CompraDocumentacionRevisamosSection } from "@/components/compra-documentacion-revisamos-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
-import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -388,7 +387,6 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               />
             </div>
           </section>
-          <ClientPlatformShowcase city={config.city} />
 
 
           <ServiceMidPageContactSection serviceLabel={`Servicio completo de compra en ${config.city}`} />
@@ -455,8 +453,6 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 
           <GestorContactCta placement={`compra_local_${config.slug}`} />
 
-          <LivendiaFoundersBanner />
-
           <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-20 text-white sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-4xl lg:text-5xl">
@@ -486,6 +482,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             </div>
           </section>
         </main>
+        <ServiceLandingSharedSections city={config.city} />
 
         <SiteFooter variant="landing" />
       </div>
