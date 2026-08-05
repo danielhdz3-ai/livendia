@@ -11,6 +11,85 @@ type VenderPisoDiff = {
 };
 
 export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
+  barcelona: {
+    keywords: [
+      "vender piso en barcelona sin comisiones",
+      "vender piso sin comisiones en barcelona",
+      "vender piso sin comisiones barcelona",
+      "venta entre particulares barcelona",
+      "venta de particular a particular barcelona",
+      "gestoría venta piso particular barcelona",
+      "vender piso sin agencia barcelona",
+      "vender piso sin inmobiliaria barcelona",
+      "trámites venta entre particulares barcelona",
+    ],
+    metaTitle: "Vender piso en Barcelona sin comisiones — 890 € IVA incl. | Livendia",
+    metaDescription:
+      "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Ahorra el 3–5 % de agencia. Eixample, Gràcia, Sant Martí, L'Hospitalet.",
+    tramitesAreaNote:
+      "En Barcelona capital y área metropolitana (Eixample, Gràcia, Sant Martí, Sants, L'Hospitalet, Badalona, Poblenou…), un gestor legal experto de Livendia ordena reserva, arras, documentación y coordinación con notaría mientras tú vendes sin comisiones entre particulares.",
+    benefitsAreaNote:
+      "Checklist documental, comunidad de propietarios, ITE si procede, registral y coordinación pre-escritura en Barcelona — gestoría para vender sin agencia cuando ya tienes comprador.",
+    faq: [
+      {
+        question: "¿Cómo vender piso en Barcelona sin comisiones de agencia?",
+        answer:
+          "Si ya tienes comprador (Idealista, recomendación o conocido), no necesitas pagar un 3–5 % sobre el precio de venta. Livendia es gestoría por 890 € IVA incl.: redactamos reserva y arras, revisamos comunidad y registral, y coordinamos hasta notaría — venta entre particulares con respaldo legal.",
+      },
+      {
+        question: "¿Qué es la venta de particular a particular en Barcelona?",
+        answer:
+          "Es cuando tú, como propietario, vendes tu piso a otro particular sin pagar comisión a una agencia inmobiliaria. Livendia es la gestoría que te acompaña en contratos, documentación y trámites hasta la escritura, con tarifa plana de 890 € IVA incl.",
+      },
+      {
+        question: "¿Necesito una agencia para vender mi piso en Barcelona?",
+        answer:
+          "No es obligatorio. Si prefieres vender sin comisiones y llevas tú la captación o ya tienes comprador, una gestoría especializada como Livendia cubre la parte legal con un gestor experto dedicado a tu operación.",
+      },
+      {
+        question: "¿Qué trámites incluye la gestoría para vender entre particulares en Barcelona?",
+        answer:
+          "Reserva (si aplica), contrato de arras, nota simple registral, certificados de la comunidad, revisión de cargas, coordinación con notaría y orientación sobre plusvalía e impuestos del vendedor. Todo con tarifa plana de 890 € IVA incl., sin comisiones sobre el precio de venta.",
+      },
+      {
+        question: "¿Cuánto ahorro respecto a una agencia inmobiliaria en Barcelona?",
+        answer:
+          "En un piso de 400.000 €, una comisión del 3 % son 12.000 € + IVA (~14.520 €); al 5 %, 20.000 € + IVA. Livendia cuesta 890 € fijos: en la tabla de esta página ves el ahorro según el precio de tu vivienda en Barcelona.",
+      },
+      {
+        question: "¿Livendia busca comprador o publica mi piso en Barcelona?",
+        answer:
+          "No. No somos agencia ni portal inmobiliario. Somos gestoría: acompañamiento jurídico-documental para propietarios que venden sin agencia y gestionan la venta entre particulares.",
+      },
+    ],
+    copy: {
+      heroBadge: "Venta sin comisiones · Barcelona",
+      heroH1: "Vender piso en Barcelona sin comisiones — venta entre particulares con gestoría",
+      heroLead:
+        "¿Vendes tu piso en Barcelona y no quieres pagar el 3–5 % de una inmobiliaria? Si ya tienes comprador en Eixample, Gràcia, Sant Martí o L'Hospitalet, Livendia gestiona reserva, arras, trámites y notaría por {{price}} (IVA incl.) — venta de particular a particular con gestor legal experto, sin comisiones sobre el precio de venta.",
+      heroBullets: [
+        "Vender sin comisiones: tarifa plana frente a miles de euros de agencia",
+        "Eixample, Poblenou, Sants, Badalona: mismo gestor online",
+        "Contratos a medida — no plantillas copiadas de internet",
+      ],
+      savingsIntro:
+        "En Barcelona, con precios medios altos, una comisión del 3 % sobre 400.000 € son 12.000 € + IVA solo por intermediar. Si tú llevas la venta entre particulares, Livendia te da el mismo acompañamiento jurídico por tarifa plana de 890 €.",
+      benefitsFourthTitle: "Gestoría para vender sin agencia",
+      benefitsFourthText:
+        "Idealista, recomendación, familia o comprador que ya tienes — especialistas en venta inmobiliaria entre particulares en Barcelona y área metropolitana.",
+      disclaimer:
+        "Livendia no busca comprador ni hace marketing inmobiliario. Somos gestoría: acompañamiento jurídico-documental para propietarios que venden sin comisiones. Notaría, registro, plusvalía e IRPF del vendedor son independientes; te orientamos sobre plazos y documentación.",
+      finalCtaTitle: "Vende en Barcelona sin comisiones — con gestoría de confianza",
+      finalCtaSubtitle:
+        "Tarifa plana {{price}} IVA incl.: reserva, arras, trámites y notaría con gestor legal experto dedicado.",
+      faqTitle: "Vender piso en Barcelona sin comisiones — preguntas frecuentes",
+      faqSubtitle: "Venta entre particulares, trámites, gestoría y ahorro frente a comisiones de agencia.",
+      waPrefill:
+        "Hola, quiero vender mi piso en Barcelona sin comisiones (entre particulares, ya tengo comprador). Me interesa el servicio completo de venta Livendia.",
+      jsonLdServiceName: "Vender piso en Barcelona sin comisiones con gestoría Livendia",
+      imageAlt: "Vender piso sin comisiones en Barcelona con gestoría Livendia",
+    },
+  },
   madrid: {
     keywords: [
       "vender piso sin agencia madrid",

@@ -278,9 +278,12 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_CITIES: ServicioCompletoVentaLocalCit
     slug: "valladolid",
     city: "Valladolid",
     schemaAdministrativeArea: "Castilla y León",
-    heroLead: "",
-    whyIntro: "",
-    agencyIntro: "",
+    heroLead:
+      `En Valladolid el precio medio de un piso ronda los 150.000 €. Una comisión del 3 % son 4.500 € + IVA (~5.445 €); al 5 %, 7.500 € + IVA. Con Livendia pagas ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido, pago único, sin comisión sobre el precio de venta. Aquí abundan vendedores mayores, herencias entre hermanos y operaciones entre vecinos o familiares que ya tienen comprador y no quieren ceder miles de euros a una inmobiliaria por un trámite documental.`,
+    whyIntro:
+      "El mercado vallisoletano es más pausado que Madrid o Barcelona, pero no menos delicado: muchas ventas son entre particulares que se conocen desde hace años. El perfil típico es el propietario senior o la familia que liquida una herencia y vende a un comprador ya encontrado (hijo de vecinos, compañero de trabajo, comprador de otra provincia). Los problemas suelen venir de aceptación de herencia pendiente, varios cotitulares que deben firmar arras al unísono, o cargas antiguas en la nota simple que el comprador descubre tarde.",
+    agencyIntro:
+      `En un piso de 150.000 €, una comisión del 3 % suponen 4.500 € + IVA (~5.445 €) y al 5 %, 7.500 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana de gestoría inmobiliaria, sin comisión sobre el precio de venta. Ideal cuando ya tienes comprador particular.`,
     howIntro:
       "Mismo protocolo en Centro, Delicias, Parquesol, Rondilla o municipios del área: estudio de operación, contratos, checklist documental y seguimiento hasta firma.",
     testimonialsTitle: "Propietarios en Valladolid que vendieron con gestor Livendia",
@@ -305,9 +308,12 @@ export const SERVICIO_COMPLETO_VENTA_LOCAL_CITIES: ServicioCompletoVentaLocalCit
     slug: "granada",
     city: "Granada",
     schemaAdministrativeArea: "Andalucía",
-    heroLead: "",
-    whyIntro: "",
-    agencyIntro: "",
+    heroLead:
+      `En Granada el precio medio de un piso ronda los 170.000 €. Una comisión del 3 % son 5.100 € + IVA (~6.171 €); al 5 %, 8.500 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana de gestoría inmobiliaria, sin comisión sobre la venta. En la ciudad conviven turismo residencial, universidad (UGR), y ventas en el Albaicín o Realejo entre particulares que ya tienen comprador.`,
+    whyIntro:
+      "Granada mezcla compradores locales, estudiantes que compran piso pequeño, y adquirentes de otras provincias atraídos por calidad de vida. El vendedor particular suele ser propietario de piso en zona universitaria, heredero de vivienda en el casco histórico, o familia que vende segunda residencia en la Vega. Las casuísticas frecuentes: licencias en edificios antiguos del Albaicín, comunidades con obras de accesibilidad, arras copiadas que no contemplan el arrendamiento turístico del vecino, o compradores que piden plazo corto para hipoteca.",
+    agencyIntro:
+      `En un piso de 170.000 €, una comisión del 3 % suponen 5.100 € + IVA (~6.171 €) y al 5 %, 8.500 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana de gestoría inmobiliaria, sin comisión sobre el precio de venta. Ideal cuando ya tienes comprador particular.`,
     howIntro:
       "Mismo protocolo en Albaicín, Zaidín, Ronda, Chana o municipios del área metropolitana: estudio de operación, contratos, checklist documental y seguimiento hasta firma.",
     testimonialsTitle: "Propietarios en Granada que vendieron con gestor Livendia",
