@@ -20,9 +20,9 @@ import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Contrato de alquiler LAU — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Contrato de alquiler LAU entre particulares — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. | Livendia`,
   description:
-    `Redacción y revisión legal del contrato de alquiler LAU. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incluido, entrega 48-72 h. Inventario fotográfico y cláusulas personalizadas. Gestoría Livendia.`,
+    `Contrato de alquiler entre propietario e inquilino particular. Redacción LAU por ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. — no plantilla de internet. Gestoría Livendia, no agencia.`,
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-alquiler-lau` },
 };
 
@@ -66,13 +66,14 @@ export default async function ContratoLAUPage() {
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
                 <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
-                  Alquiler de vivienda
+                  Entre particulares · Alquiler
                 </div>
                 <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                  Contrato de Alquiler LAU
+                  Contrato de alquiler LAU entre particulares
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-blue-100">
-                  Redacción o revisión del contrato de arrendamiento de vivienda conforme a la normativa vigente.
+                  ¿Alquilas tu piso a un inquilino particular sin agencia? Redacción o revisión del contrato LAU por{" "}
+                  {priceLabel} IVA incl. — gestoría profesional, no plantilla copiada de internet.
                 </p>
 
                 <div className="mt-8 flex items-baseline gap-2">

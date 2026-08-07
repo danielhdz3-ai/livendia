@@ -56,6 +56,10 @@ import {
   VENDER_PISO_SIN_INMOBILIARIA_BASE,
   getPublishedVenderPisoSinInmobiliariaCities,
 } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
+import {
+  CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE,
+  getPublishedContratoEntreParticularesLocalCities,
+} from "@/lib/contrato-entre-particulares-local-cities";
 
 const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios", label: "Todos los servicios" },
@@ -65,6 +69,8 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
   { href: "/servicios/acompanamiento-compra-parking-trastero-local", label: "Parking/trastero por ciudad" },
   { href: "/servicios/servicio-completo-venta", label: "Acompañamiento de venta" },
+  { href: "/servicios/vender-piso-sin-agencia", label: "Vender piso sin agencia" },
+  { href: "/servicios/contrato-entre-particulares-local", label: "Contratos entre particulares" },
   { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato alquiler habitación" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },
@@ -101,6 +107,7 @@ export function FooterDiscoverabilityLinks() {
   const ventaParticularMetroLocal = getPublishedVentaPisoParticularCities();
   const gestoriaLocal = getPublishedGestoriaInmobiliariaLocalCities();
   const venderSinInmobiliariaLocal = getPublishedVenderPisoSinInmobiliariaCities();
+  const contratoEntreParticularesLocal = getPublishedContratoEntreParticularesLocalCities();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -213,6 +220,11 @@ export function FooterDiscoverabilityLinks() {
           title="Vender sin inmobiliaria (guías pilar)"
           hub={VENDER_PISO_SIN_INMOBILIARIA_BASE}
           cities={venderSinInmobiliariaLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Contratos entre particulares por ciudad"
+          hub={CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE}
+          cities={contratoEntreParticularesLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
       </div>
     </nav>

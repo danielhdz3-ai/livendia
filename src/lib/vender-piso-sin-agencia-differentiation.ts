@@ -294,4 +294,60 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
         "Hola, vendo en Bilbao/Getxo entre particulares con comprador. Quiero el servicio completo de venta Livendia.",
     },
   },
+  granada: {
+    keywords: [
+      "vender piso sin comisiones granada",
+      "venta entre particulares granada",
+      "vender piso sin agencia granada ugr",
+      "gestoría venta particular granada",
+    ],
+    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl. | Livendia",
+    metaDescription:
+      "Vende entre particulares en Granada con gestoría Livendia: 890 € IVA incl., reserva, arras y notaría. Sin comisión del 3–5 %. Albaicín, Zaidín, Realejo.",
+    copy: {
+      heroBadge: "Venta sin comisiones · Granada",
+      heroH1: "Vender piso en Granada sin comisiones — entre particulares con gestoría",
+      heroLead:
+        "¿Ya tienes comprador en Granada (Idealista, UGR, recomendación)? Por {{price}} (IVA incl.) Livendia redacta reserva y arras — sin pagar miles de euros a una inmobiliaria por un trámite que tú ya llevas.",
+      heroBullets: [
+        "Albaicín, Zaidín, Realejo: mismo gestor online",
+        "Herencia, segunda residencia o traslado",
+        "No publicamos tu piso: solo gestoría legal",
+      ],
+      savingsIntro:
+        "En un piso de 170.000 €, el 3 % de comisión son 5.100 € + IVA. Livendia cuesta 890 € fijos cuando vendes entre particulares.",
+      finalCtaTitle: "Vende en Granada sin comisiones — con gestoría Livendia",
+      waPrefill:
+        "Hola, vendo mi piso en Granada entre particulares (ya tengo comprador) y quiero gestoría Livendia sin comisiones de agencia.",
+      jsonLdServiceName: "Vender piso sin comisiones en Granada con gestoría Livendia",
+    },
+  },
+  zaragoza: {
+    keywords: [
+      "vender piso sin comisiones zaragoza",
+      "venta entre particulares zaragoza",
+      "vender piso sin agencia zaragoza",
+      "gestoría venta particular zaragoza",
+    ],
+    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl. | Livendia",
+    metaDescription:
+      "Vende tu piso entre particulares en Zaragoza: gestoría 890 € IVA incl. Reserva, arras, trámites y notaría. Actur, Delicias, Centro — sin comisión de agencia.",
+    copy: {
+      heroBadge: "Venta sin comisiones · Zaragoza",
+      heroH1: "Vender piso en Zaragoza sin comisiones — gestoría para particulares",
+      heroLead:
+        "¿Comprador en Actur, Delicias o Centro Histórico? Por {{price}} (IVA incl.) un gestor legal de Livendia gestiona la venta entre particulares — reserva, arras y documentación hasta notaría.",
+      heroBullets: [
+        "Tarifa plana vs 3 % sobre el precio de venta",
+        "Ideal si publicaste en Idealista tú mismo",
+        "Gestor dedicado por WhatsApp",
+      ],
+      savingsIntro:
+        "En Zaragoza, con precios medios en torno a 190.000 €, una comisión del 3 % supera 5.700 € + IVA. Livendia cubre el tramo legal por 890 €.",
+      finalCtaTitle: "Cierra tu venta en Zaragoza entre particulares",
+      waPrefill:
+        "Hola, vendo en Zaragoza entre particulares con comprador confirmado. Me interesa Livendia sin comisiones de agencia.",
+      jsonLdServiceName: "Vender piso sin comisiones en Zaragoza con gestoría Livendia",
+    },
+  },
 };

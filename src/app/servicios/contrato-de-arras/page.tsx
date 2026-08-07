@@ -39,9 +39,9 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de arras con revisión profesional",
+  title: "Contrato de arras entre particulares — revisión profesional | Livendia",
   description:
-    "Gestor inmobiliario que revisa tu contrato de arras: fechas, objeto, penalidades y malas prácticas antes de firmar. Blindaje jurídico-práctico para compradores y vendedores.",
+    "¿Compras o vendes entre particulares? Revisión y redacción de arras penitenciales o confirmatorias desde 145 € IVA incl. Gestoría Livendia — no agencia inmobiliaria.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-arras` },
 };
 
@@ -169,17 +169,16 @@ export default async function ContratoDeArrasPage() {
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                 <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                  Compraventa segura
+                  Entre particulares · Compraventa
                 </div>
 
                 <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-7xl">
-                  Contrato de arras — revisión que vale antes de firmar
+                  Contrato de arras entre comprador y vendedor particular
                 </h1>
 
                 <p className="mt-6 text-xl leading-relaxed text-blue-50">
-                  Tu gestor inmobiliario analiza los puntos críticos del contrato de arras: penalidades, plazos,
-                  objeto y coherencia registral. Detectamos errores, lagunas y malas prácticas antes de que el
-                  compromiso económico sea irreversible.
+                  ¿Compras o vendes sin inmobiliaria? Revisión y redacción de arras penitenciales o confirmatorias desde
+                  145 € IVA incl. Detectamos cláusulas peligrosas antes de que la señal sea irreversible.
                 </p>
 
                 <div className="mt-10 rounded-xl bg-white/10 px-5 py-4 backdrop-blur-sm">

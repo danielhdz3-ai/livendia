@@ -88,6 +88,8 @@ export const VENDER_PISO_SIN_AGENCIA_PUBLISHED_SLUGS: readonly string[] = [
   "valencia",
   "malaga",
   "bilbao",
+  "granada",
+  "zaragoza",
 ];
 
 export function interpolateVenderPisoCopy(template: string, priceLabel: string): string {
@@ -371,6 +373,56 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     analyticsPlacement: "vender_piso_bilbao",
     gestorCtaPlacement: "vender_piso_bilbao",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/bilbao",
+  },
+  {
+    slug: "granada",
+    city: "Granada",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl. | Livendia",
+    metaDescription:
+      "Vender piso entre particulares en Granada: gestoría por 890 € IVA incl. Reserva, arras, trámites y notaría. Sin agencia del 3–5 %. Albaicín, Zaidín, Realejo.",
+    keywords: [
+      "vender piso sin comisiones granada",
+      "vender piso sin agencia granada",
+      "venta entre particulares granada",
+      "gestoría venta piso particular granada",
+      "vender piso sin inmobiliaria granada",
+    ],
+    savingsSalePrices: [140_000, 170_000, 200_000, 230_000, 260_000, 300_000, 350_000],
+    highlightSalePrice: 170_000,
+    tramitesAreaNote:
+      "En Granada capital y área metropolitana (Albaicín, Zaidín, Realejo, Armilla, Maracena…), el gestor legal cubre reserva, arras, documentación y coordinación con notaría cuando vendes entre particulares.",
+    benefitsAreaNote:
+      "Ideal si ya tienes comprador (Idealista, UGR, recomendación): checklist registral, comunidad y pre-escritura en Granada.",
+    faq: faqForCity("Granada"),
+    analyticsPlacement: "vender_piso_granada",
+    gestorCtaPlacement: "vender_piso_granada",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/granada",
+  },
+  {
+    slug: "zaragoza",
+    city: "Zaragoza",
+    schemaAdministrativeArea: "Aragón",
+    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl. | Livendia",
+    metaDescription:
+      "Vender piso entre particulares en Zaragoza: gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin comisión de agencia. Actur, Delicias, Centro.",
+    keywords: [
+      "vender piso sin comisiones zaragoza",
+      "vender piso sin agencia zaragoza",
+      "venta entre particulares zaragoza",
+      "gestoría venta piso particular zaragoza",
+      "vender piso sin inmobiliaria zaragoza",
+    ],
+    savingsSalePrices: [130_000, 160_000, 190_000, 220_000, 250_000, 280_000, 320_000],
+    highlightSalePrice: 190_000,
+    tramitesAreaNote:
+      "En Zaragoza capital y área (Actur, Delicias, Centro Histórico, Universidad…), acompañamiento legal de venta entre particulares con gestor dedicado.",
+    benefitsAreaNote:
+      "Checklist documental, comunidad y coordinación pre-escritura en Zaragoza — tarifa plana frente al 3 % de inmobiliaria.",
+    faq: faqForCity("Zaragoza"),
+    analyticsPlacement: "vender_piso_zaragoza",
+    gestorCtaPlacement: "vender_piso_zaragoza",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta",
   },
 ];
 

@@ -73,6 +73,10 @@ import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobili
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
+import {
+  CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE,
+  getPublishedContratoEntreParticularesLocalCities,
+} from "@/lib/contrato-entre-particulares-local-cities";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -82,6 +86,8 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-temporada",
   // contrato-arras-confirmatorias: retirada (301 a /servicios/contrato-de-arras, ver next.config.ts).
   "contrato-arras-penitenciales",
+  "vender-piso-sin-agencia",
+  "contrato-entre-particulares-local",
   "servicio-completo-compra",
   "acompanamiento-compra-parking-trastero",
   "acompanamiento-compra-parking-trastero-local",
@@ -304,6 +310,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.88,
   }));
 
+  const contratoEntreParticularesLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedContratoEntreParticularesLocalCities().map((c) => ({
+      url: `${base}${CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE}/${c.slug}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.86,
+    }));
+
   return [
     ...core,
     ...servicios,
@@ -323,6 +337,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...parkingTrasteroLocalCiudades,
     ...acompanamientoAlquilerLocalCiudades,
     ...habitacionLocalCiudades,
+    ...contratoEntreParticularesLocalCiudades,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...ciudadesHubPages,

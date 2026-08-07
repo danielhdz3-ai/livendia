@@ -21,9 +21,9 @@ import { Shield, FileText, Clock, AlertCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de arras penitenciales (compraventa)",
+  title: "Contrato de arras penitenciales entre particulares — 145 € IVA incl. | Livendia",
   description:
-    "El contrato más habitual en compraventa. Permite desistir pagando o reteniendo las arras. 145€ IVA incluido.",
+    "Arras penitenciales entre comprador y vendedor particular. Redacción legal por 145 € IVA incl. — no plantilla de internet. Gestoría Livendia, no agencia inmobiliaria.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-arras-penitenciales` },
 };
 
@@ -66,13 +66,14 @@ export default async function ArrasPenitencialesPage() {
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
                 <div className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold">
-                  Compraventa inmobiliaria
+                  Entre particulares · Compraventa
                 </div>
                 <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                  Contrato de Arras Penitenciales
+                  Arras penitenciales entre comprador y vendedor particular
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-blue-100">
-                  El contrato más habitual en compraventa. Permite desistir pagando o reteniendo las arras.
+                  ¿Vendes o compras entre particulares sin agencia? Redacción legal de arras penitenciales por 145 € IVA
+                  incl. — no uses plantillas de internet para la señal de tu piso.
                 </p>
 
                 <div className="mt-8 flex items-baseline gap-2">

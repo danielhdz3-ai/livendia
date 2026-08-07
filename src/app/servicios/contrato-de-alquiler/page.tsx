@@ -42,9 +42,9 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de alquiler con revisión LAU profesional",
+  title: "Contrato de alquiler entre particulares — revisión LAU | Livendia",
   description:
-    "Gestor inmobiliario especializado en LAU revisa tu contrato de alquiler: cláusulas, garantías e inventario del inmueble. Asesoramiento cercano para firmar con seguridad.",
+    "¿Alquilas o alquilas como particular? Revisión y redacción de contrato LAU, temporada o habitación desde 145 € IVA incl. Gestoría para propietarios e inquilinos — no agencia.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-alquiler` },
 };
 
@@ -171,17 +171,16 @@ export default async function ContratoDeAlquilerPage() {
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Alquiler y LAU
+                    Entre particulares · Alquiler LAU
                   </div>
 
                   <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-7xl">
-                    Contrato de alquiler con respaldo gestor especializado
+                    Contrato de alquiler entre propietario e inquilino particular
                   </h1>
 
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">
-                    Un gestor inmobiliario centrado en la LAU revisa tu contrato, ordena las cláusulas sensibles y deja
-                    documentado el estado del inmueble para que propiedad e inquilino firmen con garantías claras y
-                    asesoramiento cercano.
+                    ¿Alquilas o alquilas sin agencia? Redacción y revisión LAU desde 145 € IVA incl. — no plantillas de
+                    internet. Gestoría Livendia para particulares que ya tienen contraparte.
                   </p>
 
                   <div className="mt-10 rounded-xl bg-white/10 px-5 py-4 backdrop-blur-sm">
