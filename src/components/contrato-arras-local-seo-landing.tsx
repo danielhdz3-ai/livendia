@@ -291,37 +291,37 @@ export async function ContratoArrasLocalSeoLanding({
 
           {seo ? (
             <>
-              <section className="border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#1E293B] via-[#334155] to-[#1E293B] px-4 py-14 text-white sm:px-6">
+              <section className="border-b border-slate-200 bg-gradient-to-b from-[#EFF6FF] via-white to-white px-4 py-14 sm:px-6">
                 <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-start">
                   <div>
-                    <div className="flex items-center gap-2 text-[#D4AF37]">
-                      <Gavel className="h-6 w-6" aria-hidden />
-                      <h2 className="text-xl font-bold sm:text-2xl">{seo.fairArrasHeading}</h2>
+                    <div className="flex items-center gap-2">
+                      <Gavel className="h-6 w-6 text-[#D4AF37]" aria-hidden />
+                      <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">{seo.fairArrasHeading}</h2>
                     </div>
-                    <p className="mt-4 leading-relaxed text-slate-200">{seo.fairArrasIntro}</p>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">{seo.arrasTypesIntro}</p>
+                    <p className="mt-4 leading-relaxed text-[#475569]">{seo.fairArrasIntro}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-[#64748b]">{seo.arrasTypesIntro}</p>
                   </div>
                   <div className="space-y-4">
-                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-white/10">
-                      <div className="flex items-center gap-2 text-cyan-300">
+                    <div className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                      <div className="flex items-center gap-2 text-[#1A4FBF]">
                         <BookOpen className="h-5 w-5" aria-hidden />
-                        <h3 className="font-semibold">Código Civil español</h3>
+                        <h3 className="font-semibold">{legalFrameworkLabel}</h3>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalSpanish}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#475569]">{seo.legalSpanish}</p>
                     </div>
-                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-[#D4AF37]/30">
-                      <div className="flex items-center gap-2 text-[#F4E4A6]">
+                    <div className="rounded-xl bg-amber-50/70 p-5 ring-1 ring-[#D4AF37]/25">
+                      <div className="flex items-center gap-2 text-[#92400E]">
                         <Scale className="h-5 w-5" aria-hidden />
                         <h3 className="font-semibold">{arrasLegalTitle}</h3>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalan}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#475569]">{seo.legalCatalan}</p>
                     </div>
-                    <div className="rounded-xl bg-white/5 p-5 ring-1 ring-cyan-400/30">
-                      <div className="flex items-center gap-2 text-cyan-200">
+                    <div className="rounded-xl bg-cyan-50/70 p-5 ring-1 ring-cyan-200">
+                      <div className="flex items-center gap-2 text-[#0E7490]">
                         <Gavel className="h-5 w-5" aria-hidden />
                         <h3 className="font-semibold">{financingLegalTitle}</h3>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalanFinancing}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#475569]">{seo.legalCatalanFinancing}</p>
                     </div>
                   </div>
                 </div>
