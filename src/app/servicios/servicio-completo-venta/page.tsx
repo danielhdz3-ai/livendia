@@ -374,7 +374,10 @@ export default async function ServicioCompletoVentaPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          serviceLabel="Servicio completo de venta"
+          primarySlug="servicio-completo-venta"
+        />
 
 
         <SiteFooter />

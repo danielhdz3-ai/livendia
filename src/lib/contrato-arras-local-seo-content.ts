@@ -1,4 +1,5 @@
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
+import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 
 export type ArrasFinancingEducation = {
   heading: string;
@@ -37,6 +38,12 @@ export type ArrasLocalSeoContent = {
 
 /** Bloque educativo compartido sobre art. 621-49 CCCat (financiación hipotecaria). */
 export function buildArrasFinancingEducation(city: string): ArrasFinancingEducation {
+  const workflow = buildGestorWorkflowContent({
+    city,
+    service: "contrato-arras",
+    legalRegion: "catalunya",
+  });
+
   return {
     heading: `¿Compras con hipoteca en ${city}? El art. 621-49 CCCat puede salvarte la señal`,
     intro:
@@ -47,34 +54,21 @@ export function buildArrasFinancingEducation(city: string): ArrasFinancingEducat
     withClauseTitle: "Con cláusula art. 621-49 redactada por un gestor",
     withClauseBody:
       "El contrato recoge plazo, importe de financiación y documentación bancaria exigible. Si no obtienes la hipoteca en esas condiciones, puedes desistir conforme al 621-49 CCCat y recuperar las arras, sin quedar atrapado en una penalidad del 621-4 por un hecho ajeno a tu voluntad.",
-    gestorHeading: "Cómo te ayuda el gestor especializado Livendia",
-    gestorIntro:
-      "Un gestor se asigna a tu expediente en Livendia. No es un PDF automático: te explica el trámite, redacta o corrige la cláusula 621-49 y la integra con el resto del contrato de arras antes de que transfieras la señal.",
-    steps: [
-      {
-        title: "Diagnóstico de tu operación",
-        body: "En la llamada previa analizamos si compras con hipoteca, el calendario del banco y si conviene penitenciales o confirmatorias junto al 621-49.",
-      },
-      {
-        title: "Redacción de la cláusula 621-49",
-        body: "Incluimos plazo para obtener financiación, condiciones del préstamo (importe, entidad, resolución escrita) y efecto del desistimiento: recuperación de la señal si no hay hipoteca.",
-      },
-      {
-        title: "Coherencia con las arras (621-4 a 621-9)",
-        body: "Evitamos contradicciones: la cláusula de financiación no puede quedar anulada por una penalidad genérica mal ubicada. Todo el contrato se lee en conjunto.",
-      },
-      {
-        title: "Firma informada",
-        body: "Resolvemos dudas con comprador y vendedor en lenguaje claro. Llegas a la firma sabiendo qué pasa con tu dinero si el banco dice no.",
-      },
-    ],
-    disclaimer:
-      "Información general sobre el CCCat, no asesoramiento jurídico personalizado. Cada operación tiene matices; el gestor Livendia adapta el contrato a tu caso concreto.",
+    gestorHeading: workflow.heading,
+    gestorIntro: workflow.intro,
+    steps: workflow.steps,
+    disclaimer: workflow.disclaimer ?? "",
   };
 }
 
 /** Bloque educativo para compradores con hipoteca fuera de Catalunya (CC art. 1454). */
 export function buildSpanishArrasFinancingEducation(city: string): ArrasFinancingEducation {
+  const workflow = buildGestorWorkflowContent({
+    city,
+    service: "contrato-arras",
+    legalRegion: "espana",
+  });
+
   return {
     heading: `¿Compras con hipoteca en ${city}? La cláusula de financiación puede salvarte la señal`,
     intro:
@@ -85,29 +79,10 @@ export function buildSpanishArrasFinancingEducation(city: string): ArrasFinancin
     withClauseTitle: "Con cláusula de financiación redactada por tu gestor Livendia",
     withClauseBody:
       "El contrato recoge plazo para obtener préstamo, importe mínimo, entidad y resolución escrita del banco. Si no hay hipoteca en esas condiciones, puedes desistir y recuperar la señal conforme a lo pactado — sin quedar atrapado en una penalidad del 1454 por un hecho ajeno.",
-    gestorHeading: "Trámite 100 % online con asesor experto asignado",
-    gestorIntro:
-      "Contratas por 145 € IVA incl. (no miles de euros de comisión de agencia). Tu gestor se asigna al expediente, te llama para resolver dudas, redacta o corrige las arras y responde consultas por WhatsApp y panel hasta la firma.",
-    steps: [
-      {
-        title: "Contratas online y pagas con tarjeta",
-        body: "Eliges penitenciales o confirmatorias, completas datos del inmueble y las partes. En minutos tienes expediente en el panel Livendia — sin desplazarte a un despacho.",
-      },
-      {
-        title: "Llamada con tu gestor experto (24-48 h)",
-        body: "Repasamos si compras o vendes entre particulares, si hay hipoteca, herencia o cargas. Te explicamos art. 1454 vs confirmatorias y qué conviene en tu operación en " + city + ".",
-      },
-      {
-        title: "Redacción o revisión del contrato de arras",
-        body: "Entregamos borrador en 48-72 h laborables con cláusula de financiación si la necesitas, calendario hasta escritura y objeto del inmueble coherente con registro.",
-      },
-      {
-        title: "Asesoramiento hasta firmar",
-        body: "Resolvemos dudas de comprador y vendedor en lenguaje claro. Llegas a la firma sabiendo qué pasa con tu dinero si alguien se echa atrás o si el banco no concede el préstamo.",
-      },
-    ],
-    disclaimer:
-      "Información general sobre el Código Civil español, no asesoramiento jurídico personalizado. El gestor Livendia adapta el contrato a tu caso concreto.",
+    gestorHeading: workflow.heading,
+    gestorIntro: workflow.intro,
+    steps: workflow.steps,
+    disclaimer: workflow.disclaimer ?? "",
   };
 }
 

@@ -231,7 +231,10 @@ export default async function ArrasPenitencialesPage() {
           serviceLabel="Contrato de arras penitenciales"
         />
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          serviceLabel="Contrato de arras penitenciales"
+          primarySlug="contrato-arras-penitenciales"
+        />
 
       <SiteFooter />
     </div>

@@ -1,14 +1,25 @@
-import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
+import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { TrustReviewsBlock } from "@/components/trust-reviews-block";
+import {
+  buildGestorWorkflowContent,
+  inferGestorWorkflowService,
+  type GestorWorkflowContent,
+} from "@/lib/gestor-workflow-content";
 
 type ServiceLandingSharedSectionsProps = {
   /** Ciudad para personalizar copy del showcase */
   city?: string;
   /** Servicio mostrado en el mockup de plataforma */
   serviceLabel?: string;
+  /** Proceso gestor + plataforma personalizado (si la landing ya lo incluye en el main) */
+  gestorWorkflow?: GestorWorkflowContent;
+  /** Slug catálogo para CTA del bloque gestor + plataforma */
+  primarySlug?: string;
+  /** Omitir bloque gestor + plataforma (cuando ya va en el cuerpo de la landing) */
+  skipGestorPlatform?: boolean;
   /** Omitir cobertura si la página ya la incluye dentro del main */
   skipCoverage?: boolean;
   /** CTA del bloque de testimonios */
@@ -23,10 +34,21 @@ type ServiceLandingSharedSectionsProps = {
 export function ServiceLandingSharedSections({
   city,
   serviceLabel,
+  gestorWorkflow,
+  primarySlug,
+  skipGestorPlatform = false,
   skipCoverage = false,
   testimonialsCtaHref = "/servicios",
   testimonialsCtaLabel = "Ver todos los servicios",
 }: ServiceLandingSharedSectionsProps) {
+  const resolvedWorkflow =
+    gestorWorkflow ??
+    buildGestorWorkflowContent({
+      city,
+      service: inferGestorWorkflowService(serviceLabel),
+      serviceLabel,
+    });
+
   return (
     <>
       {!skipCoverage ? <HomeCoverageCities variant="teaser" /> : null}
@@ -43,7 +65,14 @@ export function ServiceLandingSharedSections({
         </div>
       </section>
       <LivendiaFoundersBanner />
-      <ClientPlatformShowcase city={city} serviceLabel={serviceLabel} />
+      {skipGestorPlatform ? null : (
+        <ServiceGestorPlatformSection
+          workflow={resolvedWorkflow}
+          city={city}
+          serviceLabel={serviceLabel}
+          primarySlug={primarySlug}
+        />
+      )}
     </>
   );
 }

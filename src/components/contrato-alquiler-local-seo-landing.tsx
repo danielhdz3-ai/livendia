@@ -497,7 +497,11 @@ export async function ContratoAlquilerLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Contrato alquiler LAU"
+          primarySlug="contrato-alquiler-lau"
+        />
 
 
         <SiteFooter />

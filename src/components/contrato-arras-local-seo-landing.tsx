@@ -3,6 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
 import { FaqSection } from "@/components/faq-section";
+import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import {
   ContratarSlugButton,
@@ -11,6 +12,7 @@ import {
 import type { ContratoArrasLocalLandingConfig } from "@/lib/contrato-arras-local-cities";
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
+import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
 import {
@@ -32,6 +34,15 @@ import {
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+const CATALAN_ARRAS_SLUGS = new Set([
+  "barcelona",
+  "hospitalet-de-llobregat",
+  "cornella-de-llobregat",
+  "badalona",
+  "sant-cugat-del-valles",
+  "sabadell",
+  "terrassa",
+]);
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 function LocalArrasServiceJsonLd({
@@ -89,7 +100,16 @@ export async function ContratoArrasLocalSeoLanding({
   if (conf) servicesBySlug["contrato-arras-confirmatorias"] = conf;
 
   const seo = config.seoContent;
-  const isCatalanLaw = seo?.legalRegion !== "espana";
+  const arrasLegalRegion =
+    seo?.legalRegion ?? (CATALAN_ARRAS_SLUGS.has(config.slug) ? "catalunya" : "espana");
+  const isCatalanLaw = arrasLegalRegion !== "espana";
+  const footerGestorWorkflow = seo
+    ? undefined
+    : buildGestorWorkflowContent({
+        city: config.city,
+        service: "contrato-arras",
+        legalRegion: arrasLegalRegion,
+      });
   const legalFrameworkLabel = isCatalanLaw ? "CCCat" : "Código Civil español";
   const arrasLegalTitle = isCatalanLaw
     ? `Arras — arts. ${seo?.cccatArrasArticles ?? "621-4 a 621-9"} CCCat`
@@ -359,44 +379,22 @@ export async function ContratoArrasLocalSeoLanding({
                       </p>
                     </div>
                   </div>
-
-                  <div className="mt-12 rounded-2xl bg-[#1A4FBF] p-8 text-white shadow-lg sm:p-10">
-                    <h3 className="text-xl font-bold sm:text-2xl">{seo.financingEducation.gestorHeading}</h3>
-                    <p className="mt-3 text-blue-100">{seo.financingEducation.gestorIntro}</p>
-                    <ol className="mt-8 space-y-5">
-                      {seo.financingEducation.steps.map((step, i) => (
-                        <li key={step.title} className="flex gap-4">
-                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-sm font-bold text-[#1E293B]">
-                            {i + 1}
-                          </span>
-                          <div>
-                            <p className="font-semibold">{step.title}</p>
-                            <p className="mt-1 text-sm leading-relaxed text-blue-100">{step.body}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <ContratarSlugButton
-                        slug="contrato-arras-penitenciales"
-                        className="rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50"
-                      >
-                        Contratar con gestor asignado
-                      </ContratarSlugButton>
-                      <a
-                        href={waHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
-                      >
-                        {isCatalanLaw ? "Preguntar por el 621-49" : "Preguntar por cláusula hipoteca"}
-                      </a>
-                    </div>
-                  </div>
-
-                  <p className="mt-6 text-center text-xs text-[#64748b]">{seo.financingEducation.disclaimer}</p>
                 </div>
               </section>
+
+              <ServiceGestorPlatformSection
+                workflow={{
+                  heading: seo.financingEducation.gestorHeading,
+                  intro: seo.financingEducation.gestorIntro,
+                  steps: seo.financingEducation.steps,
+                  disclaimer: seo.financingEducation.disclaimer,
+                  primaryCtaLabel: "Contratar con gestor asignado",
+                  secondaryCtaLabel: isCatalanLaw ? "Preguntar por el 621-49" : "Preguntar por cláusula hipoteca",
+                }}
+                city={config.city}
+                serviceLabel="Contrato de arras penitenciales"
+                primarySlug="contrato-arras-penitenciales"
+              />
 
               <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
                 <div className="mx-auto max-w-5xl">
@@ -640,7 +638,13 @@ export async function ContratoArrasLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections
+          city={config.city}
+          skipGestorPlatform={Boolean(seo)}
+          serviceLabel="Contrato de arras penitenciales"
+          primarySlug="contrato-arras-penitenciales"
+          gestorWorkflow={footerGestorWorkflow}
+        />
 
 
         <SiteFooter />

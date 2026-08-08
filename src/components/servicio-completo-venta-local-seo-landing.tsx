@@ -526,7 +526,11 @@ export async function ServicioCompletoVentaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Servicio completo de venta"
+          primarySlug="servicio-completo-venta"
+        />
 
 
         <SiteFooter />
