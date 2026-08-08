@@ -57,22 +57,25 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
   barcelona: {
     keywords: [
       "contrato alquiler barcelona",
-      "contrato lau barcelona",
-      "alquiler piso barcelona contrato",
+      "contrato alquiler entre particulares barcelona",
+      "contrato lau barcelona sin agencia",
+      "alquiler piso barcelona contrato particular",
       "revisar contrato alquiler eixample",
+      "redactar contrato alquiler barcelona particular",
     ],
-    heroH1: "Contrato de alquiler en Barcelona — LAU, inventario y gestor",
+    heroBadge: "Entre particulares · Barcelona",
+    heroH1: "Contrato de alquiler entre particulares en Barcelona — LAU e inventario",
     heroBullets: [
-      "Eixample, Gràcia, Poblenou, L'Hospitalet, Badalona",
-      "ITE y comunidad revisadas antes de firmar",
-      "Contratos en castellano o mixtos bilingües explicados",
+      "Eixample, Gràcia, Les Corts, L'Hospitalet, Cornellà",
+      "Sin comisión de agencia — gestoría 145 € IVA incl.",
+      "INCASÒL, zona tensionada e inventario explicados",
     ],
     whyTitle: "Barcelona: alquiler tensionado, contrato preciso",
     whySubtitle:
       "Regulación turística, pisos antiguos con obras en comunidad y rentas negociadas al detalle. El texto debe reflejar lo acordado, no un PDF de otra ciudad.",
     localZonesHeading: "Barrios y municipios del área metropolitana",
     localZones:
-      "Eixample, Gràcia, Sant Martí, Sants, Les Corts, L'Hospitalet, Badalona, Cornellà y área metropolitana. Revisión LAU con inventario integrado.",
+      "Eixample, Gràcia, Sant Martí, Sants, Les Corts, L'Hospitalet, Badalona, Cornellà y área metropolitana. Landings específicas en Les Corts, Gràcia, L'Hospitalet y Cornellà. Revisión LAU con inventario integrado.",
     localBenefits: [
       {
         title: "Uso turístico-residencial bien delimitado",
@@ -226,6 +229,279 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
         question: "¿Incluye inventario del piso?",
         answer:
           "Sí, el pack gestor integra inventario descriptivo y fotográfico en el expediente Livendia.",
+      },
+    ],
+  },
+  "barcelona-les-corts": {
+    metaTitle: "Contrato alquiler Les Corts entre particulares — 145 € IVA incl. | Livendia",
+    metaDescription:
+      "¿Alquilas en Les Corts sin agencia? Contrato LAU entre propietario e inquilino por 145 € IVA incl. INCASÒL, zona tensionada e inventario. Diagonal, Zona Universitària, Pedralbes.",
+    keywords: [
+      "contrato alquiler les corts",
+      "contrato alquiler entre particulares les corts",
+      "contrato lau les corts barcelona",
+      "alquilar piso les corts sin agencia",
+      "redactar contrato alquiler les corts",
+      "contrato alquiler diagonal barcelona particular",
+      "alquiler zona universitaria barcelona contrato",
+    ],
+    heroBadge: "Entre particulares · Les Corts",
+    heroH1: "Contrato de alquiler en Les Corts entre propietario e inquilino — sin agencia",
+    heroBullets: [
+      "Diagonal, Zona Universitària, Pedralbes, Camp Nou",
+      "145 € IVA incl. — gestoría, no comisión inmobiliaria",
+      "Renta anterior e INCASÒL revisados antes de firmar",
+    ],
+    whyTitle: "Les Corts: alquiler directo entre particulares, contrato a medida",
+    whySubtitle:
+      "Si ya tenéis contraparte por Idealista o recomendación, no hace falta pagar gestión de agencia solo para redactar el LAU. Livendia cierra cláusulas, inventario y normativa catalana.",
+    localZonesHeading: "Zonas de Les Corts donde redactamos contratos LAU",
+    localZones:
+      "Pedralbes, la Maternitat i Sant Ramon, la Zona Universitària, Les Corts propiamente dicho y entorno del Camp Nou. Misma gestoría online que en toda Cataluña.",
+    localBenefits: [
+      {
+        title: "Zona tensionada de Barcelona aplicada",
+        description:
+          "Verificamos tope de renta e información de renta anterior en anuncio y contrato — obligatorio en todo Barcelona.",
+      },
+      {
+        title: "Fianza en INCASÒL, no en manos del casero",
+        description:
+          "Te orientamos para que el depósito se gestione en el organismo catalán dentro del plazo legal.",
+      },
+      {
+        title: "Ideal si cerraste en Idealista sin agencia",
+        description:
+          "Redactamos el LAU cuando propietario e inquilino ya están de acuerdo en precio y fecha de entrada.",
+      },
+      {
+        title: "Piso entero, temporada o habitación",
+        description: `LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada o habitación con el mismo gestor.`,
+      },
+      {
+        title: "Inventario fotográfico incluido",
+        description: "Estado del piso documentado antes de entregar llaves y fianza.",
+      },
+      {
+        title: "Gestor por WhatsApp y panel",
+        description: "Sin desplazarte a un despacho en Diagonal — tramitación 100 % online.",
+      },
+    ],
+    finalCtaTitle: "Firma tu contrato en Les Corts entre particulares — con gestoría Livendia",
+    faq: [
+      {
+        question: "¿Puedo alquilar en Les Corts sin pasar por una inmobiliaria?",
+        answer:
+          "Sí. Muchos arrendamientos cierran directo entre particulares. Livendia no busca inquilino ni cobra comisión sobre la renta: redacta o revisa el contrato LAU por 145 € IVA incl.",
+      },
+      {
+        question: "¿Les Corts está en zona de mercado tensionado?",
+        answer:
+          "Sí, como todo Barcelona. El contrato debe respetar el tope de renta e informar la renta del arrendamiento anterior. Lo revisamos antes de que firmes.",
+      },
+    ],
+  },
+  "barcelona-gracia": {
+    metaTitle: "Contrato alquiler Gràcia entre particulares — 145 € IVA incl. | Livendia",
+    metaDescription:
+      "Contrato LAU en Gràcia sin agencia: propietario e inquilino particular por 145 € IVA incl. Vila de Gràcia, Camp d'en Grassot, inventario e INCASÒL. Livendia.",
+    keywords: [
+      "contrato alquiler gracia barcelona",
+      "contrato alquiler entre particulares gracia",
+      "contrato lau gracia",
+      "alquiler piso gracia sin agencia",
+      "redactar contrato alquiler vila de gracia",
+      "alquilar piso gracia particular contrato",
+      "contrato alquiler camp d en grassot",
+    ],
+    heroBadge: "Entre particulares · Gràcia",
+    heroH1: "Contrato de alquiler en Gràcia entre particulares — LAU sin agencia",
+    heroBullets: [
+      "Vila de Gràcia, Camp d'en Grassot, la Salut",
+      "145 € IVA incl. — no comisión del 1 mes de agencia",
+      "Pisos compartidos y LAU de piso entero",
+    ],
+    whyTitle: "Gràcia: Idealista, acuerdo verbal y contrato LAU profesional",
+    whySubtitle:
+      "En Gràcia es habitual alquilar sin intermediario cuando el piso sale bien en fotos. El riesgo está en firmar plantillas que no reflejan reformas, ruido o convivencia en pisos compartidos.",
+    localZonesHeading: "Barrios de Gràcia donde revisamos contratos",
+    localZones:
+      "Vila de Gràcia, Camp d'en Grassot i Gràcia Nova, la Salut, Vallcarca i els Penitents y el Torrent de l'Olla. Gestoría digital con precio cerrado.",
+    localBenefits: [
+      {
+        title: "Piso compartido vs. vivienda entera",
+        description:
+          "Te orientamos si necesitas LAU habitual, contrato de habitación o temporada según el uso real del piso en Gràcia.",
+      },
+      {
+        title: "Cláusulas de convivencia y ruido",
+        description:
+          "Frecuente en pisos señoriales convertidos en compartidos — las dejamos por escrito con tono equilibrado.",
+      },
+      {
+        title: "Sin comisión de captación",
+        description:
+          "Livendia no publica tu anuncio ni cobra porcentaje sobre la renta: solo gestoría contractual.",
+      },
+      {
+        title: "Renta anterior en zona tensionada",
+        description: "Comprobamos coherencia con la normativa municipal de Barcelona.",
+      },
+      {
+        title: "Inventario antes de la mudanza",
+        description: "Mobiliario antiguo y estado de pintura documentados en el expediente.",
+      },
+      {
+        title: "Entrega en 48-72 h laborables",
+        description: "Tras recibir datos de ambas partes y del inmueble.",
+      },
+    ],
+    finalCtaTitle: "Cierra tu alquiler en Gràcia entre particulares con contrato LAU",
+    faq: [
+      {
+        question: "¿Redactáis contratos para pisos compartidos en Gràcia?",
+        answer:
+          "Sí. LAU de piso entero, contrato de habitación o temporada según corresponda. Muchos casos en Gràcia son habitaciones en piso compartido entre particulares.",
+      },
+      {
+        question: "¿Necesito agencia para legalizar el alquiler?",
+        answer:
+          "No. Si ya tenéis contraparte, basta un contrato LAU bien redactado y el depósito en INCASÒL. Livendia cubre la parte legal por tarifa plana.",
+      },
+    ],
+  },
+  "hospitalet-de-llobregat": {
+    metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl. | Livendia",
+    metaDescription:
+      "Contrato LAU en L'Hospitalet sin agencia inmobiliaria. Propietario e inquilino particular: 145 € IVA incl. Collblanc, Bellvitge, INCASÒL e inventario. Livendia.",
+    keywords: [
+      "contrato alquiler hospitalet entre particulares",
+      "contrato lau l hospitalet de llobregat",
+      "alquilar piso hospitalet sin agencia",
+      "contrato alquiler collblanc particular",
+      "contrato alquiler bellvitge",
+      "redactar contrato alquiler hospitalet",
+      "alquiler piso l hospitalet contrato lau",
+    ],
+    heroBadge: "Entre particulares · L'Hospitalet",
+    heroH1: "Contrato de alquiler en L'Hospitalet entre particulares — sin inmobiliaria",
+    heroBullets: [
+      "Collblanc, Bellvitge, La Florida, centre",
+      "145 € IVA incl. vs. gestión de agencia",
+      "INCASÒL y zona tensionada del Baix Llobregat",
+    ],
+    whyTitle: "L'Hospitalet: alquiler metropolitano directo entre particulares",
+    whySubtitle:
+      "Muchos inquilinos eligen L'Hospitalet por precio frente a Barcelona y cierran con el propietario por Idealista. El contrato no puede ser una copia barcelonesa sin adaptar comunidad ni plazos.",
+    localZonesHeading: "Barrios de L'Hospitalet donde gestionamos contratos LAU",
+    localZones:
+      "Collblanc, Bellvitge, La Florida, Sant Josep, Pubilla Cases, el centre y zona Can Serra. Misma operativa online que en Barcelona capital.",
+    localBenefits: [
+      {
+        title: "Comunidad en bloques densos",
+        description:
+          "Revisamos cláusulas sobre derramas y certificado de deuda cuando el edificio tiene muchas viviendas.",
+      },
+      {
+        title: "Compradores que vienen de Barcelona",
+        description:
+          "Contrato claro sobre entrada, fianza e inventario cuando la negociación fue rápida por precio.",
+      },
+      {
+        title: "Sin comisión sobre la renta",
+        description: "Gestoría contractual a precio cerrado — Livendia no es agencia de alquiler.",
+      },
+      {
+        title: "Depósito INCASÒL explicado",
+        description: "Igual que en Barcelona: fianza al organismo catalán, no al casero.",
+      },
+      {
+        title: "LAU, temporada o habitación",
+        description: `Tres modalidades desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. según tu caso.`,
+      },
+      {
+        title: "Panel y firma digital",
+        description: "Subes documentación y hablas con tu gestor sin citas presenciales.",
+      },
+    ],
+    finalCtaTitle: "Alquila en L'Hospitalet entre particulares con contrato revisado",
+    faq: [
+      {
+        question: "¿El contrato de L'Hospitalet es igual que el de Barcelona?",
+        answer:
+          "La LAU estatal y la normativa catalana (INCASÒL, zona tensionada) aplican igual. Adaptamos cláusulas al inmueble concreto y al barrio — no usamos plantillas genéricas.",
+      },
+      {
+        question: "¿Atendéis alquileres encontrados por Idealista?",
+        answer:
+          "Sí. Es nuestro caso habitual: propietario e inquilino ya de acuerdo y necesitan contrato profesional sin pagar gestión de agencia.",
+      },
+    ],
+  },
+  "cornella-de-llobregat": {
+    metaTitle: "Contrato alquiler Cornellà entre particulares — 145 € IVA incl. | Livendia",
+    metaDescription:
+      "Contrato LAU en Cornellà de Llobregat sin agencia. Entre propietario e inquilino particular por 145 € IVA incl. Sant Ildefons, Can Mercader, inventario. Livendia.",
+    keywords: [
+      "contrato alquiler cornella entre particulares",
+      "contrato lau cornella de llobregat",
+      "alquilar piso cornella sin agencia",
+      "contrato alquiler sant ildefons",
+      "redactar contrato alquiler cornella",
+      "alquiler piso cornella particular contrato",
+      "contrato alquiler baix llobregat particular",
+    ],
+    heroBadge: "Entre particulares · Cornellà",
+    heroH1: "Contrato de alquiler en Cornellà entre particulares — LAU sin agencia",
+    heroBullets: [
+      "Sant Ildefons, Can Mercader, centre, zona Renfe",
+      "145 € IVA incl. — gestoría para particulares",
+      "Inventario e INCASÒL antes de la fianza",
+    ],
+    whyTitle: "Cornellà: particulares que alquilan en el Baix Llobregat",
+    whySubtitle:
+      "Operaciones directas entre propietario e inquilino son habituales cuando el comprador trabaja en Barcelona y busca precio en Cornellà. Hace falta contrato LAU serio, no un PDF de otra ciudad.",
+    localZonesHeading: "Zonas de Cornellà donde redactamos contratos",
+    localZones:
+      "Sant Ildefons, Can Mercader, el centre, la zona de la estación de Renfe y el entorno del Parc de Can Mercader. Gestoría online Livendia.",
+    localBenefits: [
+      {
+        title: "Alquiler metropolitano sin intermediario",
+        description:
+          "Ideal cuando ya tenéis fecha de entrada y solo falta cerrar el texto legal del LAU.",
+      },
+      {
+        title: "Zona tensionada catalana",
+        description: "Revisamos tope de renta e información de contrato anterior.",
+      },
+      {
+        title: "Comunidad y suministros claros",
+        description: "Evitamos lagunas sobre IBI, basura o ascensor en bloques del Baix Llobregat.",
+      },
+      {
+        title: "No somos agencia de alquiler",
+        description: "No captamos inquilinos ni cobramos mes de gestión sobre la renta.",
+      },
+      {
+        title: "Inventario fotográfico",
+        description: "Entrada y salida documentadas para evitar disputas.",
+      },
+      {
+        title: "Temporada laboral o LAU habitual",
+        description: `Te orientamos sobre la modalidad correcta (${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} temporada si aplica).`,
+      },
+    ],
+    finalCtaTitle: "Firma en Cornellà con contrato LAU entre particulares",
+    faq: [
+      {
+        question: "¿Gestionáis alquileres en Cornellà aunque viváis fuera?",
+        answer:
+          "Sí. Propietarios e inquilinos pueden contratar online desde cualquier lugar si el piso está en Cornellà de Llobregat.",
+      },
+      {
+        question: "¿Cuánto cuesta frente a una agencia?",
+        answer:
+          "Livendia cobra 145 € IVA incl. por redacción o revisión LAU. Una agencia suele cobrar un mes de renta o porcentaje — aquí solo pagas gestoría contractual.",
       },
     ],
   },
