@@ -89,6 +89,14 @@ export async function ContratoArrasLocalSeoLanding({
   if (conf) servicesBySlug["contrato-arras-confirmatorias"] = conf;
 
   const seo = config.seoContent;
+  const isCatalanLaw = seo?.legalRegion !== "espana";
+  const legalFrameworkLabel = isCatalanLaw ? "CCCat" : "Código Civil español";
+  const arrasLegalTitle = isCatalanLaw
+    ? `Arras — arts. ${seo?.cccatArrasArticles ?? "621-4 a 621-9"} CCCat`
+    : `Arras penitenciales — art. ${seo?.cccatArrasArticles ?? "1454"} CC`;
+  const financingLegalTitle = isCatalanLaw
+    ? `Financiación — art. ${seo?.cccatFinancingArticle ?? "621-49"} CCCat`
+    : `Financiación hipotecaria — cláusula en contrato (CC)`;
   const heroTitle =
     config.heroH1 ??
     (seo ? `Gestor que tramita tu contrato de arras en ${config.city}` : "¿Necesitas redactar un contrato de arras por un profesional?");
@@ -206,8 +214,8 @@ export async function ContratoArrasLocalSeoLanding({
                       <p className="text-sm font-semibold text-[#F4E4A6]">Gestor asignado a tu expediente</p>
                       <p className="mt-2 text-sm leading-relaxed text-blue-50">{seo.gestorPitch}</p>
                       <p className="mt-2 text-xs text-blue-200">
-                        CCCat: arras (arts. {seo.cccatArrasArticles}) · financiación hipotecaria (art.{" "}
-                        {seo.cccatFinancingArticle})
+                        {legalFrameworkLabel}: arras (arts. {seo.cccatArrasArticles}) · financiación (
+                        {isCatalanLaw ? `art. ${seo.cccatFinancingArticle}` : "cláusula hipoteca"})
                       </p>
                     </div>
                   ) : null}
@@ -304,14 +312,14 @@ export async function ContratoArrasLocalSeoLanding({
                     <div className="rounded-xl bg-white/5 p-5 ring-1 ring-[#D4AF37]/30">
                       <div className="flex items-center gap-2 text-[#F4E4A6]">
                         <Scale className="h-5 w-5" aria-hidden />
-                        <h3 className="font-semibold">Arras — arts. {seo.cccatArrasArticles} CCCat</h3>
+                        <h3 className="font-semibold">{arrasLegalTitle}</h3>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalan}</p>
                     </div>
                     <div className="rounded-xl bg-white/5 p-5 ring-1 ring-cyan-400/30">
                       <div className="flex items-center gap-2 text-cyan-200">
                         <Gavel className="h-5 w-5" aria-hidden />
-                        <h3 className="font-semibold">Financiación — art. {seo.cccatFinancingArticle} CCCat</h3>
+                        <h3 className="font-semibold">{financingLegalTitle}</h3>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-slate-300">{seo.legalCatalanFinancing}</p>
                     </div>
@@ -322,7 +330,7 @@ export async function ContratoArrasLocalSeoLanding({
               <section className="border-b border-cyan-200 bg-gradient-to-b from-cyan-50 to-white px-4 py-16 sm:px-6">
                 <div className="mx-auto max-w-5xl">
                   <p className="text-center text-xs font-bold uppercase tracking-wider text-[#0E7490]">
-                    Guía educativa · CCCat
+                    Guía educativa · {legalFrameworkLabel}
                   </p>
                   <h2 className="mt-3 text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
                     {seo.financingEducation.heading}
@@ -381,7 +389,7 @@ export async function ContratoArrasLocalSeoLanding({
                         rel="noopener noreferrer"
                         className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
                       >
-                        Preguntar por el 621-49
+                        {isCatalanLaw ? "Preguntar por el 621-49" : "Preguntar por cláusula hipoteca"}
                       </a>
                     </div>
                   </div>

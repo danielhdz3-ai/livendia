@@ -23,6 +23,8 @@ export type ArrasLocalSeoContent = {
   legalCatalanFinancing: string;
   cccatArrasArticles: string;
   cccatFinancingArticle: string;
+  /** Catalunya (CCCat) o resto de España (CC art. 1454). Por defecto catalunya. */
+  legalRegion?: "catalunya" | "espana";
   financingEducation: ArrasFinancingEducation;
   localMarketIntro: string;
   zonesHeading: string;
@@ -68,6 +70,44 @@ export function buildArrasFinancingEducation(city: string): ArrasFinancingEducat
     ],
     disclaimer:
       "Información general sobre el CCCat, no asesoramiento jurídico personalizado. Cada operación tiene matices; el gestor Livendia adapta el contrato a tu caso concreto.",
+  };
+}
+
+/** Bloque educativo para compradores con hipoteca fuera de Catalunya (CC art. 1454). */
+export function buildSpanishArrasFinancingEducation(city: string): ArrasFinancingEducation {
+  return {
+    heading: `¿Compras con hipoteca en ${city}? La cláusula de financiación puede salvarte la señal`,
+    intro:
+      "En el resto de España rigen las arras penitenciales del art. 1454 del Código Civil: si firmas sin protección y el banco deniega la hipoteca, puedes perder la señal entera. Livendia redacta una cláusula de financiación con plazo, importe y documentación bancaria exigible — no un PDF genérico de agencia.",
+    withoutClauseTitle: "Sin cláusula de financiación en el contrato",
+    withoutClauseBody:
+      "Firmas arras penitenciales (art. 1454 CC) y solicitas hipoteca después. Si el banco dice no, el vendedor puede exigirte cumplir o perder lo entregado como señal — salvo que otra cláusula te ampare, y rara vez está en plantillas copiadas de internet.",
+    withClauseTitle: "Con cláusula de financiación redactada por tu gestor Livendia",
+    withClauseBody:
+      "El contrato recoge plazo para obtener préstamo, importe mínimo, entidad y resolución escrita del banco. Si no hay hipoteca en esas condiciones, puedes desistir y recuperar la señal conforme a lo pactado — sin quedar atrapado en una penalidad del 1454 por un hecho ajeno.",
+    gestorHeading: "Trámite 100 % online con asesor experto asignado",
+    gestorIntro:
+      "Contratas por 145 € IVA incl. (no miles de euros de comisión de agencia). Tu gestor se asigna al expediente, te llama para resolver dudas, redacta o corrige las arras y responde consultas por WhatsApp y panel hasta la firma.",
+    steps: [
+      {
+        title: "Contratas online y pagas con tarjeta",
+        body: "Eliges penitenciales o confirmatorias, completas datos del inmueble y las partes. En minutos tienes expediente en el panel Livendia — sin desplazarte a un despacho.",
+      },
+      {
+        title: "Llamada con tu gestor experto (24-48 h)",
+        body: "Repasamos si compras o vendes entre particulares, si hay hipoteca, herencia o cargas. Te explicamos art. 1454 vs confirmatorias y qué conviene en tu operación en " + city + ".",
+      },
+      {
+        title: "Redacción o revisión del contrato de arras",
+        body: "Entregamos borrador en 48-72 h laborables con cláusula de financiación si la necesitas, calendario hasta escritura y objeto del inmueble coherente con registro.",
+      },
+      {
+        title: "Asesoramiento hasta firmar",
+        body: "Resolvemos dudas de comprador y vendedor en lenguaje claro. Llegas a la firma sabiendo qué pasa con tu dinero si alguien se echa atrás o si el banco no concede el préstamo.",
+      },
+    ],
+    disclaimer:
+      "Información general sobre el Código Civil español, no asesoramiento jurídico personalizado. El gestor Livendia adapta el contrato a tu caso concreto.",
   };
 }
 
@@ -461,13 +501,298 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, Omit<ArrasLocalSeoContent, 
       },
     ],
   },
+
+  sevilla: {
+    legalRegion: "espana",
+    heroSubtitle: `¿Compras o vendes entre particulares en Sevilla sin pagar miles a una agencia? Por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. un gestor Livendia asignado redacta o revisa tus arras online — con asesoramiento constante hasta la firma. Sin comisión del 3–5 % sobre el precio.`,
+    gestorPitch:
+      "Una inmobiliaria puede cobrarte 6.000–12.000 € solo en gestión de una venta de 200.000–400.000 €. Livendia no busca comprador ni vende tu piso: somos gestoría para particulares que ya tienen contraparte. Tramitamos arras penitenciales o confirmatorias por 145 € IVA incl., 100 % online, con gestor experto que responde dudas por teléfono, WhatsApp y panel.",
+    fairArrasHeading: "Arras justas en Sevilla — gestoría, no agencia",
+    fairArrasIntro:
+      "En Triana, Nervión o Los Remedios es habitual cerrar precio por Idealista y firmar arras a los dos días con un Word copiado. Ese ahorro de comisión se pierde si la señal queda mal calibrada: penalidades del art. 1454 CC, plazos imposibles de comunidad o hipoteca sin cláusula de protección.",
+    legalSpanish:
+      "El Código Civil español (arts. 1454 y 1451) distingue arras penitenciales y confirmatorias. En Sevilla aplicamos este marco estatal para calibrar qué pasa con la señal si alguien se echa atrás antes de escritura.",
+    legalCatalan:
+      "Art. 1454 CC — arras penitenciales: quien entrega la señal y desiste pierde lo entregado; quien la recibe e incumple devuelve el doble. Tu gestor traduce esto a cláusulas comprensibles para comprador y vendedor particular.",
+    legalCatalanFinancing:
+      "Si compras con hipoteca, conviene una cláusula de financiación con plazo, importe del préstamo y resolución bancaria escrita. Sin ella, una denegación del banco puede dejarte expuesto al régimen estricto del 1454. El gestor Livendia la redacta adaptada a tu operación en Sevilla.",
+    cccatArrasArticles: "1454 y 1451",
+    cccatFinancingArticle: "cláusula hipoteca",
+    localMarketIntro:
+      "Sevilla mezcla compraventa rápida entre particulares, herencias en barrios señoriales y operaciones con reforma pendiente en Macarena o el Casco. Las plantillas andaluzas genéricas no contemplan cédula de habitabilidad, comunidad numerosa o plazos realistas de cancelación de hipoteca.",
+    zonesHeading: "Contrato de arras entre particulares en barrios de Sevilla",
+    zonesParagraph: "Gestor asignado para operaciones en:",
+    zoneGroups: [
+      { district: "Triana — Los Remedios", areas: "Triana, Los Remedios, Plaza de Cuba, Puerta de Córdoba" },
+      { district: "Nervión — San Bernardo", areas: "Nervión, San Bernardo, Santa Justa, Huerta del Valle" },
+      { district: "Centro — Macarena", areas: "Centro, Alfalfa, Feria, Macarena, San Lorenzo" },
+      { district: "Este — Cerro-Amate", areas: "Cerro del Águila, Amate, Torreblanca, Palmete" },
+    ],
+    arrasTypesIntro:
+      "Te orientamos entre penitenciales (flexibilidad con coste de señal según art. 1454 CC) y confirmatorias (más vinculantes). El gestor explica la diferencia en la llamada previa — no firmes a ciegas.",
+    moneyLossRisks: [
+      {
+        title: "Señal sin cláusula de hipoteca",
+        body: "Comprador que pierde 15.000 € de arras aunque el banco deniega el préstamo — frecuente en operaciones entre particulares en Nervión o Triana.",
+      },
+      {
+        title: "Plazo de comunidad irreal",
+        body: "Arras con escritura en 30 días y certificado de deuda que tarda tres semanas en bloques grandes de Los Remedios — el gestor exige calendario verificable.",
+      },
+      {
+        title: "Herencia sin resolver",
+        body: "Vendedores múltiples o adjudicación pendiente no reflejada en el contrato — riesgo de anular la operación después de la señal.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Livendia es una inmobiliaria?",
+        answer:
+          "No. Somos gestoría digital para particulares: no publicamos tu piso ni cobramos comisión sobre el precio de venta. Redactamos o revisamos arras por tarifa plana de 145 € IVA incl.",
+      },
+      {
+        question: "¿Cuánto ahorro frente a una agencia?",
+        answer:
+          "En una venta de 250.000 €, el 3 % de comisión son 7.500 € + IVA. Livendia cubre el tramo contractual de las arras por 145 € cuando ya tienes comprador o vendedor.",
+      },
+      {
+        question: "¿Todo el trámite es online?",
+        answer:
+          "Sí. Contratas con tarjeta, subes documentación al panel, hablas con tu gestor asignado por teléfono o WhatsApp y recibes el contrato en 48-72 h laborables.",
+      },
+      {
+        question: "¿Atendéis Triana, Nervión o municipios del área?",
+        answer:
+          "Sí. Misma gestoría online para Sevilla capital y operaciones en Tomares, Dos Hermanas, Alcalá de Guadaíra o Mairena del Aljarafe.",
+      },
+      {
+        question: "¿Precio cerrado?",
+        answer: `${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. con gestor asignado y llamada previa.`,
+      },
+    ],
+  },
+
+  malaga: {
+    legalRegion: "espana",
+    heroSubtitle: `Arras entre particulares en Málaga por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. — gestoría Livendia online, no agencia del 3–5 %. Tu asesor experto redacta penitenciales o confirmatorias en Centro, Teatinos o El Palo mientras resuelves dudas por WhatsApp.`,
+    gestorPitch:
+      "¿Encontraste comprador en Idealista y la agencia te pide miles de euros solo por redactar arras? Livendia asigna un gestor a tu expediente: trámite 100 % online, 145 € IVA incl., asesoramiento constante hasta la firma. No captamos inmuebles ni cobramos comisión sobre el precio de la vivienda.",
+    fairArrasHeading: "Gestión de arras en Málaga sin comisiones de agencia",
+    fairArrasIntro:
+      "En la Costa del Sol conviven compradores locales, segundas residencias y operaciones rápidas en el centro histórico. Firmar arras sin revisión profesional es arriesgar la señal por cláusulas copiadas de otra provincia o por no distinguir arras penitenciales de confirmatorias.",
+    legalSpanish:
+      "En Andalucía rige el Código Civil español en materia de arras (arts. 1454 y 1451). Calibramos penalidades y plazos hasta escritura para compradores y vendedores particulares en Málaga.",
+    legalCatalan:
+      "Art. 1454 CC: régimen de arras penitenciales — pérdida o restitución doble de la señal según quién incumpla. El gestor Livendia lo explica en castellano claro antes de que transfieras dinero.",
+    legalCatalanFinancing:
+      "Muchas compraventas en Málaga van con hipoteca o comprador extranjero con financiación en España. Redactamos cláusula de obtención de préstamo con plazo y condiciones para que no pierdas la señal si el banco deniega.",
+    cccatArrasArticles: "1454 y 1451",
+    cccatFinancingArticle: "cláusula hipoteca",
+    localMarketIntro:
+      "Teatinos concentra demanda universitaria; El Palo y La Malagueta mezclan turismo residencial; Carretera de Cádiz mueve pisos entre particulares con prisa. Cada caso exige arras distintas — no la misma plantilla de Madrid.",
+    zonesHeading: "Arras en zonas de Málaga capital",
+    zonesParagraph: "Acompañamos particulares en:",
+    zoneGroups: [
+      { district: "Centro Histórico — Soho", areas: "Centro, Soho, La Malagueta, Perchel" },
+      { district: "Teatinos — Universidad", areas: "Teatinos, Ciudad Jardín, Cruz de Humilladero" },
+      { district: "El Palo — Pedregalejo", areas: "El Palo, Pedregalejo, Baños del Carmen" },
+      { district: "Carretera de Cádiz — Huelin", areas: "Carretera de Cádiz, Huelin, Tabladilla" },
+    ],
+    arrasTypesIntro:
+      "Segunda residencia, herencia o compra habitual: el gestor asignado adapta penitenciales o confirmatorias al calendario real de comunidad, ITE o cancelación de hipoteca en Málaga.",
+    moneyLossRisks: [
+      {
+        title: "Uso turístico mal delimitado",
+        body: "Arras en piso que el comprador cree alquilable turísticamente sin licencia — el gestor exige coherencia con el objeto de compraventa.",
+      },
+      {
+        title: "Comprador internacional sin cláusula clara",
+        body: "Operaciones con financiación desde el extranjero sin plazos de resolución bancaria — señal en riesgo si no hay cláusula de financiación.",
+      },
+      {
+        title: "Comunidad y derrama omitidas",
+        body: "Edificios del centro o Teatinos con obras aprobadas no reflejadas antes de arras — el gestor pide transparencia mínima documental.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Sirve si vendo entre particulares sin agencia?",
+        answer:
+          "Sí. Es nuestro caso habitual: ya tienes comprador y solo necesitas arras profesionales por 145 €, no una inmobiliaria que cobre miles por el mismo trámite.",
+      },
+      {
+        question: "¿Atendéis El Palo, Teatinos o Rincón de la Victoria?",
+        answer:
+          "Sí. Gestoría online para Málaga capital y área metropolitana próxima con el mismo precio y gestor dedicado.",
+      },
+      {
+        question: "¿Qué incluye el servicio online?",
+        answer:
+          "Contratación con tarjeta, panel de expediente, llamada con gestor experto, redacción o revisión de arras y consultas hasta la firma.",
+      },
+      {
+        question: "¿Redactáis cláusula si compro con hipoteca?",
+        answer:
+          "Sí. Incluimos cláusula de financiación con plazo y condiciones del préstamo para proteger la señal si el banco deniega.",
+      },
+      {
+        question: "¿Cuánto cuesta?",
+        answer: `${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. — frente a 6.000–12.000 € de comisión de agencia en una venta media.`,
+      },
+    ],
+  },
+
+  zaragoza: {
+    legalRegion: "espana",
+    heroSubtitle: `Contrato de arras en Zaragoza entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestoría online Livendia: asesor experto asignado, trámite digital y arras penitenciales o confirmatorias sin pagar comisión de inmobiliaria.`,
+    gestorPitch:
+      "En Zaragoza muchos compradores encuentran piso por Idealista o recomendación y cierran precio en días. La agencia cobraría miles por redactar arras; Livendia lo hace por 145 € IVA incl. con gestor que responde tus consultas por teléfono, WhatsApp y panel hasta que firmes con seguridad.",
+    fairArrasHeading: "Arras en Zaragoza: gestoría económica para particulares",
+    fairArrasIntro:
+      "Actur, Delicias y el Casco Histórico mueven operaciones directas entre propietario e comprador. Sin gestor, las arras suelen arrastrar plazos irreales de hipoteca, cargas de comunidad ignoradas o penalidades del art. 1454 CC mal explicadas.",
+    legalSpanish:
+      "En Aragón aplican las arras del Código Civil español (arts. 1454 y 1451). Tu gestor Livendia calibra la señal para que comprador y vendedor entiendan las consecuencias del incumplimiento.",
+    legalCatalan:
+      "Art. 1454 CC — arras penitenciales con efecto de pérdida o duplicación de la cantidad entregada. Lo redactamos en lenguaje accesible, no en jurídico incomprensible.",
+    legalCatalanFinancing:
+      "En Zaragoza, donde muchas operaciones dependen de hipoteca, la cláusula de financiación es esencial: plazo para obtener préstamo, importe y resolución escrita del banco. Sin ella, perder la señal es un riesgo real.",
+    cccatArrasArticles: "1454 y 1451",
+    cccatFinancingArticle: "cláusula hipoteca",
+    localMarketIntro:
+      "Zaragoza combina mercado asequible frente a Madrid o Barcelona, fuerte componente universitario en Delicias y operaciones familiares en barrios como La Almozara o Torrero. Los borradores copiados de otras ciudades generan conflictos antes de notaría.",
+    zonesHeading: "Arras por barrios de Zaragoza",
+    zonesParagraph: "Tramitamos contratos para particulares en:",
+    zoneGroups: [
+      { district: "Casco Histórico — San Pablo", areas: "Casco Histórico, San Pablo, El Pilar, La Magdalena" },
+      { district: "Actur — Rey Fernando", areas: "Actur, Parque Goya, Plaza Europa, Valdespartera" },
+      { district: "Delicias — Universidad", areas: "Delicias, Romareda, San José, La Almozara" },
+      { district: "Torrero — Las Fuentes", areas: "Torrero, Las Fuentes, Monzalbarba, Valdefierro" },
+    ],
+    arrasTypesIntro:
+      "El gestor asignado te ayuda a elegir penitenciales o confirmatorias según si hay hipoteca, herencia o plazo corto hasta escritura en Zaragoza.",
+    moneyLossRisks: [
+      {
+        title: "Arras con plazo de notaría imposible",
+        body: "Compradores que comprometen señal sin margen para tasación bancaria o certificado de deuda — calendario irreal en bloques de Actur.",
+      },
+      {
+        title: "Objeto del inmueble incompleto",
+        body: "Garaje o trastero en registro no incluidos en arras — disputa habitual en operaciones entre particulares.",
+      },
+      {
+        title: "Penalidad desproporcionada",
+        body: "Plantillas que fijan el doble de la señal sin explicar el art. 1454 CC — el gestor equilibra consecuencias.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Por qué Livendia y no una agencia?",
+        answer:
+          "La agencia cobra comisión sobre la venta (miles de euros) y a veces extra por arras. Livendia es gestoría: 145 € IVA incl. por contrato cuando ya tienes contraparte.",
+      },
+      {
+        question: "¿Cómo funciona el trámite online?",
+        answer:
+          "Contratas en la web, pagas con tarjeta, accedes al panel, tu gestor te llama en 24-48 h y entrega arras revisadas en 48-72 h laborables.",
+      },
+      {
+        question: "¿Atendéis Actur, Delicias o Utebo?",
+        answer:
+          "Sí. Misma operativa para Zaragoza capital y municipios del área metropolitana próxima.",
+      },
+      {
+        question: "¿Comprador o vendedor pueden contratar?",
+        answer:
+          "Ambos. Cualquier particular con borrador de la otra parte o sin borrador — el gestor redacta desde cero.",
+      },
+      {
+        question: "¿Precio final?",
+        answer: `${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. sin sorpresas ni comisión sobre el precio del piso.`,
+      },
+    ],
+  },
+
+  palma: {
+    legalRegion: "espana",
+    heroSubtitle: `Arras entre particulares en Palma de Mallorca por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestoría Livendia online — no agencia. Tu asesor experto en arras redacta penitenciales o confirmatorias en Eixample, Son Espanyolet o Santa Catalina con seguimiento constante.`,
+    gestorPitch:
+      "En Palma una inmobiliaria puede facturarte comisiones elevadas sobre una venta de 300.000–500.000 €. Si ya tienes comprador o vendedor, Livendia tramita las arras por 145 € IVA incl.: gestor asignado, panel digital, llamada previa y consultas resueltas hasta la firma — sin captación de inmuebles.",
+    fairArrasHeading: "Arras en Palma: gestoría para particulares, no comisión de agencia",
+    fairArrasIntro:
+      "Palma combina demanda residencial, compradores nacionales e internacionales y normativa balear sobre vivienda. Firmar arras sin revisión es arriesgar la señal por cláusulas que no reflejan cédula, comunidad o calendario real de cancelación de hipoteca en las Islas.",
+    legalSpanish:
+      "En las Islas Baleares rige el Código Civil español en arras (arts. 1454 y 1451). Adaptamos el contrato al inmueble concreto en Palma — no plantillas peninsulares sin revisar.",
+    legalCatalan:
+      "Art. 1454 CC — arras penitenciales: el gestor explica qué ocurre con la señal si comprador o vendedor desiste antes de escritura pública en notaría palmesana.",
+    legalCatalanFinancing:
+      "Operaciones con hipoteca en Palma requieren cláusula de financiación bien redactada: plazo, importe del préstamo y documentación del banco. El gestor Livendia la integra en el contrato de arras.",
+    cccatArrasArticles: "1454 y 1451",
+    cccatFinancingArticle: "cláusula hipoteca",
+    localMarketIntro:
+      "Son Espanyolet y Santa Catalina concentran rotación entre particulares; el Eixample palmesano mezcla pisos señoriales y reformas; Playa de Palma y Portixol atraen segundas residencias. Cada operación necesita arras distintas — especialmente si hay comprador foráneo o herencia.",
+    zonesHeading: "Contrato de arras en barrios de Palma",
+    zonesParagraph: "Gestor asignado para particulares en:",
+    zoneGroups: [
+      { district: "Eixample — Son Armadans", areas: "Eixample, Son Armadans, La Bonanova, Porto Pi" },
+      { district: "Son Espanyolet — Santa Catalina", areas: "Son Espanyolet, Santa Catalina, La Llotja" },
+      { district: "Centro Histórico — Sindicato", areas: "Centro, Sindicato, La Seu, Mercat" },
+      { district: "Playa de Palma — Portixol", areas: "Playa de Palma, Portixol, Can Pastilla, Coll d'en Rabassa" },
+    ],
+    arrasTypesIntro:
+      "Segunda residencia, compra habitual o venta entre conocidos: penitenciales o confirmatorias redactadas con plazos realistas para comunidad, registro y financiación en Palma.",
+    moneyLossRisks: [
+      {
+        title: "Comprador no residente sin cláusulas claras",
+        body: "Operaciones con financiación o fiscalidad compleja sin plazos de resolución — señal en riesgo si no hay cláusula de financiación.",
+      },
+      {
+        title: "Cargas y comunidad en edificios antiguos",
+        body: "Palma centro: derramas o actas no reflejadas en arras — el gestor exige checklist mínimo antes de la señal.",
+      },
+      {
+        title: "Confirmatorias mal identificadas",
+        body: "Texto que mezcla penitenciales y confirmatorias — confusión costosa antes de notaría en Mallorca.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Livendia vende pisos en Palma?",
+        answer:
+          "No. Somos gestoría digital: redactamos o revisamos arras por 145 € IVA incl. cuando comprador y vendedor ya se han encontrado sin agencia.",
+      },
+      {
+        question: "¿Atendéis compradores que vienen de fuera de Mallorca?",
+        answer:
+          "Sí. Trámite 100 % online: panel, videollamada o teléfono con tu gestor asignado y contrato adaptado al inmueble en Palma.",
+      },
+      {
+        question: "¿Cuánto ahorro vs inmobiliaria?",
+        answer:
+          "En una venta de 350.000 €, el 3 % de agencia supera 10.000 €. Livendia cubre el tramo de arras por 145 € IVA incl.",
+      },
+      {
+        question: "¿Incluye cláusula de hipoteca?",
+        answer:
+          "Sí, si la operación lo requiere. El gestor redacta cláusula de financiación con plazo y condiciones del préstamo.",
+      },
+      {
+        question: "¿Plazo de entrega?",
+        answer: "48-72 h laborables tras la llamada con tu gestor, una vez completos los datos de las partes.",
+      },
+    ],
+  },
 };
 
 export function getArrasLocalSeoContent(slug: string, city?: string): ArrasLocalSeoContent | undefined {
   const base = ARRAS_LOCAL_SEO_CONTENT[slug];
   if (!base) return undefined;
+  const region = base.legalRegion ?? "catalunya";
+  const cityLabel = city ?? slug;
   return {
     ...base,
-    financingEducation: buildArrasFinancingEducation(city ?? slug),
+    financingEducation:
+      region === "espana"
+        ? buildSpanishArrasFinancingEducation(cityLabel)
+        : buildArrasFinancingEducation(cityLabel),
   };
 }

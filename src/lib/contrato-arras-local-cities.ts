@@ -21,6 +21,10 @@ export const CONTRATO_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "terrassa",
   "valencia",
   "asturias",
+  "sevilla",
+  "malaga",
+  "zaragoza",
+  "palma",
 ];
 
 export type ContratoArrasLocalLandingConfig = {
@@ -433,5 +437,173 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     ],
     finalCtaLead:
       "Contrata penitenciales o confirmatorias online y prepara arras defendibles en Asturias con expediente digital en el panel Livendia.",
+  },
+  {
+    slug: "sevilla",
+    city: "Sevilla",
+    schemaAdministrativeArea: "Andalucía",
+    heroBadge: "Arras entre particulares · Sevilla",
+    heroH1: "Contrato de arras en Sevilla entre particulares — gestoría online, no agencia",
+    metaTitle: `Contrato de arras Sevilla entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `¿Compras o vendes sin inmobiliaria en Sevilla? Arras penitenciales o confirmatorias por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor asignado, trámite online. Triana, Nervión, Los Remedios.`,
+    keywords: [
+      "contrato arras sevilla entre particulares",
+      "tramitar arras sevilla sin agencia",
+      "gestor contrato arras sevilla",
+      "arras penitenciales sevilla particular",
+      "contrato arras triana",
+      "firmar arras nervion sevilla",
+      "gestoria arras sevilla precio",
+    ],
+    heroLead:
+      "¿Ya tienes comprador o vendedor en Sevilla — por Idealista, recomendación o porque os conocíais — y no quieres pagar miles a una agencia solo por las arras? Por 145 € IVA incl. Livendia asigna un gestor experto: trámite 100 % online, asesoramiento constante y contrato art. 1454 CC antes de entregar la señal.",
+    whyIntro:
+      "Triana, Nervión, Los Remedios y Macarena concentran compraventas rápidas entre particulares. Las plantillas genéricas no contemplan plazos de comunidad, herencia pendiente o hipoteca sin cláusula de protección — ahí se pierden miles en señal mal calibrada.",
+    howIntro:
+      "Cuatro fases con gestor dedicado: diagnóstico online, detección de riesgos, redacción equilibrada y firma informada en Sevilla capital o área metropolitana.",
+    testimonialsTitle: "Particulares en Sevilla que tramitaron sus arras con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Vendíamos en Triana entre particulares. La agencia pedía 8.000 € de comisión; Livendia redactó las arras por 145 € y el gestor nos explicó el art. 1454 en la llamada.",
+        author: "Rafa G.",
+        role: "Vendedor · Triana",
+      },
+      {
+        quote:
+          "Comprábamos en Nervión con hipoteca. El borrador no tenía cláusula de financiación — el gestor la incluyó antes de transferir la señal.",
+        author: "Elena & Jorge",
+        role: "Compradores · Nervión",
+      },
+    ],
+    finalCtaLead:
+      "Arras justas en Sevilla entre particulares — 145 € IVA incl., gestor asignado, panel digital.",
+  },
+  {
+    slug: "malaga",
+    city: "Málaga",
+    schemaAdministrativeArea: "Andalucía",
+    heroBadge: "Arras entre particulares · Málaga",
+    heroH1: "Contrato de arras en Málaga sin comisión de agencia — gestoría Livendia",
+    metaTitle: `Contrato arras Málaga entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      `Arras penitenciales o confirmatorias en Málaga por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor online asignado. Centro, Teatinos, El Palo. Sin comisión inmobiliaria.`,
+    keywords: [
+      "contrato arras malaga entre particulares",
+      "tramitar arras malaga sin agencia",
+      "gestor arras malaga",
+      "arras penitenciales malaga",
+      "contrato arras teatinos",
+      "firmar arras el palo",
+      "gestoria arras malaga precio",
+    ],
+    heroLead:
+      "¿Cerraste precio en Málaga entre particulares y te pasan un PDF de arras sin revisar? Livendia no es agencia: gestoría por 145 € IVA incl., trámite online, asesor experto que responde dudas hasta la firma — Centro, Teatinos, El Palo o Carretera de Cádiz.",
+    whyIntro:
+      "En Málaga capital conviven segunda residencia, mercado universitario y compradores internacionales. Sin gestor, las arras copiadas de otra ciudad ignoran comunidad, ITE o cláusula de hipoteca — riesgo directo para tu señal.",
+    howIntro:
+      "Contratas online, tu gestor te llama en 24-48 h, redacta o corrige arras en 48-72 h y te acompaña por WhatsApp y panel hasta rubricar.",
+    testimonialsTitle: "Compradores y vendedores en Málaga con arras tramitadas por Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Teatinos sin agencia. Livendia costó 145 € frente a lo que pedía una inmobiliaria solo por redactar — y el gestor aclaró penitenciales vs confirmatorias.",
+        author: "Iván L.",
+        role: "Comprador · Teatinos",
+      },
+      {
+        quote:
+          "Vendía en El Palo entre particulares. El gestor incluyó calendario de cancelación de hipoteca realista y cláusulas de comunidad claras.",
+        author: "Carmen P.",
+        role: "Vendedora · El Palo",
+      },
+    ],
+    finalCtaLead:
+      "Cierra tus arras en Málaga con gestoría profesional — no miles de euros de comisión de agencia.",
+  },
+  {
+    slug: "zaragoza",
+    city: "Zaragoza",
+    schemaAdministrativeArea: "Aragón",
+    heroBadge: "Arras entre particulares · Zaragoza",
+    heroH1: "Tramitar contrato de arras en Zaragoza entre particulares — gestor online",
+    metaTitle: `Contrato de arras Zaragoza — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`,
+    metaDescription:
+      `Arras entre particulares en Zaragoza: gestor asignado, trámite online, ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Actur, Delicias, Casco Histórico. Sin comisión de agencia.`,
+    keywords: [
+      "contrato arras zaragoza entre particulares",
+      "tramitar arras zaragoza sin agencia",
+      "gestor contrato arras zaragoza",
+      "arras penitenciales zaragoza",
+      "contrato arras actur",
+      "firmar arras delicias zaragoza",
+      "gestoria arras zaragoza",
+    ],
+    heroLead:
+      "¿Compras o vendes en Zaragoza sin inmobiliaria? Por 145 € IVA incl. un gestor Livendia se asigna a tu expediente: arras penitenciales o confirmatorias redactadas online, asesoramiento constante y consultas resueltas antes de entregar la señal — Actur, Delicias o Casco Histórico.",
+    whyIntro:
+      "Zaragoza cierra operaciones rápidas entre particulares cuando el precio es competitivo. El error más caro: arras del art. 1454 CC mal explicadas, sin cláusula de hipoteca o con plazos imposibles de documentación.",
+    howIntro:
+      "Cuatro hitos digitales: contratación, llamada con gestor experto, entrega de contrato y firma informada en Zaragoza o área metropolitana.",
+    testimonialsTitle: "Particulares en Zaragoza que pasaron sus arras por Livendia",
+    testimonials: [
+      {
+        quote:
+          "Encontramos piso en Actur por Idealista. Livendia revisó las arras en 48 h — el gestor detectó una penalidad desproporcionada antes de la señal.",
+        author: "Miguel Á.",
+        role: "Comprador · Actur",
+      },
+      {
+        quote:
+          "Vendíamos en Delicias entre particulares. 145 € por gestoría frente a lo que pedía una agencia por el mismo trámite contractual.",
+        author: "Lucía & Hugo",
+        role: "Vendedores · Delicias",
+      },
+    ],
+    finalCtaLead:
+      "Arras en Zaragoza con gestoría Livendia — 145 € IVA incl., trámite online, sin comisión sobre el precio.",
+  },
+  {
+    slug: "palma",
+    city: "Palma de Mallorca",
+    schemaAdministrativeArea: "Islas Baleares",
+    heroBadge: "Arras entre particulares · Palma",
+    heroH1: "Contrato de arras en Palma de Mallorca — gestoría online para particulares",
+    metaTitle: `Contrato arras Palma de Mallorca — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaDescription:
+      `Arras entre particulares en Palma por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor asignado, trámite online. Eixample, Son Espanyolet, Santa Catalina. Sin agencia.`,
+    keywords: [
+      "contrato arras palma de mallorca",
+      "tramitar arras palma entre particulares",
+      "gestor arras mallorca",
+      "arras penitenciales palma",
+      "contrato arras son espanyolet",
+      "firmar arras santa catalina palma",
+      "gestoria arras baleares",
+    ],
+    heroLead:
+      "¿Compras o vendes en Palma entre particulares sin pagar comisión de agencia sobre cientos de miles de euros? Livendia tramita arras por 145 € IVA incl.: gestor experto asignado, panel digital, asesoramiento constante y contrato adaptado a tu piso en Eixample, Son Espanyolet o Santa Catalina.",
+    whyIntro:
+      "Palma mueve operaciones con compradores nacionales e internacionales, herencias y segundas residencias. Las plantillas peninsulares sin adaptar generan conflictos sobre comunidad, registro o financiación antes de notaría.",
+    howIntro:
+      "Trámite 100 % online: contratas, hablas con tu gestor, recibes arras en 48-72 h y resuelves dudas hasta la firma en Palma.",
+    testimonialsTitle: "Particulares en Palma que cerraron arras con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Son Espanyolet sin agencia. El gestor redactó cláusula de hipoteca y explicó penitenciales por teléfono — todo por 145 € IVA incl.",
+        author: "Marina K.",
+        role: "Compradora · Son Espanyolet",
+      },
+      {
+        quote:
+          "Vendíamos en Santa Catalina entre particulares. Livendia equilibró las arras cuando el comprador traía un borrador desequilibrado.",
+        author: "Toni V.",
+        role: "Vendedor · Santa Catalina",
+      },
+    ],
+    finalCtaLead:
+      "Firma arras en Palma con gestoría Livendia — económico, online y con asesor experto dedicado.",
   },
 ];
