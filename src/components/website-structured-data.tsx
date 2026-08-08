@@ -60,7 +60,7 @@ export function WebsiteStructuredData() {
 
         url: base,
 
-        logo: `${base}/icon.svg`,
+        logo: `${base}/icons/icon-512.png`,
 
         description: siteDescription,
 

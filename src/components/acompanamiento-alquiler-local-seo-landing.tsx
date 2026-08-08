@@ -80,7 +80,7 @@ function LocalJsonLd({
     url: pageUrl,
     telephone: getContactPhoneE164Plus(),
     email: BUSINESS_EMAIL,
-    image: `${base}/icon.svg`,
+    image: `${base}/icons/icon-512.png`,
     priceRange: "€€",
     address: buildBusinessPostalAddress(),
     areaServed,

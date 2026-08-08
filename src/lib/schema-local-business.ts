@@ -24,7 +24,7 @@ export function buildLocalBusinessSchema() {
     url,
     telephone: getContactPhoneE164Plus(),
     email: BUSINESS_EMAIL,
-    image: `${url}/icon.svg`,
+    image: `${url}/icons/icon-512.png`,
     priceRange: "€€",
     address,
     geo: buildBusinessGeoCoordinates(),
