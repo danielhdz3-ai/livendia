@@ -453,7 +453,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections city={config.city} serviceLabel="Gestoría inmobiliaria" />
 
 
         <SiteFooter />

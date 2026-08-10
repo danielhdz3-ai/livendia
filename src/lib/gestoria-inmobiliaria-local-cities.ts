@@ -28,6 +28,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_BASE = "/gestoria";
 export const GESTORIA_INMOBILIARIA_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "madrid",
   "barcelona",
+  "les-corts",
   "valencia",
   "zaragoza",
   "alicante",
@@ -253,6 +254,87 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     ],
     finalCtaLead:
       `Empieza en Barcelona: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes. Contratación online.`,
+  },
+  {
+    slug: "les-corts",
+    city: "Les Corts",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Gestoría inmobiliaria en Les Corts (Barcelona) para particulares | Livendia",
+    metaDescription:
+      `Gestoría inmobiliaria Les Corts Barcelona: despacho en Mejía Lequerica 44. Contrato habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, arras 145 €, venta sin agencia 890 €, ${REVISION_META_SNIPPET} y administración 49 €/mes. Zona tensionada e INCASÒL.`,
+    keywords: [
+      "gestoría inmobiliaria les corts",
+      "gestoría inmobiliaria les corts barcelona",
+      "venta entre particulares les corts gestoría",
+      "contrato alquiler les corts particular",
+      "contrato arras les corts barcelona",
+      "tramites compra piso les corts",
+      "gestoría inmobiliaria pedralbes",
+      "vender piso sin agencia les corts",
+    ],
+    h1: "Gestoría inmobiliaria en Les Corts para particulares: venta, compra y alquileres",
+    heroLead:
+      "Somos gestoría inmobiliaria digital con despacho en Les Corts (Carrer de Mejía Lequerica, 44): tarifas planas para particulares que compran, venden o alquilan en Pedralbes, la Zona Universitària, la Maternitat o el entorno del Camp Nou — sin comisión del 3–5 % de agencia.",
+    compraventa: {
+      h2: "Gestoría compraventa en Les Corts entre particulares",
+      intro:
+        "En Les Corts muchas operaciones cierran directo entre comprador y vendedor — Idealista, recomendación o conocidos — en pisos de Pedralbes, la Diagonal o cerca de la zona universitaria. Antes de entregar arras conviene revisar nota simple, comunidad e ITE: un error en el tramo privado puede costarte miles de euros y meses de conflicto.",
+      h3Reserva: "Acompañamiento Reserva hasta Arras — 424 € (IVA incl.)",
+      reservaCopy:
+        "Revisión de reserva, nota registral, arras y documentación urbanística del inmueble en Les Corts o barrios limítrofes. Te explicamos cargas, plazos y cláusulas desequilibradas antes de transferir la señal.",
+      h3Completo: "Servicio Completo hasta Escritura y Notaría — 890 € (IVA incl.)",
+      completoCopy:
+        "Gestor dedicado desde la reserva hasta la firma en notaría: coordinación documental, coherencia entre contratos y alerta temprana ante derramas o cargas ocultas en edificios del distrito.",
+    },
+    contratos: {
+      h2: "Contrato de alquiler y arras en Les Corts — LAU, temporada e INCASÒL",
+      intro:
+        "Precios fijos para LAU, temporada, habitación y arras en Les Corts. Entrega en 48-72 h con inventario, cumplimiento de zona tensionada de Barcelona y depósito de fianza en INCASÒL explicado antes de firmar.",
+      h3Arras: GESTORIA_H3_ARRAS,
+      arrasCopy:
+        "Arras penitenciales o confirmatorias con cláusula art. 621-49 CCCat si compras con hipoteca. Revisión de penalidades y plazos antes de firmar en una compraventa en el distrito.",
+      h3Lau: GESTORIA_H3_LAU,
+      lauCopy:
+        "Arrendamiento habitual con tope de renta (zona tensionada Barcelona), fianza en INCASÒL, IPC y gastos de comunidad. Ideal para propietarios e inquilinos que alquilan en Les Corts sin agencia intermediaria.",
+      h3Temporada: GESTORIA_H3_TEMPORADA,
+      temporadaCopy:
+        "Estancias temporales, alquiler por habitación en pisos compartidos cerca de la universidad o contratos fuera del LAU estándar, con normas de convivencia y suministros por escrito.",
+    },
+    administracion: {
+      h2: "Administración de alquileres en Les Corts — gestión integral sin permanencia",
+      intro:
+        "Si ya tienes inquilino en un piso de Les Corts, Pedralbes o la Maternitat, delega incidencias, averías y renovaciones. Tú decides; Livendia canaliza la relación con el arrendatario desde nuestro despacho del distrito.",
+      h3Incluye: "Qué incluye la gestión integral de alquileres en Les Corts",
+      incluyeCopy:
+        "Intermediación ante el inquilino, coordinación de reparaciones, seguimiento de pagos y mediación en conflictos menores. Compatible con vivienda habitual y pisos en barrios residenciales del distrito.",
+      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      precioCopy:
+        "Despreocúpate de averías y llamadas del inquilino. Tarifa plana sin permanencia: el propietario delega; tu gestor Livendia ejecuta y documenta cada incidencia.",
+    },
+    faq: [
+      {
+        question: "¿Tenéis despacho físico en Les Corts?",
+        answer:
+          "Sí. Livendia está en Carrer de Mejía Lequerica, 44 (Les Corts, 08028 Barcelona). Tramitamos online con panel y gestor asignado; si tu operación es en el distrito, trabajamos con proximidad real al barrio.",
+      },
+      {
+        question: "¿Les Corts está en zona de mercado tensionado?",
+        answer:
+          "Sí. Todo Barcelona, incluido Les Corts, está en zona tensionada hasta 2027. Los contratos nuevos tienen tope de renta y obligación de informar la renta anterior. Tu gestor revisa el LAU antes de firmar.",
+      },
+      {
+        question: "¿Atendéis compraventas solo en Les Corts o en toda Barcelona?",
+        answer:
+          "Atendemos operaciones en Les Corts, Pedralbes, Zona Universitària, L'Eixample limítrofe y toda el área metropolitana con el mismo protocolo online. Consulta también nuestra ficha de gestoría en Barcelona capital.",
+      },
+      {
+        question: `¿Para qué sirve la revisión documental post-arras de ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}?`,
+        answer:
+          "Tras firmar arras, verificamos actas, derramas, ITE, nota registral y urbanismo. Recibes informe PDF y llamada de veredicto antes de escriturar — especialmente útil en edificios del distrito con obras de comunidad pendientes.",
+      },
+    ],
+    finalCtaLead:
+      `Contrata en Les Corts: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes. Despacho en Mejía Lequerica 44 · trámite online con gestor asignado.`,
   },
   {
     slug: "valencia",
