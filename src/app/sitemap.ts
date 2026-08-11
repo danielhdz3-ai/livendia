@@ -108,7 +108,6 @@ const SERVICIO_SLUGS = [
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
   "venta-piso-particular-sin-agencia",
-  "pago-prueba-livendia",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

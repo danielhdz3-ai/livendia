@@ -414,6 +414,9 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     slug: "asturias",
     city: "Asturias",
     schemaAdministrativeArea: "Principado de Asturias",
+    metaTitle: `Arras Asturias — 145 €, gestor humano sin agencia | Livendia`,
+    metaDescription:
+      `Contrato de arras Oviedo, Gijón y Avilés por 145 € IVA incl. Penitenciales o confirmatorias entre particulares — sin comisión de inmobiliaria. Gestor por teléfono antes de firmar. Entrega 48-72 h.`,
     heroLead:
       "En Asturias —Oviedo, Gijón, Avilés, corredor costero o viviendas con componente rural o turístico— revisamos tu contrato de arras antes de comprometer la señal. Prestamos atención al objeto literal coherente con catastro y registro, plazos realistas si hay financiación o trámites en conceyu y cláusulas que no desbalanceen comprador y vendedor en segunda residencia o compraventa fuera de gran núcleo urbano.",
     whyIntro:

@@ -55,6 +55,9 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   barcelona: {
+    metaTitle: `LAU piso completo Barcelona — 145 €, sin agencia | Livendia`,
+    metaDescription:
+      "Contrato LAU piso entero Barcelona 145 € IVA incl. Revisión profesional, inventario y cláusulas zona tensionada. No es contrato de habitación. Gestor humano por teléfono. Entrega 48-72 h.",
     keywords: [
       "contrato alquiler barcelona",
       "contrato alquiler entre particulares barcelona",

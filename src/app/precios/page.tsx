@@ -69,8 +69,20 @@ export default async function PreciosPage() {
               Ver todos los servicios
             </Link>
             <Link
-              href="/login?next=/dashboard"
+              href="/blog/cuanto-cuesta-una-gestoria-inmobiliaria"
+              className="inline-flex min-h-11 items-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-[#475569] hover:bg-slate-50"
+            >
+              ¿Cuánto cuesta una gestoría?
+            </Link>
+            <Link
+              href="/contacto"
               className="inline-flex min-h-11 items-center rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#2563EB]"
+            >
+              Habla con un gestor
+            </Link>
+            <Link
+              href="/login?next=/dashboard"
+              className="inline-flex min-h-11 items-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-[#475569] hover:bg-slate-50"
             >
               Ya soy cliente — acceder al panel
             </Link>

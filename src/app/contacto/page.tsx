@@ -42,6 +42,17 @@ export default function ContactoPage() {
               Cuéntanos en qué podemos ayudarte. Recibirás respuesta por email. Para algo inmediato, usa
               WhatsApp.
             </p>
+            <p className="mt-4 max-w-2xl text-sm text-blue-200">
+              Esta es la página principal para consultas comerciales. Si buscas tarifas publicadas, consulta{" "}
+              <Link href="/precios" className="font-semibold text-white underline hover:text-blue-50">
+                precios
+              </Link>
+              ; si quieres conocer al equipo, visita{" "}
+              <Link href="/equipo" className="font-semibold text-white underline hover:text-blue-50">
+                equipo
+              </Link>
+              .
+            </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={phoneTel}

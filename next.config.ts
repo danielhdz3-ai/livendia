@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/servicios/pago-prueba-livendia",
+        destination: "/servicios",
+        statusCode: 301,
+      },
+      {
         source: "/servicios/contrato-alquiler-madrid",
         destination: "/servicios/contrato-alquiler-local/madrid",
         permanent: true,

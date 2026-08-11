@@ -15,7 +15,7 @@ const canonical = `${getSiteUrl()}${CIUDADES_HUB_BASE}`;
 const description = getCiudadesIndexDescription();
 
 export const metadata: Metadata = {
-  title: "Ciudades — gestoría inmobiliaria en Madrid, Barcelona, Valencia, Málaga y Sevilla | Livendia",
+  title: "Ciudades — servicios de gestoría inmobiliaria por ciudad | Livendia",
   description,
   alternates: { canonical },
   openGraph: {

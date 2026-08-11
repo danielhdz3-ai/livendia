@@ -36,6 +36,14 @@ const SERVICIOS_PARTICULARES = [
     imageAlt: "Venta de piso entre particulares",
   },
   {
+    href: "/servicios/servicio-completo-venta-local/barcelona",
+    title: "Venta completa Barcelona",
+    price: "890 €",
+    note: "Hasta escritura y notaría",
+    image: "/images/barcelona2.jpg",
+    imageAlt: "Servicio completo de venta en Barcelona",
+  },
+  {
     href: "/servicios/contrato-de-alquiler",
     title: "Contrato LAU",
     price: CONTRATO_ALQUILER_LAU_PRICE_LABEL,

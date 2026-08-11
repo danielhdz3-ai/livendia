@@ -91,12 +91,6 @@ export const ACOMPANAMIENTO_ALQUILER_PRICE_CENTS = ACOMPANAMIENTO_ALQUILER_PRICE
 export const ACOMPANAMIENTO_ALQUILER_PRICE_LABEL = `${ACOMPANAMIENTO_ALQUILER_PRICE_EUR} €`;
 export const ACOMPANAMIENTO_ALQUILER_SLUG = "acompanamiento-alquiler" as const;
 
-/** Pago de prueba Livendia — checkout y subida de documentos (solo uso interno). */
-export const PAGO_PRUEBA_LIVENDIA_PRICE_EUR = 5;
-export const PAGO_PRUEBA_LIVENDIA_PRICE_CENTS = PAGO_PRUEBA_LIVENDIA_PRICE_EUR * 100;
-export const PAGO_PRUEBA_LIVENDIA_PRICE_LABEL = `${PAGO_PRUEBA_LIVENDIA_PRICE_EUR} €`;
-export const PAGO_PRUEBA_LIVENDIA_SLUG = "pago-prueba-livendia" as const;
-
 /** Precios fijos en BD (slug → céntimos). */
 export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [REVISION_DOCUMENTAL_POST_ARRAS_SLUG]: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
@@ -108,7 +102,6 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [ACOMPANAMIENTO_ALQUILER_SLUG]: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
-  [PAGO_PRUEBA_LIVENDIA_SLUG]: PAGO_PRUEBA_LIVENDIA_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
 };
@@ -253,23 +246,6 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Para inquilinos",
   },
-  {
-    slug: PAGO_PRUEBA_LIVENDIA_SLUG,
-    name: "Pago de prueba Livendia",
-    description:
-      "Servicio de 5 € para contratar online, recibir confirmación por email y gestionar tu expediente con subida de documentación en el área de cliente.",
-    category: "otro",
-    price_cents: PAGO_PRUEBA_LIVENDIA_PRICE_CENTS,
-    is_recurring: false,
-    features: [
-      "Pago único de 5 € IVA incluido",
-      "Contratación online con confirmación inmediata",
-      "Acceso al área de cliente y expediente del pedido",
-      "Subida segura de documentación",
-      "Confirmación por email",
-    ],
-    badge: "Prueba",
-  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -375,7 +351,6 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "revision-contrato-alquiler": "/images/gestora2.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
   "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",
-  [PAGO_PRUEBA_LIVENDIA_SLUG]: "/images/gestoria.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
   "contrato-de-alquiler": "/images/contratodealquiler.jpg",
@@ -415,7 +390,6 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "revision-contrato-alquiler": "Revisión contrato alquiler",
   "acompanamiento-alquiler": "Acompañamiento de alquiler",
   "administracion-alquiler": "Administración de alquiler",
-  [PAGO_PRUEBA_LIVENDIA_SLUG]: "Pago de prueba",
 };
 
 export function getServiceCardTitle(service: Pick<PublicService, "slug" | "name">): string {

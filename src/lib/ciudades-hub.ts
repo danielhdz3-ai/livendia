@@ -54,8 +54,8 @@ export const CITY_PILLAR_PATHS: Partial<Record<HomeCoverageCitySlug, string>> = 
 
 export function getCityHubMeta(city: HomeCoverageCity) {
   return {
-    title: `Gestoría inmobiliaria en ${city.name} — contratos y venta sin agencia | Livendia`,
-    description: `Servicios de gestoría inmobiliaria en ${city.name}: contratos de alquiler y arras, venta entre particulares sin agencia, administración de alquileres y compraventa con gestor asignado. Precio cerrado, 100 % online.`,
+    title: `Servicios de gestoría inmobiliaria en ${city.name}: todo lo que ofrecemos | Livendia`,
+    description: `Directorio de servicios Livendia en ${city.name}: gestoría, contratos LAU y arras, venta entre particulares, administración de alquileres y compraventa. Precios publicados y enlaces a cada trámite — sin venta directa en esta página.`,
   };
 }
 
@@ -206,9 +206,9 @@ export function getLocalServiceHref(city: HomeCoverageCity, field: LocalServiceF
 
 export function getCiudadesIndexDescription(): string {
   return (
-    "Gestoría inmobiliaria online en Madrid, Barcelona, Valencia, Málaga y Sevilla. " +
-    "Contratos de alquiler y arras, venta entre particulares sin agencia, administración de alquileres " +
-    "y compraventa con gestor asignado. Precios cerrados IVA incl. y mismo servicio en toda España."
+    "Directorio de servicios de gestoría inmobiliaria en Madrid, Barcelona, Valencia, Málaga y Sevilla. " +
+    "Consulta contratos, venta entre particulares, administración de alquileres y compraventa con enlaces " +
+    "a cada landing — precios publicados IVA incl. y mismo servicio online en toda España."
   );
 }
 

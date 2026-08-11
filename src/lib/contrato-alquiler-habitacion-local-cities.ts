@@ -84,9 +84,9 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Barcelona",
     heroH1: "Contrato de alquiler de habitación en Barcelona",
-    metaTitle: `Contrato habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026 | Livendia`,
     metaDescription:
-      `Contrato alquiler habitación Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.: piso compartido, convivencia y fianza. Gestor por teléfono antes de firmar. Eixample, Gràcia, Poblenou. 48-72 h.`,
+      `Contrato alquiler habitación Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: convivencia, fianza e inventario. Gestor humano por teléfono. Eixample, Gràcia. 48-72 h.`,
     keywords: [
       "contrato alquiler habitacion barcelona",
       "alquilar habitacion barcelona contrato",
@@ -298,9 +298,9 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroBadge: "Piso compartido · Madrid",
     heroH1: "Contrato de alquiler de habitación en Madrid",
-    metaTitle: `Contrato alquiler habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026 | Livendia`,
     metaDescription:
-      `¿Alquilas una habitación en Madrid? Contrato para particulares: Chamberí, Moncloa, Tetuán, Lavapiés. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Gestor por teléfono.`,
+      `Contrato alquiler habitación Madrid ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: Chamberí, Moncloa, Tetuán. Convivencia, gastos y fianza. Gestor humano por teléfono. 48-72 h.`,
     keywords: [
       "contrato alquiler habitacion madrid",
       "alquilar habitacion madrid contrato",

@@ -12,6 +12,9 @@ export * from "@/lib/catalog.public";
 const SERVICE_SELECT =
   "id, slug, name, description, category, price_cents, is_recurring, features, badge";
 
+/** Slugs internos/de prueba: no deben listarse en /servicios ni /precios. */
+const INTERNAL_ONLY_SERVICE_SLUGS = new Set(["pago-prueba-livendia"]);
+
 function normalizeServiceCategory(service: PublicService): PublicService {
   if (
     service.slug === "revision-documental-post-arras" ||
@@ -173,5 +176,7 @@ export async function getPublicServices(): Promise<PublicService[]> {
   const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
   const withSeeds = await syncMissingCatalogSeeds(services);
   const withPrices = await syncFixedCatalogPrices(withSeeds);
-  return withPrices.map(normalizeServiceCategory);
+  return withPrices
+    .map(normalizeServiceCategory)
+    .filter((s) => !INTERNAL_ONLY_SERVICE_SLUGS.has(s.slug));
 }

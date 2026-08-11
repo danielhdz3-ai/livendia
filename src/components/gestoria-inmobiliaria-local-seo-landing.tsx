@@ -293,6 +293,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   asesoramiento hasta la escritura con gestor personalizado.
                 </ServicePriceCard>
               </div>
+              {config.slug === "barcelona" ? (
+                <p className="mt-6 text-center text-sm text-[#64748b]">
+                  ¿Vendes en Barcelona? Consulta la{" "}
+                  <Link
+                    href="/servicios/servicio-completo-venta-local/barcelona"
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    landing de venta completa local (890 € IVA incl.)
+                  </Link>
+                  .
+                </p>
+              ) : null}
             </div>
           </section>
 

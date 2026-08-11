@@ -193,6 +193,12 @@ export default function EquipoPage() {
                   >
                     Hablar con el equipo
                   </Link>
+                  <Link
+                    href="/precios"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
+                  >
+                    Ver tarifas publicadas
+                  </Link>
                   <a
                     href={waHref}
                     target="_blank"
@@ -202,6 +208,13 @@ export default function EquipoPage() {
                     WhatsApp directo
                   </a>
                 </div>
+                <p className="mt-4 max-w-xl text-sm text-blue-200">
+                  Para contratar o resolver dudas comerciales, usa{" "}
+                  <Link href="/contacto" className="font-semibold text-white underline hover:text-blue-50">
+                    contacto
+                  </Link>{" "}
+                  como canal principal.
+                </p>
               </div>
 
               <div className="relative order-first h-[340px] sm:h-[420px] lg:order-none lg:h-auto lg:min-h-[520px]">

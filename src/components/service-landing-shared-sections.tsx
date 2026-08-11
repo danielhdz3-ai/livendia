@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
@@ -8,6 +9,8 @@ import {
   inferGestorWorkflowService,
   type GestorWorkflowContent,
 } from "@/lib/gestor-workflow-content";
+
+const GESTORIA_PRICING_BLOG_PATH = "/blog/cuanto-cuesta-una-gestoria-inmobiliaria" as const;
 
 type ServiceLandingSharedSectionsProps = {
   /** Ciudad para personalizar copy del showcase */
@@ -53,6 +56,17 @@ export function ServiceLandingSharedSections({
     <>
       {!skipCoverage ? <HomeCoverageCities variant="teaser" /> : null}
       <HomeParticularesServicios />
+      <section className="border-b border-slate-200 bg-[#F8FAFC] py-6 sm:py-8">
+        <div className="mx-auto max-w-6xl px-4 text-center text-sm text-[#64748b] sm:px-6">
+          <Link href={GESTORIA_PRICING_BLOG_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
+            ¿Cuánto cuesta una gestoría inmobiliaria?
+          </Link>
+          {" · "}
+          <Link href="/contacto" className="font-semibold text-[#1A4FBF] hover:underline">
+            Habla con un gestor
+          </Link>
+        </div>
+      </section>
       <section className="border-b border-slate-200 bg-white py-12 sm:py-16" aria-labelledby="landing-testimonios">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <TrustReviewsBlock
