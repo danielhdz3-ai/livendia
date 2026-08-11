@@ -13,7 +13,7 @@ export function HomeMobileHero({ waHref }: HomeMobileHeroProps) {
   return (
     <section className="relative lg:hidden" aria-label="Presentación Livendia">
       {/* Imagen principal — altura generosa, sin recorte del rostro */}
-      <div className="relative w-full overflow-hidden bg-[#1E3A8A]">
+      <div className="relative w-full overflow-hidden bg-[#1A4FBF]">
         <div className="relative aspect-[4/5] min-h-[min(62vw,280px)] max-h-[min(72vh,560px)] w-full sm:aspect-[5/6] sm:max-h-[min(68vh,600px)]">
           <Image
             src="/images/chicasofaazul.png"
@@ -48,7 +48,7 @@ export function HomeMobileHero({ waHref }: HomeMobileHeroProps) {
           <div className="mt-5 flex flex-col gap-3">
             <Link
               href="#servicios"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-6 text-base font-bold text-[#1E3A8A] shadow-lg transition active:scale-[0.98]"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-6 text-base font-bold text-[#1A4FBF] shadow-lg transition active:scale-[0.98]"
             >
               Ver servicios
             </Link>

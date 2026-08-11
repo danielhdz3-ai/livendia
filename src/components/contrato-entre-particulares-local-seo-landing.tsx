@@ -96,7 +96,7 @@ export async function ContratoEntreParticularesLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[600px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-20">
@@ -116,7 +116,7 @@ export async function ContratoEntreParticularesLocalSeoLanding({
                   <div className="mt-10 flex flex-wrap gap-4">
                     <a
                       href="#contratos"
-                      className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50"
+                      className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50"
                     >
                       Ver contratos desde {lauPrice}
                     </a>
@@ -233,14 +233,14 @@ export async function ContratoEntreParticularesLocalSeoLanding({
             items={[...config.faq]}
           />
 
-          <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+          <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-3xl">Contrata tu contrato en {config.city}</h2>
               <p className="mt-4 text-lg text-blue-100">{config.finalCtaLead}</p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <ContratarSlugButton
                   slug="contrato-alquiler-lau"
-                  className="rounded-full bg-white px-8 py-4 font-bold text-[#1E3A8A] hover:bg-blue-50"
+                  className="rounded-full bg-white px-8 py-4 font-bold text-[#1A4FBF] hover:bg-blue-50"
                 >
                   Alquiler LAU · {lauPrice}
                 </ContratarSlugButton>

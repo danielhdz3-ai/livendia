@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -200,7 +201,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -231,7 +232,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                   </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50">
+                    <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50">
                       Contratar ahora
                     </ContratarServicioButton>
                     <a
@@ -289,7 +290,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               <p className="mx-auto mt-4 text-center text-lg leading-relaxed text-[#64748b]">{config.agencyIntro}</p>
               <div className="mt-10 overflow-hidden rounded-2xl ring-1 ring-slate-200">
                 <table className="w-full text-left text-sm">
-                  <thead className="bg-[#1E3A8A] text-white">
+                  <thead className="bg-[#1A4FBF] text-white">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Concepto</th>
                       <th className="px-4 py-3 font-semibold">Agencia tradicional</th>
@@ -467,22 +468,10 @@ export async function ServicioCompletoVentaLocalSeoLanding({
 
           <ServiceMidPageContactSection serviceLabel={`Servicio completo de venta en ${config.city}`} />
 
-          <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
-            <div className="mx-auto max-w-7xl">
-              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
-                {config.testimonialsTitle}
-              </h2>
-              <div className="mt-12 grid gap-8 lg:grid-cols-2">
-                {config.testimonials.map((testimonial, idx) => (
-                  <div key={idx} className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
-                    <p className="text-lg italic leading-relaxed text-[#475569]">&ldquo;{testimonial.quote}&rdquo;</p>
-                    <p className="mt-6 font-semibold text-[#1E293B]">{testimonial.author}</p>
-                    <p className="text-sm text-[#64748b]">{testimonial.role}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <LandingLocalTestimonialsSection
+            title={config.testimonialsTitle}
+            testimonials={config.testimonials}
+          />
 
           <GestorContactCta placement={`venta_local_${config.city}`} />
 
@@ -530,6 +519,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
           city={config.city}
           serviceLabel="Servicio completo de venta"
           primarySlug="servicio-completo-venta"
+          skipTestimonials
         />
 
 

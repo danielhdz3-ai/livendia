@@ -281,7 +281,7 @@ export default async function ContratoHabitacionPage() {
               </ol>
 
               <aside className="lg:sticky lg:top-24">
-                <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
+                <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
                   <p className="text-sm font-semibold uppercase tracking-wider text-cyan-200">
                     Asesoramiento antes de contratar
                   </p>

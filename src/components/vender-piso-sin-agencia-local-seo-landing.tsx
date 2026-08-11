@@ -137,7 +137,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -175,7 +175,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
                   </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50">
+                    <ContratarServicioButton className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50">
                       Contratar · {priceLabelCompact}
                     </ContratarServicioButton>
                     <a
@@ -246,7 +246,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
 
               <div className="mt-10 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
                 <table className="w-full min-w-[640px] text-left text-sm">
-                  <thead className="bg-[#1E3A8A] text-white">
+                  <thead className="bg-[#1A4FBF] text-white">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Precio de venta</th>
                       <th className="px-4 py-3 font-semibold">Agencia 3 % + IVA</th>
@@ -378,7 +378,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
                       sin comisiones sobre el precio de venta.
                     </p>
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white group-hover:bg-[#1E3A8A]">
+                  <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white group-hover:bg-[#1A4FBF]">
                     Ver landing venta {config.city}
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </span>

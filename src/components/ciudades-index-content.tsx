@@ -196,7 +196,7 @@ export function CiudadesIndexContent() {
           <nav aria-label="Servicios área metropolitana Barcelona" className="mt-4 flex flex-wrap gap-2">
             <Link
               href={cityHubHref("barcelona")}
-              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+              className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A4FBF]"
             >
               Hub Barcelona →
             </Link>
@@ -248,7 +248,7 @@ export function CiudadesIndexContent() {
           <p className="mt-8 text-center">
             <Link
               href="/servicios"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1A4FBF]"
             >
               Ver catálogo completo de servicios
             </Link>
@@ -257,7 +257,7 @@ export function CiudadesIndexContent() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
-        <div className="rounded-2xl bg-[#1E3A8A] px-6 py-10 text-center text-white sm:px-10">
+        <div className="rounded-2xl bg-[#1A4FBF] px-6 py-10 text-center text-white sm:px-10">
           <h2 className="text-2xl font-bold">¿No encuentras tu ciudad?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-blue-100">
             Operamos en toda España con normativa estatal (LAU, Código Civil, CCCat en Cataluña). Escríbenos y te
@@ -266,7 +266,7 @@ export function CiudadesIndexContent() {
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/contacto"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1E3A8A] hover:bg-blue-50"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50"
             >
               Contactar con gestor
             </Link>

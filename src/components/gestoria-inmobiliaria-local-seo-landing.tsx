@@ -1,4 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
+import { FaqSection } from "@/components/faq-section";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -16,6 +18,7 @@ import {
 import type { GestoriaInmobiliariaLocalLandingConfig } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { localRevisionDocumentalPostArrasHref } from "@/lib/revision-documental-post-arras-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import { LANDING_CTA_GRADIENT, LANDING_HERO_GRADIENT } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   isAdministracionAlquilerLocalSlugPublished,
@@ -141,19 +144,19 @@ function ServicePriceCard({
       <h3 className="text-xl font-bold text-[#1E293B]">{title}</h3>
       <p className="mt-4 flex-1 text-[#64748b] leading-relaxed">{children}</p>
       <div className="mt-6 flex items-baseline gap-2">
-        <span className="text-4xl font-extrabold text-[#1E3A8A]">{price}</span>
+        <span className="text-4xl font-extrabold text-[#1A4FBF]">{price}</span>
         <span className="text-sm text-[#64748b]">IVA incl.</span>
       </div>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <ContratarSlugButton
           slug={slug}
-          className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1E40AF]"
+          className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1E40AF]"
         >
           Contratar
         </ContratarSlugButton>
         <Link
           href={serviceProductHref(slug)}
-          className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1E3A8A] px-6 py-3 text-sm font-bold text-[#1E3A8A] transition hover:bg-blue-50"
+          className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1A4FBF] px-6 py-3 text-sm font-bold text-[#1A4FBF] transition hover:bg-blue-50"
         >
           Acceder
         </Link>
@@ -203,7 +206,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className={`relative overflow-hidden ${LANDING_HERO_GRADIENT} text-white`}>
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-[580px] lg:grid-cols-2">
                 <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-20">
@@ -233,7 +236,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   <div className="mt-10 flex flex-wrap gap-4">
                     <a
                       href="#compraventa"
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50"
+                      className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50"
                     >
                       Ver servicios y precios
                     </a>
@@ -264,7 +267,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
 
           <section id="compraventa" className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
-              <div className="flex items-center gap-3 text-[#1E3A8A]">
+              <div className="flex items-center gap-3 text-[#1A4FBF]">
                 <Home className="h-8 w-8" aria-hidden />
                 <span className="text-sm font-semibold uppercase tracking-wide">Alta rentabilidad</span>
               </div>
@@ -311,14 +314,14 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
 
           <section id="contratos" className="border-b border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
-              <div className="flex items-center gap-3 text-[#1E3A8A]">
+              <div className="flex items-center gap-3 text-[#1A4FBF]">
                 <Scale className="h-8 w-8" aria-hidden />
                 <span className="text-sm font-semibold uppercase tracking-wide">Transaccional</span>
               </div>
               <h2 className="mt-4 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">{config.contratos.h2}</h2>
               <p className="mt-4 max-w-3xl text-lg text-[#64748b]">{config.contratos.intro}</p>
               <p className="mt-2 flex items-center gap-2 text-sm font-medium text-[#475569]">
-                <Clock className="h-4 w-4 text-[#1E3A8A]" aria-hidden />
+                <Clock className="h-4 w-4 text-[#1A4FBF]" aria-hidden />
                 Entrega en 48-72 h laborables
               </p>
               <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -346,7 +349,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
               <p className="mt-6 text-sm text-[#64748b]">
                 También disponible{" "}
-                <ContratarSlugButton slug="contrato-alquiler-habitacion" className="font-semibold text-[#1E3A8A] underline">
+                <ContratarSlugButton slug="contrato-alquiler-habitacion" className="font-semibold text-[#1A4FBF] underline">
                   Contrato de Habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
                 </ContratarSlugButton>
               </p>
@@ -375,7 +378,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
 
           <section id="administracion" className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
-              <div className="flex items-center gap-3 text-[#1E3A8A]">
+              <div className="flex items-center gap-3 text-[#1A4FBF]">
                 <KeyRound className="h-8 w-8" aria-hidden />
                 <span className="text-sm font-semibold uppercase tracking-wide">Ingreso recurrente</span>
               </div>
@@ -392,7 +395,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                       "Mediación y seguimiento de renovaciones",
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-3 text-[#475569]">
-                        <Shield className="h-5 w-5 shrink-0 text-[#1E3A8A]" aria-hidden />
+                        <Shield className="h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
                         {item}
                       </li>
                     ))}
@@ -414,19 +417,19 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   <h3 className="text-xl font-bold text-[#1E293B]">{config.administracion.h3Precio}</h3>
                   <p className="mt-3 text-[#64748b] leading-relaxed">{config.administracion.precioCopy}</p>
                   <div className="mt-6 flex items-baseline gap-2">
-                    <span className="text-4xl font-extrabold text-[#1E3A8A] sm:text-5xl lg:text-6xl">49 €</span>
+                    <span className="text-4xl font-extrabold text-[#1A4FBF] sm:text-5xl lg:text-6xl">49 €</span>
                     <span className="text-lg text-[#64748b]">/mes · IVA incl.</span>
                   </div>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                     <ContratarSlugButton
                       slug="administracion-alquiler"
-                      className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1E3A8A] px-6 py-4 text-base font-bold text-white transition hover:bg-[#1E40AF]"
+                      className="inline-flex flex-1 items-center justify-center rounded-full bg-[#1A4FBF] px-6 py-4 text-base font-bold text-white transition hover:bg-[#1E40AF]"
                     >
                       Contratar administración
                     </ContratarSlugButton>
                     <Link
                       href={serviceProductHref("administracion-alquiler")}
-                      className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1E3A8A] px-6 py-4 text-base font-bold text-[#1E3A8A] transition hover:bg-blue-50"
+                      className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-[#1A4FBF] px-6 py-4 text-base font-bold text-[#1A4FBF] transition hover:bg-blue-50"
                     >
                       Acceder
                     </Link>
@@ -449,21 +452,22 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
           </section>
 
 
-          <section className="px-4 py-16 sm:px-6">
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-2xl font-bold text-[#1E293B]">Preguntas frecuentes en {config.city}</h2>
-              <dl className="mt-8 space-y-6">
-                {config.faq.map((item) => (
-                  <div key={item.question} className="rounded-xl border border-slate-200 bg-white p-5">
-                    <dt className="font-semibold text-[#1E293B]">{item.question}</dt>
-                    <dd className="mt-2 text-[#64748b]">{item.answer}</dd>
-                  </div>
-                ))}
-              </dl>
+              <FaqSection
+                title={`Preguntas frecuentes en ${config.city}`}
+                items={config.faq.map((item) => ({ question: item.question, answer: item.answer }))}
+              />
             </div>
           </section>
 
-          <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+          <ServiceMidPageContactSection
+            serviceLabel={`Gestoría inmobiliaria en ${config.city}`}
+            city={config.city}
+            placement={`gestoria_local_${config.slug}`}
+          />
+
+          <section className={`${LANDING_CTA_GRADIENT} px-4 py-16 text-white sm:px-6`}>
             <div className="mx-auto max-w-3xl text-center">
               <FileText className="mx-auto h-10 w-10 text-cyan-200" aria-hidden />
               <h2 className="mt-4 text-2xl font-bold sm:text-3xl">Empieza hoy en {config.city}</h2>
@@ -471,7 +475,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <ContratarSlugButton
                   slug="servicio-completo-compra"
-                  className="rounded-full bg-white px-8 py-3 font-bold text-[#1E3A8A] hover:bg-blue-50"
+                  className="rounded-full bg-white px-8 py-3 font-bold text-[#1A4FBF] hover:bg-blue-50"
                 >
                   servicio completo 890 €
                 </ContratarSlugButton>

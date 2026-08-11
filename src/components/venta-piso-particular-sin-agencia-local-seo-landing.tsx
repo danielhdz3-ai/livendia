@@ -422,7 +422,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           </section>
 
           {/* Comparativa 3 columnas */}
-          <section className="border-b border-slate-200 bg-[#1E3A8A] px-4 py-16 text-white sm:px-6">
+          <section className="border-b border-slate-200 bg-[#1A4FBF] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-5xl">
               <h2 className="text-center text-2xl font-extrabold sm:text-3xl">
                 Vender con inmobiliaria vs solo vs Livendia
@@ -565,7 +565,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           </section>
 
           {/* Testimonios */}
-          <section className="border-b border-slate-200 bg-[#1E3A8A] px-4 py-16 text-white sm:px-6">
+          <section className="border-b border-slate-200 bg-[#1A4FBF] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-center text-2xl font-extrabold sm:text-3xl">{config.testimonialsTitle}</h2>
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -667,7 +667,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           <ServiceMidPageContactSection serviceLabel={`Venta de piso sin agencia en ${config.city}`} />
 
           {/* CTA final */}
-          <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+          <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-3xl">{config.finalCtaLead}</h2>
               <p className="mt-4 text-lg text-blue-100">{LIVENDIA_DIFFERENTIATOR}</p>
@@ -693,7 +693,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
 
           <VentaPisoParticularSinAgenciaLocalCityLinks currentSlug={config.slug} />
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections city={config.city} skipTestimonials />
 
 
         <SiteFooter />

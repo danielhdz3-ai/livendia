@@ -8,6 +8,7 @@ import {
   localAcompanamientoAlquilerHref,
 } from "@/lib/acompanamiento-alquiler-local-cities";
 import { ACOMPANAMIENTO_ALQUILER_PRICE_LABEL } from "@/lib/catalog.public";
+import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -26,12 +27,13 @@ export default function AcompanamientoAlquilerLocalHubPage() {
   const cities = getPublishedAcompanamientoAlquilerLocalCities();
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
+    <div className={`flex min-h-screen flex-col ${LANDING_PAGE_BG}`}>
       <PublicHeader />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-[#1A4FBF] px-4 py-14 text-white sm:px-6">
+        <section className={`border-b border-slate-200 ${LANDING_HERO_GRADIENT} px-4 py-14 text-white sm:px-6`}>
           <div className="mx-auto max-w-6xl">
-            <p className="text-sm font-semibold text-blue-100">
+            <p className={LANDING_HERO_EYEBROW}>{LANDING_HUB_EYEBROW.acompanamientoAlquiler}</p>
+            <p className="mt-2 text-sm text-blue-100">
               <Link href="/servicios/acompanamiento-alquiler" className="hover:underline">
                 ← Acompañamiento de alquiler
               </Link>

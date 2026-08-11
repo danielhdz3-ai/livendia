@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -204,7 +205,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -237,7 +238,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   <div className="mt-10 flex flex-wrap gap-4">
                     <ContratarSlugButton
                       slug="contrato-alquiler-temporada"
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50"
+                      className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50"
                     >
                       Contratar por {priceLabel}
                     </ContratarSlugButton>
@@ -341,7 +342,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <p className="mt-6 text-lg font-semibold text-[#1E3A8A]">
+                <p className="mt-6 text-lg font-semibold text-[#1A4FBF]">
                   Precio: {priceLabel} IVA incluido · Plazo: 24-48 h laborables
                 </p>
               </div>
@@ -356,7 +357,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                 </h2>
                 <div className="mt-8 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
                   <table className="w-full min-w-[640px] text-left text-sm">
-                    <thead className="bg-[#1E3A8A] text-white">
+                    <thead className="bg-[#1A4FBF] text-white">
                       <tr>
                         <th className="px-4 py-3 font-semibold">Aspecto</th>
                         <th className="px-4 py-3 font-semibold">Contrato de temporada</th>
@@ -394,7 +395,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                 </p>
                 <div className="mt-10 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
                   <table className="w-full min-w-[720px] text-left text-sm">
-                    <thead className="bg-[#1E3A8A] text-white">
+                    <thead className="bg-[#1A4FBF] text-white">
                       <tr>
                         <th className="px-4 py-3 font-semibold">Renta mensual ref.</th>
                         <th className="px-4 py-3 font-semibold">Despacho abogados*</th>
@@ -496,35 +497,10 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             </div>
           </section>
 
-          {config.testimonials.length > 0 ? (
-            <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">
-              <div className="mx-auto max-w-7xl">
-                <div className="text-center">
-                  <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
-                    {config.testimonialsTitle}
-                  </h2>
-                </div>
-                <div className="mt-12 grid gap-8 lg:grid-cols-2">
-                  {config.testimonials.map((testimonial, idx) => (
-                    <div key={idx} className="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
-                      <p className="text-lg italic leading-relaxed text-[#475569]">
-                        <span aria-hidden>&ldquo;</span>
-                        {testimonial.quote}
-                        <span aria-hidden>&rdquo;</span>
-                      </p>
-                      <div className="mt-6 flex items-center gap-4">
-                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]" />
-                        <div>
-                          <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
-                          <p className="text-sm text-[#64748b]">{testimonial.role}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          ) : null}
+          <LandingLocalTestimonialsSection
+            title={config.testimonialsTitle}
+            testimonials={config.testimonials}
+          />
 
           <section className="border-b border-slate-200 bg-slate-50 px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl space-y-6">
@@ -620,7 +596,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections city={config.city} skipTestimonials />
 
 
         <SiteFooter />

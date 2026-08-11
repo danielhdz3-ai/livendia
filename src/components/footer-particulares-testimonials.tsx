@@ -73,14 +73,14 @@ export function FooterParticularesTestimonials() {
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href={waHref}
-            className="inline-flex items-center gap-2 rounded-full bg-[#1E3A8A] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1E40AF]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1E40AF]"
           >
             <MessageCircle className="h-4 w-4" aria-hidden />
             Consultar por WhatsApp
           </a>
           <Link
             href="/servicios"
-            className="inline-flex items-center rounded-full border-2 border-[#1E3A8A] px-6 py-3 text-sm font-semibold text-[#1E3A8A] hover:bg-blue-50"
+            className="inline-flex items-center rounded-full border-2 border-[#1A4FBF] px-6 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-blue-50"
           >
             Ver servicios
           </Link>

@@ -1,6 +1,7 @@
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { FaqSection } from "@/components/faq-section";
+import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -244,7 +245,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
                 <p className="mt-4 text-lg text-[#475569]">{seo.cityComparison.intro}</p>
                 <div className="mt-8 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
                   <table className="w-full min-w-[560px] text-left text-sm">
-                    <thead className="bg-[#1E3A8A] text-white">
+                    <thead className="bg-[#1A4FBF] text-white">
                       <tr>
                         <th className="px-4 py-3 font-semibold">Aspecto</th>
                         <th className="px-4 py-3 font-semibold">En {config.city}</th>
@@ -340,7 +341,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
                 </ol>
 
                 <aside className="lg:sticky lg:top-24">
-                  <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
+                  <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
                     <p className="text-sm font-semibold uppercase tracking-wider text-cyan-200">
                       Asesoramiento antes de contratar
                     </p>
@@ -382,48 +383,14 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
             </div>
           </section>
 
-          {config.testimonials?.length ? (
-            <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-16 sm:px-6 lg:py-20">
-              <div className="mx-auto max-w-6xl">
-                <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                  {config.testimonialsTitle ??
-                    `Experiencias con contratos de habitación en ${config.city}`}
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-center text-[#64748b]">
-                  Casos habituales en pisos compartidos: convivencia, gastos, fianza y varias habitaciones en el
-                  mismo piso.
-                </p>
-                <div className="mt-12 grid gap-6 sm:grid-cols-2">
-                  {config.testimonials.map((testimonial, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200 sm:p-8"
-                    >
-                      <div className="flex gap-1 text-[#D4AF37]" aria-hidden>
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="mt-4 text-base italic leading-relaxed text-[#475569] sm:text-lg">
-                        <span aria-hidden>&ldquo;</span>
-                        {testimonial.quote}
-                        <span aria-hidden>&rdquo;</span>
-                      </p>
-                      <div className="mt-6 flex items-center gap-4">
-                        <div className="h-11 w-11 shrink-0 rounded-full bg-gradient-to-br from-[#1A4FBF] to-[#06B6D4]" />
-                        <div>
-                          <p className="font-semibold text-[#1E293B]">{testimonial.author}</p>
-                          <p className="text-sm text-[#64748b]">{testimonial.role}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          ) : null}
+          <LandingLocalTestimonialsSection
+            title={
+              config.testimonialsTitle ??
+              `Experiencias con contratos de habitación en ${config.city}`
+            }
+            subtitle="Casos habituales en pisos compartidos: convivencia, gastos, fianza y varias habitaciones en el mismo piso."
+            testimonials={config.testimonials ?? []}
+          />
 
           {config.faq?.length ? (
             <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
@@ -493,7 +460,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections city={config.city} skipTestimonials />
 
         <SiteFooter />
       </div>

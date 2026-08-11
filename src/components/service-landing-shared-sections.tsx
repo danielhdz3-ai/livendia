@@ -25,6 +25,8 @@ type ServiceLandingSharedSectionsProps = {
   skipGestorPlatform?: boolean;
   /** Omitir cobertura si la página ya la incluye dentro del main */
   skipCoverage?: boolean;
+  /** Omitir TrustReviewsBlock global si la landing ya tiene testimonios locales */
+  skipTestimonials?: boolean;
   /** CTA del bloque de testimonios */
   testimonialsCtaHref?: string;
   testimonialsCtaLabel?: string;
@@ -41,6 +43,7 @@ export function ServiceLandingSharedSections({
   primarySlug,
   skipGestorPlatform = false,
   skipCoverage = false,
+  skipTestimonials = false,
   testimonialsCtaHref = "/servicios",
   testimonialsCtaLabel = "Ver todos los servicios",
 }: ServiceLandingSharedSectionsProps) {
@@ -67,17 +70,19 @@ export function ServiceLandingSharedSections({
           </Link>
         </div>
       </section>
-      <section className="border-b border-slate-200 bg-white py-12 sm:py-16" aria-labelledby="landing-testimonios">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <TrustReviewsBlock
-            title="Lo que dicen quienes ya trabajan con nosotros"
-            subtitle="Experiencias reales de propietarios y compradores que delegaron contratos o administración en Livendia."
-            ctaHref={testimonialsCtaHref}
-            ctaLabel={testimonialsCtaLabel}
-            limit={4}
-          />
-        </div>
-      </section>
+      {skipTestimonials ? null : (
+        <section className="border-b border-slate-200 bg-white py-12 sm:py-16" aria-labelledby="landing-testimonios">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <TrustReviewsBlock
+              title="Lo que dicen quienes ya trabajan con nosotros"
+              subtitle="Experiencias reales de propietarios y compradores que delegaron contratos o administración en Livendia."
+              ctaHref={testimonialsCtaHref}
+              ctaLabel={testimonialsCtaLabel}
+              limit={4}
+            />
+          </div>
+        </section>
+      )}
       <LivendiaFoundersBanner />
       {skipGestorPlatform ? null : (
         <ServiceGestorPlatformSection

@@ -57,7 +57,7 @@ export default function ContactoPage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={phoneTel}
-                className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1E3A8A] hover:bg-blue-50"
+                className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-blue-50"
               >
                 Llamar: {phoneDisplay}
               </a>

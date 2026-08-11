@@ -8,6 +8,7 @@ import {
   localAcompanamientoCompraParkingTrasteroHref,
 } from "@/lib/acompanamiento-compra-parking-trastero-local-cities";
 import { ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL } from "@/lib/catalog.public";
+import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -35,12 +36,12 @@ export default function AcompanamientoCompraParkingTrasteroLocalIndexPage() {
   const barcelonaBarrios = published.filter((c) => c.slug.startsWith("barcelona-"));
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
+    <div className={`flex min-h-screen flex-col ${LANDING_PAGE_BG}`}>
       <PublicHeader />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1A4FBF] to-[#2563EB] px-4 py-14 text-white sm:px-6">
+        <section className={`border-b border-slate-200 ${LANDING_HERO_GRADIENT} px-4 py-14 text-white sm:px-6`}>
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">SEO local · Parking y trastero</p>
+            <p className={LANDING_HERO_EYEBROW}>{LANDING_HUB_EYEBROW.parking}</p>
             <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
               Compra parking o trastero con gestor en tu ciudad
             </h1>

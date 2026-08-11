@@ -45,7 +45,7 @@ export default async function ParaPropietariosPage() {
       <div className="flex min-w-0 w-full flex-col overflow-x-clip">
         <PublicHeader />
 
-        <section className="bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+        <section className="bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto grid min-w-0 max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
             <div className="flex min-w-0 flex-col justify-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">Para propietarios</p>
@@ -57,7 +57,7 @@ export default async function ParaPropietariosPage() {
                 nosotros gestionamos al inquilino.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <ContratarServicioButton className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl hover:bg-blue-50 sm:w-auto">
+                <ContratarServicioButton className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50 sm:w-auto">
                   Contratar 49 €/mes
                 </ContratarServicioButton>
                 <a
@@ -168,7 +168,7 @@ export default async function ParaPropietariosPage() {
           </div>
         </section>
 
-        <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] py-12 text-white sm:py-16">
+        <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] py-12 text-white sm:py-16">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 className="text-2xl font-bold sm:text-3xl">49 €/mes · IVA incluido · Sin permanencia</h2>
             <ul className="mx-auto mt-6 max-w-md space-y-2 text-left text-blue-50">
@@ -184,7 +184,7 @@ export default async function ParaPropietariosPage() {
               ))}
             </ul>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <ContratarServicioButton className="inline-flex min-h-11 w-full max-w-xs items-center justify-center rounded-full bg-white px-8 py-3.5 font-bold text-[#1E3A8A] hover:bg-blue-50 sm:w-auto">
+              <ContratarServicioButton className="inline-flex min-h-11 w-full max-w-xs items-center justify-center rounded-full bg-white px-8 py-3.5 font-bold text-[#1A4FBF] hover:bg-blue-50 sm:w-auto">
                 Contratar ahora
               </ContratarServicioButton>
               <Link

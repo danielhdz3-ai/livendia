@@ -46,7 +46,7 @@ export function VentaPisoParticularSinAgenciaLocalCityLinks({
         >
           <Link
             href={localVenderPisoSinAgenciaHref("barcelona")}
-            className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+            className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A4FBF]"
           >
             Barcelona
           </Link>

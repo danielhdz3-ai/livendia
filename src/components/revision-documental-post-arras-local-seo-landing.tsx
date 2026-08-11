@@ -169,7 +169,7 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
+          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
             <div className="mx-auto max-w-6xl">
               <div className="grid items-center gap-10 lg:grid-cols-2">
                 <div>
@@ -348,7 +348,7 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
               <p className="mt-3 text-center text-sm text-[#64748b]">{revisionPostArrasComparisonCaption()}</p>
               <div className="mt-8 overflow-x-auto rounded-2xl ring-1 ring-slate-200">
                 <table className="w-full min-w-[520px] text-left text-sm">
-                  <thead className="bg-[#1E3A8A] text-white">
+                  <thead className="bg-[#1A4FBF] text-white">
                     <tr>
                       <th className="px-4 py-3 font-semibold"> </th>
                       <th className="px-4 py-3 font-semibold">Revisión post-arras {priceLabel}</th>

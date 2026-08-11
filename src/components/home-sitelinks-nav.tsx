@@ -66,7 +66,7 @@ export function HomeSitelinksNav() {
               <Link
                 key={city.slug}
                 href={city.gestoriaHref}
-                className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1E3A8A]"
+                className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1A4FBF]"
               >
                 Gestoría {city.name}
               </Link>

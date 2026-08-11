@@ -78,7 +78,7 @@ export default async function AcompanamientoAlquilerPage() {
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">
-          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
@@ -104,7 +104,7 @@ export default async function AcompanamientoAlquilerPage() {
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
+                    <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50">
                       Contratar por {priceLabel}
                     </ContratarServicioButton>
                     <a
@@ -312,7 +312,7 @@ export default async function AcompanamientoAlquilerPage() {
             className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6"
           />
 
-          <section className="border-t border-slate-200 bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+          <section className="border-t border-slate-200 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-4xl">Empieza tu acompañamiento de alquiler</h2>
               <p className="mt-4 text-lg text-blue-100">
@@ -320,7 +320,7 @@ export default async function AcompanamientoAlquilerPage() {
                 cuándo termina.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50">
+                <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50">
                   Contratar por {priceLabel}
                 </ContratarServicioButton>
                 <Link

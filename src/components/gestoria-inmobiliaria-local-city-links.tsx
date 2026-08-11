@@ -51,7 +51,7 @@ export function GestoriaInmobiliariaLocalCityLinks({ showTitle = true, variant =
             : "inline-flex text-sm font-semibold text-[#1A4FBF] hover:underline"
         }
       >
-        {isFooter ? "Índice →" : "Ver hub de ciudades piloto →"}
+        {isFooter ? "Índice →" : "Ver todas las ciudades →"}
       </Link>
     </div>
   );

@@ -13,7 +13,7 @@ export function BlogCategoryCta({ category }: BlogCategoryCtaProps) {
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(cta.whatsappPrefill)}`;
 
   return (
-    <div className="mt-12 rounded-2xl border border-white/20 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] p-8 text-white shadow-xl">
+    <div className="mt-12 rounded-2xl border border-white/20 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#1D4ED8] p-8 text-white shadow-xl">
       <p className="text-xl font-extrabold leading-tight">{cta.headline}</p>
       <p className="mt-3 text-sm leading-relaxed text-blue-100">{cta.subline}</p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

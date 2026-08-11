@@ -36,7 +36,7 @@ export default function VentaPisoParticularSinAgenciaHubPage() {
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <PublicHeader />
       <main className="flex-1">
-        <section className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+        <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-[#F4E4A6]">
               Vendedores particulares · Comprador ya encontrado

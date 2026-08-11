@@ -162,7 +162,7 @@ function MetroSection({
       <nav aria-label={title} className="mt-4 flex flex-wrap gap-2">
         <Link
           href={primaryHref}
-          className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3A8A]"
+          className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A4FBF]"
         >
           {primaryLabel}
         </Link>

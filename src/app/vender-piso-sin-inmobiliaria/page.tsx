@@ -37,7 +37,7 @@ export default function VenderPisoSinInmobiliariaHubPage() {
       <PublicHeader />
 
       <main className="flex-1">
-        <section className="bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] px-4 py-16 text-white sm:px-6 sm:py-20">
+        <section className="bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] px-4 py-16 text-white sm:px-6 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">Venta entre particulares</p>
             <h1 className="mt-4 text-3xl font-bold leading-snug sm:text-4xl lg:text-5xl">
@@ -48,7 +48,7 @@ export default function VenderPisoSinInmobiliariaHubPage() {
             </p>
             <Link
               href="/servicios/servicio-completo-venta"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-[#1E3A8A] hover:bg-blue-50"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-[#1A4FBF] hover:bg-blue-50"
             >
               Ver servicio y contratar
               <ArrowRight className="h-5 w-5" aria-hidden />

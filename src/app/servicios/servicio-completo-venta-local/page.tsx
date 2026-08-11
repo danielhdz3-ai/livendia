@@ -8,6 +8,7 @@ import {
   getPublishedServicioCompletoVentaLocalCities,
   localServicioCompletoVentaHref,
 } from "@/lib/servicio-completo-venta-local-cities";
+import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -32,12 +33,12 @@ export default function ServicioCompletoVentaLocalIndexPage() {
   const publishedCities = getPublishedServicioCompletoVentaLocalCities();
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
+    <div className={`flex min-h-screen flex-col ${LANDING_PAGE_BG}`}>
       <PublicHeader />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] px-4 py-14 text-white sm:px-6">
+        <section className={`border-b border-slate-200 ${LANDING_HERO_GRADIENT} px-4 py-14 text-white sm:px-6`}>
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">SEO local · Venta</p>
+            <p className={LANDING_HERO_EYEBROW}>{LANDING_HUB_EYEBROW.venta}</p>
             <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
               Vender tu piso sin agencia, con gestor inmobiliario
             </h1>
@@ -53,7 +54,7 @@ export default function ServicioCompletoVentaLocalIndexPage() {
             </p>
             <Link
               href="/servicios/servicio-completo-venta"
-              className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1E3A8A] hover:bg-blue-50"
+              className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-blue-50"
             >
               Ver ficha del servicio
             </Link>

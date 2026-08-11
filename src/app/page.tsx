@@ -76,7 +76,7 @@ export default async function Home() {
         {/* Hero — móvil: imagen protagonista + tarjeta flotante; desktop: grid clásico */}
         <HomeMobileHero waHref={waHref} />
 
-        <section className="relative hidden overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white lg:block">
+        <section className="relative hidden overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white lg:block">
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               <div className="livendia-hero-stagger flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -90,7 +90,7 @@ export default async function Home() {
                 <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
                   <Link
                     href="#servicios"
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
                   >
                     Ver servicios
                   </Link>
@@ -133,7 +133,7 @@ export default async function Home() {
 
         <ServiceGestorPlatformSection workflow={buildGestorWorkflowContent({ service: "generic" })} />
 
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               {/* Imagen izquierda */}
@@ -185,7 +185,7 @@ export default async function Home() {
                 <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
                   <Link
                     href="/para-propietarios"
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
                   >
                     Soy propietario
                   </Link>
@@ -224,7 +224,7 @@ export default async function Home() {
         </section>
 
         {/* Servicio Completo de Compra - Producto Estrella */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               {/* Contenido izquierda */}
@@ -265,7 +265,7 @@ export default async function Home() {
                 <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
                   <Link
                     href="/servicios/servicio-completo-compra"
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50 hover:scale-105 sm:w-auto sm:px-8 sm:py-4"
                   >
                     Más información
                   </Link>
@@ -411,7 +411,7 @@ export default async function Home() {
         <section
           id="contratos-tranquilidad"
           aria-label="Contratos inmobiliarios con respaldo profesional"
-          className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white"
+          className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white"
         >
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[560px]">
@@ -447,7 +447,7 @@ export default async function Home() {
                 <div className="mt-6 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
                   <Link
                     href="/servicios"
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50 hover:scale-[1.02] sm:w-auto sm:px-8 sm:py-4"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50 hover:scale-[1.02] sm:w-auto sm:px-8 sm:py-4"
                   >
                     Ver servicios de contratos
                   </Link>
@@ -508,7 +508,7 @@ export default async function Home() {
 
         <section
           aria-label="Gestoría cercana, proceso digital"
-          className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] py-16 text-white sm:py-20"
+          className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] py-16 text-white sm:py-20"
         >
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20">

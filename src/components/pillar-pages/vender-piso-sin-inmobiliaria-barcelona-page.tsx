@@ -151,14 +151,14 @@ function InlineCta({
   }
 
   return (
-    <aside className="my-10 rounded-2xl bg-[#1E3A8A] p-6 text-white sm:p-8">
+    <aside className="my-10 rounded-2xl bg-[#1A4FBF] p-6 text-white sm:p-8">
       <p className="text-lg font-bold sm:text-xl">Vende entre particulares con gestor legal en Barcelona</p>
       <p className="mt-2 text-sm leading-relaxed text-blue-100 sm:text-base">
         Tarifa plana {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. · Sin comisión del 3–5 % · Gestor dedicado hasta
         notaría
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
-        <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1E3A8A] hover:bg-blue-50 sm:text-base">
+        <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:text-base">
           Contratar servicio · {priceLabelCompact}
         </ContratarServicioButton>
         <a
@@ -651,7 +651,7 @@ export async function VenderPisoSinInmobiliariaBarcelonaPillarPage() {
                 </section>
 
                 {/* CTA final */}
-                <footer className="mt-4 rounded-2xl border border-[#1A4FBF]/20 bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-8 text-white sm:p-10">
+                <footer className="mt-4 rounded-2xl border border-[#1A4FBF]/20 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] p-8 text-white sm:p-10">
                   <div className="flex items-start gap-4">
                     <FileText className="h-10 w-10 shrink-0 text-cyan-200" aria-hidden />
                     <div>
@@ -664,7 +664,7 @@ export async function VenderPisoSinInmobiliariaBarcelonaPillarPage() {
                         y quieres esta guía convertida en expediente real.
                       </p>
                       <div className="mt-6 flex flex-wrap gap-3">
-                        <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-full bg-white px-8 py-3 text-sm font-bold text-[#1E3A8A] hover:bg-blue-50 sm:text-base">
+                        <ContratarServicioButton className="inline-flex min-h-11 items-center rounded-full bg-white px-8 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50 sm:text-base">
                           Contratar ahora · {priceLabelCompact}
                         </ContratarServicioButton>
                         <a

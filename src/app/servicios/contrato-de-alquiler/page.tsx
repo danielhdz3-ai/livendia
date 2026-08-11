@@ -166,7 +166,7 @@ export default async function ContratoDeAlquilerPage() {
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
@@ -192,7 +192,7 @@ export default async function ContratoDeAlquilerPage() {
                     <div className="mt-3 flex flex-wrap gap-3 text-sm">
                       <ContratarSlugButton
                         slug="contrato-alquiler-lau"
-                        className="rounded-full bg-white/90 px-4 py-2 font-semibold text-[#1E3A8A] hover:bg-white"
+                        className="rounded-full bg-white/90 px-4 py-2 font-semibold text-[#1A4FBF] hover:bg-white"
                       >
                         Contratar LAU · {lauPrice}
                       </ContratarSlugButton>
@@ -229,7 +229,7 @@ export default async function ContratoDeAlquilerPage() {
                   <div className="mt-10 flex flex-wrap gap-4">
                     <ContratarSlugButton
                       slug="contrato-alquiler-lau"
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50"
+                      className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50"
                     >
                   Contratar LAU · {lauPrice}
                 </ContratarSlugButton>

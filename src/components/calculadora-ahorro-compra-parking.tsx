@@ -175,7 +175,7 @@ export function CalculadoraAhorroCompraParking({ city, precioMedio }: Props) {
           )}
         </p>
 
-        <ContratarServicioButton className="inline-flex rounded-full bg-[#1A4FBF] px-8 py-4 text-base font-bold text-white hover:bg-[#1E3A8A]">
+        <ContratarServicioButton className="inline-flex rounded-full bg-[#1A4FBF] px-8 py-4 text-base font-bold text-white hover:bg-[#1A4FBF]">
           Contratar gestor por {formatEur(livendiaCost)} →
         </ContratarServicioButton>
       </div>

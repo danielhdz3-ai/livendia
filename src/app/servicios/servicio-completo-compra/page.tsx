@@ -133,7 +133,7 @@ export default async function ServicioCompletoCompraPage() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
           <div className="mx-auto max-w-7xl">
             <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
               {/* Contenido izquierda */}
@@ -173,7 +173,7 @@ export default async function ServicioCompletoCompraPage() {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
+                  <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50">
                     <span>Contratar ahora</span>
                   </ContratarServicioButton>
                   <a

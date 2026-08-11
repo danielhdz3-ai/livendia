@@ -4,6 +4,7 @@ import { MessageCircle, Phone, UserRound } from "lucide-react";
 import { WhatsAppLeadButton } from "@/components/whatsapp-lead-button";
 import { businessNap } from "@/lib/business-nap";
 import { WHATSAPP_RESPONSE_HOURS } from "@/lib/whatsapp-prefill";
+import { LANDING_HERO_GRADIENT } from "@/lib/landing-design-system";
 
 type GestorContactCtaProps = {
   placement?: string;
@@ -23,7 +24,7 @@ export function GestorContactCta({
 
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] px-4 py-12 text-white sm:px-6 sm:py-16 ${className}`}
+      className={`relative overflow-hidden ${LANDING_HERO_GRADIENT} px-4 py-12 text-white sm:px-6 sm:py-16 ${className}`}
       aria-labelledby={`${placement}-gestor-heading`}
     >
       <div

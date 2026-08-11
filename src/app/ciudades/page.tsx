@@ -8,6 +8,7 @@ import {
   getCiudadesIndexDescription,
 } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
+import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -55,7 +56,7 @@ export default function CiudadesIndexPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
+    <div className={`flex min-h-screen flex-col ${LANDING_PAGE_BG}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -66,9 +67,10 @@ export default function CiudadesIndexPage() {
       />
       <PublicHeader />
       <main className="flex-1">
-        <section className="border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] px-4 py-14 text-white sm:px-6">
+        <section className={`border-b border-slate-200 ${LANDING_HERO_GRADIENT} px-4 py-14 text-white sm:px-6`}>
           <div className="mx-auto max-w-4xl text-center">
-            <nav aria-label="Breadcrumb" className="text-sm text-blue-200">
+            <p className={LANDING_HERO_EYEBROW}>{LANDING_HUB_EYEBROW.ciudades}</p>
+            <nav aria-label="Breadcrumb" className="mt-3 text-sm text-blue-200">
               <ol className="flex flex-wrap items-center justify-center gap-1">
                 <li>
                   <Link href="/" className="hover:text-white hover:underline">

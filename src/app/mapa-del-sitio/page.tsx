@@ -169,7 +169,7 @@ export default async function MapaDelSitioPage() {
             </ul>
           </section>
 
-          <section className="rounded-2xl bg-[#1E3A8A] p-6 text-white">
+          <section className="rounded-2xl bg-[#1A4FBF] p-6 text-white">
             <h2 className="text-lg font-bold">Guías locales y hubs</h2>
             <div className="mt-4 text-sm [&_a]:text-cyan-200 [&_a:hover]:text-white">
               <FooterDiscoverabilityLinks />

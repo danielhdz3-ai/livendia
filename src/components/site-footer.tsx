@@ -5,6 +5,7 @@ import { FooterParticularesTestimonials } from "@/components/footer-particulares
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { OfficeMap } from "@/components/office-map";
 import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
+import { LANDING_FOOTER_GRADIENT } from "@/lib/landing-design-system";
 import {
   businessNap,
   getBusinessAddressDisplayLine,
@@ -59,7 +60,7 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
       )}
 
       {/* Bloque 2: marca, mapa del despacho, servicios, contacto y legal */}
-      <div className="overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#1D4ED8] text-white">
+      <div className={`overflow-hidden ${LANDING_FOOTER_GRADIENT} text-white`}>
         <div className="grid lg:grid-cols-2 lg:items-stretch">
           <OfficeMap
             className="h-full lg:min-h-full"
@@ -82,7 +83,7 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
               <a
                 href={waHref}
                 data-analytics-placement="footer_whatsapp"
-                className="inline-flex items-center gap-2 bg-white text-[#1E3A8A] px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-white text-[#1A4FBF] px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
               >
                 <Phone className="h-4 w-4" />
                 Escríbenos por WhatsApp

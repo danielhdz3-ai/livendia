@@ -155,7 +155,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
             </ol>
           </nav>
 
-          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1E3A8A] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
@@ -178,7 +178,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-4">
-                    <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:scale-105 hover:bg-blue-50">
+                    <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50">
                       Contratar por {priceLabel}
                     </ContratarServicioButton>
                     <a
@@ -331,7 +331,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
             </div>
           </section>
 
-          <section className="border-t border-slate-200 bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-4 py-16 text-white sm:px-6">
+          <section className="border-t border-slate-200 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-2xl font-extrabold sm:text-4xl">
                 Empieza tu acompañamiento en {config.placeLabel}
@@ -340,7 +340,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
                 {priceLabel} IVA incluido. Gestor, documentación, contrato, firma digital y expediente.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1E3A8A] shadow-xl transition hover:bg-blue-50">
+                <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50">
                   Contratar por {priceLabel}
                 </ContratarServicioButton>
                 <Link
@@ -353,7 +353,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections city={config.city} skipTestimonials />
 
         <SiteFooter variant="landing" />
       </div>
