@@ -14,6 +14,7 @@ import {
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import type { GestoriaInmobiliariaLocalLandingConfig } from "@/lib/gestoria-inmobiliaria-local-cities";
+import { localRevisionDocumentalPostArrasHref } from "@/lib/revision-documental-post-arras-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
 import {
@@ -349,6 +350,26 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   Contrato de Habitación — {CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}
                 </ContratarSlugButton>
               </p>
+              {config.slug === "barcelona" ? (
+                <p className="mt-4 text-sm text-[#64748b]">
+                  Revisión post-arras por zona:{" "}
+                  <Link href={localRevisionDocumentalPostArrasHref("barcelona")} className="font-semibold text-[#1A4FBF] hover:underline">
+                    Barcelona
+                  </Link>
+                  {" · "}
+                  <Link href={localRevisionDocumentalPostArrasHref("hospitalet-de-llobregat")} className="font-semibold text-[#1A4FBF] hover:underline">
+                    L&apos;Hospitalet
+                  </Link>
+                  {" · "}
+                  <Link href={localRevisionDocumentalPostArrasHref("cornella-de-llobregat")} className="font-semibold text-[#1A4FBF] hover:underline">
+                    Cornellà
+                  </Link>
+                  {" · "}
+                  <Link href={localRevisionDocumentalPostArrasHref("les-corts")} className="font-semibold text-[#1A4FBF] hover:underline">
+                    Les Corts (despacho Mejía Lequerica 44)
+                  </Link>
+                </p>
+              ) : null}
             </div>
           </section>
 

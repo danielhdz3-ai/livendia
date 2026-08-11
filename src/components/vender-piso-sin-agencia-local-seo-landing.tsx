@@ -23,6 +23,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   AlertCircle,
+  ArrowRight,
   Banknote,
   CheckCircle,
   ClipboardList,
@@ -187,6 +188,18 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
                       Consultar por WhatsApp
                     </a>
                   </div>
+
+                  {config.optionalLocalVentaHref ? (
+                    <Link
+                      href={config.optionalLocalVentaHref}
+                      className="mt-8 flex items-center gap-3 rounded-2xl bg-white/15 px-5 py-4 text-sm font-semibold ring-1 ring-white/30 backdrop-blur-sm transition hover:bg-white/25 sm:text-base"
+                    >
+                      <span className="flex-1 text-left leading-snug">
+                        Servicio completo de venta en {config.city} — trámite paso a paso · {priceLabel} IVA incl.
+                      </span>
+                      <ArrowRight className="h-5 w-5 shrink-0" aria-hidden />
+                    </Link>
+                  ) : null}
                 </div>
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
@@ -345,6 +358,34 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.optionalLocalVentaHref ? (
+            <section className="border-b border-slate-200 bg-[#EFF6FF] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <Link
+                  href={config.optionalLocalVentaHref}
+                  className="group flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#1A4FBF]/20 transition hover:ring-[#1A4FBF]/50 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#1A4FBF]">
+                      Venta entre particulares · {config.city}
+                    </p>
+                    <h2 className="mt-2 text-xl font-bold text-[#1E293B] sm:text-2xl">
+                      Servicio completo de venta local en {config.city}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-[#64748b] sm:text-base">
+                      Ficha detallada del servicio: reserva, arras, documentación y notaría por {priceLabel} IVA incl.,
+                      sin comisiones sobre el precio de venta.
+                    </p>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white group-hover:bg-[#1E3A8A]">
+                    Ver landing venta {config.city}
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">

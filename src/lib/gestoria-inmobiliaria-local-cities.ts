@@ -249,7 +249,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       {
         question: `¿Para qué sirve la revisión documental post-arras de ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}?`,
         answer:
-          "Tras firmar arras, verificamos actas, derramas, ITE, nota registral y urbanismo. Recibes informe PDF y llamada de veredicto antes de escriturar — clave en Barcelona por edificios con ITE o derramas pendientes.",
+          "Tras firmar arras, verificamos actas, derramas, ITE, nota registral y urbanismo. Recibes informe PDF y llamada de veredicto antes de escriturar — clave en Barcelona por edificios con ITE o derramas pendientes. Landings locales en Barcelona capital, L'Hospitalet, Cornellà y Les Corts (despacho Mejía Lequerica 44).",
       },
     ],
     finalCtaLead:

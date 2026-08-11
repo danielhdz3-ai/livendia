@@ -14,6 +14,7 @@ import {
   getBusinessMapsExternalUrl,
 } from "@/lib/business-nap";
 import { getSiteUrl } from "@/lib/site-url";
+import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL } from "@/lib/catalog.public";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
@@ -142,6 +143,16 @@ export default function ContactoPage() {
               <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-slate-200">
                 <OfficeMap showCaption={false} minHeightClassName="min-h-[220px]" />
               </div>
+              <p className="mt-4 text-sm text-[#475569]">
+                ¿Firmaste arras y compras en Les Corts o Pedralbes? Consulta la{" "}
+                <Link
+                  href="/servicios/revision-documental-post-arras/les-corts"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  revisión documental post-arras en Les Corts
+                </Link>{" "}
+                — mismo despacho, {REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl.
+              </p>
             </div>
           </div>
         </div>

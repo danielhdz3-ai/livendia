@@ -216,6 +216,9 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     metaDescription:
       "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin agencia del 3–5 %. Eixample, Gràcia, Sant Martí.",
     keywords: [
+      "vender piso en barcelona sin comisiones",
+      "vender piso sin comisiones en barcelona",
+      "inmobiliarias en barcelona sin comisiones",
       "venta de particular a particular barcelona",
       "venta entre particulares barcelona",
       "vender piso sin agencia barcelona",
@@ -231,6 +234,21 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     benefitsAreaNote:
       "Checklist documental, comunidad de propietarios, registral y coordinación pre-escritura en Barcelona y alrededores.",
     faq: [
+      {
+        question: "¿Cómo vender piso en Barcelona sin comisiones?",
+        answer:
+          "Vendes entre particulares (Idealista, recomendación o comprador que ya tienes) y contratas gestoría en lugar de agencia: Livendia redacta reserva y arras, ordena documentación y coordina notaría por 890 € IVA incl., sin porcentaje sobre el precio de venta.",
+      },
+      {
+        question: "¿Cómo vender piso sin comisiones en Barcelona?",
+        answer:
+          "No necesitas inmobiliaria si llevas tú la captación o ya tienes comprador. Livendia es gestoría especializada en venta entre particulares: tarifa plana 890 € IVA incl., gestor legal dedicado y trámites hasta escritura — sin comisión del 3–5 %.",
+      },
+      {
+        question: "¿Hay inmobiliarias en Barcelona sin comisiones?",
+        answer:
+          "Las agencias tradicionales suelen cobrar un 3–5 % sobre el precio más IVA. Livendia no es agencia: somos gestoría con tarifa fija de 890 € IVA incl. para propietarios que venden sin intermediario y quieren contratos y trámites bien hechos.",
+      },
       {
         question: "¿Qué es la venta de particular a particular en Barcelona?",
         answer:

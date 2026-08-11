@@ -50,6 +50,7 @@ const CITY_SLUG_LABELS: Record<string, string> = {
   asturias: "Asturias",
   "hospitalet-de-llobregat": "L'Hospitalet de Llobregat",
   "cornella-de-llobregat": "Cornellà de Llobregat",
+  "les-corts": "Les Corts",
   badalona: "Badalona",
   "sant-cugat-del-valles": "Sant Cugat del Vallès",
   sabadell: "Sabadell",

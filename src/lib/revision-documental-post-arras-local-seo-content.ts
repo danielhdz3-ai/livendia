@@ -107,6 +107,143 @@ export const REVISION_POST_ARRAS_LOCAL_SEO_CONTENT: Record<string, RevisionPostA
       },
     ],
   },
+  "hospitalet-de-llobregat": {
+    introParagraph: `Firmaste arras en L'Hospitalet de Llobregat y entregaste una señal que puede rondar los 25.000 € en un piso de 250.000 €. Entre hoy y la escritura tienes entre 30 y 90 días — y en el segundo municipio más poblado de Cataluña la duda más frecuente no es el precio: ¿hay derramas pendientes en la comunidad de Bellvitge, Collblanc o La Florida que el vendedor no mencionó? Muchos borradores de arras son copias barcelonesas con plazos irreales para obtener actas en bloques densos. Nuestro gestor revisa actas, ITE, nota registral, urbanismo y las cláusulas de tus arras bajo Codi civil de Catalunya antes de notaría. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Derramas en bloques de los años 60-80 (Bellvitge, Collblanc, La Florida)",
+        body:
+          "L'Hospitalet concentra edificios de gran altura con comunidades numerosas. Las juntas aprueban con frecuencia derramas de fachada, ascensor o instalaciones por importes de 4.000 a 12.000 € por vivienda. El vendedor no siempre las declara. Si no las detectas antes de escriturar, heredas la deuda o llegas a notaría con un conflicto que puede retrasar la hipoteca.",
+      },
+      {
+        title: "Arras copiadas de Barcelona sin plazos realistas",
+        body:
+          "En compraventas entre particulares en Collblanc, el centre o Sant Josep es habitual recibir un PDF pensado para el Eixample: plazos de 15 días para certificado de comunidad cuando el administrador de un bloque grande de Bellvitge tarda el triple. Con la señal ya entregada, descubrirlo tarde deja poco margen para renegociar.",
+      },
+      {
+        title: "ITE y estado del edificio en zonas consolidadas",
+        body:
+          "Edificios anteriores a 1970 en el centre o barrios consolidados pueden tener ITE con deficiencias calificadas. Si el vendedor las minimizó, el comprador puede quedar vinculado a obligaciones de subsanación compartidas que no figuraban con claridad en las arras.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, condición de hipoteca (art. 621-49 CCCat) y coherencia con el precio en un mercado metropolitano muy activo.",
+      "Revisión de actas de comunidad (últimos 2 años) — especial atención a bloques grandes en Bellvitge, Collblanc, La Florida y Sant Josep.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — detectamos cuotas de rehabilitación no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — vigencia, deficiencias y obligaciones de subsanación del propietario.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y coherencia con lo pactado.",
+      "Consulta de información urbanística y licencias — situación urbanística en el municipio del Baix Llobregat.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo antes de la firma.",
+      "Llamada de veredicto con gestor especializado — explicación clara de hallazgos y opciones si detectamos incidencias.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o calendario de firma.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en L'Hospitalet que ya firmaron arras. El perfil típico: familias que compran primera vivienda en Bellvitge o Collblanc tras buscar en Idealista sin agencia compradora; parejas que se trasladan desde Barcelona capital por precio; o inversores de alquiler que quieren certeza documental antes de desembolsar el resto del precio. Si entregaste una señal de 15.000 a 35.000 € y te preocupa una derrama oculta o un borrador de arras pensado para otro municipio, este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Revisáis derramas pendientes en comunidades de Bellvitge, Collblanc o La Florida?",
+        answer:
+          "Sí. Cruzamos actas de los últimos dos años con certificado de deuda de la comunidad para detectar derramas aprobadas, en curso o impagadas por el vendedor.",
+      },
+      {
+        question: "¿Adaptáis la revisión a arras redactadas para Barcelona capital?",
+        answer:
+          "Analizamos si los plazos y cláusulas del contrato son realistas para un edificio en L'Hospitalet — especialmente plazos de comunidad y condición suspensiva de hipoteca bajo CCCat.",
+      },
+    ],
+  },
+  "cornella-de-llobregat": {
+    introParagraph: `Firmaste arras en Cornellà de Llobregat y entregaste una señal que puede rondar los 28.000 € en un piso de 280.000 €. Cornellà comparte mercado metropolitano con L'Hospitalet: muchos compradores llegan desde Barcelona y cierran entre particulares por Idealista o recomendación. Antes de ir a notaría conviene responder: ¿la comunidad tiene derramas aprobadas en Sant Ildefons o el centre que el vendedor no detalló? ¿El trastero o la plaza de parking coinciden con la nota registral? Nuestro gestor revisa actas, ITE, registro, urbanismo y tus arras. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "Derramas en edificios del centre y Sant Ildefons",
+        body:
+          "Cornellà tiene bloques consolidados donde las juntas aprueban rehabilitación de fachada, ascensor o eficiencia energética. Las cuotas extraordinarias pueden superar los 5.000 € por vivienda. Con la señal ya comprometida, detectar una derrama aprobada pero no liquidada días antes de escritura es uno de los motivos más habituales para contratar revisión documental.",
+      },
+      {
+        title: "Plazos de comunidad irreales en bloques densos",
+        body:
+          "Los borradores genéricos suelen fijar plazos cortos para obtener certificados de la comunidad que un administrador de fincas en Cornellà no puede cumplir en la práctica. Si no lo revisas antes de escriturar, el vendedor puede invocar penalidades de arras por un retraso que era previsible.",
+      },
+      {
+        title: "Elementos privativos mal descritos (trastero, parking)",
+        body:
+          "En operaciones entre particulares es frecuente que anejos figuren en la venta verbal o en las arras pero no en la nota registral actualizada. El banco puede frenar la hipoteca si lo que compras no coincide con el registro — especialmente en promociones de los 80-90 en el área metropolitana.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, art. 621-49 CCCat si hay hipoteca y coherencia con el precio pactado.",
+      "Revisión de actas de comunidad (últimos 2 años) — centre, Sant Ildefons, Riera y barrios con rehabilitaciones recientes.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — cuotas no liquidadas por el vendedor.",
+      "Análisis del ITE si existe — deficiencias y obligaciones de subsanación en edificios antiguos.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y anejos (trastero, parking).",
+      "Consulta de información urbanística y licencias — coherencia catastral y urbanística en Cornellà de Llobregat.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo antes de notaría.",
+      "Llamada de veredicto con gestor especializado — opciones concretas si detectamos incidencias.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o plazos.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Cornellà que ya firmaron arras. El perfil típico: compradores que eligen Cornellà por precio frente a Barcelona capital; familias en Sant Ildefons o el centre; o inversores de alquiler que deben verificar comunidad y registro antes de desembolsar el resto del precio. Si entregaste la señal y el borrador de arras te genera dudas sobre derramas o anejos no inscritos, este pack te da margen para actuar con datos.`,
+    faqLocal: [
+      {
+        question: "¿Verificáis deudas y derramas de la comunidad en Cornellà?",
+        answer:
+          "Sí. Cruzamos actas de los últimos dos años con certificado de deuda para detectar cuotas impagadas o derramas aprobadas que el vendedor no haya comunicado.",
+      },
+      {
+        question: "¿Comprobáis que trastero o parking coinciden con la nota registral?",
+        answer:
+          "Contrastamos escritura, arras y registro para detectar anejos no inscritos antes de que el notario o el banco lo detecten a última hora.",
+      },
+    ],
+  },
+  "les-corts": {
+    introParagraph: `Firmaste arras en Les Corts — Pedralbes, la Zona Universitària, la Maternitat o el entorno del Camp Nou — y entregaste una señal que puede superar los 40.000 € en un piso de 400.000 €. Livendia tiene despacho en Carrer de Mejía Lequerica, 44 (Les Corts, 08028 Barcelona): tramitamos online con panel y gestor asignado, con proximidad real si tu operación es en el distrito. Antes de notaría, la pregunta clave en Barcelona es el ITE: en edificios anteriores a 1970 del distrito pueden existir deficiencias graves que el vendedor no mencionó. Nuestro gestor revisa ITE, actas, derramas, nota registral, urbanismo y tus arras. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
+    problems: [
+      {
+        title: "ITE estricta en edificios del distrito",
+        body:
+          "Les Corts combina bloques de los 60-70 con edificios de mayor ticket en Pedralbes. La normativa barcelonesa de ITE es exigente: deficiencias calificadas como graves obligan al propietario a subsanar. Si firmaste arras sin revisar el ITE del edificio, puedes quedar atrapado en obligaciones estructurales que cuestan mucho más que el pack de revisión.",
+      },
+      {
+        title: "Derramas de rehabilitación energética y fachada",
+        body:
+          "La normativa catalana empuja mejoras de envolvente en bloques antiguos. Muchos edificios del distrito tienen derramas aprobadas en junta que aún no se han ejecutado ni pagado. Heredar una cuota extraordinaria justo cuando ya comprometiste el 10 % en arras es un riesgo frecuente en compradores de la Diagonal o la zona universitaria.",
+      },
+      {
+        title: "Terrazas, trasteros y parkings no inscritos",
+        body:
+          "En Les Corts y Pedralbes es habitual que anejos figuren en la operación pero no en la nota registral. El comprador lo descubre en notaría — a veces días antes de la firma — y el banco puede frenar la hipoteca si lo inscrito no coincide con lo pactado.",
+      },
+      {
+        title: "Contención de rentas y limitaciones de uso",
+        body:
+          "Parte del parque del distrito está en zona de mercado tensionado de Barcelona. Si compras pensando en alquiler libre o reventa rápida, conviene verificar limitaciones de precio y uso antes de desembolsar el resto del precio tras las arras.",
+      },
+    ],
+    reviewItems: [
+      "Revisión completa del contrato de arras firmado — plazos, penalizaciones, art. 621-49 CCCat y coherencia con precios elevados del distrito.",
+      "Revisión de actas de comunidad (últimos 2 años) — atención a derramas de rehabilitación en Pedralbes, Maternitat y Zona Universitària.",
+      "Verificación de derramas pendientes y extraordinarias aprobadas — cuotas de eficiencia energética o fachada no liquidadas.",
+      "Análisis del ITE si existe — vigencia, deficiencias graves y obligaciones de subsanación.",
+      "Obtención y revisión de nota registral actualizada — titularidad, cargas, hipotecas y coherencia de anejos.",
+      "Consulta de información urbanística y licencias — contención de rentas, cédula de habitabilidad y situación urbanística.",
+      "Informe ejecutivo PDF con hallazgos y recomendaciones — semáforo de riesgo antes de la firma en notaría catalana.",
+      "Llamada de veredicto con gestor especializado — desde nuestro despacho en Mejía Lequerica 44 o por teléfono/videollamada.",
+      "Asesoramiento telefónico hasta la escritura — soporte para dudas con banco, vendedor o calendario de firma.",
+    ],
+    targetAudienceParagraph: `Este servicio está pensado para compradores particulares en Les Corts que ya firmaron arras. El perfil típico: familias que compran en Pedralbes o la Maternitat; compradores internacionales en la zona universitaria; o inversores de alquiler que deben saber si el piso está en zona tensionada antes de escriturar. Si entregaste una señal de 30.000 a 60.000 € y quieres revisión documental con gestoría que tiene sede física en el distrito (Carrer de Mejía Lequerica, 44), este pack es para ti.`,
+    faqLocal: [
+      {
+        question: "¿Tenéis despacho físico en Les Corts para la revisión post-arras?",
+        answer:
+          "Sí. Livendia está en Carrer de Mejía Lequerica, 44 (Les Corts, 08028 Barcelona). El pack se tramita online con panel y gestor asignado; la llamada de veredicto puede ser telefónica o presencial si lo prefieres.",
+      },
+      {
+        question: "¿Revisáis si el piso está en zona de contención de rentas en Les Corts?",
+        answer:
+          "Sí. Cruzamos la información urbanística disponible con lo pactado en arras. Si hay indicios de contención de rentas o limitaciones de uso, lo reflejamos en el informe.",
+      },
+    ],
+  },
   valencia: {
     introParagraph: `Firmaste arras en Valencia y entregaste una señal que puede rondar los 25.000 € en un piso de 250.000 €. Tienes entre 30 y 90 días hasta escritura — y en muchas operaciones valencianas la duda no es solo la comunidad: ¿el inmueble sufrió daños por la DANA de noviembre de 2024 sin que conste en actas ni en la nota registral? En municipios del área metropolitana sur como Paiporta, Sedaví, Catarroja, Alfafar o Massanassa hay viviendas con daños estructurales o humedades que el vendedor no siempre declara. Nuestro gestor revisa actas, derramas, licencias, nota registral, urbanismo y tus arras antes de notaría. Pack Revisión Documental Post-Arras: ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido. Análisis en 48 h, informe en 3-5 días laborables.`,
     problems: [

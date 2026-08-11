@@ -18,6 +18,11 @@ import {
 } from "@/lib/gestoria-inmobiliaria-local-cities";
 import type { RevisionDocumentalPostArrasLocalLandingConfig } from "@/lib/revision-documental-post-arras-local-cities";
 import {
+  getRevisionPostArrasBarcelonaMetroCities,
+  isRevisionPostArrasBarcelonaMetroSlug,
+  localRevisionDocumentalPostArrasHref,
+} from "@/lib/revision-documental-post-arras-local-cities";
+import {
   REVISION_POST_ARRAS_COMPARISON_HEADING,
   REVISION_POST_ARRAS_COMPARISON_ROWS,
   REVISION_POST_ARRAS_HOW_STEPS,
@@ -40,55 +45,91 @@ import {
   ClipboardCheck,
   Phone,
   Shield,
+  MapPin,
+  ArrowRight,
 } from "lucide-react";
+import { BUSINESS_EMAIL, buildBusinessPostalAddress, getBusinessAddressDisplayLine, getBusinessMapsExternalUrl } from "@/lib/business-nap";
+import { getContactPhoneE164Plus } from "@/lib/contact";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
 const STEP_ICONS = [FileText, Search, ClipboardCheck, Phone] as const;
 
 function LocalRevisionPostArrasJsonLd({
-  path,
-  city,
-  administrativeArea,
+  config,
+  faqItems,
 }: {
-  path: string;
-  city: string;
-  administrativeArea: string;
+  config: RevisionDocumentalPostArrasLocalLandingConfig;
+  faqItems: readonly { question: string; answer: string }[];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
-  const graph = {
-    "@context": "https://schema.org",
+  const pageUrl = `${base}${config.path}`;
+  const areaServed = {
+    "@type": "City",
+    name: config.city,
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: config.schemaAdministrativeArea,
+    },
+  };
+
+  const service = {
     "@type": "Service",
-    name: `Pack Revisión Documental Post-Arras en ${city}`,
+    "@id": `${pageUrl}#service`,
+    name: `Pack Revisión Documental Post-Arras en ${config.city}`,
     description:
-      `Verificación documental tras firmar arras en ${city}: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido.`,
+      `Verificación documental tras firmar arras en ${config.city}: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incluido.`,
     serviceType: "Revisión documental post-arras",
     provider: {
       "@type": "Organization",
       name: "Livendia",
       url: base,
     },
-    areaServed: {
-      "@type": "City",
-      name: city,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: administrativeArea,
-      },
-    },
+    areaServed,
     offers: {
       "@type": "Offer",
       price: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR,
       priceCurrency: "EUR",
       description: "IVA incluido · Pago único",
-      url: `${base}${path}`,
+      url: pageUrl,
     },
-    url: `${base}${path}`,
+    url: pageUrl,
     inLanguage: "es-ES",
   };
 
+  const graph: Record<string, unknown>[] = [service];
+
+  if (config.includeLocalBusinessSchema) {
+    graph.push({
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": `${pageUrl}#localbusiness`,
+      name: `Livendia — Revisión documental post-arras en ${config.city}`,
+      description: `Gestoría inmobiliaria Livendia: revisión documental post-arras para compradores en ${config.city}. Despacho en ${getBusinessAddressDisplayLine()}.`,
+      url: pageUrl,
+      telephone: getContactPhoneE164Plus(),
+      email: BUSINESS_EMAIL,
+      image: `${base}/icons/icon-512.png`,
+      priceRange: "€€",
+      address: buildBusinessPostalAddress(),
+      areaServed,
+      parentOrganization: { "@id": `${base}/#organization` },
+    });
+  }
+
+  if (faqItems.length) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    });
+  }
+
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }) }} />
   );
 }
 
@@ -115,14 +156,15 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
     "Actas, derramas, ITE y nota registral",
     "Llamada de veredicto con gestor",
   ];
+  const faqItems = config.faq ?? [];
+  const showBarcelonaMetroLinks = isRevisionPostArrasBarcelonaMetroSlug(config.slug);
+  const barcelonaMetroCities = showBarcelonaMetroLinks ? getRevisionPostArrasBarcelonaMetroCities() : [];
+  const officeAddress = getBusinessAddressDisplayLine();
+  const mapsUrl = getBusinessMapsExternalUrl();
 
   return (
     <ServicePurchaseProvider service={service}>
-      <LocalRevisionPostArrasJsonLd
-        path={config.path}
-        city={config.city}
-        administrativeArea={config.schemaAdministrativeArea}
-      />
+      <LocalRevisionPostArrasJsonLd config={config} faqItems={faqItems} />
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
 
@@ -182,6 +224,43 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {config.includeLocalBusinessSchema ? (
+            <section className="border-b border-slate-200 bg-[#EFF6FF] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#1A4FBF]/20 sm:p-8">
+                <div className="flex gap-4">
+                  <MapPin className="h-8 w-8 shrink-0 text-[#1A4FBF]" aria-hidden />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#1A4FBF]">
+                      Despacho Livendia · Les Corts
+                    </p>
+                    <h2 className="mt-2 text-xl font-bold text-[#1E293B] sm:text-2xl">
+                      Proximidad real en Carrer de Mejía Lequerica, 44
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-[#475569] sm:text-base">
+                      Gestoría inmobiliaria con sede física en Les Corts (08028 Barcelona). El pack post-arras se
+                      tramita online con panel y gestor dedicado; si compras en Pedralbes, la Maternitat o la Zona
+                      Universitària, trabajamos con la misma dirección que figura en nuestra ficha de Google Business.
+                    </p>
+                    <p className="mt-4 text-sm font-medium text-[#1E293B]">
+                      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-[#1A4FBF] hover:underline">
+                        {officeAddress}
+                      </a>
+                    </p>
+                    <p className="mt-4 text-sm text-[#64748b]">
+                      <Link href="/contacto" className="font-semibold text-[#1A4FBF] hover:underline">
+                        Contacto y mapa del despacho
+                      </Link>
+                      {" · "}
+                      <Link href={`${GESTORIA_INMOBILIARIA_LOCAL_BASE}/barcelona`} className="font-semibold text-[#1A4FBF] hover:underline">
+                        Gestoría inmobiliaria Barcelona
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : null}
 
           {seo?.problems.length ? (
             <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
@@ -323,6 +402,56 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
             </section>
           ) : null}
 
+          {showBarcelonaMetroLinks ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">
+                  Revisión post-arras en Barcelona y área metropolitana
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#64748b] sm:text-base">
+                  Mismo pack de {priceLabel} IVA incl. en la capital y municipios del entorno. Enlaza con la landing de
+                  tu ciudad o con la{" "}
+                  <Link href={`${GESTORIA_INMOBILIARIA_LOCAL_BASE}/barcelona`} className="font-semibold text-[#1A4FBF] hover:underline">
+                    gestoría inmobiliaria en Barcelona
+                  </Link>
+                  .
+                </p>
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {barcelonaMetroCities.map((metroCity) => {
+                    const href = localRevisionDocumentalPostArrasHref(metroCity.slug);
+                    const isCurrent = metroCity.slug === config.slug;
+                    return (
+                      <li key={metroCity.slug}>
+                        <Link
+                          href={href}
+                          aria-current={isCurrent ? "page" : undefined}
+                          className={`group flex h-full flex-col rounded-xl p-4 ring-1 transition ${
+                            isCurrent
+                              ? "bg-[#EFF6FF] ring-[#1A4FBF]/40"
+                              : "bg-[#F8FAFC] ring-slate-200 hover:ring-[#1A4FBF]/40"
+                          }`}
+                        >
+                          <span className="flex items-center gap-1 font-semibold text-[#1A4FBF] group-hover:underline">
+                            {metroCity.city}
+                            {isCurrent ? (
+                              <span className="text-xs font-normal text-[#64748b]">(estás aquí)</span>
+                            ) : (
+                              <ArrowRight className="h-4 w-4" aria-hidden />
+                            )}
+                          </span>
+                          <span className="mt-1 text-xs leading-relaxed text-[#64748b]">
+                            {metroCity.slug === "les-corts"
+                              ? "Despacho en Mejía Lequerica 44 · revisión post-arras"
+                              : `Pack revisión documental post-arras en ${metroCity.city}`}
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+          ) : null}
 
           <ServiceMidPageContactSection serviceLabel={`Revisión documental post-arras en ${config.city}`} />
 
