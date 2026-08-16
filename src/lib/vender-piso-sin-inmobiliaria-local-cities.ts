@@ -218,7 +218,7 @@ export const VENDER_PISO_SIN_INMOBILIARIA_CITIES: VenderPisoSinInmobiliariaCityD
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Vender piso sin comisiones en Barcelona | Entre particulares con gestor legal | Livendia",
+    metaTitle: "Vender piso sin comisiones en Barcelona | Entre particulares con gestor legal",
     metaDescription:
       "Vende tu piso en Barcelona entre particulares sin pagar comisión del 3-5 %. Gestor legal dedicado: reserva, arras, documentación y notaría por 890 € IVA incl. Idealista, recomendación o comprador que ya tienes.",
     keywords: [
@@ -466,7 +466,7 @@ export const VENDER_PISO_SIN_INMOBILIARIA_CITIES: VenderPisoSinInmobiliariaCityD
 
 /** Copy del hub nacional /vender-piso-sin-inmobiliaria */
 export const VENDER_PISO_SIN_INMOBILIARIA_HUB = {
-  metaTitle: "Vender piso sin comisiones entre particulares | Gestor legal | Livendia",
+  metaTitle: "Vender piso sin comisiones entre particulares | Gestor legal",
   metaDescription:
     "Vende tu vivienda sin pagar comisión del 3-5 % a una inmobiliaria. Livendia acompaña la venta entre particulares con gestor legal: contratos, documentación y notaría por 890 € IVA incl.",
   keywords: [

@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     slug === "valencia"
       ? `Gestión de alquileres Valencia — 49 €/mes | Administración para propietarios`
       : slug === "mallorca"
-        ? `Administración de alquileres Mallorca — 49 €/mes | Livendia`
+        ? `Administración de alquileres Mallorca — 49 €/mes`
         : `Administración del alquiler en ${city.city} — 49 €/mes`;
   const description =
     slug === "valencia"

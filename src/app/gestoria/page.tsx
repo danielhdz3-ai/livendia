@@ -22,11 +22,11 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Gestoría inmobiliaria por ciudad | Livendia",
+  title: "Gestoría inmobiliaria por ciudad",
   description: SITE_DEFAULT_DESCRIPTION,
   alternates: { canonical },
   openGraph: {
-    title: "Gestoría inmobiliaria por ciudad | Livendia",
+    title: "Gestoría inmobiliaria por ciudad",
     description:
       "Compraventa, contratos y administración de alquileres. Madrid, Valencia, Barcelona y más ciudades — mismo servicio online en toda España.",
     url: canonical,

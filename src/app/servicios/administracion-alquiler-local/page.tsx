@@ -15,12 +15,12 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Administración de alquiler por ciudad | Livendia",
+  title: "Administración de alquiler por ciudad",
   description:
     "Delegación profesional ante el arrendatario: incidencias, mediación y seguimiento. Landings locales con el mismo tono Livendia; nuevas ciudades se van publicando de forma gradual.",
   alternates: { canonical },
   openGraph: {
-    title: "Administración de alquiler por ciudad | Livendia",
+    title: "Administración de alquiler por ciudad",
     description:
       "Intermediarios con tu inquilino desde 49 €/mes, sin permanencia. Elige ciudad y revisa contenido específico con datos estructurados.",
     url: canonical,

@@ -20,6 +20,7 @@ export function HomeMobileHero({ waHref }: HomeMobileHeroProps) {
             alt="Familia tranquila en casa: gestión inmobiliaria online con Livendia"
             fill
             priority
+            fetchPriority="high"
             className="object-cover object-[center_22%] sm:object-[center_20%]"
             sizes="100vw"
           />

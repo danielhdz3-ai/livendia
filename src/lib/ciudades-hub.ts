@@ -54,7 +54,7 @@ export const CITY_PILLAR_PATHS: Partial<Record<HomeCoverageCitySlug, string>> = 
 
 export function getCityHubMeta(city: HomeCoverageCity) {
   return {
-    title: `Servicios de gestoría inmobiliaria en ${city.name}: todo lo que ofrecemos | Livendia`,
+    title: `Servicios de gestoría inmobiliaria en ${city.name}: todo lo que ofrecemos`,
     description: `Directorio de servicios Livendia en ${city.name}: gestoría, contratos LAU y arras, venta entre particulares, administración de alquileres y compraventa. Precios publicados y enlaces a cada trámite — sin venta directa en esta página.`,
   };
 }

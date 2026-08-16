@@ -15,12 +15,12 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Contrato de alquiler por ciudad en España | Livendia",
+  title: "Contrato de alquiler por ciudad en España",
   description:
     "¿Quieres redactar un contrato de alquiler por expertos? Landings locales con revisión LAU, inventario y asesoramiento. Publicamos nuevas ciudades de forma gradual.",
   alternates: { canonical },
   openGraph: {
-    title: "Contrato de alquiler por ciudad en España | Livendia",
+    title: "Contrato de alquiler por ciudad en España",
     description:
       "Redacción y revisión profesional de contratos de alquiler por ciudad: LAU, temporada y habitación con proceso digital.",
     url: canonical,

@@ -16,12 +16,12 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: `Contratos entre particulares por ciudad — desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+  title: `Contratos entre particulares por ciudad — desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
   description:
     `Contratos inmobiliarios entre particulares: alquiler LAU, arras y habitación desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia — no agencia, no comisiones.`,
   alternates: { canonical },
   openGraph: {
-    title: "Contratos entre particulares por ciudad | Livendia",
+    title: "Contratos entre particulares por ciudad",
     description: "Alquiler, arras y habitación entre particulares con gestoría a precio cerrado.",
     url: canonical,
     locale: "es_ES",

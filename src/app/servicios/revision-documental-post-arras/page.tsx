@@ -35,7 +35,7 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Revisión documental post-arras — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+  title: `Revisión documental post-arras — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
   description:
     `Verificación documental tras firmar arras y antes de escriturar: actas, derramas, ITE, nota registral y urbanismo. Informe PDF + llamada de veredicto. ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl.`,
   alternates: { canonical: `${getSiteUrl()}/servicios/revision-documental-post-arras` },

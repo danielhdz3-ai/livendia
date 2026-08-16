@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Vende entre particulares con gestor inmobiliario especializado: Madrid, Barcelona y Valencia. Reserva, arras y escritura. 890 € IVA incl. Sin comisiones del 3–5 %.",
   alternates: { canonical },
   openGraph: {
-    title: "Vender sin agencia por ciudad | Livendia",
+    title: "Vender sin agencia por ciudad",
     description:
       "Acompañamiento de venta de vivienda con gestor experto. Evita honorarios elevados de agencia inmobiliaria.",
     url: canonical,

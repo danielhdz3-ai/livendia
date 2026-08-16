@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const config = toHabitacionLandingConfig(city);
   const canonical = `${getSiteUrl()}${localContratoAlquilerHabitacionHref(slug)}`;
-  const title = config.metaTitle ?? `Contrato alquiler habitación en ${city.city} | Livendia`;
+  const title = config.metaTitle ?? `Contrato alquiler habitación en ${city.city}`;
   const description =
     config.metaDescription ??
     `Contrato de alquiler de habitación en ${city.city}. Piso compartido con cláusulas de convivencia. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`;

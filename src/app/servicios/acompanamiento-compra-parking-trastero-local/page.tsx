@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Landings locales para comprar plaza de garaje o trastero en Madrid, Barcelona y barrios (Eixample, Gràcia, Poblenou…). Gestor integral, comparativa de ahorro vs agencia y testimonios.",
   alternates: { canonical },
   openGraph: {
-    title: "Compra parking o trastero por ciudad | Livendia",
+    title: "Compra parking o trastero por ciudad",
     description: `Acompañamiento integral por ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL} IVA incl.: notaría, ITP y registro.`,
     url: canonical,
     locale: "es_ES",

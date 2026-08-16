@@ -28,7 +28,7 @@ export const revalidate = 300;
 const canonical = `${getSiteUrl()}/servicios/vender-piso-sin-agencia`;
 
 export const metadata: Metadata = {
-  title: "Vender piso sin comisiones entre particulares — 890 € IVA incl. | Livendia",
+  title: "Vender piso sin comisiones entre particulares — 890 € IVA incl.",
   description:
     "¿Ya tienes comprador particular? Vende tu piso sin comisiones de agencia: gestoría Livendia 890 € IVA incl. Reserva, arras, trámites y notaría. No somos inmobiliaria.",
   alternates: { canonical },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "gestoría venta piso particular",
   ],
   openGraph: {
-    title: "Vender piso sin comisiones — gestoría para particulares | Livendia",
+    title: "Vender piso sin comisiones — gestoría para particulares",
     description:
       "Venta entre particulares con gestor legal: 890 € fijos, sin comisión del 3–5 %. Reserva, arras y notaría.",
     url: canonical,

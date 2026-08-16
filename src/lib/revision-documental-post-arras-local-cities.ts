@@ -110,7 +110,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroBadge: "Post-arras · Comprador · Madrid",
     heroH1: `Revisión documental post-arras en Madrid: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Madrid — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Madrid — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Madrid? Revisamos derramas, ITE y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -136,7 +136,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Post-arras · Comprador · Barcelona",
     heroH1: `Revisión documental post-arras en Barcelona: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Barcelona — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Barcelona — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Barcelona? Verificamos ITE, derramas y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -162,7 +162,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Post-arras · Comprador · L'Hospitalet",
     heroH1: `Revisión documental post-arras en L'Hospitalet: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras L'Hospitalet — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras L'Hospitalet — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en L'Hospitalet? Revisamos derramas, ITE y nota registral en Bellvitge, Collblanc o La Florida antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -188,7 +188,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Post-arras · Comprador · Cornellà",
     heroH1: `Revisión documental post-arras en Cornellà: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras Cornellà — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras Cornellà — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Cornellà de Llobregat? Verificamos derramas, ITE, nota registral y urbanismo antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -214,7 +214,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Post-arras · Comprador · Les Corts · Despacho Livendia",
     heroH1: `Revisión documental post-arras en Les Corts: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión post-arras Les Corts — despacho Mejía Lequerica 44 | Livendia`,
+    metaTitle: `Revisión post-arras Les Corts — despacho Mejía Lequerica 44`,
     metaDescription:
       "¿Firmaste arras en Les Corts o Pedralbes? Revisión documental desde nuestro despacho en Carrer de Mejía Lequerica, 44: ITE, derramas y registro. Informe 48h — 350 € IVA incl.",
     keywords: [
@@ -241,7 +241,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Comunidad Valenciana",
     heroBadge: "Post-arras · Comprador · Valencia",
     heroH1: `Revisión documental post-arras en Valencia: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Valencia — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Valencia — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Valencia? Revisamos DANA, derramas, licencias y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -267,7 +267,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Post-arras · Comprador · Málaga y Costa del Sol",
     heroH1: `Revisión documental post-arras en Málaga: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Málaga — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Málaga — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Málaga o Costa del Sol? Revisamos derramas, VFT y nota registral antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -293,7 +293,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Post-arras · Comprador · Sevilla",
     heroH1: `Revisión documental post-arras en Sevilla: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Sevilla — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Sevilla — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Sevilla? Revisamos derramas en Triana, herencias y licencias antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -319,7 +319,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "País Vasco",
     heroBadge: "Post-arras · Comprador · Gran Bilbao",
     heroH1: `Revisión documental post-arras en Bilbao: comprueba antes de escriturar — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: `Revisión documental post-arras en Bilbao — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} | Livendia`,
+    metaTitle: `Revisión documental post-arras en Bilbao — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
     metaDescription:
       "¿Firmaste arras en Bilbao? Revisamos régimen foral, derramas RENOVE e ITE antes de escriturar. Informe en 48h — 350 € IVA incl.",
     keywords: [
@@ -345,7 +345,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Aragón",
     heroBadge: "Post-arras · Comprador · Zaragoza",
     heroH1: `Pack post-arras en Zaragoza: audita PAUs, ITE y herencias antes de notaría — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: "Verificar arras en Zaragoza: PAUs y herencias — 350 € | Livendia",
+    metaTitle: "Verificar arras en Zaragoza: PAUs y herencias — 350 €",
     metaDescription:
       "¿Firmaste arras en Zaragoza? Revisamos cargas en PAUs, ITE del Casco y herencias antes de escriturar. Informe 48h — 350 € IVA incl.",
     keywords: [
@@ -371,7 +371,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Comunidad Valenciana",
     heroBadge: "Post-arras · Comprador · Costa Blanca",
     heroH1: `Auditoría post-arras en Alicante y Costa Blanca: comunidad, VFT y registro — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: "Post-arras Costa Blanca: deudas comunidad y VFT — 350 € | Livendia",
+    metaTitle: "Post-arras Costa Blanca: deudas comunidad y VFT — 350 €",
     metaDescription:
       "¿Firmaste arras en Alicante o Costa Blanca? Revisamos deudas de urbanización, licencia VFT y registro. Informe 48h — 350 € IVA incl.",
     keywords: [
@@ -397,7 +397,7 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_CITIES: RevisionDocumentalPost
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Post-arras · Comprador · Granada",
     heroH1: `Revisión post-arras en Granada: Albaicín, regantes e inquilinos — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,
-    metaTitle: "Post-arras Granada: Albaicín, regantes e inquilinos — 350 € | Livendia",
+    metaTitle: "Post-arras Granada: Albaicín, regantes e inquilinos — 350 €",
     metaDescription:
       "¿Firmaste arras en Granada? Revisamos patrimonio Albaicín, servidumbres y arrendamientos antes de escriturar. Informe 48h — 350 € IVA incl.",
     keywords: [

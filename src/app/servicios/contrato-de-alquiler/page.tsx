@@ -42,7 +42,7 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de alquiler entre particulares — revisión LAU | Livendia",
+  title: "Contrato de alquiler entre particulares — revisión LAU",
   description:
     "¿Alquilas o alquilas como particular? Revisión y redacción de contrato LAU, temporada o habitación desde 145 € IVA incl. Gestoría para propietarios e inquilinos — no agencia.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-alquiler` },

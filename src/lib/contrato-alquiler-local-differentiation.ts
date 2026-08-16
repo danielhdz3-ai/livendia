@@ -55,7 +55,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   barcelona: {
-    metaTitle: `LAU piso completo Barcelona — 145 €, sin agencia | Livendia`,
+    metaTitle: `LAU piso completo Barcelona — 145 €, sin agencia`,
     metaDescription:
       "Contrato LAU piso entero Barcelona 145 € IVA incl. Revisión profesional, inventario y cláusulas zona tensionada. No es contrato de habitación. Gestor humano por teléfono. Entrega 48-72 h.",
     keywords: [
@@ -157,7 +157,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   asturias: {
-    metaTitle: "Contrato de alquiler en Asturias — Oviedo, Gijón y costa | Livendia",
+    metaTitle: "Contrato de alquiler en Asturias — Oviedo, Gijón y costa",
     metaDescription:
       "Redactamos y revisamos contratos LAU, temporada y habitación en Asturias: Oviedo, Gijón, costa y casas rurales. Inventario incluido. Gestoría online Livendia.",
     keywords: [
@@ -236,7 +236,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   "barcelona-les-corts": {
-    metaTitle: "Contrato alquiler Les Corts entre particulares — 145 € IVA incl. | Livendia",
+    metaTitle: "Contrato alquiler Les Corts entre particulares — 145 € IVA incl.",
     metaDescription:
       "¿Alquilas en Les Corts sin agencia? Contrato LAU entre propietario e inquilino por 145 € IVA incl. INCASÒL, zona tensionada e inventario. Diagonal, Zona Universitària, Pedralbes.",
     keywords: [
@@ -305,7 +305,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   "barcelona-gracia": {
-    metaTitle: "Contrato alquiler Gràcia entre particulares — 145 € IVA incl. | Livendia",
+    metaTitle: "Contrato alquiler Gràcia entre particulares — 145 € IVA incl.",
     metaDescription:
       "Contrato LAU en Gràcia sin agencia: propietario e inquilino particular por 145 € IVA incl. Vila de Gràcia, Camp d'en Grassot, inventario e INCASÒL. Livendia.",
     keywords: [
@@ -374,7 +374,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   "hospitalet-de-llobregat": {
-    metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl. | Livendia",
+    metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl.",
     metaDescription:
       "Contrato LAU en L'Hospitalet sin agencia inmobiliaria. Propietario e inquilino particular: 145 € IVA incl. Collblanc, Bellvitge, INCASÒL e inventario. Livendia.",
     keywords: [
@@ -442,7 +442,7 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
     ],
   },
   "cornella-de-llobregat": {
-    metaTitle: "Contrato alquiler Cornellà entre particulares — 145 € IVA incl. | Livendia",
+    metaTitle: "Contrato alquiler Cornellà entre particulares — 145 € IVA incl.",
     metaDescription:
       "Contrato LAU en Cornellà de Llobregat sin agencia. Entre propietario e inquilino particular por 145 € IVA incl. Sant Ildefons, Can Mercader, inventario. Livendia.",
     keywords: [

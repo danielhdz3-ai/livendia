@@ -86,7 +86,7 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     heroBadge: "Venta entre particulares · L'Hospitalet",
     heroH1: "¿Ya has encontrado comprador para tu piso?",
     heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en L'Hospitalet | Livendia`,
+    metaTitle: `Venta de piso de particular sin agencia en L'Hospitalet`,
     metaDescription: `Ya tienes comprador en L'Hospitalet. Gestor inmobiliario Livendia: arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin comisión. Centre, Bellvitge, Collblanc.`,
     keywords: [
       "vender piso de particular sin agencia hospitalet",
@@ -126,7 +126,7 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     heroBadge: "Venta entre particulares · Cornellà",
     heroH1: "¿Ya has encontrado comprador para tu piso?",
     heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Cornellà | Livendia`,
+    metaTitle: `Venta de piso de particular sin agencia en Cornellà`,
     metaDescription: `Comprador particular en Cornellà: gestor Livendia coordina arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin comisión. Sant Ildefons, Centre, Can Mercader.`,
     keywords: [
       "vender piso de particular sin agencia cornella",
@@ -165,7 +165,7 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     heroBadge: "Venta entre particulares · Esplugues",
     heroH1: "¿Ya has encontrado comprador para tu piso?",
     heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Esplugues | Livendia`,
+    metaTitle: `Venta de piso de particular sin agencia en Esplugues`,
     metaDescription: `Vende en Esplugues a un particular con gestor Livendia: arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Can Clota, Finestrelles, Centre.`,
     keywords: [
       "vender piso de particular sin agencia esplugues",
@@ -204,7 +204,7 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     heroBadge: "Venta entre particulares · Sabadell",
     heroH1: "¿Ya has encontrado comprador para tu piso?",
     heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Sabadell | Livendia`,
+    metaTitle: `Venta de piso de particular sin agencia en Sabadell`,
     metaDescription: `Ya tienes comprador en Sabadell. Gestor Livendia: arras, documentos y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Rull. Sin comisión.`,
     keywords: [
       "vender piso de particular sin agencia sabadell",
@@ -243,7 +243,7 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     heroBadge: "Venta entre particulares · Terrassa",
     heroH1: "¿Ya has encontrado comprador para tu piso?",
     heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Terrassa | Livendia`,
+    metaTitle: `Venta de piso de particular sin agencia en Terrassa`,
     metaDescription: `Comprador particular en Terrassa: gestor Livendia coordina arras, documentos y firma. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sant Pere, Les Arenes. Sin comisión.`,
     keywords: [
       "vender piso de particular sin agencia terrassa",

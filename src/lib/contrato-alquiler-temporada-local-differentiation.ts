@@ -6,7 +6,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
   LocalCityLandingFields & { faq?: readonly { question: string; answer: string }[] }
 > = {
   madrid: {
-    metaTitle: "Contrato alquiler temporada Madrid particulares — 200 € | Livendia",
+    metaTitle: "Contrato alquiler temporada Madrid particulares — 200 €",
     metaDescription:
       "Contrato de alquiler por temporada entre particulares en Madrid: 200 € IVA incl., 24-48 h. Oposiciones, desplazamientos y estancias acotadas. Sin comisión de agencia.",
     keywords: [
@@ -108,7 +108,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   valencia: {
-    metaTitle: "Contrato alquiler temporada Valencia particulares — 200 € | Livendia",
+    metaTitle: "Contrato alquiler temporada Valencia particulares — 200 €",
     metaDescription:
       "Contrato de alquiler por temporada entre particulares en Valencia: 200 € IVA incl., 24-48 h. UPV, UV, Ruzafa, Benimaclet. Redacción gestor sin comisión.",
     keywords: [
@@ -159,7 +159,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   sevilla: {
-    metaTitle: "Contrato alquiler temporada Sevilla particulares — 200 € | Livendia",
+    metaTitle: "Contrato alquiler temporada Sevilla particulares — 200 €",
     metaDescription:
       "Contrato alquiler por temporada entre particulares en Sevilla: 200 € IVA incl., 24-48 h. US, UPO, Nervión, Triana. Gestor Livendia sin comisión.",
     keywords: [
@@ -210,7 +210,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   malaga: {
-    metaTitle: "Contrato alquiler temporada Málaga particulares — 200 € | Livendia",
+    metaTitle: "Contrato alquiler temporada Málaga particulares — 200 €",
     metaDescription:
       "Contrato alquiler por temporada entre particulares en Málaga y Costa del Sol: 200 € IVA incl., 24-48 h. UMA, Teatinos, verano. Sin comisión.",
     keywords: [
@@ -260,7 +260,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   zaragoza: {
-    metaTitle: "Contrato alquiler temporada Zaragoza particulares — 200 € | Livendia",
+    metaTitle: "Contrato alquiler temporada Zaragoza particulares — 200 €",
     metaDescription:
       "Contrato alquiler por temporada entre particulares en Zaragoza: 200 € IVA incl., 24-48 h. UNIZAR, Delicias, Actur. Gestor Livendia sin comisión.",
     keywords: [
@@ -311,7 +311,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   asturias: {
-    metaTitle: "Contrato alquiler temporada Asturias particulares | Livendia",
+    metaTitle: "Contrato alquiler temporada Asturias particulares",
     metaDescription:
       "Contrato alquiler por temporada entre particulares en Asturias: Oviedo, Gijón, costa. 200 € IVA incl. Verano, estudios, segunda residencia. Sin comisión.",
     keywords: [
@@ -362,7 +362,7 @@ export const TEMPORADA_LOCAL_DIFFERENTIATION: Record<
     ],
   },
   mallorca: {
-    metaTitle: "Contrato alquiler temporada Mallorca particulares | Livendia",
+    metaTitle: "Contrato alquiler temporada Mallorca particulares",
     metaDescription:
       "Contrato alquiler por temporada entre particulares en Mallorca: Palma, Calvià, Alcúdia. 200 € IVA incl. Duración, fianza e inventario. Sin comisión.",
     keywords: [

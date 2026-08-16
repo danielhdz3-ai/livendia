@@ -37,7 +37,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Acompañamiento de venta sin agencia: gestor inmobiliario hasta escritura | Livendia",
+  title: "Acompañamiento de venta sin agencia: gestor inmobiliario hasta escritura",
   description:
     "Vende tu piso entre particulares sin comisiones del 3–5 %: gestor inmobiliario especializado en la venta, reserva, arras, documentación y asesoramiento hasta notaría. 890 € IVA incluido.",
   alternates: { canonical: "https://livendia.com/servicios/servicio-completo-venta" },

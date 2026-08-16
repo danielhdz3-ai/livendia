@@ -53,12 +53,12 @@ const canonical = `${getSiteUrl()}/servicios/revision-contrato-alquiler`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Revisión de contrato de alquiler — ${REVISION_CONTRATO_ALQUILER_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Revisión de contrato de alquiler — ${REVISION_CONTRATO_ALQUILER_PRICE_LABEL} IVA incl.`,
   description:
     "¿Eres inquilino y necesitas revisión de un contrato de alquiler? Análisis del borrador LAU, temporada o habitación con informe para negociar. No incluye redacción completa del contrato. 120 € IVA incl.",
   alternates: { canonical },
   openGraph: {
-    title: "Revisión de contrato de alquiler | Livendia",
+    title: "Revisión de contrato de alquiler",
     description:
       "Revisión profesional del contrato de alquiler antes de firmar. Informe detallado + llamada de veredicto. 120 € IVA incl.",
     url: canonical,

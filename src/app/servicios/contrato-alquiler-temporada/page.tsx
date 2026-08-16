@@ -20,7 +20,7 @@ import { Calendar, FileText, Clock, CheckCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Contrato de alquiler por temporada — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Contrato de alquiler por temporada — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl.`,
   description:
     `Para estancias temporales, estudios o trabajo. Regulación específica fuera de la LAU estándar. ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido.`,
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-alquiler-temporada` },

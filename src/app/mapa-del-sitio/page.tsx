@@ -17,7 +17,7 @@ import Link from "next/link";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Mapa del sitio | Livendia",
+  title: "Mapa del sitio",
   description:
     "Índice de servicios de gestoría inmobiliaria, guías por ciudad, blog y páginas principales de Livendia.",
   alternates: { canonical: "https://livendia.com/mapa-del-sitio" },

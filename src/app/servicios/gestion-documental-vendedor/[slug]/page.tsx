@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const config = toGestionVendedorLandingConfig(city);
   const canonical = `${getSiteUrl()}${localGestionDocumentalVendedorHref(slug)}`;
-  const title = config.metaTitle ?? `Gestor documental vendedor en ${city.city} | Livendia`;
+  const title = config.metaTitle ?? `Gestor documental vendedor en ${city.city}`;
   const description =
     config.metaDescription ??
     `Gestor documental para vendedor en ${city.city}: de arras a escritura. 350 € IVA incl.`;

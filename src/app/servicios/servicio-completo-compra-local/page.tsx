@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "¿Necesitas comprar con todas las garantías? Acompañamiento desde reserva a escritura en Madrid, Barcelona, Cataluña (L'Hospitalet, Sabadell, Terrassa…), Valencia, Bilbao, Málaga, Sevilla y más. Gestor inmobiliario experto para compradores particulares.",
   alternates: { canonical },
   openGraph: {
-    title: "Servicio completo de compra por ciudad | Livendia",
+    title: "Servicio completo de compra por ciudad",
     description:
       "Compra tu vivienda con gestor dedicado: revisión documental, arras y escritura con seguridad.",
     url: canonical,

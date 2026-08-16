@@ -17,7 +17,7 @@ import type {
 export const PILLAR_BILBAO_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/bilbao`;
 
 export const PILLAR_BILBAO_META = {
-  title: "Vender piso sin comisiones en Bilbao | Entre particulares con gestor legal | Livendia",
+  title: "Vender piso sin comisiones en Bilbao | Entre particulares con gestor legal",
   description:
     "Guía completa para vender tu piso en Bilbao sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
   keywords: [

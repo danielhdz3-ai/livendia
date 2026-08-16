@@ -103,15 +103,6 @@ function VenderSinInmobiliariaJsonLd({
           text: step.body,
         })),
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${pageUrl}#faq`,
-        mainEntity: config.faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-      },
     ],
   };
 

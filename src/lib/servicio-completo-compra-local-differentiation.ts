@@ -716,7 +716,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     ],
     heroBadge: "Compra entre particulares · Sant Andreu (Barcelona) · CCCat",
     heroH1: "Compra de particular a particular en Sant Andreu — barrio de Barcelona, no el municipio",
-    metaTitle: "Comprar piso entre particulares en Sant Andreu (Barcelona) | Livendia",
+    metaTitle: "Comprar piso entre particulares en Sant Andreu (Barcelona)",
     metaDescription:
       "¿Compras en Sant Andreu de Palomar, La Sagrera o Navas? Gestor comprador en el distrito barcelonés: reserva, arras CCCat y art. 621-49. 890 € IVA incl.",
     heroBullets: [

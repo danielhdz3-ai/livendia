@@ -18,7 +18,7 @@ const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_ALQUILER_LOCAL_BASE}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Acompañamiento de alquiler por ciudad — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} | Livendia`,
+  title: `Acompañamiento de alquiler por ciudad — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL}`,
   description: `Landings locales del acompañamiento de alquiler (${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} IVA incl.): Les Corts, L'Hospitalet, Madrid y Valencia. Gestor, fianza y normativa local.`,
   alternates: { canonical },
 };

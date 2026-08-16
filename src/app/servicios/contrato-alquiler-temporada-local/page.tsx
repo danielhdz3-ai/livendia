@@ -16,12 +16,12 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Contrato de alquiler por temporada por ciudad | Livendia",
+  title: "Contrato de alquiler por temporada por ciudad",
   description:
     `Redacción de contrato de alquiler por temporada entre particulares, ciudad a ciudad. Estudios, desplazamientos laborales y estancias acotadas. Desde ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incl., sin comisión.`,
   alternates: { canonical },
   openGraph: {
-    title: "Contrato de alquiler por temporada por ciudad | Livendia",
+    title: "Contrato de alquiler por temporada por ciudad",
     description: "Contrato específico fuera de LAU habitual. Publicamos ciudad a ciudad con contenido local.",
     url: canonical,
     locale: "es_ES",

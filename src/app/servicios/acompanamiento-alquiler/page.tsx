@@ -46,12 +46,12 @@ const canonical = `${getSiteUrl()}/servicios/acompanamiento-alquiler`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Acompañamiento de alquiler — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Acompañamiento de alquiler — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} IVA incl.`,
   description:
     "Gestor especializado para inquilinos: documentación, revisión y redacción de contratos, firma digital certificada, expediente online y mediación con el propietario. 189 € IVA incl. El servicio acaba cuando tú lo decides.",
   alternates: { canonical },
   openGraph: {
-    title: "Acompañamiento de alquiler | Livendia",
+    title: "Acompañamiento de alquiler",
     description:
       "Ayuda integral en el trámite de alquiler: gestor, docs, contrato, firma digital y mediación. 189 € IVA incl.",
     url: canonical,

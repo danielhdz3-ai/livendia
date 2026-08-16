@@ -212,7 +212,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Vender piso sin comisiones Barcelona — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso sin comisiones Barcelona — 890 € IVA incl.",
     metaDescription:
       "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin agencia del 3–5 %. Eixample, Gràcia, Sant Martí.",
     keywords: [
@@ -396,7 +396,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "granada",
     city: "Granada",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl.",
     metaDescription:
       "Vender piso entre particulares en Granada: gestoría por 890 € IVA incl. Reserva, arras, trámites y notaría. Sin agencia del 3–5 %. Albaicín, Zaidín, Realejo.",
     keywords: [
@@ -421,7 +421,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "zaragoza",
     city: "Zaragoza",
     schemaAdministrativeArea: "Aragón",
-    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl.",
     metaDescription:
       "Vender piso entre particulares en Zaragoza: gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin comisión de agencia. Actur, Delicias, Centro.",
     keywords: [

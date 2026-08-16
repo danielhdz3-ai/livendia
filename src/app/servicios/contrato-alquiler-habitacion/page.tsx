@@ -46,12 +46,12 @@ const canonical = `${getSiteUrl()}/servicios/contrato-alquiler-habitacion`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Contrato de alquiler de habitación — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Contrato de alquiler de habitación — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
   description:
     `Arrendamiento de habitación en piso compartido con cláusulas específicas para este régimen. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incluido.`,
   alternates: { canonical },
   openGraph: {
-    title: `Contrato de alquiler de habitación | Livendia`,
+    title: `Contrato de alquiler de habitación`,
     description:
       `Arrendamiento de habitación en piso compartido con cláusulas específicas. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incluido.`,
     url: canonical,

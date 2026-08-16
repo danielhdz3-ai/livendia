@@ -53,13 +53,13 @@ const PHASE_ICONS = [ClipboardList, Landmark, FileText, Building2] as const;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL} | Livendia`,
+  title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL}`,
   description:
     "Gestor dedicado para comprar parking o trastero: nota simple, IBI, comunidad, notaría, ITP y registro. Servicio integral de 298 € IVA incl. hasta la entrega de la documentación final.",
   alternates: { canonical },
   robots: { index: true, follow: true },
   openGraph: {
-    title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL} | Livendia`,
+    title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL}`,
     description:
       "Un gestor se encarga de todos los trámites: preparación documental, notaría, liquidación ITP y inscripción en el Registro de la Propiedad.",
     url: canonical,

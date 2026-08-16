@@ -16,7 +16,7 @@ import { MapPin } from "lucide-react";
 const canonical = `${getSiteUrl()}${VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: `Venta de piso de particular sin agencia — área Barcelona | Livendia`,
+  title: `Venta de piso de particular sin agencia — área Barcelona`,
   description: `¿Ya tienes comprador? Gestor inmobiliario Livendia coordina arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin comisión. Hospitalet, Cornellà, Esplugues, Sabadell, Terrassa.`,
   alternates: { canonical },
   robots: { index: true, follow: true },

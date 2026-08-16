@@ -21,7 +21,7 @@ import { Shield, FileText, Clock, AlertCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de arras penitenciales entre particulares — 145 € IVA incl. | Livendia",
+  title: "Contrato de arras penitenciales entre particulares — 145 € IVA incl.",
   description:
     "Arras penitenciales entre comprador y vendedor particular. Redacción legal por 145 € IVA incl. — no plantilla de internet. Gestoría Livendia, no agencia inmobiliaria.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-arras-penitenciales` },

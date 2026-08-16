@@ -39,7 +39,7 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Contrato de arras entre particulares — revisión profesional | Livendia",
+  title: "Contrato de arras entre particulares — revisión profesional",
   description:
     "¿Compras o vendes entre particulares? Revisión y redacción de arras penitenciales o confirmatorias desde 145 € IVA incl. Gestoría Livendia — no agencia inmobiliaria.",
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-de-arras` },

@@ -30,7 +30,7 @@ import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Gestoría inmobiliaria para particulares — contratos y venta sin agencia | Livendia",
+  title: "Gestoría inmobiliaria para particulares — contratos y venta sin agencia",
   description: SITE_DEFAULT_DESCRIPTION,
   alternates: { canonical: getSiteUrl() },
   openGraph: {
@@ -111,6 +111,7 @@ export default async function Home() {
                   alt="Tranquilidad en casa: revisas tu gestión inmobiliaria desde el sofá"
                   fill
                   priority
+                  fetchPriority="high"
                   className="object-cover object-center"
                   sizes="(max-width: 1280px) 50vw, 640px"
                 />

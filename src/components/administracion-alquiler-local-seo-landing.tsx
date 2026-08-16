@@ -299,6 +299,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
+                    fetchPriority="high"
                   />
                 </div>
               </div>

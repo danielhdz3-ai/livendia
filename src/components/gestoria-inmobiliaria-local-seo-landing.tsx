@@ -58,12 +58,10 @@ function GestoriaLocalJsonLd({
   path,
   city,
   administrativeArea,
-  faq,
 }: {
   path: string;
   city: string;
   administrativeArea: string;
-  faq: GestoriaInmobiliariaLocalLandingConfig["faq"];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const pageUrl = `${base}${path}`;
@@ -97,22 +95,6 @@ function GestoriaLocalJsonLd({
           { "@type": "ListItem", position: 3, name: city, item: pageUrl },
         ],
       },
-      ...(faq.length > 0
-        ? [
-            {
-              "@type": "FAQPage",
-              "@id": `${pageUrl}#faq`,
-              mainEntity: faq.map((item) => ({
-                "@type": "Question",
-                name: item.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: item.answer,
-                },
-              })),
-            },
-          ]
-        : []),
     ],
   };
 
@@ -200,7 +182,6 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
         path={config.path}
         city={config.city}
         administrativeArea={config.schemaAdministrativeArea}
-        faq={config.faq}
       />
       <div className="flex min-h-screen flex-col bg-white">
         <PublicHeader />
@@ -259,6 +240,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
+                    fetchPriority="high"
                   />
                 </div>
               </div>

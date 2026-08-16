@@ -39,12 +39,12 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: siteUrl,
     siteName: "Livendia",
-    title: "Gestoría inmobiliaria online | Livendia",
+    title: "Gestoría inmobiliaria online",
     description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gestoría inmobiliaria online | Livendia",
+    title: "Gestoría inmobiliaria online",
     description: siteDescription,
   },
   icons: {

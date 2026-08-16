@@ -57,10 +57,8 @@ const STEP_ICONS = [FileText, Search, ClipboardCheck, Phone] as const;
 
 function LocalRevisionPostArrasJsonLd({
   config,
-  faqItems,
 }: {
   config: RevisionDocumentalPostArrasLocalLandingConfig;
-  faqItems: readonly { question: string; answer: string }[];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const pageUrl = `${base}${config.path}`;
@@ -116,18 +114,6 @@ function LocalRevisionPostArrasJsonLd({
     });
   }
 
-  if (faqItems.length) {
-    graph.push({
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: { "@type": "Answer", text: item.answer },
-      })),
-    });
-  }
-
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }) }} />
   );
@@ -164,7 +150,7 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
 
   return (
     <ServicePurchaseProvider service={service}>
-      <LocalRevisionPostArrasJsonLd config={config} faqItems={faqItems} />
+      <LocalRevisionPostArrasJsonLd config={config} />
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
 

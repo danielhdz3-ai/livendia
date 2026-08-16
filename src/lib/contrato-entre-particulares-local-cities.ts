@@ -81,7 +81,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "bilbao",
     city: "Bilbao",
     schemaAdministrativeArea: "País Vasco",
-    metaTitle: `Contrato entre particulares Bilbao — alquiler y arras desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Bilbao — alquiler y arras desde ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Bilbao: alquiler LAU, arras penitenciales o habitación por ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Sin plantillas de internet. Gestoría Livendia para propietarios e inquilinos.`,
     keywords: [
@@ -127,7 +127,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "granada",
     city: "Granada",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: `Contrato entre particulares Granada — LAU, arras, habitación ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Granada — LAU, arras, habitación ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Granada: alquiler a estudiantes, arras de compraventa o habitación en piso compartido. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia, no agencia.`,
     keywords: [
@@ -173,7 +173,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "zaragoza",
     city: "Zaragoza",
     schemaAdministrativeArea: "Aragón",
-    metaTitle: `Contrato entre particulares Zaragoza — alquiler y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Zaragoza — alquiler y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Zaragoza: alquiler LAU, arras de compraventa o habitación. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría digital Livendia para propietarios particulares.`,
     keywords: [
@@ -216,7 +216,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "alicante",
     city: "Alicante",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: `Contrato entre particulares Alicante — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Alicante — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Alicante: alquiler anual, temporada o arras de venta. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia — propietarios e inquilinos sin agencia.`,
     keywords: [
@@ -260,7 +260,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "gijon",
     city: "Gijón",
     schemaAdministrativeArea: "Asturias",
-    metaTitle: `Contrato entre particulares Gijón — alquiler y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Gijón — alquiler y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Gijón: alquiler LAU, habitación o arras. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia para propietarios particulares en Asturias.`,
     keywords: [
@@ -304,7 +304,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "cordoba",
     city: "Córdoba",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: `Contrato entre particulares Córdoba — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Córdoba — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Córdoba: alquiler LAU, habitación en piso compartido o arras. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia.`,
     keywords: [
@@ -346,7 +346,7 @@ export const CONTRATO_ENTRE_PARTICULARES_LOCAL_CITIES: ContratoEntreParticulares
     slug: "valladolid",
     city: "Valladolid",
     schemaAdministrativeArea: "Castilla y León",
-    metaTitle: `Contrato entre particulares Valladolid — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato entre particulares Valladolid — LAU y arras ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
       `Contratos entre particulares en Valladolid: alquiler, habitación o arras de compraventa. ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. Gestoría Livendia para propietarios particulares.`,
     keywords: [

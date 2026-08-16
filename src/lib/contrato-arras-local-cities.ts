@@ -138,7 +138,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · L'Hospitalet",
     heroH1: "Gestor que tramita tu contrato de arras en L'Hospitalet",
-    metaTitle: `Tramitar contrato de arras L'Hospitalet — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Tramitar contrato de arras L'Hospitalet — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `¿Buscas gestor para tramitar arras en L'Hospitalet? Gestor asignado, CCCat 621-4 a 621-9 y cláusula 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Bellvitge, Collblanc.`,
     keywords: [
@@ -180,7 +180,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Cornellà",
     heroH1: "Tramitar contrato de arras en Cornellà con gestor especializado",
-    metaTitle: `Contrato de arras Cornellà — gestor asignado ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato de arras Cornellà — gestor asignado ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Gestor que tramita arras en Cornellà de Llobregat. CCCat 621-4 a 621-9 y art. 621-49 (financiación). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader.`,
     keywords: [
@@ -221,7 +221,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Sabadell",
     heroH1: "¿Buscas gestor para tu contrato de arras en Sabadell?",
-    metaTitle: `Tramitar arras Sabadell — gestor CC + CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Tramitar arras Sabadell — gestor CC + CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Gestor asignado tramita contrato de arras en Sabadell. Arras 621-4 a 621-9 y desistimiento por financiación (621-49). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Feu.`,
     keywords: [
@@ -263,7 +263,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Terrassa",
     heroH1: "Contrato de arras en Terrassa con gestor asignado",
-    metaTitle: `Contrato arras Terrassa — gestor especialista ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato arras Terrassa — gestor especialista ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Tramita arras en Terrassa con gestor asignado. CCCat 621-4 a 621-9 y art. 621-49 hipoteca. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Pere, La Maurina.`,
     keywords: [
@@ -304,7 +304,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Badalona",
     heroH1: "Gestor que tramita tu contrato de arras en Badalona",
-    metaTitle: `Contrato de arras Badalona — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato de arras Badalona — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Tramita arras en Badalona con gestor asignado. CCCat 621-4 a 621-9 y art. 621-49 (hipoteca). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Centre, Montigalà, La Salut.`,
     keywords: [
@@ -346,7 +346,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Sant Cugat",
     heroH1: "Contrato de arras en Sant Cugat del Vallès con gestor especializado",
-    metaTitle: `Tramitar arras Sant Cugat del Vallès — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Tramitar arras Sant Cugat del Vallès — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Gestor asignado tramita contrato de arras en Sant Cugat del Vallès. CCCat 621-4 a 621-9 y art. 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Centre, Mira-sol, Valldoreix.`,
     keywords: [
@@ -414,7 +414,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     slug: "asturias",
     city: "Asturias",
     schemaAdministrativeArea: "Principado de Asturias",
-    metaTitle: `Arras Asturias — 145 €, gestor humano sin agencia | Livendia`,
+    metaTitle: `Arras Asturias — 145 €, gestor humano sin agencia`,
     metaDescription:
       `Contrato de arras Oviedo, Gijón y Avilés por 145 € IVA incl. Penitenciales o confirmatorias entre particulares — sin comisión de inmobiliaria. Gestor por teléfono antes de firmar. Entrega 48-72 h.`,
     heroLead:
@@ -447,7 +447,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Arras entre particulares · Sevilla",
     heroH1: "Contrato de arras en Sevilla entre particulares — gestoría online, no agencia",
-    metaTitle: `Contrato de arras Sevilla entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato de arras Sevilla entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `¿Compras o vendes sin inmobiliaria en Sevilla? Arras penitenciales o confirmatorias por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor asignado, trámite online. Triana, Nervión, Los Remedios.`,
     keywords: [
@@ -489,7 +489,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Arras entre particulares · Málaga",
     heroH1: "Contrato de arras en Málaga sin comisión de agencia — gestoría Livendia",
-    metaTitle: `Contrato arras Málaga entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato arras Málaga entre particulares — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Arras penitenciales o confirmatorias en Málaga por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor online asignado. Centro, Teatinos, El Palo. Sin comisión inmobiliaria.`,
     keywords: [
@@ -531,7 +531,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Aragón",
     heroBadge: "Arras entre particulares · Zaragoza",
     heroH1: "Tramitar contrato de arras en Zaragoza entre particulares — gestor online",
-    metaTitle: `Contrato de arras Zaragoza — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato de arras Zaragoza — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `Arras entre particulares en Zaragoza: gestor asignado, trámite online, ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Actur, Delicias, Casco Histórico. Sin comisión de agencia.`,
     keywords: [
@@ -573,7 +573,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     schemaAdministrativeArea: "Islas Baleares",
     heroBadge: "Arras entre particulares · Palma",
     heroH1: "Contrato de arras en Palma de Mallorca — gestoría online para particulares",
-    metaTitle: `Contrato arras Palma de Mallorca — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato arras Palma de Mallorca — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Arras entre particulares en Palma por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor asignado, trámite online. Eixample, Son Espanyolet, Santa Catalina. Sin agencia.`,
     keywords: [

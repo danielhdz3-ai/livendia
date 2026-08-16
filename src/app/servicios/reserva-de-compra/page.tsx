@@ -20,7 +20,7 @@ import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Reserva de compra — ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Reserva de compra — ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incl.`,
   description:
     `Documento de reserva de compraventa personalizado: plazos, señal, condiciones y protección de tu dinero. Entrega 48–72 h. ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incluido. Livendia.`,
   alternates: { canonical: `${getSiteUrl()}/servicios/reserva-de-compra` },

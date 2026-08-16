@@ -109,7 +109,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "madrid",
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
-    metaTitle: "Madrid: gestoría 890 € venta sin comisiones | Livendia",
+    metaTitle: "Madrid: gestoría 890 € venta sin comisiones",
     metaDescription:
       `Gestoría Madrid para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
     keywords: [
@@ -184,7 +184,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Barcelona: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Barcelona: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Barcelona para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
     keywords: [
@@ -259,7 +259,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "les-corts",
     city: "Les Corts",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Les Corts: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Les Corts: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Les Corts para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Despacho en Mejía Lequerica 44. Gestor humano, sin comisiones del 3-5 %. Administración 49 €/mes.`,
     keywords: [
@@ -340,7 +340,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: "Valencia: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Valencia: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Valencia para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones de agencia. ${REVISION_META_SNIPPET} y administración 49 €/mes. Ruzafa, Benimaclet.`,
     keywords: [
@@ -415,7 +415,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "zaragoza",
     city: "Zaragoza",
     schemaAdministrativeArea: "Aragón",
-    metaTitle: "Zaragoza: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Zaragoza: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Zaragoza para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
     h1: "Gestoría inmobiliaria en Zaragoza: compraventa, contratos y administración de alquileres",
@@ -480,7 +480,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "alicante",
     city: "Alicante",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: "Alicante: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Alicante: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Alicante para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
     h1: "Gestoría inmobiliaria en Alicante: compraventa, contratos y administración de alquileres",
@@ -545,7 +545,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "murcia",
     city: "Murcia",
     schemaAdministrativeArea: "Región de Murcia",
-    metaTitle: "Murcia: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Murcia: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Murcia para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada y administración 49 €/mes.`,
     h1: "Gestoría inmobiliaria en Murcia: compraventa, contratos y administración de alquileres",
@@ -611,7 +611,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "malaga",
     city: "Málaga",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Málaga: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Málaga: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Málaga para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
     keywords: [
@@ -685,7 +685,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "sevilla",
     city: "Sevilla",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Sevilla: gestoría 890 € sin comisiones | Livendia",
+    metaTitle: "Sevilla: gestoría 890 € sin comisiones",
     metaDescription:
       `Gestoría Sevilla para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. Triana, Nervión. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
     keywords: [

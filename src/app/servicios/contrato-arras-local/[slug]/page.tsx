@@ -41,10 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title =
     city.metaTitle ??
     (slug === "madrid"
-      ? `Contrato de arras Madrid — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`
+      ? `Contrato de arras Madrid — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl.`
       : slug === "asturias"
-        ? `Contrato de arras Asturias — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. | Livendia`
-        : `Contrato de arras en ${city.city} — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} | Livendia`);
+        ? `Contrato de arras Asturias — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl.`
+        : `Contrato de arras en ${city.city} — ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`);
   const description =
     city.metaDescription ??
     (slug === "madrid"

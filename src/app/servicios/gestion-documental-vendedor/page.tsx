@@ -52,13 +52,13 @@ const STEP_ICONS = [ClipboardList, FileSearch, Shield, Phone] as const;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+  title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
   description:
     "Vendiste entre particulares y ya tienes comprador: un gestor obtiene y verifica toda la documentación de arras a escritura. 350 € IVA incl. Gestor dedicado en 24 h.",
   alternates: { canonical },
   robots: { index: true, follow: true },
   openGraph: {
-    title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+    title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
     description:
       "Gestión documental para vendedores particulares: nota simple, comunidad, ITE, energético, hipoteca e informe semáforo hasta notaría.",
     url: canonical,

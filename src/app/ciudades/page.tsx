@@ -16,11 +16,11 @@ const canonical = `${getSiteUrl()}${CIUDADES_HUB_BASE}`;
 const description = getCiudadesIndexDescription();
 
 export const metadata: Metadata = {
-  title: "Ciudades — servicios de gestoría inmobiliaria por ciudad | Livendia",
+  title: "Ciudades — servicios de gestoría inmobiliaria por ciudad",
   description,
   alternates: { canonical },
   openGraph: {
-    title: "Ciudades — gestoría inmobiliaria online | Livendia",
+    title: "Ciudades — gestoría inmobiliaria online",
     description,
     url: canonical,
     locale: "es_ES",

@@ -38,10 +38,8 @@ const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
 function LocalJsonLd({
   config,
-  faqItems,
 }: {
   config: AcompanamientoAlquilerLocalLandingConfig;
-  faqItems: { question: string; answer: string }[];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const pageUrl = `${base}${config.path}`;
@@ -87,21 +85,11 @@ function LocalJsonLd({
     parentOrganization: { "@id": `${base}/#organization` },
   };
 
-  const faqPage = {
-    "@type": "FAQPage",
-    "@id": `${pageUrl}#faq`,
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [service, localBusiness, faqPage] }),
+        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": [service, localBusiness] }),
       }}
     />
   );
@@ -124,7 +112,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
   return (
     <ServicePurchaseProvider service={service}>
       {service ? <ServiceStructuredDataFromCatalog service={service} /> : null}
-      <LocalJsonLd config={config} faqItems={faqItems} />
+      <LocalJsonLd config={config} />
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">

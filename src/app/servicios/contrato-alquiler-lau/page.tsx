@@ -20,7 +20,7 @@ import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: `Contrato de alquiler LAU entre particulares — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. | Livendia`,
+  title: `Contrato de alquiler LAU entre particulares — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl.`,
   description:
     `Contrato de alquiler entre propietario e inquilino particular. Redacción LAU por ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl. — no plantilla de internet. Gestoría Livendia, no agencia.`,
   alternates: { canonical: `${getSiteUrl()}/servicios/contrato-alquiler-lau` },

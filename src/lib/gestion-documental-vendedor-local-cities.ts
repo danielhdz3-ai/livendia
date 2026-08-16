@@ -117,7 +117,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "barcelona",
       "Barcelona",
       "Cataluña",
-      `Gestor documental vendedor en Barcelona — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Barcelona — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Barcelona sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -133,7 +133,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "madrid",
       "Madrid",
       "Comunidad de Madrid",
-      `Gestor documental vendedor en Madrid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Madrid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Madrid sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -149,7 +149,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "valencia",
       "Valencia",
       "Comunidad Valenciana",
-      `Gestor documental vendedor en Valencia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Valencia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Valencia sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -165,7 +165,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "malaga",
       "Málaga",
       "Andalucía",
-      `Gestor documental vendedor en Málaga — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Málaga — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Málaga sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -181,7 +181,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "sevilla",
       "Sevilla",
       "Andalucía",
-      `Gestor documental vendedor en Sevilla — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Sevilla — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Sevilla sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -197,7 +197,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "bilbao",
       "Bilbao",
       "País Vasco",
-      `Gestor documental vendedor en Bilbao — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Bilbao — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Bilbao sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -213,7 +213,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "zaragoza",
       "Zaragoza",
       "Aragón",
-      `Gestor documental vendedor en Zaragoza — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Zaragoza — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Zaragoza sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -229,7 +229,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "alicante",
       "Alicante",
       "Comunidad Valenciana",
-      `Gestor documental vendedor en Alicante — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Alicante — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Alicante sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -245,7 +245,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "murcia",
       "Murcia",
       "Región de Murcia",
-      `Gestor documental vendedor en Murcia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Murcia — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Murcia sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -261,7 +261,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "valladolid",
       "Valladolid",
       "Castilla y León",
-      `Gestor documental vendedor en Valladolid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Valladolid — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Valladolid sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -277,7 +277,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "granada",
       "Granada",
       "Andalucía",
-      `Gestor documental vendedor en Granada — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Granada — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Granada sin agencia? Un gestor Livendia gestiona toda la documentación para escriturar. 350 € IVA incl. Arras a escritura.",
     ),
     keywords: [
@@ -293,7 +293,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "oviedo",
       "Oviedo",
       "Principado de Asturias",
-      `Gestor documental vendedor en Oviedo — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Oviedo — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Oviedo entre particulares? Gestor Livendia de arras a escritura: comunidad, ITE, cédula y nota simple. 350 € IVA incl.",
     ),
     heroImage: "/images/oviedo2.jpg",
@@ -312,7 +312,7 @@ export const GESTION_DOCUMENTAL_VENDEDOR_LOCAL_CITIES: GestionDocumentalVendedor
       "gijon",
       "Gijón",
       "Principado de Asturias",
-      `Gestor documental vendedor en Gijón — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} | Livendia`,
+      `Gestor documental vendedor en Gijón — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,
       "¿Vendiste tu piso en Gijón entre particulares? Gestor Livendia de arras a escritura: comunidad, ITE, cédula y nota simple. 350 € IVA incl.",
     ),
     heroImage: "/images/gijon.jpg",

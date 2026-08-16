@@ -24,12 +24,12 @@ const canonical = `${getSiteUrl()}/servicios/acompanamiento-reserva-arras`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Acompañamiento reserva hasta arras — 424 € IVA incl. | Livendia",
+  title: "Acompañamiento reserva hasta arras — 424 € IVA incl.",
   description:
     "Asesoramiento jurídico desde la reserva hasta el contrato de arras: revisión de reserva, nota registral, urbanismo y redacción de arras. 424 € IVA incluido.",
   alternates: { canonical },
   openGraph: {
-    title: "Acompañamiento reserva hasta arras | Livendia",
+    title: "Acompañamiento reserva hasta arras",
     description:
       "Asesoramiento jurídico desde la reserva hasta el contrato de arras. 424 € IVA incluido.",
     url: canonical,

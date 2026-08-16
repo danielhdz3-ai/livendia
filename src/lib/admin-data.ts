@@ -71,7 +71,7 @@ export function countRealClients(orders: AdminOrderRow[]): number {
 export function countRealClientsWithRevenueSince(orders: AdminOrderRow[], since: Date): number {
   return new Set(
     filterRevenueOrders(orders)
-      .filter((o) => new Date(o.paid_at) >= since)
+      .filter((o) => o.paid_at != null && new Date(o.paid_at) >= since)
       .map((o) => o.client_id),
   ).size;
 }

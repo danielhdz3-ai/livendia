@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title =
     config.metaTitle ??
     (slug === "mallorca"
-      ? `Contrato alquiler por temporada Mallorca — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`
-      : `Contrato alquiler por temporada en ${city.city} — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} | Livendia`);
+      ? `Contrato alquiler por temporada Mallorca — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}`
+      : `Contrato alquiler por temporada en ${city.city} — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}`);
   const description =
     config.metaDescription ??
     (slug === "mallorca"

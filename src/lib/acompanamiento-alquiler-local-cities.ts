@@ -79,7 +79,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     city: "Barcelona",
     placeLabel: "Les Corts, Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: `Acompañamiento alquiler Les Corts — ${PRICE} | Livendia`,
+    metaTitle: `Acompañamiento alquiler Les Corts — ${PRICE}`,
     metaDescription: `Gestor de alquiler en Les Corts (Barcelona): fianza INCASÒL, zona tensionada, contrato y firma digital. ${PRICE} IVA incl. Livendia.`,
     heroLead:
       "Si alquilas en Les Corts —cerca de Diagonal, la zona universitaria o el entorno del Camp Nou— necesitas un gestor que ordene documentación, contrato y firma con la normativa catalana en mente. Livendia te acompaña desde el expediente online hasta que tú decides cerrar el servicio.",
@@ -125,7 +125,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     city: "L'Hospitalet de Llobregat",
     placeLabel: "L'Hospitalet de Llobregat",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: `Acompañamiento alquiler L'Hospitalet — ${PRICE} | Livendia`,
+    metaTitle: `Acompañamiento alquiler L'Hospitalet — ${PRICE}`,
     metaDescription: `Acompañamiento de alquiler en L'Hospitalet: fianza INCASÒL, zona tensionada, contrato y mediación. ${PRICE} IVA incl. Livendia.`,
     heroLead:
       "L'Hospitalet de Llobregat es un municipio propio del área metropolitana de Barcelona, bien conectado y con mucha demanda de alquiler. Te acompañamos con gestor especializado: papeles, contrato, firma digital y coherencia con la normativa catalana.",
@@ -168,7 +168,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     city: "Madrid",
     placeLabel: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
-    metaTitle: `Acompañamiento de alquiler en Madrid — ${PRICE} | Livendia`,
+    metaTitle: `Acompañamiento de alquiler en Madrid — ${PRICE}`,
     metaDescription: `Gestor de alquiler en Madrid: fianza AVS, revisión LAU, contrato y firma digital. Sin zona tensionada autonómica. ${PRICE} IVA incl.`,
     heroLead:
       "En Madrid el alquiler se mueve rápido y los contratos llegan con letra pequeña. Un gestor Livendia te ordena la documentación, revisa o redacta el contrato, gestiona la firma digital y media con la parte propietaria hasta que tú decides cerrar el acompañamiento.",
@@ -212,7 +212,7 @@ export const ACOMPANAMIENTO_ALQUILER_LOCAL_CITIES: AcompanamientoAlquilerLocalCi
     city: "Valencia",
     placeLabel: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: `Acompañamiento de alquiler en Valencia — ${PRICE} | Livendia`,
+    metaTitle: `Acompañamiento de alquiler en Valencia — ${PRICE}`,
     metaDescription: `Acompañamiento de alquiler en Valencia: fianza en 15 días hábiles, revisión LAU, contrato y firma. ${PRICE} IVA incl. Livendia.`,
     heroLead:
       "En Valencia el plazo para depositar la fianza es especialmente corto. Te acompañamos con gestor especializado: documentación, contrato, firma digital y mediación, con el calendario valenciano bien presente.",

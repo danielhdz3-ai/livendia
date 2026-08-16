@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Aviso legal | Livendia",
+  title: "Aviso legal",
   description: "Datos identificativos y condiciones de uso del sitio web de Livendia, gestoría inmobiliaria online.",
   alternates: { canonical: "https://livendia.com/legal/aviso-legal" },
 };

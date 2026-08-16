@@ -15,12 +15,12 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${CONTRATO_ARRAS_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Contrato de arras por ciudad en España | Livendia",
+  title: "Contrato de arras por ciudad en España",
   description:
     "¿Necesitas redactar un contrato de arras por un profesional? Landings locales con revisión de penitenciales y confirmatorias. Publicamos ciudades de forma gradual.",
   alternates: { canonical },
   openGraph: {
-    title: "Contrato de arras por ciudad en España | Livendia",
+    title: "Contrato de arras por ciudad en España",
     description:
       "Revisión profesional de contratos de arras antes de firmar: penitenciales y confirmatorias con proceso digital.",
     url: canonical,

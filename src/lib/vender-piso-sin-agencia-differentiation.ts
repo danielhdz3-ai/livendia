@@ -23,7 +23,7 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       "vender piso sin inmobiliaria barcelona",
       "trámites venta entre particulares barcelona",
     ],
-    metaTitle: "Vender piso en Barcelona sin comisiones — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso en Barcelona sin comisiones — 890 € IVA incl.",
     metaDescription:
       "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Ahorra el 3–5 % de agencia. Eixample, Gràcia, Sant Martí, L'Hospitalet.",
     tramitesAreaNote:
@@ -301,7 +301,7 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       "vender piso sin agencia granada ugr",
       "gestoría venta particular granada",
     ],
-    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso sin comisiones Granada — 890 € IVA incl.",
     metaDescription:
       "Vende entre particulares en Granada con gestoría Livendia: 890 € IVA incl., reserva, arras y notaría. Sin comisión del 3–5 %. Albaicín, Zaidín, Realejo.",
     copy: {
@@ -329,7 +329,7 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       "vender piso sin agencia zaragoza",
       "gestoría venta particular zaragoza",
     ],
-    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl. | Livendia",
+    metaTitle: "Vender piso sin comisiones Zaragoza — 890 € IVA incl.",
     metaDescription:
       "Vende tu piso entre particulares en Zaragoza: gestoría 890 € IVA incl. Reserva, arras, trámites y notaría. Actur, Delicias, Centro — sin comisión de agencia.",
     copy: {

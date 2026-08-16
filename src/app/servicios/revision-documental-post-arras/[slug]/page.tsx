@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const config = toRevisionPostArrasLandingConfig(city);
   const canonical = `${getSiteUrl()}${localRevisionDocumentalPostArrasHref(slug)}`;
-  const title = config.metaTitle ?? `Revisión documental post-arras en ${city.city} | Livendia`;
+  const title = config.metaTitle ?? `Revisión documental post-arras en ${city.city}`;
   const description =
     config.metaDescription ??
     `Revisión documental post-arras en ${city.city} para compradores particulares. 350 € IVA incl. Informe en 48h.`;

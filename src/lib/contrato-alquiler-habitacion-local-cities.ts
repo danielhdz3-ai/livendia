@@ -84,7 +84,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Barcelona",
     heroH1: "Contrato de alquiler de habitación en Barcelona",
-    metaTitle: `Habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026 | Livendia`,
+    metaTitle: `Habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026`,
     metaDescription:
       `Contrato alquiler habitación Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: convivencia, fianza e inventario. Gestor humano por teléfono. Eixample, Gràcia. 48-72 h.`,
     keywords: [
@@ -133,7 +133,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · L'Hospitalet",
     heroH1: "Contrato de alquiler de habitación en L'Hospitalet de Llobregat",
-    metaTitle: `Contrato habitación L'Hospitalet — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato habitación L'Hospitalet — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `¿Necesitas un contrato de alquiler de habitación en L'Hospitalet? Gestor especializado te asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Bellvitge, Collblanc, Florida. 48-72 h.`,
     keywords: [
@@ -175,7 +175,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Cornellà",
     heroH1: "Contrato de alquiler de habitación en Cornellà de Llobregat",
-    metaTitle: `Contrato habitación Cornellà — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato habitación Cornellà — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `¿Necesitas contrato de alquiler de habitación en Cornellà? Gestor Livendia te ayuda y asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader. 48-72 h.`,
     keywords: [
@@ -216,7 +216,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Sabadell",
     heroH1: "Contrato de alquiler de habitación en Sabadell",
-    metaTitle: `Contrato habitación Sabadell — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato habitación Sabadell — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `¿Necesitas un contrato de alquiler de habitación en Sabadell? Gestor especializado te ayuda y asesora. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Feu. 48-72 h.`,
     keywords: [
@@ -257,7 +257,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Terrassa",
     heroH1: "Contrato de alquiler de habitación en Terrassa",
-    metaTitle: `Contrato habitación Terrassa — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. | Livendia`,
+    metaTitle: `Contrato habitación Terrassa — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     metaDescription:
       `¿Necesitas contrato de alquiler de habitación en Terrassa? Gestor especializado te ayuda y asesora por teléfono. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Sant Pere, La Maurina. 48-72 h.`,
     keywords: [
@@ -298,7 +298,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroBadge: "Piso compartido · Madrid",
     heroH1: "Contrato de alquiler de habitación en Madrid",
-    metaTitle: `Habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026 | Livendia`,
+    metaTitle: `Habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026`,
     metaDescription:
       `Contrato alquiler habitación Madrid ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: Chamberí, Moncloa, Tetuán. Convivencia, gastos y fianza. Gestor humano por teléfono. 48-72 h.`,
     keywords: [
@@ -347,7 +347,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Comunidad Valenciana",
     heroBadge: "Piso compartido · Valencia",
     heroH1: "Contrato de alquiler de habitación en Valencia",
-    metaTitle: `Contrato alquiler habitación Valencia — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato alquiler habitación Valencia — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
       `¿Alquilas una habitación en Valencia? Contrato para particulares en Ruzafa, Benimaclet, Ciutat Vella. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
@@ -395,7 +395,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Piso compartido · Málaga",
     heroH1: "Contrato de alquiler de habitación en Málaga",
-    metaTitle: `Contrato alquiler habitación Málaga — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato alquiler habitación Málaga — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
       `¿Alquilas una habitación en Málaga? Contrato para particulares en Teatinos, El Palo, centro. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
@@ -442,7 +442,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Andalucía",
     heroBadge: "Piso compartido · Sevilla",
     heroH1: "Contrato de alquiler de habitación en Sevilla",
-    metaTitle: `Contrato alquiler habitación Sevilla — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato alquiler habitación Sevilla — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
       `¿Alquilas una habitación en Sevilla? Contrato para particulares en Nervión, Triana, Los Remedios. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
@@ -490,7 +490,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "País Vasco",
     heroBadge: "Piso compartido · Bilbao",
     heroH1: "Contrato de alquiler de habitación en Bilbao",
-    metaTitle: `Contrato alquiler habitación Bilbao — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} | Livendia`,
+    metaTitle: `Contrato alquiler habitación Bilbao — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
       `¿Alquilas una habitación en Bilbao? Contrato para particulares en Deusto, Indautxu, Casco Viejo. Convivencia, gastos y fianza. ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,
     keywords: [
