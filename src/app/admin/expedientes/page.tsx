@@ -82,7 +82,7 @@ export default async function AdminExpedientesPage({
   const orders = (ordersRaw ?? []) as AdminOrderRow[];
   const clientIds = [...new Set(orders.map((o) => o.client_id))];
   const emailByClient = await fetchClientEmails(clientIds);
-  let rows = buildExpedientes(orders, emailByClient);
+  let rows = buildExpedientes(orders, emailByClient).filter((r) => r.paidOrders > 0);
 
   const term = q?.trim().toLowerCase();
   if (term) {
@@ -96,7 +96,7 @@ export default async function AdminExpedientesPage({
 
   return (
     <>
-      <AdminPageHeader title="Expedientes" subtitle="Clientes de gestoría inmobiliaria" />
+      <AdminPageHeader title="Expedientes" subtitle="Clientes reales con pedido pagado" />
 
       <form method="get" className={`${ADMIN_CARD_PAD} mb-4`}>
         <div className="flex flex-wrap items-center gap-3">

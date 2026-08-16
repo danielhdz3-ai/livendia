@@ -38,7 +38,7 @@ export default async function AdminBaseDatosPage({
   if (!salesClientIds.length) {
     return (
       <>
-        <AdminPageHeader title="Base de datos de particulares" subtitle="Clientes con ventas registradas" />
+        <AdminPageHeader title="Base de datos de particulares" subtitle="Clientes reales con venta registrada" />
         <div className={`${ADMIN_CARD_PAD} text-center`}>
           <Users className="mx-auto h-12 w-12 text-[#94A3B8]" />
           <p className="mt-3 text-sm text-[#64748B]">No hay clientes con ventas todavía</p>
@@ -88,10 +88,10 @@ export default async function AdminBaseDatosPage({
 
   return (
     <>
-      <AdminPageHeader title="Base de datos de particulares" subtitle="Clientes con ventas registradas" />
+      <AdminPageHeader title="Base de datos de particulares" subtitle="Clientes reales con venta registrada" />
 
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
-        <AdminStatCard label="Clientes con ventas" value={rows.length} />
+        <AdminStatCard label="Clientes reales" value={rows.length} />
         <AdminStatCard label="Total ventas" value={revenueOrders.length} />
         <AdminStatCard label="Ingresos" value={formatEuros(totalRevenue)} />
       </div>

@@ -59,6 +59,23 @@ export function sumOrderRevenueCents(orders: AdminOrderRow[]): number {
   return filterRevenueOrders(orders).reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
 }
 
+/** IDs únicos de clientes con al menos un pedido real (sin pruebas ni devoluciones). */
+export function uniqueRealClientIds(orders: AdminOrderRow[]): string[] {
+  return [...new Set(filterRevenueOrders(orders).map((o) => o.client_id))];
+}
+
+export function countRealClients(orders: AdminOrderRow[]): number {
+  return uniqueRealClientIds(orders).length;
+}
+
+export function countRealClientsWithRevenueSince(orders: AdminOrderRow[], since: Date): number {
+  return new Set(
+    filterRevenueOrders(orders)
+      .filter((o) => new Date(o.paid_at) >= since)
+      .map((o) => o.client_id),
+  ).size;
+}
+
 export function formatEuros(cents: number | null | undefined): string {
   if (cents == null) return "—";
   return `${(cents / 100).toFixed(2)} €`;

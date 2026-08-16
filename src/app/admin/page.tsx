@@ -3,6 +3,8 @@ import { AdminStatCard } from "@/components/admin/admin-page-header";
 import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import {
   clientName,
+  countRealClients,
+  countRealClientsWithRevenueSince,
   fetchAllPaidOrders,
   fetchClientEmails,
   filterRevenueOrders,
@@ -10,6 +12,7 @@ import {
   groupOrdersByPaidDate,
   serviceName,
   sumOrderRevenueCents,
+  uniqueRealClientIds,
   type AdminOrderRow,
 } from "@/lib/admin-data";
 import { ADMIN_CARD_COMPACT, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
@@ -45,12 +48,10 @@ export default async function AdminDashboardPage() {
   ]);
 
   const paidOrders = filterRevenueOrders((paidOrdersResult ?? []) as AdminOrderRow[]);
-  const clientIds = [...new Set(paidOrders.map((o) => o.client_id))];
-  const totalClients = clientIds.length;
+  const clientIds = uniqueRealClientIds(paidOrders);
+  const totalClients = countRealClients(paidOrders);
   const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const newClientsWeek = new Set(
-    paidOrders.filter((o) => o.paid_at && new Date(o.paid_at) >= weekAgo).map((o) => o.client_id),
-  ).size;
+  const newClientsWeek = countRealClientsWithRevenueSince(paidOrders, weekAgo);
   const emailByClient = await fetchClientEmails(clientIds);
 
   const salesMap = groupOrdersByPaidDate(paidOrders, emailByClient);
@@ -80,7 +81,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="mb-3 grid shrink-0 grid-cols-2 gap-2 xl:grid-cols-4">
-        <AdminStatCard compact label="Clientes con venta" value={totalClients} hint={`+${newClientsWeek} semana`} />
+        <AdminStatCard compact label="Clientes reales" value={totalClients} hint={`+${newClientsWeek} semana`} />
         <AdminStatCard compact label="Ventas" value={salesCount} hint={`${activeOrders ?? 0} activos`} />
         <AdminStatCard compact label="Mes" value={formatEuros(monthRevenue)} hint={`Total ${formatEuros(totalRevenue)}`} />
         <AdminStatCard
