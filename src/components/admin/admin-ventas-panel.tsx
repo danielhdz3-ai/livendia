@@ -6,7 +6,7 @@ import { ManualSaleForm } from "@/components/admin/manual-sale-form";
 import { SalePaymentStatusSelect, SaleRowActions } from "@/components/admin/sale-row-actions";
 import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import type { AdminOrderRow, SalesDayBucket } from "@/lib/admin-data";
-import { formatEuros, isManualOrder } from "@/lib/admin-data";
+import { formatEuros, isManualOrder, countsAsRevenue } from "@/lib/admin-data";
 import { ADMIN_CARD_PAD, ADMIN_MONEY, ADMIN_TABLE_HEAD, PAID_STATUSES } from "@/lib/admin-ui";
 
 type VentaRow = AdminOrderRow & { clientEmail: string };
@@ -77,9 +77,7 @@ export function AdminVentasPanel({
     });
   }, [orders, search, filter]);
 
-  const totalCents = filtered
-    .filter((o) => o.paid_at && o.status !== "cancelled")
-    .reduce((s, o) => s + (o.total_cents ?? 0), 0);
+  const totalCents = filtered.filter(countsAsRevenue).reduce((s, o) => s + (o.total_cents ?? 0), 0);
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_22rem]">

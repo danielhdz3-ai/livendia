@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AdminDocumentCard } from "@/components/admin/admin-document-card";
 import { AdminClientAvatar } from "@/components/admin/admin-client-avatar";
 import { AdminPageHeader, AdminStatCard } from "@/components/admin/admin-page-header";
-import { formatEuros } from "@/lib/admin-data";
+import { formatEuros, sumOrderRevenueCents, filterRevenueOrders } from "@/lib/admin-data";
 import { ADMIN_CARD_PAD, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServiceRoleClient } from "@/lib/supabase/service";
@@ -40,7 +40,7 @@ export default async function AdminExpedienteClientePage({
   const [{ data: orders }, { data: docs }] = await Promise.all([
     supabase
       .from("orders")
-      .select("id, status, created_at, paid_at, total_cents, stripe_session_id, services ( name )")
+      .select("id, status, created_at, paid_at, total_cents, stripe_session_id, services ( name, slug )")
       .eq("client_id", clientId)
       .order("created_at", { ascending: false }),
     supabase
@@ -50,8 +50,8 @@ export default async function AdminExpedienteClientePage({
       .order("created_at", { ascending: false }),
   ]);
 
-  const paidOrders = (orders ?? []).filter((o) => o.paid_at);
-  const totalCents = paidOrders.reduce((s, o) => s + (o.total_cents ?? 0), 0);
+  const revenueOrders = filterRevenueOrders((orders ?? []) as Parameters<typeof filterRevenueOrders>[0]);
+  const totalCents = sumOrderRevenueCents(revenueOrders);
 
   return (
     <>
@@ -78,7 +78,7 @@ export default async function AdminExpedienteClientePage({
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <AdminStatCard label="Ingresos" value={formatEuros(totalCents)} />
-        <AdminStatCard label="Pedidos pagados" value={paidOrders.length} />
+        <AdminStatCard label="Pedidos pagados" value={revenueOrders.length} />
         <AdminStatCard label="Documentos" value={docs?.length ?? 0} />
         <AdminStatCard
           label="Registrado"

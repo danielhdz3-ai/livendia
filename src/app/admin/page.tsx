@@ -5,9 +5,11 @@ import {
   clientName,
   fetchAllPaidOrders,
   fetchClientEmails,
+  filterRevenueOrders,
   formatEuros,
   groupOrdersByPaidDate,
   serviceName,
+  sumOrderRevenueCents,
   type AdminOrderRow,
 } from "@/lib/admin-data";
 import { ADMIN_CARD_COMPACT, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
@@ -50,7 +52,7 @@ export default async function AdminDashboardPage() {
       .gte("created_at", new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()),
   ]);
 
-  const paidOrders = (paidOrdersResult ?? []).filter((o) => o.status !== "cancelled") as AdminOrderRow[];
+  const paidOrders = filterRevenueOrders((paidOrdersResult ?? []) as AdminOrderRow[]);
   const clientIds = [...new Set(paidOrders.map((o) => o.client_id))];
   const emailByClient = await fetchClientEmails(clientIds);
 
@@ -61,7 +63,7 @@ export default async function AdminDashboardPage() {
     .filter((o) => o.paid_at && o.paid_at >= startOfMonth)
     .reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
 
-  const totalRevenue = paidOrders.reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
+  const totalRevenue = sumOrderRevenueCents(paidOrders);
   const salesCount = paidOrders.length;
 
   const serviceCounts: Record<string, number> = {};

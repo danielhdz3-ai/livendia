@@ -3,7 +3,9 @@ import { AdminVentasPanel } from "@/components/admin/admin-ventas-panel";
 import {
   fetchAllOrders,
   fetchClientEmails,
+  filterRevenueOrders,
   groupOrdersByPaidDate,
+  sumOrderRevenueCents,
   type AdminOrderRow,
 } from "@/lib/admin-data";
 import { formatEuros } from "@/lib/admin-data";
@@ -26,8 +28,8 @@ export default async function AdminVentasPage() {
   const clientIds = [...new Set(orders.map((o) => o.client_id))];
   const emailByClient = await fetchClientEmails(clientIds);
 
-  const paidOrders = orders.filter((o) => o.paid_at);
-  const salesMap = groupOrdersByPaidDate(paidOrders, emailByClient);
+  const revenueOrders = filterRevenueOrders(orders);
+  const salesMap = groupOrdersByPaidDate(revenueOrders, emailByClient);
   const salesByDate = Object.fromEntries(salesMap);
 
   const ventaRows = orders.map((o) => ({
@@ -38,9 +40,9 @@ export default async function AdminVentasPage() {
   const monthStart = new Date();
   monthStart.setDate(1);
   monthStart.setHours(0, 0, 0, 0);
-  const monthTotal = paidOrders
-    .filter((o) => o.paid_at && new Date(o.paid_at) >= monthStart)
-    .reduce((s, o) => s + (o.total_cents ?? 0), 0);
+  const monthTotal = sumOrderRevenueCents(
+    revenueOrders.filter((o) => o.paid_at && new Date(o.paid_at) >= monthStart),
+  );
 
   const clients = await Promise.all(
     (clientsRaw ?? []).map(async (c) => {
@@ -58,11 +60,11 @@ export default async function AdminVentasPage() {
       <AdminPageHeader title="Ventas" subtitle="Seguimiento de ingresos y pedidos" />
 
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
-        <AdminStatCard label="Ventas pagadas" value={paidOrders.length} />
+        <AdminStatCard label="Ventas pagadas" value={revenueOrders.length} />
         <AdminStatCard label="Ingresos del mes" value={formatEuros(monthTotal)} />
         <AdminStatCard
           label="Manuales"
-          value={paidOrders.filter((o) => !o.stripe_session_id).length}
+          value={revenueOrders.filter((o) => !o.stripe_session_id).length}
           hint="Registradas fuera de Stripe"
         />
       </div>

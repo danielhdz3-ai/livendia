@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Search, Users } from "lucide-react";
 import { AdminClientAvatar } from "@/components/admin/admin-client-avatar";
 import { AdminPageHeader, AdminStatCard } from "@/components/admin/admin-page-header";
-import { fetchClientEmails, formatEuros } from "@/lib/admin-data";
+import { fetchClientEmails, formatEuros, filterRevenueOrders, type AdminOrderRow } from "@/lib/admin-data";
 import { ADMIN_CARD_PAD, ADMIN_MONEY, ADMIN_TABLE_HEAD } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -14,6 +14,7 @@ type OrderRow = {
   total_cents: number | null;
   paid_at: string | null;
   status: string;
+  services: { slug?: string } | { slug?: string }[] | null;
 };
 
 export default async function AdminBaseDatosPage({
@@ -27,11 +28,12 @@ export default async function AdminBaseDatosPage({
 
   const { data: ordersRaw } = await supabase
     .from("orders")
-    .select("client_id, total_cents, paid_at, status")
+    .select("client_id, total_cents, paid_at, status, services ( slug )")
     .not("paid_at", "is", null)
     .neq("status", "cancelled");
 
-  const salesClientIds = [...new Set((ordersRaw ?? []).map((o) => o.client_id as string))];
+  const revenueOrders = filterRevenueOrders((ordersRaw ?? []) as AdminOrderRow[]);
+  const salesClientIds = [...new Set(revenueOrders.map((o) => o.client_id))];
 
   if (!salesClientIds.length) {
     return (
@@ -55,9 +57,9 @@ export default async function AdminBaseDatosPage({
   const emailByClient = await fetchClientEmails(salesClientIds);
 
   const ordersByClient = new Map<string, OrderRow[]>();
-  for (const order of ordersRaw ?? []) {
+  for (const order of revenueOrders) {
     const list = ordersByClient.get(order.client_id as string) ?? [];
-    list.push(order as OrderRow);
+    list.push(order);
     ordersByClient.set(order.client_id as string, list);
   }
 
@@ -90,7 +92,7 @@ export default async function AdminBaseDatosPage({
 
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
         <AdminStatCard label="Clientes con ventas" value={rows.length} />
-        <AdminStatCard label="Total ventas" value={ordersRaw?.length ?? 0} />
+        <AdminStatCard label="Total ventas" value={revenueOrders.length} />
         <AdminStatCard label="Ingresos" value={formatEuros(totalRevenue)} />
       </div>
 

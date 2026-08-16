@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { AdminClientAvatar } from "@/components/admin/admin-client-avatar";
-import { fetchClientEmails, formatEuros, type AdminOrderRow } from "@/lib/admin-data";
+import { fetchClientEmails, formatEuros, countsAsRevenue, type AdminOrderRow } from "@/lib/admin-data";
 import { ADMIN_CARD_PAD, ADMIN_MONEY, ADMIN_TABLE_HEAD } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -44,10 +44,10 @@ function buildExpedientes(orders: AdminOrderRow[], emailByClient: Map<string, st
       } satisfies ExpedienteRow);
 
     existing.totalOrders += 1;
-    if (order.paid_at) {
+    if (countsAsRevenue(order)) {
       existing.paidOrders += 1;
       existing.totalCents += order.total_cents ?? 0;
-      const d = order.paid_at;
+      const d = order.paid_at!;
       if (!existing.firstDate || d < existing.firstDate) existing.firstDate = d;
       if (!existing.lastDate || d > existing.lastDate) {
         existing.lastDate = d;

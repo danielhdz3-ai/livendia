@@ -33,6 +33,32 @@ export function isManualOrder(order: AdminOrderRow): boolean {
   return !order.stripe_session_id;
 }
 
+/** Slugs internos/de prueba: no cuentan como ingreso real en métricas admin. */
+const EXCLUDED_REVENUE_SERVICE_SLUGS = new Set(["pago-prueba-livendia"]);
+
+export function serviceSlug(order: AdminOrderRow): string | null {
+  const svc = order.services;
+  return (Array.isArray(svc) ? svc[0]?.slug : svc?.slug) ?? null;
+}
+
+export function isTestOrder(order: AdminOrderRow): boolean {
+  const slug = serviceSlug(order);
+  return slug != null && EXCLUDED_REVENUE_SERVICE_SLUGS.has(slug);
+}
+
+/** Pedido con pago real que entra en ingresos (excluye devoluciones y pruebas). */
+export function countsAsRevenue(order: AdminOrderRow): boolean {
+  return Boolean(order.paid_at) && order.status !== "cancelled" && !isTestOrder(order);
+}
+
+export function filterRevenueOrders(orders: AdminOrderRow[]): AdminOrderRow[] {
+  return orders.filter(countsAsRevenue);
+}
+
+export function sumOrderRevenueCents(orders: AdminOrderRow[]): number {
+  return filterRevenueOrders(orders).reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
+}
+
 export function formatEuros(cents: number | null | undefined): string {
   if (cents == null) return "—";
   return `${(cents / 100).toFixed(2)} €`;
@@ -64,7 +90,7 @@ export function groupOrdersByPaidDate(
   const map = new Map<string, SalesDayBucket>();
 
   for (const order of orders) {
-    if (!order.paid_at || order.total_cents == null || order.status === "cancelled") continue;
+    if (!countsAsRevenue(order) || order.total_cents == null) continue;
     const key = dateKey(order.paid_at);
     const bucket =
       map.get(key) ??
