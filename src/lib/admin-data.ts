@@ -47,7 +47,7 @@ export function isTestOrder(order: AdminOrderRow): boolean {
 }
 
 /** Pedido con pago real que entra en ingresos (excluye devoluciones y pruebas). */
-export function countsAsRevenue(order: AdminOrderRow): boolean {
+export function countsAsRevenue(order: AdminOrderRow): order is AdminOrderRow & { paid_at: string } {
   return Boolean(order.paid_at) && order.status !== "cancelled" && !isTestOrder(order);
 }
 
