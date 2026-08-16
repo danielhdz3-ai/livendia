@@ -57,6 +57,42 @@ const nextConfig: NextConfig = {
         destination: "/servicios/contrato-de-arras",
         statusCode: 301,
       },
+      // Legacy: /vender-piso-sin-inmobiliaria-barcelona (404) → pilar con barra
+      {
+        source: "/vender-piso-sin-inmobiliaria-barcelona",
+        destination: "/vender-piso-sin-inmobiliaria/barcelona",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-madrid",
+        destination: "/vender-piso-sin-inmobiliaria/madrid",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-valencia",
+        destination: "/vender-piso-sin-inmobiliaria/valencia",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-sevilla",
+        destination: "/vender-piso-sin-inmobiliaria/sevilla",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-bilbao",
+        destination: "/vender-piso-sin-inmobiliaria/bilbao",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-malaga",
+        destination: "/vender-piso-sin-inmobiliaria/malaga",
+        statusCode: 301,
+      },
+      {
+        source: "/vender-piso-sin-inmobiliaria-granada",
+        destination: "/vender-piso-sin-inmobiliaria/granada",
+        statusCode: 301,
+      },
       {
         source: "/admin/pedidos",
         destination: "/admin/expedientes",
