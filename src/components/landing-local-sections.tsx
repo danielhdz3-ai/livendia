@@ -65,7 +65,7 @@ export function LandingLocalHeroSplit({
 
 type LandingLocalTestimonialsSectionProps = {
   title: string;
-  testimonials: LandingLocalTestimonial[];
+  testimonials: readonly LandingLocalTestimonial[];
   subtitle?: string;
 };
 
