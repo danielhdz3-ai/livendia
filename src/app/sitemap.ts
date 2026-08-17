@@ -77,6 +77,9 @@ import {
   CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE,
   getPublishedContratoEntreParticularesLocalCities,
 } from "@/lib/contrato-entre-particulares-local-cities";
+import {
+  ADMINISTRACION_ALQUILER_METRO_LANDINGS,
+} from "@/lib/administracion-alquiler-metro-landings";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -317,6 +320,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.86,
     }));
 
+  const administracionAlquilerMetro: MetadataRoute.Sitemap =
+    ADMINISTRACION_ALQUILER_METRO_LANDINGS.map((l) => ({
+      url: `${base}${l.path}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.87,
+    }));
+
   return [
     ...core,
     ...servicios,
@@ -337,6 +348,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...acompanamientoAlquilerLocalCiudades,
     ...habitacionLocalCiudades,
     ...contratoEntreParticularesLocalCiudades,
+    ...administracionAlquilerMetro,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...ciudadesHubPages,
