@@ -69,7 +69,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (path.startsWith("/admin")) {
+  if (path === "/admin" || path.startsWith("/admin/")) {
     if (viewAsClient) {
       response.cookies.set("livendia_view_as_client", "", { maxAge: 0, path: "/" });
     }
