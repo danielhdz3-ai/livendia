@@ -3,40 +3,9 @@
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { NavGroupColumn } from "@/components/nav-services-group-column";
+import { ServicesNavMobileSections } from "@/components/nav-services-mobile-sections";
 import { SERVICE_LANDING_NAV_GROUPS } from "@/lib/service-landing-nav-links";
-
-function NavGroupColumn({
-  title,
-  subtitle,
-  links,
-  onNavigate,
-}: {
-  title: string;
-  subtitle: string;
-  links: readonly { href: string; label: string }[];
-  onNavigate: () => void;
-}) {
-  return (
-    <div className="min-w-0">
-      <p className="text-[11px] font-bold uppercase tracking-wider text-[#1A4FBF]">{title}</p>
-      <p className="mt-0.5 text-xs leading-snug text-slate-500">{subtitle}</p>
-      <ul className="mt-3 space-y-0.5">
-        {links.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              role="menuitem"
-              className="block rounded-lg px-2 py-2 text-sm font-medium leading-snug text-[#1E293B] transition hover:bg-[#EFF6FF] hover:text-[#1A4FBF]"
-              onClick={onNavigate}
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export function NavServicesDropdown() {
   const [open, setOpen] = useState(false);
@@ -101,48 +70,14 @@ export function NavServicesDropdown() {
 
       {open ? (
         <>
-          {/* Panel móvil / tablet: lista vertical compacta */}
+          {/* Tablet (sm–lg): panel ancho 2×2 */}
           <div
-            className="absolute left-1/2 top-full z-[60] mt-3 max-h-[min(70vh,28rem)] w-[min(340px,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto rounded-xl border border-slate-200 bg-white py-2 shadow-xl lg:hidden"
+            className="fixed inset-x-0 top-14 z-[60] max-h-[calc(100dvh-3.5rem)] overflow-y-auto px-3 pb-4 pt-2 sm:top-16 sm:px-4 lg:hidden"
             role="menu"
           >
-            {SERVICE_LANDING_NAV_GROUPS.map((group, groupIndex) => (
-              <div key={group.title}>
-                {groupIndex > 0 ? <div className="my-1 border-t border-slate-100" aria-hidden /> : null}
-                <p className="px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-[#1A4FBF]">
-                  {group.title}
-                </p>
-                <p className="px-4 pb-1 text-xs text-slate-500">{group.subtitle}</p>
-                {group.links.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    role="menuitem"
-                    className="block px-4 py-2.5 text-sm font-medium text-[#1E293B] hover:bg-slate-50 hover:text-[#1A4FBF]"
-                    onClick={close}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-            <div className="mt-1 border-t border-slate-100 pt-1">
-              <Link
-                href="/servicios"
-                role="menuitem"
-                className="block px-4 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-slate-50"
-                onClick={close}
-              >
-                Ver catálogo completo
-              </Link>
-              <Link
-                href="/precios"
-                role="menuitem"
-                className="block px-4 py-3 text-sm font-semibold text-[#1A4FBF] hover:bg-slate-50"
-                onClick={close}
-              >
-                Contratar con precios
-              </Link>
+            <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl ring-1 ring-slate-100">
+              <p className="mb-3 text-sm font-semibold text-[#1E293B]">Servicios Livendia</p>
+              <ServicesNavMobileSections onNavigate={close} layout="grid" />
             </div>
           </div>
 

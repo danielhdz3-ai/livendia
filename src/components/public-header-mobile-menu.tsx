@@ -4,12 +4,7 @@ import Link from "next/link";
 import { ChevronRight, MessageCircle, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { getWhatsAppHref } from "@/lib/business-nap";
-import { SERVICE_LANDING_NAV_LINKS } from "@/lib/service-landing-nav-links";
-
-const SERVICIO_LINKS = [
-  { href: "/para-propietarios", label: "Para propietarios", hint: "Administración 49 €/mes" },
-  ...SERVICE_LANDING_NAV_LINKS,
-] as const;
+import { ServicesNavMobileSections } from "@/components/nav-services-mobile-sections";
 
 const INFO_LINKS = [
   { href: "/servicios", label: "Todos los contratos" },
@@ -149,11 +144,12 @@ export function PublicHeaderMobileMenu() {
             </div>
 
             <div className="mt-4 space-y-4">
-              <MenuCard title="Servicios">
-                {SERVICIO_LINKS.map((item) => (
-                  <MenuLink key={item.href} {...item} onNavigate={close} />
-                ))}
-              </MenuCard>
+              <section aria-label="Servicios por categoría">
+                <h2 className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Servicios
+                </h2>
+                <ServicesNavMobileSections onNavigate={close} layout="accordion" />
+              </section>
 
               <MenuCard title="Información">
                 {INFO_LINKS.map((item) => (
