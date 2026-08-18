@@ -18,12 +18,14 @@ import { SiteFooter } from "@/components/site-footer";
 import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
+  ServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import type { PackCommercialLandingConfig } from "@/lib/pack-comercial-landings";
 import type { PackCommercialLocalLandingConfig } from "@/lib/pack-comercial-local-cities";
 import type { PublicService } from "@/lib/catalog.public";
 import {
+  GESTION_DOCUMENTAL_VENDEDOR_SLUG,
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
   PACK_LAU_ADMIN_LANDING_PATH,
 } from "@/lib/catalog.public";
@@ -359,7 +361,11 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
           {localSeo && isVentaPack && localSeo.precioMedioVenta ? (
             <section className="border-t border-slate-200 px-4 py-16 sm:px-6">
               <div className="mx-auto max-w-4xl">
-                <CalculadoraAhorroVendedor city={local!.city} precioMedio={localSeo.precioMedioVenta} />
+                <ServicePurchaseProvider
+                  service={servicesBySlug[GESTION_DOCUMENTAL_VENDEDOR_SLUG] ?? null}
+                >
+                  <CalculadoraAhorroVendedor city={local!.city} precioMedio={localSeo.precioMedioVenta} />
+                </ServicePurchaseProvider>
               </div>
             </section>
           ) : null}
