@@ -2,11 +2,19 @@
  * Landings metro Barcelona — administración de alquiler por barrio/municipio.
  * Rutas: /administracion-alquiler/…
  *
- * Contenido único por zona (hero, barrios, testimonios, FAQ local) para evitar thin/duplicate.
+ * Jerarquía URL (documentada en administracion-alquiler-barcelona-metro.ts):
+ * - Barrios de Barcelona:     /administracion-alquiler/barcelona/{barrio}
+ * - Municipios AMB (propios): /administracion-alquiler/{municipio}
+ * Página madre ciudad: /servicios/administracion-alquiler-local/barcelona
+ *
  * Imágenes: solo rutas bajo public/images/ trackeadas en git.
  */
 
+import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquiler-local-cities";
+
 export const ADMINISTRACION_ALQUILER_METRO_BASE = "/administracion-alquiler";
+
+const BARCELONA_CITY_HUB = `${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`;
 
 export type MetroServiceItem = {
   title: string;
@@ -48,6 +56,9 @@ export type AdministracionAlquilerMetroLanding = {
   howImages: readonly string[];
   /** Slug en ALQUILER_REGULATORY_BY_SLUG (p. ej. barcelona) */
   regulatorySlug?: string;
+  /** Página madre (ciudad) — canonical propio en esta landing; enlace ascendente para jerarquía SEO */
+  parentCityHubPath: string;
+  parentCityHubLabel: string;
   jsonLd: {
     name: string;
     addressLocality: string;
@@ -95,12 +106,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     subtitle:
       "Asesoramiento legal y gestión integral con oficina física en tu propio distrito. Tu alquiler en manos de expertos por 49 €/mes sin permanencia.",
     heroLead:
-      "¿Cansado de que el inquilino te llame un domingo por una avería? En Les Corts —desde Pedralbes y La Maternitat hasta el eje Diagonal— Livendia se convierte en tu único interlocutor con el arrendatario: cobramos la renta, gestionamos incidencias con industriales de confianza y solo te avisamos cuando hace falta tu firma o tu decisión. Nuestra sede está en el propio distrito: no somos un call center lejano.",
+      "¿Cansado de que el inquilino te llame un domingo por una avería? En Les Corts —desde Pedralbes y La Maternitat hasta el eje Diagonal— Livendia se convierte en tu único interlocutor con el arrendatario: cobramos la renta, gestionamos incidencias con industriales de confianza y solo te avisamos cuando hace falta tu firma o tu decisión. Nuestra sede está en el propio distrito (Mejía Lequerica, 44): no somos un call center lejano.",
     eeatHeading: "Conocemos Les Corts porque estamos aquí",
     eeatBlock:
-      "Nuestra sede central está ubicada físicamente en el distrito de Les Corts (Mejía Lequerica, 44). Conocemos al detalle el mercado de Pedralbes, La Maternitat i Sant Ramon y Les Corts centro, el perfil del inquilino de la zona —familias, profesionales del Hospital Clínic, expatriados— y los límites del Índice de Referencia de Precios de Alquiler en Cataluña. Barcelona está en zona tensionada: cada renovación exige criterio legal que aplicamos antes de que firmes.",
+      "Nuestra sede central está en el distrito de Les Corts. Conocemos al detalle el mercado de Pedralbes (23 €/m² en oferta, Fotocasa agosto 2026), La Maternitat i Sant Ramon y Les Corts centre (21–22 €/m² según Idealista vía Properfy, 2026), y el perfil del inquilino —familias, personal del Hospital Clínic, expatriados del eje Diagonal—. Brains Real Estate (Q2 2026) sitúa el distrito en 24,90 €/m² de publicación. Cada renovación exige criterio IRAV en zona tensionada antes de que firmes.",
     whyIntro:
-      "Livendia no sustituye tu rol como propietario: tú sigues decidiendo sobre la renta, las obras importantes o la venta del piso. Lo que eliminamos es el contacto diario con el inquilino —llamadas, WhatsApp a deshora, presión de la comunidad— para que te centres en lo que importa. En Les Corts, donde el ticket medio supera los 1.800 €/mes en Pedralbes y baja en Maternitat, ese filtro profesional evita malentendidos costosos.",
+      "Livendia no sustituye tu rol como propietario: tú sigues decidiendo sobre la renta, las obras importantes o la venta del piso. Lo que eliminamos es el contacto diario con el inquilino —llamadas, WhatsApp a deshora, presión de la comunidad—. En un distrito donde la publicación ronda 24,90 €/m² (Brains Real Estate, Q2 2026) pero Pedralbes y Maternitat divergen varios euros por metro, ese filtro profesional evita malentendidos costosos en cobros y renovaciones.",
     howIntro:
       "Cuatro hitos claros desde el alta hasta el día a día: onboarding con datos del piso y del inquilino en Les Corts o Pedralbes, canal único Livendia-inquilino, coordinación de reparaciones con trazabilidad y resumen mensual de lo relevante para ti.",
     barriosIntro:
@@ -152,6 +163,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     ],
     localFaq: [
       {
+        question: "¿Cuál es el precio medio del alquiler en Les Corts?",
+        answer:
+          "Según Brains Real Estate (Q2 2026), el distrito se sitúa en 24,90 €/m² de publicación (~3.127 €/mes). Pedralbes ronda 23 €/m² (Fotocasa, agosto 2026) y Maternitat/centre algo por debajo según Idealista (Properfy, 2026). Tu gestor contrasta la referencia antes de cada renovación.",
+      },
+      {
         question: "¿Por qué contratar administración si mi oficina de gestoría está en Les Corts?",
         answer:
           "Precisamente porque operamos en el distrito: conocemos el mercado local, los plazos de Incasòl y los industriales de la zona. Pagas 49 €/mes por delegar el canal con el inquilino sin desplazarte al despacho por cada incidencia.",
@@ -170,6 +186,8 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     heroImage: "/images/barcelona2.jpg",
     howImages: HOW_IMAGES_DEFAULT,
     regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
     jsonLd: {
       name: "Livendia — Administración de alquiler en Les Corts",
       addressLocality: "Barcelona",
@@ -189,12 +207,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     subtitle:
       "Transforma tu propiedad en Gràcia en un ingreso pasivo y protegido por 49 €/mes IVA incl.",
     heroLead:
-      "Gràcia mezcla alquiler residencial LAU, pisos compartidos y estancias de temporada en plazas como Vila de Gràcia o Vallcarca. Esa mezcla multiplica llamadas del inquilino —ruido, convivencia, subarriendo— si no hay un gestor de por medio. Livendia filtra, cobra el día 1 y coordina averías; tú decides sobre la renta y las obras, no sobre el WhatsApp del domingo.",
+      "Gràcia mezcla alquiler residencial LAU, pisos compartidos y estancias de temporada en Vila de Gràcia (25,7 €/m² en oferta, Properfy/Idealista 2026) o Vallcarca (20,7 €/m²). Esa mezcla multiplica llamadas del inquilino —ruido, convivencia, subarriendo— si no hay un gestor de por medio. Livendia filtra, cobra el día 1 y coordina averías; tú decides sobre la renta y las obras, no sobre el WhatsApp del domingo.",
     eeatHeading: "Gràcia: LAU, temporada y perfiles diversos",
     eeatBlock:
-      "El mercado de Gràcia (Vila de Gràcia, Camp d'en Grassot, Vallcarca i els Penitents) combina alquiler residencial LAU y alquiler de temporada regulado. Gestionamos la heterogeneidad de inquilinos —profesionales, nómadas digitales, familias jóvenes— garantizando el cobro puntual y el cumplimiento normativo en zona tensionada barcelonesa. Operamos desde Les Corts, a 15 minutos en metro.",
+      "El mercado de Gràcia combina alquiler residencial LAU y temporada regulada. Brains Real Estate (Q2 2026) sitúa el distrito en 25,30 €/m² de publicación; Incasòl registró 1.041,60 €/mes de media real en 1T 2025 — por debajo de la oferta por los topes legales. Gestionamos perfiles diversos —profesionales, nómadas digitales, familias jóvenes (24 % de población extranjera, Idescat 2025)— con cobro puntual y cumplimiento normativo. Operamos desde Les Corts, a 15 minutos en metro.",
     whyIntro:
-      "En Gràcia la rotación es alta y los contratos mal redactados generan conflictos por ruido, mascotas o uso turístico encubierto. Livendia asume la mediación diaria: el inquilino sabe que debe pasar por nosotros; tú recibes un resumen claro cuando hay impago, renovación o una avería que supera el umbral que acordemos.",
+      "En Gràcia la rotación es alta —oferta a 25,30 €/m² según Brains RE (Q2 2026)— y los contratos mal redactados generan conflictos por ruido, mascotas o uso turístico encubierto. Livendia asume la mediación diaria: el inquilino sabe que debe pasar por nosotros; tú recibes un resumen claro cuando hay impago, renovación o una avería que supera el umbral que acordemos.",
     howIntro:
       "Alta del arrendamiento en panel, registro de contactos del inquilino, protocolo de incidencias con proveedores del barrio y avisos solo para pagos recibidos, impagos o decisiones que requieran tu firma en Vila de Gràcia o Camp d'en Grassot.",
     barriosIntro: "Zonas donde administramos alquileres en el distrito de Gràcia:",
@@ -239,6 +257,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     ],
     localFaq: [
       {
+        question: "¿Cuál es el precio medio del alquiler en Gràcia?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra la oferta del distrito en 25,30 €/m² (~2.014 €/mes). Por barrio varía: Vila de Gràcia 25,7 €/m², Vallcarca 20,7 €/m² (Properfy/Idealista, 2026). El alquiler real registrado en Incasòl (1T 2025) fue 1.041,60 €/mes — inferior por los topes de zona tensionada.",
+      },
+      {
         question: "¿Administráis pisos compartidos por habitaciones en Gràcia?",
         answer:
           "Sí. Coordinamos convivencia, reparto de suministros y canal único con cada arrendatario según el contrato. El propietario no recibe llamadas individuales de cada habitante.",
@@ -256,6 +279,8 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     heroImage: "/images/barcelona.jpg",
     howImages: ["/images/gestora2.jpg", "/images/familia2.jpg", "/images/equipo2.jpg", "/images/gestoria3.jpg"],
     regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
     jsonLd: {
       name: "Livendia — Administración de alquiler en Gràcia",
       addressLocality: "Barcelona",
@@ -274,12 +299,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     subtitle:
       "Máxima rentabilidad y protección anti-impago en L'Hospitalet de Llobregat por 49 €/mes sin permanencia.",
     heroLead:
-      "L'Hospitalet concentra uno de los parques de alquiler más densos del área metropolitana: Collblanc, Bellvitge, Santa Eulàlia, Pubilla Cases. El riesgo no es solo el impago —es la acumulación de incidencias en bloques con ascensor antiguo y comunidades exigentes. Livendia cobra, media y repara; tú no atiendes al inquilino en persona ni negocias con el presidente de la comunidad por teléfono.",
+      "L'Hospitalet concentra uno de los parques de alquiler más densos del área metropolitana —mediana ~56 m² en contratos registrados (AT 2024)— con barrios que van de 15 €/m² en Centre a 21 €/m² en Collblanc (Fotocasa, agosto 2026). El riesgo no es solo el impago: son incidencias en bloques con ascensor antiguo y comunidades exigentes. Livendia cobra, media y repara; tú no atiendes al inquilino en persona.",
     eeatHeading: "Área metropolitana, respuesta desde Les Corts",
     eeatBlock:
-      "Desde Collblanc y Santa Eulàlia hasta Bellvitge y Pubilla Cases, L'Hospitalet exige un control exhaustivo del cobro mensual y una respuesta ágil ante incidencias en la vivienda. Operamos desde Les Corts (Barcelona), a pocos minutos en metro o carretera, con presencia física y soporte constante. Conocemos la declaración de zona tensionada en Cataluña y el depósito en Incasòl aplicable a tu municipio.",
+      "Desde Collblanc (21 €/m²) hasta Centre (15 €/m²), según Fotocasa (agosto 2026), L'Hospitalet exige control del cobro y respuesta ágil ante averías en viviendas compactas. Idealista vía Properfy (febrero 2026) sitúa el municipio en 17,3 €/m² — por debajo de Barcelona capital (~23,9 €/m², El Periódico/ Idealista, junio 2025). Operamos desde Les Corts con presencia física. Zona tensionada catalana: depósito en Incasòl e IRAV en renovaciones.",
     whyIntro:
-      "Muchos propietarios en L'Hospitalet viven fuera del municipio o tienen varios pisos. Sin gestor, el inquilino acaba contactando directamente para todo —retrasos de pago, averías, certificados—. Livendia establece un protocolo claro: canal único, plazos de respuesta y escalado a ti solo cuando la ley o el contrato lo exigen.",
+      "Muchos propietarios en L'Hospitalet viven fuera del municipio o tienen varios pisos de 55–75 m². Sin gestor, el inquilino contacta directamente para todo —retrasos, averías de ascensor, certificados—. Livendia establece canal único y plazos de respuesta; tú solo intervienes cuando la ley o el contrato lo exigen.",
     howIntro:
       "Registro del inmueble y arrendatario, seguimiento de renta (SEPA o transferencia), gestión de impagos desde el día 3, coordinación con industriales del Baix Llobregat y resumen mensual en panel.",
     barriosIntro: "Barrios y núcleos de L'Hospitalet donde administramos alquileres:",
@@ -326,6 +351,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     ],
     localFaq: [
       {
+        question: "¿Cuánto cuesta alquilar en L'Hospitalet?",
+        answer:
+          "Idealista vía Properfy (febrero 2026) sitúa la oferta en 17,3 €/m² municipal; Fotocasa (agosto 2026) en 20 €/m². Collblanc–La Torrassa ronda 21 €/m² y Centre 15 €/m² (Fotocasa por barrio, agosto 2026). Un piso de ~60 m² puede suponer ~1.000–1.200 €/mes según zona.",
+      },
+      {
         question: "¿Atendéis incidencias en bloques antiguos de Bellvitge?",
         answer:
           "Sí. Tenemos red de mantenimiento en el Baix Llobregat para calderas, fontanería y cerrajería. El inquilino contacta con Livendia; nosotros abrimos incidencia y te informamos del presupuesto.",
@@ -343,6 +373,8 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     heroImage: "/images/gestora3.jpg",
     howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
     regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
     jsonLd: {
       name: "Livendia — Administración de alquiler en L'Hospitalet de Llobregat",
       addressLocality: "L'Hospitalet de Llobregat",
@@ -359,12 +391,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     h1: "Gestoría e Inmobiliaria de Administración en Cornellà de Llobregat",
     subtitle: "Delegación total de tu piso de alquiler en Cornellà por 49 €/mes.",
     heroLead:
-      "Cornellà —Almeda, Centre, Sant Ildefons, Gavarra— comparte normativa catalana de zona tensionada y demanda estable cerca de Barcelona y del Baix Llobregat. Livendia redacta o revisa tu contrato, deposita la fianza en Incasòl, cobra cada mes y resuelve incidencias. Tú no negocias con el inquilino ni persigues transferencias: te centras en tu patrimonio, no en la convivencia diaria.",
+      "Cornellà —Almeda, Centre, Sant Ildefons, Gavarra— comparte la normativa catalana de zona tensionada y oferta de alquiler en torno a 15,22 €/m² en pisos (Engel & Völkers, julio 2026), por debajo de Barcelona capital. Livendia deposita la fianza en Incasòl, cobra cada mes y resuelve incidencias. Tú no negocias con el inquilino ni persigues transferencias.",
     eeatHeading: "Cornellà y Baix Llobregat",
     eeatBlock:
-      "Gestionamos arrendamientos en Almeda, Centre, Sant Ildefons y Gavarra. Nos aseguramos de que tu contrato cumpla con la normativa de zona tensionada en el Baix Llobregat, que la fianza esté en Incasòl y de que recibas tu renta mes a mes sin discusiones con el inquilino. Desde Les Corts coordinamos visitas, suministros y renovaciones con plazos claros.",
+      "Gestionamos arrendamientos en Almeda, Centre, Sant Ildefons y Gavarra. Engel & Völkers (julio 2026) sitúa el alquiler de pisos en 15,22 €/m²; Inmobiliarias Barcelona (2025) estima un rango de 12–15 €/m² según barrio. Verificamos IRAV y baremo estatal en renovaciones, depositamos en Incasòl y canalizamos incidencias desde Les Corts con plazos claros.",
     whyIntro:
-      "En Cornellà muchos propietarios alquilaron durante la subida de precios y ahora necesitan renovar con IRAV o gestionar inquilinos que piden mejoras en la vivienda. Sin intermediario, cada petición acaba en tu móvil. Livendia filtra lo urgente de lo prescindible y te presenta opciones antes de gastar.",
+      "En Cornellà muchos propietarios alquilaron durante la subida de precios del Baix Llobregat y ahora renuevan con topes legales. Sin intermediario, cada petición de mejora o duda de suministros acaba en tu móvil. Livendia filtra lo urgente, contrasta presupuestos y te presenta opciones antes de gastar.",
     howIntro:
       "Expediente digital del piso, contacto único con el arrendatario, liquidación mensual de rentas, historial de incidencias en panel y gestión de renovaciones con límite legal de subida.",
     barriosIntro: "Zonas de Cornellà donde llevamos la administración del alquiler:",
@@ -403,6 +435,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     ],
     localFaq: [
       {
+        question: "¿Cuál es el precio medio del alquiler en Cornellà?",
+        answer:
+          "Engel & Völkers (julio 2026) sitúa los pisos en 15,22 €/m². Inmobiliarias Barcelona (2025) estima un rango de 12–15 €/m² según barrio — Centre y Almeda suelen estar en la banda alta. Consultamos el baremo estatal antes de fijar renta en contrato nuevo o renovación.",
+      },
+      {
         question: "¿Incluye la administración la revisión del contrato en Cornellà?",
         answer:
           "El servicio mensual cubre gestión del arrendamiento en curso. Si necesitas redactar un contrato nuevo desde cero, podemos vincularlo con nuestro servicio de contrato LAU (145 €) antes de activar la administración.",
@@ -420,6 +457,8 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     heroImage: "/images/gestora4.jpg",
     howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
     regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
     jsonLd: {
       name: "Livendia — Administración de alquiler en Cornellà de Llobregat",
       addressLocality: "Cornellà de Llobregat",

@@ -23,6 +23,8 @@ import {
   mergeAdministracionFaq,
 } from "@/lib/administracion-alquiler-local-regulatory";
 import { AdministracionAlquilerLocalRelatedServices } from "@/components/administracion-alquiler-local-related-services";
+import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
+import { ADMINISTRACION_ALQUILER_BARCELONA_CITY_HUB } from "@/lib/administracion-alquiler-barcelona-metro";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import Image from "next/image";
 import Link from "next/link";
@@ -361,6 +363,14 @@ export async function AdministracionAlquilerLocalSeoLanding({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </section>
+          ) : null}
+
+          {config.path === ADMINISTRACION_ALQUILER_BARCELONA_CITY_HUB ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6" aria-labelledby="metro-hub-heading">
+              <div className="mx-auto max-w-4xl">
+                <AdministracionAlquilerMetroHubLinks showTitle />
               </div>
             </section>
           ) : null}

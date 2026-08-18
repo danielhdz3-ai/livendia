@@ -9,10 +9,12 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { SiteFooter } from "@/components/site-footer";
+import { MetroLocalMarketSection } from "@/components/metro-local-market-section";
 import {
   mergeMetroFaq,
   type AdministracionAlquilerMetroLanding,
 } from "@/lib/administracion-alquiler-metro-landings";
+import { getMetroEnrichment } from "@/lib/administracion-alquiler-metro-enrichment";
 import { ALQUILER_REGULATORY_BY_SLUG } from "@/lib/administracion-alquiler-local-regulatory";
 import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquiler-local-cities";
 import {
@@ -133,6 +135,7 @@ export function AdministracionAlquilerMetroSeoLanding({
 }: {
   config: AdministracionAlquilerMetroLanding;
 }) {
+  const enrichment = getMetroEnrichment(config.segments);
   const waHref = buildWaHref(config.waPlaceLabel);
   const telHref = getContactPhoneTelHref();
   const mapsUrl = getBusinessMapsExternalUrl();
@@ -149,23 +152,26 @@ export function AdministracionAlquilerMetroSeoLanding({
     },
     {
       icon: Wrench,
-      title: "Incidencias resueltas por nosotros",
-      description:
-        "Coordinamos técnicos, presupuestos y seguimiento hasta el cierre. Tú apruebas cuando hace falta, no gestionas el día a día.",
+      title: "Incidencias en el parque local",
+      description: enrichment
+        ? `Coordinamos técnicos habituados al tipo de edificio de ${config.zoneLabel}: ${enrichment.dominantHousingType.split(".")[0]}.`
+        : "Coordinamos técnicos, presupuestos y seguimiento hasta el cierre. Tú apruebas cuando hace falta, no gestionas el día a día.",
       color: "from-cyan-500 to-cyan-600",
     },
     {
       icon: Clock,
-      title: "Cobro y calendario bajo control",
-      description:
-        "Seguimiento de la renta el día 1, renovaciones, plazos legales e IRAV en Cataluña con aviso previo.",
+      title: "Cobro y renovaciones con IRAV",
+      description: enrichment
+        ? `Seguimiento de la renta el día 1 y renovaciones con baremo legal en zona tensionada. Referencia de mercado: ${enrichment.rentPricePerSqm.split(".")[0]}.`
+        : "Seguimiento de la renta el día 1, renovaciones, plazos legales e IRAV en Cataluña con aviso previo.",
       color: "from-teal-500 to-teal-600",
     },
     {
       icon: Users,
-      title: "Mediación profesional",
-      description:
-        "Conflictos de convivencia, retrasos o peticiones del inquilino los filtramos con criterio antes de llegar a ti.",
+      title: "Mediación adaptada al inquilino",
+      description: enrichment
+        ? `Filtramos conflictos de convivencia y peticiones habituales de ${enrichment.tenantProfile[0]?.toLowerCase() ?? "la zona"} antes de llegar a ti.`
+        : "Conflictos de convivencia, retrasos o peticiones del inquilino los filtramos con criterio antes de llegar a ti.",
       color: "from-indigo-500 to-indigo-600",
     },
     {
@@ -222,6 +228,24 @@ export function AdministracionAlquilerMetroSeoLanding({
         <PublicHeader />
 
         <main id="contenido-principal">
+          <nav aria-label="Jerarquía de administración de alquiler" className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-3 sm:px-6">
+            <ol className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#64748b]">
+              <li>
+                <Link href={ADMINISTRACION_ALQUILER_LOCAL_BASE} className="hover:text-[#1A4FBF] hover:underline">
+                  Administración por ciudad
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link href={config.parentCityHubPath} className="hover:text-[#1A4FBF] hover:underline">
+                  {config.parentCityHubLabel}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="font-semibold text-[#1E293B]">{config.zoneLabel}</li>
+            </ol>
+          </nav>
+
           {/* Hero */}
           <header className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
@@ -334,6 +358,8 @@ export function AdministracionAlquilerMetroSeoLanding({
               </article>
             </div>
           </section>
+
+          {enrichment ? <MetroLocalMarketSection zoneLabel={config.zoneLabel} enrichment={enrichment} /> : null}
 
           {/* Servicios incluidos */}
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6" aria-labelledby="servicios-heading">
@@ -494,10 +520,10 @@ export function AdministracionAlquilerMetroSeoLanding({
                 </a>
                 <p className="mt-6">
                   <Link
-                    href={`${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`}
-                    className="text-sm font-medium text-[#64748b] underline-offset-2 hover:text-[#1A4FBF] hover:underline"
+                    href={config.parentCityHubPath}
+                    className="font-medium text-[#1A4FBF] underline-offset-2 hover:underline"
                   >
-                    Ver administración de alquiler en Barcelona (ciudad)
+                    ← {config.parentCityHubLabel}
                   </Link>
                 </p>
               </article>
