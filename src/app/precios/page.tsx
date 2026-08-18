@@ -1,11 +1,16 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PreciosPackOffers } from "@/components/precios-pack-offers";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { ServiceCardsClient } from "@/app/servicios/service-cards-client";
 import {
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+  LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
+  LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
+  PACK_ARRAS_GESTION_VENDEDOR_SLUGS,
+  PACK_LAU_ADMIN_SLUGS,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
@@ -23,13 +28,17 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Contratar gestoría inmobiliaria: precios y tarifas",
   description:
-    `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, arras 145 €, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
+    `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, pack LAU+admin ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL}, arras+gestión vendedor ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL}, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
   alternates: { canonical: `${getSiteUrl()}/precios` },
 };
 
 export default async function PreciosPage() {
   const services = await getPublicServices();
   const groups = groupByCategory(services);
+  const packSlugs = [...PACK_LAU_ADMIN_SLUGS, ...PACK_ARRAS_GESTION_VENDEDOR_SLUGS];
+  const servicesBySlug = Object.fromEntries(
+    services.filter((s) => packSlugs.includes(s.slug as (typeof packSlugs)[number])).map((s) => [s.slug, s]),
+  );
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
@@ -46,6 +55,8 @@ export default async function PreciosPage() {
         </section>
 
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <PreciosPackOffers servicesBySlug={servicesBySlug} />
+
           {groups.length === 0 ? (
             <p className="rounded-xl bg-white p-8 text-center text-[#64748b] shadow ring-1 ring-slate-200">
               No hay precios publicados todavía.

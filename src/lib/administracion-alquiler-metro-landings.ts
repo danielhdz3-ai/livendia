@@ -73,7 +73,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   {
     question: "¿Dónde están ubicadas las oficinas de Livendia?",
     answer:
-      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Gràcia, Les Corts, Eixample) y en todo el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat).",
+      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Gràcia, Les Corts, Eixample) y en todo el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat, Badalona).",
   },
   {
     question: "¿Qué incluye exactamente la cuota de 49 €/mes?",
@@ -463,6 +463,275 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       name: "Livendia — Administración de alquiler en Cornellà de Llobregat",
       addressLocality: "Cornellà de Llobregat",
       areaServedName: "Cornellà de Llobregat",
+    },
+  },
+  {
+    segments: ["barcelona", "eixample"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/eixample`,
+    zoneLabel: "Eixample",
+    metaTitle: "Administración de Alquiler en Eixample, Barcelona",
+    metaDescription:
+      "Delegación integral de tu alquiler en Eixample (Dreta, Esquerra, Sagrada Família) por 49 €/mes. Cobro, incidencias e IRAV en zona tensionada.",
+    h1: "Administración Integral de Alquileres en el Eixample (Barcelona)",
+    subtitle:
+      "Protege tu inversión en el corazón de Barcelona por 49 €/mes IVA incl. — sin permanencia.",
+    heroLead:
+      "El Eixample concentra la oferta de alquiler más cara de Barcelona —30,32 €/m² en publicación (Brains Real Estate, Q2 2026)— con inquilinos exigentes y fincas centenarias. Livendia cobra la renta, gestiona incidencias con industriales del distrito y calcula topes IRAV en renovaciones. Tú no atiendes llamadas del inquilino ni persigues transferencias.",
+    eeatHeading: "Eixample: precios altos, normativa estricta",
+    eeatBlock:
+      "Gestionamos arrendamientos en Dreta de l'Eixample, Antiga Esquerra, Nova Esquerra, Fort Pienc y Sagrada Família. Brains Real Estate (Q2 2026) sitúa el distrito en 30,32 €/m² (~3.113 €/mes); Idealista (abril 2025) en 26,5 €/m² de oferta; Incasòl registró mediana ~1.284 €/mes en contratos firmados (Nitia, 2024). Zona tensionada: cada renovación exige criterio IRAV antes de firmar. Operamos desde Les Corts, a minutos del distrito.",
+    whyIntro:
+      "En el Eixample un punto de €/m² representa cientos de euros anuales y un error en renovación o cobro puede costar más que años de gestoría. Livendia filtra el contacto diario con el inquilino —averías, suministros, quejas de vecinos— y te resume solo lo que requiere tu firma o decisión económica.",
+    howIntro:
+      "Alta del inmueble en panel, canal único Livendia-inquilino, protocolo de cobro desde el día 3, coordinación con industriales del Eixample y resumen mensual de rentas e incidencias.",
+    barriosIntro: "Barrios del Eixample donde administramos alquileres:",
+    barrios: [
+      "Dreta de l'Eixample",
+      "Antiga Esquerra de l'Eixample",
+      "Nova Esquerra de l'Eixample",
+      "Fort Pienc",
+      "Sagrada Família",
+      "Sant Antoni (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones con tope IRAV",
+        description:
+          "Cálculo de incremento máximo legal en zona tensionada antes de enviar propuesta al inquilino — especialmente crítico cuando la oferta publicada supera los 30 €/m².",
+      },
+      {
+        title: "Incidencias en fincas regias",
+        description:
+          "Red de mantenimiento para calderas comunitarias, ascensores antiguos y fontanería en edificios del ensanche.",
+      },
+      {
+        title: "Cobro y mediación profesional",
+        description:
+          "Seguimiento de transferencias, recordatorios automatizados y escalado documentado antes de que el impago llegue a tu móvil.",
+      },
+      {
+        title: "Depósito en INCASÒL",
+        description:
+          "Tramitación de fianza legal, cambio de titularidad de suministros y archivo en panel del propietario.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en el Eixample que delegaron el contacto con el inquilino",
+    testimonials: [
+      {
+        quote:
+          "Tengo un piso en Dreta de l'Eixample y vivo en Londres. Livendia gestionó la renovación con IRAV y yo solo firmé el resumen. El inquilino no tiene mi teléfono desde hace un año.",
+        author: "Claire M.",
+        role: "Propietaria, Dreta de l'Eixample",
+      },
+      {
+        quote:
+          "Alquilo cerca de Sagrada Família. Cuando falló el ascensor, Livendia coordinó con la comunidad y el técnico. Yo recibí el presupuesto por email y nada más.",
+        author: "Oriol B.",
+        role: "Propietario, Sagrada Família",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en el Eixample?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra la oferta en 30,32 €/m² (~3.113 €/mes). Idealista (abril 2025) sitúa el distrito en 26,5 €/m². Incasòl registró mediana ~1.284 €/mes en contratos firmados (Nitia, 2024). Tu gestor contrasta referencia antes de cada renovación.",
+      },
+      {
+        question: "¿Gestionáis pisos de alto ticket en Passeig de Gràcia?",
+        answer:
+          "Sí. El protocolo de cobro y mediación es el mismo; adaptamos comunicación al perfil del inquilino (familias, ejecutivos, expatriados) y documentamos cada paso en el panel.",
+      },
+      {
+        question: "¿Por qué contratar administración si el piso está en zona premium?",
+        answer:
+          "Precisamente porque el ticket es alto: un impago o una renovación mal calculada cuesta más que 49 €/mes. Livendia asume el canal con el inquilino y verifica IRAV en cada subida legal.",
+      },
+    ],
+    finalCtaLead:
+      "Activa la administración Livendia en el Eixample: gestor dedicado, cobro puntual y cero llamadas del inquilino a tu móvil.",
+    primaryCtaLabel: "Consultar con Gestor en Eixample por WhatsApp",
+    waPlaceLabel: "Eixample, Barcelona",
+    heroImage: "/images/barcelona2.jpg",
+    howImages: ["/images/gestora5.jpg", "/images/familia2.jpg", "/images/equipo1.jpg", "/images/gestoria5.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Eixample",
+      addressLocality: "Barcelona",
+      addressRegion: "Eixample",
+      geo: { latitude: "41.3888", longitude: "2.1680" },
+      areaServedName: "Eixample, Barcelona",
+    },
+  },
+  {
+    segments: ["sant-cugat"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-cugat`,
+    zoneLabel: "Sant Cugat del Vallès",
+    metaTitle: "Administración de Alquiler en Sant Cugat del Vallès",
+    metaDescription:
+      "Gestión integral de alquileres en Sant Cugat (Mira-sol, Centre, Volpelleres) por 49 €/mes. Cobro, incidencias e IRAV desde Les Corts.",
+    h1: "Administración de Alquileres en Sant Cugat del Vallès",
+    subtitle:
+      "Familias, casas y pisos premium en el Vallès — gestionados por 49 €/mes sin permanencia.",
+    heroLead:
+      "Sant Cugat combina vivienda unifamiliar en Mira-sol y Valldoreix con pisos en Centre-Vila —Fotocasa (agosto 2026) sitúa el municipio en 17 €/m², con ticket medio alto por superficie—. Livendia cobra la renta, coordina incidencias en casas y chalets, y calcula IRAV en renovaciones. Tú no negocias con el inquilino ni persigues transferencias.",
+    eeatHeading: "Sant Cugat: calidad de vida, gestión profesional",
+    eeatBlock:
+      "Administramos alquileres en Centre-Vila, Mira-sol, Valldoreix, Volpelleres, Les Planes y Can Matas. Fotocasa (agosto 2026): 17 €/m² municipal; La Voz Central (2025) citaba ~20,66 €/m² en Idealista. Zona tensionada catalana: depósito Incasòl e IRAV en renovaciones. Respuesta desde nuestra sede en Les Corts (~20 min en FGC o carretera).",
+    whyIntro:
+      "Muchos propietarios en Sant Cugat viven fuera del municipio o en el extranjero. Sin gestor, cada avería en jardín, piscina comunitaria o caldera acaba en tu móvil. Livendia establece canal único, contrasta presupuestos y te presenta opciones antes de autorizar gasto.",
+    howIntro:
+      "Expediente digital del inmueble, contacto único con el arrendatario, liquidación mensual de rentas, historial de incidencias en panel y gestión de renovaciones con límite legal.",
+    barriosIntro: "Zonas de Sant Cugat donde llevamos la administración:",
+    barrios: ["Centre-Vila", "Mira-sol", "Valldoreix", "Volpelleres", "Les Planes", "Can Matas", "Parc Central"],
+    serviceBullets: [
+      {
+        title: "Casas y chalets adosados",
+        description:
+          "Coordinación de incidencias en viviendas unifamiliares: cubiertas, jardín, piscina comunitaria y portería.",
+      },
+      {
+        title: "Renovaciones con IRAV",
+        description:
+          "Cálculo de incremento máximo en zona tensionada antes de comunicar al inquilino — habitual en contratos familiares de larga duración.",
+      },
+      {
+        title: "Panel y gestor dedicado",
+        description:
+          "Acceso 24/7 a contratos, recibos e incidencias desde cualquier ubicación — sin desplazarte a Sant Cugat por cada papel.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sant Cugat con el inquilino bajo control",
+    testimonials: [
+      {
+        quote:
+          "Alquilo un chalet en Mira-sol y vivo en Madrid. Livendia gestionó una filtración en cubierta y yo solo aprobé el presupuesto por email. El inquilino no me llama.",
+        author: "Patricia G.",
+        role: "Propietaria, Mira-sol",
+      },
+      {
+        quote:
+          "Renové contrato en Volpelleres y Livendia calculó el tope IRAV antes de enviar la propuesta. Todo documentado en el panel.",
+        author: "Jordi M.",
+        role: "Propietario, Volpelleres",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sant Cugat?",
+        answer:
+          "Fotocasa (agosto 2026) sitúa el municipio en 17 €/m²; La Voz Central (2025) citaba ~20,66 €/m² en oferta Idealista. Un piso de 90 m² puede suponer ~1.500–1.900 €/mes según zona y estado.",
+      },
+      {
+        question: "¿Atendéis incidencias en casas unifamiliares?",
+        answer:
+          "Sí. Coordinamos industriales del Vallès para cubiertas, fontanería, calefacción y averías comunitarias en urbanizaciones.",
+      },
+      {
+        question: "¿Puedo contratar si vivo fuera de Sant Cugat?",
+        answer:
+          "Es el caso más habitual. El panel online y WhatsApp con tu gestor sustituyen los desplazamientos. La oficina en Les Corts queda a ~20 minutos si necesitas firma presencial.",
+      },
+    ],
+    finalCtaLead:
+      "Delega en Sant Cugat la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado por 49 €/mes.",
+    primaryCtaLabel: "Contactar con el Gestor de Sant Cugat",
+    waPlaceLabel: "Sant Cugat del Vallès",
+    heroImage: "/images/gestora6.jpg",
+    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Cugat del Vallès",
+      addressLocality: "Sant Cugat del Vallès",
+      areaServedName: "Sant Cugat del Vallès",
+    },
+  },
+  {
+    segments: ["badalona"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/badalona`,
+    zoneLabel: "Badalona",
+    metaTitle: "Administración de Alquiler en Badalona",
+    metaDescription:
+      "Gestión de alquileres en Badalona (Centre, Gorg, Montigalà) por 49 €/mes. Cobro de rentas, incidencias e IRAV en zona tensionada.",
+    h1: "Administración de Alquileres en Badalona",
+    subtitle:
+      "Protege tu piso en Badalona por 49 €/mes IVA incl. — metro directo a Barcelona, gestor desde Les Corts.",
+    heroLead:
+      "Badalona —Centre, Gorg, Montigalà, Sant Roc— concentra alquiler asequible frente a Barcelona capital: Idealista (2025) en 19,22 €/m² de oferta, Engel & Völkers (julio 2026) en 14,16 €/m² para pisos. El parque envejecido multiplica incidencias si no hay gestor. Livendia cobra, media y repara; tú no atiendes al inquilino en persona.",
+    eeatHeading: "Badalona: densidad, metro y normativa catalana",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, Gorg, Montigalà, Bufalà, Nova Lloreda y Sant Roc. Idealista (2025): 19,22 €/m² oferta; SERPAVI (2024): mediana ~10,17 €/m² en contratos reales; Engel & Völkers (julio 2026): 14,16 €/m² pisos. Zona tensionada: Incasòl e IRAV en renovaciones. Operamos desde Les Corts (~25 min en metro L2).",
+    whyIntro:
+      "Muchos propietarios en Badalona tienen el piso como inversión y viven en otro municipio. Sin intermediario, el inquilino contacta para todo —retrasos, ascensor, humedades—. Livendia establece canal único y plazos de respuesta; tú solo intervienes cuando la ley o el contrato lo exigen.",
+    howIntro:
+      "Registro del inmueble, seguimiento de renta, gestión de impagos desde el día 3, coordinación con industriales del Maresme-Besòs y resumen mensual en panel.",
+    barriosIntro: "Barrios de Badalona donde administramos alquileres:",
+    barrios: ["Centre", "Gorg", "Montigalà", "Bufalà", "Nova Lloreda", "Sant Roc", "Llefià"],
+    serviceBullets: [
+      {
+        title: "Protocolo de cobros",
+        description:
+          "Seguimiento de transferencias, recordatorios automáticos y mediación profesional antes de escalar — crítico en barrios con rotación moderada.",
+      },
+      {
+        title: "Incidencias en bloques antiguos",
+        description:
+          "Red de mantenimiento para calderas, fontanería comunitaria y ascensores en edificios de los 60–80.",
+      },
+      {
+        title: "Fianza en INCASÒL",
+        description:
+          "Depósito legal, suministros y documentación al alta — incluido en la cuota mensual de 49 €.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Badalona que dejaron de perseguir la renta",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Gorg y yo en Sabadell. Livendia aplicó el protocolo de cobro cuando el inquilino retrasaba la transferencia. Yo recibo aviso en el panel el día 1.",
+        author: "Marta S.",
+        role: "Propietaria, Gorg",
+      },
+      {
+        quote:
+          "Hubo humedad en Centre tras lluvias. Livendia mandó perito, habló con la comunidad y yo solo aprobé la obra. El inquilino no me escribe.",
+        author: "Ramon P.",
+        role: "Propietario, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Badalona?",
+        answer:
+          "Idealista (2025) sitúa la oferta en 19,22 €/m²; Engel & Völkers (julio 2026) en 14,16 €/m² para pisos; SERPAVI (2024) registra mediana ~10,17 €/m² en contratos reales. Un piso de ~65 m² puede suponer ~650–1.250 €/mes según barrio y estado.",
+      },
+      {
+        question: "¿Atendéis incidencias en Sant Roc o Llefià?",
+        answer:
+          "Sí. Tenemos red de mantenimiento en el área metropolitana norte para fontanería, calderas y cerrajería. El inquilino contacta con Livendia.",
+      },
+      {
+        question: "¿Puedo contratar si vivo en Barcelona capital?",
+        answer:
+          "Sí. Badalona está a 15–25 min en metro L2 desde el centro. El panel y WhatsApp sustituyen desplazamientos; la oficina en Les Corts queda accesible si necesitas firma presencial.",
+      },
+    ],
+    finalCtaLead:
+      "Protege tu alquiler en Badalona con un gestor que habla con el inquilino por ti — 49 €/mes, sin permanencia.",
+    primaryCtaLabel: "Solicitar Gestión en Badalona por WhatsApp",
+    waPlaceLabel: "Badalona",
+    heroImage: "/images/gestora7.jpg",
+    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Badalona",
+      addressLocality: "Badalona",
+      areaServedName: "Badalona",
     },
   },
 ];

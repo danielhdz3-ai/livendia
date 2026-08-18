@@ -180,6 +180,129 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       "Polígon industrial Almeda",
     ],
   },
+
+  "barcelona/eixample": {
+    rentPricePerSqm:
+      "Distrito Eixample: 30,32 €/m² y renta media de publicación ~3.113 €/mes (Brains Real Estate, Q2 2026). Idealista (abril 2025) sitúa la oferta del distrito en 26,5 €/m². Incasòl registró en contratos firmados una mediana de ~1.284 €/mes en el distrito (Nitia, datos agregados 2024). Por subzonas, Dreta de l'Eixample y Sagrada Família suelen superar la media municipal barcelonesa.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, precio medio distrito Eixample, abril 2025; Nitia/Incasòl, mediana contratos firmados Eixample, 2024.",
+    dominantHousingType:
+      "Ensanche clásico (Eixample esquerre i dret): pisos de 80–120 m² en fincas regias con techos altos, muchos sin ascensor en plantas bajas o con ascensor antiguo. Bloques del s. XX en Fort Pienc y Sagrada Família con viviendas de 65–95 m². Alta proporción de pisos reformados para alquiler de larga duración, estancias corporativas y expatriados.",
+    tenantProfile: [
+      "Profesionales y familias en Dreta de l'Eixample y Passeig de Gràcia",
+      "Expatriados y personal médico cerca del Hospital Clínic y Sant Pau",
+      "Ejecutivos en traslado temporal (3–24 meses) en Fort Pienc",
+      "Parejas jóvenes en Antiga Esquerra de l'Eixample con contrato LAU estable",
+    ],
+    localRegulatoryNote:
+      "Eixample está en zona tensionada catalana (271 municipios, MIVAU 2024–2027). La brecha entre oferta en portales (~26–30 €/m²) y contratos registrados (~1.284 €/mes mediana Nitia/Incasòl) refleja topes IRAV y baremo estatal. Cada renovación exige cálculo legal antes de proponer subida al inquilino.",
+    marketContext:
+      "El Eixample es el distrito con mayor peso en la oferta de alquiler de Barcelona capital: Brains Real Estate (Q2 2026) lo sitúa en 30,32 €/m² de publicación (+6,8 % interanual), con esfuerzo de alquiler del 42,1 %. Idealista (abril 2025) mostraba 26,5 €/m² en oferta agregada — la diferencia con contratos reales (~1.284 €/mes mediana Incasòl vía Nitia, 2024) confirma la presión regulatoria. Para el propietario, el reto no es encontrar inquilino sino gestionar renovaciones con IRAV, incidencias en fincas centenarias (fontanería comunitaria, ascensores) y perfiles exigentes que esperan respuesta inmediata. Livendia filtra ese contacto diario desde Les Corts, a 10–15 minutos del distrito.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Renovación con tope IRAV en Dreta de l'Eixample",
+        body: "Un propietario quiere subir la renta en la renovación de un piso de 95 m². Livendia consulta la renta de referencia, calcula el incremento máximo legal en zona tensionada y prepara la propuesta documentada. El inquilino recibe la comunicación del gestor; el propietario solo firma si está de acuerdo con el resumen en una página.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Avería de ascensor en finca regia",
+        body: "El inquilino avisa de ascensor averiado en un quinto sin alternativa viable. Livendia abre incidencia con la comunidad y el mantenedor, hace seguimiento diario y reporta al propietario solo si hay derrama o coste individual que deba autorizar — sin llamadas del inquilino al móvil personal del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Retraso de transferencia en estancia corporativa",
+        body: "Un inquilino con empresa pagadora retrasa la renta al día 8. Livendia aplica el protocolo desde el día 3, contacta con el arrendatario y con la empresa si procede, y registra el justificante. El propietario ve el estado en el panel sin perseguir pagos por email.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Passeig de Gràcia",
+      "Sagrada Família",
+      "Hospital Clínic de Barcelona",
+      "Plaça de Catalunya",
+      "Rambla de Catalunya",
+      "Estació de Sants (límite oeste)",
+    ],
+  },
+
+  "sant-cugat": {
+    rentPricePerSqm:
+      "Municipio Sant Cugat del Vallès: 17 €/m² según Fotocasa (agosto 2026). Idealista vía La Voz Central (~20,66 €/m² en oferta agregada, 2025). Incasòl fijó máximos de referencia en 2023 para contratos nuevos en municipios tensionados del Vallès. Por zonas, Centre-Vila y Volpelleres suelen estar por encima de la media municipal.",
+    rentPriceSourceNote:
+      "Fotocasa, índice municipal Sant Cugat, agosto 2026; La Voz Central citando Idealista, 2025; Incasòl, baremos zona tensionada Vallès, 2023.",
+    dominantHousingType:
+      "Chalets adosados y casas unifamiliares en Mira-sol, Valldoreix y Les Planes. Bloques de los 80–2000 en Centre-Vila, Can Matas y Volpelleres (75–110 m²). Promociones recientes en Parc Central y Eixample Sant Cugat con viviendas orientadas a familias con hijos en colegios concertados o internacionales.",
+    tenantProfile: [
+      "Familias con hijos en colegios de Sant Cugat o Barcelona",
+      "Ejecutivos del Vallès y teletrabajadores de alta renta",
+      "Personal sanitario y investigadores del entorno hospitalario",
+      "Inquilinos estables en contratos LAU largos (2–5 años)",
+    ],
+    localRegulatoryNote:
+      "Sant Cugat está incluido en la declaración de zona tensionada de Cataluña. Los nuevos contratos y renovaciones deben respetar baremo estatal e IRAV. El municipio combina oferta premium (casas y pisos amplios) con topes legales que obligan a contrastar cada subida con referencia oficial antes de notificar al inquilino.",
+    marketContext:
+      "Sant Cugat es uno de los municipios con mayor renta per cápita del área metropolitana barcelonesa. Fotocasa (agosto 2026) sitúa el alquiler en 17 €/m² municipal — por debajo de Barcelona capital (~23–30 €/m² según distrito) pero con ticket medio alto por superficie (muchas viviendas de 90–130 m²). La Voz Central (2025) citaba ~20,66 €/m² en oferta Idealista. La demanda proviene de familias que priorizan colegios, FGC y calidad de vida frente a vivir en Barcelona ciudad. Para el propietario fuera del municipio — habitual en Mira-sol y Valldoreix — el coste oculto son incidencias en casas (jardín, piscina comunitaria, portería) y renovaciones con IRAV en un mercado donde el inquilino tipo espera servicio profesional.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Incidencia en chalet adosado de Mira-sol",
+        body: "Filtración en cubierta tras temporal. Livendia manda industrial, determina si es origen individual o comunitario, gestiona con la seguro-comunidad si procede y presenta presupuesto al propietario antes de autorizar obra. El inquilino canaliza todo por el gestor.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación en Volpelleres con IRAV",
+        body: "Antes del vencimiento contractual, Livendia calcula incremento máximo legal, prepara propuesta y documenta la comunicación al inquilino. El propietario residente en Madrid revisa el resumen online y aprueba sin reunión presencial en el municipio.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Cambio de titularidad de suministros",
+        body: "Tras rotación de inquilino en Centre-Vila, Livendia gestiona baja/alta de luz y agua, recoge lecturas y archiva justificantes en el panel. El propietario no coordina citas con el nuevo arrendatario.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Monestir de Sant Cugat",
+      "Estació FGC Sant Cugat",
+      "Parc Central de Sant Cugat",
+      "Mira-sol / Valldoreix (FGC)",
+      "Hospital General de Catalunya (límite)",
+      "Camp Nou (15 min en FGC)",
+    ],
+  },
+
+  badalona: {
+    rentPricePerSqm:
+      "Municipio Badalona: 19,22 €/m² en oferta (Idealista, datos agregados 2025). SERPAVI/contratos registrados 2024: mediana ~10,17 €/m² en alquiler real. Engel & Völkers (julio 2026) sitúa pisos en 14,16 €/m². Por barrios, Centre y Gorg suelen superar la mediana; Sant Roc y Llefià más asequibles.",
+    rentPriceSourceNote:
+      "Idealista, oferta agregada Badalona, 2025; SERPAVI, mediana contratos 2024; Engel & Völkers, precios alquiler Badalona, julio 2026.",
+    dominantHousingType:
+      "Bloques de los 60–90 en Centre, Gorg y Sant Josep (55–80 m²), muchos con ascensor antiguo y reformas parciales. Edificios más recientes en Montigalà y Bufalà (70–95 m²). En Sant Roc y Llefià, parque envejecido con viviendas compactas y alta densidad.",
+    tenantProfile: [
+      "Familias que trabajan en Barcelona y buscan alquiler más asequible que la capital",
+      "Parejas jóvenes en Gorg y Centre, bien comunicados en metro L2",
+      "Trabajadores del sector industrial y logístico del Besòs",
+      "Inquilinos estables en barrios consolidados (Montigalà, Nova Lloreda)",
+    ],
+    localRegulatoryNote:
+      "Badalona está en zona tensionada catalana. La brecha entre oferta Idealista (~19 €/m²) y contratos SERPAVI (~10,17 €/m² mediana 2024) muestra el efecto de topes legales e IRAV. Depósito en Incasòl obligatorio; renovaciones con cálculo de referencia antes de cualquier comunicación al inquilino.",
+    marketContext:
+      "Badalona es el tercer municipio más poblado de Cataluña (>220.000 hab.) y alternativa habitual a Barcelona por precio y metro directo (L2, L10). Idealista (2025) sitúa la oferta en 19,22 €/m²; Engel & Völkers (julio 2026) en 14,16 €/m² para pisos; SERPAVI (2024) registra mediana real de 10,17 €/m² — la divergencia confirma presión regulatoria. El parque es compacto y envejecido; incidencias de fontanería, ascensor y humedades son frecuentes. Para propietarios fuera del municipio, Livendia desde Les Corts (~25 min) asume cobro, mediación e industriales del Maresme-Besòs.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Humedad por filtración en Gorg",
+        body: "Aparece humedad en salón tras lluvias. Livendia manda perito, determina origen comunitario o interior, abre conversación con la comunidad si procede y mantiene informado al propietario con fotos y presupuesto antes de obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago reiterado en Sant Roc",
+        body: "El inquilino retrasa la transferencia dos meses consecutivos. Livendia aplica protocolo de cobro desde el día 3, registra justificantes y escala con mediación formal antes de informar al propietario de pasos legales adicionales.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Certificado de empadronamiento",
+        body: "Un inquilino solicita documentación para escolarizar. Livendia verifica procedencia, coordina firma con el propietario y entrega copia al arrendatario — sin llamadas al móvil del propietario en horario laboral.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Metro Gorg / Pep Ventura (L2)",
+      "Platja de Badalona",
+      "Rambla de Badalona",
+      "Anís del Mono (fábrica histórica)",
+      "Montigalà",
+      "Hospital Germans Trias i Pujol (límite)",
+    ],
+  },
 };
 
 export function getMetroEnrichment(segments: readonly string[]): MetroLandingEnrichment | undefined {

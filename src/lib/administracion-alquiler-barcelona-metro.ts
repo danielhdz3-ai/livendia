@@ -29,6 +29,13 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     kind: "barrio" as const,
   },
   {
+    slug: "eixample",
+    segments: ["barcelona", "eixample"] as const,
+    name: "Eixample, Barcelona",
+    shortName: "Eixample",
+    kind: "barrio" as const,
+  },
+  {
     slug: "l-hospitalet",
     segments: ["l-hospitalet"] as const,
     name: "L'Hospitalet de Llobregat",
@@ -40,6 +47,20 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     segments: ["cornella"] as const,
     name: "Cornellà de Llobregat",
     shortName: "Cornellà",
+    kind: "municipio" as const,
+  },
+  {
+    slug: "sant-cugat",
+    segments: ["sant-cugat"] as const,
+    name: "Sant Cugat del Vallès",
+    shortName: "Sant Cugat",
+    kind: "municipio" as const,
+  },
+  {
+    slug: "badalona",
+    segments: ["badalona"] as const,
+    name: "Badalona",
+    shortName: "Badalona",
     kind: "municipio" as const,
   },
 ] as const;

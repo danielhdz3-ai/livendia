@@ -365,6 +365,8 @@ export const VENTA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields>
     whySubtitle:
       "Mercado pausado, muchas ventas entre conocidos. El riesgo está en herencias, arras copiadas y cargas en la nota simple — no en el cartel de venta.",
     localZonesHeading: "Zonas donde gestionamos ventas entre particulares en Valladolid",
+    localZones:
+      "Centro, Delicias, Parquesol, Rondilla, La Victoria, Laguna de Duero, Arroyo de la Encomienda y operaciones en provincia con comprador ya confirmado.",
     localBenefits: [
       {
         title: "Herencia y titularidad registral",
@@ -420,6 +422,8 @@ export const VENTA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields>
     whySubtitle:
       "Turismo residencial, universidad y ventas entre particulares. Livendia blinda contratos cuando tú ya tienes comprador.",
     localZonesHeading: "Barrios y municipios donde gestionamos ventas en Granada",
+    localZones:
+      "Albaicín, Realejo, Zaidín, Ronda, Chana, Armilla, Maracena y operaciones en Vega o costa granadina con comprador particular.",
     localBenefits: [
       {
         title: "Albaicín y casco histórico",

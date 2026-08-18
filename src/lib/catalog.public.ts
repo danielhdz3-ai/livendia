@@ -61,11 +61,31 @@ export const CONTRATO_ARRAS_LOCAL_PRICE_LABEL = `${CONTRATO_ARRAS_LOCAL_PRICE_EU
 export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR =
   CONTRATO_ARRAS_LOCAL_PRICE_EUR + GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR;
 
+/** Administración de alquiler — cuota mensual IVA incl. */
+export const ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR = 49;
+export const ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL = `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €/mes`;
+export const ADMINISTRACION_ALQUILER_SLUG = "administracion-alquiler" as const;
+
 /** Contrato de alquiler LAU — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_LAU_PRICE_EUR = 145;
 export const CONTRATO_ALQUILER_LAU_PRICE_CENTS = CONTRATO_ALQUILER_LAU_PRICE_EUR * 100;
 export const CONTRATO_ALQUILER_LAU_PRICE_LABEL = `${CONTRATO_ALQUILER_LAU_PRICE_EUR} €`;
 export const CONTRATO_ALQUILER_LAU_SLUG = "contrato-alquiler-lau" as const;
+
+/** Pack comercial: contrato LAU + primer mes de administración (IVA incl. cada partida). */
+export const LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR =
+  CONTRATO_ALQUILER_LAU_PRICE_EUR + ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR;
+export const LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL = `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €`;
+export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL = `${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR} €`;
+
+/** Slugs del pack arras + gestión documental vendedor. */
+export const PACK_ARRAS_GESTION_VENDEDOR_SLUGS = [
+  "contrato-arras-penitenciales",
+  "gestion-documental-vendedor",
+] as const;
+
+/** Slugs del pack LAU + primer mes administración. */
+export const PACK_LAU_ADMIN_SLUGS = [CONTRATO_ALQUILER_LAU_SLUG, ADMINISTRACION_ALQUILER_SLUG] as const;
 
 /** Contrato de alquiler por temporada — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR = 200;
