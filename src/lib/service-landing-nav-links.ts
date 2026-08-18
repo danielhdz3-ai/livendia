@@ -10,34 +10,52 @@ export type ServiceLandingNavLink = {
 
 export type ServiceLandingNavGroup = {
   title: string;
+  /** Subtítulo bajo el encabezado de columna (mega-menú desktop). */
+  subtitle: string;
   links: readonly ServiceLandingNavLink[];
 };
 
-/** Grupos para el desplegable «Servicios» del header. */
+/** Grupos para el mega-menú «Servicios» del header (PC: 4 columnas). */
 export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
   {
     title: "Compraventa",
+    subtitle: "Arras, reserva y trámites comunes",
     links: [
-      { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
-      { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento reserva hasta arras" },
-      { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
-      { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
-      { href: "/servicios/servicio-completo-venta", label: "Servicio completo de venta" },
-      { href: "/servicios/revision-documental-post-arras", label: "Revisión documental comprador post-arras" },
-      { href: "/servicios/gestion-documental-vendedor", label: "Gestión documental vendedor post-arras" },
+      { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras" },
       { href: "/servicios/contrato-arras-penitenciales", label: "Arras penitenciales" },
-      { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras (penitenciales y confirmatorias)" },
+      { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento hasta arras" },
+      { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
+    ],
+  },
+  {
+    title: "Vendedor",
+    subtitle: "Vende entre particulares",
+    links: [
+      { href: "/servicios/servicio-completo-venta", label: "Servicio completo de venta" },
+      { href: "/servicios/vender-piso-sin-agencia", label: "Vender sin agencia" },
+      { href: "/servicios/gestion-documental-vendedor", label: "Gestión documental post-arras" },
+    ],
+  },
+  {
+    title: "Comprador",
+    subtitle: "Compra con respaldo legal",
+    links: [
+      { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
+      { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
+      { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
     ],
   },
   {
     title: "Alquiler",
+    subtitle: "Propietarios e inquilinos",
     links: [
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
       { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato de habitación" },
-      { href: "/servicios/revision-contrato-alquiler", label: "Revisión de contrato de alquiler" },
-      { href: "/servicios/contrato-de-alquiler", label: "Guía de contratos de alquiler" },
       { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
+      { href: "/servicios/acompanamiento-alquiler", label: "Acompañamiento de alquiler" },
+      { href: "/servicios/revision-contrato-alquiler", label: "Revisión contrato (inquilinos)" },
+      { href: "/servicios/contrato-de-alquiler", label: "Guía de contratos de alquiler" },
     ],
   },
 ] as const;
