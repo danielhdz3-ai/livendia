@@ -11,6 +11,10 @@ export type ServiceGestorPlatformSectionProps = {
   serviceLabel?: string;
   /** Slug del catálogo para el CTA principal; si no hay, enlace al catálogo */
   primarySlug?: string;
+  /** Sustituye el href del CTA principal (p. ej. WhatsApp en landings metro) */
+  primaryHrefOverride?: string;
+  /** Si true, el CTA principal abre en nueva pestaña (enlaces externos) */
+  primaryExternal?: boolean;
   /** Fondo superior del bloque de pasos (continúa hacia el showcase) */
   sectionClassName?: string;
 };
@@ -24,11 +28,16 @@ export function ServiceGestorPlatformSection({
   city,
   serviceLabel,
   primarySlug,
+  primaryHrefOverride,
+  primaryExternal = false,
   sectionClassName = "border-b border-slate-200 bg-gradient-to-b from-cyan-50 via-[#EFF6FF] to-[#F8FAFC]",
 }: ServiceGestorPlatformSectionProps) {
   const secondaryHref = waHref;
   const secondaryLabel = workflow.secondaryCtaLabel ?? "Consultar por WhatsApp";
-  const primaryHref = primarySlug ? `/servicios/${primarySlug}` : "/dashboard/servicios";
+  const primaryHref = primaryHrefOverride ?? (primarySlug ? `/servicios/${primarySlug}` : "/dashboard/servicios");
+  const primaryLabel = workflow.primaryCtaLabel ?? "Contratar con gestor asignado";
+  const primaryClassName =
+    "inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50";
 
   return (
     <div id="tramite-gestor-plataforma" className="scroll-mt-20">
@@ -51,12 +60,20 @@ export function ServiceGestorPlatformSection({
               ))}
             </ol>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href={primaryHref}
-                className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50"
-              >
-                {workflow.primaryCtaLabel ?? "Contratar con gestor asignado"}
-              </Link>
+              {primaryExternal ? (
+                <a
+                  href={primaryHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={primaryClassName}
+                >
+                  {primaryLabel}
+                </a>
+              ) : (
+                <Link href={primaryHref} className={primaryClassName}>
+                  {primaryLabel}
+                </Link>
+              )}
               <a
                 href={secondaryHref}
                 target="_blank"
