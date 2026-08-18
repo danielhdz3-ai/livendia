@@ -1,0 +1,27 @@
+---
+description: Tras cambios publicables en Livendia — commit, push (danielhdz3-ai), deploy y links
+alwaysApply: true
+---
+
+# Livendia — deploy y entrega obligatorios
+
+Al **terminar una tarea** que afecte contenido público, SEO, landings, `/precios`, servicios o rutas nuevas en **livendia.com**:
+
+## Siempre hacer (sin esperar a que lo pidan)
+
+1. **Commit** con mensaje claro (`feat(seo): …`, `fix: …`, etc.).
+2. **Push** a `origin/master` con la cuenta GitHub **`danielhdz3-ai`**.
+   - Si el push devuelve 403 con otra cuenta: `gh auth switch --user danielhdz3-ai` y reintentar.
+3. **Deploy producción**: `vercel --prod` desde la raíz del repo (`D:/Proyectos/Livendia`).
+   - Confirmar alias **https://livendia.com**.
+
+## Siempre enviar al usuario
+
+Lista de **URLs completas** (`https://livendia.com/...`) de todo lo creado o modificado en la página pública, agrupadas por tipo (landings, servicios, hub, precios, etc.).
+
+Incluir la lista **después del deploy**, no solo rutas locales ni “pendiente de subir”.
+
+## No omitir
+
+- No cerrar la sesión dejando cambios solo en local si la tarea era publicar contenido o funcionalidad visible.
+- No usar otra cuenta GitHub para este repositorio salvo indicación explícita del usuario.
