@@ -87,6 +87,11 @@ export const PACK_ARRAS_GESTION_VENDEDOR_SLUGS = [
 /** Slugs del pack LAU + primer mes administración. */
 export const PACK_LAU_ADMIN_SLUGS = [CONTRATO_ALQUILER_LAU_SLUG, ADMINISTRACION_ALQUILER_SLUG] as const;
 
+/** Rutas landing SEO de packs comerciales. */
+export const PACK_LAU_ADMIN_LANDING_PATH = "/servicios/pack-contrato-lau-administracion-alquiler" as const;
+export const PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH =
+  "/servicios/pack-arras-gestion-documental-vendedor" as const;
+
 /** Contrato de alquiler por temporada — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR = 200;
 export const CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS = CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR * 100;

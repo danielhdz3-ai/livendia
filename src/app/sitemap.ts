@@ -111,6 +111,8 @@ const SERVICIO_SLUGS = [
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
   "venta-piso-particular-sin-agencia",
+  "pack-contrato-lau-administracion-alquiler",
+  "pack-arras-gestion-documental-vendedor",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

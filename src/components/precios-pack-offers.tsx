@@ -13,9 +13,10 @@ import {
   GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL,
   LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
+  PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
   PACK_ARRAS_GESTION_VENDEDOR_SLUGS,
+  PACK_LAU_ADMIN_LANDING_PATH,
   PACK_LAU_ADMIN_SLUGS,
-  servicePublicLandingPath,
 } from "@/lib/catalog.public";
 
 type Props = {
@@ -82,10 +83,10 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
                 </ContratarSlugButton>
               ) : null}
               <Link
-                href={servicePublicLandingPath(PACK_LAU_ADMIN_SLUGS[0])}
+                href={PACK_LAU_ADMIN_LANDING_PATH}
                 className="inline-flex min-h-11 items-center text-sm font-semibold text-[#64748b] underline-offset-2 hover:underline"
               >
-                Ver ficha LAU
+                Ver landing del pack
               </Link>
             </div>
             <p className="mt-3 text-xs text-[#94a3b8]">
@@ -126,6 +127,12 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
                   Contratar gestión documental
                 </ContratarSlugButton>
               ) : null}
+              <Link
+                href={PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH}
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-[#64748b] underline-offset-2 hover:underline"
+              >
+                Ver landing del pack
+              </Link>
               <Link
                 href="/servicios/servicio-completo-venta"
                 className="inline-flex min-h-11 items-center text-sm font-semibold text-[#64748b] underline-offset-2 hover:underline"

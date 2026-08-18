@@ -25,6 +25,8 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/contrato-arras-penitenciales", label: "Arras penitenciales" },
       { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento hasta arras" },
       { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
+      { href: "/servicios/pack-arras-gestion-documental-vendedor", label: "Pack arras + gestión vendedor (495 €)" },
+      { href: "/precios", label: "Todos los packs y precios" },
     ],
   },
   {
@@ -49,6 +51,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
     title: "Alquiler",
     subtitle: "Propietarios e inquilinos",
     links: [
+      { href: "/servicios/pack-contrato-lau-administracion-alquiler", label: "Pack LAU + administración (194 €)" },
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
       { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato de habitación" },
