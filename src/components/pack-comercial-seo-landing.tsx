@@ -4,10 +4,14 @@ import {
   CheckCircle,
   ClipboardList,
   FileText,
+  MapPin,
   MessageCircle,
+  Monitor,
   Shield,
   Users,
 } from "lucide-react";
+import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
+import { PackComercialLocalCityLinks } from "@/components/pack-comercial-local-city-links";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
@@ -17,16 +21,27 @@ import {
 } from "@/components/service-purchase-provider";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import type { PackCommercialLandingConfig } from "@/lib/pack-comercial-landings";
+import type { PackCommercialLocalLandingConfig } from "@/lib/pack-comercial-local-cities";
 import type { PublicService } from "@/lib/catalog.public";
+import {
+  PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
+  PACK_LAU_ADMIN_LANDING_PATH,
+} from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import { getWhatsAppHref } from "@/lib/business-nap";
 
 const STEP_ICONS = [ClipboardList, FileText, Users, Shield] as const;
 
 type Props = {
-  config: PackCommercialLandingConfig;
+  config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig;
   servicesBySlug: Partial<Record<string, PublicService>>;
 };
+
+function isLocalPackConfig(
+  config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig,
+): config is PackCommercialLocalLandingConfig {
+  return "localSeo" in config && config.localSeo != null;
+}
 
 function PackFaqJsonLd({ config }: { config: PackCommercialLandingConfig }) {
   const schema = {
@@ -46,13 +61,29 @@ function PackFaqJsonLd({ config }: { config: PackCommercialLandingConfig }) {
   );
 }
 
-function PackProductJsonLd({ config }: { config: PackCommercialLandingConfig }) {
+function PackProductJsonLd({
+  config,
+}: {
+  config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig;
+}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: config.jsonLdName,
     description: config.jsonLdDescription,
     brand: { "@type": "Brand", name: "Livendia" },
+    ...(isLocalPackConfig(config)
+      ? {
+          areaServed: {
+            "@type": "City",
+            name: config.city,
+            containedInPlace: {
+              "@type": "AdministrativeArea",
+              name: config.schemaAdministrativeArea,
+            },
+          },
+        }
+      : {}),
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "EUR",
@@ -71,9 +102,21 @@ function PackProductJsonLd({ config }: { config: PackCommercialLandingConfig }) 
 }
 
 export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
-  const waHref = getWhatsAppHref(
-    `Hola, me interesa el pack: ${config.heroH1}. Quiero información antes de contratar.`,
-  );
+  const local = isLocalPackConfig(config) ? config : null;
+  const localSeo = local?.localSeo;
+  const waMessage = local
+    ? `Hola, me interesa el pack en ${local.city}: ${config.heroH1}. Quiero información antes de contratar.`
+    : `Hola, me interesa el pack: ${config.heroH1}. Quiero información antes de contratar.`;
+  const waHref = getWhatsAppHref(waMessage);
+  const heroBullets = "heroBullets" in config ? config.heroBullets : undefined;
+  const isVentaPack = config.contactNeedType === "venta";
+  const localCityLinksVariant = !local
+    ? config.path === PACK_LAU_ADMIN_LANDING_PATH
+      ? ("lau-admin" as const)
+      : config.path === PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH
+        ? ("arras-gestion" as const)
+        : null
+    : null;
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -106,6 +149,16 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                     </li>
                   </ul>
                   <p className="mt-2 text-sm text-blue-200">IVA incluido · Contrata cada partida por separado</p>
+                  {heroBullets && heroBullets.length > 0 ? (
+                    <ul className="mt-4 space-y-1.5 text-sm text-blue-100">
+                      {heroBullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2">
+                          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#06B6D4]" aria-hidden />
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                   <div className="mt-8 flex flex-wrap gap-3">
                     <ContratarSlugButton
                       slug={config.primaryCtaSlug}
@@ -144,6 +197,43 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
             </div>
           </section>
 
+          {localSeo ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl text-center">
+                <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">
+                  Mercado en {local!.city}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-[#475569] sm:text-lg">
+                  {localSeo.marketIntro}
+                </p>
+              </div>
+            </section>
+          ) : null}
+
+          {localSeo ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                  {isVentaPack ? "Tienes comprador. ¿Y la documentación?" : "Tienes inquilino. ¿Y el contrato?"}
+                </h2>
+                <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                  {localSeo.empathyCards.map((card) => (
+                    <div
+                      key={card.title}
+                      className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200"
+                    >
+                      <h3 className="text-lg font-bold text-[#1E293B]">{card.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[#475569]">{card.body}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed text-[#475569]">
+                  {localSeo.localProblemIntro}
+                </p>
+              </div>
+            </section>
+          ) : null}
+
           <section className="px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl">
               <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">{config.includedTitle}</h2>
@@ -164,7 +254,9 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
 
           <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl">
-              <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">Cómo funciona el pack</h2>
+              <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                {local ? `Cómo funciona el pack en ${local.city}` : "Cómo funciona el pack"}
+              </h2>
               <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {config.steps.map((step, i) => {
                   const Icon = STEP_ICONS[i] ?? ClipboardList;
@@ -184,6 +276,114 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
               </div>
             </div>
           </section>
+
+          {localSeo && localSeo.regulatory ? (
+            <section className="border-t border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">
+                  Normativa de alquiler en {local!.city}
+                </h2>
+                <dl className="mt-6 space-y-4 text-sm leading-relaxed text-[#475569] sm:text-base">
+                  <div>
+                    <dt className="font-semibold text-[#1E293B]">Zona tensionada</dt>
+                    <dd className="mt-1">{localSeo.regulatory.tensionedZone}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#1E293B]">Actualización de renta</dt>
+                    <dd className="mt-1">{localSeo.regulatory.rentIndex}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#1E293B]">
+                      Depósito de fianza ({localSeo.regulatory.depositOrganism})
+                    </dt>
+                    <dd className="mt-1">{localSeo.regulatory.depositNote}</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+          ) : null}
+
+          {localSeo && localSeo.casuistica.length > 0 ? (
+            <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                  Situaciones frecuentes en {local!.city}
+                </h2>
+                <p className="mx-auto mt-4 max-w-3xl text-center text-[#64748b]">
+                  Casuística real que el gestor Livendia conoce en operaciones entre particulares en la ciudad.
+                </p>
+                <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                  {localSeo.casuistica.map((item) => (
+                    <div
+                      key={item.title}
+                      className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6"
+                    >
+                      <h3 className="font-bold text-[#1E293B]">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[#475569]">{item.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {localSeo && localSeo.barrios.length > 0 ? (
+            <section className="border-t border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="flex items-center justify-center gap-2 text-xl font-bold text-[#1E293B] sm:text-2xl">
+                  <MapPin className="h-6 w-6 text-[#1A4FBF]" aria-hidden />
+                  {local!.localZonesHeading ?? `Zonas en ${local!.city}`}
+                </h2>
+                <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-[#64748b]">
+                  {localSeo.barriosIntro}
+                </p>
+                {local.localZones ? (
+                  <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-[#475569]">
+                    {local.localZones}
+                  </p>
+                ) : null}
+                <div className="mt-6 flex flex-wrap justify-center gap-2">
+                  {localSeo.barrios.map((barrio) => (
+                    <span
+                      key={barrio}
+                      className="rounded-full bg-white px-4 py-2 text-sm font-medium text-[#1E293B] ring-1 ring-slate-200"
+                    >
+                      {barrio}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {localSeo && isVentaPack && localSeo.precioMedioVenta ? (
+            <section className="border-t border-slate-200 px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <CalculadoraAhorroVendedor city={local!.city} precioMedio={localSeo.precioMedioVenta} />
+              </div>
+            </section>
+          ) : null}
+
+          {localSeo ? (
+            <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1A4FBF]/10">
+                    <Monitor className="h-7 w-7 text-[#1A4FBF]" aria-hidden />
+                  </div>
+                  <h2 className="mt-6 text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                    Plataforma Livendia en {local!.city}
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-[#475569] sm:text-lg">
+                    {localSeo.platformParagraph}
+                  </p>
+                  <p className="mt-4 text-sm text-[#64748b]">
+                    Gestor dedicado por WhatsApp · Pago seguro · Panel propietario 24/7 · Sin comisión de agencia
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-t border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl space-y-6">
@@ -241,7 +441,8 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
           <ServiceMidPageContactSection
             serviceLabel={config.contactServiceLabel}
             needType={config.contactNeedType}
-            placement={`pack_${config.path.split("/").pop()}_mid`}
+            city={local?.city}
+            placement={`pack_${config.path.split("/").filter(Boolean).slice(-2).join("_")}_mid`}
           />
 
           <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
@@ -280,6 +481,10 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
               </nav>
             </div>
           </section>
+
+          {localCityLinksVariant ? (
+            <PackComercialLocalCityLinks variant={localCityLinksVariant} />
+          ) : null}
 
           <section className="px-4 pb-16 sm:px-6">
             <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-6 py-12 text-center text-white shadow-xl sm:px-8">

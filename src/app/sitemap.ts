@@ -80,6 +80,12 @@ import {
 import {
   ADMINISTRACION_ALQUILER_METRO_LANDINGS,
 } from "@/lib/administracion-alquiler-metro-landings";
+import {
+  getPublishedPackArrasGestionLocalSlugs,
+  getPublishedPackLauAdminLocalSlugs,
+  localPackArrasGestionHref,
+  localPackLauAdminHref,
+} from "@/lib/pack-comercial-local-cities";
 
 /** Landing pages públicas /servicios/… (orden no crítico) */
 const SERVICIO_SLUGS = [
@@ -330,6 +336,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.87,
     }));
 
+  const packLauAdminLocal: MetadataRoute.Sitemap = getPublishedPackLauAdminLocalSlugs().map((slug) => ({
+    url: `${base}${localPackLauAdminHref(slug)}`,
+    lastModified: localDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.86,
+  }));
+
+  const packArrasGestionLocal: MetadataRoute.Sitemap = getPublishedPackArrasGestionLocalSlugs().map(
+    (slug) => ({
+      url: `${base}${localPackArrasGestionHref(slug)}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.86,
+    }),
+  );
+
   return [
     ...core,
     ...servicios,
@@ -351,6 +373,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...habitacionLocalCiudades,
     ...contratoEntreParticularesLocalCiudades,
     ...administracionAlquilerMetro,
+    ...packLauAdminLocal,
+    ...packArrasGestionLocal,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
     ...ciudadesHubPages,
