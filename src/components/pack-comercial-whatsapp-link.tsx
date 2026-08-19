@@ -4,12 +4,11 @@ import type { ComponentProps, ReactNode } from "react";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import { getWhatsAppHref } from "@/lib/business-nap";
 import {
-  appendUtmToWhatsAppMessage,
   getPackCommercialWhatsAppPlacement,
   getPackCommercialWhatsAppPrefill,
   type PackCommercialWhatsAppContext,
 } from "@/lib/pack-comercial-whatsapp";
-import { getStoredUtm } from "@/lib/utm";
+import { appendAttributionToWhatsAppMessage } from "@/lib/utm";
 
 type Props = PackCommercialWhatsAppContext & {
   children: ReactNode;
@@ -34,7 +33,7 @@ export function PackCommercialWhatsAppLink({
 
   function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    const message = appendUtmToWhatsAppMessage(baseMessage, getStoredUtm());
+    const message = appendAttributionToWhatsAppMessage(baseMessage);
     const href = getWhatsAppHref(message);
     trackWhatsAppClick(placement, href);
     window.open(href, "_blank", "noopener,noreferrer");

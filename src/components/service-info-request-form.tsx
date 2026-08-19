@@ -2,6 +2,7 @@
 
 import { TurnstileField } from "@/components/turnstile-field";
 import { trackGenerateLead } from "@/lib/analytics";
+import { getStoredAttributionForApi } from "@/lib/utm";
 import { useState } from "react";
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
@@ -59,6 +60,7 @@ export function ServiceInfoRequestForm({
           phone: phone || undefined,
           message: finalMessage,
           turnstileToken: turnstileToken ?? undefined,
+          attribution: getStoredAttributionForApi(),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };

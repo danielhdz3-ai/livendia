@@ -2,6 +2,7 @@
 
 import { TurnstileField } from "@/components/turnstile-field";
 import { trackGenerateLead } from "@/lib/analytics";
+import { getStoredAttributionForApi } from "@/lib/utm";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -38,6 +39,7 @@ export function ContactForm() {
           phone: phone || undefined,
           message,
           turnstileToken: turnstileToken ?? undefined,
+          attribution: getStoredAttributionForApi(),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };

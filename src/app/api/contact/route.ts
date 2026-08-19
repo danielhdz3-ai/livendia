@@ -2,6 +2,7 @@ import { sendContactInquiryEmail } from "@/lib/email/send";
 import { getRequestIp } from "@/lib/request-ip";
 import { rateLimitContact } from "@/lib/ratelimit";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+import { formatAttributionForAdmin, type VisitorAttribution } from "@/lib/utm";
 import { NextResponse } from "next/server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,6 +20,7 @@ export async function POST(req: Request) {
     phone?: string;
     message?: string;
     turnstileToken?: string;
+    attribution?: VisitorAttribution;
   };
   try {
     body = await req.json();
@@ -36,7 +38,12 @@ export async function POST(req: Request) {
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
   const phone =
     typeof body.phone === "string" && body.phone.trim() ? body.phone.trim().slice(0, 40) : undefined;
-  const message = typeof body.message === "string" ? body.message.trim() : "";
+  const messageBase = typeof body.message === "string" ? body.message.trim() : "";
+  const attributionSuffix =
+    body.attribution && typeof body.attribution === "object"
+      ? formatAttributionForAdmin(body.attribution)
+      : "";
+  const message = messageBase + attributionSuffix;
 
   if (name.length < 2 || name.length > 120) {
     return NextResponse.json({ error: "Nombre no válido" }, { status: 400 });

@@ -4,6 +4,7 @@ import { MessageCircle, X } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import { getWhatsAppHref } from "@/lib/business-nap";
+import { appendAttributionToWhatsAppMessage } from "@/lib/utm";
 import {
   WHATSAPP_NEED_OPTIONS,
   WHATSAPP_RESPONSE_HOURS,
@@ -53,13 +54,15 @@ export function WhatsAppLeadModal({ open, onClose, context, placement }: WhatsAp
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const message = buildWhatsAppLeadMessage({
-      serviceLabel: context.serviceLabel,
-      needType,
-      city,
-      stage,
-      caseDetail,
-    });
+    const message = appendAttributionToWhatsAppMessage(
+      buildWhatsAppLeadMessage({
+        serviceLabel: context.serviceLabel,
+        needType,
+        city,
+        stage,
+        caseDetail,
+      }),
+    );
     const href = getWhatsAppHref(message);
     trackWhatsAppClick(placement, href);
     window.open(href, "_blank", "noopener,noreferrer");

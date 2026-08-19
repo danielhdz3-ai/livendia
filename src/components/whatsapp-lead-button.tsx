@@ -4,6 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { useWhatsAppLeadOptional } from "@/components/whatsapp-lead-provider";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import { getWhatsAppHref } from "@/lib/business-nap";
+import { appendAttributionToWhatsAppMessage } from "@/lib/utm";
 import {
   getQuickWhatsAppPrefill,
   mergeWhatsAppContext,
@@ -41,7 +42,8 @@ export function WhatsAppLeadButton({
       return;
     }
     const context = mergeWhatsAppContext(pathname, { serviceLabel, needType, city });
-    const href = getWhatsAppHref(getQuickWhatsAppPrefill(context));
+    const message = appendAttributionToWhatsAppMessage(getQuickWhatsAppPrefill(context));
+    const href = getWhatsAppHref(message);
     trackWhatsAppClick(placement, href);
     window.open(href, "_blank", "noopener,noreferrer");
   }

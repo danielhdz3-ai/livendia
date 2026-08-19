@@ -35,7 +35,7 @@ export function getPackCommercialWhatsAppPrefill({
     : `Hola, me interesa el Pack Vender sin Comisión (${price}) para preparar mis arras y documentación.`;
 }
 
-/** Añade origen UTM al mensaje si el usuario llegó con campaña (sessionStorage). */
+/** @deprecated Usar appendAttributionToWhatsAppMessage de @/lib/utm */
 export function appendUtmToWhatsAppMessage(message: string, utm: {
   utm_source?: string;
   utm_medium?: string;
