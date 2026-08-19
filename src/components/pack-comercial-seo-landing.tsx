@@ -69,42 +69,34 @@ function PackFaqJsonLd({ config }: { config: PackCommercialLandingConfig }) {
   );
 }
 
-function PackProductJsonLd({
+function getPackPriceEur(
+  config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig,
+): number {
+  if (config.contactNeedType === "venta") {
+    return LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR;
+  }
+  return LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR;
+}
+
+function PackServiceJsonLd({
   config,
 }: {
   config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig;
 }) {
   const siteUrl = getSiteUrl();
   const packUrl = `${siteUrl}${config.path}`;
-  const priceEur = isLocalPackConfig(config)
-    ? config.contactNeedType === "venta"
-      ? LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR
-      : LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR
-    : Number(config.totalPriceLabel.replace(/[^\d]/g, ""));
-
-  const offers = isLocalPackConfig(config)
-    ? {
-        "@type": "Offer",
-        price: priceEur,
-        priceCurrency: "EUR",
-        availability: "https://schema.org/InStock",
-        url: packUrl,
-      }
-    : {
-        "@type": "AggregateOffer",
-        priceCurrency: "EUR",
-        lowPrice: config.totalPriceLabel.replace(/[^\d]/g, ""),
-        offerCount: config.priceBreakdown.length,
-        availability: "https://schema.org/InStock",
-        url: packUrl,
-      };
+  const priceEur = getPackPriceEur(config);
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "Service",
     name: config.jsonLdName,
     description: config.jsonLdDescription,
-    brand: { "@type": "Brand", name: "Livendia" },
+    provider: {
+      "@type": "Organization",
+      name: "Livendia",
+      url: siteUrl,
+    },
     ...(isLocalPackConfig(config)
       ? {
           areaServed: {
@@ -117,47 +109,12 @@ function PackProductJsonLd({
           },
         }
       : {}),
-    offers,
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
-
-function PackLocalServiceJsonLd({ config }: { config: PackCommercialLocalLandingConfig }) {
-  const siteUrl = getSiteUrl();
-  const priceEur =
-    config.contactNeedType === "venta"
-      ? LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR
-      : LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR;
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: config.jsonLdName,
-    description: config.jsonLdDescription,
-    provider: {
-      "@type": "Organization",
-      name: "Livendia",
-      url: siteUrl,
-    },
-    areaServed: {
-      "@type": "City",
-      name: config.city,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: config.schemaAdministrativeArea,
-      },
-    },
     offers: {
       "@type": "Offer",
       price: priceEur,
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
-      url: `${siteUrl}${config.path}`,
+      url: packUrl,
     },
   };
   return (
@@ -191,8 +148,7 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <PackFaqJsonLd config={config} />
-      <PackProductJsonLd config={config} />
-      {local ? <PackLocalServiceJsonLd config={local} /> : null}
+      <PackServiceJsonLd config={config} />
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">
