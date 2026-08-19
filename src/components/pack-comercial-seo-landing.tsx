@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
 import { PackComercialLocalCityLinks } from "@/components/pack-comercial-local-city-links";
+import { PackCommercialWhatsAppLink } from "@/components/pack-comercial-whatsapp-link";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
@@ -32,7 +33,10 @@ import {
   PACK_LAU_ADMIN_LANDING_PATH,
 } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
-import { getWhatsAppHref } from "@/lib/business-nap";
+import {
+  resolvePackVariantFromPath,
+  type PackCommercialWhatsAppVariant,
+} from "@/lib/pack-comercial-whatsapp";
 
 const STEP_ICONS = [ClipboardList, FileText, Users, Shield] as const;
 
@@ -167,10 +171,13 @@ function PackLocalServiceJsonLd({ config }: { config: PackCommercialLocalLanding
 export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
   const local = isLocalPackConfig(config) ? config : null;
   const localSeo = local?.localSeo;
-  const waMessage = local
-    ? `Hola, quiero consultar el pack para mi inmueble en ${local.city}`
-    : `Hola, me interesa el pack: ${config.heroH1}. Quiero información antes de contratar.`;
-  const waHref = getWhatsAppHref(waMessage);
+  const packWaVariant: PackCommercialWhatsAppVariant | null =
+    resolvePackVariantFromPath(config.path) ??
+    (config.path === PACK_LAU_ADMIN_LANDING_PATH
+      ? "lau-admin"
+      : config.path === PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH
+        ? "arras-gestion"
+        : null);
   const heroBullets = "heroBullets" in config ? config.heroBullets : undefined;
   const isVentaPack = config.contactNeedType === "venta";
   const localCityLinksVariant = !local
@@ -236,15 +243,15 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                     >
                       {config.secondaryCtaLabel}
                     </ContratarSlugButton>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <PackCommercialWhatsAppLink
+                      variant={packWaVariant ?? "lau-admin"}
+                      city={local?.city}
+                      slug={local?.slug}
                       className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-6 py-3.5 text-sm font-semibold hover:bg-white/10"
                     >
                       <MessageCircle className="h-5 w-5" aria-hidden />
                       WhatsApp
-                    </a>
+                    </PackCommercialWhatsAppLink>
                   </div>
                 </div>
                 <div className="relative h-[280px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20 sm:h-[320px] lg:h-[400px]">

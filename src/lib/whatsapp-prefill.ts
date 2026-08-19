@@ -92,6 +92,8 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
   const fullPath = segments.join("/");
 
   const rules: { match: (p: string) => boolean; label: string; need: WhatsAppNeedType }[] = [
+    { match: (p) => p.includes("pack-arras-gestion-documental-vendedor"), label: "Pack arras + gestión vendedor", need: "venta" },
+    { match: (p) => p.includes("pack-contrato-lau-administracion-alquiler"), label: "Pack LAU + administración", need: "alquiler" },
     { match: (p) => p.includes("servicio-completo-venta"), label: "Servicio completo de venta", need: "venta" },
     { match: (p) => p.includes("vender-piso"), label: "Vender piso sin agencia", need: "venta" },
     { match: (p) => p.includes("gestion-documental-vendedor"), label: "Gestión documental vendedor", need: "venta" },
