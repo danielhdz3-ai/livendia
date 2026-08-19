@@ -86,6 +86,62 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     heroImage: "/images/valencia.jpg",
     finalCtaTitle: "Alquila en Valencia con LAU y gestor desde el primer mes",
   },
+  malaga: {
+    metaTitle: "Pack Contrato Alquiler y Administración en Málaga (194 €) | Livendia",
+    metaDescription:
+      "Redacción de contrato LAU/Temporada, depósito de fianza en AVRA y 1er mes de gestión de alquiler en Málaga por 194 €.",
+    keywords: [
+      "pack alquiler malaga LAU administración",
+      "contrato alquiler malaga AVRA",
+      "alquilar piso malaga sin agencia",
+      "depósito fianza AVRA andalucía",
+      "administración alquiler malaga expats",
+      "contrato LAU teatinos soho",
+    ],
+    heroBadge: "Alquiler · Málaga · Propietarios",
+    heroH1: "Pack contrato LAU + administración de alquiler en Málaga",
+    heroBullets: [
+      "Teatinos, Carretera de Cádiz, Centro, El Limonar, Soho",
+      "Depósito fianza en AVRA · LAU y media estancia",
+      "194 € IVA incl. · Sin comisión sobre renta",
+    ],
+    whyTitle: "Alquilar en Málaga con contrato LAU, AVRA y gestor desde el día uno",
+    whySubtitle:
+      "Costa del Sol, perfil internacional y media estancia: el contrato debe reflejar LAU, depósito en AVRA y cláusulas sobre suministros. Livendia redacta y administra desde 49 €/mes.",
+    localZonesHeading: "Zonas del pack LAU + administración en Málaga",
+    localZones:
+      "Centro Histórico, Soho, El Limonar, Teatinos, Carretera de Cádiz, La Malagueta, Pedregalejo y área metropolitana (Torremolinos, Rincón de la Victoria). Gestoría online con normativa andaluza.",
+    heroImage: "/images/malaga.jpg",
+    finalCtaTitle: "Alquila en Málaga con LAU, AVRA y administración Livendia",
+  },
+  sevilla: {
+    metaTitle: "Pack Contrato de Alquiler y Gestión en Sevilla (194 €) | Livendia",
+    metaDescription:
+      "Contrato de arrendamiento, depósito de fianza en AVRA y administración de inquilinos en Sevilla por 194 €. Sin permanencia.",
+    keywords: [
+      "pack alquiler sevilla LAU administración",
+      "contrato alquiler sevilla AVRA",
+      "alquilar piso sevilla sin agencia",
+      "administración alquiler nervión triana",
+      "depósito fianza AVRA sevilla",
+      "contrato temporada académica sevilla",
+    ],
+    heroBadge: "Alquiler · Sevilla · Propietarios",
+    heroH1: "Pack contrato LAU + administración de alquiler en Sevilla",
+    heroBullets: [
+      "Nervión, Triana, Macarena, Los Remedios, Sevilla Este",
+      "AVRA · inventario detallado · temporada académica",
+      "194 € IVA incl. · Admin sin permanencia",
+    ],
+    whyTitle: "Alquilar en Sevilla con LAU, depósito AVRA e inventario profesional",
+    whySubtitle:
+      "Demanda universitaria, sanitarios y familias: contrato LAU o temporada con anexo de inventario y trámite AVRA cubierto. Administración Livendia desde el primer mes.",
+    localZonesHeading: "Zonas del pack en Sevilla capital y área metropolitana",
+    localZones:
+      "Nervión, Triana, Macarena, Los Remedios, Sevilla Este, Heliópolis, Cerro-Amate y municipios del área (Dos Hermanas, Alcalá de Guadaíra, Camas). Mismos precios nacionales Livendia.",
+    heroImage: "/images/sevilla.jpg",
+    finalCtaTitle: "Alquila en Sevilla con contrato LAU, AVRA y gestor Livendia",
+  },
 };
 
 export const PACK_ARRAS_GESTION_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields> = {
@@ -169,5 +225,61 @@ export const PACK_ARRAS_GESTION_LOCAL_DIFFERENTIATION: Record<string, LocalCityL
       "Valencia capital, Ruzafa, Benimaclet, Ciutat Vella, Mislata, Torrent, Paterna y l'Horta. Venta entre particulares con gestoría online.",
     heroImage: "/images/valencia.jpg",
     finalCtaTitle: "Vende en Valencia con arras y gestor documental Livendia",
+  },
+  malaga: {
+    metaTitle: "Pack Venta Piso Entre Particulares en Málaga (495 €) | Livendia",
+    metaDescription:
+      "Contrato de arras penitenciales y gestión documental completa para vender tu piso en Málaga sin comisiones de agencia por 495 €.",
+    keywords: [
+      "pack arras gestión documental malaga",
+      "vender piso malaga sin agencia",
+      "venta entre particulares malaga arras",
+      "nota simple registro propiedad malaga",
+      "ITP AJD andalucía venta particular",
+      "vender piso malaga 495 euros",
+    ],
+    heroBadge: "Venta · Málaga · Propietarios",
+    heroH1: "Pack arras + gestión documental vendedor en Málaga",
+    heroBullets: [
+      "Centro, Teatinos, Este, Costa del Sol metropolitana",
+      "Nota Simple Registro Málaga · energético · cargas",
+      "495 € IVA incl. · 0 % comisión agencia",
+    ],
+    whyTitle: "Vende en Málaga entre particulares con arras y gestión documental",
+    whySubtitle:
+      "Compradores locales e internacionales exigen documentación impecable. Pack 495 € con nota simple, comunidad, ITE y orientación ITP/AJD andaluz para la parte compradora.",
+    localZonesHeading: "Zonas de venta entre particulares en Málaga",
+    localZones:
+      "Málaga capital, Teatinos, Carretera de Cádiz, El Palo, Rincón de la Victoria, Torremolinos y Benalmádena. Gestor documental Livendia online.",
+    heroImage: "/images/malaga.jpg",
+    finalCtaTitle: "Vende en Málaga con arras profesionales y gestor Livendia",
+  },
+  sevilla: {
+    metaTitle: "Pack Contrato Arras y Gestión de Venta en Sevilla (495 €) | Livendia",
+    metaDescription:
+      "Vende tu casa en Sevilla sin inmobiliaria. Redacción de arras, preparación documental y acompañamiento a notaría por 495 €.",
+    keywords: [
+      "pack arras gestión documental sevilla",
+      "vender piso sevilla sin agencia",
+      "venta entre particulares sevilla arras",
+      "gestoría vendedor sevilla notaría",
+      "cancelación cargas venta sevilla",
+      "vender casa sevilla 495 euros",
+    ],
+    heroBadge: "Venta · Sevilla · Propietarios",
+    heroH1: "Pack arras + gestión documental vendedor en Sevilla",
+    heroBullets: [
+      "Nervión, Triana, Macarena, Los Remedios, área metro",
+      "Comunidad · IBI · cancelación hipoteca",
+      "495 € precio cerrado vs 3–5 % agencia",
+    ],
+    whyTitle: "Vende en Sevilla sin inmobiliaria con pack 495 €",
+    whySubtitle:
+      "Herencias, derramas en el Casco y plazos con el comprador: el gestor Livendia prepara arras y documentación hasta notaría en capital y área metropolitana.",
+    localZonesHeading: "Sevilla capital y área metropolitana",
+    localZones:
+      "Triana, Nervión, Macarena, Los Remedios, Sevilla Este, Casco Antiguo, Dos Hermanas, Alcalá de Guadaíra y Tomares. Venta entre particulares con gestoría Livendia.",
+    heroImage: "/images/sevilla.jpg",
+    finalCtaTitle: "Vende en Sevilla con arras y documentación hasta notaría",
   },
 };

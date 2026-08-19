@@ -10,6 +10,8 @@ const CITY_LABELS: Record<string, string> = {
   madrid: "Madrid",
   barcelona: "Barcelona",
   valencia: "Valencia",
+  malaga: "Málaga",
+  sevilla: "Sevilla",
 };
 
 type Props = {

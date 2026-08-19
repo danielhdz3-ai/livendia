@@ -25,6 +25,8 @@ import type { PackCommercialLandingConfig } from "@/lib/pack-comercial-landings"
 import type { PackCommercialLocalLandingConfig } from "@/lib/pack-comercial-local-cities";
 import type { PublicService } from "@/lib/catalog.public";
 import {
+  LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR,
+  LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR,
   GESTION_DOCUMENTAL_VENDEDOR_SLUG,
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
   PACK_LAU_ADMIN_LANDING_PATH,
@@ -68,6 +70,31 @@ function PackProductJsonLd({
 }: {
   config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig;
 }) {
+  const siteUrl = getSiteUrl();
+  const packUrl = `${siteUrl}${config.path}`;
+  const priceEur = isLocalPackConfig(config)
+    ? config.contactNeedType === "venta"
+      ? LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR
+      : LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR
+    : Number(config.totalPriceLabel.replace(/[^\d]/g, ""));
+
+  const offers = isLocalPackConfig(config)
+    ? {
+        "@type": "Offer",
+        price: priceEur,
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+        url: packUrl,
+      }
+    : {
+        "@type": "AggregateOffer",
+        priceCurrency: "EUR",
+        lowPrice: config.totalPriceLabel.replace(/[^\d]/g, ""),
+        offerCount: config.priceBreakdown.length,
+        availability: "https://schema.org/InStock",
+        url: packUrl,
+      };
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -86,13 +113,47 @@ function PackProductJsonLd({
           },
         }
       : {}),
+    offers,
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+function PackLocalServiceJsonLd({ config }: { config: PackCommercialLocalLandingConfig }) {
+  const siteUrl = getSiteUrl();
+  const priceEur =
+    config.contactNeedType === "venta"
+      ? LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR
+      : LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: config.jsonLdName,
+    description: config.jsonLdDescription,
+    provider: {
+      "@type": "Organization",
+      name: "Livendia",
+      url: siteUrl,
+    },
+    areaServed: {
+      "@type": "City",
+      name: config.city,
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: config.schemaAdministrativeArea,
+      },
+    },
     offers: {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
+      price: priceEur,
       priceCurrency: "EUR",
-      lowPrice: config.totalPriceLabel.replace(/[^\d]/g, ""),
-      offerCount: config.priceBreakdown.length,
       availability: "https://schema.org/InStock",
-      url: `${getSiteUrl()}${config.path}`,
+      url: `${siteUrl}${config.path}`,
     },
   };
   return (
@@ -107,7 +168,7 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
   const local = isLocalPackConfig(config) ? config : null;
   const localSeo = local?.localSeo;
   const waMessage = local
-    ? `Hola, me interesa el pack en ${local.city}: ${config.heroH1}. Quiero información antes de contratar.`
+    ? `Hola, quiero consultar el pack para mi inmueble en ${local.city}`
     : `Hola, me interesa el pack: ${config.heroH1}. Quiero información antes de contratar.`;
   const waHref = getWhatsAppHref(waMessage);
   const heroBullets = "heroBullets" in config ? config.heroBullets : undefined;
@@ -124,6 +185,7 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <PackFaqJsonLd config={config} />
       <PackProductJsonLd config={config} />
+      {local ? <PackLocalServiceJsonLd config={local} /> : null}
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">
@@ -300,6 +362,17 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                     </dt>
                     <dd className="mt-1">{localSeo.regulatory.depositNote}</dd>
                   </div>
+                  {local!.schemaAdministrativeArea === "Andalucía" ? (
+                    <div className="rounded-xl bg-white/80 p-4 ring-1 ring-amber-200">
+                      <dt className="font-semibold text-[#1E293B]">AVRA — registro obligatorio en Andalucía</dt>
+                      <dd className="mt-1">
+                        La fianza legal debe depositarse en{" "}
+                        <strong>AVRA (Agencia de Vivienda y Rehabilitación de Andalucía)</strong>, no solo
+                        entregarse al inquilino. Livendia orienta plazos y documentación al contratar el pack
+                        en {local!.city}.
+                      </dd>
+                    </div>
+                  ) : null}
                 </dl>
               </div>
             </section>

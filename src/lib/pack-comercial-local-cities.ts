@@ -19,8 +19,20 @@ import {
   type PackCommercialLocalSeoContent,
 } from "@/lib/pack-comercial-local-seo-content";
 
-export const PACK_LAU_ADMIN_LOCAL_PUBLISHED_SLUGS = ["madrid", "barcelona", "valencia"] as const;
-export const PACK_ARRAS_GESTION_LOCAL_PUBLISHED_SLUGS = ["madrid", "barcelona", "valencia"] as const;
+export const PACK_LAU_ADMIN_LOCAL_PUBLISHED_SLUGS = [
+  "madrid",
+  "barcelona",
+  "valencia",
+  "malaga",
+  "sevilla",
+] as const;
+export const PACK_ARRAS_GESTION_LOCAL_PUBLISHED_SLUGS = [
+  "madrid",
+  "barcelona",
+  "valencia",
+  "malaga",
+  "sevilla",
+] as const;
 
 export type PackCommercialLocalSlug = (typeof PACK_LAU_ADMIN_LOCAL_PUBLISHED_SLUGS)[number];
 
@@ -34,6 +46,8 @@ const PACK_LOCAL_CITY_BASES: Record<string, PackLocalCityBase> = {
   madrid: { slug: "madrid", city: "Madrid", schemaAdministrativeArea: "Comunidad de Madrid" },
   barcelona: { slug: "barcelona", city: "Barcelona", schemaAdministrativeArea: "Cataluña" },
   valencia: { slug: "valencia", city: "Valencia", schemaAdministrativeArea: "Comunitat Valenciana" },
+  malaga: { slug: "malaga", city: "Málaga", schemaAdministrativeArea: "Andalucía" },
+  sevilla: { slug: "sevilla", city: "Sevilla", schemaAdministrativeArea: "Andalucía" },
 };
 
 export type PackCommercialLocalLandingConfig = PackCommercialLandingConfig &

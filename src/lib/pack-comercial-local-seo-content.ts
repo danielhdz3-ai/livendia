@@ -268,6 +268,146 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
     ],
   },
+  malaga: {
+    precioMedioAlquiler: 1_476,
+    heroSubtitle:
+      "Vas a alquilar en Málaga con inquilino ya seleccionado — residente, expat o nómada digital. Pack LAU + administración (194 € IVA incl.): contrato adaptado a normativa andaluza, depósito de fianza en AVRA y gestor que cobra renta e incidencias desde el primer mes.",
+    marketIntro:
+      "Málaga combina demanda residencial en Teatinos y Carretera de Cádiz con media estancia en Soho y Centro, y perfil internacional en la Costa del Sol. Ticket medio ~1.400–1.500 €/mes (Brains Real Estate, Q1 2026). Propietarios particulares evitan comisiones del 10 % anual de gestión inmobiliaria.",
+    localProblemIntro:
+      "En Málaga el propietario suele subestimar el depósito obligatorio en AVRA (Agencia de Vivienda y Rehabilitación de Andalucía) y las cláusulas sobre duración, suministros e idioma del contrato cuando el inquilino es extranjero. Sin inventario fotográfico, los conflictos al finalizar el arrendamiento son frecuentes.",
+    stepLocalNotes: [
+      "Recogemos datos del piso en Teatinos, Centro, El Limonar o Soho y del inquilino; redactamos LAU o contrato de temporada según tipología real.",
+      "Orientación sobre depósito de fianza legal en AVRA: plazos, documentación y registro obligatorio conforme a normativa de la Junta de Andalucía.",
+      "Tras la firma, administración Livendia (49 €/mes): canal único con inquilino, cobro de renta e incidencias en panel — útil si resides fuera de Málaga.",
+      "Inventario detallado y comunicaciones con comunidad en urbanizaciones de la costa: el gestor filtra contacto diario.",
+    ],
+    empathyCards: LAU_EMPATHY_SHARED,
+    casuistica: [
+      {
+        title: "Alquiler a perfil internacional en Soho o Centro",
+        body: "Contratos con cláusulas claras sobre idioma, duración, fianza adicional permitida por LAU y comunicación vía gestor Livendia. Evita malentendidos con inquilinos expats.",
+      },
+      {
+        title: "Media estancia y nómadas digitales",
+        body: "En Carretera de Cádiz o Teatinos es habitual alquilar 6–11 meses. El contrato debe distinguir LAU de temporada y topes de estancia para no vulnerar normativa.",
+      },
+      {
+        title: "Depósito AVRA no tramitado",
+        body: "La fianza legal debe depositarse en AVRA en plazo. Livendia orienta en el trámite al alta; omitirlo expone a sanciones autonómicas.",
+      },
+      {
+        title: "Propietario no residente en la Costa del Sol",
+        body: "Segunda residencia o inversión: panel Livendia y administración evitan gestionar averías e incidencias desde otro país.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Dónde se deposita la fianza legal del alquiler en Málaga?",
+        answer:
+          "En Andalucía, ante AVRA (Agencia de Vivienda y Rehabilitación de Andalucía), organismo dependiente de la Junta de Andalucía. Es obligatorio registrar la fianza legal de un mes conforme a LAU. Livendia te orienta en plazos y documentación al contratar el pack.",
+      },
+      {
+        question: "¿Cómo gestionáis el alquiler a inquilinos internacionales en Málaga?",
+        answer:
+          "Redactamos cláusulas claras sobre duración, renta, suministros e inventario. Livendia actúa como interlocutor operativo (cobros, incidencias) para que no dependas de WhatsApp en varios idiomas. No somos agencia de búsqueda de inquilino.",
+      },
+      {
+        question: "¿Cuánto tarda el depósito en AVRA una vez firmado el contrato?",
+        answer:
+          "El propietario debe depositar la fianza en un plazo legal limitado tras la firma. Tu gestor Livendia te indica documentación, importe exacto y vía de registro en AVRA para evitar sanciones.",
+      },
+      {
+        question: "¿Precio del pack LAU + administración en Málaga?",
+        answer: `194 € IVA incl. estimados (145 € contrato LAU + 49 € 1.er mes administración). Mismos precios en toda España. Sin comisión sobre la renta ni permanencia en administración.`,
+      },
+    ],
+    barrios: ["Teatinos", "Carretera de Cádiz", "Centro", "Soho", "El Limonar", "La Malagueta", "Pedregalejo", "El Palo"],
+    barriosIntro: "Alquiler entre particulares en Málaga capital y área metropolitana con normativa andaluza y depósito AVRA.",
+    regulatory: ALQUILER_REGULATORY_BY_SLUG.malaga,
+    platformParagraph:
+      "Panel Livendia con contrato, justificantes de renta, inventario e incidencias. Ideal si alquilas en Málaga y vives en Madrid, extranjero o en otra ciudad de la costa: gestor dedicado por WhatsApp.",
+    localBanners: [
+      {
+        title: "AVRA: depósito de fianza obligatorio en Andalucía",
+        body: "La fianza legal no basta con entregarla al inquilino: debe registrarse en AVRA. El pack incluye contrato LAU profesional y orientación en el trámite autonómico — error habitual en propietarios primerizos en Málaga.",
+      },
+      {
+        title: "LAU, temporada o media estancia en Teatinos y Soho",
+        body: "Perfil expat y nómada digital exige cláusulas precisas. 145 € de gestoría vs plantilla genérica que no distingue tipología ni suministros en edificios con alta rotación.",
+      },
+    ],
+  },
+  sevilla: {
+    precioMedioAlquiler: 986,
+    heroSubtitle:
+      "Alquilas en Sevilla con inquilino ya encontrado — familia, estudiante o profesional sanitario. Pack contrato LAU + administración (194 € IVA incl.): arrendamiento residencial o temporada académica, depósito AVRA e inventario detallado para prevenir conflictos al finalizar.",
+    marketIntro:
+      "Sevilla mezcla demanda estable en Nervión y Los Remedios con rotación académica en Heliópolis y Macarena, y alquiler a profesionales del sector sanitario. Ticket medio ~950–1.000 €/mes (Enalquiler / Idealista, 2026). Muchos propietarios son particulares sin experiencia previa.",
+    localProblemIntro:
+      "En Triana o el Casco Antiguo los contratos descargados de internet no recogen anexo de inventario ni depósito AVRA. Al finalizar el arrendamiento, disputas sobre estado del piso y fianza son el conflicto más habitual entre propietarios e inquilinos en Sevilla.",
+    stepLocalNotes: [
+      "Datos del piso en Nervión, Triana, Macarena, Los Remedios o Sevilla Este; contrato LAU o temporada académica/médica según duración pactada.",
+      "Anexo de inventario fotográfico detallado y orientación depósito fianza en AVRA — trámite integral conforme a normativa andaluza.",
+      "Administración Livendia desde mes 1: cobro de renta, incidencias documentadas, comunicación con comunidad en edificios históricos.",
+      "Renovaciones y causas de resolución conforme a LAU: gestor filtra contacto; tú decides sobre obras y renta.",
+    ],
+    empathyCards: LAU_EMPATHY_SHARED,
+    casuistica: [
+      {
+        title: "Temporada académica en Heliópolis o Reina Mercedes",
+        body: "Contratos de 9–11 meses ligados al curso universitario requieren cláusulas de duración, fianza y suministros distintas al LAU de larga duración.",
+      },
+      {
+        title: "Alquiler a profesionales sanitarios (Macarena, Sevilla Este)",
+        body: "Inquilinos con contrato laboral temporal: el LAU debe reflejar plazo, prórroga y gastos de comunidad en bloques con derramas de rehabilitación.",
+      },
+      {
+        title: "Inventario insuficiente en Triana o Casco",
+        body: "Edificios históricos con instalaciones antiguas: anexo fotográfico de grifos, carpintería y electrodomésticos evita disputas sobre la devolución de fianza.",
+      },
+      {
+        title: "Depósito AVRA omitido",
+        body: "Propietarios primerizos en Nervión o Los Remedios desconocen el registro obligatorio en AVRA. Livendia orienta en el trámite al alta del arrendamiento.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Cómo se regula el alquiler en Sevilla — hay zona tensionada?",
+        answer:
+          "La Junta de Andalucía no ha activado oficialmente la figura de zona de mercado residencial tensionado en Sevilla (verificado MIVAU 2026). Rige LAU general sin tope IRAV. Tu gestor adapta cláusulas de actualización de renta en consecuencia.",
+      },
+      {
+        question: "¿Qué derechos tiene el propietario al alquilar en Sevilla?",
+        answer:
+          "Los de LAU: cobro de renta, fianza legal (máx. un mes) y posible garantía adicional pactada, resolución por incumplimiento, recuperación por uso propio en supuestos legales. Livendia redacta cláusulas equilibradas y la administración gestiona incidencias e impagos con aviso temprano.",
+      },
+      {
+        question: "¿Dónde deposito la fianza en Sevilla?",
+        answer:
+          "En AVRA (Agencia de Vivienda y Rehabilitación de Andalucía), organismo autonómico. Es obligatorio registrar la fianza legal tras la firma. Te orientamos en documentación y plazos.",
+      },
+      {
+        question: "¿Precio del pack en Sevilla?",
+        answer: `194 € IVA incl. (145 € LAU + 49 € 1.er mes admin). Administración cancelable con 30 días de preaviso, sin permanencia.`,
+      },
+    ],
+    barrios: ["Nervión", "Triana", "Macarena", "Los Remedios", "Sevilla Este", "Heliópolis", "Cerro-Amate", "Casco Antiguo"],
+    barriosIntro: "Contrato LAU, AVRA e inventario en Sevilla capital y municipios del área metropolitana.",
+    regulatory: ALQUILER_REGULATORY_BY_SLUG.sevilla,
+    platformParagraph:
+      "Centraliza contrato, inventario, cobros e incidencias en panel Livendia. Útil si alquilas en Sevilla y resides en otra provincia: gestor dedicado canaliza comunicación con inquilino y comunidad.",
+    localBanners: [
+      {
+        title: "Inventario detallado: prevención de conflictos en Sevilla",
+        body: "En Triana, Macarena y Nervión los desgastes por uso son discutidos sin fotos ni anexo firmado. El pack incluye LAU con inventario integrado — clave en edificios históricos.",
+      },
+      {
+        title: "AVRA y normativa andaluza desde el primer día",
+        body: "Depósito de fianza en AVRA no es opcional. Livendia orienta el trámite y activa administración (49 €/mes) para que no gestiones tú las incidencias del inquilino.",
+      },
+    ],
+  },
 };
 
 const ARRAS_EMPATHY_SHARED: readonly PackCommercialEmpathyCard[] = [
@@ -475,6 +615,135 @@ export const PACK_ARRAS_GESTION_LOCAL_SEO: Record<string, PackCommercialLocalSeo
       {
         title: "Ahorro real en precio medio ~220.000 €",
         body: "Comisión del 3 % = ~6.600 € + IVA. Si encontraste comprador en Idealista, pagas tarifa plana por arras y documentación profesional.",
+      },
+    ],
+  },
+  malaga: {
+    precioMedioVenta: 280_000,
+    heroSubtitle:
+      "Vendes tu piso en Málaga entre particulares con comprador ya encontrado. Pack arras + gestión documental (495 € IVA incl.): arras penitenciales, nota simple en el Registro de la Propiedad de Málaga, certificado energético y verificación de cargas — sin comisión de agencia.",
+    marketIntro:
+      "Málaga capital y Costa del Sol concentran ventas entre particulares con comprador local o internacional. Precio medio ~280.000 €; referencia ~16–17 €/m² en capital (Brains Real Estate / Idealista, 2026). El ahorro vs comisión del 3 % supera ampliamente los 495 € del pack.",
+    localProblemIntro:
+      "En Málaga el vendedor particular descubre entre arras y notaría que necesita nota simple actualizada, certificado energético vigente, certificado de deuda de comunidad y —si hay hipoteca— cancelación coordinada. Compradores extranjeros encarecen plazos documentales.",
+    stepLocalNotes: [
+      "Arras 145 € IVA incl.: cláusulas penitenciales equilibradas sobre señal, plazos e hipoteca del comprador en mercado malagueño.",
+      "Gestión 350 €: solicitud nota simple Registro de la Propiedad de Málaga, certificado energético, ITE si aplica y certificado de comunidad.",
+      "Verificación de cargas, IBI al corriente y orientación sobre ITP/AJD autonómico de Andalucía (tributo de la parte compradora, que conviene anticipar en negociación).",
+      "Informe semáforo pre-notaría: reduces rebajas tardías por documentación incompleta.",
+    ],
+    empathyCards: ARRAS_EMPATHY_SHARED,
+    casuistica: [
+      {
+        title: "Nota Simple en el Registro de la Propiedad de Málaga",
+        body: "El gestor solicita y analiza titularidad, cargas hipotecarias y discrepancias con catastro antes de fijar fecha de escritura.",
+      },
+      {
+        title: "Certificado energético caducado o inexistente",
+        body: "Obligatorio para transmitir. Muchos pisos en Centro o Teatinos llevan años sin operación de venta y lo tienen caducado.",
+      },
+      {
+        title: "Comprador extranjero y plazos ajustados",
+        body: "El gestor orienta qué documentación puede requerir traducción jurada para que el banco del comprador no retrase la operación.",
+      },
+      {
+        title: "Licencia turística VFT en la Costa del Sol",
+        body: "Si el piso tuvo uso turístico, el gestor verifica si afecta a la transmisión y lo refleja antes de notaría.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Qué documentos necesito para vender entre particulares en Málaga?",
+        answer:
+          "Nota simple registral, certificado energético vigente, certificado de deuda cero de comunidad, IBI al corriente, DNI/NIE y —si hay hipoteca— certificado de deuda pendiente del banco. El gestor Livendia gestiona el checklist completo post-arras.",
+      },
+      {
+        question: "¿Quién paga el ITP o AJD en Andalucía?",
+        answer:
+          "El Impuesto sobre Transmisiones Patrimoniales (ITP) o, en su caso, Actos Jurídicos Documentados (AJD) los liquida la parte compradora ante la Junta de Andalucía. Tu gestor orienta sobre plazos y documentación que el comprador necesitará; la liquidación no está incluida en el pack del vendedor.",
+      },
+      {
+        question: "¿Cuánto cuesta el pack arras + gestión en Málaga?",
+        answer: `495 € IVA incl. (145 € arras + 350 € gestión). En un piso de ~280.000 €, el 3 % de comisión serían ~8.400 € + IVA — ahorro neto muy superior si ya tienes comprador.`,
+      },
+    ],
+    barrios: ["Centro", "Teatinos", "Carretera de Cádiz", "El Limonar", "Soho", "Este", "Ciudad Jardín", "El Palo"],
+    barriosIntro: "Venta entre particulares en Málaga capital y área metropolitana de la Costa del Sol.",
+    platformParagraph:
+      "Panel Livendia para nota simple, certificados de comunidad e informe semáforo. Especialmente útil si vendes en Málaga y resides en el extranjero o en otra CCAA.",
+    localBanners: [
+      {
+        title: "Guía documental: Registro de la Propiedad de Málaga",
+        body: "Nota simple, cargas hipotecarias y coherencia con escritura previa: el gestor lo verifica en la primera semana post-arras para no perder la fecha de notaría.",
+      },
+      {
+        title: "495 € precio cerrado vs comisión inmobiliaria en Málaga 2026",
+        body: "Con ~16–17 €/m² y precio medio ~280.000 €, una agencia al 3 % cobraría ~8.400 € + IVA. Si tú encontraste al comprador, el pack cubre arras y trámites hasta escritura.",
+      },
+    ],
+  },
+  sevilla: {
+    precioMedioVenta: 200_000,
+    heroSubtitle:
+      "Vendes tu casa en Sevilla sin inmobiliaria con comprador ya cerrado. Pack arras + gestión documental (495 € IVA incl.): redacción de arras, preparación documental en capital y área metropolitana y acompañamiento hasta notaría.",
+    marketIntro:
+      "Sevilla capital y área metropolitana (Dos Hermanas, Alcalá, Tomares) concentran ventas entre particulares, muchas por herencia. Precio medio ~200.000 € (Idealista, 2026). Comisión tradicional del 3–5 % representa 6.000–10.000 € + IVA.",
+    localProblemIntro:
+      "En Triana, Macarena o Nervión las sorpresas habituales son derramas en edificios históricos, herencias no inscritas y certificado de deuda de comunidad lento. Sin gestor, el comprador pide rebaja días antes de notaría.",
+    stepLocalNotes: [
+      "Arras 145 €: contrato penitencial con plazos, señal y condición suspensiva de hipoteca del comprador en mercado sevillano.",
+      "Gestión 350 €: nota simple, certificado energético, certificado de deuda de comunidad e IBI en edificios del Casco y Triana.",
+      "Revisión cancelación de cargas hipotecarias y coherencia titular tras herencia — frecuente en ventas sevillanas.",
+      "Escritura con informe semáforo: 495 € precio cerrado vs miles en comisión si ya tienes comprador.",
+    ],
+    empathyCards: ARRAS_EMPATHY_SHARED,
+    casuistica: [
+      {
+        title: "Derramas en edificios históricos de Triana y Macarena",
+        body: "Rehabilitaciones de 10.000–20.000 € por piso aprobadas en junta. El gestor cruza actas y certificado de deuda antes de notaría.",
+      },
+      {
+        title: "Herencia no inscrita o varios herederos",
+        body: "Titularidad registral imperfecta bloquea la escritura. Detección en nota simple de la semana 1.",
+      },
+      {
+        title: "Certificado de deuda de comunidad lento",
+        body: "En bloques con administrador externo puede tardar 2–3 semanas. Solicitud prioritaria al activar gestión documental.",
+      },
+      {
+        title: "IBI y plusvalía municipal",
+        body: "Orientación sobre recibos al corriente y plazos de plusvalía del vendedor; la liquidación fiscal es responsabilidad del propietario.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Qué trámites incluye la gestión documental para vender en Sevilla?",
+        answer:
+          "Nota simple, certificado energético, certificado de deuda cero de comunidad, revisión ITE si aplica, IBI, cargas hipotecarias e informe semáforo pre-escritura. Coordinación de hitos hasta notaría en Sevilla capital o área metropolitana.",
+      },
+      {
+        question: "¿495 € incluye la comisión de agencia?",
+        answer:
+          "No hay comisión sobre el precio de venta. 495 € IVA incl. es tarifa plana por arras (145 €) + gestión documental (350 €). Comparado con 3–5 % de agencia (~6.000–10.000 € en precio medio sevillano), el ahorro es muy significativo si ya tienes comprador.",
+      },
+      {
+        question: "¿Gestionáis ventas en Dos Hermanas o Alcalá de Guadaíra?",
+        answer:
+          "Sí. Mismo pack online para Sevilla capital y municipios del área metropolitana. Gestor dedicado por WhatsApp y panel Livendia.",
+      },
+    ],
+    barrios: ["Nervión", "Triana", "Macarena", "Los Remedios", "Sevilla Este", "Casco Antiguo", "Heliópolis", "Dos Hermanas"],
+    barriosIntro: "Compraventa entre particulares en Sevilla capital y área metropolitana con gestor documental Livendia.",
+    platformParagraph:
+      "Centraliza documentos en panel Livendia: el gestor persigue certificados de comunidad y registra incidencias mientras tú cierras con el comprador.",
+    localBanners: [
+      {
+        title: "Sevilla capital y área metropolitana: mismo pack 495 €",
+        body: "Dos Hermanas, Alcalá de Guadaíra, Tomares: mismos precios nacionales. Gestor documental online sin desplazarte a gestoría presencial.",
+      },
+      {
+        title: "Evita sorpresas en notaría: comunidad, IBI y cargas",
+        body: "Revisión documental completa post-arras. 495 € precio cerrado frente a 3–5 % de comisión inmobiliaria tradicional.",
       },
     ],
   },

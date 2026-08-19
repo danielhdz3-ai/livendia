@@ -340,7 +340,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${base}${localPackLauAdminHref(slug)}`,
     lastModified: localDate,
     changeFrequency: "weekly" as const,
-    priority: 0.86,
+    priority: 0.8,
   }));
 
   const packArrasGestionLocal: MetadataRoute.Sitemap = getPublishedPackArrasGestionLocalSlugs().map(
@@ -348,7 +348,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}${localPackArrasGestionHref(slug)}`,
       lastModified: localDate,
       changeFrequency: "weekly" as const,
-      priority: 0.86,
+      priority: 0.8,
     }),
   );
 
