@@ -1,4 +1,5 @@
 import { RentalPropertyDocuments, type RentalPropertyDocRow } from "@/app/dashboard/rental/rental-property-documents";
+import { RentalPropertyEditForm } from "@/components/rental-property-edit-form";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Building2, MapPin, FileText } from "lucide-react";
@@ -47,32 +48,12 @@ export default async function PropertyDataPage() {
 
       {property ? (
         <div className="space-y-6">
-          {/* Información básica */}
           <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
             <div className="mb-4 flex items-center gap-3">
               <MapPin className="h-6 w-6 text-[#1A4FBF]" />
-              <h2 className="text-xl font-bold text-[#1E293B]">Información Básica</h2>
+              <h2 className="text-xl font-bold text-[#1E293B]">Editar información</h2>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">DIRECCIÓN</div>
-                <div className="text-sm font-medium text-[#1E293B]">{property.address}</div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">ZONA</div>
-                <div className="text-sm font-medium text-[#1E293B]">{property.zone || "—"}</div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">CÓDIGO POSTAL</div>
-                <div className="text-sm font-medium text-[#1E293B]">{property.postal_code || "—"}</div>
-              </div>
-              {property.cadastral_reference && (
-                <div>
-                  <div className="text-xs font-semibold text-[#64748B]">REFERENCIA CATASTRAL</div>
-                  <div className="text-sm font-medium text-[#1E293B]">{property.cadastral_reference}</div>
-                </div>
-              )}
-            </div>
+            <RentalPropertyEditForm property={property as Parameters<typeof RentalPropertyEditForm>[0]["property"]} />
           </div>
 
           {/* Documentación */}

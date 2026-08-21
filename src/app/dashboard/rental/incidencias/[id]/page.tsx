@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import type { LucideIcon } from "lucide-react";
 import { ArrowLeft, Calendar, AlertCircle, CheckCircle, Clock, DollarSign } from "lucide-react";
 import { DownloadButton } from "@/components/download-button";
+import { IncidentApprovalActions } from "@/components/incident-approval-actions";
 
 export const metadata = { title: "Detalle de incidencia" };
 
@@ -148,6 +149,14 @@ export default async function IncidentDetailPage({
 
         {/* Sidebar */}
         <div className="space-y-6">
+          {!isAdmin ? (
+            <IncidentApprovalActions
+              incidentId={incident.id as string}
+              status={incident.status as string}
+              estimatedCost={incident.estimated_cost as number | null}
+            />
+          ) : null}
+
           {/* Presupuesto */}
           {(incident.estimated_cost || incident.approved_budget) && (
             <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">

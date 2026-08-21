@@ -18,6 +18,7 @@ import {
   User,
   CreditCard,
   Settings,
+  Wallet,
 } from "lucide-react";
 
 const navBase =
@@ -111,6 +112,11 @@ export default async function RentalDashboardLayout({
             <Link href="/dashboard/rental/incidencias" className={navBase}>
               <AlertCircle className="h-5 w-5 shrink-0 opacity-95" />
               <span>Portal de incidencias</span>
+            </Link>
+
+            <Link href="/dashboard/rental/pagos" className={navBase}>
+              <Wallet className="h-5 w-5 shrink-0 opacity-95" />
+              <span>Pagos y gastos</span>
             </Link>
 
             <Link href="/dashboard/rental/chat" className={navBase}>

@@ -17,9 +17,21 @@ export async function POST(request: Request) {
     }
 
     const message = toPlainText(messageRaw, MAX_MESSAGE_LEN);
-    if (!message.trim()) {
+    const hasAttachments = (() => {
+      let i = 0;
+      while (formData.has(`attachment_${i}`)) {
+        const f = formData.get(`attachment_${i}`);
+        if (f instanceof File && f.size > 0) return true;
+        i++;
+      }
+      return false;
+    })();
+
+    if (!message.trim() && !hasAttachments) {
       return NextResponse.json({ error: "El mensaje está vacío" }, { status: 400 });
     }
+
+    const finalMessage = message.trim() || "[Archivo adjunto]";
 
     const supabase = await createServerSupabaseClient();
     const {
@@ -94,7 +106,7 @@ export async function POST(request: Request) {
       .insert({
         property_id: propertyId,
         sender_id: user.id,
-        message,
+        message: finalMessage,
         attachments: attachments.length > 0 ? attachments : null,
       })
       .select()

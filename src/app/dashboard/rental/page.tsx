@@ -82,6 +82,42 @@ export default async function RentalDashboardPage() {
           .order("uploaded_at", { ascending: false })
       : { data: null };
 
+  let openIncidents = 0;
+  let pendingRent = 0;
+  let awaitingApproval = 0;
+  let yearExpensesTotal = 0;
+
+  if (isSetupComplete && firstProperty) {
+    const { count: openCount } = await supabase
+      .from("incidents")
+      .select("id", { count: "exact", head: true })
+      .eq("property_id", firstProperty.id)
+      .in("status", ["pending", "in_progress", "waiting_approval", "approved"]);
+    openIncidents = openCount ?? 0;
+
+    const { count: approvalCount } = await supabase
+      .from("incidents")
+      .select("id", { count: "exact", head: true })
+      .eq("property_id", firstProperty.id)
+      .eq("status", "waiting_approval");
+    awaitingApproval = approvalCount ?? 0;
+
+    const { count: rentPending } = await supabase
+      .from("rent_payments")
+      .select("id", { count: "exact", head: true })
+      .eq("property_id", firstProperty.id)
+      .in("status", ["pending", "late"]);
+    pendingRent = rentPending ?? 0;
+
+    const yearStart = `${new Date().getFullYear()}-01-01`;
+    const { data: yearExpenses } = await supabase
+      .from("property_expenses")
+      .select("amount")
+      .eq("property_id", firstProperty.id)
+      .gte("expense_date", yearStart);
+    yearExpensesTotal = (yearExpenses ?? []).reduce((s, e) => s + Number(e.amount), 0);
+  }
+
   // Si no está configurado, mostrar onboarding
   if (!isSetupComplete) {
     return (
@@ -143,10 +179,10 @@ export default async function RentalDashboardPage() {
 
       <ClientPanelKpiStrip
         items={[
-          { label: "Total pedidos", value: 0, hint: "0 completados" },
-          { label: "En proceso", value: 0, hint: "Requieren atención" },
-          { label: "Completados", value: 0, hint: "Servicios finalizados" },
-          { label: "Servicios", value: "Ver", hint: "Contratar online", href: "/dashboard/servicios" },
+          { label: "Incidencias abiertas", value: openIncidents, hint: awaitingApproval > 0 ? `${awaitingApproval} esperan tu OK` : "Seguimiento activo" },
+          { label: "Rentas pendientes", value: pendingRent, hint: "Cuotas por cobrar" },
+          { label: "Gastos " + new Date().getFullYear(), value: `${yearExpensesTotal.toFixed(0)} €`, hint: "Registrados por el gestor" },
+          { label: "Pagos y gastos", value: "Ver", hint: "Historial completo", href: "/dashboard/rental/pagos" },
         ]}
       />
 
@@ -259,6 +295,15 @@ export default async function RentalDashboardPage() {
             <MessageCircle className="mb-3 h-8 w-8 text-cyan-600" />
             <h3 className="font-semibold text-[#1E293B]">Chat con Gestor</h3>
             <p className="mt-1 text-sm text-[#64748B]">Mensajería directa</p>
+          </Link>
+
+          <Link
+            href="/dashboard/rental/pagos"
+            className="rounded-xl border-2 border-slate-200 bg-white p-6 transition hover:border-[#1A4FBF] hover:shadow-lg"
+          >
+            <CreditCard className="mb-3 h-8 w-8 text-emerald-600" />
+            <h3 className="font-semibold text-[#1E293B]">Pagos y gastos</h3>
+            <p className="mt-1 text-sm text-[#64748B]">Renta e imputaciones</p>
           </Link>
 
           <Link

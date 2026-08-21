@@ -1,7 +1,8 @@
 import { RentalTenantDocuments, type RentalTenantDocRow } from "@/app/dashboard/rental/rental-tenant-documents";
+import { RentalTenantEditForm } from "@/components/rental-tenant-edit-form";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Users, Phone, Euro, FileText } from "lucide-react";
+import { Users, Phone, FileText } from "lucide-react";
 
 export const metadata = { title: "Datos del inquilino" };
 
@@ -56,70 +57,12 @@ export default async function TenantDataPage() {
 
       {tenant ? (
         <div className="space-y-6">
-          {/* Información de contacto */}
           <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
             <div className="mb-4 flex items-center gap-3">
               <Phone className="h-6 w-6 text-emerald-600" />
-              <h2 className="text-xl font-bold text-[#1E293B]">Datos de Contacto</h2>
+              <h2 className="text-xl font-bold text-[#1E293B]">Editar datos del inquilino</h2>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">NOMBRE COMPLETO</div>
-                <div className="text-sm font-medium text-[#1E293B]">{tenant.full_name}</div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">DNI/NIE</div>
-                <div className="text-sm font-medium text-[#1E293B]">{tenant.dni || "—"}</div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">EMAIL</div>
-                <div className="text-sm font-medium text-[#1E293B]">{tenant.email || "—"}</div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">TELÉFONO</div>
-                <div className="text-sm font-medium text-[#1E293B]">{tenant.phone || "—"}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Información del contrato */}
-          <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-            <div className="mb-4 flex items-center gap-3">
-              <Euro className="h-6 w-6 text-emerald-600" />
-              <h2 className="text-xl font-bold text-[#1E293B]">Datos del Contrato</h2>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">FECHA INICIO</div>
-                <div className="text-sm font-medium text-[#1E293B]">
-                  {tenant.start_date ? new Date(tenant.start_date).toLocaleDateString() : "—"}
-                </div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">FECHA FIN</div>
-                <div className="text-sm font-medium text-[#1E293B]">
-                  {tenant.end_date ? new Date(tenant.end_date).toLocaleDateString() : "—"}
-                </div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">ESTADO</div>
-                <div className="inline-flex rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">
-                  {tenant.is_active ? "Activo" : "Inactivo"}
-                </div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">RENTA MENSUAL</div>
-                <div className="text-2xl font-bold text-emerald-600">
-                  {tenant.monthly_rent?.toFixed(2)} €
-                </div>
-              </div>
-              <div>
-                <div className="text-xs font-semibold text-[#64748B]">FIANZA DEPOSITADA</div>
-                <div className="text-2xl font-bold text-blue-600">
-                  {tenant.deposit_amount?.toFixed(2)} €
-                </div>
-              </div>
-            </div>
+            <RentalTenantEditForm tenant={tenant as Parameters<typeof RentalTenantEditForm>[0]["tenant"]} />
           </div>
 
           {/* Documentación */}

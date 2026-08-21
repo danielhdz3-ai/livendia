@@ -18,6 +18,7 @@ import {
   TENANT_DOCUMENT_LABEL_ES,
 } from "@/lib/rental-document-labels";
 import { IncidentSection } from "./incident-section";
+import { RentalFinancePanel } from "@/components/rental-finance-panel";
 
 export const metadata = { title: { absolute: "Detalle de cliente — Livendia Admin" } };
 
@@ -91,6 +92,24 @@ export default async function AdminClientDetailPage({
         .select("*")
         .in("tenant_id", tenantIds)
     : { data: null };
+
+  const { data: allPayments } = propertyIds.length > 0
+    ? await supabase
+        .from("rent_payments")
+        .select("id, property_id, tenant_id, payment_date, amount, status, payment_method, notes")
+        .in("property_id", propertyIds)
+        .order("payment_date", { ascending: false })
+    : { data: null };
+
+  const { data: allExpenses } = propertyIds.length > 0
+    ? await supabase
+        .from("property_expenses")
+        .select("id, property_id, expense_type, amount, expense_date, description, is_deductible")
+        .in("property_id", propertyIds)
+        .order("expense_date", { ascending: false })
+    : { data: null };
+
+  const firstPropertyId = properties?.[0]?.id as string | undefined;
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
@@ -355,6 +374,27 @@ export default async function AdminClientDetailPage({
                       </div>
                     </div>
                   )}
+                  {(() => {
+                    const activeTenant =
+                      propTenants.find((t) => t.is_active) ?? propTenants[0];
+                    if (!activeTenant) return null;
+                    const propPayments =
+                      allPayments?.filter((p) => p.property_id === prop.id) ?? [];
+                    const propExpenses =
+                      allExpenses?.filter((e) => e.property_id === prop.id) ?? [];
+                    return (
+                      <div id="finanzas" className="mt-6">
+                        <RentalFinancePanel
+                          propertyId={prop.id as string}
+                          tenantId={activeTenant.id as string}
+                          monthlyRent={Number(activeTenant.monthly_rent)}
+                          payments={propPayments as Parameters<typeof RentalFinancePanel>[0]["payments"]}
+                          expenses={propExpenses as Parameters<typeof RentalFinancePanel>[0]["expenses"]}
+                          canManage
+                        />
+                      </div>
+                    );
+                  })()}
                   {/* Reportar incidencia */}
                   <IncidentSection propertyId={prop.id} propertyAddress={prop.address} />
                 </div>
@@ -368,18 +408,41 @@ export default async function AdminClientDetailPage({
       <div className="rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 p-6">
         <h3 className="mb-4 font-bold text-[#1E293B]">Acciones del Gestor</h3>
         <div className="grid gap-3 md:grid-cols-3">
-          <button className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow">
-            <div className="font-semibold text-[#1E293B]">Enviar Mensaje</div>
-            <div className="text-xs text-[#64748B]">Contactar con el cliente</div>
-          </button>
-          <button className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow">
-            <div className="font-semibold text-[#1E293B]">Solicitar Documentos</div>
-            <div className="text-xs text-[#64748B]">Pedir documentación adicional</div>
-          </button>
-          <button className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow">
-            <div className="font-semibold text-[#1E293B]">Generar Reporte</div>
-            <div className="text-xs text-[#64748B]">Exportar información completa</div>
-          </button>
+          {firstPropertyId ? (
+            <Link
+              href={`/admin/alquileres/${clientId}/chat`}
+              className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow"
+            >
+              <div className="font-semibold text-[#1E293B]">Enviar Mensaje</div>
+              <div className="text-xs text-[#64748B]">Chat con el cliente</div>
+            </Link>
+          ) : (
+            <div className="rounded-lg bg-white/60 px-4 py-3 text-left opacity-60 ring-1 ring-slate-200">
+              <div className="font-semibold text-[#1E293B]">Enviar Mensaje</div>
+              <div className="text-xs text-[#64748B]">Sin inmueble registrado</div>
+            </div>
+          )}
+          {profile.email ? (
+            <a
+              href={`mailto:${profile.email}?subject=${encodeURIComponent("Documentación pendiente — Livendia")}&body=${encodeURIComponent("Hola,\n\nTe escribimos desde Livendia para solicitar la siguiente documentación:\n\n- \n\nGracias.")}`}
+              className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow"
+            >
+              <div className="font-semibold text-[#1E293B]">Solicitar Documentos</div>
+              <div className="text-xs text-[#64748B]">Email al cliente</div>
+            </a>
+          ) : (
+            <div className="rounded-lg bg-white/60 px-4 py-3 opacity-60 ring-1 ring-slate-200">
+              <div className="font-semibold text-[#1E293B]">Solicitar Documentos</div>
+              <div className="text-xs text-[#64748B]">Sin email del cliente</div>
+            </div>
+          )}
+          <a
+            href="#finanzas"
+            className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow"
+          >
+            <div className="font-semibold text-[#1E293B]">Ver Finanzas</div>
+            <div className="text-xs text-[#64748B]">Pagos, renta y gastos</div>
+          </a>
         </div>
       </div>
     </main>

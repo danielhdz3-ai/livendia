@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { assertAllowedUpload } from "@/lib/uploads";
+import { assertPropertyAccess } from "@/lib/rental-api-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -33,7 +34,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify property belongs to user
     const { data: property } = await supabase
       .from("properties")
       .select("id")
@@ -50,7 +50,6 @@ export async function POST(request: NextRequest) {
 
     const totalDeposit = (parseFloat(legalDeposit) || 0) + (parseFloat(additionalDeposit) || 0);
 
-    // Create tenant
     const { data: tenant, error: tenantError } = await supabase
       .from("tenants")
       .insert({
@@ -76,7 +75,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Upload DNI document if provided
     const dniFile = formData.get("dniDocument") as File | null;
     let tenantDocWarning: string | null = null;
 
@@ -134,5 +132,81 @@ export async function POST(request: NextRequest) {
       { error: "Error interno del servidor" },
       { status: 500 }
     );
+  }
+}
+
+export async function PATCH(request: Request) {
+  try {
+    const supabase = await createServerSupabaseClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+
+    const body = (await request.json()) as {
+      tenantId?: string;
+      fullName?: string;
+      email?: string;
+      phone?: string;
+      dni?: string;
+      startDate?: string;
+      endDate?: string | null;
+      monthlyRent?: number;
+      depositAmount?: number;
+      notes?: string;
+      isActive?: boolean;
+    };
+
+    const tenantId = body.tenantId?.trim();
+    if (!tenantId) return NextResponse.json({ error: "Falta tenantId" }, { status: 400 });
+
+    const { data: tenantRow } = await supabase
+      .from("tenants")
+      .select("id, property_id")
+      .eq("id", tenantId)
+      .maybeSingle();
+
+    if (!tenantRow) return NextResponse.json({ error: "Inquilino no encontrado" }, { status: 404 });
+
+    const access = await assertPropertyAccess(supabase, user.id, tenantRow.property_id as string);
+    if (!access.ok) return NextResponse.json({ error: access.error }, { status: access.status });
+
+    const patch: Record<string, unknown> = {};
+    if (typeof body.fullName === "string" && body.fullName.trim().length >= 2) {
+      patch.full_name = body.fullName.trim().slice(0, 120);
+    }
+    if (typeof body.email === "string") patch.email = body.email.trim().slice(0, 254) || null;
+    if (typeof body.phone === "string") patch.phone = body.phone.trim().slice(0, 40) || null;
+    if (typeof body.dni === "string") patch.dni = body.dni.trim().slice(0, 20) || null;
+    if (typeof body.startDate === "string") patch.start_date = body.startDate;
+    if (body.endDate === null) patch.end_date = null;
+    else if (typeof body.endDate === "string") patch.end_date = body.endDate;
+    if (typeof body.monthlyRent === "number" && body.monthlyRent > 0) patch.monthly_rent = body.monthlyRent;
+    if (typeof body.depositAmount === "number" && body.depositAmount >= 0) {
+      patch.deposit_amount = body.depositAmount;
+    }
+    if (typeof body.notes === "string") patch.notes = body.notes.trim().slice(0, 2000) || null;
+    if (typeof body.isActive === "boolean") patch.is_active = body.isActive;
+
+    if (Object.keys(patch).length === 0) {
+      return NextResponse.json({ error: "Nada que actualizar" }, { status: 400 });
+    }
+
+    const { data: tenant, error } = await supabase
+      .from("tenants")
+      .update(patch)
+      .eq("id", tenantId)
+      .select()
+      .single();
+
+    if (error) {
+      console.error("tenant PATCH:", error);
+      return NextResponse.json({ error: "Error al actualizar inquilino" }, { status: 500 });
+    }
+
+    return NextResponse.json({ tenant });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: "Error interno" }, { status: 500 });
   }
 }

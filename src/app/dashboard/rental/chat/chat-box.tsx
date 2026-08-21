@@ -44,6 +44,36 @@ export function ChatBox({
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const last = messages[messages.length - 1];
+      const since = last?.created_at;
+      const url = since
+        ? `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}&since=${encodeURIComponent(since)}`
+        : `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data = (await res.json()) as { messages?: Message[] };
+        const incoming = data.messages ?? [];
+        if (incoming.length === 0) return;
+        setMessages((prev) => {
+          const ids = new Set(prev.map((m) => m.id));
+          const merged = [...prev];
+          for (const m of incoming) {
+            if (!ids.has(m.id)) merged.push(m);
+          }
+          return merged.sort(
+            (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+          );
+        });
+      } catch {
+        /* polling silencioso */
+      }
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [messages, propertyId]);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     const accepted: File[] = [];

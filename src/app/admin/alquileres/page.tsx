@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Building2, Users, AlertCircle, CheckCircle2 } from "lucide-react";
+import { fetchRentalAdminClients, countPendingRentalDocs } from "@/lib/rental-admin-clients";
 
 export const metadata = { title: { absolute: "Gestión de alquileres — Livendia Admin" } };
 
@@ -15,7 +16,6 @@ export default async function AdminAlquileresPage() {
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  // Primero obtener el ID del servicio de administración de alquiler
   const { data: service } = await supabase
     .from("services")
     .select("id")
@@ -35,51 +35,30 @@ export default async function AdminAlquileresPage() {
     );
   }
 
-  // Obtener todos los clientes con suscripción de administración de alquiler
-  const { data: rentalOrders } = await supabase
-    .from("orders")
-    .select(`
-      id,
-      client_id,
-      created_at,
-      status,
-      profiles ( id, full_name, email, phone )
-    `)
-    .in("status", ["paid", "pending_docs", "in_review", "in_progress", "completed"])
-    .eq("service_id", service.id);
+  const rentalClients = await fetchRentalAdminClients(supabase, service.id as string);
 
-  // Para cada cliente, obtener sus propiedades e inquilinos
   const clientsWithData = await Promise.all(
-    (rentalOrders || []).map(async (order) => {
-      const prof = order.profiles;
-      const profile = Array.isArray(prof) ? prof[0] : prof;
-
-      // Obtener propiedades del cliente
+    rentalClients.map(async (client) => {
       const { data: properties } = await supabase
         .from("properties")
         .select("id, address, zone, postal_code")
-        .eq("user_id", order.client_id);
+        .eq("user_id", client.clientId);
 
-      // Obtener inquilinos de todas las propiedades
-      const propertyIds = properties?.map(p => p.id) || [];
+      const propertyIds = properties?.map((p) => p.id as string) || [];
       const { data: tenants } = propertyIds.length > 0
-        ? await supabase
-            .from("tenants")
-            .select("id, full_name, property_id")
-            .in("property_id", propertyIds)
+        ? await supabase.from("tenants").select("id, full_name, property_id").in("property_id", propertyIds)
         : { data: null };
 
-      // Contar documentos pendientes (placeholder - implementar lógica real)
-      const pendingDocs = 0;
+      const tenantIds = tenants?.map((t) => t.id as string) || [];
+      const pendingDocs = await countPendingRentalDocs(supabase, propertyIds, tenantIds);
 
       return {
-        order,
-        profile,
+        client,
         properties: properties || [],
         tenants: tenants || [],
         pendingDocs,
       };
-    })
+    }),
   );
 
   return (
@@ -87,11 +66,10 @@ export default async function AdminAlquileresPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#1E293B]">Gestión de Alquileres</h1>
         <p className="mt-1 text-sm text-[#64748B]">
-          Panel de administración para clientes con suscripción de gestión inmobiliaria
+          Clientes con pedido o suscripción activa de administración de alquiler
         </p>
       </div>
 
-      {/* Stats rápidas */}
       <div className="mb-8 grid gap-4 md:grid-cols-4">
         <div className="rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
           <div className="flex items-center gap-3">
@@ -148,7 +126,6 @@ export default async function AdminAlquileresPage() {
         </div>
       </div>
 
-      {/* Lista de clientes */}
       {!clientsWithData.length ? (
         <div className="rounded-xl bg-white p-12 text-center shadow ring-1 ring-slate-200">
           <Building2 className="mx-auto h-16 w-16 text-[#64748B]" />
@@ -159,30 +136,27 @@ export default async function AdminAlquileresPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {clientsWithData.map(({ order, profile, properties, tenants, pendingDocs }) => (
+          {clientsWithData.map(({ client, properties, tenants, pendingDocs }) => (
             <div
-              key={order.id}
+              key={client.clientId}
               className="rounded-xl bg-white p-6 shadow ring-1 ring-slate-200 transition hover:shadow-lg"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  {/* Info del cliente */}
                   <div className="mb-4">
                     <h3 className="text-lg font-bold text-[#1E293B]">
-                      {(profile as { full_name?: string })?.full_name || "Cliente sin nombre"}
+                      {client.profile?.full_name || "Cliente sin nombre"}
                     </h3>
                     <div className="mt-1 flex flex-wrap gap-4 text-sm text-[#64748B]">
-                      <span>{(profile as { email?: string })?.email}</span>
-                      {(profile as { phone?: string })?.phone && (
-                        <span>📞 {(profile as { phone?: string })?.phone}</span>
-                      )}
+                      <span>{client.profile?.email}</span>
+                      {client.profile?.phone ? <span>📞 {client.profile.phone}</span> : null}
                       <span className="text-xs">
-                        Cliente desde {new Date(order.created_at).toLocaleDateString("es-ES")}
+                        {client.source === "subscription" ? "Suscripción" : "Pedido"} · desde{" "}
+                        {new Date(client.since).toLocaleDateString("es-ES")}
                       </span>
                     </div>
                   </div>
 
-                  {/* Stats del cliente */}
                   <div className="flex flex-wrap gap-6">
                     <div className="flex items-center gap-2">
                       <Building2 className="h-5 w-5 text-[#1A4FBF]" />
@@ -215,25 +189,23 @@ export default async function AdminAlquileresPage() {
                     </div>
                   </div>
 
-                  {/* Listado rápido de propiedades */}
-                  {properties.length > 0 && (
+                  {properties.length > 0 ? (
                     <div className="mt-4 space-y-2">
                       <div className="text-xs font-semibold text-[#64748B]">PROPIEDADES:</div>
                       {properties.map((prop) => (
-                        <div key={prop.id} className="flex items-center gap-2 text-sm">
-                          <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                          <span className="text-[#1E293B]">{prop.address}</span>
-                          {prop.zone && <span className="text-[#64748B]">• {prop.zone}</span>}
+                        <div key={prop.id as string} className="flex items-center gap-2 text-sm">
+                          <div className="h-2 w-2 rounded-full bg-blue-500" />
+                          <span className="text-[#1E293B]">{prop.address as string}</span>
+                          {prop.zone ? <span className="text-[#64748B]">• {prop.zone as string}</span> : null}
                         </div>
                       ))}
                     </div>
-                  )}
+                  ) : null}
                 </div>
 
-                {/* Acciones */}
                 <div className="flex flex-col gap-2">
                   <Link
-                    href={`/admin/alquileres/${order.client_id}`}
+                    href={`/admin/alquileres/${client.clientId}`}
                     className="rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
                   >
                     Ver detalles →
