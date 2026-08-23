@@ -13,6 +13,7 @@ import {
   CreditCard,
   Settings,
   Wallet,
+  FileText,
 } from "lucide-react";
 
 const navBase =
@@ -52,6 +53,11 @@ export function RentalSidebarNav({
       <Link href="/dashboard/rental/pagos" className={navBase}>
         <Wallet className="h-5 w-5 shrink-0 opacity-95" />
         <span>Pagos y gastos</span>
+      </Link>
+
+      <Link href="/dashboard/rental/documentos" className={navBase}>
+        <FileText className="h-5 w-5 shrink-0 opacity-95" />
+        <span>Documentación</span>
       </Link>
 
       <Link href="/dashboard/rental/chat" className={`${navBase} relative`}>

@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { assertPropertyAccess, isUserAdmin } from "@/lib/rental-api-auth";
+import { generateRentScheduleForTenant } from "@/lib/rental-rent-schedule";
 import { NextResponse } from "next/server";
 
 const STATUS_OK = new Set(["pending", "paid", "late"]);
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
       paymentMethod?: string;
       notes?: string;
       generateCurrentMonth?: boolean;
+      generateSchedule?: boolean;
     };
 
     const propertyId = body.propertyId?.trim();
@@ -33,7 +35,8 @@ export async function POST(request: Request) {
     if (!access.ok) return NextResponse.json({ error: access.error }, { status: access.status });
 
     const admin = await isUserAdmin(supabase, user.id);
-    if (!admin && body.generateCurrentMonth) {
+
+    if (!admin && (body.generateCurrentMonth || body.generateSchedule)) {
       return NextResponse.json({ error: "Solo el gestor puede generar cuotas" }, { status: 403 });
     }
 
@@ -45,6 +48,11 @@ export async function POST(request: Request) {
       .maybeSingle();
 
     if (!tenant) return NextResponse.json({ error: "Inquilino no válido" }, { status: 404 });
+
+    if (body.generateSchedule) {
+      const result = await generateRentScheduleForTenant(supabase, tenantId, propertyId);
+      return NextResponse.json({ ok: true, ...result });
+    }
 
     if (body.generateCurrentMonth) {
       const now = new Date();

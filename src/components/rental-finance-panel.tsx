@@ -71,6 +71,27 @@ export function RentalFinancePanel({
     }
   }
 
+  async function generateFullSchedule() {
+    setBusy(true);
+    setErr(null);
+    try {
+      const res = await fetch("/api/rental/rent-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ propertyId, tenantId, generateSchedule: true }),
+      });
+      const data = (await res.json()) as { error?: string; created?: number; skipped?: number };
+      if (!res.ok) throw new Error(data.error ?? "Error");
+      router.refresh();
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Error");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const exportBase = `/api/rental/finance-export?propertyId=${encodeURIComponent(propertyId)}`;
+
   async function updatePaymentStatus(paymentId: string, status: string) {
     setBusy(true);
     setErr(null);
@@ -196,15 +217,42 @@ export function RentalFinancePanel({
             <p className="text-sm text-[#64748B]">Renta pactada: {monthlyRent.toFixed(2)} €/mes</p>
           </div>
           {canManage ? (
-            <button
-              type="button"
-              disabled={busy}
-              onClick={() => void generateCurrentMonth()}
-              className="rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2563EB] disabled:opacity-60"
-            >
-              Generar cuota del mes
-            </button>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void generateCurrentMonth()}
+                className="rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2563EB] disabled:opacity-60"
+              >
+                Cuota del mes
+              </button>
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void generateFullSchedule()}
+                className="rounded-lg border border-[#1A4FBF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] hover:bg-blue-50 disabled:opacity-60"
+              >
+                Calendario completo
+              </button>
+            </div>
           ) : null}
+        </div>
+
+        <div className="mb-4 flex flex-wrap gap-2">
+          <a
+            href={`${exportBase}&format=csv`}
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-[#475569] hover:bg-slate-50"
+          >
+            Exportar CSV (mes actual)
+          </a>
+          <a
+            href={`${exportBase}&format=html`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-[#475569] hover:bg-slate-50"
+          >
+            Informe HTML / PDF
+          </a>
         </div>
 
         {payments.length === 0 ? (
