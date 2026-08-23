@@ -5,6 +5,7 @@ import {
   TENANT_DOCUMENT_LABEL_ES,
 } from "@/lib/rental-document-labels";
 import { resolveRentalDocStoragePath } from "@/lib/rental-doc-storage-path";
+import { getActivePropertyForUser } from "@/lib/rental-active-property";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -43,42 +44,30 @@ export default async function RentalDashboardPage() {
   const name = profile?.full_name?.trim() || user.email || "Cliente";
   const firstName = name.split(" ")[0];
 
-  // Fetch properties
-  const { data: properties } = await supabase
-    .from("properties")
-    .select("*")
-    .eq("user_id", user.id);
+  const { properties, activeProperty, activeTenant } = await getActivePropertyForUser(
+    supabase,
+    user.id,
+  );
 
-  const hasProperty = (properties?.length ?? 0) > 0;
-  const firstProperty = properties?.[0];
-
-  // Fetch tenants for first property
-  const { data: tenants } = firstProperty
-    ? await supabase
-        .from("tenants")
-        .select("*")
-        .eq("property_id", firstProperty.id)
-    : { data: null };
-
-  const hasTenant = (tenants?.length ?? 0) > 0;
-  const firstTenant = tenants?.[0];
+  const hasProperty = properties.length > 0;
+  const hasTenant = !!activeTenant;
   const isSetupComplete = hasProperty && hasTenant;
 
   const { data: propertyDocsDashboard } =
-    isSetupComplete && firstProperty
+    isSetupComplete && activeProperty
       ? await supabase
           .from("property_documents")
           .select("id, document_type, file_name, file_url, storage_path, uploaded_at")
-          .eq("property_id", firstProperty.id)
+          .eq("property_id", activeProperty.id)
           .order("uploaded_at", { ascending: false })
       : { data: null };
 
   const { data: tenantDocsDashboard } =
-    isSetupComplete && firstTenant
+    isSetupComplete && activeTenant
       ? await supabase
           .from("tenant_documents")
           .select("id, document_type, file_name, file_url, storage_path, uploaded_at")
-          .eq("tenant_id", firstTenant.id)
+          .eq("tenant_id", activeTenant.id)
           .order("uploaded_at", { ascending: false })
       : { data: null };
 
@@ -87,25 +76,25 @@ export default async function RentalDashboardPage() {
   let awaitingApproval = 0;
   let yearExpensesTotal = 0;
 
-  if (isSetupComplete && firstProperty) {
+  if (isSetupComplete && activeProperty) {
     const { count: openCount } = await supabase
       .from("incidents")
       .select("id", { count: "exact", head: true })
-      .eq("property_id", firstProperty.id)
+      .eq("property_id", activeProperty.id)
       .in("status", ["pending", "in_progress", "waiting_approval", "approved"]);
     openIncidents = openCount ?? 0;
 
     const { count: approvalCount } = await supabase
       .from("incidents")
       .select("id", { count: "exact", head: true })
-      .eq("property_id", firstProperty.id)
+      .eq("property_id", activeProperty.id)
       .eq("status", "waiting_approval");
     awaitingApproval = approvalCount ?? 0;
 
     const { count: rentPending } = await supabase
       .from("rent_payments")
       .select("id", { count: "exact", head: true })
-      .eq("property_id", firstProperty.id)
+      .eq("property_id", activeProperty.id)
       .in("status", ["pending", "late"]);
     pendingRent = rentPending ?? 0;
 
@@ -113,7 +102,7 @@ export default async function RentalDashboardPage() {
     const { data: yearExpenses } = await supabase
       .from("property_expenses")
       .select("amount")
-      .eq("property_id", firstProperty.id)
+      .eq("property_id", activeProperty.id)
       .gte("expense_date", yearStart);
     yearExpensesTotal = (yearExpenses ?? []).reduce((s, e) => s + Number(e.amount), 0);
   }
@@ -160,7 +149,7 @@ export default async function RentalDashboardPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
-              <TenantForm propertyId={firstProperty!.id} />
+              <TenantForm propertyId={activeProperty!.id} />
             </div>
           </section>
         )}
@@ -169,6 +158,10 @@ export default async function RentalDashboardPage() {
   }
 
   // Dashboard completo cuando está configurado
+  if (!activeProperty || !activeTenant) {
+    redirect("/dashboard/rental");
+  }
+
   return (
     <div className="p-8">
       {/* Header */}
@@ -210,22 +203,22 @@ export default async function RentalDashboardPage() {
           <div className="space-y-3">
             <div>
               <div className="text-xs font-semibold text-[#64748B]">DIRECCIÓN</div>
-              <div className="text-sm font-medium text-[#1E293B]">{firstProperty.address}</div>
+              <div className="text-sm font-medium text-[#1E293B]">{activeProperty.address}</div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <div className="text-xs font-semibold text-[#64748B]">ZONA</div>
-                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.zone || "—"}</div>
+                <div className="text-sm font-medium text-[#1E293B]">{activeProperty.zone || "—"}</div>
               </div>
               <div>
                 <div className="text-xs font-semibold text-[#64748B]">CÓDIGO POSTAL</div>
-                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.postal_code || "—"}</div>
+                <div className="text-sm font-medium text-[#1E293B]">{activeProperty.postal_code || "—"}</div>
               </div>
             </div>
-            {firstProperty.cadastral_reference && (
+            {activeProperty.cadastral_reference && (
               <div>
                 <div className="text-xs font-semibold text-[#64748B]">REFERENCIA CATASTRAL</div>
-                <div className="text-sm font-medium text-[#1E293B]">{firstProperty.cadastral_reference}</div>
+                <div className="text-sm font-medium text-[#1E293B]">{activeProperty.cadastral_reference}</div>
               </div>
             )}
           </div>
@@ -253,22 +246,22 @@ export default async function RentalDashboardPage() {
           <div className="space-y-3">
             <div>
               <div className="text-xs font-semibold text-[#64748B]">NOMBRE COMPLETO</div>
-              <div className="text-sm font-medium text-[#1E293B]">{firstTenant.full_name}</div>
+              <div className="text-sm font-medium text-[#1E293B]">{activeTenant.full_name}</div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <div className="text-xs font-semibold text-[#64748B]">EMAIL</div>
-                <div className="text-sm font-medium text-[#1E293B]">{firstTenant.email || "—"}</div>
+                <div className="text-sm font-medium text-[#1E293B]">{activeTenant.email || "—"}</div>
               </div>
               <div>
                 <div className="text-xs font-semibold text-[#64748B]">TELÉFONO</div>
-                <div className="text-sm font-medium text-[#1E293B]">{firstTenant.phone || "—"}</div>
+                <div className="text-sm font-medium text-[#1E293B]">{activeTenant.phone || "—"}</div>
               </div>
             </div>
             <div>
               <div className="text-xs font-semibold text-[#64748B]">RENTA MENSUAL</div>
               <div className="text-2xl font-bold text-emerald-600">
-                {firstTenant.monthly_rent?.toFixed(2)} €
+                {activeTenant.monthly_rent?.toFixed(2)} €
               </div>
             </div>
           </div>
@@ -450,6 +443,16 @@ export default async function RentalDashboardPage() {
           </div>
         </div>
       </div>
+
+      {isSetupComplete ? (
+        <section className="mt-10 rounded-2xl border-2 border-dashed border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="mb-2 text-xl font-bold text-[#1E293B]">¿Gestionas otro inmueble?</h2>
+          <p className="mb-6 text-sm text-[#64748B]">
+            Añade propiedades adicionales a tu cartera. Podrás cambiar entre ellas con el selector superior.
+          </p>
+          <PropertyForm variant="additional" />
+        </section>
+      ) : null}
     </div>
   );
 }

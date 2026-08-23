@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { sendIncidentStatusUpdatedEmail, getAuthUserContact } from "@/lib/email/send";
+import { notifyRentalUser } from "@/lib/rental-notifications";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -96,6 +97,21 @@ export async function POST(request: Request) {
             incidentId: incident.id,
           });
         }
+
+        const statusLabelsInApp: Record<string, string> = {
+          waiting_approval: "Presupuesto pendiente de tu aprobación",
+          in_progress: "Incidencia en proceso",
+          resolved: "Incidencia resuelta",
+          approved: "Presupuesto aprobado",
+          rejected: "Presupuesto rechazado",
+        };
+        const inAppTitle = statusLabelsInApp[status] ?? "Actualización de incidencia";
+        void notifyRentalUser({
+          userId: incident.properties.user_id as string,
+          title: inAppTitle,
+          message: incident.title as string,
+          href: `/dashboard/rental/incidencias/${incident.id as string}`,
+        });
       } catch (emailError) {
         console.error("Error enviando email:", emailError);
         // No bloquear la actualización si falla el email

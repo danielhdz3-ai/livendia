@@ -1,4 +1,5 @@
 import { RentalIncidentsClient } from "@/components/rental-incidents-client";
+import { getActivePropertyForUser } from "@/lib/rental-active-property";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = { title: "Portal de incidencias" };
@@ -13,11 +14,7 @@ export default async function IncidentsPage() {
     return <div>No autenticado</div>;
   }
 
-  const { data: property } = await supabase
-    .from("properties")
-    .select("id, address")
-    .eq("user_id", user.id)
-    .maybeSingle();
+  const { activeProperty: property } = await getActivePropertyForUser(supabase, user.id);
 
   if (!property) {
     return (
@@ -37,8 +34,8 @@ export default async function IncidentsPage() {
 
   return (
     <RentalIncidentsClient
-      propertyId={property.id as string}
-      propertyAddress={property.address as string}
+      propertyId={property.id}
+      propertyAddress={property.address}
       incidents={(incidents ?? []) as Parameters<typeof RentalIncidentsClient>[0]["incidents"]}
     />
   );

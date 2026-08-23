@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { sendIncidentToOwnerEmail, getAuthUserContact } from "@/lib/email/send";
 import { uploadIncidentPhotos } from "@/lib/incident-photos";
 import { assertPropertyAccess, isUserAdmin } from "@/lib/rental-api-auth";
+import { notifyAllAdmins, notifyRentalUser } from "@/lib/rental-notifications";
 import { rateLimitIncident } from "@/lib/ratelimit";
 import { toPlainText } from "@/lib/text";
 import { NextResponse } from "next/server";
@@ -154,12 +155,27 @@ export async function POST(request: Request) {
             incidentId: incident.id as string,
           });
         }
+
+        void notifyRentalUser({
+          userId: property.user_id as string,
+          title: "Nueva incidencia registrada",
+          message: title,
+          href: `/dashboard/rental/incidencias/${incident.id as string}`,
+        });
       } catch (emailError) {
         console.error("Error enviando email:", emailError);
       }
+    } else {
+      void notifyAllAdmins({
+        title: "Incidencia reportada por propietario",
+        message: `${property.address}: ${title}`,
+        href: `/admin/alquileres/${property.user_id as string}`,
+      });
     }
 
-    return NextResponse.json({ incident: { ...incident, photos: photoPaths.length ? photoPaths : incident.photos } });
+    return NextResponse.json({
+      incident: { ...incident, photos: photoPaths.length ? photoPaths : incident.photos },
+    });
   } catch (error) {
     console.error("Error en endpoint de incidencias:", error);
     return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });

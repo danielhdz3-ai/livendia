@@ -1,7 +1,7 @@
 "use client";
 
 import { assertAllowedUpload } from "@/lib/uploads";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Send, Paperclip, X } from "lucide-react";
 
 interface Message {
@@ -44,6 +44,22 @@ export function ChatBox({
     scrollToBottom();
   }, [messages]);
 
+  const markMessagesRead = useCallback(async () => {
+    try {
+      await fetch("/api/messages/read", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ propertyId }),
+      });
+    } catch {
+      /* silencioso */
+    }
+  }, [propertyId]);
+
+  useEffect(() => {
+    void markMessagesRead();
+  }, [markMessagesRead]);
+
   useEffect(() => {
     const interval = setInterval(async () => {
       const last = messages[messages.length - 1];
@@ -67,12 +83,13 @@ export function ChatBox({
             (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
           );
         });
+        void markMessagesRead();
       } catch {
         /* polling silencioso */
       }
     }, 8000);
     return () => clearInterval(interval);
-  }, [messages, propertyId]);
+  }, [messages, propertyId, markMessagesRead]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);

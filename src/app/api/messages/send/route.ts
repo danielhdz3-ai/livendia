@@ -1,5 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { rateLimitChat } from "@/lib/ratelimit";
+import { notifyAllAdmins, notifyRentalUser } from "@/lib/rental-notifications";
 import { assertAllowedUpload, MAX_CHAT_ATTACHMENTS } from "@/lib/uploads";
 import { toPlainText } from "@/lib/text";
 import { NextResponse } from "next/server";
@@ -115,6 +116,30 @@ export async function POST(request: Request) {
     if (messageError) {
       console.error("Error creando mensaje:", messageError);
       return NextResponse.json({ error: "Error al crear mensaje" }, { status: 500 });
+    }
+
+    const { data: propertyRow } = await supabase
+      .from("properties")
+      .select("user_id, address")
+      .eq("id", propertyId)
+      .maybeSingle();
+
+    if (propertyRow?.user_id) {
+      const preview = finalMessage.length > 100 ? `${finalMessage.slice(0, 100)}…` : finalMessage;
+      if (isAdmin) {
+        void notifyRentalUser({
+          userId: propertyRow.user_id as string,
+          title: "Nuevo mensaje de tu gestor",
+          message: preview,
+          href: "/dashboard/rental/chat",
+        });
+      } else {
+        void notifyAllAdmins({
+          title: "Mensaje de un propietario",
+          message: `${propertyRow.address as string}: ${preview}`,
+          href: `/admin/alquileres/${propertyRow.user_id as string}/chat`,
+        });
+      }
     }
 
     return NextResponse.json({ message: newMessage });

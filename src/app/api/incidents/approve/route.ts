@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { sendIncidentStatusUpdatedEmail, getAuthUserContact } from "@/lib/email/send";
-import { assertPropertyAccess, isUserAdmin } from "@/lib/rental-api-auth";
+import { isUserAdmin } from "@/lib/rental-api-auth";
+import { notifyAllAdmins } from "@/lib/rental-notifications";
 import { NextResponse } from "next/server";
 
 /** Propietario aprueba o rechaza presupuesto (waiting_approval). Admin puede forzar estados. */
@@ -79,6 +80,14 @@ export async function POST(request: Request) {
       } catch (emailError) {
         console.error("approve email:", emailError);
       }
+    }
+
+    if (!admin && property?.user_id) {
+      void notifyAllAdmins({
+        title: action === "approve" ? "Presupuesto aprobado" : "Presupuesto rechazado",
+        message: `${property.address ?? "Inmueble"}: ${updated.title as string}`,
+        href: `/admin/alquileres/${property.user_id}`,
+      });
     }
 
     return NextResponse.json({ incident: updated });

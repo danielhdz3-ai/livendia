@@ -65,7 +65,7 @@ function PropertyDocumentButton({
   );
 }
 
-export function PropertyForm() {
+export function PropertyForm({ variant = "first" }: { variant?: "first" | "additional" }) {
   const [address, setAddress] = useState("");
   const [zone, setZone] = useState("");
   const [postalCode, setPostalCode] = useState("");
@@ -159,6 +159,15 @@ export function PropertyForm() {
         );
       }
 
+      const propertyId = payload.property?.id as string | undefined;
+      if (propertyId) {
+        await fetch("/api/rental/active-property", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ propertyId }),
+        });
+      }
+
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -173,9 +182,13 @@ export function PropertyForm() {
       <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
         <Upload className="h-10 w-10 text-[#1A4FBF]" />
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Agrega tu primer inmueble</h3>
+      <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">
+        {variant === "additional" ? "Añadir otro inmueble" : "Agrega tu primer inmueble"}
+      </h3>
       <p className="mt-2 text-sm text-[#64748B]">
-        Completa la información de la propiedad que deseas administrar
+        {variant === "additional"
+          ? "Registra una nueva propiedad en tu cartera de alquiler"
+          : "Completa la información de la propiedad que deseas administrar"}
       </p>
 
       <div className="mt-8 grid gap-4 text-left md:grid-cols-2">

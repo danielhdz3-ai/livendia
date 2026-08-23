@@ -1,7 +1,5 @@
-import {
-  syncDocReminderNotifications,
-  type ClientNotificationRow,
-} from "@/lib/client-notifications";
+import { syncDocReminderNotifications, type ClientNotificationRow } from "@/lib/client-notifications";
+import { syncRentalApprovalReminders } from "@/lib/rental-notifications";
 import { getCachedAuthUser } from "@/lib/supabase/auth-cache";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
@@ -46,6 +44,7 @@ export async function GET(request: Request) {
 
   if (shouldSync) {
     await syncDocReminderNotifications(user.id);
+    await syncRentalApprovalReminders(user.id);
   }
 
   const { data, error } = await supabase

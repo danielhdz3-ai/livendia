@@ -1,3 +1,4 @@
+import { getActivePropertyForUser } from "@/lib/rental-active-property";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { ChatBox } from "./chat-box";
 
@@ -13,19 +14,13 @@ export default async function ChatPage() {
     return <div>No autenticado</div>;
   }
 
-  // Obtener perfil
   const { data: profile } = await supabase
     .from("profiles")
     .select("full_name, role")
     .eq("id", user.id)
     .maybeSingle();
 
-  // Obtener propiedad del usuario
-  const { data: property } = await supabase
-    .from("properties")
-    .select("id, address")
-    .eq("user_id", user.id)
-    .maybeSingle();
+  const { activeProperty: property } = await getActivePropertyForUser(supabase, user.id);
 
   if (!property) {
     return (
@@ -37,7 +32,6 @@ export default async function ChatPage() {
     );
   }
 
-  // Obtener mensajes de la propiedad
   const { data: messages } = await supabase
     .from("messages")
     .select(`
@@ -50,24 +44,25 @@ export default async function ChatPage() {
     .eq("property_id", property.id)
     .order("created_at", { ascending: true });
 
-  // Formatear mensajes para el componente
-  const formattedMessages = (messages || []).map((msg) => ({
-    id: msg.id,
-    sender_id: msg.sender_id,
-    message: msg.message,
-    attachments: msg.attachments,
-    created_at: msg.created_at,
-    sender_name: msg.profiles?.full_name || "Usuario",
-    sender_role: msg.profiles?.role || "client",
-  }));
+  const formattedMessages = (messages || []).map((msg) => {
+    const prof = msg.profiles as { full_name?: string; role?: string } | { full_name?: string; role?: string }[] | null;
+    const p = Array.isArray(prof) ? prof[0] : prof;
+    return {
+      id: msg.id as string,
+      sender_id: msg.sender_id as string,
+      message: msg.message as string,
+      attachments: msg.attachments as { file_name: string; file_path: string }[] | undefined,
+      created_at: msg.created_at as string,
+      sender_name: p?.full_name || "Usuario",
+      sender_role: p?.role || "client",
+    };
+  });
 
   return (
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#1E293B]">Chat Unificado</h1>
-        <p className="mt-1 text-[#64748B]">
-          Conversación con tu gestor - {property.address}
-        </p>
+        <p className="mt-1 text-[#64748B]">Conversación con tu gestor — {property.address}</p>
       </div>
 
       <ChatBox

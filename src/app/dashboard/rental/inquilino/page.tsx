@@ -1,7 +1,9 @@
 import { RentalTenantDocuments, type RentalTenantDocRow } from "@/app/dashboard/rental/rental-tenant-documents";
 import { RentalTenantEditForm } from "@/components/rental-tenant-edit-form";
+import { getActivePropertyForUser } from "@/lib/rental-active-property";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { Users, Phone, FileText } from "lucide-react";
 
 export const metadata = { title: "Datos del inquilino" };
@@ -13,21 +15,7 @@ export default async function TenantDataPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: properties } = await supabase
-    .from("properties")
-    .select("*")
-    .eq("user_id", user.id);
-
-  const property = properties?.[0];
-
-  const { data: tenants } = property
-    ? await supabase
-        .from("tenants")
-        .select("*")
-        .eq("property_id", property.id)
-    : { data: null };
-
-  const tenant = tenants?.[0];
+  const { activeProperty, activeTenant: tenant } = await getActivePropertyForUser(supabase, user.id);
 
   let tenantDocs: RentalTenantDocRow[] = [];
 
@@ -52,7 +40,9 @@ export default async function TenantDataPage() {
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#1E293B]">Datos del Inquilino</h1>
-        <p className="mt-1 text-[#64748B]">Información del arrendatario y documentación</p>
+        <p className="mt-1 text-[#64748B]">
+          {activeProperty ? `Inquilino del inmueble: ${activeProperty.address}` : "Información del arrendatario"}
+        </p>
       </div>
 
       {tenant ? (
@@ -65,7 +55,6 @@ export default async function TenantDataPage() {
             <RentalTenantEditForm tenant={tenant as Parameters<typeof RentalTenantEditForm>[0]["tenant"]} />
           </div>
 
-          {/* Documentación */}
           <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">
             <div className="mb-4 flex items-center gap-3">
               <FileText className="h-6 w-6 text-emerald-600" />
@@ -73,18 +62,30 @@ export default async function TenantDataPage() {
             </div>
             <RentalTenantDocuments
               key={[...tenantDocs].map((d) => d.id).sort().join("-")}
-              tenantId={tenant.id as string}
+              tenantId={tenant.id}
               initialDocs={tenantDocs}
             />
           </div>
         </div>
+      ) : activeProperty ? (
+        <div className="rounded-2xl bg-white p-12 text-center shadow-xl ring-1 ring-slate-200">
+          <Users className="mx-auto h-16 w-16 text-[#64748B]" />
+          <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">Sin inquilino en este inmueble</h3>
+          <p className="mt-2 text-sm text-[#64748B]">
+            Registra al arrendatario desde el panel principal o cambia de inmueble arriba.
+          </p>
+          <Link
+            href="/dashboard/rental"
+            className="mt-4 inline-block rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#2563EB]"
+          >
+            Ir al panel principal
+          </Link>
+        </div>
       ) : (
         <div className="rounded-2xl bg-white p-12 text-center shadow-xl ring-1 ring-slate-200">
           <Users className="mx-auto h-16 w-16 text-[#64748B]" />
-          <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">No hay inquilinos registrados</h3>
-          <p className="mt-2 text-sm text-[#64748B]">
-            Completa el proceso de configuración inicial
-          </p>
+          <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">No hay inmuebles registrados</h3>
+          <p className="mt-2 text-sm text-[#64748B]">Completa el proceso de configuración inicial</p>
         </div>
       )}
     </div>
