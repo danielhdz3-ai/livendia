@@ -1,8 +1,11 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { ALQUILER_LOCAL_DIFFERENTIATION_EXTENDED } from "@/lib/contrato-alquiler-local-differentiation-extended";
+import { ALQUILER_LOCAL_CORE_MARKET_INSIGHTS } from "@/lib/contrato-alquiler-local-core-market-insights";
+import { attachLocalMarketInsights, type LocalDifferentiationFields } from "@/lib/merge-local-differentiation";
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 
 /** Copy único por ciudad — contrato de alquiler local. */
-export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields & { faq?: readonly { question: string; answer: string }[] }> = {
+const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFields> = {
   madrid: {
     keywords: [
       "contrato alquiler madrid",
@@ -508,4 +511,9 @@ export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFiel
       },
     ],
   },
+};
+
+export const ALQUILER_LOCAL_DIFFERENTIATION: Record<string, LocalDifferentiationFields> = {
+  ...attachLocalMarketInsights(ALQUILER_LOCAL_DIFFERENTIATION_CORE, ALQUILER_LOCAL_CORE_MARKET_INSIGHTS),
+  ...ALQUILER_LOCAL_DIFFERENTIATION_EXTENDED,
 };

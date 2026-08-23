@@ -1,4 +1,5 @@
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { VENDER_PISO_DIFFERENTIATION } from "@/lib/vender-piso-sin-agencia-differentiation";
 
 export const VENTA_PARTICULAR_TRAMITES = [
@@ -77,7 +78,11 @@ export type VenderPisoSinAgenciaLandingConfig = {
   gestorCtaPlacement: string;
   optionalLocalVentaHref?: string;
   copy?: VenderPisoSinAgenciaCopyOverrides;
-};
+  localMarketInsight?: string;
+} & Pick<
+  import("@/lib/local-city-landing-fields").LocalCityLandingFields,
+  "localPriceSnapshot" | "localNeighborhoods" | "localServiceNotes"
+>;
 
 export type VenderPisoSinAgenciaCityDefinition = Omit<VenderPisoSinAgenciaLandingConfig, "path">;
 
@@ -448,7 +453,7 @@ export function toVenderPisoSinAgenciaConfig(
   def: VenderPisoSinAgenciaCityDefinition,
 ): VenderPisoSinAgenciaLandingConfig {
   const diff = VENDER_PISO_DIFFERENTIATION[def.slug];
-  return {
+  const base: VenderPisoSinAgenciaLandingConfig = {
     ...def,
     ...(diff?.keywords ? { keywords: [...diff.keywords] } : {}),
     ...(diff?.metaTitle ? { metaTitle: diff.metaTitle } : {}),
@@ -459,6 +464,7 @@ export function toVenderPisoSinAgenciaConfig(
     copy: { ...def.copy, ...diff?.copy },
     path: localVenderPisoSinAgenciaHref(def.slug),
   };
+  return enrichWithCityMarketProfile(def.slug, "vender-sin-agencia", base) as VenderPisoSinAgenciaLandingConfig;
 }
 
 export function getVenderPisoSinAgenciaCity(slug: string): VenderPisoSinAgenciaCityDefinition | undefined {

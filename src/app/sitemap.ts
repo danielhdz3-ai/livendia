@@ -70,6 +70,7 @@ import { PILLAR_SEVILLA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobili
 import { PILLAR_BILBAO_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-bilbao";
 import { PILLAR_MALAGA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
 import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-granada";
+import { PILLAR_ZARAGOZA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza";
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
@@ -244,6 +245,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     bilbao: PILLAR_BILBAO_PATH,
     malaga: PILLAR_MALAGA_PATH,
     granada: PILLAR_GRANADA_PATH,
+    zaragoza: PILLAR_ZARAGOZA_PATH,
   };
 
   const venderSinInmobiliariaLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinInmobiliariaCities().map(

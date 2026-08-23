@@ -82,10 +82,10 @@ export type VenderPisoSinInmobiliariaLandingConfig = {
 
 export type VenderPisoSinInmobiliariaCityDefinition = Omit<VenderPisoSinInmobiliariaLandingConfig, "path">;
 
-export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao", "malaga", "granada"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PUBLISHED_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao", "malaga", "granada", "zaragoza"];
 
 /** Ciudades con guía pilar editorial (no landing comercial genérica). */
-export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao", "malaga", "granada"];
+export const VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS: readonly string[] = ["barcelona", "madrid", "valencia", "sevilla", "bilbao", "malaga", "granada", "zaragoza"];
 
 export function isVenderPisoSinInmobiliariaPillarSlug(slug: string): boolean {
   return (VENDER_PISO_SIN_INMOBILIARIA_PILLAR_SLUGS as readonly string[]).includes(slug);
@@ -100,6 +100,7 @@ export function getVenderPisoSinInmobiliariaPillarCityLabel(slug: string): strin
     bilbao: "Bilbao",
     malaga: "Málaga",
     granada: "Granada",
+    zaragoza: "Zaragoza",
   };
   return labels[slug] ?? slug;
 }

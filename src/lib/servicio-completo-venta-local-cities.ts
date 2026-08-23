@@ -1,5 +1,6 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { VENTA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-venta-local-differentiation";
 import {
   getVentaLocalSeoContent,
@@ -61,8 +62,7 @@ export function toVentaCompletaLandingConfig(
 ): ServicioCompletoVentaLocalLandingConfig {
   const diff = VENTA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   const seoContent = getVentaLocalSeoContent(def.slug);
-  const faq = seoContent?.faq;
-  return {
+  const merged: ServicioCompletoVentaLocalLandingConfig = {
     ...def,
     ...diff,
     ...(seoContent
@@ -71,11 +71,12 @@ export function toVentaCompletaLandingConfig(
           heroLead: seoContent.introParagraph,
           whyIntro: seoContent.marketParagraph,
           agencyIntro: agencyIntroFromSeo(seoContent),
+          faq: seoContent.faq,
         }
       : {}),
-    ...(faq ? { faq } : {}),
     path: localServicioCompletoVentaHref(def.slug),
   };
+  return enrichWithCityMarketProfile(def.slug, "venta", merged) as ServicioCompletoVentaLocalLandingConfig;
 }
 
 export function getServicioCompletoVentaLocalCity(

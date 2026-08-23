@@ -5,6 +5,9 @@ export const HOME_COVERAGE_CITY_SLUGS = [
   "barcelona",
   "malaga",
   "sevilla",
+  "bilbao",
+  "granada",
+  "zaragoza",
 ] as const;
 
 export type HomeCoverageCitySlug = (typeof HOME_COVERAGE_CITY_SLUGS)[number];
@@ -90,6 +93,40 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
     habitacionHref: "/servicios/contrato-alquiler-habitacion/sevilla",
     temporadaHref: "/servicios/contrato-alquiler-temporada-local/sevilla",
+    arrasLocalHref: "/servicios/contrato-arras-local/sevilla",
+  },
+  {
+    slug: "bilbao",
+    name: "Bilbao",
+    gestoriaHref: "/gestoria/bilbao",
+    venderSinAgenciaHref: "/servicios/vender-piso-sin-agencia-bilbao",
+    administracionHref: "/servicios/administracion-alquiler-local/bilbao",
+    compraHref: "/servicios/servicio-completo-compra-local/bilbao",
+    ventaLocalHref: "/servicios/servicio-completo-venta-local/bilbao",
+    habitacionHref: "/servicios/contrato-alquiler-habitacion/bilbao",
+    parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
+  },
+  {
+    slug: "granada",
+    name: "Granada",
+    gestoriaHref: "/gestoria/granada",
+    venderSinAgenciaHref: "/servicios/vender-piso-sin-agencia-granada",
+    administracionHref: "/servicios/administracion-alquiler",
+    compraHref: "/servicios/servicio-completo-compra",
+    ventaLocalHref: "/servicios/servicio-completo-venta-local/granada",
+    parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
+  },
+  {
+    slug: "zaragoza",
+    name: "Zaragoza",
+    gestoriaHref: "/gestoria/zaragoza",
+    venderSinAgenciaHref: "/servicios/vender-piso-sin-agencia-zaragoza",
+    administracionHref: "/servicios/administracion-alquiler-local/zaragoza",
+    compraHref: "/servicios/servicio-completo-compra-local/zaragoza",
+    ventaLocalHref: "/servicios/servicio-completo-venta",
+    temporadaHref: "/servicios/contrato-alquiler-temporada-local/zaragoza",
+    arrasLocalHref: "/servicios/contrato-arras-local/zaragoza",
+    parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",
   },
 ];
 
@@ -100,6 +137,9 @@ export const HOME_CITY_CARD_IMAGES: Record<HomeCoverageCitySlug, string> = {
   barcelona: "/images/barcelona.jpg",
   malaga: "/images/malaga.jpg",
   sevilla: "/images/sevilla.jpg",
+  bilbao: "/images/bilbao2.jpg",
+  granada: "/images/tipo2.jpg",
+  zaragoza: "/images/zaragoza.jpg",
 };
 
 /** Enlaces planos para footer, mapa del sitio, etc. */

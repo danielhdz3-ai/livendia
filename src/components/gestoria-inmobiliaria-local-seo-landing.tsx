@@ -1,5 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
 import { FaqSection } from "@/components/faq-section";
+import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
@@ -246,6 +247,15 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            heading={`Gestoría inmobiliaria en ${config.city}: panorama local`}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+          />
 
           <section id="compraventa" className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

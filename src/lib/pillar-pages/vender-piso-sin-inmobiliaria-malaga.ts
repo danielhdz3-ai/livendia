@@ -17,9 +17,9 @@ import type {
 export const PILLAR_MALAGA_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/malaga`;
 
 export const PILLAR_MALAGA_META = {
-  title: "Vender piso sin comisiones en Málaga | Entre particulares con gestor legal",
+  title: "Vender piso sin comisiones en Malaga | Entre particulares con gestor legal",
   description:
-    "Guía completa para vender tu piso en Málaga sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
+    "Guía completa para vender tu piso en Malaga sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
   keywords: [
     "vender piso sin inmobiliaria malaga",
     "vender piso sin comisiones malaga",
@@ -44,7 +44,7 @@ export const PILLAR_MALAGA_TOC = [
   { id: "comparativa", label: "Agencia, solo o Livendia" },
   { id: "ahorro-comisiones", label: "Cuánto ahorras en comisiones" },
   { id: "financiacion-comprador", label: "Si el comprador pide hipoteca" },
-  { id: "malaga-mercado", label: "Vender en Málaga" },
+  { id: "malaga-mercado", label: "Vender en Malaga" },
   { id: "casos-ejemplo", label: "Ejemplos reales de ahorro" },
   { id: "errores-frecuentes", label: "Errores que cuestan dinero" },
   { id: "livendia-vs-otros", label: "Livendia vs otras opciones" },
@@ -55,33 +55,33 @@ export const PILLAR_MALAGA_TOC = [
 export const PILLAR_MALAGA_SECTIONS: readonly PillarSection[] = [
   {
     id: "por-que-vender-sin-inmobiliaria",
-    title: "Por qué cada vez más propietarios en Málaga venden sin inmobiliaria",
+    title: "Por qué cada vez más propietarios en Malaga venden sin inmobiliaria",
     paragraphs: [
-      "Vender un piso en Málaga sin inmobiliaria deja de ser una excepción: en Andalucía, donde el precio medio en la capital suele moverse entre 200.000 € y 350.000 € según barrio —más alto en zonas costeras—, una comisión del 3 % más IVA en un piso de 280.000 € supera los 10.000 € y al 5 % se acerca a los 17.000 €. Ese importe no cubre la escritura ni el notario; es el coste de intermediar cuando tú ya has encontrado al comprador.",
+      "Vender un piso en Malaga sin inmobiliaria deja de ser una excepción: en Andalucía, donde el precio medio de la vivienda usada en la capital suele moverse entre 180.000 € y 280.000 € según barrio, una comisión del 3 % más IVA representa más de 6.500 € y al 5 % se acerca a los 11.000 € en un piso de 220.000 €. Ese importe no cubre la escritura ni el notario; es el coste de intermediar cuando tú ya has encontrado al comprador.",
       "El perfil del vendedor malagano ha cambiado. Muchos cierran con un compañero de trabajo, un familiar, un vecino o alguien que contactó por Idealista o Fotocasa. En esos casos, pagar un porcentaje sobre el precio de venta equivale a financiar captación que no usaste. Vender vivienda entre particulares —vender casa sin agencia, directamente a otro particular— es legal, habitual y tan seguro como con intermediario si la parte contractual está bien hecha.",
       "El reto no es prescindir de la agencia, sino no prescindir de la seguridad jurídica. Vender piso sin comisiones ahorra dinero; vender sin asesoramiento cuando hay hipoteca pendiente, derrama en la comunidad o comprador que financia puede costar meses o miles de euros en correcciones. Por eso crece el tercer camino: ahorro de la venta directa más gestor legal que redacta contratos, revisa cargas y coordina hasta notaría.",
-      "En Málaga capital y Costa del Sol el comprador suele llegar con preaprobación bancaria. Entidades con oficinas en la calle Larios, Avenida de Andalucía o el entorno de Muelle Uno exigen arras formalizadas, cédula de habitabilidad cuando aplica y certificado de comunidad sin derramas pendientes. El vendedor que vende sin agencia pero con orden documental cierra en plazos similares a una operación intermediada.",
-      "Esta guía está pensada para ti si ya tienes comprador o lo estás negociando por tu cuenta y quieres ahorrar la comisión inmobiliaria sin asumir riesgos innecesarios. Aquí encontrarás el proceso completo en Málaga, la documentación exigida, los errores más caros y cómo encaja Livendia.",
+      "En Málaga capital y Costa del Sol el comprador suele llegar con preaprobación bancaria. Entidades con oficinas en Nervión, Avenida de la Constitución o el entorno de Isla de la Cartuja exigen arras formalizadas, cédula de habitabilidad cuando aplica y certificado de comunidad sin derramas pendientes. El vendedor que vende sin agencia pero con orden documental cierra en plazos similares a una operación intermediada.",
+      "Esta guía está pensada para ti si ya tienes comprador o lo estás negociando por tu cuenta y quieres ahorrar la comisión inmobiliaria sin asumir riesgos innecesarios. Aquí encontrarás el proceso completo en Malaga, la documentación exigida, los errores más caros y cómo encaja Livendia.",
     ],
   },
   {
     id: "que-es-venta-entre-particulares",
-    title: "Qué significa vender vivienda entre particulares en Málaga (y qué no implica)",
+    title: "Qué significa vender vivienda entre particulares en Malaga (y qué no implica)",
     paragraphs: [
       "Vender vivienda entre particulares significa que tú y el comprador acordáis la compraventa sin que una agencia actúe como mandataria comercial. No existe un régimen legal distinto: la operación se rige por el Código Civil y la normativa tributaria y registral como cualquier transmisión.",
       "Vender piso directamente a un particular no significa saltarse la notaría, el Registro de la Propiedad ni los impuestos. La escritura pública sigue siendo obligatoria para inscribir la propiedad. Cuanto más claro quede por escrito en reserva y arras, menos fricción habrá ante el notario y el banco del comprador.",
-      "En Málaga, la venta sin agencia suele combinar: (1) captación del comprador por el propietario, (2) negociación directa del precio y calendario, y (3) acompañamiento jurídico-documental profesional. Livendia ocupa exclusivamente esta tercera pieza.",
-      "Confundir «sin inmobiliaria» con «sin profesionales» es el error más repetido en operaciones en Centro, Soho o Teatinos. Puedes vender casa sin agencia y contratar gestoría especializada en compraventa entre particulares. Eso no convierte la operación en venta «con agencia».",
+      "En Malaga, la venta sin agencia suele combinar: (1) captación del comprador por el propietario, (2) negociación directa del precio y calendario, y (3) acompañamiento jurídico-documental profesional. Livendia ocupa exclusivamente esta tercera pieza.",
+      "Confundir «sin inmobiliaria» con «sin profesionales» es el error más repetido en operaciones en Triana, Nervión o el casco histórico. Puedes vender casa sin agencia y contratar gestoría especializada en compraventa entre particulares. Eso no convierte la operación en venta «con agencia».",
     ],
   },
   {
     id: "que-hace-livendia",
-    title: "Qué hace Livendia cuando vendes sin inmobiliaria en Málaga — y qué no hace",
+    title: "Qué hace Livendia cuando vendes sin inmobiliaria en Malaga — y qué no hace",
     paragraphs: [
       "Livendia es una gestoría inmobiliaria digital especializada en compraventa entre particulares. El servicio completo de venta cubre desde que tienes comprador interesado hasta la firma en notaría, por 890 € IVA incluido. No cobramos comisión sobre el precio de venta ni exigimos exclusiva.",
       "Lo que hacemos: gestor legal dedicado; revisión de nota simple y cargas; redacción de reserva y arras; orientación sobre certificados de comunidad, eficiencia energética y documentación urbanística; coordinación del calendario hacia escritura; revisión del borrador notarial; acompañamiento por WhatsApp y teléfono; panel online para centralizar documentos.",
       "Lo que no hacemos: no publicamos en Idealista ni Fotocasa; no hacemos fotos ni visitas; no negociamos el precio por ti; no somos Housfy ni Properfy — no captamos comprador. Si ya tienes comprador y quieres ahorrar comisión inmobiliaria, Livendia es el complemento jurídico que muchos propietarios malaganos echaban en falta.",
-      "Vender piso sin comisiones con Livendia significa pagar gestoría profesional, no porcentaje de agencia sobre los cientos de miles de euros de tu vivienda en Málaga.",
+      "Vender piso sin comisiones con Livendia significa pagar gestoría profesional, no porcentaje de agencia sobre los cientos de miles de euros de tu vivienda en Malaga.",
     ],
   },
 ];
@@ -89,23 +89,23 @@ export const PILLAR_MALAGA_SECTIONS: readonly PillarSection[] = [
 export const PILLAR_MALAGA_PROCESS: readonly PillarProcessStep[] = [
   {
     phase: "Fase 1",
-    title: "Preparar la vivienda y el precio en Málaga",
+    title: "Preparar la vivienda y el precio en Malaga",
     duration: "1–4 semanas",
-    body: "Acota un precio realista según comparables en tu barrio —Centro, Malagueta, Teatinos, Pedregalejo, El Palo, Carretera de Cádiz, Soho—, estado de la vivienda y situación registral. Reúne el certificado de eficiencia energética y la escritura. Si hay inquilino, revisa el contrato y plazos de desalojo.",
+    body: "Acota un precio realista según comparables en tu barrio —Triana, Nervión, Los Remedios, Macarena, Santa Cruz, Heliópolis—, estado de la vivienda y situación registral. Reúne el certificado de eficiencia energética y la escritura. Si hay inquilino, revisa el contrato y plazos de desalojo.",
     livendiaRole: "Orientación si ya tienes comprador y quieres validar precio y calendario antes de firmar nada vinculante.",
   },
   {
     phase: "Fase 2",
     title: "Captar comprador por tu cuenta",
     duration: "Variable",
-    body: "Publicas en portales, redes o cierras con alguien de tu entorno. Filtras solvencia: financiación, señal y plazos. En Málaga es habitual que el comprador pida segunda visita con técnico; no aceptes condiciones abusivas en caliente.",
+    body: "Publicas en portales, redes o cierras con alguien de tu entorno. Filtras solvencia: financiación, señal y plazos. En Malaga es habitual que el comprador pida segunda visita con técnico; no aceptes condiciones abusivas en caliente.",
     livendiaRole: "No participamos en captación. No firmes reserva ni entregues señal sin revisar el borrador con un profesional.",
   },
   {
     phase: "Fase 3",
     title: "Reserva y señal",
     duration: "1–2 semanas",
-    body: "Muchas operaciones entre particulares en Málaga arrancan con reserva: fija precio, plazo para arras, devolución si falla la hipoteca y penalizaciones por desistimiento.",
+    body: "Muchas operaciones entre particulares en Malaga arrancan con reserva: fija precio, plazo para arras, devolución si falla la hipoteca y penalizaciones por desistimiento.",
     livendiaRole: "Redacción del contrato de reserva adaptado a vuestra operación en Andalucía.",
   },
   {
@@ -126,14 +126,14 @@ export const PILLAR_MALAGA_PROCESS: readonly PillarProcessStep[] = [
     phase: "Fase 6",
     title: "Cancelación de hipoteca (si procede)",
     duration: "2–4 semanas",
-    body: "Si vendes con hipoteca pendiente, coordina con tu banco provisión de fondos o subrogación. En Málaga esto es rutinario pero delicado en plazos.",
+    body: "Si vendes con hipoteca pendiente, coordina con tu banco provisión de fondos o subrogación. En Malaga esto es rutinario pero delicado en plazos.",
     livendiaRole: "Orientación sobre calendario y coherencia entre arras y condiciones bancarias.",
   },
   {
     phase: "Fase 7",
     title: "Plusvalía e impuestos del vendedor",
     duration: "En paralelo",
-    body: "Plusvalía municipal, IRPF por ganancia patrimonial y gastos locales. El comprador asume ITP en segunda mano. Málaga capital, Torremolinos, Rincón de la Victoria o Vélez-Málaga tienen normativas y bonificaciones propias.",
+    body: "Plusvalía municipal, IRPF por ganancia patrimonial y gastos locales. El comprador asume ITP en segunda mano. Malaga capital, Dos Hermanas, Alcalá de Guadaíra o Camas tienen normativas y bonificaciones propias.",
     livendiaRole: "Orientación sobre gastos y plazos; liquidación definitiva con tu asesor fiscal.",
   },
   {
@@ -164,7 +164,7 @@ export const PILLAR_MALAGA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Certificado de estar al corriente (comunidad)",
     whoProvides: "Administrador de fincas",
-    whyItMatters: "Imprescindible para hipoteca del comprador. Derramas en edificios del centro o comunidades con obra pendiente son causa frecuente de retraso en Málaga.",
+    whyItMatters: "Imprescindible para hipoteca del comprador. Derramas en edificios del casco histórico o Macarena son causa frecuente de retraso en Malaga.",
   },
   {
     name: "Último recibo del IBI",
@@ -174,17 +174,17 @@ export const PILLAR_MALAGA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Contrato de arras y reserva",
     whoProvides: "Redacción profesional — Livendia",
-    whyItMatters: "Núcleo de la seguridad jurídica entre particulares en Málaga.",
+    whyItMatters: "Núcleo de la seguridad jurídica entre particulares en Malaga.",
   },
   {
     name: "Certificados de instalaciones / ITE (si aplica)",
     whoProvides: "Según edificio",
-    whyItMatters: "En edificios del centro histórico, El Perchel o La Malagueta antiguos, comprador o banco pueden exigirlos.",
+    whyItMatters: "En edificios del casco histórico, Santa Cruz o Triana antiguos, comprador o banco pueden exigirlos.",
   },
   {
     name: "Cédula de habitabilidad (Andalucía)",
     whoProvides: "Técnico / Junta de Andalucía",
-    whyItMatters: "En muchas operaciones en Málaga el comprador o su banco la solicitan. Sin ella, la venta se paraliza semanas.",
+    whyItMatters: "En muchas operaciones en Malaga el comprador o su banco la solicitan. Sin ella, la venta se paraliza semanas.",
   },
 ];
 
@@ -211,13 +211,13 @@ export const PILLAR_MALAGA_RISKS: readonly PillarRisk[] = [
   },
   {
     risk: "Borrador notarial distinto a arras",
-    alone: "Conflictos el día de la firma en la notaría de Málaga.",
+    alone: "Conflictos el día de la firma en la notaría de Malaga.",
     withLivendia: "Revisión y alineación entre contratos privados y escritura.",
   },
 ];
 
 export const PILLAR_MALAGA_COMPARE_ROWS = [
-  { aspect: "Coste en piso de 280.000 €", agency: "10.164–16.940 € (3–5 % + IVA)", alone: "0 € de gestoría", livendia: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.` },
+  { aspect: "Coste en piso de 250.000 €", agency: "9.075–15.125 € (3–5 % + IVA)", alone: "0 € de gestoría", livendia: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.` },
   { aspect: "Publica anuncio y trae visitas", agency: "Sí", alone: "Tú (Idealista, etc.)", livendia: "No" },
   { aspect: "Contratos por profesional", agency: "Variable", alone: "Riesgo con plantillas", livendia: "Sí — gestor dedicado" },
   { aspect: "Comisión sobre precio", agency: "Sí (habitual)", alone: "No", livendia: "No" },
@@ -228,46 +228,46 @@ export const PILLAR_MALAGA_COMPARE_ROWS = [
 ] as const;
 
 export const PILLAR_MALAGA_SAVINGS_ROWS = [
-  { price: 200_000, agency3: 7_260, agency5: 12_100, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
-  { price: 240_000, agency3: 8_712, agency5: 14_520, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
+  { price: 180_000, agency3: 6_534, agency5: 10_890, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
+  { price: 220_000, agency3: 7_986, agency5: 13_310, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
+  { price: 250_000, agency3: 9_075, agency5: 15_125, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
   { price: 280_000, agency3: 10_164, agency5: 16_940, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
   { price: 320_000, agency3: 11_616, agency5: 19_360, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
-  { price: 360_000, agency3: 13_068, agency5: 21_780, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
-  { price: 420_000, agency3: 15_246, agency5: 25_410, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
+  { price: 380_000, agency3: 13_794, agency5: 22_990, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
 ] as const;
 
 export const PILLAR_MALAGA_CASE_STUDIES: readonly PillarCaseStudy[] = [
   {
-    title: "Piso en Teatinos vendido a compañero de trabajo",
-    scenario: "Propietario con piso de 82 m² en Teatinos. Comprador de su empresa. Precio: 295.000 €.",
-    challenge: "Comprador con hipoteca en entidad de Málaga. Banco exigía arras con suspensión a 60 días, cédula de habitabilidad y certificado de comunidad sin derramas.",
-    outcome: "Livendia redactó arras, ordenó documentación andaluza y alineó calendario con la entidad. Escritura en 11 semanas.",
-    savings: "Frente a agencia al 3 % + IVA: ahorro de 10.054 € (10.944 € menos 890 € Livendia).",
+    title: "Piso en Nervión vendido a compañero de trabajo",
+    scenario: "Propietario con piso de 85 m² en Nervión. Comprador de su empresa. Precio: 265.000 €.",
+    challenge: "Comprador con hipoteca en entidad de Nervión. Banco exigía arras con suspensión a 60 días, cédula de habitabilidad y certificado de comunidad sin derramas.",
+    outcome: "Livendia redactó arras, ordenó documentación andaluza y alineó calendario con la entidad. Escritura en 10 semanas.",
+    savings: "Frente a agencia al 3 % + IVA: ahorro de 8.185 € (9.075 € menos 890 € Livendia).",
   },
   {
-    title: "Vivienda en Pedregalejo entre familiares",
-    scenario: "Piso de 70 m² en Pedregalejo. Venta a sobrino. Precio: 248.000 €.",
+    title: "Vivienda en Los Remedios entre familiares",
+    scenario: "Piso de 72 m² en Los Remedios. Venta a sobrina. Precio: 235.000 €.",
     challenge: "Operación familiar sin contrato claro: riesgo de recalificar condiciones y problemas con Hacienda por precio simbólico mal justificado.",
     outcome: "Contrato de arras con precio de mercado documentado, inventario y calendario de escritura. Venta cerrada sin litigio familiar.",
-    savings: "Frente al 5 % + IVA: ahorro de 11.010 €.",
+    savings: "Frente al 5 % + IVA: ahorro de 10.345 €.",
   },
   {
-    title: "Piso en Carretera de Cádiz con hipoteca pendiente",
-    scenario: "Propietario en Carretera de Cádiz vende a 215.000 €. Hipoteca pendiente de 78.000 €.",
+    title: "Piso en Cerro-Amate con hipoteca pendiente",
+    scenario: "Propietario en Cerro-Amate vende a 198.000 €. Hipoteca pendiente de 72.000 €.",
     challenge: "Coordinar cancelación, provisión del banco vendedor y plazos del comprador financiado.",
     outcome: "Livendia alineó arras con fecha de cancelación y revisó nota simple en dos momentos. Escritura con subrogación.",
-    savings: "Frente al 3 % + IVA: ahorro de 6.898 €.",
+    savings: "Frente al 3 % + IVA: ahorro de 5.644 €.",
   },
 ];
 
 export const PILLAR_MALAGA_MALAGA_EXTRA: readonly PillarSection[] = [
   {
     id: "financiacion-comprador",
-    title: "Si el comprador necesita hipoteca en Málaga: qué debe saber el vendedor",
+    title: "Si el comprador necesita hipoteca en Malaga: qué debe saber el vendedor",
     paragraphs: [
-      "La mayoría de compradores particulares en Málaga financian con préstamo hipotecario. Para el vendedor que ahorra comisión inmobiliaria entra en juego el banco del comprador, el tasador y plazos estrictos de documentación.",
-      "Entidades con oficinas en Larios, Avenida de Andalucía o el entorno de Muelle Uno piden arras firmadas, certificado de comunidad, nota simple reciente, CEE, cédula de habitabilidad e IBI al día. Si entregaste señal sin papeles, el comprador puede usar el retraso bancario para renegociar.",
-      "Las cláusulas suspensivas en arras protegen a ambas partes: el comprador solicita hipoteca en plazo; si no la obtiene, se establece qué pasa con la señal. Mal redactadas u omitidas, son la causa más frecuente de disputas en ventas entre particulares en Málaga.",
+      "La mayoría de compradores particulares en Malaga financian con préstamo hipotecario. Para el vendedor que ahorra comisión inmobiliaria entra en juego el banco del comprador, el tasador y plazos estrictos de documentación.",
+      "Entidades con oficinas en Nervión, Plaza Nueva o el entorno de Isla de la Cartuja piden arras firmadas, certificado de comunidad, nota simple reciente, CEE, cédula de habitabilidad e IBI al día. Si entregaste señal sin papeles, el comprador puede usar el retraso bancario para renegociar.",
+      "Las cláusulas suspensivas en arras protegen a ambas partes: el comprador solicita hipoteca en plazo; si no la obtiene, se establece qué pasa con la señal. Mal redactadas u omitidas, son la causa más frecuente de disputas en ventas entre particulares en Malaga.",
       "Livendia alinea calendario con plazos realistas de aprobación (cuatro a diez semanas desde arras) y revisa que la documentación esté lista antes de que el comprador presente expediente.",
       "Si el comprador paga al contado, el calendario se acorta, pero nota simple, cédula y certificados de comunidad siguen siendo imprescindibles.",
     ],
@@ -276,18 +276,18 @@ export const PILLAR_MALAGA_MALAGA_EXTRA: readonly PillarSection[] = [
     id: "malaga-mercado",
     title: "Particularidades de vender en Málaga capital y Costa del Sol",
     paragraphs: [
-      "Málaga no es un mercado único. Vender sin inmobiliaria en Centro, Teatinos, Pedregalejo o La Malagueta implica compradores con perfiles distintos —familias, inversores, segunda residencia, teletrabajo— y tiempos de cierre variables.",
-      "En la Costa del Sol —Torremolinos, Rincón de la Victoria, Vélez-Málaga— los precios varían pero el proceso legal es idéntico: arras, comunidad, ITP del comprador y plusvalía del vendedor. Livendia aplica el mismo protocolo y tarifa plana.",
-      "En el centro y edificios de los años 70-80, derramas por rehabilitación e ITE son frecuentes. En zonas turísticas, verifica licencias de uso. Si hubo reforma sin licencia o cambio de uso, conviene resolverlo antes de arras.",
+      "Malaga no es un mercado único. Vender sin inmobiliaria en Triana, Nervión, Los Remedios o Macarena implica compradores con perfiles distintos —familias, inversores, funcionarios, estudiantes— y tiempos de cierre variables.",
+      "En el área metropolitana —Dos Hermanas, Alcalá de Guadaíra, Camas, Mairena del Aljarafe— los precios son más bajos pero el proceso legal es idéntico: arras, comunidad, ITP del comprador y plusvalía del vendedor. Livendia aplica el mismo protocolo y tarifa plana.",
+      "En el casco histórico y Santa Cruz, derramas por rehabilitación de fachadas e ITE en edificios antiguos son frecuentes. Si hubo reforma sin licencia o cambio de uso, conviene resolverlo antes de arras.",
       "Operaciones entre particulares con herencias compartidas son frecuentes en barrios consolidados. Todos los herederos deben estar alineados y la documentación registral unificada antes de anunciar precio.",
-      "Si vendes para comprar otro piso en Málaga, el calendario encadenado requiere arras bien redactadas en ambas patas. Livendia coordina la venta; para la compra existe el servicio completo de compra con la misma filosofía.",
+      "Si vendes para comprar otro piso en Malaga, el calendario encadenado requiere arras bien redactadas en ambas patas. Livendia coordina la venta; para la compra existe el servicio completo de compra con la misma filosofía.",
     ],
   },
   {
     id: "errores-frecuentes",
-    title: "Errores frecuentes al vender sin agencia en Málaga",
+    title: "Errores frecuentes al vender sin agencia en Malaga",
     paragraphs: [
-      "Confundir interés con solvencia: en Málaga no faltan visitas; faltan compradores que obtengan hipoteca. Filtra antes de reservar y exige preaprobación cuando sea razonable.",
+      "Confundir interés con solvencia: en Malaga no faltan visitas; faltan compradores que obtengan hipoteca. Filtra antes de reservar y exige preaprobación cuando sea razonable.",
       "Entregar señal en mano sin contrato claro. Pagos sin trazabilidad generan problemas con Hacienda y con el comprador.",
       "Fijar precio sin mirar la comunidad. Una derrama de rehabilitación en el casco histórico cambia la ecuación para el comprador financiado.",
       "Pensar que «entre familiares no hace falta contrato». Las operaciones entre parientes son las que más acaban en conflicto.",
@@ -298,10 +298,10 @@ export const PILLAR_MALAGA_MALAGA_EXTRA: readonly PillarSection[] = [
   },
   {
     id: "livendia-vs-otros",
-    title: "Livendia frente a inmobiliarias sin comisiones y gestoría tradicional en Málaga",
+    title: "Livendia frente a inmobiliarias sin comisiones y gestoría tradicional en Malaga",
     paragraphs: [
       "Housfy, Properfy y similares compiten en captación: fotos, portales, visitas. Si ya tienes comprador, pagas por servicios que no necesitas. Livendia parte de otro supuesto: tú traes al comprador; nosotros blindamos la operación.",
-      "Una gestoría de barrio en Málaga puede redactar contratos, pero rara vez está especializada en compraventa P2P con panel online y gestor dedicado por expediente.",
+      "Una gestoría de barrio en Malaga puede redactar contratos, pero rara vez está especializada en compraventa P2P con panel online y gestor dedicado por expediente.",
       "Vender piso sin comisiones no es vender sin coste. Notaría, registro, plusvalía y cancelación hipotecaria tienen importe propio. La comisión de agencia es el gasto que más sentido pierde cuando la captación la hiciste tú.",
     ],
   },
@@ -309,7 +309,7 @@ export const PILLAR_MALAGA_MALAGA_EXTRA: readonly PillarSection[] = [
 
 export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
   {
-    question: "¿Es legal vender mi piso en Málaga sin inmobiliaria?",
+    question: "¿Es legal vender mi piso en Malaga sin inmobiliaria?",
     answer: "Sí. No existe obligación de contratar agencia. Puedes vender directamente a un particular cumpliendo normativa, documentación y escritura ante notario.",
   },
   {
@@ -321,8 +321,8 @@ export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
     answer: "No. No somos portal ni agencia de marketing. Livendia entra cuando hay comprador o negociación avanzada y necesitas contratos y trámites.",
   },
   {
-    question: "¿Cuánto cuesta vender con Livendia frente a una agencia en Málaga?",
-    answer: `El servicio completo cuesta ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido. En un piso de 280.000 €, una agencia al 3 % + IVA cobra unos 10.164 €; al 5 %, unos 16.940 €.`,
+    question: "¿Cuánto cuesta vender con Livendia frente a una agencia en Malaga?",
+    answer: `El servicio completo cuesta ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido. En un piso de 250.000 €, una agencia al 3 % + IVA cobra unos 9.075 €; al 5 %, unos 15.125 €.`,
   },
   {
     question: "¿Puedo vender entre particulares si tengo hipoteca?",
@@ -333,19 +333,19 @@ export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
     answer: "Nota simple, certificado de comunidad, CEE, IBI, escritura y arras firmadas. Cada entidad añade requisitos. Livendia mantiene checklist actualizado.",
   },
   {
-    question: "¿Arras penitenciales o confirmatorias en Málaga?",
+    question: "¿Arras penitenciales o confirmatorias en Malaga?",
     answer: "Depende del calendario, financiación y riesgo de desistimiento. Un gestor Livendia recomienda la fórmula según tu caso.",
   },
   {
     question: "¿Puedo contratar solo arras sin servicio completo?",
-    answer: "Sí. Existe contrato de arras local en Málaga. Si ya firmaste arras, está la gestión documental vendedor. El servicio completo es lo habitual de reserva a notaría.",
+    answer: "Sí. Existe contrato de arras local en Malaga. Si ya firmaste arras, está la gestión documental vendedor. El servicio completo es lo habitual de reserva a notaría.",
   },
   {
     question: "¿Livendia negocia el precio por mí?",
     answer: "No. Te asesoramos en lo legal y documental. La negociación económica sigue siendo tuya.",
   },
   {
-    question: "¿Cuánto tarda una venta entre particulares en Málaga?",
+    question: "¿Cuánto tarda una venta entre particulares en Malaga?",
     answer: "Desde unas semanas (contado, documentación lista) hasta tres o cuatro meses con hipotecas y derramas. Arras mal pactadas son la principal causa de retrasos evitables.",
   },
   {
@@ -353,7 +353,7 @@ export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
     answer: "La obligación del vendedor es la misma haya o no agencia. El ayuntamiento liquida según su normativa. Livendia orienta sobre plazos.",
   },
   {
-    question: "¿Sirve esta guía si vendo en Torremolinos o Rincón de la Victoria?",
+    question: "¿Sirve esta guía si vendo en Dos Hermanas o Alcalá de Guadaíra?",
     answer: "Sí. El marco legal es estatal. Livendia cubre Málaga capital y Costa del Sol con el mismo servicio y tarifa.",
   },
   {
@@ -361,40 +361,86 @@ export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
     answer: "Online en livendia.com: pago seguro, expediente y gestor asignado. Recomendable antes de entregar señal al comprador.",
   },
   {
-    question: "¿Esta página sustituye a vender piso sin agencia Málaga?",
+    question: "¿Esta página sustituye a vender piso sin agencia Malaga?",
     answer: "Esta es la guía pilar más completa. La landing en /servicios/vender-piso-sin-agencia-malaga sigue activa como ficha complementaria.",
   },
 ];
 
 export const PILLAR_MALAGA_RELATED: readonly PillarRelatedLink[] = [
-  { href: "/servicios/servicio-completo-venta", label: "Servicio completo de venta", description: "Ficha nacional del servicio: alcance, precio y checkout.", category: "servicio" },
-  { href: "/servicios/servicio-completo-venta-local/malaga", label: "Servicio completo de venta en Málaga", description: "Landing de conversión local enlazada desde esta guía.", category: "local" },
-  { href: "/servicios/gestion-documental-vendedor/malaga", label: "Gestión documental vendedor Málaga", description: "Después de arras: documentación hacia escritura.", category: "servicio" },
-  { href: "/gestoria/malaga", label: "Gestoría inmobiliaria Málaga", description: "Todos los servicios Livendia en la Costa del Sol.", category: "local" },
-  { href: "/servicios/vender-piso-sin-agencia-malaga", label: "Vender piso sin agencia Málaga", description: "Ficha complementaria de venta sin agencia.", category: "guia" },
-  { href: VENDER_PISO_SIN_INMOBILIARIA_BASE, label: "Vender sin inmobiliaria (España)", description: "Hub nacional de guías por ciudad.", category: "guia" },
-  { href: "/vender-piso-sin-inmobiliaria/sevilla", label: "Vender sin comisiones en Sevilla", description: "Guía pilar equivalente en Andalucía occidental.", category: "guia" },
-  { href: "/vender-piso-sin-inmobiliaria/granada", label: "Vender sin comisiones en Granada", description: "Guía pilar equivalente en Granada.", category: "guia" },
-  { href: "/servicios/servicio-completo-compra-local/malaga", label: "Comprar piso entre particulares en Málaga", description: "Para propietarios que venden y compran en cadena.", category: "local" },
+  {
+    href: "/servicios/servicio-completo-venta",
+    label: "Servicio completo de venta",
+    description: "Ficha nacional del servicio: alcance, precio y checkout.",
+    category: "servicio",
+  },
+  {
+    href: "/servicios/servicio-completo-venta-local/malaga",
+    label: "Servicio completo de venta en Malaga",
+    description: "Landing de conversión local enlazada desde esta guía.",
+    category: "local",
+  },
+  {
+    href: "/servicios/gestion-documental-vendedor/malaga",
+    label: "Gestión documental vendedor Malaga",
+    description: "Después de arras: documentación hacia escritura.",
+    category: "servicio",
+  },
+  {
+    href: "/gestoria/malaga",
+    label: "Gestoría inmobiliaria Malaga",
+    description: "Todos los servicios Livendia en la capital andaluza.",
+    category: "local",
+  },
+  {
+    href: "/servicios/vender-piso-sin-agencia-malaga",
+    label: "Vender piso sin agencia Malaga",
+    description: "Ficha complementaria de venta sin agencia.",
+    category: "guia",
+  },
+  {
+    href: VENDER_PISO_SIN_INMOBILIARIA_BASE,
+    label: "Vender sin inmobiliaria (España)",
+    description: "Hub nacional de guías por ciudad.",
+    category: "guia",
+  },
+  {
+    href: "/vender-piso-sin-inmobiliaria/madrid",
+    label: "Vender sin comisiones en Madrid",
+    description: "Guía pilar equivalente en Madrid.",
+    category: "guia",
+  },
+  {
+    href: "/vender-piso-sin-inmobiliaria/barcelona",
+    label: "Vender sin comisiones en Barcelona",
+    description: "Guía pilar equivalente en Cataluña.",
+    category: "guia",
+  },
+  {
+    href: "/servicios/servicio-completo-compra-local/malaga",
+    label: "Comprar piso entre particulares en Malaga",
+    description: "Para propietarios que venden y compran en cadena.",
+    category: "local",
+  },
 ];
 
 export const PILLAR_MALAGA_NEIGHBORHOODS = [
-  "Centro",
-  "Malagueta",
-  "Teatinos",
-  "Pedregalejo",
-  "El Palo",
-  "Carretera de Cádiz",
-  "Soho",
-  "La Malagueta",
-  "Ciudad Jardín",
-  "Palma-Palmilla",
-  "Torremolinos",
-  "Rincón de la Victoria",
-  "Vélez-Málaga",
-  "Benalmádena",
-  "Fuengirola",
-  "Marbella",
-  "Antequera",
-  "Estepona",
+  "Triana",
+  "Nervión",
+  "Los Remedios",
+  "Macarena",
+  "Santa Cruz",
+  "Heliópolis",
+  "Cerro-Amate",
+  "Bellavista-La Palmera",
+  "Este-Alcosa-Torreblanca",
+  "San Pablo-Santa Justa",
+  "Casco Antiguo",
+  "Dos Hermanas",
+  "Alcalá de Guadaíra",
+  "Camas",
+  "Mairena del Aljarafe",
+  "Tomares",
+  "Utrera",
+  "Écija",
+  "Córdoba capital",
 ] as const;

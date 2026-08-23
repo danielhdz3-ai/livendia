@@ -3,6 +3,10 @@
  * Rutas: /gestoria/[slug]
  */
 
+import { GESTORIA_INMOBILIARIA_LOCAL_DIFFERENTIATION } from "@/lib/gestoria-inmobiliaria-local-differentiation";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
+import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
+
 import {
   CONTRATO_ALQUILER_HABITACION_PRICE_EUR,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
@@ -35,6 +39,8 @@ export const GESTORIA_INMOBILIARIA_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "murcia",
   "malaga",
   "sevilla",
+  "bilbao",
+  "granada",
 ];
 
 export type GestoriaInmobiliariaLocalLandingConfig = {
@@ -75,7 +81,12 @@ export type GestoriaInmobiliariaLocalLandingConfig = {
   };
   faq: { question: string; answer: string }[];
   finalCtaLead: string;
-};
+  /** Párrafo editorial único sobre el mercado local (SEO). */
+  localMarketInsight?: string;
+} & Pick<
+  import("@/lib/local-city-landing-fields").LocalCityLandingFields,
+  "localPriceSnapshot" | "localNeighborhoods" | "localServiceNotes"
+>;
 
 export type GestoriaInmobiliariaLocalCityDefinition = Omit<GestoriaInmobiliariaLocalLandingConfig, "path">;
 
@@ -86,7 +97,9 @@ export function localGestoriaInmobiliariaHref(slug: string): string {
 export function toGestoriaInmobiliariaLandingConfig(
   def: GestoriaInmobiliariaLocalCityDefinition,
 ): GestoriaInmobiliariaLocalLandingConfig {
-  return { ...def, path: localGestoriaInmobiliariaHref(def.slug) };
+  const diff = GESTORIA_INMOBILIARIA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
+  const merged = mergeLocalDifferentiation({ ...def, path: localGestoriaInmobiliariaHref(def.slug) }, diff);
+  return enrichWithCityMarketProfile(def.slug, "gestoria", merged) as GestoriaInmobiliariaLocalLandingConfig;
 }
 
 export function getGestoriaInmobiliariaLocalCity(
@@ -755,6 +768,155 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     ],
     finalCtaLead:
       `Contrata online en Sevilla: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+  },
+  {
+    slug: "bilbao",
+    city: "Bilbao",
+    schemaAdministrativeArea: "País Vasco",
+    metaTitle: "Bilbao: gestoría 890 € sin comisiones",
+    metaDescription:
+      `Gestoría Bilbao para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+    keywords: [
+      "gestoría inmobiliaria bilbao particulares",
+      "tramites compra piso bilbao entre particulares",
+      "vender piso sin agencia bilbao gestoría",
+      "venta entre particulares bilbao",
+      "contrato arras bilbao particular",
+      "administración alquiler bilbao particulares",
+      "gestoría compraventa vivienda bilbao",
+    ],
+    h1: "Gestoría inmobiliaria en Bilbao: compraventa, contratos y administración de alquileres",
+    heroLead:
+      "Gestoría inmobiliaria online para propietarios y compradores en Bilbao, Gran Bilbao y Bizkaia. Precios fijos en compraventa entre particulares, contratos LAU en 48-72 h y administración mensual del alquiler sin permanencia.",
+    compraventa: {
+      h2: "Gestoría compraventa vivienda en Bilbao entre particulares",
+      intro:
+        "En Bilbao (Abando, Indautxu, Deusto, Getxo, Barakaldo…) comprar o vender entre particulares exige revisar reserva, arras y documentación antes de la señal — sin pagar comisión de agencia si ya tienes contraparte.",
+      h3Reserva: "Acompañamiento Reserva hasta Arras — 424 € (IVA incl.)",
+      reservaCopy:
+        "Revisión de reserva, nota simple registral, arras y urbanismo. Detectamos cláusulas abusivas y plazos irreales antes de entregar la señal en operaciones en el Gran Bilbao.",
+      h3Completo: "Servicio Completo hasta Escritura y Notaría — 890 € (IVA incl.)",
+      completoCopy:
+        "Gestor dedicado desde la reserva hasta la firma en notaría: coordinación documental, defensa frente a cláusulas desequilibradas y alerta ante cargas o derramas ocultas.",
+    },
+    contratos: {
+      h2: "Redacción contrato alquiler en Bilbao y contrato de arras en Bilbao",
+      intro:
+        "Contratos LAU, temporada, habitación y arras con precio fijo. Entrega en 48-72 h adaptada al uso real del inmueble y al mercado vasco.",
+      h3Arras: GESTORIA_H3_ARRAS,
+      arrasCopy:
+        "Arras penitenciales o confirmatorias para compraventa en Bilbao. Condiciones suspensivas, plazos de hipoteca y penalidades revisadas por gestor.",
+      h3Lau: GESTORIA_H3_LAU,
+      lauCopy:
+        "Arrendamiento habitual con fianza, IPC, gastos de comunidad y causas de resolución conforme a LAU. Inventario fotográfico recomendado.",
+      h3Temporada: GESTORIA_H3_TEMPORADA,
+      temporadaCopy:
+        "Estancias temporales o alquiler por habitación en pisos compartidos, con normas de convivencia y suministros por escrito.",
+    },
+    administracion: {
+      h2: "Administración de alquileres en Bilbao — gestión integral sin permanencia",
+      intro:
+        "Delega la relación con el inquilino en Bilbao: incidencias, averías, mediación y renovaciones. Tú decides; Livendia ejecuta con gestor asignado.",
+      h3Incluye: "Qué incluye la gestión integral de alquileres en Bilbao",
+      incluyeCopy:
+        "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si vives fuera de Bizkaia.",
+      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      precioCopy:
+        "El propietario no atiende llamadas ni urgencias: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
+    },
+    faq: [
+      {
+        question: "¿Atendéis compraventas en el Gran Bilbao y municipios limítrofes?",
+        answer:
+          "Sí. Misma gestoría online en Bilbao capital, Getxo, Barakaldo, Portugalete y operaciones en Bizkaia con documentación digital.",
+      },
+      {
+        question: "¿Cuánto cuesta vender un piso entre particulares en Bilbao con Livendia?",
+        answer:
+          "El servicio completo de venta cuesta 890 € IVA incl., tarifa plana sin comisión sobre el precio de venta. Incluye reserva, arras, trámites y coordinación con notaría.",
+      },
+      {
+        question: `¿Puedo contratar solo el contrato de arras en Bilbao?`,
+        answer: `Sí. El contrato de arras (${CONTRATO_ARRAS_PRICE_LABEL}) es independiente y se entrega en 48-72 h laborables.`,
+      },
+    ],
+    finalCtaLead:
+      `Contrata online en Bilbao: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+  },
+  {
+    slug: "granada",
+    city: "Granada",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: "Granada: gestoría 890 € sin comisiones",
+    metaDescription:
+      `Gestoría Granada para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+    keywords: [
+      "gestoría inmobiliaria granada particulares",
+      "tramites compra piso granada entre particulares",
+      "vender piso sin agencia granada gestoría",
+      "venta entre particulares granada",
+      "contrato arras granada particular",
+      "administración alquiler granada particulares",
+      "gestoría compraventa vivienda granada",
+    ],
+    h1: "Gestoría inmobiliaria en Granada: compraventa, contratos y administración de alquileres",
+    heroLead:
+      "Gestoría inmobiliaria digital para propietarios y compradores en Granada capital y área metropolitana. Tarifas planas en compraventa entre particulares, contratos en 48-72 h y administración mensual del alquiler sin permanencia.",
+    compraventa: {
+      h2: "Gestoría compraventa vivienda en Granada entre particulares",
+      intro:
+        "En Granada (Centro, Zaidín, Chana, Armilla, La Zubia…) comprar o vender entre particulares exige revisar reserva, arras y documentación antes de la señal — sin pagar comisión de agencia si ya tienes comprador o vendedor.",
+      h3Reserva: "Acompañamiento Reserva hasta Arras — 424 € (IVA incl.)",
+      reservaCopy:
+        "Revisión de reserva, nota simple registral, arras y urbanismo. Detectamos cláusulas abusivas antes de entregar la señal en operaciones con alta demanda universitaria y residencial.",
+      h3Completo: "Servicio Completo hasta Escritura y Notaría — 890 € (IVA incl.)",
+      completoCopy:
+        "Gestor dedicado desde la reserva hasta la firma en notaría: coordinación documental, defensa frente a cláusulas desequilibradas y seguimiento de plazos hasta escritura.",
+    },
+    contratos: {
+      h2: "Redacción contrato alquiler en Granada y contrato de arras en Granada",
+      intro:
+        "Contratos LAU, temporada, habitación y arras con precio cerrado. Entrega en 48-72 h adaptada al uso real (habitual, por habitaciones o temporada).",
+      h3Arras: GESTORIA_H3_ARRAS,
+      arrasCopy:
+        "Arras penitenciales o confirmatorias para compraventa en Granada. Plazos, penalidades y condiciones suspensivas revisadas por gestor.",
+      h3Lau: GESTORIA_H3_LAU,
+      lauCopy:
+        "Arrendamiento habitual con depósito, fianza, IPC y gastos de comunidad conforme a LAU. Muy demandado en barrios universitarios y centro histórico.",
+      h3Temporada: GESTORIA_H3_TEMPORADA,
+      temporadaCopy:
+        "Para estancias temporales, alquiler por habitación o contratos fuera del régimen LAU estándar, con normas de convivencia explícitas.",
+    },
+    administracion: {
+      h2: "Administración de alquileres en Granada — gestión integral sin permanencia",
+      intro:
+        "Delega la relación con el inquilino en Granada: incidencias, averías, mediación y renovaciones. Tú decides; Livendia ejecuta y documenta.",
+      h3Incluye: "Qué incluye la gestión integral de alquileres en Granada",
+      incluyeCopy:
+        "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si no vives en la provincia.",
+      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      precioCopy:
+        "El propietario delega llamadas y urgencias: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
+    },
+    faq: [
+      {
+        question: "¿Atendéis compraventas en el área metropolitana de Granada?",
+        answer:
+          "Sí. Granada capital, Armilla, La Zubia, Churriana de la Vega y municipios cercanos con operativa 100 % online.",
+      },
+      {
+        question: "¿Cuánto cuesta vender un piso entre particulares en Granada con Livendia?",
+        answer:
+          "El servicio completo de venta cuesta 890 € IVA incl., tarifa plana sin comisión sobre el precio de venta. Incluye reserva, arras, trámites y coordinación con notaría.",
+      },
+      {
+        question: `¿Qué incluye la revisión documental post-arras de ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}?`,
+        answer:
+          "Verificación integral tras firmar arras: actas de comunidad, derramas, nota registral, urbanismo, informe PDF y llamada de veredicto antes de escriturar.",
+      },
+    ],
+    finalCtaLead:
+      `Contrata online en Granada: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
   },
 ];
 

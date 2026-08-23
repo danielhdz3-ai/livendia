@@ -4,6 +4,7 @@
  */
 
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { TEMPORADA_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-temporada-local-differentiation";
 import {
   getTemporadaLocalSeoContent,
@@ -67,7 +68,7 @@ export function toContratoAlquilerTemporadaLandingConfig(
   const diff = TEMPORADA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   const seoContent = getTemporadaLocalSeoContent(def.slug);
   const faq = seoContent?.faq ?? diff.faq ?? def.faq;
-  return {
+  const merged: ContratoAlquilerTemporadaLocalLandingConfig = {
     ...def,
     ...diff,
     ...(seoContent ? { seoContent } : {}),
@@ -77,6 +78,7 @@ export function toContratoAlquilerTemporadaLandingConfig(
     adminSlug: def.adminSlug ?? def.slug,
     gestoriaSlug: def.gestoriaSlug ?? def.slug,
   };
+  return enrichWithCityMarketProfile(def.slug, "alquiler-temporada", merged) as ContratoAlquilerTemporadaLocalLandingConfig;
 }
 
 export function getContratoAlquilerTemporadaLocalCity(

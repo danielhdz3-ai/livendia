@@ -3,6 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { FaqSection } from "@/components/faq-section";
+import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
@@ -324,6 +325,15 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+            serviceNotesHeading={`Compra con gestor en ${config.city}`}
+          />
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

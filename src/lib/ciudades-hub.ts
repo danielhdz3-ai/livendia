@@ -20,6 +20,9 @@ import { PILLAR_MADRID_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobilia
 import { PILLAR_MALAGA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
 import { PILLAR_SEVILLA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-sevilla";
 import { PILLAR_VALENCIA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-valencia";
+import { PILLAR_BILBAO_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-bilbao";
+import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-granada";
+import { PILLAR_ZARAGOZA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza";
 import { VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE } from "@/lib/venta-piso-particular-sin-agencia-local-cities";
 
 export const CIUDADES_HUB_BASE = "/ciudades";
@@ -42,6 +45,9 @@ export const CITY_HUB_TAGLINES: Record<HomeCoverageCitySlug, string> = {
   barcelona: "Área metropolitana y CCCat: arras, habitación y venta sin agencia.",
   malaga: "Costa y provincia: gestoría online con precios cerrados.",
   sevilla: "Capital andaluza: compraventa, contratos y administración de alquiler.",
+  bilbao: "Gran Bilbao y Bizkaia: contratos, arras y venta entre particulares.",
+  granada: "Capital y área metropolitana: gestoría online con tarifas planas.",
+  zaragoza: "Aragón: compraventa, LAU y administración de alquileres.",
 };
 
 export const CITY_PILLAR_PATHS: Partial<Record<HomeCoverageCitySlug, string>> = {
@@ -50,6 +56,9 @@ export const CITY_PILLAR_PATHS: Partial<Record<HomeCoverageCitySlug, string>> = 
   valencia: PILLAR_VALENCIA_PATH,
   malaga: PILLAR_MALAGA_PATH,
   sevilla: PILLAR_SEVILLA_PATH,
+  bilbao: PILLAR_BILBAO_PATH,
+  granada: PILLAR_GRANADA_PATH,
+  zaragoza: PILLAR_ZARAGOZA_PATH,
 };
 
 export function getCityHubMeta(city: HomeCoverageCity) {
@@ -66,6 +75,9 @@ export const CITY_HUB_IMAGES: Record<HomeCoverageCitySlug, { src: string; alt: s
   barcelona: { src: "/images/barcelona2.jpg", alt: "Barcelona y área metropolitana — gestoría Livendia" },
   malaga: { src: "/images/malaga.jpg", alt: "Málaga, plaza de toros y puerto — gestoría inmobiliaria Livendia" },
   sevilla: { src: "/images/sevilla2.jpg", alt: "Sevilla — gestoría inmobiliaria Livendia" },
+  bilbao: { src: "/images/bilbao2.jpg", alt: "Bilbao — gestoría inmobiliaria Livendia" },
+  granada: { src: "/images/tipo2.jpg", alt: "Granada — gestoría inmobiliaria Livendia" },
+  zaragoza: { src: "/images/zaragoza.jpg", alt: "Zaragoza — gestoría inmobiliaria Livendia" },
 };
 
 type LocalServiceField = keyof Pick<

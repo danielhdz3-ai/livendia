@@ -1,5 +1,6 @@
 import { FaqSection } from "@/components/faq-section";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
+import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -336,6 +337,15 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </section>
           ) : null}
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+            serviceNotesHeading={`Contrato LAU en ${config.city}: qué incluye Livendia`}
+          />
 
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">

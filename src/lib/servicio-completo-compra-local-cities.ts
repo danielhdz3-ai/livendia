@@ -1,5 +1,6 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { COMPRA_LOCAL_DIFFERENTIATION } from "@/lib/servicio-completo-compra-local-differentiation";
 import {
   getCompraLocalSeoContent,
@@ -63,7 +64,7 @@ export function toCompraCompletaLandingConfig(
 ): ServicioCompletoCompraLocalLandingConfig {
   const diff = COMPRA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   const seoContent = getCompraLocalSeoContent(def.slug);
-  return {
+  const merged: ServicioCompletoCompraLocalLandingConfig = {
     ...def,
     ...diff,
     ...(seoContent
@@ -76,6 +77,7 @@ export function toCompraCompletaLandingConfig(
     path: localServicioCompletoCompraHref(def.slug),
     slug: def.slug,
   };
+  return enrichWithCityMarketProfile(def.slug, "compra", merged) as ServicioCompletoCompraLocalLandingConfig;
 }
 
 export function getServicioCompletoCompraLocalCity(

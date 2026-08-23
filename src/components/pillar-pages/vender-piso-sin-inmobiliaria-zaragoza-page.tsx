@@ -9,20 +9,20 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
 } from "@/lib/catalog.public";
 import {
-  PILLAR_MALAGA_CASE_STUDIES,
-  PILLAR_MALAGA_COMPARE_ROWS,
-  PILLAR_MALAGA_DOCUMENTS,
-  PILLAR_MALAGA_FAQ,
-  PILLAR_MALAGA_MALAGA_EXTRA,
-  PILLAR_MALAGA_NEIGHBORHOODS,
-  PILLAR_MALAGA_PATH,
-  PILLAR_MALAGA_PROCESS,
-  PILLAR_MALAGA_RELATED,
-  PILLAR_MALAGA_RISKS,
-  PILLAR_MALAGA_SAVINGS_ROWS,
-  PILLAR_MALAGA_SECTIONS,
-  PILLAR_MALAGA_TOC,
-} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
+  PILLAR_ZARAGOZA_CASE_STUDIES,
+  PILLAR_ZARAGOZA_COMPARE_ROWS,
+  PILLAR_ZARAGOZA_DOCUMENTS,
+  PILLAR_ZARAGOZA_FAQ,
+  PILLAR_ZARAGOZA_ZARAGOZA_EXTRA,
+  PILLAR_ZARAGOZA_NEIGHBORHOODS,
+  PILLAR_ZARAGOZA_PATH,
+  PILLAR_ZARAGOZA_PROCESS,
+  PILLAR_ZARAGOZA_RELATED,
+  PILLAR_ZARAGOZA_RISKS,
+  PILLAR_ZARAGOZA_SAVINGS_ROWS,
+  PILLAR_ZARAGOZA_SECTIONS,
+  PILLAR_ZARAGOZA_TOC,
+} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import {
@@ -46,7 +46,7 @@ import {
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const WA_PREFILL =
-  "Hola, estoy vendiendo mi piso en Malaga entre particulares (sin comisiones) y quiero saber cómo funciona el servicio completo de venta Livendia.";
+  "Hola, estoy vendiendo mi piso en Zaragoza entre particulares (sin comisiones) y quiero saber cómo funciona el servicio completo de venta Livendia.";
 
 function formatEur(n: number): string {
   return `${n.toLocaleString("es-ES")} €`;
@@ -68,14 +68,14 @@ function PillarJsonLd({
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: "Vender piso sin comisiones en Malaga entre particulares con gestor legal Livendia",
+        name: "Vender piso sin comisiones en Zaragoza entre particulares con gestor legal Livendia",
         description:
-          "Acompañamiento jurídico-documental para propietarios que venden en Malaga sin inmobiliaria: contratos, documentación y coordinación hasta notaría.",
+          "Acompañamiento jurídico-documental para propietarios que venden en Zaragoza sin inmobiliaria: contratos, documentación y coordinación hasta notaría.",
         serviceType: "Venta de vivienda entre particulares",
         provider: { "@type": "Organization", name: "Livendia", url: base },
         areaServed: {
           "@type": "City",
-          name: "Malaga",
+          name: "Zaragoza",
           containedInPlace: { "@type": "AdministrativeArea", name: "Andalucía" },
         },
         offers: {
@@ -99,7 +99,7 @@ function PillarJsonLd({
             name: "Vender sin inmobiliaria",
             item: `${base}${VENDER_PISO_SIN_INMOBILIARIA_BASE}`,
           },
-          { "@type": "ListItem", position: 3, name: "Malaga", item: pageUrl },
+          { "@type": "ListItem", position: 3, name: "Zaragoza", item: pageUrl },
         ],
       },
       {
@@ -130,7 +130,7 @@ function InlineCta({
     return (
       <aside className="my-8 rounded-xl border border-blue-200 bg-blue-50/80 p-5 text-center sm:p-6">
         <p className="text-sm font-semibold text-[#1E293B] sm:text-base">
-          ¿Ya tienes comprador en Malaga? Contrata gestoría por {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. — sin
+          ¿Ya tienes comprador en Zaragoza? Contrata gestoría por {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. — sin
           comisión sobre el precio de venta.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
@@ -152,7 +152,7 @@ function InlineCta({
 
   return (
     <aside className="my-10 rounded-2xl bg-[#1A4FBF] p-6 text-center text-white sm:p-8">
-      <p className="text-lg font-bold sm:text-xl">Vende entre particulares con gestor legal en Malaga</p>
+      <p className="text-lg font-bold sm:text-xl">Vende entre particulares con gestor legal en Zaragoza</p>
       <p className="mt-2 text-sm leading-relaxed text-blue-100 sm:text-base">
         Tarifa plana {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. · Sin comisión del 3–5 % · Gestor dedicado hasta
         notaría
@@ -199,19 +199,19 @@ function ProseSection({
   );
 }
 
-export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
+export async function VenderPisoSinInmobiliariaZaragozaPillarPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceEur = service ? service.price_cents / 100 : SERVICIO_COMPLETO_CV_PRICE_EUR;
   const priceLabelCompact = service
     ? `${(service.price_cents / 100).toFixed(0)}€`
     : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
-  const pageUrl = `${getSiteUrl()}${PILLAR_MALAGA_PATH}`;
+  const pageUrl = `${getSiteUrl()}${PILLAR_ZARAGOZA_PATH}`;
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(WA_PREFILL)}`;
 
   return (
     <ServicePurchaseProvider service={service}>
-      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} faq={PILLAR_MALAGA_FAQ} />
+      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} faq={PILLAR_ZARAGOZA_FAQ} />
       <div className="flex min-h-screen flex-col bg-[#fafaf9]">
         <PublicHeader />
 
@@ -233,17 +233,17 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     </Link>
                   </li>
                   <ChevronRight className="mx-1 h-3.5 w-3.5" aria-hidden />
-                  <li className="font-medium text-slate-800">Malaga</li>
+                  <li className="font-medium text-slate-800">Zaragoza</li>
                 </ol>
               </nav>
 
               <div className="grid items-center gap-8 lg:grid-cols-[1fr_min(100%,480px)] lg:gap-12 xl:grid-cols-[1fr_520px]">
                 <div className="text-center lg:text-left">
                   <p className="text-xs font-semibold uppercase tracking-widest text-[#1A4FBF]">
-                    Guía completa · Malaga · 2026
+                    Guía completa · Zaragoza · 2026
                   </p>
                   <h1 className="mt-3 font-serif text-3xl font-bold leading-tight text-[#0f172a] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-                    Vender piso sin comisiones en Malaga
+                    Vender piso sin comisiones en Zaragoza
                   </h1>
                   <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 lg:mx-0">
                     Guía entre particulares para{" "}
@@ -258,7 +258,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <MapPin className="h-4 w-4" aria-hidden />
-                      Málaga capital y Costa del Sol
+                      Zaragoza capital y comarca
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Scale className="h-4 w-4" aria-hidden />
@@ -279,7 +279,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                   </div>
                 </div>
 
-                <VenderPisoSinInmobiliariaPillarHeroImage alt="Vender piso sin comisiones en Malaga entre particulares con gestor legal Livendia" />
+                <VenderPisoSinInmobiliariaPillarHeroImage alt="Vender piso sin comisiones en Zaragoza entre particulares con gestor legal Livendia" />
               </div>
             </div>
           </header>
@@ -291,10 +291,10 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
             >
               <p className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-500">
                 <List className="h-4 w-4" aria-hidden />
-                En esta guía — Malaga
+                En esta guía — Zaragoza
               </p>
               <ul className="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2">
-                {PILLAR_MALAGA_TOC.map((item) => (
+                {PILLAR_ZARAGOZA_TOC.map((item) => (
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
@@ -309,7 +309,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
 
             <div className="pb-16 sm:pb-24">
 
-                {PILLAR_MALAGA_SECTIONS.map((section, idx) => (
+                {PILLAR_ZARAGOZA_SECTIONS.map((section, idx) => (
                   <ProseSection key={section.id} id={section.id} title={section.title} paragraphs={section.paragraphs}>
                     {section.id === "que-hace-livendia" ? (
                       <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -349,7 +349,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                 {/* Proceso completo */}
                 <section id="proceso-completo" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Proceso completo para vender piso directamente a un particular en Malaga
+                    Proceso completo para vender piso directamente a un particular en Zaragoza
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Esta cronología recoge una venta típica entre particulares en la ciudad: desde que fijas precio hasta
@@ -357,7 +357,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     documentación.
                   </p>
                   <ol className="mt-8 space-y-6">
-                    {PILLAR_MALAGA_PROCESS.map((step) => (
+                    {PILLAR_ZARAGOZA_PROCESS.map((step) => (
                       <li
                         key={step.title}
                         className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
@@ -376,13 +376,13 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     ))}
                   </ol>
                   <InlineCta priceLabelCompact={priceLabelCompact} waHref={waHref} />
-                  <VenderPisoSinInmobiliariaSigningFigure city="Malaga" />
+                  <VenderPisoSinInmobiliariaSigningFigure city="Zaragoza" />
                 </section>
 
                 {/* Documentación */}
                 <section id="documentacion" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Documentación necesaria para vender sin agencia en Malaga
+                    Documentación necesaria para vender sin agencia en Zaragoza
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     El comprador particular y, sobre todo, su banco pedirán estos documentos. Tenerlos listos antes de
@@ -398,7 +398,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MALAGA_DOCUMENTS.map((doc) => (
+                        {PILLAR_ZARAGOZA_DOCUMENTS.map((doc) => (
                           <tr key={doc.name} className="align-top">
                             <td className="px-4 py-3 font-medium text-[#0f172a]">{doc.name}</td>
                             <td className="px-4 py-3 text-slate-600">{doc.whoProvides}</td>
@@ -417,10 +417,10 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Vender casa sin agencia no es arriesgado por definición; lo es cuando la parte legal se improvisa.
-                    Estos son los escenarios que más consultas generan en operaciones malaganas.
+                    Estos son los escenarios que más consultas generan en operaciones zaragozanas.
                   </p>
                   <ul className="mt-8 space-y-4">
-                    {PILLAR_MALAGA_RISKS.map((r) => (
+                    {PILLAR_ZARAGOZA_RISKS.map((r) => (
                       <li key={r.risk} className="rounded-xl border border-slate-200 bg-white p-5">
                         <p className="flex items-start gap-2 font-bold text-[#0f172a]">
                           <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden />
@@ -460,7 +460,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MALAGA_COMPARE_ROWS.map((row) => (
+                        {PILLAR_ZARAGOZA_COMPARE_ROWS.map((row) => (
                           <tr key={row.aspect}>
                             <td className="px-4 py-3 font-medium text-[#0f172a]">{row.aspect}</td>
                             <td className="bg-blue-50/40 px-4 py-3 font-medium text-[#1A4FBF]">{row.livendia}</td>
@@ -476,7 +476,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                 {/* Ahorro */}
                 <section id="ahorro-comisiones" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Cuánto puedes ahorrar en comisiones al vender sin inmobiliaria en Malaga
+                    Cuánto puedes ahorrar en comisiones al vender sin inmobiliaria en Zaragoza
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Las cifras siguientes comparan comisión de agencia (3 % y 5 % más IVA) con la tarifa plana Livendia
@@ -496,8 +496,8 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 bg-white">
-                        {PILLAR_MALAGA_SAVINGS_ROWS.map((row) => (
-                          <tr key={row.price} className={row.price === 280000 ? "bg-emerald-50/50" : undefined}>
+                        {PILLAR_ZARAGOZA_SAVINGS_ROWS.map((row) => (
+                          <tr key={row.price} className={row.price === 220_000 ? "bg-emerald-50/50" : undefined}>
                             <td className="px-4 py-3 font-medium">{formatEur(row.price)}</td>
                             <td className="px-4 py-3 text-slate-600">{formatEur(row.agency3)}</td>
                             <td className="px-4 py-3 text-slate-600">{formatEur(row.agency5)}</td>
@@ -514,18 +514,18 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     </table>
                   </div>
                   <p className="mt-4 text-left text-sm text-slate-500">
-                    Ejemplo destacado: en un piso de 280.000 €, ahorras 10.054 € frente al 3 % + IVA o 16.940 € frente al
+                    Ejemplo destacado: en un piso de 200.000 €, ahorras 7.260 € frente al 3 % + IVA o 12.110 € frente al
                     5 % + IVA.
                   </p>
                 </section>
 
-                {PILLAR_MALAGA_MALAGA_EXTRA.map((section) => (
+                {PILLAR_ZARAGOZA_ZARAGOZA_EXTRA.map((section) => (
                   <ProseSection key={section.id} id={section.id} title={section.title} paragraphs={section.paragraphs}>
-                    {section.id === "malaga-mercado" ? (
+                    {section.id === "zaragoza-mercado" ? (
                       <div className="mt-6 text-center">
-                        <p className="text-sm font-semibold text-slate-700">Barrios y municipios donde operamos en Malaga:</p>
+                        <p className="text-sm font-semibold text-slate-700">Barrios y municipios donde operamos en Zaragoza:</p>
                         <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                          {PILLAR_MALAGA_NEIGHBORHOODS.map((z) => (
+                          {PILLAR_ZARAGOZA_NEIGHBORHOODS.map((z) => (
                             <li
                               key={z}
                               className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700"
@@ -542,7 +542,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                 {/* Casos ejemplo */}
                 <section id="casos-ejemplo" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Ejemplos representativos de venta entre particulares en Malaga
+                    Ejemplos representativos de venta entre particulares en Zaragoza
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
                     Escenarios compuestos a partir de operaciones habituales en la ciudad. No son testimonios
@@ -550,7 +550,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     legal.
                   </p>
                   <div className="mt-8 space-y-6">
-                    {PILLAR_MALAGA_CASE_STUDIES.map((c) => (
+                    {PILLAR_ZARAGOZA_CASE_STUDIES.map((c) => (
                       <article key={c.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h3 className="text-lg font-bold text-[#0f172a]">{c.title}</h3>
                         <dl className="mt-4 space-y-3 text-sm sm:text-base">
@@ -582,12 +582,12 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     Servicios Livendia y guías relacionadas
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base leading-relaxed text-slate-700">
-                    Esta página es el <strong>pilar editorial</strong> para vender sin inmobiliaria en Malaga. Desde
+                    Esta página es el <strong>pilar editorial</strong> para vender sin inmobiliaria en Zaragoza. Desde
                     aquí enlazamos las fichas de servicio, otras landings locales y el hub nacional para compraventa
                     entre particulares.
                   </p>
                   <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                    {PILLAR_MALAGA_RELATED.map((link) => (
+                    {PILLAR_ZARAGOZA_RELATED.map((link) => (
                       <li key={link.href}>
                         <Link
                           href={link.href}
@@ -609,13 +609,13 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                 {/* FAQ */}
                 <section id="preguntas-frecuentes" className="scroll-mt-24 py-10 text-center sm:py-12">
                   <h2 className="mx-auto max-w-2xl font-serif text-2xl font-bold text-[#0f172a] sm:text-3xl">
-                    Preguntas frecuentes sobre vender sin comisiones en Malaga
+                    Preguntas frecuentes sobre vender sin comisiones en Zaragoza
                   </h2>
                   <p className="mx-auto mt-4 max-w-2xl text-left text-base text-slate-600">
                     Respuestas sobre venta entre particulares, trámites, ahorro y el papel de Livendia.
                   </p>
                   <ul className="mt-8 space-y-3">
-                    {PILLAR_MALAGA_FAQ.map((item) => (
+                    {PILLAR_ZARAGOZA_FAQ.map((item) => (
                       <li key={item.question}>
                         <details className="group rounded-xl border border-slate-200 bg-white open:shadow-sm">
                           <summary className="cursor-pointer list-none px-5 py-4 font-semibold text-[#0f172a] marker:content-none [&::-webkit-details-marker]:hidden">
@@ -639,7 +639,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
                     <FileText className="h-10 w-10 shrink-0 text-cyan-200" aria-hidden />
                     <div>
                       <h2 className="text-xl font-bold sm:text-2xl">
-                        Vende tu piso en Malaga entre particulares — con gestor legal, sin comisión del 3–5 %
+                        Vende tu piso en Zaragoza entre particulares — con gestor legal, sin comisión del 3–5 %
                       </h2>
                       <p className="mt-3 text-sm leading-relaxed text-blue-100 sm:text-base">
                         Contrata el servicio completo de venta Livendia: {SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.,
@@ -671,7 +671,7 @@ export async function VenderPisoSinInmobiliariaMalagaPillarPage() {
               </div>
           </div>
         </article>
-        <ServiceLandingSharedSections city="Malaga" />
+        <ServiceLandingSharedSections city="Zaragoza" />
 
         <SiteFooter />
       </div>

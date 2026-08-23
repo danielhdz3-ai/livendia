@@ -2,6 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { FaqSection } from "@/components/faq-section";
+import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -279,6 +280,15 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
               </p>
             </div>
           </section>
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            heading={`Vender sin agencia en ${config.city}: mercado y barrios`}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+          />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl">

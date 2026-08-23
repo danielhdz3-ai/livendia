@@ -8,7 +8,9 @@
  */
 
 import { ALQUILER_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-local-differentiation";
+import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
+import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
 
 export const CONTRATO_ALQUILER_LOCAL_BASE = "/servicios/contrato-alquiler-local";
 
@@ -26,6 +28,19 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "asturias",
   "sevilla",
   "malaga",
+  "zaragoza",
+  "murcia",
+  "palma",
+  "las-palmas",
+  "bilbao",
+  "alicante",
+  "cordoba",
+  "valladolid",
+  "vigo",
+  "gijon",
+  "granada",
+  "santander",
+  "pamplona",
 ];
 
 export function isContratoAlquilerLocalSlugPublished(slug: string): boolean {
@@ -61,11 +76,11 @@ export function localContratoAlquilerHref(slug: string): string {
 
 export function toLandingConfig(def: ContratoAlquilerLocalCityDefinition): ContratoAlquilerLocalLandingConfig {
   const diff = ALQUILER_LOCAL_DIFFERENTIATION[def.slug] ?? {};
-  return {
-    ...def,
-    ...diff,
-    path: localContratoAlquilerHref(def.slug),
-  };
+  const merged = mergeLocalDifferentiation(
+    { ...def, path: localContratoAlquilerHref(def.slug) },
+    diff,
+  );
+  return enrichWithCityMarketProfile(def.slug, "alquiler-lau", merged) as ContratoAlquilerLocalLandingConfig;
 }
 
 export function getContratoAlquilerLocalCity(slug: string): ContratoAlquilerLocalCityDefinition | undefined {

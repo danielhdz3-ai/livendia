@@ -1,5 +1,5 @@
 /**
- * Contenido pilar editorial — /vender-piso-sin-inmobiliaria/granada
+ * Contenido pilar editorial — /vender-piso-sin-inmobiliaria/zaragoza
  */
 
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
@@ -14,27 +14,27 @@ import type {
   PillarSection,
 } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
 
-export const PILLAR_GRANADA_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/granada`;
+export const PILLAR_ZARAGOZA_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/zaragoza`;
 
-export const PILLAR_GRANADA_META = {
-  title: "Vender piso sin comisiones en Granada | Entre particulares con gestor legal",
+export const PILLAR_ZARAGOZA_META = {
+  title: "Vender piso sin comisiones en Zaragoza | Entre particulares con gestor legal",
   description:
-    "Guía completa para vender tu piso en Granada sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
+    "Guía completa para vender tu piso en Zaragoza sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
   keywords: [
-    "vender piso sin inmobiliaria granada",
-    "vender piso sin comisiones granada",
-    "vender vivienda entre particulares granada",
-    "vender piso directamente a un particular granada",
-    "ahorrar comisión inmobiliaria granada",
-    "vender casa sin agencia granada",
-    "vender piso sin agencia granada",
-    "venta entre particulares granada",
-    "vender piso de particular a particular granada",
-    "trámites vender piso particular granada",
+    "vender piso sin inmobiliaria zaragoza",
+    "vender piso sin comisiones zaragoza",
+    "vender vivienda entre particulares zaragoza",
+    "vender piso directamente a un particular zaragoza",
+    "ahorrar comisión inmobiliaria zaragoza",
+    "vender casa sin agencia zaragoza",
+    "vender piso sin agencia zaragoza",
+    "venta entre particulares zaragoza",
+    "vender piso de particular a particular zaragoza",
+    "trámites vender piso particular zaragoza",
   ],
 } as const;
 
-export const PILLAR_GRANADA_TOC = [
+export const PILLAR_ZARAGOZA_TOC = [
   { id: "por-que-vender-sin-inmobiliaria", label: "Por qué vender sin inmobiliaria" },
   { id: "que-es-venta-entre-particulares", label: "Venta entre particulares" },
   { id: "que-hace-livendia", label: "Qué hace y qué no hace Livendia" },
@@ -44,7 +44,7 @@ export const PILLAR_GRANADA_TOC = [
   { id: "comparativa", label: "Agencia, solo o Livendia" },
   { id: "ahorro-comisiones", label: "Cuánto ahorras en comisiones" },
   { id: "financiacion-comprador", label: "Si el comprador pide hipoteca" },
-  { id: "granada-mercado", label: "Vender en Granada" },
+  { id: "zaragoza-mercado", label: "Vender en Zaragoza" },
   { id: "casos-ejemplo", label: "Ejemplos reales de ahorro" },
   { id: "errores-frecuentes", label: "Errores que cuestan dinero" },
   { id: "livendia-vs-otros", label: "Livendia vs otras opciones" },
@@ -52,44 +52,44 @@ export const PILLAR_GRANADA_TOC = [
   { id: "preguntas-frecuentes", label: "Preguntas frecuentes" },
 ] as const;
 
-export const PILLAR_GRANADA_SECTIONS: readonly PillarSection[] = [
+export const PILLAR_ZARAGOZA_SECTIONS: readonly PillarSection[] = [
   {
     id: "por-que-vender-sin-inmobiliaria",
-    title: "Por qué cada vez más propietarios en Granada venden sin inmobiliaria",
+    title: "Por qué cada vez más propietarios en Zaragoza venden sin inmobiliaria",
     paragraphs: [
-      "Vender un piso en Granada sin inmobiliaria deja de ser una excepción: en Andalucía, donde el precio medio de la vivienda usada en la capital suele moverse entre 180.000 € y 280.000 € según barrio, una comisión del 3 % más IVA representa más de 6.500 € y al 5 % se acerca a los 11.000 € en un piso de 220.000 €. Ese importe no cubre la escritura ni el notario; es el coste de intermediar cuando tú ya has encontrado al comprador.",
-      "El perfil del vendedor granadano ha cambiado. Muchos cierran con un compañero de trabajo, un familiar, un vecino o alguien que contactó por Idealista o Fotocasa. En esos casos, pagar un porcentaje sobre el precio de venta equivale a financiar captación que no usaste. Vender vivienda entre particulares —vender casa sin agencia, directamente a otro particular— es legal, habitual y tan seguro como con intermediario si la parte contractual está bien hecha.",
+      "Vender un piso en Zaragoza sin inmobiliaria deja de ser una excepción: en Andalucía, donde el precio medio de la vivienda usada en la capital suele moverse entre 180.000 € y 280.000 € según barrio, una comisión del 3 % más IVA representa más de 6.500 € y al 5 % se acerca a los 11.000 € en un piso de 220.000 €. Ese importe no cubre la escritura ni el notario; es el coste de intermediar cuando tú ya has encontrado al comprador.",
+      "El perfil del vendedor zaragozano ha cambiado. Muchos cierran con un compañero de trabajo, un familiar, un vecino o alguien que contactó por Idealista o Fotocasa. En esos casos, pagar un porcentaje sobre el precio de venta equivale a financiar captación que no usaste. Vender vivienda entre particulares —vender casa sin agencia, directamente a otro particular— es legal, habitual y tan seguro como con intermediario si la parte contractual está bien hecha.",
       "El reto no es prescindir de la agencia, sino no prescindir de la seguridad jurídica. Vender piso sin comisiones ahorra dinero; vender sin asesoramiento cuando hay hipoteca pendiente, derrama en la comunidad o comprador que financia puede costar meses o miles de euros en correcciones. Por eso crece el tercer camino: ahorro de la venta directa más gestor legal que redacta contratos, revisa cargas y coordina hasta notaría.",
-      "En Granada capital y área metropolitana el comprador suele llegar con preaprobación bancaria. Entidades con oficinas en Nervión, Avenida de la Constitución o el entorno de Isla de la Cartuja exigen arras formalizadas, cédula de habitabilidad cuando aplica y certificado de comunidad sin derramas pendientes. El vendedor que vende sin agencia pero con orden documental cierra en plazos similares a una operación intermediada.",
-      "Esta guía está pensada para ti si ya tienes comprador o lo estás negociando por tu cuenta y quieres ahorrar la comisión inmobiliaria sin asumir riesgos innecesarios. Aquí encontrarás el proceso completo en Granada, la documentación exigida, los errores más caros y cómo encaja Livendia.",
+      "En Zaragoza capital y comarca el comprador suele llegar con preaprobación bancaria. Entidades con oficinas en Nervión, Avenida de la Constitución o el entorno de Isla de la Cartuja exigen arras formalizadas, cédula de habitabilidad cuando aplica y certificado de comunidad sin derramas pendientes. El vendedor que vende sin agencia pero con orden documental cierra en plazos similares a una operación intermediada.",
+      "Esta guía está pensada para ti si ya tienes comprador o lo estás negociando por tu cuenta y quieres ahorrar la comisión inmobiliaria sin asumir riesgos innecesarios. Aquí encontrarás el proceso completo en Zaragoza, la documentación exigida, los errores más caros y cómo encaja Livendia.",
     ],
   },
   {
     id: "que-es-venta-entre-particulares",
-    title: "Qué significa vender vivienda entre particulares en Granada (y qué no implica)",
+    title: "Qué significa vender vivienda entre particulares en Zaragoza (y qué no implica)",
     paragraphs: [
       "Vender vivienda entre particulares significa que tú y el comprador acordáis la compraventa sin que una agencia actúe como mandataria comercial. No existe un régimen legal distinto: la operación se rige por el Código Civil y la normativa tributaria y registral como cualquier transmisión.",
       "Vender piso directamente a un particular no significa saltarse la notaría, el Registro de la Propiedad ni los impuestos. La escritura pública sigue siendo obligatoria para inscribir la propiedad. Cuanto más claro quede por escrito en reserva y arras, menos fricción habrá ante el notario y el banco del comprador.",
-      "En Granada, la venta sin agencia suele combinar: (1) captación del comprador por el propietario, (2) negociación directa del precio y calendario, y (3) acompañamiento jurídico-documental profesional. Livendia ocupa exclusivamente esta tercera pieza.",
+      "En Zaragoza, la venta sin agencia suele combinar: (1) captación del comprador por el propietario, (2) negociación directa del precio y calendario, y (3) acompañamiento jurídico-documental profesional. Livendia ocupa exclusivamente esta tercera pieza.",
       "Confundir «sin inmobiliaria» con «sin profesionales» es el error más repetido en operaciones en Triana, Nervión o el casco histórico. Puedes vender casa sin agencia y contratar gestoría especializada en compraventa entre particulares. Eso no convierte la operación en venta «con agencia».",
     ],
   },
   {
     id: "que-hace-livendia",
-    title: "Qué hace Livendia cuando vendes sin inmobiliaria en Granada — y qué no hace",
+    title: "Qué hace Livendia cuando vendes sin inmobiliaria en Zaragoza — y qué no hace",
     paragraphs: [
       "Livendia es una gestoría inmobiliaria digital especializada en compraventa entre particulares. El servicio completo de venta cubre desde que tienes comprador interesado hasta la firma en notaría, por 890 € IVA incluido. No cobramos comisión sobre el precio de venta ni exigimos exclusiva.",
       "Lo que hacemos: gestor legal dedicado; revisión de nota simple y cargas; redacción de reserva y arras; orientación sobre certificados de comunidad, eficiencia energética y documentación urbanística; coordinación del calendario hacia escritura; revisión del borrador notarial; acompañamiento por WhatsApp y teléfono; panel online para centralizar documentos.",
-      "Lo que no hacemos: no publicamos en Idealista ni Fotocasa; no hacemos fotos ni visitas; no negociamos el precio por ti; no somos Housfy ni Properfy — no captamos comprador. Si ya tienes comprador y quieres ahorrar comisión inmobiliaria, Livendia es el complemento jurídico que muchos propietarios granadanos echaban en falta.",
-      "Vender piso sin comisiones con Livendia significa pagar gestoría profesional, no porcentaje de agencia sobre los cientos de miles de euros de tu vivienda en Granada.",
+      "Lo que no hacemos: no publicamos en Idealista ni Fotocasa; no hacemos fotos ni visitas; no negociamos el precio por ti; no somos Housfy ni Properfy — no captamos comprador. Si ya tienes comprador y quieres ahorrar comisión inmobiliaria, Livendia es el complemento jurídico que muchos propietarios zaragozanos echaban en falta.",
+      "Vender piso sin comisiones con Livendia significa pagar gestoría profesional, no porcentaje de agencia sobre los cientos de miles de euros de tu vivienda en Zaragoza.",
     ],
   },
 ];
 
-export const PILLAR_GRANADA_PROCESS: readonly PillarProcessStep[] = [
+export const PILLAR_ZARAGOZA_PROCESS: readonly PillarProcessStep[] = [
   {
     phase: "Fase 1",
-    title: "Preparar la vivienda y el precio en Granada",
+    title: "Preparar la vivienda y el precio en Zaragoza",
     duration: "1–4 semanas",
     body: "Acota un precio realista según comparables en tu barrio —Triana, Nervión, Los Remedios, Macarena, Santa Cruz, Heliópolis—, estado de la vivienda y situación registral. Reúne el certificado de eficiencia energética y la escritura. Si hay inquilino, revisa el contrato y plazos de desalojo.",
     livendiaRole: "Orientación si ya tienes comprador y quieres validar precio y calendario antes de firmar nada vinculante.",
@@ -98,14 +98,14 @@ export const PILLAR_GRANADA_PROCESS: readonly PillarProcessStep[] = [
     phase: "Fase 2",
     title: "Captar comprador por tu cuenta",
     duration: "Variable",
-    body: "Publicas en portales, redes o cierras con alguien de tu entorno. Filtras solvencia: financiación, señal y plazos. En Granada es habitual que el comprador pida segunda visita con técnico; no aceptes condiciones abusivas en caliente.",
+    body: "Publicas en portales, redes o cierras con alguien de tu entorno. Filtras solvencia: financiación, señal y plazos. En Zaragoza es habitual que el comprador pida segunda visita con técnico; no aceptes condiciones abusivas en caliente.",
     livendiaRole: "No participamos en captación. No firmes reserva ni entregues señal sin revisar el borrador con un profesional.",
   },
   {
     phase: "Fase 3",
     title: "Reserva y señal",
     duration: "1–2 semanas",
-    body: "Muchas operaciones entre particulares en Granada arrancan con reserva: fija precio, plazo para arras, devolución si falla la hipoteca y penalizaciones por desistimiento.",
+    body: "Muchas operaciones entre particulares en Zaragoza arrancan con reserva: fija precio, plazo para arras, devolución si falla la hipoteca y penalizaciones por desistimiento.",
     livendiaRole: "Redacción del contrato de reserva adaptado a vuestra operación en Andalucía.",
   },
   {
@@ -126,14 +126,14 @@ export const PILLAR_GRANADA_PROCESS: readonly PillarProcessStep[] = [
     phase: "Fase 6",
     title: "Cancelación de hipoteca (si procede)",
     duration: "2–4 semanas",
-    body: "Si vendes con hipoteca pendiente, coordina con tu banco provisión de fondos o subrogación. En Granada esto es rutinario pero delicado en plazos.",
+    body: "Si vendes con hipoteca pendiente, coordina con tu banco provisión de fondos o subrogación. En Zaragoza esto es rutinario pero delicado en plazos.",
     livendiaRole: "Orientación sobre calendario y coherencia entre arras y condiciones bancarias.",
   },
   {
     phase: "Fase 7",
     title: "Plusvalía e impuestos del vendedor",
     duration: "En paralelo",
-    body: "Plusvalía municipal, IRPF por ganancia patrimonial y gastos locales. El comprador asume ITP en segunda mano. Granada capital, Dos Hermanas, Alcalá de Guadaíra o Camas tienen normativas y bonificaciones propias.",
+    body: "Plusvalía municipal, IRPF por ganancia patrimonial y gastos locales. El comprador asume ITP en segunda mano. Zaragoza capital, Dos Hermanas, Alcalá de Guadaíra o Camas tienen normativas y bonificaciones propias.",
     livendiaRole: "Orientación sobre gastos y plazos; liquidación definitiva con tu asesor fiscal.",
   },
   {
@@ -145,7 +145,7 @@ export const PILLAR_GRANADA_PROCESS: readonly PillarProcessStep[] = [
   },
 ];
 
-export const PILLAR_GRANADA_DOCUMENTS: readonly PillarDocument[] = [
+export const PILLAR_ZARAGOZA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Certificado de eficiencia energética (CEE)",
     whoProvides: "Técnico certificador autorizado",
@@ -164,7 +164,7 @@ export const PILLAR_GRANADA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Certificado de estar al corriente (comunidad)",
     whoProvides: "Administrador de fincas",
-    whyItMatters: "Imprescindible para hipoteca del comprador. Derramas en edificios del casco histórico o Macarena son causa frecuente de retraso en Granada.",
+    whyItMatters: "Imprescindible para hipoteca del comprador. Derramas en edificios del casco histórico o Macarena son causa frecuente de retraso en Zaragoza.",
   },
   {
     name: "Último recibo del IBI",
@@ -174,7 +174,7 @@ export const PILLAR_GRANADA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Contrato de arras y reserva",
     whoProvides: "Redacción profesional — Livendia",
-    whyItMatters: "Núcleo de la seguridad jurídica entre particulares en Granada.",
+    whyItMatters: "Núcleo de la seguridad jurídica entre particulares en Zaragoza.",
   },
   {
     name: "Certificados de instalaciones / ITE (si aplica)",
@@ -184,11 +184,11 @@ export const PILLAR_GRANADA_DOCUMENTS: readonly PillarDocument[] = [
   {
     name: "Cédula de habitabilidad (Andalucía)",
     whoProvides: "Técnico / Junta de Andalucía",
-    whyItMatters: "En muchas operaciones en Granada el comprador o su banco la solicitan. Sin ella, la venta se paraliza semanas.",
+    whyItMatters: "En muchas operaciones en Zaragoza el comprador o su banco la solicitan. Sin ella, la venta se paraliza semanas.",
   },
 ];
 
-export const PILLAR_GRANADA_RISKS: readonly PillarRisk[] = [
+export const PILLAR_ZARAGOZA_RISKS: readonly PillarRisk[] = [
   {
     risk: "Arras copiadas de internet",
     alone: "Plazos irreales o cláusulas que no protegen al vendedor si el comprador falla.",
@@ -211,12 +211,12 @@ export const PILLAR_GRANADA_RISKS: readonly PillarRisk[] = [
   },
   {
     risk: "Borrador notarial distinto a arras",
-    alone: "Conflictos el día de la firma en la notaría de Granada.",
+    alone: "Conflictos el día de la firma en la notaría de Zaragoza.",
     withLivendia: "Revisión y alineación entre contratos privados y escritura.",
   },
 ];
 
-export const PILLAR_GRANADA_COMPARE_ROWS = [
+export const PILLAR_ZARAGOZA_COMPARE_ROWS = [
   { aspect: "Coste en piso de 250.000 €", agency: "9.075–15.125 € (3–5 % + IVA)", alone: "0 € de gestoría", livendia: `${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.` },
   { aspect: "Publica anuncio y trae visitas", agency: "Sí", alone: "Tú (Idealista, etc.)", livendia: "No" },
   { aspect: "Contratos por profesional", agency: "Variable", alone: "Riesgo con plantillas", livendia: "Sí — gestor dedicado" },
@@ -227,7 +227,7 @@ export const PILLAR_GRANADA_COMPARE_ROWS = [
   { aspect: "Panel online y gestor directo", agency: "Depende", alone: "No", livendia: "Sí" },
 ] as const;
 
-export const PILLAR_GRANADA_SAVINGS_ROWS = [
+export const PILLAR_ZARAGOZA_SAVINGS_ROWS = [
   { price: 180_000, agency3: 6_534, agency5: 10_890, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
   { price: 220_000, agency3: 7_986, agency5: 13_310, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
   { price: 250_000, agency3: 9_075, agency5: 15_125, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
@@ -236,7 +236,7 @@ export const PILLAR_GRANADA_SAVINGS_ROWS = [
   { price: 380_000, agency3: 13_794, agency5: 22_990, livendia: SERVICIO_COMPLETO_CV_PRICE_EUR },
 ] as const;
 
-export const PILLAR_GRANADA_CASE_STUDIES: readonly PillarCaseStudy[] = [
+export const PILLAR_ZARAGOZA_CASE_STUDIES: readonly PillarCaseStudy[] = [
   {
     title: "Piso en Nervión vendido a compañero de trabajo",
     scenario: "Propietario con piso de 85 m² en Nervión. Comprador de su empresa. Precio: 265.000 €.",
@@ -260,34 +260,34 @@ export const PILLAR_GRANADA_CASE_STUDIES: readonly PillarCaseStudy[] = [
   },
 ];
 
-export const PILLAR_GRANADA_GRANADA_EXTRA: readonly PillarSection[] = [
+export const PILLAR_ZARAGOZA_ZARAGOZA_EXTRA: readonly PillarSection[] = [
   {
     id: "financiacion-comprador",
-    title: "Si el comprador necesita hipoteca en Granada: qué debe saber el vendedor",
+    title: "Si el comprador necesita hipoteca en Zaragoza: qué debe saber el vendedor",
     paragraphs: [
-      "La mayoría de compradores particulares en Granada financian con préstamo hipotecario. Para el vendedor que ahorra comisión inmobiliaria entra en juego el banco del comprador, el tasador y plazos estrictos de documentación.",
+      "La mayoría de compradores particulares en Zaragoza financian con préstamo hipotecario. Para el vendedor que ahorra comisión inmobiliaria entra en juego el banco del comprador, el tasador y plazos estrictos de documentación.",
       "Entidades con oficinas en Nervión, Plaza Nueva o el entorno de Isla de la Cartuja piden arras firmadas, certificado de comunidad, nota simple reciente, CEE, cédula de habitabilidad e IBI al día. Si entregaste señal sin papeles, el comprador puede usar el retraso bancario para renegociar.",
-      "Las cláusulas suspensivas en arras protegen a ambas partes: el comprador solicita hipoteca en plazo; si no la obtiene, se establece qué pasa con la señal. Mal redactadas u omitidas, son la causa más frecuente de disputas en ventas entre particulares en Granada.",
+      "Las cláusulas suspensivas en arras protegen a ambas partes: el comprador solicita hipoteca en plazo; si no la obtiene, se establece qué pasa con la señal. Mal redactadas u omitidas, son la causa más frecuente de disputas en ventas entre particulares en Zaragoza.",
       "Livendia alinea calendario con plazos realistas de aprobación (cuatro a diez semanas desde arras) y revisa que la documentación esté lista antes de que el comprador presente expediente.",
       "Si el comprador paga al contado, el calendario se acorta, pero nota simple, cédula y certificados de comunidad siguen siendo imprescindibles.",
     ],
   },
   {
-    id: "granada-mercado",
-    title: "Particularidades de vender en Granada capital y área metropolitana",
+    id: "zaragoza-mercado",
+    title: "Particularidades de vender en Zaragoza capital y comarca",
     paragraphs: [
-      "Granada no es un mercado único. Vender sin inmobiliaria en Triana, Nervión, Los Remedios o Macarena implica compradores con perfiles distintos —familias, inversores, funcionarios, estudiantes— y tiempos de cierre variables.",
+      "Zaragoza no es un mercado único. Vender sin inmobiliaria en Triana, Nervión, Los Remedios o Macarena implica compradores con perfiles distintos —familias, inversores, funcionarios, estudiantes— y tiempos de cierre variables.",
       "En el área metropolitana —Dos Hermanas, Alcalá de Guadaíra, Camas, Mairena del Aljarafe— los precios son más bajos pero el proceso legal es idéntico: arras, comunidad, ITP del comprador y plusvalía del vendedor. Livendia aplica el mismo protocolo y tarifa plana.",
       "En el casco histórico y Santa Cruz, derramas por rehabilitación de fachadas e ITE en edificios antiguos son frecuentes. Si hubo reforma sin licencia o cambio de uso, conviene resolverlo antes de arras.",
       "Operaciones entre particulares con herencias compartidas son frecuentes en barrios consolidados. Todos los herederos deben estar alineados y la documentación registral unificada antes de anunciar precio.",
-      "Si vendes para comprar otro piso en Granada, el calendario encadenado requiere arras bien redactadas en ambas patas. Livendia coordina la venta; para la compra existe el servicio completo de compra con la misma filosofía.",
+      "Si vendes para comprar otro piso en Zaragoza, el calendario encadenado requiere arras bien redactadas en ambas patas. Livendia coordina la venta; para la compra existe el servicio completo de compra con la misma filosofía.",
     ],
   },
   {
     id: "errores-frecuentes",
-    title: "Errores frecuentes al vender sin agencia en Granada",
+    title: "Errores frecuentes al vender sin agencia en Zaragoza",
     paragraphs: [
-      "Confundir interés con solvencia: en Granada no faltan visitas; faltan compradores que obtengan hipoteca. Filtra antes de reservar y exige preaprobación cuando sea razonable.",
+      "Confundir interés con solvencia: en Zaragoza no faltan visitas; faltan compradores que obtengan hipoteca. Filtra antes de reservar y exige preaprobación cuando sea razonable.",
       "Entregar señal en mano sin contrato claro. Pagos sin trazabilidad generan problemas con Hacienda y con el comprador.",
       "Fijar precio sin mirar la comunidad. Una derrama de rehabilitación en el casco histórico cambia la ecuación para el comprador financiado.",
       "Pensar que «entre familiares no hace falta contrato». Las operaciones entre parientes son las que más acaban en conflicto.",
@@ -298,18 +298,18 @@ export const PILLAR_GRANADA_GRANADA_EXTRA: readonly PillarSection[] = [
   },
   {
     id: "livendia-vs-otros",
-    title: "Livendia frente a inmobiliarias sin comisiones y gestoría tradicional en Granada",
+    title: "Livendia frente a inmobiliarias sin comisiones y gestoría tradicional en Zaragoza",
     paragraphs: [
       "Housfy, Properfy y similares compiten en captación: fotos, portales, visitas. Si ya tienes comprador, pagas por servicios que no necesitas. Livendia parte de otro supuesto: tú traes al comprador; nosotros blindamos la operación.",
-      "Una gestoría de barrio en Granada puede redactar contratos, pero rara vez está especializada en compraventa P2P con panel online y gestor dedicado por expediente.",
+      "Una gestoría de barrio en Zaragoza puede redactar contratos, pero rara vez está especializada en compraventa P2P con panel online y gestor dedicado por expediente.",
       "Vender piso sin comisiones no es vender sin coste. Notaría, registro, plusvalía y cancelación hipotecaria tienen importe propio. La comisión de agencia es el gasto que más sentido pierde cuando la captación la hiciste tú.",
     ],
   },
 ];
 
-export const PILLAR_GRANADA_FAQ: readonly PillarFaq[] = [
+export const PILLAR_ZARAGOZA_FAQ: readonly PillarFaq[] = [
   {
-    question: "¿Es legal vender mi piso en Granada sin inmobiliaria?",
+    question: "¿Es legal vender mi piso en Zaragoza sin inmobiliaria?",
     answer: "Sí. No existe obligación de contratar agencia. Puedes vender directamente a un particular cumpliendo normativa, documentación y escritura ante notario.",
   },
   {
@@ -321,7 +321,7 @@ export const PILLAR_GRANADA_FAQ: readonly PillarFaq[] = [
     answer: "No. No somos portal ni agencia de marketing. Livendia entra cuando hay comprador o negociación avanzada y necesitas contratos y trámites.",
   },
   {
-    question: "¿Cuánto cuesta vender con Livendia frente a una agencia en Granada?",
+    question: "¿Cuánto cuesta vender con Livendia frente a una agencia en Zaragoza?",
     answer: `El servicio completo cuesta ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido. En un piso de 250.000 €, una agencia al 3 % + IVA cobra unos 9.075 €; al 5 %, unos 15.125 €.`,
   },
   {
@@ -333,19 +333,19 @@ export const PILLAR_GRANADA_FAQ: readonly PillarFaq[] = [
     answer: "Nota simple, certificado de comunidad, CEE, IBI, escritura y arras firmadas. Cada entidad añade requisitos. Livendia mantiene checklist actualizado.",
   },
   {
-    question: "¿Arras penitenciales o confirmatorias en Granada?",
+    question: "¿Arras penitenciales o confirmatorias en Zaragoza?",
     answer: "Depende del calendario, financiación y riesgo de desistimiento. Un gestor Livendia recomienda la fórmula según tu caso.",
   },
   {
     question: "¿Puedo contratar solo arras sin servicio completo?",
-    answer: "Sí. Existe contrato de arras local en Granada. Si ya firmaste arras, está la gestión documental vendedor. El servicio completo es lo habitual de reserva a notaría.",
+    answer: "Sí. Existe contrato de arras local en Zaragoza. Si ya firmaste arras, está la gestión documental vendedor. El servicio completo es lo habitual de reserva a notaría.",
   },
   {
     question: "¿Livendia negocia el precio por mí?",
     answer: "No. Te asesoramos en lo legal y documental. La negociación económica sigue siendo tuya.",
   },
   {
-    question: "¿Cuánto tarda una venta entre particulares en Granada?",
+    question: "¿Cuánto tarda una venta entre particulares en Zaragoza?",
     answer: "Desde unas semanas (contado, documentación lista) hasta tres o cuatro meses con hipotecas y derramas. Arras mal pactadas son la principal causa de retrasos evitables.",
   },
   {
@@ -354,19 +354,19 @@ export const PILLAR_GRANADA_FAQ: readonly PillarFaq[] = [
   },
   {
     question: "¿Sirve esta guía si vendo en Dos Hermanas o Alcalá de Guadaíra?",
-    answer: "Sí. El marco legal es estatal. Livendia cubre Granada capital y área metropolitana con el mismo servicio y tarifa.",
+    answer: "Sí. El marco legal es estatal. Livendia cubre Zaragoza capital y comarca con el mismo servicio y tarifa.",
   },
   {
     question: "¿Cómo contrato el servicio?",
     answer: "Online en livendia.com: pago seguro, expediente y gestor asignado. Recomendable antes de entregar señal al comprador.",
   },
   {
-    question: "¿Esta página sustituye a vender piso sin agencia Granada?",
-    answer: "Esta es la guía pilar más completa. La landing en /servicios/vender-piso-sin-agencia-granada sigue activa como ficha complementaria.",
+    question: "¿Esta página sustituye a vender piso sin agencia Zaragoza?",
+    answer: "Esta es la guía pilar más completa. La landing en /servicios/vender-piso-sin-agencia-zaragoza sigue activa como ficha complementaria.",
   },
 ];
 
-export const PILLAR_GRANADA_RELATED: readonly PillarRelatedLink[] = [
+export const PILLAR_ZARAGOZA_RELATED: readonly PillarRelatedLink[] = [
   {
     href: "/servicios/servicio-completo-venta",
     label: "Servicio completo de venta",
@@ -374,26 +374,26 @@ export const PILLAR_GRANADA_RELATED: readonly PillarRelatedLink[] = [
     category: "servicio",
   },
   {
-    href: "/servicios/servicio-completo-venta-local/granada",
-    label: "Servicio completo de venta en Granada",
+    href: "/servicios/vender-piso-sin-agencia-zaragoza",
+    label: "Servicio completo de venta en Zaragoza",
     description: "Landing de conversión local enlazada desde esta guía.",
     category: "local",
   },
   {
-    href: "/servicios/gestion-documental-vendedor/granada",
-    label: "Gestión documental vendedor Granada",
+    href: "/servicios/gestion-documental-vendedor/zaragoza",
+    label: "Gestión documental vendedor Zaragoza",
     description: "Después de arras: documentación hacia escritura.",
     category: "servicio",
   },
   {
-    href: "/gestoria/granada",
-    label: "Gestoría inmobiliaria Granada",
+    href: "/gestoria/zaragoza",
+    label: "Gestoría inmobiliaria Zaragoza",
     description: "Todos los servicios Livendia en la capital andaluza.",
     category: "local",
   },
   {
-    href: "/servicios/vender-piso-sin-agencia-granada",
-    label: "Vender piso sin agencia Granada",
+    href: "/servicios/vender-piso-sin-agencia-zaragoza",
+    label: "Vender piso sin agencia Zaragoza",
     description: "Ficha complementaria de venta sin agencia.",
     category: "guia",
   },
@@ -416,14 +416,14 @@ export const PILLAR_GRANADA_RELATED: readonly PillarRelatedLink[] = [
     category: "guia",
   },
   {
-    href: "/servicios/servicio-completo-compra-local/granada",
-    label: "Comprar piso entre particulares en Granada",
+    href: "/servicios/servicio-completo-compra-local/zaragoza",
+    label: "Comprar piso entre particulares en Zaragoza",
     description: "Para propietarios que venden y compran en cadena.",
     category: "local",
   },
 ];
 
-export const PILLAR_GRANADA_NEIGHBORHOODS = [
+export const PILLAR_ZARAGOZA_NEIGHBORHOODS = [
   "Triana",
   "Nervión",
   "Los Remedios",

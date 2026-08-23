@@ -1,27 +1,34 @@
 ---
-description: Tras cambios publicables en Livendia — commit, push (danielhdz3-ai), deploy y links
+description: Commit, push y deploy Livendia — SIEMPRE con cuenta danielhdz3-ai
 alwaysApply: true
 ---
 
-# Livendia — deploy y entrega obligatorios
+# Livendia — GitHub, commit y deploy
 
-Al **terminar una tarea** que afecte contenido público, SEO, landings, `/precios`, servicios o rutas nuevas en **livendia.com**:
+Este repositorio (`danielhdz3-ai/livendia`) **solo** se commitea y pushea con la cuenta GitHub **`danielhdz3-ai`**.
 
-## Siempre hacer (sin esperar a que lo pidan)
+## Antes de cada push (obligatorio)
 
-1. **Commit** con mensaje claro (`feat(seo): …`, `fix: …`, etc.).
-2. **Push** a `origin/master` con la cuenta GitHub **`danielhdz3-ai`**.
-   - Si el push devuelve 403 con otra cuenta: `gh auth switch --user danielhdz3-ai` y reintentar.
-3. **Deploy producción**: `vercel --prod` desde la raíz del repo (`D:/Proyectos/Livendia`).
-   - Confirmar alias **https://livendia.com**.
+```bash
+gh auth switch --user danielhdz3-ai
+git push origin master
+```
 
-## Siempre enviar al usuario
+No esperar al error 403. Cambiar de cuenta **siempre** antes de pushear.
 
-Lista de **URLs completas** (`https://livendia.com/...`) de todo lo creado o modificado en la página pública, agrupadas por tipo (landings, servicios, hub, precios, etc.).
+Si el push falla con `Permission denied to nuevahabitat-ai` (u otra cuenta): repetir `gh auth switch --user danielhdz3-ai` y reintentar.
 
-Incluir la lista **después del deploy**, no solo rutas locales ni “pendiente de subir”.
+## Al terminar una tarea publicable
+
+Contenido público, SEO, landings, `/precios`, panel rental, rutas nuevas en **livendia.com**:
+
+1. **Commit** con mensaje claro (`feat(rental): …`, `fix(seo): …`, etc.).
+2. **`gh auth switch --user danielhdz3-ai`** → **push** a `origin/master`.
+3. **Deploy producción**: push dispara Vercel vía GitHub. Si hace falta CLI: `vercel --prod` desde `D:/Proyectos/Livendia`.
+4. Confirmar **https://livendia.com** y enviar URLs completas al usuario.
 
 ## No omitir
 
-- No cerrar la sesión dejando cambios solo en local si la tarea era publicar contenido o funcionalidad visible.
-- No usar otra cuenta GitHub para este repositorio salvo indicación explícita del usuario.
+- No usar `nuevahabitat-ai`, `danielhdz-ai`, `danielhdz2-ai` ni otra cuenta para este repo.
+- No cerrar dejando cambios solo en local si la tarea era publicar funcionalidad visible.
+- Incluir lista de URLs **después** del deploy, no “pendiente de subir”.

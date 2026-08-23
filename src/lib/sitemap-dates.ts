@@ -5,11 +5,11 @@
 export const SITEMAP_LAST_MODIFIED = {
   core: "2026-06-30",
   servicios: "2026-06-01",
-  localLandings: "2026-08-17",
-  gestoria: "2026-05-15",
+  localLandings: "2026-08-23",
+  gestoria: "2026-08-23",
   ventaSeo: "2026-06-30",
-  venderSinInmobiliaria: "2026-06-01",
-  ciudades: "2026-06-30",
+  venderSinInmobiliaria: "2026-08-23",
+  ciudades: "2026-08-23",
 } as const;
 
 export function toSitemapDate(isoDate: string): Date {

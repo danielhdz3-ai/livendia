@@ -1,13 +1,13 @@
-import { VenderPisoSinInmobiliariaMalagaPillarPage } from "@/components/pillar-pages/vender-piso-sin-inmobiliaria-malaga-page";
+import { VenderPisoSinInmobiliariaZaragozaPillarPage } from "@/components/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza-page";
 import {
-  PILLAR_MALAGA_META,
-  PILLAR_MALAGA_PATH,
-} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
+  PILLAR_ZARAGOZA_META,
+  PILLAR_ZARAGOZA_PATH,
+} from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza";
 import { VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE } from "@/components/vender-piso-sin-inmobiliaria-images";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
-const canonical = `${getSiteUrl()}${PILLAR_MALAGA_PATH}`;
+const canonical = `${getSiteUrl()}${PILLAR_ZARAGOZA_PATH}`;
 
 /**
  * ISR: revalida cada 5 min para que los precios/estado del catalogo
@@ -18,25 +18,25 @@ const canonical = `${getSiteUrl()}${PILLAR_MALAGA_PATH}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: PILLAR_MALAGA_META.title,
-  description: PILLAR_MALAGA_META.description,
+  title: PILLAR_ZARAGOZA_META.title,
+  description: PILLAR_ZARAGOZA_META.description,
   alternates: { canonical },
-  keywords: [...PILLAR_MALAGA_META.keywords],
+  keywords: [...PILLAR_ZARAGOZA_META.keywords],
   openGraph: {
-    title: PILLAR_MALAGA_META.title,
-    description: PILLAR_MALAGA_META.description,
+    title: PILLAR_ZARAGOZA_META.title,
+    description: PILLAR_ZARAGOZA_META.description,
     url: canonical,
     locale: "es_ES",
     type: "article",
     images: [
       {
         url: VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE,
-        alt: "Guía para vender piso sin comisiones en Malaga entre particulares",
+        alt: "Guía para vender piso sin comisiones en Zaragoza entre particulares",
       },
     ],
   },
 };
 
-export default function VenderPisoSinInmobiliariaMalagaPage() {
-  return <VenderPisoSinInmobiliariaMalagaPillarPage />;
+export default function VenderPisoSinInmobiliariaZaragozaPage() {
+  return <VenderPisoSinInmobiliariaZaragozaPillarPage />;
 }
