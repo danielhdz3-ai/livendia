@@ -1,5 +1,6 @@
 import { RentalTenantDocuments, type RentalTenantDocRow } from "@/app/dashboard/rental/rental-tenant-documents";
 import { RentalTenantEditForm } from "@/components/rental-tenant-edit-form";
+import { TenantInviteButton } from "@/components/tenant-invite-button";
 import { getActivePropertyForUser } from "@/lib/rental-active-property";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
@@ -53,6 +54,14 @@ export default async function TenantDataPage() {
               <h2 className="text-xl font-bold text-[#1E293B]">Editar datos del inquilino</h2>
             </div>
             <RentalTenantEditForm tenant={tenant as Parameters<typeof RentalTenantEditForm>[0]["tenant"]} />
+            <div className="mt-6 border-t border-slate-100 pt-6">
+              <TenantInviteButton
+                tenantId={tenant.id as string}
+                tenantEmail={tenant.email as string | null}
+                tenantName={tenant.full_name as string}
+                linked={Boolean((tenant as { user_id?: string | null }).user_id)}
+              />
+            </div>
           </div>
 
           <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-slate-200">

@@ -54,8 +54,21 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(login);
   }
 
+  if (path.startsWith("/inquilino") && !user) {
+    const login = new URL("/login", request.url);
+    login.searchParams.set("next", path);
+    return NextResponse.redirect(login);
+  }
+
   if (user) {
     const role = await loadProfileRole();
+
+    if (role === "tenant") {
+      if (path.startsWith("/dashboard") || path.startsWith("/admin")) {
+        return NextResponse.redirect(new URL("/inquilino", request.url));
+      }
+    }
+
     if (shouldRedirectToAdminPanel(user.email, role)) {
       if (path === "/login" || path === "/register") {
         const cambiar = request.nextUrl.searchParams.get("cambiar");
@@ -66,6 +79,18 @@ export async function middleware(request: NextRequest) {
       if ((path === "/dashboard" || path.startsWith("/dashboard/")) && !viewAsClient) {
         return NextResponse.redirect(new URL("/admin", request.url));
       }
+    }
+  }
+
+  if (path.startsWith("/inquilino")) {
+    if (!user) {
+      const login = new URL("/login", request.url);
+      login.searchParams.set("next", path);
+      return NextResponse.redirect(login);
+    }
+    const role = await loadProfileRole();
+    if (role !== "tenant") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   }
 
@@ -88,7 +113,9 @@ export async function middleware(request: NextRequest) {
     const cambiar = request.nextUrl.searchParams.get("cambiar");
     if (cambiar !== "1") {
       const role = await loadProfileRole();
-      const dest = shouldRedirectToAdminPanel(user.email, role) ? "/admin" : "/dashboard";
+      let dest = "/dashboard";
+      if (role === "tenant") dest = "/inquilino";
+      else if (shouldRedirectToAdminPanel(user.email, role)) dest = "/admin";
       return NextResponse.redirect(new URL(dest, request.url));
     }
   }

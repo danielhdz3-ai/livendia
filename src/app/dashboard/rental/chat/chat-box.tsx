@@ -1,6 +1,7 @@
 "use client";
 
 import { assertAllowedUpload } from "@/lib/uploads";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Send, Paperclip, X } from "lucide-react";
 
@@ -35,13 +36,12 @@ export function ChatBox({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const lastCreatedAtRef = useRef<string | undefined>(
+    initialMessages[initialMessages.length - 1]?.created_at,
+  );
 
   useEffect(() => {
-    scrollToBottom();
+    lastCreatedAtRef.current = messages[messages.length - 1]?.created_at;
   }, [messages]);
 
   const markMessagesRead = useCallback(async () => {
@@ -56,40 +56,74 @@ export function ChatBox({
     }
   }, [propertyId]);
 
+  const fetchNewMessages = useCallback(async () => {
+    const since = lastCreatedAtRef.current;
+    const url = since
+      ? `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}&since=${encodeURIComponent(since)}`
+      : `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const data = (await res.json()) as { messages?: Message[] };
+      const incoming = data.messages ?? [];
+      if (incoming.length === 0) return;
+      setMessages((prev) => {
+        const ids = new Set(prev.map((m) => m.id));
+        const merged = [...prev];
+        for (const m of incoming) {
+          if (!ids.has(m.id)) merged.push(m);
+        }
+        return merged.sort(
+          (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+        );
+      });
+      void markMessagesRead();
+    } catch {
+      /* silencioso */
+    }
+  }, [propertyId, markMessagesRead]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   useEffect(() => {
     void markMessagesRead();
   }, [markMessagesRead]);
 
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const last = messages[messages.length - 1];
-      const since = last?.created_at;
-      const url = since
-        ? `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}&since=${encodeURIComponent(since)}`
-        : `/api/messages/list?propertyId=${encodeURIComponent(propertyId)}`;
-      try {
-        const res = await fetch(url);
-        if (!res.ok) return;
-        const data = (await res.json()) as { messages?: Message[] };
-        const incoming = data.messages ?? [];
-        if (incoming.length === 0) return;
-        setMessages((prev) => {
-          const ids = new Set(prev.map((m) => m.id));
-          const merged = [...prev];
-          for (const m of incoming) {
-            if (!ids.has(m.id)) merged.push(m);
-          }
-          return merged.sort(
-            (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
-          );
-        });
-        void markMessagesRead();
-      } catch {
-        /* polling silencioso */
-      }
-    }, 8000);
+    const supabase = createBrowserSupabaseClient();
+    const channel = supabase
+      .channel(`messages:${propertyId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "messages",
+          filter: `property_id=eq.${propertyId}`,
+        },
+        () => {
+          void fetchNewMessages();
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [propertyId, fetchNewMessages]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      void fetchNewMessages();
+    }, 30000);
     return () => clearInterval(interval);
-  }, [messages, propertyId, markMessagesRead]);
+  }, [fetchNewMessages]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -189,6 +223,7 @@ export function ChatBox({
         {messages.map((msg) => {
           const isOwn = msg.sender_id === currentUserId;
           const isAdmin = msg.sender_role === "admin";
+          const isTenant = msg.sender_role === "tenant";
 
           return (
             <div
@@ -197,7 +232,7 @@ export function ChatBox({
             >
               <div className={`max-w-[70%] ${isOwn ? "order-2" : "order-1"}`}>
                 <div className="mb-1 text-xs text-[#64748B]">
-                  {isOwn ? "Tú" : (isAdmin ? "Gestor" : msg.sender_name)}
+                  {isOwn ? "Tú" : isAdmin ? "Gestor" : isTenant ? "Inquilino" : msg.sender_name}
                   {" • "}
                   {new Date(msg.created_at).toLocaleTimeString("es-ES", {
                     hour: "2-digit",

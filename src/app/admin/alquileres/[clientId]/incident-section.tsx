@@ -7,9 +7,10 @@ import { CreateIncidentForm } from "./create-incident-form";
 interface IncidentSectionProps {
   propertyId: string;
   propertyAddress: string;
+  tenantId?: string;
 }
 
-export function IncidentSection({ propertyId, propertyAddress }: IncidentSectionProps) {
+export function IncidentSection({ propertyId, propertyAddress, tenantId }: IncidentSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,6 +35,7 @@ export function IncidentSection({ propertyId, propertyAddress }: IncidentSection
           <CreateIncidentForm
             propertyId={propertyId}
             propertyAddress={propertyAddress}
+            tenantId={tenantId}
             onSuccess={() => {
               setIsOpen(false);
               setTimeout(() => {

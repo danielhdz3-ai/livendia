@@ -25,6 +25,8 @@ import {
   type DocRequestRow,
 } from "@/components/rental-document-requests";
 import { syncFulfilledDocumentRequests } from "@/lib/rental-document-requests-sync";
+import { AdminIncidentsList } from "@/components/admin-incidents-list";
+import { TenantInviteButton } from "@/components/tenant-invite-button";
 
 export const metadata = { title: { absolute: "Detalle de cliente — Livendia Admin" } };
 
@@ -135,6 +137,18 @@ export default async function AdminClientDetailPage({
     }
   }
 
+  const { data: allIncidents } = propertyIds.length > 0
+    ? await supabase
+        .from("incidents")
+        .select("id, title, description, status, priority, created_at, property_id, estimated_cost")
+        .in("property_id", propertyIds)
+        .order("created_at", { ascending: false })
+    : { data: null };
+
+  const propertyAddresses = Object.fromEntries(
+    (properties ?? []).map((p) => [p.id as string, p.address as string]),
+  );
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       {/* Header */}
@@ -204,6 +218,13 @@ export default async function AdminClientDetailPage({
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mb-8">
+        <AdminIncidentsList
+          incidents={(allIncidents ?? []) as Parameters<typeof AdminIncidentsList>[0]["incidents"]}
+          propertyAddresses={propertyAddresses}
+        />
       </div>
 
       {/* Propiedades */}
@@ -344,6 +365,15 @@ export default async function AdminClientDetailPage({
                                 </div>
                               )}
 
+                              <div className="mt-3">
+                                <TenantInviteButton
+                                  tenantId={tenant.id as string}
+                                  tenantEmail={tenant.email as string | null}
+                                  tenantName={tenant.full_name as string}
+                                  linked={Boolean(tenant.user_id)}
+                                />
+                              </div>
+
                               {/* Documentos del inquilino */}
                               <div className="mt-3 rounded bg-white p-3 ring-1 ring-slate-100">
                                 <div className="mb-2 text-xs font-semibold text-[#64748B]">
@@ -430,7 +460,15 @@ export default async function AdminClientDetailPage({
                     );
                   })()}
                   {/* Reportar incidencia */}
-                  <IncidentSection propertyId={prop.id} propertyAddress={prop.address} />
+                  <IncidentSection
+                    propertyId={prop.id as string}
+                    propertyAddress={prop.address as string}
+                    tenantId={
+                      (propTenants.find((t) => t.is_active) ?? propTenants[0])?.id as
+                        | string
+                        | undefined
+                    }
+                  />
                 </div>
               );
             })}

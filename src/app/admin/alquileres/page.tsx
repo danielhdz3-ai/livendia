@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Building2, Users, AlertCircle, CheckCircle2 } from "lucide-react";
 import { fetchRentalAdminClients, countPendingRentalDocs } from "@/lib/rental-admin-clients";
+import { INCIDENT_OPEN_STATUSES } from "@/lib/rental-incident-labels";
 
 export const metadata = { title: { absolute: "Gestión de alquileres — Livendia Admin" } };
 
@@ -52,11 +53,22 @@ export default async function AdminAlquileresPage() {
       const tenantIds = tenants?.map((t) => t.id as string) || [];
       const pendingDocs = await countPendingRentalDocs(supabase, propertyIds, tenantIds);
 
+      let openIncidents = 0;
+      if (propertyIds.length > 0) {
+        const { count } = await supabase
+          .from("incidents")
+          .select("id", { count: "exact", head: true })
+          .in("property_id", propertyIds)
+          .in("status", [...INCIDENT_OPEN_STATUSES]);
+        openIncidents = count ?? 0;
+      }
+
       return {
         client,
         properties: properties || [],
         tenants: tenants || [],
         pendingDocs,
+        openIncidents,
       };
     }),
   );
@@ -136,7 +148,7 @@ export default async function AdminAlquileresPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {clientsWithData.map(({ client, properties, tenants, pendingDocs }) => (
+          {clientsWithData.map(({ client, properties, tenants, pendingDocs, openIncidents }) => (
             <div
               key={client.clientId}
               className="rounded-xl bg-white p-6 shadow ring-1 ring-slate-200 transition hover:shadow-lg"
@@ -184,6 +196,20 @@ export default async function AdminAlquileresPage() {
                         <div className="text-xs text-[#64748B]">Documentación</div>
                         <div className="font-semibold text-[#1E293B]">
                           {pendingDocs > 0 ? `${pendingDocs} pendientes` : "Completa"}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {openIncidents > 0 ? (
+                        <AlertCircle className="h-5 w-5 text-orange-600" />
+                      ) : (
+                        <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      )}
+                      <div>
+                        <div className="text-xs text-[#64748B]">Incidencias</div>
+                        <div className="font-semibold text-[#1E293B]">
+                          {openIncidents > 0 ? `${openIncidents} abiertas` : "Al día"}
                         </div>
                       </div>
                     </div>

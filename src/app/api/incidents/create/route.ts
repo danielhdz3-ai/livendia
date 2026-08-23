@@ -17,6 +17,7 @@ type IncidentInput = {
   description: string;
   priority: string;
   photoFiles: File[];
+  tenantId?: string;
 };
 
 async function parseIncidentInput(request: Request): Promise<IncidentInput | { error: string; status: number }> {
@@ -33,12 +34,13 @@ async function parseIncidentInput(request: Request): Promise<IncidentInput | { e
       const f = formData.get(`photo_${i}`);
       if (f instanceof File && f.size > 0) photoFiles.push(f);
     }
+    const tenantId = String(formData.get("tenantId") ?? "").trim() || undefined;
     const title = toPlainText(titleRaw, TITLE_MAX);
     const description = toPlainText(descRaw, DESC_MAX);
     if (!propertyId || title.length < 3 || description.length < 10) {
       return { error: "Faltan campos requeridos", status: 400 };
     }
-    return { propertyId, title, description, priority, photoFiles };
+    return { propertyId, title, description, priority, photoFiles, tenantId };
   }
 
   const body = (await request.json()) as {
@@ -46,6 +48,7 @@ async function parseIncidentInput(request: Request): Promise<IncidentInput | { e
     title?: string;
     description?: string;
     priority?: string;
+    tenantId?: string;
   };
 
   const propertyId = body.propertyId?.trim() ?? "";
@@ -57,7 +60,7 @@ async function parseIncidentInput(request: Request): Promise<IncidentInput | { e
     return { error: "Faltan campos requeridos", status: 400 };
   }
 
-  return { propertyId, title, description, priority, photoFiles: [] };
+  return { propertyId, title, description, priority, photoFiles: [], tenantId: body.tenantId?.trim() };
 }
 
 export async function POST(request: Request) {
@@ -67,7 +70,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: parsed.error }, { status: parsed.status });
     }
 
-    const { propertyId, title, description, priority, photoFiles } = parsed;
+    const { propertyId, title, description, priority, photoFiles, tenantId: inputTenantId } = parsed;
 
     const supabase = await createServerSupabaseClient();
     const {
@@ -90,6 +93,21 @@ export async function POST(request: Request) {
 
     const admin = await isUserAdmin(supabase, user.id);
 
+    let tenantId: string | null = null;
+    if (access.isTenant && access.tenantId) {
+      tenantId = access.tenantId;
+    } else if (inputTenantId) {
+      tenantId = inputTenantId;
+    } else {
+      const { data: activeTenant } = await supabase
+        .from("tenants")
+        .select("id")
+        .eq("property_id", propertyId)
+        .eq("is_active", true)
+        .maybeSingle();
+      tenantId = (activeTenant?.id as string | undefined) ?? null;
+    }
+
     const { data: property } = await supabase
       .from("properties")
       .select("id, user_id, address")
@@ -104,10 +122,11 @@ export async function POST(request: Request) {
       .from("incidents")
       .insert({
         property_id: propertyId,
+        tenant_id: tenantId,
         title,
         description,
         priority: PRIORITY_OK.has(priority) ? priority : "medium",
-        status: admin ? "pending" : "pending",
+        status: "pending",
         photos: null,
       })
       .select()
@@ -166,10 +185,11 @@ export async function POST(request: Request) {
         console.error("Error enviando email:", emailError);
       }
     } else {
+      const reporter = access.isTenant ? "inquilino" : "propietario";
       void notifyAllAdmins({
-        title: "Incidencia reportada por propietario",
+        title: `Incidencia reportada por ${reporter}`,
         message: `${property.address}: ${title}`,
-        href: `/admin/alquileres/${property.user_id as string}`,
+        href: `/admin/incidencias/${incident.id as string}`,
       });
     }
 
