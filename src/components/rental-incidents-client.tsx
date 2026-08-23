@@ -1,26 +1,18 @@
 "use client";
 
 import { CreateIncidentForm } from "@/app/dashboard/rental/incidencias/create-incident-form";
+import { IncidentsRealtimeRefresh } from "@/components/incidents-realtime-refresh";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import { AlertCircle, MessageCircle } from "lucide-react";
+import {
+  INCIDENT_PRIORITY_LABELS,
+  INCIDENT_STATUS_LABELS,
+} from "@/lib/rental-incident-labels";
 
-const statusLabels: Record<string, { label: string; color: string }> = {
-  pending: { label: "Pendiente", color: "bg-yellow-100 text-yellow-800" },
-  in_progress: { label: "En Proceso", color: "bg-blue-100 text-blue-800" },
-  waiting_approval: { label: "Esperando Aprobación", color: "bg-purple-100 text-purple-800" },
-  approved: { label: "Aprobada", color: "bg-green-100 text-green-800" },
-  resolved: { label: "Resuelta", color: "bg-gray-100 text-gray-800" },
-  rejected: { label: "Rechazada", color: "bg-red-100 text-red-800" },
-};
-
-const priorityLabels: Record<string, { label: string; color: string }> = {
-  low: { label: "Baja", color: "text-gray-600" },
-  medium: { label: "Media", color: "text-blue-600" },
-  high: { label: "Alta", color: "text-orange-600" },
-  urgent: { label: "Urgente", color: "text-red-600" },
-};
+const statusLabels = INCIDENT_STATUS_LABELS;
+const priorityLabels = INCIDENT_PRIORITY_LABELS;
 
 type Incident = {
   id: string;
@@ -46,6 +38,7 @@ export function RentalIncidentsClient({
 
   return (
     <div className="p-8">
+      <IncidentsRealtimeRefresh propertyId={propertyId} />
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-[#1E293B]">Portal de Incidencias</h1>

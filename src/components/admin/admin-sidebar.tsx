@@ -13,6 +13,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { AdminExitActions } from "@/components/admin-exit-actions";
+import { AdminChatNavBadge } from "@/components/admin-chat-nav-badge";
 import { ADMIN_NAV_ACTIVE, ADMIN_NAV_IDLE, ADMIN_SIDEBAR_BG } from "@/lib/admin-ui";
 
 const MAIN_NAV = [
@@ -80,6 +81,7 @@ export function AdminSidebar({ adminEmail }: { adminEmail: string }) {
               >
                 <Icon className="h-4 w-4 shrink-0" aria-hidden />
                 {label}
+                {href === "/admin/chat" ? <AdminChatNavBadge /> : null}
               </Link>
             );
           })}

@@ -1,44 +1,69 @@
+import { AdminClientChatPicker } from "@/components/admin-client-chat-picker";
+import { UnreadCountPill } from "@/components/admin-chat-nav-badge";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 import { ArrowLeft } from "lucide-react";
 import { ChatBox } from "@/app/dashboard/rental/chat/chat-box";
+import { getAdminUnreadByProperty } from "@/lib/rental-chat-unread";
 
 export const metadata = { title: { absolute: "Chat con cliente — Livendia Admin" } };
 
 export default async function AdminClientChatPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ clientId: string }>;
+  searchParams: Promise<{ propertyId?: string }>;
 }) {
   const { clientId } = await params;
+  const { propertyId: queryPropertyId } = await searchParams;
+
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: me } = await supabase.from("profiles").select("role, full_name").eq("id", user.id).maybeSingle();
+  const { data: me } = await supabase
+    .from("profiles")
+    .select("role, full_name")
+    .eq("id", user.id)
+    .maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  const { data: profile } = await supabase.from("profiles").select("full_name").eq("id", clientId).maybeSingle();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("full_name")
+    .eq("id", clientId)
+    .maybeSingle();
 
-  const { data: property } = await supabase
+  const { data: properties } = await supabase
     .from("properties")
     .select("id, address")
     .eq("user_id", clientId)
-    .maybeSingle();
+    .order("created_at", { ascending: true });
 
-  if (!property) {
+  if (!properties?.length) {
     return (
       <main className="mx-auto max-w-4xl px-4 py-8">
         <p className="text-[#64748B]">Este cliente aún no tiene inmueble registrado.</p>
-        <Link href={`/admin/alquileres/${clientId}`} className="mt-4 inline-block text-[#1A4FBF] hover:underline">
+        <Link
+          href={`/admin/alquileres/${clientId}`}
+          className="mt-4 inline-block text-[#1A4FBF] hover:underline"
+        >
           ← Volver al cliente
         </Link>
       </main>
     );
   }
+
+  const property =
+    properties.find((p) => p.id === queryPropertyId) ?? properties[0];
+  const propertyIds = properties.map((p) => p.id as string);
+  const unread = await getAdminUnreadByProperty(supabase, user.id, propertyIds);
+  const propertyUnread = unread.byProperty[property.id as string] ?? 0;
 
   const { data: messages } = await supabase
     .from("messages")
@@ -47,7 +72,10 @@ export default async function AdminClientChatPage({
     .order("created_at", { ascending: true });
 
   const formattedMessages = (messages ?? []).map((msg) => {
-    const prof = msg.profiles as { full_name?: string; role?: string } | { full_name?: string; role?: string }[] | null;
+    const prof = msg.profiles as
+      | { full_name?: string; role?: string }
+      | { full_name?: string; role?: string }[]
+      | null;
     const p = Array.isArray(prof) ? prof[0] : prof;
     return {
       id: msg.id as string,
@@ -69,8 +97,26 @@ export default async function AdminClientChatPage({
         <ArrowLeft className="h-4 w-4" />
         Volver a {profile?.full_name || "cliente"}
       </Link>
-      <h1 className="mb-2 text-2xl font-bold text-[#1E293B]">Chat con {profile?.full_name || "cliente"}</h1>
-      <p className="mb-6 text-sm text-[#64748B]">{property.address as string}</p>
+
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <h1 className="text-2xl font-bold text-[#1E293B]">
+          Chat con {profile?.full_name || "cliente"}
+        </h1>
+        <UnreadCountPill count={propertyUnread} />
+      </div>
+      <p className="mb-4 text-sm text-[#64748B]">{property.address as string}</p>
+
+      <Suspense fallback={null}>
+        <AdminClientChatPicker
+          clientId={clientId}
+          properties={properties.map((p) => ({
+            id: p.id as string,
+            address: p.address as string,
+          }))}
+          activePropertyId={property.id as string}
+        />
+      </Suspense>
+
       <ChatBox
         propertyId={property.id as string}
         currentUserId={user.id}

@@ -27,6 +27,9 @@ import {
 import { syncFulfilledDocumentRequests } from "@/lib/rental-document-requests-sync";
 import { AdminIncidentsList } from "@/components/admin-incidents-list";
 import { TenantInviteButton } from "@/components/tenant-invite-button";
+import { UnreadCountPill } from "@/components/admin-chat-nav-badge";
+import { IncidentsRealtimeRefresh } from "@/components/incidents-realtime-refresh";
+import { getAdminUnreadByProperty } from "@/lib/rental-chat-unread";
 
 export const metadata = { title: { absolute: "Detalle de cliente — Livendia Admin" } };
 
@@ -149,8 +152,16 @@ export default async function AdminClientDetailPage({
     (properties ?? []).map((p) => [p.id as string, p.address as string]),
   );
 
+  const chatUnread =
+    propertyIds.length > 0 && user
+      ? await getAdminUnreadByProperty(supabase, user.id, propertyIds)
+      : { total: 0, byProperty: {} };
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      {propertyIds.length > 0 ? (
+        <IncidentsRealtimeRefresh propertyIds={propertyIds} />
+      ) : null}
       {/* Header */}
       <div className="mb-8">
         <Link
@@ -482,10 +493,15 @@ export default async function AdminClientDetailPage({
         <div className="grid gap-3 md:grid-cols-3">
           <Link
             href={`/admin/alquileres/${clientId}/chat`}
-            className="rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow"
+            className="flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-left shadow-sm ring-1 ring-slate-200 transition hover:shadow"
           >
-            <div className="font-semibold text-[#1E293B]">Enviar Mensaje</div>
-            <div className="text-xs text-[#64748B]">Chat con el cliente</div>
+            <div>
+              <div className="flex items-center gap-2 font-semibold text-[#1E293B]">
+                Enviar Mensaje
+                <UnreadCountPill count={chatUnread.total} />
+              </div>
+              <div className="text-xs text-[#64748B]">Chat con el cliente</div>
+            </div>
           </Link>
           <a
             href="#finanzas"
