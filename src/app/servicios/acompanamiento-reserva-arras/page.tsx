@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { AcompanamientoReservaArrasLocalCityLinks } from "@/components/acompanamiento-reserva-arras-local-city-links";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
@@ -258,6 +259,27 @@ export default async function AcompanamientoReservaArrasPage() {
           />
 
           <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-2xl font-bold text-[#1E293B]">Acompañamiento reserva–arras por ciudad</h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#475569]">
+                Landings locales para compradores: mercado, normativa y testimonios por ciudad. Misma tarifa 424 € IVA
+                incl.
+              </p>
+              <div className="mt-8">
+                <AcompanamientoReservaArrasLocalCityLinks />
+              </div>
+              <p className="mt-6 text-center text-sm text-[#64748b]">
+                <Link
+                  href="/servicios/acompanamiento-reserva-arras-local"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  Ver índice de ciudades
+                </Link>
+              </p>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
               <FaqSection
                 title="Preguntas frecuentes — acompañamiento reserva hasta arras"

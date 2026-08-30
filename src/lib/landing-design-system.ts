@@ -66,4 +66,5 @@ export const LANDING_HUB_EYEBROW = {
   contratoEntreParticulares: "Contratos entre particulares · España",
   acompanamientoAlquiler: "Acompañamiento de alquiler · España",
   revisionContratoAlquiler: "Revisión contrato alquiler · España",
+  reservaArras: "Reserva hasta arras · Comprador",
 } as const;

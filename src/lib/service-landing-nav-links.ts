@@ -24,6 +24,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras" },
       { href: "/servicios/contrato-arras-penitenciales", label: "Arras penitenciales" },
       { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento hasta arras" },
+      { href: "/servicios/acompanamiento-reserva-arras-local", label: "Reserva-arras por ciudad" },
       { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/madrid", label: "Pack arras + gestión Madrid" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona", label: "Pack arras + gestión Barcelona" },

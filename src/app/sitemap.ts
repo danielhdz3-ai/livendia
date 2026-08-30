@@ -50,6 +50,10 @@ import {
   getPublishedRevisionContratoAlquilerLocalCities,
 } from "@/lib/revision-contrato-alquiler-local-cities";
 import {
+  ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE,
+  getPublishedAcompanamientoReservaArrasLocalCities,
+} from "@/lib/acompanamiento-reserva-arras-local-cities";
+import {
   CONTRATO_ALQUILER_HABITACION_LOCAL_BASE,
   getPublishedContratoAlquilerHabitacionLocalCities,
 } from "@/lib/contrato-alquiler-habitacion-local-cities";
@@ -109,6 +113,7 @@ const SERVICIO_SLUGS = [
   "revision-documental-post-arras",
   "revision-contrato-alquiler",
   "revision-contrato-alquiler-local",
+  "acompanamiento-reserva-arras-local",
   "acompanamiento-alquiler",
   "acompanamiento-alquiler-local",
   "gestion-documental-vendedor",
@@ -302,6 +307,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.84,
     }));
 
+  const acompanamientoReservaArrasLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedAcompanamientoReservaArrasLocalCities().map((c) => ({
+      url: `${base}${ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE}/${c.slug}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.84,
+    }));
+
   const habitacionLocalCiudades: MetadataRoute.Sitemap =
     getPublishedContratoAlquilerHabitacionLocalCities().map((c) => ({
       url: `${base}${CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}/${c.slug}`,
@@ -386,6 +399,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...parkingTrasteroLocalCiudades,
     ...acompanamientoAlquilerLocalCiudades,
     ...revisionContratoAlquilerLocalCiudades,
+    ...acompanamientoReservaArrasLocalCiudades,
     ...habitacionLocalCiudades,
     ...contratoEntreParticularesLocalCiudades,
     ...administracionAlquilerMetro,
