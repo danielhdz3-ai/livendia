@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { RevisionContratoAlquilerLocalCityLinks } from "@/components/revision-contrato-alquiler-local-city-links";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -421,6 +422,27 @@ export default async function RevisionContratoAlquilerPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-2xl font-bold text-[#1E293B]">Revisión de contrato de alquiler por ciudad</h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#475569]">
+                Landings locales para inquilinos: mercado, normativa y testimonios por ciudad. Misma tarifa{" "}
+                {priceLabel} IVA incl.
+              </p>
+              <div className="mt-8">
+                <RevisionContratoAlquilerLocalCityLinks />
+              </div>
+              <p className="mt-6 text-center text-sm text-[#64748b]">
+                <Link
+                  href="/servicios/revision-contrato-alquiler-local"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  Ver índice de ciudades
+                </Link>
+              </p>
             </div>
           </section>
 

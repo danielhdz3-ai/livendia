@@ -65,4 +65,5 @@ export const LANDING_HUB_EYEBROW = {
   ciudades: "Gestoría inmobiliaria · Por ciudad",
   contratoEntreParticulares: "Contratos entre particulares · España",
   acompanamientoAlquiler: "Acompañamiento de alquiler · España",
+  revisionContratoAlquiler: "Revisión contrato alquiler · España",
 } as const;
