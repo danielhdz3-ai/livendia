@@ -7,6 +7,14 @@ import {
 
 export const CONTRATO_ALQUILER_HABITACION_LOCAL_BASE = "/servicios/contrato-alquiler-habitacion";
 
+/** Ciudades prioritarias para enlazado interno (demanda GSC / SERP). */
+export const HABITACION_SEO_PRIMARY_SLUGS = ["madrid", "barcelona"] as const;
+
+export type HabitacionSeoPrimarySlug = (typeof HABITACION_SEO_PRIMARY_SLUGS)[number];
+
+/** CTA nacional por defecto: landing local Madrid (Barcelona ya posiciona #1). */
+export const HABITACION_SEO_DEFAULT_LOCAL_HREF = `${CONTRATO_ALQUILER_HABITACION_LOCAL_BASE}/madrid`;
+
 export const CONTRATO_ALQUILER_HABITACION_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona",
   "hospitalet-de-llobregat",

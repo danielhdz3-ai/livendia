@@ -7,22 +7,28 @@ import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, CONTRATO_ALQUILER_TEMPORADA_PRICE_LA
 /** Copy único por ciudad — contrato de alquiler local. */
 const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFields> = {
   madrid: {
+    metaTitle: `LAU piso completo Madrid — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, sin agencia`,
+    metaDescription:
+      "Contrato LAU piso entero Madrid 145 € IVA incl. Revisión profesional, inventario y cláusulas adaptadas a la Comunidad de Madrid — depósito AVS, IPC y pisos compartidos. No es contrato de habitación. Gestor humano por teléfono. Entrega 48-72 h.",
     keywords: [
       "contrato alquiler madrid",
-      "contrato lau madrid",
+      "contrato alquiler entre particulares madrid",
+      "contrato lau madrid sin agencia",
+      "alquiler piso madrid contrato particular",
       "redactar contrato alquiler madrid",
       "revisar contrato alquiler madrid",
       "inventario alquiler madrid",
     ],
-    heroH1: "Contrato de alquiler en Madrid revisado por gestor LAU",
+    heroBadge: "Entre particulares · Madrid",
+    heroH1: "Contrato de alquiler entre particulares en Madrid — LAU e inventario",
     heroBullets: [
-      "Chamberí, Retiro, Tetuán, Vallecas y cinturón sur",
-      `LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada o habitación`,
-      "Inventario fotográfico incluido en el expediente",
+      "Salamanca, Chamberí, Retiro, Vallecas y cinturón sur",
+      "Sin comisión de agencia — gestoría 145 € IVA incl.",
+      "Depósito AVS, IPC y inventario antes de la fianza",
     ],
-    whyTitle: "Alquilar en Madrid sin plantillas que generan litigios",
+    whyTitle: "Madrid: mayor volumen de alquileres, contrato a medida",
     whySubtitle:
-      "En la Comunidad de Madrid miles de contratos se firman con PDF idénticos. Livendia adapta cláusulas a tu tipología real y a la LAU vigente.",
+      "Fotocasa (febrero 2026) sitúa la media en 21,59 €/m² — de 26-28 €/m² en Salamanca a 13-16 €/m² en Villaverde. Miles de contratos se firman con PDF idénticos; Livendia adapta cláusulas al barrio y a la LAU vigente.",
     localZonesHeading: "Zonas donde redactamos y revisamos contratos en Madrid",
     localZones:
       "Distrito Centro, Salamanca, Chamberí, Tetuán, Carabanchel, Vallecas, Fuencarral y municipios del cinturón (Móstoles, Getafe, Leganés, Alcorcón). Misma gestoría online con gestor dedicado.",
@@ -114,21 +120,27 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
     ],
   },
   valencia: {
+    metaTitle: `LAU piso completo Valencia — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, sin agencia`,
+    metaDescription:
+      "Contrato LAU piso entero Valencia 145 € IVA incl. Revisión LAU, inventario y cláusulas para Ruzafa, Benimaclet y área metropolitana. Mercado ~14,3 €/m² (Idealista jun 2026). No es contrato de habitación. Gestor por teléfono. Entrega 48-72 h.",
     keywords: [
       "contrato alquiler valencia",
-      "contrato lau valencia",
+      "contrato alquiler entre particulares valencia",
+      "contrato lau valencia sin agencia",
+      "alquiler piso valencia contrato particular",
       "alquiler ruzafa contrato",
       "revisar contrato alquiler valencia",
     ],
-    heroH1: "Contrato de alquiler en Valencia con revisión LAU profesional",
+    heroBadge: "Entre particulares · Valencia",
+    heroH1: "Contrato de alquiler entre particulares en Valencia — LAU e inventario",
     heroBullets: [
-      "Ciutat Vella, Ruzafa, Benimaclet, Campanar, Mislata",
-      "Rotación rápida: revisamos antes de la señal",
-      "Inventario y suministros por escrito",
+      "Ruzafa, Benimaclet, Ciutat Vella, Campanar, Mislata",
+      "Sin comisión de agencia — gestoría 145 € IVA incl.",
+      "Rotación 8-12 días: revisamos antes de la señal",
     ],
-    whyTitle: "Valencia: mercado dinámico, contratos a medida",
+    whyTitle: "Valencia: rotación rápida, contrato que recoge lo pactado",
     whySubtitle:
-      "Reservas en 48 horas y promesas verbales en la visita exigen un contrato que las recoja por escrito.",
+      "Idealista (junio 2026) sitúa la media en 14,3 €/m² y un piso puede reservarse en 8-12 días. Las promesas verbales de la visita exigen un LAU escrito antes de ingresar la fianza.",
     localZonesHeading: "Dónde gestionamos contratos de alquiler en Valencia",
     localZones:
       "Ciutat Vella, Ruzafa, Benimaclet, Malvarrosa, Patraix, Mislata, Torrent, Paterna y l'Horta. Gestoría digital con mismos precios que en toda España.",

@@ -94,11 +94,11 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroLead:
-      "En Madrid capital y alrededores, un gestor inmobiliario especializado en LAU revisa tu contrato, ordena las cláusulas sensibles y documenta el estado del inmueble para que propiedad e inquilino firmen con las mismas garantías que en una gestoría presencial, con proceso digital claro.",
+      "En Madrid capital y corona metropolitana, propietario e inquilino cierran en Salamanca o Vallecas con acuerdos verbales que un PDF genérico no recoge. Fotocasa (febrero 2026) sitúa la media en 21,59 €/m² — de 26-28 €/m² en Salamanca a 13-16 €/m² en Villaverde o Usera. Livendia redacta LAU e inventario adaptados al barrio concreto: depósito en la Agencia de Vivienda Social, actualización IPC y normas en pisos compartidos, sin comisión de agencia.",
     whyIntro:
-      "El mercado de alquiler en Madrid mueve miles de contratos al año y los conflictos suelen nacer de plantillas mal adaptadas o inventarios incompletos. Anticipamos esas fricciones con revisión profesional y documentación útil desde el primer día.",
+      "Madrid no tiene zonas tensionadas declaradas, pero mueve el mayor volumen de alquileres entre particulares de España. Los conflictos habituales — plantillas copiadas de otras CCAA, comunidad mal repercutida, inventarios inexistentes — se evitan revisando cláusulas antes de ingresar la fianza en la AVS.",
     howIntro:
-      "Cuatro hitos claros desde que nos cuentas tu caso hasta que ambas partes firman con seguridad, estés en Retiro, Tetuán, Chamberí o municipios limítrofes.",
+      "Cuatro hitos hasta la firma con seguridad: estés en Salamanca o Chamberí (24-28 €/m²), en Retiro o Tetuán, o en Carabanchel, Vallecas y municipios del cinturón (Getafe, Leganés, Alcorcón).",
     testimonialsTitle: "Propietarios e inquilinos en Madrid que ya revisaron su contrato con Livendia",
     testimonials: [
       {
@@ -262,11 +262,11 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
     heroLead:
-      "En Valencia capital y área metropolitana, revisamos tu contrato de alquiler con foco LAU, inventario del inmueble y lenguaje claro para propiedad e inquilino, con tramitación online y tiempos publicados.",
+      "Valencia capital y l'Horta registran una de las rotaciones más altas de España: un piso en Ruzafa, Benimaclet o Malvarrosa puede alquilarse en 8-12 días (Idealista, junio 2026, ~14,3 €/m²). Livendia revisa LAU e inventario antes de la señal — comunidad, suministros y convivencia en pisos compartidos — con gestoría online a 145 € IVA incl. y entrega en 48-72 h.",
     whyIntro:
-      "La demanda de vivienda en alquiler en Valencia crece y proliferan borradores incongruentes con la normativa o con los pactos verbales. Afinamos cláusulas sensibles para que la firma sea defendible después.",
+      "Valencia no está declarada zona tensionada, pero la velocidad del mercado empuja a firmar borradores incongruentes con los pactos de la visita. Ruzafa, El Carmen y Gran Vía superan la media municipal; los Poblats del Nord ofrecen rentas más asequibles. Afinamos cláusulas sensibles para que propiedad e inquilino firmen el mismo texto que negociaron.",
     howIntro:
-      "Cuatro hitos hasta la firma con seguridad: puedes estar en Ciutat Vella, l'Eixample, Ruzafa o en municipios como Torrent o Paterna.",
+      "Cuatro hitos hasta la firma: puedes estar en Ciutat Vella, Ruzafa, Campanar o en municipios del área como Mislata, Torrent o Paterna — mismo proceso digital y gestor dedicado.",
     testimonialsTitle: "Propietarios e inquilinos en Valencia que ya revisaron su contrato con Livendia",
     testimonials: [
       {

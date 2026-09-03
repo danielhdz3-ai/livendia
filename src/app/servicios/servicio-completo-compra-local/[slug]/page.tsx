@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },
     openGraph: {
-      title: `Compra con gestor experto en ${city.city}`,
+      title,
       description,
       url: canonical,
       locale: "es_ES",

@@ -1,11 +1,11 @@
 /** Párrafos únicos — contrato LAU (ciudades del bloque principal, no extended). */
 export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
   madrid:
-    "Madrid mueve el mayor volumen de alquileres entre particulares de España: propietario e inquilino cierran en Chamberí o Vallecas tras una visita, pero firman LAU copiados que no reflejan actualización IPC, pisos compartidos o plazos de comunidad en bloques de cientos de vecinos. Livendia adapta cláusulas al distrito concreto antes de ingresar la fianza.",
+    "Madrid mueve el mayor volumen de alquileres entre particulares de España — Fotocasa (febrero 2026) cifra la media en 21,59 €/m², con Salamanca en 26-28 €/m² y Villaverde o Usera en 13-16 €/m². Propietario e inquilino cierran en Chamberí o Vallecas tras una visita, pero firman LAU copiados que no reflejan depósito en AVS, actualización IPC o normas de convivencia en pisos compartidos. Livendia adapta cláusulas al distrito concreto antes de ingresar la fianza.",
   barcelona:
     "Barcelona añade INCASÒL, zona tensionada e información de renta anterior a cada contrato LAU. En Eixample, Gràcia o L'Hospitalet, alquileres entre particulares se cierran sin agencia pero con PDF genéricos que ignoran el depósito catalán. Livendia redacta contrato e inventario acordes a la normativa autonómica y al inmueble.",
   valencia:
-    "Valencia capital y área metropolitana registran alquileres rápidos en Ruzafa, Benimaclet o Paterna entre propietario e inquilino que se conocen por Idealista. Los conflictos habituales — comunidad mal repercutida, inventario inexistente, habitación sin normas de convivencia — se evitan con revisión LAU antes de la firma.",
+    "Valencia capital y l'Horta registran rotaciones de 8-12 días en Ruzafa, Benimaclet o Malvarrosa (Idealista, junio 2026, ~14,3 €/m²). Propietario e inquilino se conocen por portal y cierran en la visita, pero firman LAU genéricos que ignoran comunidad mal repercutida, inventario inexistente o habitación sin normas de convivencia. Livendia revisa el borrador antes de la señal.",
   asturias:
     "Asturias combina alquiler urbano en Oviedo y Gijón, costa veraniega y viviendas rurales con calefacción y humedad como variables críticas. Un contrato peninsular genérico no sirve para un piso en Cimadevilla o una casa en la costa: Livendia adapta LAU o temporada al entorno real.",
   "barcelona-les-corts":

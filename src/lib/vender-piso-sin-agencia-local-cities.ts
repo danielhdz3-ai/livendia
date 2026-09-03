@@ -217,9 +217,9 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Vender piso sin comisiones Barcelona — 890 € IVA incl.",
+    metaTitle: "Vender piso en Barcelona sin comisiones — 890 € IVA incl.",
     metaDescription:
-      "Vender piso sin comisiones en Barcelona: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin agencia del 3–5 %. Eixample, Gràcia, Sant Martí.",
+      "Vender piso en Barcelona sin comisiones: venta entre particulares con gestoría por 890 € IVA incl. Reserva, arras, documentación y notaría. Sin agencia del 3–5 %. Eixample, Gràcia, Sant Martí.",
     keywords: [
       "vender piso en barcelona sin comisiones",
       "vender piso sin comisiones en barcelona",

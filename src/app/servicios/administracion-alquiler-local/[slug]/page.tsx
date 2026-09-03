@@ -39,13 +39,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_LOCAL_BASE}/${slug}`;
   const title =
     slug === "valencia"
-      ? `Gestión de alquileres Valencia — 49 €/mes | Administración para propietarios`
+      ? `Gestión de alquileres en Valencia — 49 €/mes | Admin. para propietarios`
       : slug === "mallorca"
         ? `Administración de alquileres Mallorca — 49 €/mes`
         : `Administración del alquiler en ${city.city} — 49 €/mes`;
   const description =
     slug === "valencia"
-      ? `Gestión de alquileres en Valencia desde 49 €/mes IVA incl. Administración de propiedades para propietarios: incidencias, averías e inquilino — tú no hablas con el arrendatario. Ruzafa, Campanar, Benimaclet. Sin permanencia.`
+      ? `Gestión de alquileres en Valencia desde 49 €/mes IVA incl. Gestión de alquiler para propietarios: incidencias, averías e inquilino — tú no hablas con el arrendatario. Ruzafa, Campanar, Benimaclet, Mislata. Sin permanencia.`
       : slug === "mallorca"
         ? `Administración de alquileres en Mallorca y Palma desde 49 €/mes IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Baleares. Livendia.`
         : slug === "oviedo"

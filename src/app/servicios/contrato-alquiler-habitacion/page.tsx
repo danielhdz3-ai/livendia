@@ -148,6 +148,46 @@ export default async function ContratoHabitacionPage() {
           </div>
         </section>
 
+        <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-center text-xl font-bold text-[#1E293B] sm:text-2xl">
+              Contrato de habitación por ciudad
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-[#64748b]">
+              Landings locales con barrios, perfiles típicos y testimonios — el contenido que Google prioriza frente a
+              esta página nacional.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <Link
+                href="/servicios/contrato-alquiler-habitacion/madrid"
+                className="group rounded-2xl border-2 border-[#1A4FBF]/20 bg-gradient-to-br from-[#EFF6FF] to-white p-6 shadow-sm ring-1 ring-[#BFDBFE] transition hover:border-[#1A4FBF] hover:shadow-md"
+              >
+                <p className="text-xs font-bold uppercase tracking-wider text-[#1A4FBF]">Prioritario · Madrid</p>
+                <h3 className="mt-2 text-lg font-extrabold text-[#1E293B] group-hover:text-[#1A4FBF]">
+                  Contrato habitación Madrid
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
+                  Chamberí, Moncloa, Vallecas: convivencia, gastos y fianza con gestor por teléfono.
+                </p>
+                <span className="mt-4 inline-block text-sm font-semibold text-[#1A4FBF]">Ver landing Madrid →</span>
+              </Link>
+              <Link
+                href="/servicios/contrato-alquiler-habitacion/barcelona"
+                className="group rounded-2xl border-2 border-[#1A4FBF]/20 bg-gradient-to-br from-[#EFF6FF] to-white p-6 shadow-sm ring-1 ring-[#BFDBFE] transition hover:border-[#1A4FBF] hover:shadow-md"
+              >
+                <p className="text-xs font-bold uppercase tracking-wider text-[#1A4FBF]">Prioritario · Barcelona</p>
+                <h3 className="mt-2 text-lg font-extrabold text-[#1E293B] group-hover:text-[#1A4FBF]">
+                  Contrato habitación Barcelona
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
+                  Eixample, Gràcia, área metropolitana: normas de piso compartido e inventario.
+                </p>
+                <span className="mt-4 inline-block text-sm font-semibold text-[#1A4FBF]">Ver landing Barcelona →</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Características */}
         <section className="px-4 py-16 sm:px-6 lg:py-20">
           <div className="mx-auto max-w-6xl">

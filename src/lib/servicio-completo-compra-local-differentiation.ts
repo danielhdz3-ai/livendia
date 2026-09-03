@@ -72,9 +72,9 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     ],
     heroBadge: "Compra entre particulares · Barcelona y área metropolitana",
     heroH1: "Compra en Barcelona con gestor en catalán y castellano — contratos bajo control",
-    metaTitle: "Comprar piso entre particulares en Barcelona | Gestor comprador Livendia",
+    metaTitle: "Comprar piso entre particulares en Barcelona — 890 € | Gestor Livendia",
     metaDescription:
-      "Compra en Eixample, Gràcia, Poblenou, Sant Martí, L'Hospitalet o Badalona con gestor dedicado. Revisión reserva/arras, ITE y cargas. 890 € IVA incl.",
+      "¿Compras piso en Barcelona entre particulares? Gestor en tu bando: reserva, arras e ITE revisadas. Eixample, Gràcia, Poblenou, L'Hospitalet. 890 € IVA incl., sin comisión de agencia.",
     heroBullets: [
       "Pisos con ITE pendiente, locales y vivienda turística mal definida",
       "Contratos bilingües o redactados solo a favor del vendedor",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   CONTRATO_ALQUILER_HABITACION_LOCAL_BASE,
   getPublishedContratoAlquilerHabitacionLocalCities,
+  HABITACION_SEO_PRIMARY_SLUGS,
   localContratoAlquilerHabitacionHref,
 } from "@/lib/contrato-alquiler-habitacion-local-cities";
 import {
@@ -15,13 +16,15 @@ type Props = {
 };
 
 const BARCELONA_METRO_SLUGS = new Set<string>(BARCELONA_METRO_HABITACION_CITIES.map((c) => c.slug));
+const PRIMARY_SLUGS = new Set<string>(HABITACION_SEO_PRIMARY_SLUGS);
 
 export function ContratoAlquilerHabitacionLocalCityLinks({
   showTitle = true,
   variant = "default",
 }: Props) {
   const cities = getPublishedContratoAlquilerHabitacionLocalCities();
-  const primaryCities = cities.filter((c) => !BARCELONA_METRO_SLUGS.has(c.slug));
+  const primaryCities = cities.filter((c) => PRIMARY_SLUGS.has(c.slug));
+  const otherPrimaryCities = cities.filter((c) => !BARCELONA_METRO_SLUGS.has(c.slug) && !PRIMARY_SLUGS.has(c.slug));
   const isFooter = variant === "footer";
   const isCompact = variant === "compact" || isFooter;
 
@@ -51,8 +54,24 @@ export function ContratoAlquilerHabitacionLocalCityLinks({
         </p>
       ) : null}
 
-      <nav aria-label="Enlaces a contrato de habitación por ciudad" className={wrapClass}>
+      <nav aria-label="Enlaces prioritarios contrato habitación Madrid y Barcelona" className={wrapClass}>
         {primaryCities.map((c) => (
+          <Link
+            key={c.slug}
+            href={localContratoAlquilerHabitacionHref(c.slug)}
+            className={
+              isCompact
+                ? "text-[11px] font-semibold text-cyan-200 underline-offset-2 hover:text-white hover:underline"
+                : "rounded-full bg-[#1A4FBF] px-4 py-1.5 text-sm font-bold text-white shadow ring-1 ring-[#1A4FBF] transition hover:bg-[#153d8f]"
+            }
+          >
+            {c.city} →
+          </Link>
+        ))}
+      </nav>
+
+      <nav aria-label="Enlaces a contrato de habitación por ciudad" className={wrapClass}>
+        {otherPrimaryCities.map((c) => (
           <Link key={c.slug} href={localContratoAlquilerHabitacionHref(c.slug)} className={linkClass}>
             {c.city}
           </Link>

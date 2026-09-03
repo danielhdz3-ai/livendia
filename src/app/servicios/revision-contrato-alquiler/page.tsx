@@ -190,10 +190,17 @@ export default async function RevisionContratoAlquilerPage() {
                   </Link>{" "}
                   o{" "}
                   <Link
-                    href="/servicios/contrato-alquiler-habitacion"
+                    href="/servicios/contrato-alquiler-habitacion/madrid"
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
-                    habitación
+                    habitación en Madrid
+                  </Link>{" "}
+                  o{" "}
+                  <Link
+                    href="/servicios/contrato-alquiler-habitacion/barcelona"
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    Barcelona
                   </Link>
                   .
                 </p>
@@ -274,10 +281,17 @@ export default async function RevisionContratoAlquilerPage() {
                   </Link>{" "}
                   o el de{" "}
                   <Link
-                    href="/servicios/contrato-alquiler-habitacion"
+                    href="/servicios/contrato-alquiler-habitacion/madrid"
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
-                    habitación
+                    habitación en Madrid
+                  </Link>{" "}
+                  o{" "}
+                  <Link
+                    href="/servicios/contrato-alquiler-habitacion/barcelona"
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    Barcelona
                   </Link>
                   .
                 </p>

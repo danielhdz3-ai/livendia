@@ -12,12 +12,12 @@ import { HOME_COVERAGE_CITIES, HOME_CITY_CARD_IMAGES } from "@/lib/home-coverage
 
 const SERVICIOS_PARTICULARES = [
   {
-    href: "/servicios/contrato-alquiler-habitacion/barcelona",
+    href: "/servicios/contrato-alquiler-habitacion/madrid",
     title: "Contrato de habitación",
     price: CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
-    note: "Piso compartido · gestor por teléfono",
+    note: "Madrid · piso compartido",
     image: "/images/contratos6.jpg",
-    imageAlt: "Contrato de alquiler de habitación",
+    imageAlt: "Contrato de alquiler de habitación en Madrid",
   },
   {
     href: "/servicios/contrato-arras-local/barcelona",
@@ -44,10 +44,10 @@ const SERVICIOS_PARTICULARES = [
     imageAlt: "Servicio completo de venta en Barcelona",
   },
   {
-    href: "/servicios/contrato-de-alquiler",
+    href: "/servicios/contrato-alquiler-local/madrid",
     title: "Contrato LAU",
     price: CONTRATO_ALQUILER_LAU_PRICE_LABEL,
-    note: "Piso completo",
+    note: "Piso completo · Madrid",
     image: "/images/contratodealquiler.jpg",
     imageAlt: "Contrato de alquiler LAU",
   },

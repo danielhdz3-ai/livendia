@@ -7,7 +7,7 @@ import { SITE_GENERAL_SITELINKS } from "@/lib/sitelinks";
 const MOBILE_PRIORITY_PATHS = new Set([
   "/para-propietarios",
   "/servicios/administracion-alquiler",
-  "/servicios/contrato-alquiler-habitacion",
+  "/servicios/contrato-alquiler-habitacion/madrid",
   "/servicios",
   "/precios",
   "/servicios/contrato-de-arras",

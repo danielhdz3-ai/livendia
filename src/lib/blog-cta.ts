@@ -1,5 +1,6 @@
 import type { BlogCategory } from "@/lib/blog-types";
 import { CONTRATO_ALQUILER_HABITACION_PRICE_LABEL, CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
+import { HABITACION_SEO_DEFAULT_LOCAL_HREF } from "@/lib/contrato-alquiler-habitacion-local-cities";
 
 export type BlogCategoryCta = {
   headline: string;
@@ -17,7 +18,7 @@ export function getCategoryCta(category: BlogCategory): BlogCategoryCta {
       return {
         headline: "¿Necesitas un contrato de alquiler o de habitación?",
         subline: `LAU o habitación en piso compartido por gestor. Desde ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} habitación / ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} LAU IVA incl., llamada antes de contratar.`,
-        contratarHref: "/servicios/contrato-alquiler-habitacion",
+        contratarHref: HABITACION_SEO_DEFAULT_LOCAL_HREF,
         contratarLabel: "Contratar contrato habitación",
         infoHref: "/servicios/contrato-de-alquiler",
         infoLabel: "Contrato LAU piso completo",
