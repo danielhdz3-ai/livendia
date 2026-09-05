@@ -1,5 +1,11 @@
 "use client";
 
+import {
+  GOOGLE_ADS_CONVERSION_PHONE,
+  GOOGLE_ADS_CONVERSION_WHATSAPP,
+  getGoogleAdsId,
+} from "@/lib/google-ads-id";
+
 /** Eventos dataLayer (+ gtag si GA4 directo). Con GTM: triggers en contenedor GTM-NCDNCRMH. */
 
 export type AnalyticsItem = {
@@ -26,6 +32,26 @@ export function pushDataLayer(event: string, params?: Record<string, unknown>): 
   }
 }
 
+/** Conversión Google Ads (send_to). Solo si hay AW- activo y gtag cargado. */
+function trackGoogleAdsConversion(sendTo: string): void {
+  if (typeof window === "undefined") return;
+  if (!getGoogleAdsId()) return;
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", "conversion", {
+    send_to: sendTo,
+    value: 1.0,
+    currency: "EUR",
+  });
+}
+
+export function trackAdsWhatsAppConversion(): void {
+  trackGoogleAdsConversion(GOOGLE_ADS_CONVERSION_WHATSAPP);
+}
+
+export function trackAdsPhoneConversion(): void {
+  trackGoogleAdsConversion(GOOGLE_ADS_CONVERSION_PHONE);
+}
+
 export function trackWhatsAppClick(placement: string, linkUrl?: string): void {
   pushDataLayer("whatsapp_click", {
     event_category: "engagement",
@@ -34,6 +60,17 @@ export function trackWhatsAppClick(placement: string, linkUrl?: string): void {
     link_url: linkUrl,
     page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
   });
+  trackAdsWhatsAppConversion();
+}
+
+export function trackPhoneClick(linkUrl?: string): void {
+  pushDataLayer("phone_click", {
+    event_category: "engagement",
+    event_label: "tel",
+    link_url: linkUrl,
+    page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
+  });
+  trackAdsPhoneConversion();
 }
 
 export function trackBeginCheckout(params: {

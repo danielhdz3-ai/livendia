@@ -1,6 +1,6 @@
 "use client";
 
-import { pushDataLayer, trackWhatsAppClick } from "@/lib/analytics";
+import { pushDataLayer, trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics";
 import { getWhatsAppHref } from "@/lib/business-nap";
 import {
   appendAttributionToWhatsAppMessage,
@@ -22,9 +22,19 @@ function attributionForDataLayer() {
   };
 }
 
+function isWhatsAppHref(href: string | null): boolean {
+  if (!href) return false;
+  return /^https:\/\/wa\.me\//i.test(href) || /^https:\/\/api\.whatsapp\.com\//i.test(href);
+}
+
+function isTelHref(href: string | null): boolean {
+  if (!href) return false;
+  return /^tel:/i.test(href);
+}
+
 /**
- * Captura atribución (UTM + landing + referrer) en todas las páginas
- * y enriquece clics wa.me sin handler propio con contexto de origen.
+ * Captura atribución (UTM + landing + referrer) en todas las páginas,
+ * enriquece clics wa.me y dispara conversiones Google Ads (WhatsApp / teléfono).
  */
 export function AnalyticsBootstrap() {
   const pathname = usePathname() ?? "/";
@@ -42,8 +52,25 @@ export function AnalyticsBootstrap() {
       if (e.defaultPrevented) return;
 
       const target = e.target as HTMLElement | null;
-      const anchor = target?.closest?.("a[href*='wa.me']") as HTMLAnchorElement | null;
+      const anchor = target?.closest?.("a[href]") as HTMLAnchorElement | null;
       if (!anchor) return;
+
+      const hrefAttr = anchor.getAttribute("href");
+
+      // Teléfono: conversión Ads + dataLayer (sin bloquear la llamada)
+      if (isTelHref(hrefAttr) || isTelHref(anchor.href)) {
+        trackPhoneClick(hrefAttr ?? anchor.href);
+        return;
+      }
+
+      // WhatsApp: atribución + conversión Ads (vía trackWhatsAppClick)
+      if (
+        !isWhatsAppHref(hrefAttr) &&
+        !anchor.href.includes("wa.me") &&
+        !anchor.href.includes("api.whatsapp.com")
+      ) {
+        return;
+      }
 
       e.preventDefault();
 
@@ -70,6 +97,8 @@ export function AnalyticsBootstrap() {
       window.open(href, "_blank", "noopener,noreferrer");
     };
 
+    // Bubble: si un <a> ya hace preventDefault + trackWhatsAppClick, no duplicamos.
+    // Listener en document: sigue válido en navegación SPA de Next.
     document.addEventListener("click", onClick, false);
     return () => document.removeEventListener("click", onClick, false);
   }, [pathname]);
