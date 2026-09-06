@@ -66,6 +66,16 @@ export const ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR = 49;
 export const ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL = `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €/mes`;
 export const ADMINISTRACION_ALQUILER_SLUG = "administracion-alquiler" as const;
 
+/** Administración de alquiler por temporada o habitaciones — cuota mensual IVA incl. */
+export const ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR = 79;
+export const ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_CENTS =
+  ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR * 100;
+export const ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL = `${ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR} €/mes`;
+export const ADMINISTRACION_ALQUILER_TEMPORADA_SLUG = "administracion-alquiler-temporada" as const;
+/** Contrato nuevo bajo administración temporada/habitaciones — IVA incl. (cobro aparte). */
+export const ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_EUR = 100;
+export const ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL = `${ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_EUR} €`;
+
 /** Contrato de alquiler LAU — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_LAU_PRICE_EUR = 145;
 export const CONTRATO_ALQUILER_LAU_PRICE_CENTS = CONTRATO_ALQUILER_LAU_PRICE_EUR * 100;
@@ -132,6 +142,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [REVISION_CONTRATO_ALQUILER_SLUG]: REVISION_CONTRATO_ALQUILER_PRICE_CENTS,
   [ACOMPANAMIENTO_RESERVA_ARRAS_SLUG]: ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_CENTS,
   [ACOMPANAMIENTO_ALQUILER_SLUG]: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
+  [ADMINISTRACION_ALQUILER_TEMPORADA_SLUG]: ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -278,6 +289,25 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Para inquilinos",
   },
+  {
+    slug: ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,
+    name: "Administración de alquiler por temporada o habitaciones",
+    description:
+      "Para propietarios con piso de temporada o alquiler por habitaciones: Livendia gestiona inquilinos, entradas y salidas, servicio técnico e incidencias. 79 €/mes IVA incl. Cada contrato nuevo se cobra aparte (100 € IVA incl.). Rescisiones de contrato gratuitas.",
+    category: "administracion_alquiler",
+    price_cents: ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_CENTS,
+    is_recurring: true,
+    features: [
+      "Punto de contacto con inquilinos de temporada o por habitación",
+      "Control de entradas y salidas (check-in / check-out)",
+      "Gestión de servicio técnico e incidencias",
+      "Seguimiento de contratos y documentación en panel Livendia",
+      "Rescisiones de contrato incluidas sin coste",
+      "Cada contrato nuevo de alquiler: 100 € IVA incl. (cobro aparte)",
+      "Sin permanencia",
+    ],
+    badge: "Temporada · Habitaciones",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -341,6 +371,11 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
       const i = order.indexOf(s.slug);
       if (i !== -1) return i;
     }
+    if (category === "administracion_alquiler") {
+      const order: string[] = [ADMINISTRACION_ALQUILER_SLUG, ADMINISTRACION_ALQUILER_TEMPORADA_SLUG];
+      const i = order.indexOf(s.slug);
+      if (i !== -1) return i;
+    }
     if (category === "alquiler") {
       const order = ["acompanamiento-alquiler", "contrato-alquiler-lau", "contrato-alquiler-temporada", "contrato-alquiler-habitacion"];
       const i = order.indexOf(s.slug);
@@ -369,6 +404,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
 /** Imagen de portada por slug de servicio */
 export const SERVICE_IMAGES: Record<string, string> = {
   "administracion-alquiler": "/images/gestoria.jpg",
+  "administracion-alquiler-temporada": "/images/gestoria20.jpg",
   "acompanamiento-alquiler": "/images/tipo1.jpg",
   "contrato-alquiler-lau": "/images/contratos.jpg",
   "contrato-alquiler-temporada": "/images/contratos5.jpg",
@@ -422,6 +458,7 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "revision-contrato-alquiler": "Revisión contrato alquiler",
   "acompanamiento-alquiler": "Acompañamiento de alquiler",
   "administracion-alquiler": "Administración de alquiler",
+  "administracion-alquiler-temporada": "Admin. temporada / habitaciones",
 };
 
 export function getServiceCardTitle(service: Pick<PublicService, "slug" | "name">): string {

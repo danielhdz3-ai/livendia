@@ -2,8 +2,8 @@ import { BillingPortalButton } from "@/components/billing-portal-button";
 import { RentalPanelShell } from "@/components/rental-panel-shell";
 import { RentalSidebarNav } from "@/components/rental-sidebar-nav";
 import {
+  isRentalAdminServiceSlug,
   orderGrantsRentalAccess,
-  RENTAL_SERVICE_SLUG,
   subscriptionGrantsRentalAccess,
 } from "@/lib/rental-access";
 import { getActivePropertyForUser, getUnreadChatCount } from "@/lib/rental-active-property";
@@ -49,7 +49,7 @@ export default async function RentalDashboardLayout({
       const svc = row.services;
       const slug = Array.isArray(svc) ? svc[0]?.slug : (svc as { slug?: string } | null)?.slug;
       return (
-        slug === RENTAL_SERVICE_SLUG &&
+        isRentalAdminServiceSlug(slug) &&
         subscriptionGrantsRentalAccess(row.status, row.current_period_end)
       );
     }) || (orders ?? []).some((o) => orderGrantsRentalAccess(o));

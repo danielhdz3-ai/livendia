@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { subscriptionGrantsRentalAccess, RENTAL_SERVICE_SLUG } from "@/lib/rental-access";
+import { isRentalAdminServiceSlug, subscriptionGrantsRentalAccess } from "@/lib/rental-access";
 
 export type RentalAdminClientRow = {
   clientId: string;
@@ -53,7 +53,7 @@ export async function fetchRentalAdminClients(
   for (const sub of subs ?? []) {
     const svc = sub.services;
     const slug = Array.isArray(svc) ? svc[0]?.slug : (svc as { slug?: string } | null)?.slug;
-    if (slug !== RENTAL_SERVICE_SLUG) continue;
+    if (!isRentalAdminServiceSlug(slug)) continue;
     if (!subscriptionGrantsRentalAccess(sub.status as string, sub.current_period_end as string | null)) {
       continue;
     }

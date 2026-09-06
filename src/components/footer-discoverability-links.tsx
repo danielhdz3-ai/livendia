@@ -65,6 +65,7 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios", label: "Todos los servicios" },
   { href: "/servicios/acompanamiento-alquiler", label: "Acompañamiento de alquiler" },
   { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
+  { href: "/servicios/administracion-alquiler-temporada", label: "Admin. temporada / habitaciones" },
   { href: "/servicios/servicio-completo-compra", label: "Acompañamiento de compra" },
   { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
   { href: "/servicios/acompanamiento-compra-parking-trastero-local", label: "Parking/trastero por ciudad" },

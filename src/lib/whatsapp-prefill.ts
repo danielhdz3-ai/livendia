@@ -103,6 +103,7 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
     { match: (p) => p.includes("revision-documental-post-arras"), label: "Revisión documental post-arras", need: "arras" },
     { match: (p) => p.includes("contrato-arras"), label: "Contrato de arras", need: "arras" },
     { match: (p) => p.includes("contrato-de-arras"), label: "Guía contrato de arras", need: "arras" },
+    { match: (p) => p.includes("administracion-alquiler-temporada"), label: "Admin. temporada / habitaciones", need: "administracion" },
     { match: (p) => p.includes("administracion-alquiler"), label: "Administración de alquiler", need: "administracion" },
     { match: (p) => p.includes("acompanamiento-alquiler"), label: "Acompañamiento alquiler", need: "alquiler" },
     { match: (p) => p.includes("revision-contrato-alquiler"), label: "Revisión contrato de alquiler", need: "alquiler" },

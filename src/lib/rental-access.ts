@@ -1,4 +1,15 @@
 export const RENTAL_SERVICE_SLUG = "administracion-alquiler" as const;
+export const RENTAL_SERVICE_TEMPORADA_SLUG = "administracion-alquiler-temporada" as const;
+
+/** Slugs de catálogo que abren el panel /dashboard/rental. */
+export const RENTAL_ADMIN_SERVICE_SLUGS = new Set<string>([
+  RENTAL_SERVICE_SLUG,
+  RENTAL_SERVICE_TEMPORADA_SLUG,
+]);
+
+export function isRentalAdminServiceSlug(slug: string | null | undefined): boolean {
+  return !!slug && RENTAL_ADMIN_SERVICE_SLUGS.has(slug);
+}
 
 const ORDER_ACCESS_STATUSES = new Set([
   "paid",
@@ -22,7 +33,7 @@ export function orderGrantsRentalAccess(
   if (!order || !ORDER_ACCESS_STATUSES.has(order.status ?? "")) return false;
   const svc = order.services;
   const row = Array.isArray(svc) ? svc[0] : svc;
-  return row?.slug === RENTAL_SERVICE_SLUG;
+  return isRentalAdminServiceSlug(row?.slug);
 }
 
 export function subscriptionGrantsRentalAccess(

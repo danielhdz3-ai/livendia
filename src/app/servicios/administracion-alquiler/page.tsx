@@ -397,10 +397,10 @@ export default async function AdministracionAlquilerPage() {
                 <CheckCircle className="h-6 w-6" aria-hidden />
               </ContratarServicioButton>
               <Link
-                href="/servicios"
+                href="/servicios/administracion-alquiler-temporada"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold hover:bg-white/10"
               >
-                <span>Ver todos los servicios</span>
+                <span>Temporada / habitaciones (79 €/mes)</span>
               </Link>
             </div>
 

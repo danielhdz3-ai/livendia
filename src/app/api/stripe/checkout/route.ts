@@ -8,10 +8,14 @@ import { createServiceRoleClient } from "@/lib/supabase/service";
 import { getStripe } from "@/lib/stripe/server";
 import { NextResponse } from "next/server";
 
-/** Precio Stripe de respaldo cuando `services.stripe_price_id` está vacío (solo administración recurrente). */
+/** Precio Stripe de respaldo cuando `services.stripe_price_id` está vacío (suscripciones admin). */
 function fallbackRecurringPriceId(slug: string | null | undefined): string | undefined {
   if (slug === "administracion-alquiler") {
     const v = process.env.STRIPE_PRICE_ID_ADMINISTRACION_ALQUILER?.trim();
+    return v || undefined;
+  }
+  if (slug === "administracion-alquiler-temporada") {
+    const v = process.env.STRIPE_PRICE_ID_ADMINISTRACION_ALQUILER_TEMPORADA?.trim();
     return v || undefined;
   }
   return undefined;
@@ -124,21 +128,12 @@ export async function POST(req: Request) {
     const priceFromDb = typeof service.stripe_price_id === "string" ? service.stripe_price_id.trim() : "";
     const priceId =
       priceFromDb || fallbackRecurringPriceId(service.slug as string | null | undefined) || "";
-    if (!priceId) {
-      return NextResponse.json(
-        {
-          error:
-            "Suscripción sin precio Stripe: rellena `stripe_price_id` en la tabla `services` o define STRIPE_PRICE_ID_ADMINISTRACION_ALQUILER.",
-        },
-        { status: 503 },
-      );
-    }
 
-    const session = await stripe.checkout.sessions.create({
-      mode: "subscription",
+    const successUrl = `${appUrl}/gracias?session_id={CHECKOUT_SESSION_ID}&dest=rental`;
+    const commonSub = {
+      mode: "subscription" as const,
       customer_email: checkoutEmail,
-      line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${appUrl}/gracias?session_id={CHECKOUT_SESSION_ID}&dest=rental`,
+      success_url: successUrl,
       cancel_url: `${appUrl}/servicios`,
       subscription_data: {
         metadata: {
@@ -153,7 +148,30 @@ export async function POST(req: Request) {
         ...utmMeta,
       },
       allow_promotion_codes: true,
-    });
+    };
+
+    const session = priceId
+      ? await stripe.checkout.sessions.create({
+          ...commonSub,
+          line_items: [{ price: priceId, quantity: 1 }],
+        })
+      : await stripe.checkout.sessions.create({
+          ...commonSub,
+          line_items: [
+            {
+              price_data: {
+                currency: "eur",
+                unit_amount: service.price_cents,
+                recurring: { interval: "month" },
+                product_data: {
+                  name: service.name,
+                  metadata: { service_id: service.id },
+                },
+              },
+              quantity: 1,
+            },
+          ],
+        });
 
     if (!session.url) {
       return NextResponse.json({ error: "Stripe no devolvió URL" }, { status: 500 });

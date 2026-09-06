@@ -7,8 +7,8 @@ import { OrderStatusBadge } from "@/components/order-status-badge";
 import { PANEL_ACTION_CARD, PANEL_ACTION_ICON } from "@/lib/client-panel-ui";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import {
+  isRentalAdminServiceSlug,
   orderGrantsRentalAccess,
-  RENTAL_SERVICE_SLUG,
   subscriptionGrantsRentalAccess,
 } from "@/lib/rental-access";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -65,7 +65,7 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
     const svc = row.services;
     const slug = Array.isArray(svc) ? svc[0]?.slug : (svc as { slug?: string } | null)?.slug;
     return (
-      slug === RENTAL_SERVICE_SLUG &&
+      isRentalAdminServiceSlug(slug) &&
       subscriptionGrantsRentalAccess(row.status, row.current_period_end)
     );
   });

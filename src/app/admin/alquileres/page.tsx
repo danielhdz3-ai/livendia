@@ -17,13 +17,12 @@ export default async function AdminAlquileresPage() {
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
   if (me?.role !== "admin") redirect("/dashboard");
 
-  const { data: service } = await supabase
+  const { data: rentalServices } = await supabase
     .from("services")
     .select("id")
-    .eq("slug", "administracion-alquiler")
-    .maybeSingle();
+    .in("slug", ["administracion-alquiler", "administracion-alquiler-temporada"]);
 
-  if (!service) {
+  if (!rentalServices?.length) {
     return (
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         <div className="rounded-xl bg-white p-12 text-center shadow ring-1 ring-slate-200">
@@ -36,7 +35,16 @@ export default async function AdminAlquileresPage() {
     );
   }
 
-  const rentalClients = await fetchRentalAdminClients(supabase, service.id as string);
+  const rentalClientsNested = await Promise.all(
+    rentalServices.map((s) => fetchRentalAdminClients(supabase, s.id as string)),
+  );
+  const rentalClientsById = new Map<string, (typeof rentalClientsNested)[number][number]>();
+  for (const list of rentalClientsNested) {
+    for (const row of list) {
+      if (!rentalClientsById.has(row.clientId)) rentalClientsById.set(row.clientId, row);
+    }
+  }
+  const rentalClients = [...rentalClientsById.values()];
 
   const clientsWithData = await Promise.all(
     rentalClients.map(async (client) => {

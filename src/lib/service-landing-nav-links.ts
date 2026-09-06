@@ -67,6 +67,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
       { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },
       { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
+      { href: "/servicios/administracion-alquiler-temporada", label: "Admin. temporada / habitaciones" },
       { href: "/servicios/acompanamiento-alquiler", label: "Acompañamiento de alquiler" },
       { href: "/servicios/revision-contrato-alquiler", label: "Revisión contrato (inquilinos)" },
       { href: "/servicios/revision-contrato-alquiler-local", label: "Revisión contrato por ciudad" },

@@ -25,6 +25,9 @@ function normalizeServiceCategory(service: PublicService): PublicService {
   if (service.slug === "acompanamiento-alquiler") {
     return { ...service, category: "acompanamiento" };
   }
+  if (service.slug === "administracion-alquiler-temporada") {
+    return { ...service, category: "administracion_alquiler" };
+  }
   return service;
 }
 

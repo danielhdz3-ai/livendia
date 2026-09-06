@@ -50,6 +50,7 @@ const HOME_SERVICES_ORDER = [
   "contrato-alquiler-habitacion",
   "servicio-completo-compra",
   "administracion-alquiler",
+  "administracion-alquiler-temporada",
 ] as const;
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";

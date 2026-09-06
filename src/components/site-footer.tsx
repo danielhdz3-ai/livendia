@@ -121,6 +121,14 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
                   </li>
                   <li>
                     <Link
+                      href="/servicios/administracion-alquiler-temporada"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Admin. temporada / habitaciones
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/servicios/contrato-alquiler-lau"
                       className="text-blue-100 hover:text-white transition-colors"
                     >

@@ -32,6 +32,7 @@ export const SITE_GENERAL_SITELINKS: readonly SiteSitelink[] = [
   { name: "Servicio completo de compra", path: "/servicios/servicio-completo-compra" },
   { name: "Para propietarios", path: "/para-propietarios" },
   { name: "Administración de alquileres", path: "/servicios/administracion-alquiler" },
+  { name: "Admin. temporada / habitaciones", path: "/servicios/administracion-alquiler-temporada" },
   { name: "Blog", path: "/blog" },
   { name: "Guías por ciudad", path: "/blog#guías-por-ciudad" },
   { name: "Contacto", path: "/contacto" },
