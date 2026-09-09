@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  GOOGLE_ADS_CONVERSION_LEAD,
   GOOGLE_ADS_CONVERSION_PHONE,
+  GOOGLE_ADS_CONVERSION_PURCHASE,
   GOOGLE_ADS_CONVERSION_WHATSAPP,
   getGoogleAdsId,
 } from "@/lib/google-ads-id";
@@ -32,15 +34,22 @@ export function pushDataLayer(event: string, params?: Record<string, unknown>): 
   }
 }
 
+type AdsConversionParams = {
+  value?: number;
+  currency?: string;
+  transaction_id?: string;
+};
+
 /** Conversión Google Ads (send_to). Solo si hay AW- activo y gtag cargado. */
-function trackGoogleAdsConversion(sendTo: string): void {
+function trackGoogleAdsConversion(sendTo: string, params?: AdsConversionParams): void {
   if (typeof window === "undefined") return;
   if (!getGoogleAdsId()) return;
   if (typeof window.gtag !== "function") return;
   window.gtag("event", "conversion", {
     send_to: sendTo,
-    value: 1.0,
-    currency: "EUR",
+    value: params?.value ?? 1.0,
+    currency: params?.currency ?? "EUR",
+    ...(params?.transaction_id ? { transaction_id: params.transaction_id } : {}),
   });
 }
 
@@ -101,6 +110,10 @@ export function trackGenerateLead(source: string): void {
     lead_source: source,
     page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
   });
+  trackGoogleAdsConversion(GOOGLE_ADS_CONVERSION_LEAD, {
+    value: 1.0,
+    currency: "EUR",
+  });
 }
 
 export function trackPurchase(params: {
@@ -109,10 +122,16 @@ export function trackPurchase(params: {
   currency?: string;
   items: AnalyticsItem[];
 }): void {
+  const currency = params.currency ?? "EUR";
   pushDataLayer("purchase", {
     transaction_id: params.transactionId,
-    currency: params.currency ?? "EUR",
+    currency,
     value: params.value,
     items: params.items,
+  });
+  trackGoogleAdsConversion(GOOGLE_ADS_CONVERSION_PURCHASE, {
+    value: params.value,
+    currency,
+    transaction_id: params.transactionId,
   });
 }
