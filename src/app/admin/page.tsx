@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { AdminDashboardSalesSection } from "@/components/admin/admin-dashboard-sales-section";
 import { AdminStatCard } from "@/components/admin/admin-page-header";
-import { AdminSalesCalendar } from "@/components/admin/admin-sales-calendar";
 import {
-  clientName,
   countRealClients,
   countRealClientsWithRevenueSince,
   fetchAllPaidOrders,
@@ -15,7 +14,7 @@ import {
   uniqueRealClientIds,
   type AdminOrderRow,
 } from "@/lib/admin-data";
-import { ADMIN_CARD_COMPACT, ORDER_STATUS_LABEL } from "@/lib/admin-ui";
+import { ADMIN_CARD_COMPACT } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -28,23 +27,12 @@ export default async function AdminDashboardPage() {
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
 
-  const [
-    { count: activeOrders },
-    { data: paidOrdersResult },
-    { data: recentOrders },
-  ] = await Promise.all([
+  const [{ count: activeOrders }, { data: paidOrdersResult }] = await Promise.all([
     supabase
       .from("orders")
       .select("*", { count: "exact", head: true })
       .in("status", ["paid", "pending_docs", "in_review", "in_progress"]),
     fetchAllPaidOrders(supabase),
-    supabase
-      .from("orders")
-      .select(
-        "id, client_id, status, created_at, paid_at, total_cents, stripe_session_id, notes, services ( name, slug ), profiles ( full_name, phone )",
-      )
-      .order("created_at", { ascending: false })
-      .limit(4),
   ]);
 
   const paidOrders = filterRevenueOrders((paidOrdersResult ?? []) as AdminOrderRow[]);
@@ -92,41 +80,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="grid min-h-0 flex-1 gap-3 xl:grid-cols-[1fr_15rem]">
-        <div className="grid min-h-0 grid-rows-[auto_1fr] gap-3">
-          <AdminSalesCalendar compact salesByDate={salesByDate} detailBaseHref="/admin/expedientes" />
-
-          <div className={`${ADMIN_CARD_COMPACT} min-h-0 overflow-hidden`}>
-            <div className="mb-2 flex items-center justify-between">
-              <h2 className="text-sm font-bold text-[#1E293B]">Actividad reciente</h2>
-              <Link href="/admin/ventas" className="text-[11px] font-semibold text-[#1A4FBF] hover:underline">
-                Ver ventas →
-              </Link>
-            </div>
-            {!recentOrders?.length ? (
-              <p className="text-xs text-[#64748B]">No hay actividad reciente</p>
-            ) : (
-              <ul className="divide-y divide-slate-100">
-                {(recentOrders as AdminOrderRow[]).map((order) => (
-                  <li key={order.id}>
-                    <Link
-                      href={`/admin/expedientes/${order.id}`}
-                      className="flex items-center justify-between gap-2 py-2 transition hover:bg-slate-50/80"
-                    >
-                      <div className="min-w-0">
-                        <p className="truncate text-xs font-semibold text-[#1E293B]">{serviceName(order)}</p>
-                        <p className="truncate text-[11px] text-[#64748B]">{clientName(order)}</p>
-                      </div>
-                      <div className="shrink-0 text-right">
-                        <p className="text-xs font-semibold text-[#1A4FBF]">{formatEuros(order.total_cents)}</p>
-                        <p className="text-[10px] text-[#94A3B8]">{ORDER_STATUS_LABEL[order.status] ?? order.status}</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
+        <AdminDashboardSalesSection salesByDate={salesByDate} detailBaseHref="/admin/expedientes" />
 
         <aside className="flex min-h-0 flex-col gap-3">
           <div className={`${ADMIN_CARD_COMPACT} min-h-0 flex-1 overflow-hidden`}>

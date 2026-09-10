@@ -22,16 +22,34 @@ export function AdminSalesCalendar({
   title = "Calendario de ventas",
   detailBaseHref = "/admin/expedientes",
   compact = false,
+  viewYear: viewYearProp,
+  viewMonth: viewMonthProp,
+  onViewMonthChange,
 }: {
   salesByDate: Record<string, SalesDayBucket>;
   title?: string;
   detailBaseHref?: string;
   compact?: boolean;
+  /** Modo controlado: mes visible (p. ej. sincronizado con listado de ventas del dashboard). */
+  viewYear?: number;
+  viewMonth?: number;
+  onViewMonthChange?: (year: number, month: number) => void;
 }) {
   const today = new Date();
-  const [viewYear, setViewYear] = useState(today.getFullYear());
-  const [viewMonth, setViewMonth] = useState(today.getMonth());
+  const isControlled = viewYearProp !== undefined && viewMonthProp !== undefined;
+  const [internalYear, setInternalYear] = useState(today.getFullYear());
+  const [internalMonth, setInternalMonth] = useState(today.getMonth());
+  const viewYear = isControlled ? viewYearProp : internalYear;
+  const viewMonth = isControlled ? viewMonthProp : internalMonth;
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+  function setViewMonthState(year: number, month: number) {
+    if (!isControlled) {
+      setInternalYear(year);
+      setInternalMonth(month);
+    }
+    onViewMonthChange?.(year, month);
+  }
 
   const monthTotal = useMemo(() => {
     let sum = 0;
@@ -61,17 +79,19 @@ export function AdminSalesCalendar({
 
   function prevMonth() {
     if (viewMonth === 0) {
-      setViewMonth(11);
-      setViewYear((y) => y - 1);
-    } else setViewMonth((m) => m - 1);
+      setViewMonthState(viewYear - 1, 11);
+    } else {
+      setViewMonthState(viewYear, viewMonth - 1);
+    }
     setSelectedDate(null);
   }
 
   function nextMonth() {
     if (viewMonth === 11) {
-      setViewMonth(0);
-      setViewYear((y) => y + 1);
-    } else setViewMonth((m) => m + 1);
+      setViewMonthState(viewYear + 1, 0);
+    } else {
+      setViewMonthState(viewYear, viewMonth + 1);
+    }
     setSelectedDate(null);
   }
 
