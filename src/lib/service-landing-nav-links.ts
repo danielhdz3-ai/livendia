@@ -62,6 +62,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/valencia", label: "Pack LAU + admin Valencia" },
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/malaga", label: "Pack LAU + admin Málaga" },
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/sevilla", label: "Pack LAU + admin Sevilla" },
+      { href: "/servicios/redactar-contrato-alquiler", label: "Redactar contrato alquiler" },
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
       { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },

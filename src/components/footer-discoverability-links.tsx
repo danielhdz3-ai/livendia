@@ -78,6 +78,7 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/contrato-entre-particulares-local", label: "Contratos entre particulares" },
   { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
   { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },
+  { href: "/servicios/redactar-contrato-alquiler", label: "Redactar contrato alquiler" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/administracion-alquiler-temporada-local", label: "Admin. temporada por ciudad" },
   { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },

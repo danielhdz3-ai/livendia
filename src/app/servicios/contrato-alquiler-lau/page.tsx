@@ -86,10 +86,10 @@ export default async function ContratoLAUPage() {
                     Contratar por {priceLabel}
                   </ContratarServicioButton>
                   <Link
-                    href="/servicios"
+                    href="/servicios/redactar-contrato-alquiler"
                     className="rounded-full border-2 border-white px-8 py-4 text-base font-semibold hover:bg-white/10"
                   >
-                    Ver todos los servicios
+                    Ver landing completa
                   </Link>
                 </div>
               </div>

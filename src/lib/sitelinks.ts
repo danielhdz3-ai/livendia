@@ -23,6 +23,7 @@ export const SITE_CITY_SITELINKS: readonly SiteSitelink[] = HOME_COVERAGE_CITIES
 export const SITE_GENERAL_SITELINKS: readonly SiteSitelink[] = [
   { name: "Servicios", path: "/servicios" },
   { name: "Precios", path: "/precios" },
+  { name: "Redactar contrato alquiler", path: "/servicios/redactar-contrato-alquiler" },
   { name: "Contrato habitación Madrid", path: "/servicios/contrato-alquiler-habitacion/madrid" },
   { name: "Contrato habitación Barcelona", path: "/servicios/contrato-alquiler-habitacion/barcelona" },
   { name: "Contrato de alquiler", path: "/servicios/contrato-de-alquiler" },

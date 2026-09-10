@@ -126,6 +126,7 @@ const SERVICIO_SLUGS = [
   "acompanamiento-reserva-arras",
   "contrato-de-arras",
   "contrato-de-alquiler",
+  "redactar-contrato-alquiler",
   "contrato-alquiler-local",
   "contrato-arras-local",
   "administracion-alquiler-local",

@@ -109,6 +109,7 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
     { match: (p) => p.includes("revision-contrato-alquiler"), label: "Revisión contrato de alquiler", need: "alquiler" },
     { match: (p) => p.includes("contrato-alquiler-habitacion"), label: "Contrato de habitación", need: "alquiler" },
     { match: (p) => p.includes("contrato-alquiler-temporada"), label: "Contrato alquiler temporada", need: "alquiler" },
+    { match: (p) => p.includes("redactar-contrato-alquiler"), label: "Redactar contrato de alquiler profesional", need: "alquiler" },
     { match: (p) => p.includes("contrato-alquiler"), label: "Contrato de alquiler LAU", need: "alquiler" },
     { match: (p) => p.includes("contrato-de-alquiler"), label: "Guía contrato de alquiler", need: "alquiler" },
     { match: (p) => p.includes("acompanamiento-compra-parking"), label: "Compra parking o trastero", need: "compra" },
