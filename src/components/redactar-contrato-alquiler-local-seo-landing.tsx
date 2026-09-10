@@ -133,7 +133,8 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                     Entre particulares · {config.placeLabel}
                   </p>
                   <h1 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-5xl">
-                    ¿Necesitas redactar un contrato de alquiler profesional en {config.placeLabel}?
+                    {config.heroTitle ??
+                      `¿Necesitas redactar un contrato de alquiler profesional en ${config.placeLabel}?`}
                   </h1>
                   <p className="mt-6 text-base leading-relaxed text-blue-50 sm:text-lg">{config.heroLead}</p>
                   <ul className="mt-8 space-y-3">

@@ -16,6 +16,11 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[]
   "valencia",
   "sevilla",
   "malaga",
+  "bilbao",
+  "zaragoza",
+  "alicante",
+  "granada",
+  "palma",
 ] as const;
 
 export function isRedactarContratoAlquilerLocalSlugPublished(slug: string): boolean {
@@ -35,6 +40,8 @@ export type RedactarContratoAlquilerLocalLandingConfig = {
   schemaAdministrativeArea: string;
   metaTitle: string;
   metaDescription: string;
+  /** H1 propio; si no se define, usa la plantilla genérica de conversión. */
+  heroTitle?: string;
   heroLead: string;
   whyIntro: string;
   marketContext: string;
@@ -509,5 +516,411 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     heroImageAlt: "Redactar contrato de alquiler profesional en Málaga — Livendia",
     contratoTemporadaHref: localContratoAlquilerTemporadaHref("malaga"),
     contratoHabitacionHref: localContratoAlquilerHabitacionHref("malaga"),
+  },
+  {
+    slug: "bilbao",
+    city: "Bilbao",
+    placeLabel: "Bilbao",
+    schemaAdministrativeArea: "País Vasco",
+    metaTitle: `Contrato LAU profesional Bilbao — inventario online · ${PRICE}`,
+    metaDescription: `Contrato de alquiler en Bilbao: Abando, Deusto, Indautxu, Basurto. Inventario, gestor online y LAU adaptada. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Contrato de alquiler en Bilbao — gestoría online sin comisión de agencia",
+    heroLead:
+      "¿Cierras alquiler en Abando, Deusto o el ensanche sin pagar comisión? Livendia redacta tu LAU con inventario fotográfico, cláusulas adaptadas a bloques vascos de piedra y gestor operativo 100% online — 145 € IVA incl., sin desplazarte al despacho.",
+    whyIntro:
+      "En Bilbao los arrendamientos directos crecen en Deusto (UPV/EHU) e Indautxu, pero llegan con plantillas copiadas de Madrid que ignoran garaje comunitario, trastero, ascensor antiguo o garantías mal redactadas.",
+    marketContext:
+      "Bilbao combina familias en Indautxu, estudiantes en Deusto y jóvenes profesionales en Abando. El mercado es más contenido que Madrid, pero los conflictos por fianza, IBI repercutido o reparto de comunidad en bloques del ensanche son frecuentes cuando el contrato es genérico.",
+    barriosIntro: "Barrios y municipios del Gran Bilbao donde redactamos contratos LAU:",
+    barrios: [
+      "Abando",
+      "Indautxu",
+      "Deusto",
+      "Basurto",
+      "Santutxu",
+      "Begoña",
+      "Rekalde",
+      "Getxo",
+      "Leioa",
+      "Erandio",
+    ],
+    regulatoryBlock:
+      "En el País Vasco aplican las reglas LAU estatales para arrendamientos urbanos. Fianza de un mes (dos si el arrendador es persona jurídica). Revisamos depósitos adicionales, aval y cláusulas de actualización de renta antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Pisos compartidos Deusto–UPV",
+        description: "Normas de convivencia y reparto de gastos en pisos de estudiantes e investigadores.",
+      },
+      {
+        title: "Ensanche: comunidad e IBI",
+        description: "Gastos repercutidos sin lagunas en bloques de piedra con ascensor antiguo.",
+      },
+      {
+        title: "Garantías adicionales revisadas",
+        description: "Aval o depósito extra solo si cumple requisitos legales — no cláusulas abusivas.",
+      },
+      {
+        title: "Servicio online con gestor vasco",
+        description: "Briefing, documentación e inventario desde el panel; asesoramiento posterior incluido.",
+      },
+    ],
+    agencyLocalNote:
+      "En Bilbao las agencias suelen pedir un mes de renta más 2.000–3.000 € de gestión. Si ya tienes inquilino en Deusto o Abando, Livendia redacta el contrato por 145 €.",
+    platformDemoProperty: "Piso 3 hab. · Calle Ercilla 24, Bilbao (Indautxu)",
+    testimonialsTitle: "Particulares en Bilbao con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Deusto entre particulares: el gestor adaptó convivencia, trastero y fianza. Todo online, sin ir al despacho.",
+        author: "Ane L.",
+        role: "Propietaria · Deusto",
+      },
+      {
+        quote:
+          "Plantilla peninsular corregida: comunidad e IBI bien repartidos en un bloque del ensanche. Inventario con fotos muy claro.",
+        author: "Iker M.",
+        role: "Inquilino · Abando",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Getxo o Leioa?",
+        answer: "Sí. LAU estatal con adaptación al municipio del margen izquierdo o derecho.",
+      },
+      {
+        question: "¿El servicio es online en Bilbao?",
+        answer:
+          "Sí. Contratas, subes documentación y hablas con tu gestor desde el panel o por teléfono/WhatsApp.",
+      },
+      {
+        question: "¿Incluye inventario en pisos del ensanche?",
+        answer: "Sí. Inventario fotográfico de cocina, baño y carpintería incluido.",
+      },
+    ],
+    heroImage: "/images/contratos.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Bilbao — Livendia",
+    contratoHabitacionHref: localContratoAlquilerHabitacionHref("bilbao"),
+  },
+  {
+    slug: "zaragoza",
+    city: "Zaragoza",
+    placeLabel: "Zaragoza",
+    schemaAdministrativeArea: "Aragón",
+    metaTitle: `¿Contrato de alquiler en Zaragoza? Redacción pro · ${PRICE}`,
+    metaDescription: `LAU en Zaragoza: Casco Histórico, Delicias, Actur, Valdespartera. Contrato online, inventario y gestor. ${PRICE} IVA incl. Entre particulares.`,
+    heroTitle: "Redacta tu LAU en Zaragoza entre particulares — 145 €, todo online",
+    heroLead:
+      "En Zaragoza capital muchos alquileres se cierran entre conocidos o por Idealista en Delicias y Actur. Livendia redacta contrato LAU con IPC bien definido, inventario y gestor operativo sin que tengas que acudir a un despacho — 145 € IVA incl.",
+    whyIntro:
+      "Zaragoza tiene un mercado más pausado que Madrid, pero con rotación constante de estudiantes de la UNIZAR y trabajadores de polígonos como Malpica. Los PDF genéricos fallan en actualización de renta, fianza ilegal o pisos compartidos mal redactados.",
+    marketContext:
+      "Casco Histórico, Delicias, Actur y Valdespartera concentran la demanda. Los arrendamientos se pactan en una visita; el riesgo está en cláusulas copiadas de otra CCAA o en depósitos que superan lo legal sin aval formal.",
+    barriosIntro: "Zonas de Zaragoza donde redactamos contratos de alquiler:",
+    barrios: [
+      "Casco Histórico",
+      "Delicias",
+      "Universidad",
+      "Actur",
+      "Valdespartera",
+      "Las Fuentes",
+      "Torrero",
+      "La Almozara",
+    ],
+    regulatoryBlock:
+      "En Aragón rige la LAU estatal. Fianza legal de un mes (dos meses si el arrendador es empresa). Revisamos garantías adicionales, IPC y causas de resolución antes del ingreso de la fianza.",
+    localDifferentiators: [
+      {
+        title: "IPC y revisión anual en mercado aragonés",
+        description: "Actualización de renta redactada con coherencia LAU, sin sorpresas al segundo año.",
+      },
+      {
+        title: "Pisos compartidos UNIZAR",
+        description: "Convivencia en Delicias, San Francisco y zona campus con normas claras.",
+      },
+      {
+        title: "Actur y Valdespartera",
+        description: "Cláusulas para urbanizaciones con parking, trastero y gastos de zonas verdes.",
+      },
+      {
+        title: "Gestor online de principio a fin",
+        description: "Briefing, docs, contrato y asesoramiento posterior — sin desplazamientos.",
+      },
+    ],
+    agencyLocalNote:
+      "En Zaragoza las agencias piden honorarios altos más comisión de un mes. Entre particulares, Livendia cubre el tramo contractual por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Paseo Independencia 32, Zaragoza (Centro)",
+    testimonialsTitle: "Propietarios e inquilinos en Zaragoza con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Primera vez alquilando en Delicias. El gestor me explicó IPC y fianza en una llamada; contrato listo en el panel.",
+        author: "Lucía P.",
+        role: "Inquilina · Delicias",
+      },
+      {
+        quote:
+          "Piso en Actur: inventario y cláusulas de comunidad cerradas online. La agencia quería 2.200 € por lo mismo.",
+        author: "Javier R.",
+        role: "Propietario · Actur",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Valdespartera o Actur?",
+        answer: "Sí. Adaptamos el LAU al barrio y al tipo de edificio concreto.",
+      },
+      {
+        question: "¿Contrato por habitación en Zaragoza?",
+        answer: "Sí. Redactamos LAU por habitación con reparto de gastos y convivencia.",
+      },
+      {
+        question: "¿Hay seguimiento después de firmar?",
+        answer: "Sí. Asesoramiento posterior sobre cláusulas y dudas habituales, incluido en el servicio.",
+      },
+    ],
+    heroImage: "/images/gestoria3.jpg",
+    heroImageAlt: "Contrato de alquiler profesional en Zaragoza — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("zaragoza"),
+  },
+  {
+    slug: "alicante",
+    city: "Alicante",
+    placeLabel: "Alicante",
+    schemaAdministrativeArea: "Comunidad Valenciana",
+    metaTitle: `Alquiler entre particulares Alicante — contrato e inventario · ${PRICE}`,
+    metaDescription: `Contrato LAU Alicante: Centro, Playa San Juan, San Blas, UA. Online, inventario fotográfico. ${PRICE} IVA incl. Sin comisión de agencia.`,
+    heroTitle: "¿Buscas un contrato profesional de alquiler en Alicante?",
+    heroLead:
+      "Alicante mezcla alquiler anual, estancias de curso y pisos cerca del mar. Si ya tienes inquilino en el Centro o Playa San Juan, Livendia redacta LAU con inventario, suministros claros y gestor online — 145 € IVA incl., sin comisión.",
+    whyIntro:
+      "En Alicante un mismo PDF no sirve para un piso en Playa San Juan, una habitación cerca de la UA o un LAU habitual en Carolinas. Los conflictos por terraza, mobiliario o comunidad aparecen cuando el contrato es genérico.",
+    marketContext:
+      "Centro, San Blas, Carolinas Altas y Playa San Juan concentran demanda de estudiantes, familias y teletrabajadores. En temporada alta los cierres son rápidos; conviene tener LAU e inventario antes de transferir la fianza.",
+    barriosIntro: "Zonas de Alicante donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Centro",
+      "Playa San Juan",
+      "San Blas",
+      "Carolinas Altas",
+      "Benalúa",
+      "Albufereta",
+      "San Vicente del Raspeig",
+      "Muchamiel",
+    ],
+    regulatoryBlock:
+      "En la Comunidad Valenciana aplican reglas LAU estatales: fianza de un mes (dos si arrendador jurídico), límites al depósito adicional y prohibición de traspasar obras estructurales al inquilino.",
+    localDifferentiators: [
+      {
+        title: "Playa San Juan vs. centro urbano",
+        description: "Cláusulas distintas según ubicación, mobiliario de terraza y perfil de estancia.",
+      },
+      {
+        title: "Pisos compartidos UA",
+        description: "Convivencia en San Vicente del Raspeig y zona universitaria con gastos repartidos.",
+      },
+      {
+        title: "Temporada vs. LAU habitual",
+        description: "Delimitamos duración y suministros cuando el inquilino viene por meses, no por años.",
+      },
+      {
+        title: "100% online con inventario costero",
+        description: "Fotos de electrodomésticos y estado del piso antes de las llaves — desde el panel.",
+      },
+    ],
+    agencyLocalNote:
+      "En Alicante capital las agencias combinan comisión de un mes con honorarios de gestión elevados. Livendia: 145 € fijos si ya tienes contraparte.",
+    platformDemoProperty: "Piso 2 hab. · Explanada de España 12, Alicante (Centro)",
+    testimonialsTitle: "Particulares en Alicante con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Playa San Juan: ocupación máxima, terraza e inventario quedaron por escrito. Todo el trámite online.",
+        author: "Sandra M.",
+        role: "Propietaria · Playa San Juan",
+      },
+      {
+        quote:
+          "Piso compartido cerca de la UA: convivencia y fianza revisadas antes de firmar. Mejor que la plantilla de internet.",
+        author: "Pablo G.",
+        role: "Inquilino · San Vicente",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis San Vicente del Raspeig?",
+        answer: "Sí. LAU adaptada al municipio y al uso real del inmueble.",
+      },
+      {
+        question: "¿Contrato para temporada en primera línea?",
+        answer: "Te orientamos sobre LAU habitual vs. temporada y redactamos la modalidad correcta.",
+      },
+      {
+        question: "¿Incluye inventario en pisos amueblados?",
+        answer: "Sí. Inventario descriptivo y fotográfico incluido en el servicio.",
+      },
+    ],
+    heroImage: "/images/contratos2.jpg",
+    heroImageAlt: "Contrato de alquiler profesional en Alicante — Livendia",
+  },
+  {
+    slug: "granada",
+    city: "Granada",
+    placeLabel: "Granada",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: `Contrato alquiler Granada (Albaicín, UGR) — online · ${PRICE}`,
+    metaDescription: `LAU en Granada: Albaicín, Realejo, Zaidín, Chana, UGR. Inventario, gestor online. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Contrato LAU en Granada — Albaicín, Realejo y campus UGR",
+    heroLead:
+      "Granada mezcla casco histórico UNESCO, pisos UGR y familias en Zaidín. Livendia redacta contrato LAU con inventario detallado, cláusulas sobre edificios antiguos y gestor operativo online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Realejo o el Albaicín los edificios antiguos exigen cláusulas sobre humedades, obras y comunidad que una plantilla de Madrid no contempla. En Zaidín predominan pisos compartidos de estudiantes mal redactados.",
+    marketContext:
+      "Turismo residencial, estudiantes de la UGR y familias conviven en distritos distintos. Los alquileres entre particulares se cierran en visita, pero el borrador suele ignorar convivencia en pisos de cinco habitaciones o suministros en plantas sin ascensor.",
+    barriosIntro: "Barrios de Granada donde redactamos contratos LAU:",
+    barrios: [
+      "Albaicín",
+      "Realejo",
+      "Zaidín",
+      "Ronda",
+      "Chana",
+      "Cartuja",
+      "Centro",
+      "Genil",
+    ],
+    regulatoryBlock:
+      "En Andalucía rige LAU estatal. Fianza de un mes salvo arrendador persona jurídica (dos meses). Conviene delimitar mantenimiento en edificios históricos y habitación vs. piso completo antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Casco histórico y patrimonio",
+        description: "Mantenimiento, humedades y comunidad en edificios antiguos del Albaicín o Realejo.",
+      },
+      {
+        title: "Pisos compartidos UGR",
+        description: "Convivencia en Cartuja, Zaidín y Realejo con normas de limpieza y visitas.",
+      },
+      {
+        title: "Zaidín y expansión residencial",
+        description: "LAU para familias en urbanizaciones con parking y trastero comunitario.",
+      },
+      {
+        title: "Gestor online + asesoramiento posterior",
+        description: "Todo el proceso sin desplazarte; consultas tras la firma incluidas en el servicio.",
+      },
+    ],
+    agencyLocalNote:
+      "En Granada las agencias piden comisión más gestión de miles de euros. Entre particulares, Livendia redacta el LAU por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 4 hab. · Cuesta de Gomérez 8, Granada (Realejo)",
+    testimonialsTitle: "Particulares en Granada con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Realejo: cláusulas sobre humedades y comunidad adaptadas al edificio antiguo. Inventario fotográfico muy completo.",
+        author: "Isabel R.",
+        role: "Propietaria · Realejo",
+      },
+      {
+        quote:
+          "Habitación en piso UGR: convivencia y fianza claras. El gestor lo explicó todo online antes de firmar.",
+        author: "Marcos T.",
+        role: "Inquilino · Zaidín",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis alquiler en el Albaicín?",
+        answer: "Sí. Adaptamos cláusulas de mantenimiento y comunidad a edificios históricos.",
+      },
+      {
+        question: "¿Contrato por habitación cerca de la UGR?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+      {
+        question: "¿Es necesario ir a un despacho?",
+        answer: "No. Todo el servicio es online: panel, documentación y gestor asignado.",
+      },
+    ],
+    heroImage: "/images/contratos5.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Granada — Livendia",
+  },
+  {
+    slug: "palma",
+    city: "Palma de Mallorca",
+    placeLabel: "Palma de Mallorca",
+    schemaAdministrativeArea: "Islas Baleares",
+    metaTitle: `Contrato alquiler Palma de Mallorca — LAU sin agencia · ${PRICE}`,
+    metaDescription: `Contrato LAU Palma: Casco Antiguo, Santa Catalina, Son Espanyol. Inventario, online, temporada o habitual. ${PRICE} IVA incl.`,
+    heroTitle: "Alquiler en Palma de Mallorca con contrato e inventario profesional",
+    heroLead:
+      "Palma combina vivienda habitual, estancias de meses y presión turística en el Casco Antiguo. Livendia redacta LAU con límites de ocupación claros, inventario profesional y gestor online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Santa Catalina o la Lonja los contratos ambiguos mezclan temporada con LAU habitual o no limitan ocupación. Livendia delimita modalidad, suministros y mobiliario antes de cobrar la renta.",
+    marketContext:
+      "Baleares concentra uno de los mercados más tensionados: residentes, teletrabajadores y estancias medias compiten en el mismo edificio. Los cierres entre particulares son rápidos; el riesgo está en PDFs que no reflejan lo pactado en visita.",
+    barriosIntro: "Barrios de Palma donde redactamos contratos de alquiler:",
+    barrios: [
+      "Casco Antiguo",
+      "Santa Catalina",
+      "La Lonja",
+      "Son Espanyol",
+      "Pere Garau",
+      "Playa de Palma",
+      "Portixol",
+      "Son Armadans",
+    ],
+    regulatoryBlock:
+      "En Baleares aplican reglas LAU estatales. Conviene separar uso turístico regulado, temporada y vivienda habitual. Fianza legal de un mes (dos si arrendador es empresa) con orientación de depósito correcto.",
+    localDifferentiators: [
+      {
+        title: "Uso turístico vs. residencia habitual",
+        description: "Definimos modalidad correcta y evitamos LAU mal aplicado a estancias cortas.",
+      },
+      {
+        title: "Ocupación máxima en pisos céntricos",
+        description: "Límites claros de personas y pernoctaciones en Santa Catalina o el Casco.",
+      },
+      {
+        title: "Edificios históricos y comunidad",
+        description: "IBI, ascensor y derramas en fincas del centro con cláusulas defendibles.",
+      },
+      {
+        title: "Servicio 100% online desde Mallorca",
+        description: "Subes docs e inventario desde la isla; gestor operativo en todo el proceso.",
+      },
+    ],
+    agencyLocalNote:
+      "En Palma las agencias suelen cobrar comisión de un mes más gestión elevada. Si ya tienes inquilino en el Casco o Son Espanyol, Livendia redacta por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Carrer de Sant Magí 45, Palma (Santa Catalina)",
+    testimonialsTitle: "Particulares en Palma con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Santa Catalina: ocupación máxima y suministros por escrito. Inventario impecable, trámite 100% online.",
+        author: "Joana F.",
+        role: "Propietaria · Santa Catalina",
+      },
+      {
+        quote:
+          "Temporada vs. LAU habitual bien delimitados en Son Espanyol. El gestor respondió dudas después de firmar.",
+        author: "Marc V.",
+        role: "Inquilino · Son Espanyol",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis alquiler en todo Mallorca?",
+        answer: "Esta landing cubre Palma capital; para otras zonas consulta con el gestor al contratar.",
+      },
+      {
+        question: "¿Contrato de temporada en Palma?",
+        answer: "Sí. Te orientamos sobre LAU habitual vs. temporada y redactamos la modalidad correcta.",
+      },
+      {
+        question: "¿Incluye inventario en pisos amueblados?",
+        answer: "Sí. Inventario fotográfico del mobiliario y estado del inmueble incluido.",
+      },
+    ],
+    heroImage: "/images/mallorca2.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Palma de Mallorca — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("mallorca"),
   },
 ];

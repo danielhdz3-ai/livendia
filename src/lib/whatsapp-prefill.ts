@@ -110,7 +110,10 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
     { match: (p) => p.includes("contrato-alquiler-habitacion"), label: "Contrato de habitación", need: "alquiler" },
     { match: (p) => p.includes("contrato-alquiler-temporada"), label: "Contrato alquiler temporada", need: "alquiler" },
     {
-      match: (p) => /redactar-contrato-alquiler\/(madrid|barcelona|valencia|sevilla|malaga)/.test(p),
+      match: (p) =>
+        /redactar-contrato-alquiler\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|granada|palma)/.test(
+          p,
+        ),
       label: "Redactar contrato de alquiler profesional (local)",
       need: "alquiler",
     },
