@@ -1,3 +1,4 @@
+import { AdministracionAlquilerTemporadaLocalCityLinks } from "@/components/administracion-alquiler-temporada-local-city-links";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
@@ -246,6 +247,27 @@ export default async function AdministracionAlquilerTemporadaPage() {
           </section>
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-5xl text-center">
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
+                Administración temporada y habitaciones por ciudad
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[#475569]">
+                Misma tarifa ({ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL} IVA incl.) con contexto de mercado,
+                barrios y normativa local en cada zona.
+              </p>
+              <AdministracionAlquilerTemporadaLocalCityLinks className="mt-8" />
+              <p className="mt-6">
+                <Link
+                  href="/servicios/administracion-alquiler-temporada-local"
+                  className="text-sm font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  Ver índice de ciudades →
+                </Link>
+              </p>
+            </div>
+          </section>
+
+          <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-5xl">
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
                 {ADMINISTRACION_ALQUILER_TEMPORADA_TESTIMONIALS.title}

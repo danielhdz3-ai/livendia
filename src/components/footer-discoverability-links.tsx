@@ -4,6 +4,10 @@ import {
   getPublishedAdministracionAlquilerLocalCities,
 } from "@/lib/administracion-alquiler-local-cities";
 import {
+  ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE,
+  getPublishedAdministracionAlquilerTemporadaLocalCities,
+} from "@/lib/administracion-alquiler-temporada-local-cities";
+import {
   CONTRATO_ALQUILER_LOCAL_BASE,
   getPublishedContratoAlquilerLocalCities,
 } from "@/lib/contrato-alquiler-local-cities";
@@ -75,6 +79,7 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
   { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
+  { href: "/servicios/administracion-alquiler-temporada-local", label: "Admin. temporada por ciudad" },
   { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },
   { href: "/servicios/gestion-documental-vendedor", label: "Gestión vendedor post-arras" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
@@ -99,6 +104,7 @@ export function FooterDiscoverabilityLinks() {
   const alquilerLocal = getPublishedContratoAlquilerLocalCities();
   const arrasLocal = getPublishedContratoArrasLocalCities();
   const adminLocal = getPublishedAdministracionAlquilerLocalCities();
+  const adminTemporadaLocal = getPublishedAdministracionAlquilerTemporadaLocalCities();
   const compraLocal = getPublishedServicioCompletoCompraLocalCities();
   const ventaLocal = getPublishedServicioCompletoVentaLocalCities();
   const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
@@ -169,6 +175,11 @@ export function FooterDiscoverabilityLinks() {
           title="Administración alquiler por ciudad"
           hub={`${ADMINISTRACION_ALQUILER_LOCAL_BASE}`}
           cities={adminLocal.map((c) => ({ slug: c.slug, name: c.city }))}
+        />
+        <LocalGroup
+          title="Admin. temporada/habitaciones por ciudad"
+          hub={ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}
+          cities={adminTemporadaLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
         />
         <LocalGroup
           title="Compra completa por ciudad"

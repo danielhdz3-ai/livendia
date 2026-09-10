@@ -61,6 +61,7 @@ export const LANDING_HUB_EYEBROW = {
   compra: "Compra entre particulares · España",
   venta: "Venta entre particulares · España",
   admin: "Administración de alquiler · España",
+  adminTemporada: "Admin. temporada y habitaciones · España",
   parking: "Compra parking o trastero · España",
   ciudades: "Gestoría inmobiliaria · Por ciudad",
   contratoEntreParticulares: "Contratos entre particulares · España",

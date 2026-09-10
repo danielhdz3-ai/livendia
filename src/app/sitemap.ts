@@ -13,6 +13,10 @@ import {
   getPublishedAdministracionAlquilerLocalCities,
 } from "@/lib/administracion-alquiler-local-cities";
 import {
+  ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE,
+  getPublishedAdministracionAlquilerTemporadaLocalCities,
+} from "@/lib/administracion-alquiler-temporada-local-cities";
+import {
   CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
   getPublishedContratoAlquilerTemporadaLocalCities,
 } from "@/lib/contrato-alquiler-temporada-local-cities";
@@ -125,6 +129,7 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-local",
   "contrato-arras-local",
   "administracion-alquiler-local",
+  "administracion-alquiler-temporada-local",
   "contrato-alquiler-temporada-local",
   "servicio-completo-compra-local",
   "servicio-completo-venta-local",
@@ -179,6 +184,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const administracionAlquilerLocalCiudades: MetadataRoute.Sitemap =
     getPublishedAdministracionAlquilerLocalCities().map((c) => ({
       url: `${base}${ADMINISTRACION_ALQUILER_LOCAL_BASE}/${c.slug}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.82,
+    }));
+
+  const administracionAlquilerTemporadaLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedAdministracionAlquilerTemporadaLocalCities().map((c) => ({
+      url: `${base}${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/${c.slug}`,
       lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
@@ -387,6 +400,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...contratoLocalCiudades,
     ...contratoArrasLocalCiudades,
     ...administracionAlquilerLocalCiudades,
+    ...administracionAlquilerTemporadaLocalCiudades,
     ...contratoAlquilerTemporadaLocalCiudades,
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
