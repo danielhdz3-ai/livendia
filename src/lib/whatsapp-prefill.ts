@@ -47,6 +47,8 @@ const CITY_SLUG_LABELS: Record<string, string> = {
   gijon: "Gijón",
   mallorca: "Mallorca",
   vigo: "Vigo",
+  cordoba: "Córdoba",
+  palma: "Palma de Mallorca",
   asturias: "Asturias",
   "hospitalet-de-llobregat": "L'Hospitalet de Llobregat",
   "cornella-de-llobregat": "Cornellà de Llobregat",
@@ -111,7 +113,7 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
     { match: (p) => p.includes("contrato-alquiler-temporada"), label: "Contrato alquiler temporada", need: "alquiler" },
     {
       match: (p) =>
-        /redactar-contrato-alquiler\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|granada|palma)/.test(
+        /redactar-contrato-alquiler\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|granada|palma|murcia|valladolid|vigo|gijon|cordoba)/.test(
           p,
         ),
       label: "Redactar contrato de alquiler profesional (local)",

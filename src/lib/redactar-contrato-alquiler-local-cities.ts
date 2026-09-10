@@ -21,6 +21,11 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[]
   "alicante",
   "granada",
   "palma",
+  "murcia",
+  "valladolid",
+  "vigo",
+  "gijon",
+  "cordoba",
 ] as const;
 
 export function isRedactarContratoAlquilerLocalSlugPublished(slug: string): boolean {
@@ -922,5 +927,406 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     heroImage: "/images/mallorca2.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Palma de Mallorca — Livendia",
     contratoTemporadaHref: localContratoAlquilerTemporadaHref("mallorca"),
+  },
+  {
+    slug: "murcia",
+    city: "Murcia",
+    placeLabel: "Murcia",
+    schemaAdministrativeArea: "Región de Murcia",
+    metaTitle: `Contrato alquiler Murcia — LAU online Espinardo · ${PRICE}`,
+    metaDescription: `LAU en Murcia: Centro, Espinardo, El Carmen, La Flota. Inventario, gestor online. ${PRICE} IVA incl. Entre particulares sin agencia.`,
+    heroTitle: "Contrato LAU en Murcia — Espinardo, El Carmen y campus, todo online",
+    heroLead:
+      "Murcia capital mezcla familias en La Flota, estudiantes en Espinardo y regeneración en El Carmen. Si ya tienes inquilino, Livendia redacta LAU con inventario, suministros claros y gestor operativo online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Murcia los alquileres entre particulares se cierran rápido por precio asequible, pero las plantillas copiadas de otras CCAA ignoran rotación universitaria, patios interiores o reparto de IBI en edificios del centro histórico.",
+    marketContext:
+      "Centro, Espinardo, El Carmen y Vistalegre concentran demanda de familias, profesionales del campus y propietarios que alquilan desde otra provincia. La Región de Murcia no está declarada zona tensionada; el riesgo está en fianzas mal redactadas y contratos que no recogen lo pactado en visita.",
+    barriosIntro: "Barrios y pedanías de Murcia donde redactamos contratos LAU:",
+    barrios: [
+      "Centro",
+      "La Flota",
+      "Espinardo",
+      "El Carmen",
+      "Vistalegre",
+      "Santa María de Gracia",
+      "Alcantarilla",
+      "Molina de Segura",
+    ],
+    regulatoryBlock:
+      "En la Región de Murcia rige LAU estatal. Fianza de un mes (dos si el arrendador es persona jurídica). Revisamos depósitos adicionales, IPC y causas de resolución antes de ingresar la fianza en el organismo correspondiente.",
+    localDifferentiators: [
+      {
+        title: "Rotación universitaria en Espinardo",
+        description: "Convivencia y fianza en pisos compartidos del campus con normas de limpieza y visitas.",
+      },
+      {
+        title: "Regeneración El Carmen y Santa Eulalia",
+        description: "Cláusulas sobre obras de entorno, ruido y accesos en barrios en transformación.",
+      },
+      {
+        title: "Propietarios fuera de Murcia",
+        description: "Briefing, documentación e inventario 100 % online sin desplazarte al despacho.",
+      },
+      {
+        title: "Edificios del centro con patios",
+        description: "Inventario de patios, trasteros y zonas comunes en fincas tradicionales murcianas.",
+      },
+    ],
+    agencyLocalNote:
+      "En Murcia las agencias piden comisión de un mes más gestión elevada. Entre particulares en La Flota o Espinardo, Livendia redacta el LAU por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 3 hab. · Gran Vía Escultor Salzillo 18, Murcia (Centro)",
+    testimonialsTitle: "Particulares en Murcia con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Espinardo entre particulares: convivencia, trastero y fianza revisadas online. Mucho más claro que la plantilla que me pasó un compañero.",
+        author: "Raquel M.",
+        role: "Propietaria · Espinardo",
+      },
+      {
+        quote:
+          "Piso en El Carmen: inventario con fotos del patio y electrodomésticos. El gestor respondió dudas después de firmar.",
+        author: "Francisco J.",
+        role: "Inquilino · El Carmen",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Alcantarilla o Molina de Segura?",
+        answer: "Sí. LAU adaptada al municipio del área metropolitana de Murcia.",
+      },
+      {
+        question: "¿Contrato por habitación cerca del campus?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+      {
+        question: "¿El servicio es online en Murcia?",
+        answer: "Sí. Panel, documentación e inventario desde cualquier punto; gestor asignado por teléfono o WhatsApp.",
+      },
+    ],
+    heroImage: "/images/contratos6.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Murcia — Livendia",
+  },
+  {
+    slug: "valladolid",
+    city: "Valladolid",
+    placeLabel: "Valladolid",
+    schemaAdministrativeArea: "Castilla y León",
+    metaTitle: `Contrato LAU Valladolid — Parquesol, Delicias · ${PRICE}`,
+    metaDescription: `Contrato alquiler Valladolid entre particulares: Centro, Parquesol, Delicias, Rondilla. Online, inventario. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "¿Alquilas en Valladolid entre particulares? LAU por 145 €, sin comisión",
+    heroLead:
+      "En Valladolid es habitual alquilar a un compañero de trabajo, familiar o comprador conocido. Livendia redacta contrato LAU con inventario, IPC bien definido y gestor online — 145 € IVA incl., sin pagar comisión de agencia.",
+    whyIntro:
+      "Parquesol, Delicias y Rondilla mueven alquileres entre vecinos con confianza personal, pero la plantilla de internet no cubre herencias pendientes, varios cotitulares o arras mal encadenadas con el LAU.",
+    marketContext:
+      "Castilla y León no ha declarado zona tensionada. Centro, Parquesol y Huerta del Rey combinan familias consolidadas y rotación universitaria en Rondilla. Los cierres son pausados; conviene tener contrato e inventario antes de transferir la fianza.",
+    barriosIntro: "Barrios de Valladolid donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Centro",
+      "Parquesol",
+      "Delicias",
+      "Rondilla",
+      "Huerta del Rey",
+      "La Victoria",
+      "Laguna de Duero",
+      "Pinar de Jalón",
+    ],
+    regulatoryBlock:
+      "En Castilla y León aplican reglas LAU estatales. Fianza legal de un mes (dos meses si arrendador es empresa). Revisamos garantías adicionales, actualización de renta por IPC y causas de resolución conforme a la normativa vigente.",
+    localDifferentiators: [
+      {
+        title: "Operaciones entre conocidos",
+        description: "Formalizamos lo pactado verbalmente cuando arrendador e inquilino ya se conocen.",
+      },
+      {
+        title: "Parquesol y urbanizaciones recientes",
+        description: "Parking, trastero y gastos de zonas verdes en bloques del ensanche vallisoletano.",
+      },
+      {
+        title: "Rotación universitaria Rondilla",
+        description: "Pisos compartidos con normas de convivencia y reparto de suministros.",
+      },
+      {
+        title: "Gestoría 100 % online",
+        description: "Sin desplazarte al despacho: panel, docs e inventario con asesoramiento posterior.",
+      },
+    ],
+    agencyLocalNote:
+      "En Valladolid las agencias combinan honorarios altos con comisión sobre la renta. Si ya tienes inquilino en Parquesol o Delicias, Livendia cubre el tramo contractual por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Paseo de Zorrilla 102, Valladolid (Centro)",
+    testimonialsTitle: "Particulares en Valladolid con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilé en Parquesol a un compañero de trabajo. El gestor cerró IPC, garaje y fianza en una llamada; contrato listo en el panel.",
+        author: "Beatriz L.",
+        role: "Propietaria · Parquesol",
+      },
+      {
+        quote:
+          "Habitación en Delicias: convivencia y gastos repartidos como los habíamos hablado. Mejor que la plantilla genérica de internet.",
+        author: "Héctor S.",
+        role: "Inquilino · Delicias",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Laguna de Duero?",
+        answer: "Sí. LAU adaptada al municipio del área metropolitana de Valladolid.",
+      },
+      {
+        question: "¿Sirve si alquilo a un familiar?",
+        answer: "Sí. Incluso entre familiares conviene LAU con inventario; redactamos cláusulas claras y legales.",
+      },
+      {
+        question: "¿Incluye inventario en pisos amueblados?",
+        answer: "Sí. Inventario descriptivo y fotográfico incluido en el servicio.",
+      },
+    ],
+    heroImage: "/images/valladolid.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Valladolid — Livendia",
+  },
+  {
+    slug: "vigo",
+    city: "Vigo",
+    placeLabel: "Vigo",
+    schemaAdministrativeArea: "Galicia",
+    metaTitle: `Contrato alquiler Vigo — LAU Bouzas, Coia · ${PRICE}`,
+    metaDescription: `LAU en Vigo: Centro, Coia, Navia, Bouzas. Humedad, inventario, gestor online. ${PRICE} IVA incl. Entre particulares.`,
+    heroTitle: "Redacta tu contrato de alquiler en Vigo — humedad, barrio y LAU bien cerrados",
+    heroLead:
+      "Vigo combina demanda portuaria, universitaria y costa en Bouzas. Livendia redacta LAU con cláusulas sobre humedad e instalaciones, inventario fotográfico y gestor online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Galicia los edificios costeros y del s. XX acumulan humedades, filtraciones y calderas comunitarias antiguas. Un PDF genérico no documenta el estado del piso ni reparte IBI y comunidad como corresponde en Coia o Teis.",
+    marketContext:
+      "Centro, Coia, Navia y Bouzas concentran familias, profesionales del puerto y teletrabajadores. Galicia no está declarada zona tensionada; los conflictos aparecen cuando el contrato ignora humedad preexistente o mobiliario incluido en la renta.",
+    barriosIntro: "Barrios de Vigo donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Centro",
+      "Coia",
+      "Teis",
+      "Navia",
+      "Bouzas",
+      "Castrelos",
+      "Samil",
+      "Moaña",
+    ],
+    regulatoryBlock:
+      "En Galicia rige LAU estatal. Fianza de un mes (dos si arrendador persona jurídica). Conviene documentar humedades, calefacción y estado de fachada en el inventario antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Humedad y edificios costeros",
+        description: "Inventario y cláusulas de mantenimiento en Bouzas, Samil y fincas expuestas al salitre.",
+      },
+      {
+        title: "Demanda portuaria y profesional",
+        description: "LAU para inquilinos del sector marítimo y servicios en Centro y Coia.",
+      },
+      {
+        title: "Pisos compartidos universitarios",
+        description: "Convivencia en Navia y Castrelos con reparto de gastos y normas claras.",
+      },
+      {
+        title: "Servicio online desde Galicia",
+        description: "Briefing, documentación e inventario desde el panel; gestor operativo en todo el proceso.",
+      },
+    ],
+    agencyLocalNote:
+      "En Vigo las agencias piden comisión de un mes más gestión de miles de euros. Entre particulares en Coia o Teis, Livendia redacta por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 3 hab. · Gran Vía 42, Vigo (Centro)",
+    testimonialsTitle: "Particulares en Vigo con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Bouzas: humedad del baño y estado de la fachada quedaron en inventario con fotos. Todo online, sin ir al despacho.",
+        author: "María P.",
+        role: "Propietaria · Bouzas",
+      },
+      {
+        quote:
+          "Piso compartido en Navia: convivencia, trastero y fianza revisadas. El gestor explicó la fianza legal antes de transferir.",
+        author: "Diego R.",
+        role: "Inquilino · Navia",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Moaña o área metropolitana?",
+        answer: "Sí. LAU adaptada al municipio concreto del sur de Galicia.",
+      },
+      {
+        question: "¿El inventario cubre humedades?",
+        answer: "Sí. Documentamos manchas, filtraciones y estado de instalaciones antes de las llaves.",
+      },
+      {
+        question: "¿Contrato por habitación en Vigo?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+    ],
+    heroImage: "/images/vigo.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Vigo — Livendia",
+  },
+  {
+    slug: "gijon",
+    city: "Gijón",
+    placeLabel: "Gijón",
+    schemaAdministrativeArea: "Principado de Asturias",
+    metaTitle: `Contrato LAU Gijón — Cimadevilla, La Arena · ${PRICE}`,
+    metaDescription: `Contrato alquiler Gijón: Cimadevilla, La Arena, Somió, El Natahoyo. Online, inventario. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Alquiler en Gijón con contrato profesional — Cimadevilla, La Arena y campus",
+    heroLead:
+      "Gijón mezcla barrio histórico en Cimadevilla, familias en La Arena y rotación universitaria en Somió. Livendia redacta LAU con inventario, cláusulas para edificios asturianos y gestor online — 145 € IVA incl., sin comisión.",
+    whyIntro:
+      "En Asturias muchos alquileres son entre vecinos, familia o compañeros de trabajo. La confianza verbal no sustituye un LAU con inventario ni cláusulas sobre humedad, calefacción o ascensor antiguo en El Natahoyo.",
+    marketContext:
+      "Asturias no ha activado zona tensionada. Cimadevilla, La Arena, Somió y Laviada combinan edificios históricos, familias consolidadas y demanda universitaria. Propietarios fuera del Principado alquilan con frecuencia delegando todo el trámite online.",
+    barriosIntro: "Barrios de Gijón donde redactamos contratos LAU:",
+    barrios: [
+      "Cimadevilla",
+      "La Arena",
+      "El Natahoyo",
+      "Somió",
+      "Laviada",
+      "La Calzada",
+      "Jove",
+      "El Llano",
+    ],
+    regulatoryBlock:
+      "En el Principado de Asturias aplican reglas LAU estatales. Fianza de un mes (dos si arrendador es empresa). Revisamos IPC, depósitos adicionales y mantenimiento en edificios con humedad o calefacción central.",
+    localDifferentiators: [
+      {
+        title: "Cimadevilla y patrimonio histórico",
+        description: "Cláusulas de mantenimiento y comunidad en edificios del cerro con instalaciones antiguas.",
+      },
+      {
+        title: "Confianza personal, contrato en papel",
+        description: "Formalizamos alquileres entre conocidos sin convertirse en agencia inmobiliaria.",
+      },
+      {
+        title: "Rotación Somió y campus",
+        description: "Pisos compartidos con normas de convivencia y fianza conforme a LAU.",
+      },
+      {
+        title: "Gestor online en todo Asturias",
+        description: "Desde Gijón u Oviedo: panel, docs e inventario con asesoramiento posterior incluido.",
+      },
+    ],
+    agencyLocalNote:
+      "En Gijón las agencias piden honorarios altos más comisión. Entre particulares en La Arena o Cimadevilla, Livendia redacta el LAU por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Calle Corrida 28, Gijón (Centro)",
+    testimonialsTitle: "Particulares en Gijón con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler entre compañeros de trabajo en La Arena: el gestor adaptó convivencia y fianza. Trámite 100 % online.",
+        author: "Lucía A.",
+        role: "Propietaria · La Arena",
+      },
+      {
+        quote:
+          "Piso en Cimadevilla: humedad del sótano y caldera comunitaria en el inventario. Mejor que firmar a ciegas.",
+        author: "Rubén G.",
+        role: "Inquilino · Cimadevilla",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Atendéis también Oviedo o Avilés?",
+        answer: "Sí. Misma gestoría online para todo el Principado de Asturias.",
+      },
+      {
+        question: "¿Contrato de temporada en Gijón?",
+        answer: "Sí. Te orientamos sobre LAU habitual vs. temporada y redactamos la modalidad correcta.",
+      },
+      {
+        question: "¿Asturias tiene zona tensionada?",
+        answer: "No. El alquiler se rige por LAU general; adaptamos cláusulas de actualización de renta a la normativa vigente.",
+      },
+    ],
+    heroImage: "/images/gijon2.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Gijón — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("asturias"),
+  },
+  {
+    slug: "cordoba",
+    city: "Córdoba",
+    placeLabel: "Córdoba",
+    schemaAdministrativeArea: "Andalucía",
+    metaTitle: `Contrato LAU Córdoba — Judería, patios · ${PRICE}`,
+    metaDescription: `Contrato alquiler Córdoba: Judería, Ciudad Jardín, Levante, Rabanales. Patios, inventario, online. ${PRICE} IVA incl.`,
+    heroTitle: "Contrato de alquiler en Córdoba — patios, Judería y habitaciones UCO",
+    heroLead:
+      "Córdoba mezcla casco histórico UNESCO, patios interiores y demanda universitaria en Rabanales. Livendia redacta LAU con inventario de patios y mobiliario, cláusulas para edificios antiguos y gestor online — 145 € IVA incl.",
+    whyIntro:
+      "En el Judería o Ciudad Jardín es habitual pactar verbalmente sobre patios, muebles o obras menores. Si no consta en el LAU, el conflicto aparece meses después — especialmente en pisos compartidos de la UCO.",
+    marketContext:
+      "Andalucía no ha declarado zona tensionada en Córdoba capital. Judería, Levante, Sector Sur y Campus Rabanales combinan turismo residencial, familias locales y rotación estudiantil. Los cierres entre particulares son frecuentes; el borrador suele ser genérico.",
+    barriosIntro: "Barrios de Córdoba donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Judería",
+      "Centro",
+      "Ciudad Jardín",
+      "Levante",
+      "Sector Sur",
+      "Campus Rabanales",
+      "El Brillante",
+      "Santa Rosa",
+    ],
+    regulatoryBlock:
+      "En Andalucía rige LAU estatal. Fianza de un mes salvo arrendador persona jurídica (dos meses). Conviene delimitar patios, muebles incluidos y mantenimiento en edificios históricos antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Patios y casco UNESCO",
+        description: "Inventario de patios interiores, muebles y estado de instalaciones en el Judería.",
+      },
+      {
+        title: "Pisos compartidos UCO",
+        description: "Convivencia en Rabanales y Ciudad Jardín con normas de limpieza y visitas.",
+      },
+      {
+        title: "Levante y barrios residenciales",
+        description: "LAU para familias en urbanizaciones con parking y gastos de comunidad claros.",
+      },
+      {
+        title: "Gestoría online sin agencia",
+        description: "145 € fijos si ya tienes inquilino; panel, inventario y asesoramiento posterior.",
+      },
+    ],
+    agencyLocalNote:
+      "En Córdoba las agencias combinan comisión con honorarios de gestión. Entre particulares en el Judería o Levante, Livendia redacta por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 3 hab. · Calle Judíos 12, Córdoba (Judería)",
+    testimonialsTitle: "Particulares en Córdoba con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Judería: patio, muebles de terraza e inventario fotográfico muy detallado. Todo el trámite online.",
+        author: "Carmen V.",
+        role: "Propietaria · Judería",
+      },
+      {
+        quote:
+          "Habitación cerca de Rabanales: convivencia y fianza claras. El gestor corrigió cláusulas de la plantilla que me pasaron.",
+        author: "Andrés M.",
+        role: "Inquilino · Campus",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis alquiler en el Judería?",
+        answer: "Sí. Adaptamos cláusulas de mantenimiento, patios y comunidad a edificios históricos.",
+      },
+      {
+        question: "¿Puedo alquilar sin inmobiliaria en Córdoba?",
+        answer: `Sí. Contrato LAU por ${PRICE} IVA incl. con inventario y cláusulas adaptadas al inmueble.`,
+      },
+      {
+        question: "¿Incluye inventario de patios y muebles?",
+        answer: "Sí. Inventario descriptivo y fotográfico de zonas exteriores y mobiliario incluido.",
+      },
+    ],
+    heroImage: "/images/contratos7.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Córdoba — Livendia",
   },
 ];
