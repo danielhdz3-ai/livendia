@@ -58,8 +58,17 @@ const TABS: { id: TabId; label: string; icon: typeof LayoutDashboard }[] = [
   { id: "seguimiento", label: "Seguimiento", icon: ClipboardList },
 ];
 
-export function RentalContractPlatformShowcase() {
+export type RentalContractPlatformShowcaseProps = {
+  city?: string;
+  propertyLine?: string;
+};
+
+export function RentalContractPlatformShowcase({
+  city,
+  propertyLine = DEMO.property,
+}: RentalContractPlatformShowcaseProps = {}) {
   const [activeTab, setActiveTab] = useState<TabId>("expediente");
+  const demoProperty = propertyLine;
 
   return (
     <section
@@ -74,9 +83,9 @@ export function RentalContractPlatformShowcase() {
             Tu expediente de alquiler en un panel profesional y seguro
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#475569] sm:text-lg">
-            Contratas online y accedes a la misma plataforma que usan todos los clientes de Livendia: sube DNI,
-            fotos del inventario y sigue la redacción de tu contrato con un gestor inmobiliario asignado — sin correos
-            perdidos ni WhatsApps desordenados.
+            {city
+              ? `Contratas desde ${city} y accedes a la misma plataforma que usan todos los clientes de Livendia: sube DNI, fotos del inventario y sigue la redacción de tu contrato con un gestor inmobiliario asignado.`
+              : "Contratas online sin desplazarte y accedes a la plataforma Livendia: sube DNI, fotos del inventario y sigue la redacción con un gestor operativo asignado — con asesoramiento posterior incluido en el servicio."}
           </p>
         </div>
 
@@ -96,13 +105,13 @@ export function RentalContractPlatformShowcase() {
               },
               {
                 icon: User,
-                title: "Gestor asignado a tu trámite",
-                body: "Un gestor inmobiliario conoce tu caso de principio a fin y te avisa cuando el contrato está listo.",
+                title: "Gestor operativo en todo el proceso",
+                body: "Un gestor inmobiliario adaptado a tu caso te acompaña del briefing a la firma — y resuelve dudas posteriores dentro del servicio.",
               },
               {
                 icon: Upload,
-                title: "Subida desde móvil u ordenador",
-                body: "Arrastra PDFs y fotos del piso. Todo queda archivado en el expediente con historial de actividad.",
+                title: "100% online, sin ir al despacho",
+                body: "Contratas, pagas y subes documentación desde móvil u ordenador. Todo queda en tu expediente privado.",
               },
             ].map((item) => {
               const Icon = item.icon;
@@ -249,7 +258,7 @@ export function RentalContractPlatformShowcase() {
                                 <FileText className="h-5 w-5 text-white" aria-hidden />
                               </div>
                               <div className="min-w-0 flex-1">
-                                <p className="text-sm font-bold text-[#1E293B]">{DEMO.property}</p>
+                                <p className="text-sm font-bold text-[#1E293B]">{demoProperty}</p>
                                 <p className="mt-0.5 text-xs text-[#64748B]">
                                   Ref. {DEMO.expedienteRef} · {DEMO.monthlyRent}
                                 </p>
@@ -339,7 +348,7 @@ export function RentalContractPlatformShowcase() {
                                 Vista previa · Borrador
                               </p>
                               <p className="text-sm font-bold text-white">Contrato de arrendamiento LAU</p>
-                              <p className="text-[10px] text-blue-100">{DEMO.property}</p>
+                              <p className="text-[10px] text-blue-100">{demoProperty}</p>
                             </div>
                             <div className="space-y-2 p-4">
                               {DEMO.contractClauses.map((clause) => (

@@ -17,6 +17,10 @@ import {
   getPublishedAdministracionAlquilerTemporadaLocalCities,
 } from "@/lib/administracion-alquiler-temporada-local-cities";
 import {
+  REDACTAR_CONTRATO_ALQUILER_BASE,
+  getPublishedRedactarContratoAlquilerLocalCities,
+} from "@/lib/redactar-contrato-alquiler-local-cities";
+import {
   CONTRATO_ALQUILER_TEMPORADA_LOCAL_BASE,
   getPublishedContratoAlquilerTemporadaLocalCities,
 } from "@/lib/contrato-alquiler-temporada-local-cities";
@@ -196,6 +200,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: localDate,
       changeFrequency: "weekly" as const,
       priority: 0.82,
+    }));
+
+  const redactarContratoAlquilerLocalCiudades: MetadataRoute.Sitemap =
+    getPublishedRedactarContratoAlquilerLocalCities().map((c) => ({
+      url: `${base}${REDACTAR_CONTRATO_ALQUILER_BASE}/${c.slug}`,
+      lastModified: localDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
     }));
 
   const contratoAlquilerTemporadaLocalCiudades: MetadataRoute.Sitemap =
@@ -402,6 +414,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...contratoArrasLocalCiudades,
     ...administracionAlquilerLocalCiudades,
     ...administracionAlquilerTemporadaLocalCiudades,
+    ...redactarContratoAlquilerLocalCiudades,
     ...contratoAlquilerTemporadaLocalCiudades,
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,

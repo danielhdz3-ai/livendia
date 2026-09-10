@@ -1,4 +1,5 @@
-import { ContratoAlquilerLocalCityLinks } from "@/components/contrato-alquiler-local-city-links";
+import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
+import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
 import { FaqSection } from "@/components/faq-section";
 import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
@@ -108,18 +109,17 @@ export default async function RedactarContratoAlquilerPage() {
                   </h1>
                   <p className="mt-6 text-base leading-relaxed text-blue-50 sm:text-lg lg:text-xl">
                     Livendia es gestoría <strong className="text-white">especializada en contratos inmobiliarios</strong>{" "}
-                    para particulares: contrato LAU adaptado al Código Civil,{" "}
-                    <strong className="text-white">inventario profesional con fotos</strong>, orientación de fianza en el
-                    organismo correcto y acceso a una{" "}
-                    <strong className="text-white">plataforma privada 100% segura</strong> — por{" "}
-                    <strong className="text-white">{lauPrice} IVA incl.</strong>
+                    para particulares — <strong className="text-white">100% online, sin desplazarte</strong>: contrato
+                    LAU adaptado al Código Civil, inventario profesional, fianza orientada y un{" "}
+                    <strong className="text-white">gestor operativo</strong> en todo el proceso (y asesoramiento posterior
+                    incluido) — por <strong className="text-white">{lauPrice} IVA incl.</strong>
                   </p>
                   <ul className="mt-8 space-y-3">
                     {[
-                      "Documento con acabado visual impecable — no plantilla de internet",
-                      "Inventario descriptivo y fotográfico incluido",
-                      "Fianza orientada (AVS, INCASÒL u organismo de tu CCAA)",
-                      "Panel digital para subir documentación y seguir el trámite",
+                      "Servicio online: contratas, subes docs y hablas con tu gestor sin ir al despacho",
+                      "Gestor inmobiliario asignado — adaptado a tu alquiler de principio a fin",
+                      "Inventario profesional y contrato con acabado visual impecable",
+                      "Asesoramiento posterior a la entrega del contrato, dentro del servicio",
                     ].map((line) => (
                       <li key={line} className="flex items-start gap-3 text-sm sm:text-base">
                         <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
@@ -214,8 +214,8 @@ export default async function RedactarContratoAlquilerPage() {
                   },
                   {
                     icon: Eye,
-                    title: "Seguimiento transparente",
-                    text: "Panel digital con progreso del expediente, documentos subidos y gestor asignado visible en todo momento.",
+                    title: "Online y con seguimiento",
+                    text: "Panel digital sin desplazamientos: progreso visible, gestor asignado y canal de consulta durante y después del alquiler.",
                   },
                 ].map(({ icon: Icon, title, text }) => (
                   <div key={title} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
@@ -227,6 +227,8 @@ export default async function RedactarContratoAlquilerPage() {
               </div>
             </div>
           </section>
+
+          <RedactarContratoAlquilerOnlineGestorSection />
 
           {/* Plataforma interactiva */}
           <RentalContractPlatformShowcase />
@@ -269,7 +271,7 @@ export default async function RedactarContratoAlquilerPage() {
                       "Inventario profesional con fotos integrado al expediente",
                       "Orientación de inscripción de fianza en organismo autonómico",
                       "Documento con maquetación visual profesional",
-                      "Plataforma privada + gestor inmobiliario hasta la entrega",
+                      "100% online + gestor operativo durante y después del alquiler",
                     ].map((item) => (
                       <li key={item} className="flex gap-2">
                         <CheckCircle className="h-4 w-4 shrink-0 text-[#06B6D4] mt-0.5" aria-hidden />
@@ -443,21 +445,17 @@ export default async function RedactarContratoAlquilerPage() {
             placement="redactar_contrato_alquiler_mid"
           />
 
-          {/* Ciudades */}
+          {/* Ciudades conversión local */}
           <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">Contrato de alquiler por ciudad</h2>
+              <h2 className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">
+                Redactar contrato de alquiler por ciudad
+              </h2>
               <p className="mt-3 text-[#64748b]">
-                Contenido local con normativa de fianza y mercado en tu zona.
+                Misma landing de conversión con barrios, normativa local y mercado en Madrid, Barcelona, Valencia, Sevilla
+                y Málaga.
               </p>
-              <div className="mt-6">
-                <ContratoAlquilerLocalCityLinks showTitle={false} />
-              </div>
-              <p className="mt-4">
-                <Link href="/servicios/contrato-alquiler-local" className="text-sm font-semibold text-[#1A4FBF] hover:underline">
-                  Ver índice de ciudades →
-                </Link>
-              </p>
+              <RedactarContratoAlquilerLocalCityLinks className="mt-6" />
             </div>
           </section>
 

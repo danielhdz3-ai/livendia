@@ -8,6 +8,10 @@ import {
   getPublishedAdministracionAlquilerTemporadaLocalCities,
 } from "@/lib/administracion-alquiler-temporada-local-cities";
 import {
+  REDACTAR_CONTRATO_ALQUILER_BASE,
+  getPublishedRedactarContratoAlquilerLocalCities,
+} from "@/lib/redactar-contrato-alquiler-local-cities";
+import {
   CONTRATO_ALQUILER_LOCAL_BASE,
   getPublishedContratoAlquilerLocalCities,
 } from "@/lib/contrato-alquiler-local-cities";
@@ -106,6 +110,7 @@ export function FooterDiscoverabilityLinks() {
   const arrasLocal = getPublishedContratoArrasLocalCities();
   const adminLocal = getPublishedAdministracionAlquilerLocalCities();
   const adminTemporadaLocal = getPublishedAdministracionAlquilerTemporadaLocalCities();
+  const redactarContratoLocal = getPublishedRedactarContratoAlquilerLocalCities();
   const compraLocal = getPublishedServicioCompletoCompraLocalCities();
   const ventaLocal = getPublishedServicioCompletoVentaLocalCities();
   const temporadaLocal = getPublishedContratoAlquilerTemporadaLocalCities();
@@ -181,6 +186,11 @@ export function FooterDiscoverabilityLinks() {
           title="Admin. temporada/habitaciones por ciudad"
           hub={ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}
           cities={adminTemporadaLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
+        />
+        <LocalGroup
+          title="Redactar contrato alquiler por ciudad"
+          hub={REDACTAR_CONTRATO_ALQUILER_BASE}
+          cities={redactarContratoLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
         />
         <LocalGroup
           title="Compra completa por ciudad"
