@@ -129,6 +129,8 @@ export function AdminSalesCalendar({
           if (!cell.date || !cell.day) return <div key={`empty-${idx}`} className={compact ? "h-7" : "aspect-square"} />;
           const bucket = salesByDate[cell.date];
           const hasSales = Boolean(bucket?.orders.length);
+          const hasPendingOnly =
+            hasSales && bucket!.orders.every((o) => o.isPendingDue);
           const isToday = cell.date === todayKey;
           const isSelected = cell.date === selectedDate;
 
@@ -142,9 +144,11 @@ export function AdminSalesCalendar({
               } ${
                 isSelected
                   ? "border-[#1A4FBF] bg-[#EFF6FF] ring-1 ring-[#1A4FBF]/30"
-                  : hasSales
-                    ? "border-[#BFDBFE] bg-[#EFF6FF]/70 hover:bg-[#EFF6FF]"
-                    : "border-slate-200 bg-white hover:bg-slate-50"
+                  : hasPendingOnly
+                    ? "border-amber-300 bg-amber-50/80 hover:bg-amber-50"
+                    : hasSales
+                      ? "border-[#BFDBFE] bg-[#EFF6FF]/70 hover:bg-[#EFF6FF]"
+                      : "border-slate-200 bg-white hover:bg-slate-50"
               } ${isToday && !isSelected ? "ring-1 ring-[#1A4FBF]/40" : ""}`}
             >
               <span className="font-semibold leading-none text-[#1E293B]">{cell.day}</span>
@@ -176,7 +180,10 @@ export function AdminSalesCalendar({
                       <p className="text-sm font-semibold text-[#1E293B]">{o.clientName}</p>
                       <p className="text-xs text-[#64748B]">{o.serviceName}</p>
                     </div>
-                    <Link href={`${detailBaseHref}/${o.id}`} className="text-xs font-semibold text-[#1A4FBF] hover:underline">
+                    <Link
+                      href={o.detailHref ?? `${detailBaseHref}/${o.id}`}
+                      className="text-xs font-semibold text-[#1A4FBF] hover:underline"
+                    >
                       Ver →
                     </Link>
                   </div>

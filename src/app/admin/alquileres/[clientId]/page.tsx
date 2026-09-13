@@ -30,6 +30,8 @@ import { TenantInviteButton } from "@/components/tenant-invite-button";
 import { UnreadCountPill } from "@/components/admin-chat-nav-badge";
 import { IncidentsRealtimeRefresh } from "@/components/incidents-realtime-refresh";
 import { getAdminUnreadByProperty } from "@/lib/rental-chat-unread";
+import { RentalAdminBillingPanel } from "@/components/admin/rental-admin-billing-panel";
+import { RentalAdminTransferPaymentsPanel } from "@/components/admin/rental-admin-transfer-payments-panel";
 
 export const metadata = { title: { absolute: "Detalle de cliente — Livendia Admin" } };
 
@@ -157,6 +159,54 @@ export default async function AdminClientDetailPage({
       ? await getAdminUnreadByProperty(supabase, user.id, propertyIds)
       : { total: 0, byProperty: {} };
 
+  const { data: adminRentalService } = await supabase
+    .from("services")
+    .select("id")
+    .eq("slug", "administracion-alquiler")
+    .maybeSingle();
+
+  const { data: adminFeeOrders } = adminRentalService?.id
+    ? await supabase
+        .from("orders")
+        .select("id, total_cents, paid_at, notes, status, created_at")
+        .eq("client_id", clientId)
+        .eq("service_id", adminRentalService.id)
+        .not("paid_at", "is", null)
+        .order("paid_at", { ascending: false })
+    : { data: null };
+
+  const billingRes = await supabase.from("rental_admin_billing").select("*").eq("client_id", clientId).maybeSingle();
+  const billingRow = billingRes.error ? null : billingRes.data;
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+  let nextDueRow: { due_date: string; amount_cents: number } | null = null;
+  if (adminRentalService?.id && !billingRes.error) {
+    const nextDueRes = await supabase
+      .from("rental_admin_fee_dues")
+      .select("due_date, amount_cents")
+      .eq("client_id", clientId)
+      .eq("service_id", adminRentalService.id)
+      .eq("status", "pending")
+      .gte("due_date", todayIso)
+      .order("due_date", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+    if (!nextDueRes.error) nextDueRow = nextDueRes.data;
+  }
+
+  const billingPanelState = billingRow
+    ? {
+        status: billingRow.status as "active" | "suspended",
+        billingMethod: billingRow.billing_method as "transfer" | "stripe",
+        monthlyCents: billingRow.monthly_cents as number,
+        startedOn: billingRow.started_on as string,
+        suspendedAt: (billingRow.suspended_at as string | null) ?? null,
+        suspendReason: (billingRow.suspend_reason as string | null) ?? null,
+        nextDueDate: (nextDueRow?.due_date as string) ?? null,
+        nextDueCents: (nextDueRow?.amount_cents as number) ?? null,
+      }
+    : null;
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       {propertyIds.length > 0 ? (
@@ -230,6 +280,13 @@ export default async function AdminClientDetailPage({
           </div>
         </div>
       </div>
+
+      <RentalAdminBillingPanel clientId={clientId} billing={billingPanelState} />
+
+      <RentalAdminTransferPaymentsPanel
+        clientId={clientId}
+        orders={(adminFeeOrders ?? []) as Parameters<typeof RentalAdminTransferPaymentsPanel>[0]["orders"]}
+      />
 
       <div className="mb-8">
         <AdminIncidentsList

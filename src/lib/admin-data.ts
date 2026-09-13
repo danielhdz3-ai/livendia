@@ -55,6 +55,14 @@ export function filterRevenueOrders(orders: AdminOrderRow[]): AdminOrderRow[] {
   return orders.filter(countsAsRevenue);
 }
 
+/** Evita duplicar en calendario cuotas admin ya representadas el día 1. */
+export function filterOrdersForSalesCalendar(
+  orders: AdminOrderRow[],
+  linkedAdminFeeOrderIds: Set<string>,
+): AdminOrderRow[] {
+  return orders.filter((o) => !linkedAdminFeeOrderIds.has(o.id));
+}
+
 export function sumOrderRevenueCents(orders: AdminOrderRow[]): number {
   return filterRevenueOrders(orders).reduce((sum, o) => sum + (o.total_cents ?? 0), 0);
 }
@@ -97,6 +105,10 @@ export type SalesDayBucket = {
     paidAt: string;
     status: string;
     isManual: boolean;
+    /** Cuota admin día 1 aún no cobrada (calendario). */
+    isPendingDue?: boolean;
+    /** Enlace alternativo (p. ej. ficha alquileres). */
+    detailHref?: string;
   }[];
 };
 

@@ -159,3 +159,6 @@ BEGIN
   RAISE NOTICE '';
   
 END $$;
+
+-- Cuotas administración alquiler (calendario día 1):
+-- Ejecuta en el SQL Editor el archivo supabase/migrations/20260913194500_rental_admin_billing.sql

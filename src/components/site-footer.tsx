@@ -270,8 +270,11 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
               </div>
               <p className="text-xs text-blue-100">
                 © {currentYear} {legal.legalName}. Todos los derechos reservados.
-                {legal.taxId ? ` · ${legal.taxId}` : null}
+                {legal.taxId ? ` · NIF ${legal.taxId}` : null}
               </p>
+              {legal.addressLine ? (
+                <p className="mt-1 text-xs text-blue-200/90">Domicilio fiscal: {legal.addressLine}</p>
+              ) : null}
             </div>
           </div>
         </div>

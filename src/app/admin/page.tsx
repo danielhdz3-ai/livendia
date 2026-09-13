@@ -8,13 +8,13 @@ import {
   fetchClientEmails,
   filterRevenueOrders,
   formatEuros,
-  groupOrdersByPaidDate,
   serviceName,
   sumOrderRevenueCents,
   uniqueRealClientIds,
   type AdminOrderRow,
 } from "@/lib/admin-data";
 import { ADMIN_CARD_COMPACT } from "@/lib/admin-ui";
+import { buildAdminSalesCalendarByDate } from "@/lib/admin-sales-calendar-data";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -42,8 +42,7 @@ export default async function AdminDashboardPage() {
   const newClientsWeek = countRealClientsWithRevenueSince(paidOrders, weekAgo);
   const emailByClient = await fetchClientEmails(clientIds);
 
-  const salesMap = groupOrdersByPaidDate(paidOrders, emailByClient);
-  const salesByDate = Object.fromEntries(salesMap);
+  const salesByDate = await buildAdminSalesCalendarByDate(supabase, paidOrdersResult ?? []);
 
   const monthRevenue = paidOrders
     .filter((o) => o.paid_at && o.paid_at >= startOfMonth)

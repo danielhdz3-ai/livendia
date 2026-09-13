@@ -4,11 +4,11 @@ import {
   fetchAllOrders,
   fetchClientEmails,
   filterRevenueOrders,
-  groupOrdersByPaidDate,
   sumOrderRevenueCents,
   type AdminOrderRow,
 } from "@/lib/admin-data";
 import { formatEuros } from "@/lib/admin-data";
+import { buildAdminSalesCalendarByDate } from "@/lib/admin-sales-calendar-data";
 import { requireAdmin } from "@/lib/admin-auth";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -29,8 +29,7 @@ export default async function AdminVentasPage() {
   const emailByClient = await fetchClientEmails(clientIds);
 
   const revenueOrders = filterRevenueOrders(orders);
-  const salesMap = groupOrdersByPaidDate(revenueOrders, emailByClient);
-  const salesByDate = Object.fromEntries(salesMap);
+  const salesByDate = await buildAdminSalesCalendarByDate(supabase, orders);
 
   const ventaRows = orders.map((o) => ({
     ...o,

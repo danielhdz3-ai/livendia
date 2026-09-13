@@ -7,6 +7,11 @@ import {
 } from "@/lib/email/send";
 import { logOrderActivity, logOrderDeliverable } from "@/lib/order-activity-log";
 import { ORDER_STATUS_LABEL_ES } from "@/lib/order-status-labels";
+import {
+  ensureRentalAdminBillingAccount,
+  ensureRentalAdminFeeDuesForAccount,
+  linkTransferPaymentToFeeDue,
+} from "@/lib/rental-admin-billing";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
@@ -189,7 +194,152 @@ export async function createManualSale(input: {
   });
 
   revalidateAdminSales();
+  revalidatePath("/admin/alquileres");
   return { ok: true, orderId: data.id as string };
+}
+
+/** Cuota mensual de administración de alquiler pagada por transferencia (sin Stripe). */
+export async function createRentalAdminTransferPayment(input: {
+  clientId: string;
+  totalCents: number;
+  paidAt?: string;
+  invoiceRef?: string;
+  periodLabel?: string;
+}) {
+  const auth = await assertAdmin();
+  if (auth.error || !auth.supabase) return { error: auth.error };
+
+  const clientId = input.clientId.trim();
+  const totalCents = Math.round(input.totalCents);
+  if (!clientId || totalCents <= 0) {
+    return { error: "Cliente e importe son obligatorios." };
+  }
+
+  const { data: service } = await auth.supabase
+    .from("services")
+    .select("id")
+    .eq("slug", "administracion-alquiler")
+    .maybeSingle();
+
+  if (!service?.id) return { error: "Servicio administración de alquiler no encontrado." };
+
+  const paidAt = input.paidAt?.trim() ? new Date(input.paidAt).toISOString() : new Date().toISOString();
+  if (Number.isNaN(new Date(paidAt).getTime())) {
+    return { error: "Fecha de pago no válida." };
+  }
+
+  const parts = [
+    "Pago por transferencia bancaria (cuota administración de alquiler)",
+    input.periodLabel?.trim(),
+    input.invoiceRef?.trim() ? `Factura ${input.invoiceRef.trim()}` : null,
+  ].filter(Boolean);
+  const note = parts.join(" · ");
+
+  const { data, error } = await auth.supabase
+    .from("orders")
+    .insert({
+      client_id: clientId,
+      service_id: service.id as string,
+      status: "in_progress",
+      total_cents: totalCents,
+      paid_at: paidAt,
+      notes: note,
+    })
+    .select("id")
+    .single();
+
+  if (error) return { error: error.message };
+
+  await logOrderActivity({
+    orderId: data.id as string,
+    kind: "payment",
+    title: "Cuota administración — transferencia",
+    description: note,
+  });
+
+  await ensureRentalAdminBillingAccount(auth.supabase, {
+    clientId,
+    serviceId: service.id as string,
+    billingMethod: "transfer",
+  });
+
+  await linkTransferPaymentToFeeDue(auth.supabase, {
+    clientId,
+    serviceId: service.id as string,
+    orderId: data.id as string,
+    paidAtIso: paidAt,
+    totalCents,
+  });
+
+  revalidateAdminSales();
+  revalidatePath("/admin");
+  revalidatePath("/admin/ventas");
+  revalidatePath("/admin/alquileres");
+  revalidatePath(`/admin/alquileres/${clientId}`);
+  revalidatePath("/admin/expedientes");
+  return { ok: true, orderId: data.id as string };
+}
+
+export async function updateRentalAdminBillingStatus(input: {
+  clientId: string;
+  status: "active" | "suspended";
+  suspendReason?: string;
+}) {
+  const auth = await assertAdmin();
+  if (auth.error || !auth.supabase) return { error: auth.error };
+
+  const clientId = input.clientId.trim();
+  if (!clientId) return { error: "Cliente no válido." };
+
+  const serviceId = await auth.supabase
+    .from("services")
+    .select("id")
+    .eq("slug", "administracion-alquiler")
+    .maybeSingle()
+    .then((r) => r.data?.id as string | undefined);
+
+  if (!serviceId) return { error: "Servicio no encontrado." };
+
+  const billing = await ensureRentalAdminBillingAccount(auth.supabase, {
+    clientId,
+    serviceId,
+    billingMethod: "transfer",
+  });
+  if (!billing) return { error: "No se pudo crear la ficha de administración." };
+
+  const patch =
+    input.status === "suspended"
+      ? {
+          status: "suspended" as const,
+          suspended_at: new Date().toISOString(),
+          suspend_reason: input.suspendReason?.trim() || null,
+        }
+      : {
+          status: "active" as const,
+          suspended_at: null,
+          suspend_reason: null,
+        };
+
+  const { error } = await auth.supabase.from("rental_admin_billing").update(patch).eq("client_id", clientId);
+
+  if (error) return { error: error.message };
+
+  if (input.status === "active") {
+    const { data: refreshed } = await auth.supabase
+      .from("rental_admin_billing")
+      .select("*")
+      .eq("client_id", clientId)
+      .maybeSingle();
+    if (refreshed) {
+      await ensureRentalAdminFeeDuesForAccount(auth.supabase, refreshed as typeof billing);
+    }
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/admin/ventas");
+  revalidatePath("/admin/alquileres");
+  revalidatePath(`/admin/alquileres/${clientId}`);
+  return { ok: true };
 }
 
 export async function deleteManualSale(orderId: string) {

@@ -1,3 +1,4 @@
+import { ensureAllRentalAdminFeeDues, getAdminRentalServiceId, syncPaidFeeDuesFromOrders } from "@/lib/rental-admin-billing";
 import {
   ensureCurrentMonthPayments,
   markOverdueRentPayments,
@@ -16,9 +17,15 @@ export async function GET(req: Request) {
   const markedLate = await markOverdueRentPayments(supabase);
   const createdCurrent = await ensureCurrentMonthPayments(supabase);
 
+  const adminBilling = await ensureAllRentalAdminFeeDues(supabase);
+  const serviceId = await getAdminRentalServiceId(supabase);
+  const syncedAdminDues = serviceId ? await syncPaidFeeDuesFromOrders(supabase, serviceId) : 0;
+
   return NextResponse.json({
     ok: true,
     markedLate,
     createdCurrentMonth: createdCurrent,
+    rentalAdminBilling: adminBilling,
+    syncedAdminDues,
   });
 }

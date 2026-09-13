@@ -1,6 +1,7 @@
 import {
   BUSINESS_EMAIL,
   BUSINESS_NAME,
+  BUSINESS_TAX_ID_DEFAULT,
   businessNap,
   getBusinessAddressDisplayLine,
 } from "@/lib/business-nap";
@@ -9,7 +10,7 @@ import {
 export function getBusinessLegalIdentity() {
   const legalName =
     process.env.NEXT_PUBLIC_BUSINESS_LEGAL_NAME?.trim() || `${BUSINESS_NAME} — Gestoría inmobiliaria`;
-  const taxId = process.env.NEXT_PUBLIC_BUSINESS_TAX_ID?.trim() || null;
+  const taxId = process.env.NEXT_PUBLIC_BUSINESS_TAX_ID?.trim() || BUSINESS_TAX_ID_DEFAULT;
   const addressLine = getBusinessAddressDisplayLine();
 
   return {

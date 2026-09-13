@@ -44,7 +44,55 @@ export default async function AdminAlquileresPage() {
       if (!rentalClientsById.has(row.clientId)) rentalClientsById.set(row.clientId, row);
     }
   }
-  const rentalClients = [...rentalClientsById.values()];
+  const rentalClients = [...rentalClientsById.values()].sort(
+    (a, b) => new Date(b.since).getTime() - new Date(a.since).getTime(),
+  );
+
+  const adminAlquilerServiceId =
+    (
+      await supabase.from("services").select("id").eq("slug", "administracion-alquiler").maybeSingle()
+    ).data?.id ?? null;
+
+  const clientIds = rentalClients.map((c) => c.clientId);
+  const billingStatusByClient = new Map<string, "active" | "suspended">();
+  if (clientIds.length > 0) {
+    const { data: billingRows, error: billingErr } = await supabase
+      .from("rental_admin_billing")
+      .select("client_id, status")
+      .in("client_id", clientIds);
+    if (!billingErr) {
+      for (const row of billingRows ?? []) {
+        billingStatusByClient.set(row.client_id as string, row.status as "active" | "suspended");
+      }
+    }
+  }
+
+  const todayIso = new Date().toISOString().slice(0, 10);
+  type UpcomingDueRow = { id: string; client_id: string; due_date: string; amount_cents: number };
+  let upcomingDues: UpcomingDueRow[] = [];
+  if (adminAlquilerServiceId) {
+    const duesRes = await supabase
+      .from("rental_admin_fee_dues")
+      .select("id, client_id, due_date, amount_cents, status")
+      .eq("service_id", adminAlquilerServiceId)
+      .eq("status", "pending")
+      .gte("due_date", todayIso)
+      .order("due_date", { ascending: true })
+      .limit(12);
+    if (!duesRes.error && duesRes.data) upcomingDues = duesRes.data as UpcomingDueRow[];
+  }
+
+  const dueClientIds = [...new Set((upcomingDues ?? []).map((d) => d.client_id as string))];
+  const dueNameByClient = new Map<string, string>();
+  if (dueClientIds.length > 0) {
+    const { data: dueProfiles } = await supabase
+      .from("profiles")
+      .select("id, full_name")
+      .in("id", dueClientIds);
+    for (const p of dueProfiles ?? []) {
+      dueNameByClient.set(p.id as string, (p.full_name as string) || "Cliente");
+    }
+  }
 
   const clientsWithData = await Promise.all(
     rentalClients.map(async (client) => {
@@ -146,6 +194,45 @@ export default async function AdminAlquileresPage() {
         </div>
       </div>
 
+      {upcomingDues.length > 0 ? (
+        <section className="mb-8 rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
+          <h2 className="text-lg font-bold text-[#1E293B]">Operaciones — cuotas administración (día 1)</h2>
+          <p className="mt-1 text-sm text-[#64748B]">
+            Próximas cuotas previstas en calendario (transferencia). Ámbar = pendiente de cobro.
+          </p>
+          <ul className="mt-4 divide-y divide-slate-100">
+            {upcomingDues.map((due) => (
+              <li key={due.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
+                <div>
+                  <span className="font-semibold text-[#1E293B]">
+                    {dueNameByClient.get(due.client_id as string) ?? "Cliente"}
+                  </span>
+                  <span className="text-[#64748B]">
+                    {" "}
+                    · {new Date(due.due_date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-bold text-[#1A4FBF]">
+                    {(due.amount_cents / 100).toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
+                    €
+                  </span>
+                  <Link
+                    href={`/admin/alquileres/${due.client_id}`}
+                    className="text-xs font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    Ficha →
+                  </Link>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {!clientsWithData.length ? (
         <div className="rounded-xl bg-white p-12 text-center shadow ring-1 ring-slate-200">
           <Building2 className="mx-auto h-16 w-16 text-[#64748B]" />
@@ -156,7 +243,9 @@ export default async function AdminAlquileresPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {clientsWithData.map(({ client, properties, tenants, pendingDocs, openIncidents }) => (
+          {clientsWithData.map(({ client, properties, tenants, pendingDocs, openIncidents }) => {
+            const billingStatus = billingStatusByClient.get(client.clientId) ?? "active";
+            return (
             <div
               key={client.clientId}
               className="rounded-xl bg-white p-6 shadow ring-1 ring-slate-200 transition hover:shadow-lg"
@@ -164,9 +253,20 @@ export default async function AdminAlquileresPage() {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="mb-4">
-                    <h3 className="text-lg font-bold text-[#1E293B]">
-                      {client.profile?.full_name || "Cliente sin nombre"}
-                    </h3>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-lg font-bold text-[#1E293B]">
+                        {client.profile?.full_name || "Cliente sin nombre"}
+                      </h3>
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
+                          billingStatus === "active"
+                            ? "bg-emerald-100 text-emerald-800"
+                            : "bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        {billingStatus === "active" ? "Activo" : "Suspendido"}
+                      </span>
+                    </div>
                     <div className="mt-1 flex flex-wrap gap-4 text-sm text-[#64748B]">
                       <span>{client.profile?.email}</span>
                       {client.profile?.phone ? <span>📞 {client.profile.phone}</span> : null}
@@ -247,7 +347,8 @@ export default async function AdminAlquileresPage() {
                 </div>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       )}
     </main>

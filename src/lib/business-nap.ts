@@ -28,6 +28,9 @@ export const BUSINESS_ADDRESS_DEFAULTS = {
   neighborhood: "Les Corts",
 } as const;
 
+/** NIF fiscal del titular de la plataforma (publicable en aviso legal y facturación). */
+export const BUSINESS_TAX_ID_DEFAULT = "47838191P";
+
 /** Coordenadas aproximadas del despacho (Mejía Lequerica 44). */
 export const BUSINESS_GEO = {
   latitude: 41.383037,
