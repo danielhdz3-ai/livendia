@@ -1,6 +1,7 @@
 import { FaqSection } from "@/components/faq-section";
 import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
 import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/components/redactar-contrato-alquiler-administracion-upsell-section";
+import { RedactarContratoAlquilerRedaccionServicioSection } from "@/components/redactar-contrato-alquiler-redaccion-servicio-section";
 import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
 import { RedactarContratoAlquilerPlainLanguageHeroIntro } from "@/components/redactar-contrato-alquiler-plain-language-hero-intro";
 import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
@@ -188,6 +189,11 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RedactarContratoAlquilerRedaccionServicioSection
+            placeLabel={config.placeLabel}
+            contractPriceLabel={lauPrice}
+          />
 
           <RedactarContratoAlquilerAdministracionUpsellSection
             placeLabel={config.placeLabel}

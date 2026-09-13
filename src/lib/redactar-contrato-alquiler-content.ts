@@ -16,6 +16,22 @@ export const REDACTAR_CONTRATO_PLAIN_LANGUAGE = {
   lawFootnote: "Incluye arrendamiento de vivienda habitual y cláusulas adaptadas a la normativa vigente.",
 } as const;
 
+/** Módulo principal tras el hero: qué incluye la redacción del contrato (antes de admin). */
+export const REDACTAR_CONTRATO_REDACCION_SERVICIO = {
+  eyebrow: "Servicio de redacción",
+  title: "Livendia redacta tu contrato de alquiler",
+  intro:
+    "No es una plantilla automática: un gestor inmobiliario especializado te acompaña en todo el proceso. Puedes hablar con el gestor, resolver dudas, contratar online y dejar el contrato e inventario en manos profesionales.",
+  bullets: [
+    "Contacto con tu gestor antes y durante el trámite — resolvemos dudas de propietario e inquilino",
+    "Contratas el servicio online con pago seguro y acceso al panel Livendia",
+    "El gestor tramita el contrato de alquiler adaptado a la ley y recoge lo pactado en la visita",
+    "Inventario fotográfico del piso y entrega de un contrato de alquiler profesional, listo para firmar",
+  ] as const,
+  imageSrc: "/images/contratodealquiler.jpg",
+  imageAlt: "Gestor Livendia redactando un contrato de alquiler con inventario",
+} as const;
+
 /** Módulo transversal: upsell administración de alquiler (49 €/mes). */
 export const REDACTAR_CONTRATO_ADMIN_UPSELL = {
   eyebrow: "Después de firmar el contrato",

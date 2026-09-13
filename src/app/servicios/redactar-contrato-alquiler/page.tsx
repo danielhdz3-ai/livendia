@@ -1,4 +1,5 @@
 import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/components/redactar-contrato-alquiler-administracion-upsell-section";
+import { RedactarContratoAlquilerRedaccionServicioSection } from "@/components/redactar-contrato-alquiler-redaccion-servicio-section";
 import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
 import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
 import { RedactarContratoAlquilerPlainLanguageHeroIntro } from "@/components/redactar-contrato-alquiler-plain-language-hero-intro";
@@ -180,6 +181,8 @@ export default async function RedactarContratoAlquilerPage() {
               </div>
             </div>
           </section>
+
+          <RedactarContratoAlquilerRedaccionServicioSection contractPriceLabel={lauPrice} />
 
           <RedactarContratoAlquilerAdministracionUpsellSection adminPriceLabel={adminPriceLabel} />
 
