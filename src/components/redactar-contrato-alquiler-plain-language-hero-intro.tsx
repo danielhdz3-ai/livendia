@@ -25,9 +25,9 @@ export function RedactarContratoAlquilerPlainLanguageHeroIntro({ placeLabel, var
   }
 
   return (
-    <div className="mb-6 rounded-xl border border-white/25 bg-white/10 px-4 py-4 backdrop-blur-sm sm:px-5 sm:py-5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-cyan-200 sm:text-sm">{copy.brandLine}</p>
-      <p className="mt-1 text-lg font-bold leading-snug text-white sm:text-xl">
+    <div className="mb-6 rounded-xl border-2 border-white/50 bg-white/20 px-4 py-4 shadow-lg backdrop-blur-sm sm:px-5 sm:py-5">
+      <p className="text-sm font-bold uppercase tracking-wide text-white sm:text-base">{copy.brandLine}</p>
+      <p className="mt-2 text-xl font-extrabold leading-snug text-white sm:text-2xl">
         {copy.promiseLine}
         {placeSuffix}
       </p>

@@ -28,7 +28,7 @@ export const REDACTAR_CONTRATO_ADMIN_UPSELL = {
     "Renovaciones, mediación y documentación de cada caso",
     "Tarifa plana sin permanencia — contratas cuando lo necesites",
   ] as const,
-  imageSrc: "/images/gestora7.jpg",
+  imageSrc: "/images/gestoria3.jpg",
   imageAlt: "Gestora Livendia administrando un alquiler entre particulares",
   ctaPrimary: "Contratar administración",
   ctaSecondary: "Ver administración de alquiler",
