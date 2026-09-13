@@ -26,6 +26,11 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[]
   "vigo",
   "gijon",
   "cordoba",
+  "las-palmas",
+  "santander",
+  "pamplona",
+  "oviedo",
+  "asturias",
 ] as const;
 
 export function isRedactarContratoAlquilerLocalSlugPublished(slug: string): boolean {
@@ -101,6 +106,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     schemaAdministrativeArea: "Comunidad de Madrid",
     metaTitle: `Redactar contrato alquiler Madrid — ${PRICE} IVA incl.`,
     metaDescription: `Contrato LAU profesional en Madrid: inventario, depósito AVS y cláusulas para Salamanca, Chamberí, Vallecas o cinturón sur. ${PRICE} IVA incl. Sin comisión de agencia.`,
+    heroTitle: "Contrato de alquiler en Madrid — AVS, inventario y 145 € sin comisión de agencia",
     heroLead:
       "¿Ya tienes inquilino en Madrid por Idealista o recomendación y la agencia te pide miles de euros? Livendia redacta tu contrato LAU con inventario fotográfico, orientación de fianza en la AVS y acabado visual profesional por 145 € IVA incl. — desde Salamanca hasta Vallecas.",
     whyIntro:
@@ -189,6 +195,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     schemaAdministrativeArea: "Cataluña",
     metaTitle: `Redactar contrato alquiler Barcelona — ${PRICE} IVA incl.`,
     metaDescription: `Contrato LAU en Barcelona: INCASÒL, zona tensionada, inventario y Eixample, Gràcia, Poblenou. ${PRICE} IVA incl. Entre particulares sin agencia.`,
+    heroTitle: "Contrato LAU en Barcelona — INCASÒL, zona tensionada y gestoría online",
     heroLead:
       "¿Alquilas en Barcelona entre particulares sin pagar comisión de agencia? Livendia redacta contrato LAU con inventario profesional, topes de zona tensionada revisados, fianza INCASÒL orientada y panel digital seguro — 145 € IVA incl.",
     whyIntro:
@@ -275,6 +282,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     schemaAdministrativeArea: "Comunidad Valenciana",
     metaTitle: `Redactar contrato alquiler Valencia — ${PRICE} IVA incl.`,
     metaDescription: `Contrato LAU en Valencia: Ruzafa, Benimaclet, Ciutat Vella, inventario y fianza. ${PRICE} IVA incl. Entre particulares sin comisión de agencia.`,
+    heroTitle: "¿Cierras alquiler en Valencia entre particulares? LAU profesional por 145 €",
     heroLead:
       "¿Cierras alquiler en Valencia entre particulares y no quieres pagar 2.000 € a una agencia? Livendia redacta contrato LAU con inventario, cláusulas adaptadas a Ruzafa, Benimaclet o Mislata y acceso al panel digital — 145 € IVA incl.",
     whyIntro:
@@ -360,6 +368,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     schemaAdministrativeArea: "Andalucía",
     metaTitle: `Redactar contrato alquiler Sevilla — ${PRICE} IVA incl.`,
     metaDescription: `Contrato LAU en Sevilla: Triana, Nervión, Los Remedios, Macarena. Inventario, fianza y ${PRICE} IVA incl. Sin comisión de agencia.`,
+    heroTitle: "Contrato de alquiler en Sevilla — Triana, Feria y campus, sin comisión",
     heroLead:
       "¿Alquilas en Sevilla entre particulares sin pagar miles a una inmobiliaria? Livendia redacta contrato LAU con inventario, cláusulas para Triana, Nervión o Macarena y panel de seguimiento — 145 € IVA incl.",
     whyIntro:
@@ -445,6 +454,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     schemaAdministrativeArea: "Andalucía",
     metaTitle: `Redactar contrato alquiler Málaga — ${PRICE} IVA incl.`,
     metaDescription: `Contrato LAU en Málaga: Centro, Teatinos, El Palo, Costa del Sol. Inventario, fianza y ${PRICE} IVA incl. Entre particulares sin agencia.`,
+    heroTitle: "Alquiler en Málaga y Costa del Sol — LAU e inventario por 145 €, online",
     heroLead:
       "¿Alquilas en Málaga o Costa del Sol próxima sin comisión de agencia? Livendia redacta contrato LAU con inventario profesional, límites claros entre residencia y temporada, y panel digital — 145 € IVA incl.",
     whyIntro:
@@ -1328,5 +1338,407 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
     ],
     heroImage: "/images/contratos7.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Córdoba — Livendia",
+  },
+  {
+    slug: "las-palmas",
+    city: "Las Palmas de Gran Canaria",
+    placeLabel: "Las Palmas de Gran Canaria",
+    schemaAdministrativeArea: "Canarias",
+    metaTitle: `Contrato alquiler Las Palmas — LAU Canarias · ${PRICE}`,
+    metaDescription: `LAU en Las Palmas: Vegueta, Triana, Las Canteras. Climatización, humedad, inventario online. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Contrato LAU en Las Palmas — climatización, humedad e inventario en Canarias",
+    heroLead:
+      "Las Palmas mezcla residencia habitual, universidad y teletrabajo frente al Atlántico. Livendia redacta LAU con inventario, cláusulas sobre climatización y humedad, y gestor online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Canarias los conflictos habituales son averías de climatización, humedad por salitre y reparto de comunidad mal redactado. Un PDF peninsular no documenta el estado del piso ni los suministros típicos del archipiélago.",
+    marketContext:
+      "Vegueta, Triana, Las Canteras y Guanarteme concentran demanda de familias, estudiantes y teletrabajadores. Canarias no está declarada zona tensionada; conviene cerrar inventario y pequeña reparación antes de la primera renta.",
+    barriosIntro: "Barrios de Las Palmas donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Vegueta",
+      "Triana",
+      "Las Canteras",
+      "Guanarteme",
+      "Alcaravaneras",
+      "Tamaraceite",
+      "Ciudad Alta",
+      "Telde",
+    ],
+    regulatoryBlock:
+      "En Canarias aplican reglas LAU estatales. Fianza de un mes (dos si arrendador persona jurídica). Revisamos depósitos adicionales, IPC y cláusulas de mantenimiento en edificios costeros.",
+    localDifferentiators: [
+      {
+        title: "Climatización y suministros",
+        description: "Delimitamos avería grave frente a desgaste normal y reparto de electricidad en climatización.",
+      },
+      {
+        title: "Humedad y salitre en fachada",
+        description: "Inventario fotográfico de filtraciones y estado de instalaciones antes de las llaves.",
+      },
+      {
+        title: "Pisos compartidos universitarios",
+        description: "Convivencia en Ciudad Alta y zonas campus con normas de zonas comunes claras.",
+      },
+      {
+        title: "Gestoría 100 % online desde Canarias",
+        description: "Panel, documentación e inventario sin desplazarte al despacho peninsular.",
+      },
+    ],
+    agencyLocalNote:
+      "En Las Palmas las agencias piden comisión de un mes más gestión elevada. Entre particulares en Triana o Las Canteras, Livendia redacta por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 2 hab. · Calle Mayor de Triana 48, Las Palmas (Triana)",
+    testimonialsTitle: "Particulares en Las Palmas con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Las Canteras: climatización, humedad del baño e inventario quedaron por escrito. Trámite online impecable.",
+        author: "Patricia N.",
+        role: "Propietaria · Las Canteras",
+      },
+      {
+        quote:
+          "Piso compartido en Guanarteme: convivencia y fianza revisadas. Mejor que la plantilla que bajé de internet.",
+        author: "Jorge & Ana",
+        role: "Inquilinos · Guanarteme",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Telde o municipios cercanos?",
+        answer: "Sí. LAU adaptada al municipio de Gran Canaria concreto.",
+      },
+      {
+        question: "¿El inventario cubre electrodomésticos y climatización?",
+        answer: "Sí. Documentamos estado de equipos y instalaciones incluidos en la renta.",
+      },
+      {
+        question: "¿Contrato por habitación en Las Palmas?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+    ],
+    heroImage: "/images/menorca1.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Las Palmas de Gran Canaria — Livendia",
+  },
+  {
+    slug: "santander",
+    city: "Santander",
+    placeLabel: "Santander",
+    schemaAdministrativeArea: "Cantabria",
+    metaTitle: `Contrato alquiler Santander — Sardinero · ${PRICE}`,
+    metaDescription: `LAU en Santander: Centro, El Sardinero, Monte. Inventario, online, temporada o habitual. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Alquiler en Santander — El Sardinero, universidad y LAU por 145 € online",
+    heroLead:
+      "Santander combina El Sardinero, demanda universitaria en Monte y familias en Cueto. Livendia redacta LAU con inventario, límites entre residencia y estancia media, y gestor online — 145 € IVA incl., sin comisión.",
+    whyIntro:
+      "Cantabria mezcla segunda residencia costera y alquiler anual en el ensanche. Los borradores genéricos no distinguen temporada de LAU habitual ni documentan humedad en edificios frente al mar.",
+    marketContext:
+      "Centro, El Sardinero, Monte y Peñacastillo concentran profesionales, estudiantes y teletrabajadores. Cantabria no está declarada zona tensionada; el riesgo está en fianza transferida sin contrato que recoja lo pactado en visita.",
+    barriosIntro: "Barrios de Santander donde redactamos contratos LAU:",
+    barrios: [
+      "Centro",
+      "El Sardinero",
+      "Cueto",
+      "Monte",
+      "Peñacastillo",
+      "Raos",
+      "Castilla-Hermida",
+      "Camargo",
+    ],
+    regulatoryBlock:
+      "En Cantabria rige LAU estatal. Fianza legal de un mes (dos meses si arrendador es empresa). Conviene explicitar mobiliario incluido, suministros y estado del inmueble en edificios costeros.",
+    localDifferentiators: [
+      {
+        title: "El Sardinero: residencia vs. estancia media",
+        description: "Delimitamos duración, ocupación y suministros cuando el perfil no es LAU de larga duración.",
+      },
+      {
+        title: "Zona universitaria Monte",
+        description: "Pisos compartidos con convivencia y reparto de gastos redactados con equilibrio.",
+      },
+      {
+        title: "Humedad en fincas costeras",
+        description: "Inventario fotográfico de fachada, baños y zonas húmedas antes de firmar.",
+      },
+      {
+        title: "Servicio online sin agencia",
+        description: "145 € fijos si ya tienes inquilino; gestor operativo en todo el proceso.",
+      },
+    ],
+    agencyLocalNote:
+      "En Santander las agencias combinan comisión de un mes con honorarios de gestión. Entre particulares en el Centro o Cueto, Livendia redacta el LAU por 145 €.",
+    platformDemoProperty: "Piso 3 hab. · Calle Burgos 12, Santander (Centro)",
+    testimonialsTitle: "Particulares en Santander con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en El Sardinero: mobiliario, entrega de llaves e inventario fotográfico muy claro. Todo online.",
+        author: "Marta E.",
+        role: "Propietaria · El Sardinero",
+      },
+      {
+        quote:
+          "LAU en Monte cerca del campus: convivencia y fianza como las habíamos pactado. El gestor respondió dudas después de firmar.",
+        author: "Javier H.",
+        role: "Inquilino · Monte",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Camargo o municipios del área?",
+        answer: "Sí. LAU adaptada al municipio de Cantabria concreto.",
+      },
+      {
+        question: "¿Temporada veraniega o LAU habitual?",
+        answer: "Te orientamos sobre la modalidad correcta y redactamos cláusulas acordes al uso real.",
+      },
+      {
+        question: "¿Incluye inventario en pisos amueblados?",
+        answer: "Sí. Inventario descriptivo y fotográfico incluido en el servicio.",
+      },
+    ],
+    heroImage: "/images/oviedo2.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Santander — Livendia",
+  },
+  {
+    slug: "pamplona",
+    city: "Pamplona",
+    placeLabel: "Pamplona",
+    schemaAdministrativeArea: "Navarra",
+    metaTitle: `Contrato LAU Pamplona — Sanfermines · ${PRICE}`,
+    metaDescription: `Contrato alquiler Pamplona: Casco Antiguo, Iturrama, Ensanche. Inventario, gestor online. ${PRICE} IVA incl. Entre particulares.`,
+    heroTitle: "Contrato de alquiler en Pamplona — campus, Ensanche y Sanfermines bien delimitados",
+    heroLead:
+      "Pamplona-Iruña mezcla demanda universitaria, familias en Iturrama y presión estacional en Sanfermines. Livendia redacta LAU con inventario, cláusulas equilibradas y gestor online — 145 € IVA incl., sin comisión de agencia.",
+    whyIntro:
+      "En Navarra los conflictos posteriores suelen venir de mantenimiento mal repartido o de un inventario inexistente en el Casco Antiguo. Las plantillas copiadas no contemplan visitas del arrendador ni depósitos adicionales ilegales.",
+    marketContext:
+      "Casco Antiguo, Iturrama, San Juan y Rochapea combinan inquilinos estables y rotación universitaria. Navarra no está declarada zona tensionada; conviene cerrar fotografías del estado inicial antes del primer mes de renta.",
+    barriosIntro: "Barrios de Pamplona donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Casco Antiguo",
+      "Iturrama",
+      "San Juan",
+      "Rochapea",
+      "Ensanche",
+      "Milagrosa",
+      "Buztintxuri",
+      "Mutilva",
+    ],
+    regulatoryBlock:
+      "En Navarra aplican reglas LAU estatales. Fianza de un mes (dos si arrendador persona jurídica). Revisamos garantías adicionales, IPC y causas de resolución antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Sanfermines y estancias estacionales",
+        description: "Delimitamos duración y ocupación cuando el arrendamiento no es LAU habitual de larga duración.",
+      },
+      {
+        title: "Casco Antiguo y patrimonio",
+        description: "Cláusulas de mantenimiento y comunidad en edificios históricos con calles estrechas.",
+      },
+      {
+        title: "Pisos compartidos universitarios",
+        description: "Convivencia en Milagrosa y zonas campus con normas de limpieza y visitas.",
+      },
+      {
+        title: "Gestoría online en Navarra",
+        description: "Briefing, docs e inventario desde el panel; asesoramiento posterior incluido.",
+      },
+    ],
+    agencyLocalNote:
+      "En Pamplona las agencias piden comisión más gestión de miles de euros. Entre particulares en Iturrama o Ensanche, Livendia redacta por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 2 hab. · Calle Estafeta 34, Pamplona (Casco Antiguo)",
+    testimonialsTitle: "Particulares en Pamplona con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Primera vez alquilando en Iturrama: comunidad, seguros e inventario cerrados online. Sin ir al despacho.",
+        author: "Gorka M.",
+        role: "Propietario · Iturrama",
+      },
+      {
+        quote:
+          "Habitación en piso compartido: límites claros sobre visitas del propietario y reparto de gastos.",
+        author: "Leire & Xabi",
+        role: "Inquilinos · Milagrosa",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Mutilva o barrios periféricos?",
+        answer: "Sí. LAU adaptada al barrio y al tipo de edificio concreto.",
+      },
+      {
+        question: "¿Contrato por habitación en Pamplona?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+      {
+        question: "¿Es necesario acudir a un despacho?",
+        answer: "No. Todo el servicio es online: panel, documentación y gestor asignado.",
+      },
+    ],
+    heroImage: "/images/zaragoza2.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Pamplona — Livendia",
+  },
+  {
+    slug: "oviedo",
+    city: "Oviedo",
+    placeLabel: "Oviedo",
+    schemaAdministrativeArea: "Principado de Asturias",
+    metaTitle: `Contrato alquiler Oviedo — campus La Ería · ${PRICE}`,
+    metaDescription: `LAU en Oviedo: Centro, La Ería, Los Pilares, Ciudad Naranco. Humedad, inventario, online. ${PRICE} IVA incl. Sin agencia.`,
+    heroTitle: "Redacta tu LAU en Oviedo — capital asturiana, campus e inventario online",
+    heroLead:
+      "Oviedo concentra demanda universitaria, familias en Ciudad Naranco y propietarios fuera del Principado. Livendia redacta LAU con inventario, cláusulas sobre humedad y calefacción, y gestor online — 145 € IVA incl.",
+    whyIntro:
+      "En La Ería y Los Pilares la rotación académica multiplica pisos compartidos mal redactados. En el Centro, edificios antiguos con ascensor y caldera comunitaria exigen cláusulas que un PDF peninsular no trae.",
+    marketContext:
+      "Asturias no ha activado zona tensionada. Centro, La Ería, Pumarín y Ciudad Naranco combinan inquilinos estables y estancias de curso. Gijón y Avilés comparten perfil; Oviedo es el núcleo administrativo y universitario.",
+    barriosIntro: "Barrios de Oviedo donde redactamos contratos LAU:",
+    barrios: [
+      "Centro",
+      "La Ería",
+      "Los Pilares",
+      "Ciudad Naranco",
+      "Pumarín",
+      "Teatinos",
+      "La Florida",
+      "Llamaquique",
+    ],
+    regulatoryBlock:
+      "En el Principado de Asturias rige LAU estatal. Fianza de un mes (dos si arrendador es empresa). Documentamos humedades, calefacción y estado de comunidad antes de ingresar la fianza.",
+    localDifferentiators: [
+      {
+        title: "Campus La Ería y Los Pilares",
+        description: "Convivencia en pisos compartidos con normas de limpieza y reparto de suministros.",
+      },
+      {
+        title: "Propietarios fuera de Asturias",
+        description: "Gestión contractual 100 % online sin desplazarte a Oviedo.",
+      },
+      {
+        title: "Edificios con humedad y caldera comunitaria",
+        description: "Inventario fotográfico y cláusulas de mantenimiento defendibles.",
+      },
+      {
+        title: "Enlace con Gijón y costa",
+        description: "Misma gestoría para todo el Principado; asesoramiento posterior incluido.",
+      },
+    ],
+    agencyLocalNote:
+      "En Oviedo las agencias piden honorarios altos más comisión. Entre particulares en La Ería o Centro, Livendia redacta el LAU por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Calle Uría 45, Oviedo (Centro)",
+    testimonialsTitle: "Particulares en Oviedo con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en La Ería: humedad del baño e inventario con fotos antes de la fianza. Gestor muy claro por teléfono.",
+        author: "Clara S.",
+        role: "Propietaria · La Ería",
+      },
+      {
+        quote:
+          "Habitación en Los Pilares: convivencia y fianza como lo habíamos pactado entre compañeros de máster.",
+        author: "Mario T.",
+        role: "Inquilino · Los Pilares",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Atendéis también Gijón o Avilés?",
+        answer: "Sí. Misma gestoría online para todo el Principado de Asturias.",
+      },
+      {
+        question: "¿Contrato de temporada en Oviedo?",
+        answer: "Sí. Te orientamos sobre LAU habitual vs. temporada y redactamos la modalidad correcta.",
+      },
+      {
+        question: "¿Incluye inventario en pisos amueblados?",
+        answer: "Sí. Inventario descriptivo y fotográfico incluido en el servicio.",
+      },
+    ],
+    heroImage: "/images/oviedo.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Oviedo — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("asturias"),
+  },
+  {
+    slug: "asturias",
+    city: "Asturias",
+    placeLabel: "Asturias",
+    schemaAdministrativeArea: "Principado de Asturias",
+    metaTitle: `Contrato LAU Asturias — Oviedo, Gijón, costa · ${PRICE}`,
+    metaDescription: `Contrato alquiler en Asturias: Oviedo, Gijón, Avilés, costa e interior. Humedad, temporada, online. ${PRICE} IVA incl.`,
+    heroTitle: "Contrato de alquiler en Asturias — costa, interior y campus, 145 € online",
+    heroLead:
+      "Desde Oviedo y Gijón hasta la costa o viviendas rurales, el alquiler asturiano mezcla confianza personal y pactos verbales sobre leña, humedad o parking. Livendia redacta LAU con inventario y gestor online — 145 € IVA incl., sin agencia.",
+    whyIntro:
+      "El Principado combina mercado urbano, veraneo costero y casas compartidas en el interior. Los PDF genéricos ignoran calefacción, caminos de acceso o estancias estacionales mal encuadradas en LAU.",
+    marketContext:
+      "Oviedo, Gijón, Avilés, Langreo y la franja costera tienen perfiles distintos pero comparten humedad, calderas comunitarias y propietarios que viven fuera de Asturias. No hay zona tensionada declarada; el contrato debe reflejar el uso real del inmueble.",
+    barriosIntro: "Núcleos del Principado donde redactamos contratos LAU:",
+    barrios: [
+      "Oviedo — Centro",
+      "Gijón — La Arena",
+      "Gijón — Cimadevilla",
+      "Avilés",
+      "Langreo / Siero",
+      "Costa — Llanes",
+      "Costa — Ribadesella",
+      "Concejos del interior",
+    ],
+    regulatoryBlock:
+      "En Asturias aplican reglas LAU estatales. Fianza legal de un mes (dos meses si arrendador es empresa). Separar temporada, segunda residencia y vivienda habitual antes de cobrar la renta.",
+    localDifferentiators: [
+      {
+        title: "Costa veraniega vs. residencia habitual",
+        description: "Modalidad contractual acorde a duración y causa real — no LAU disfrazado.",
+      },
+      {
+        title: "Viviendas rurales e interior",
+        description: "Leña, accesos, fincas colindantes y suministros en casas compartidas.",
+      },
+      {
+        title: "Humedad y calefacción asturiana",
+        description: "Inventario y mantenimiento en edificios con clima húmedo.",
+      },
+      {
+        title: "Gestoría online en todo el Principado",
+        description: "Oviedo, Gijón, Avilés o costa: mismo panel y gestor operativo.",
+      },
+    ],
+    agencyLocalNote:
+      "En Asturias las agencias piden comisión más gestión elevada. Entre particulares en Gijón, Oviedo o la costa, Livendia redacta por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 2 hab. · Calle Jovellanos 8, Gijón (Centro)",
+    testimonialsTitle: "Particulares en Asturias con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler de verano en la costa: duración, ropa de cama y parking comunitario por escrito. Todo entre particulares.",
+        author: "Sandra V.",
+        role: "Propietaria · zona costera",
+      },
+      {
+        quote:
+          "Casa compartida cerca de Oviedo: leña, acceso a fincas y plazo de aviso de salida reflejados en el LAU.",
+        author: "Lucía P.",
+        role: "Propietaria · interior",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Sirve para Oviedo y Gijón por igual?",
+        answer: "Sí. Adaptamos el LAU al municipio y al tipo de inmueble concreto.",
+      },
+      {
+        question: "¿Contrato de temporada en la costa?",
+        answer: "Sí. Te orientamos y redactamos la modalidad correcta con inventario incluido.",
+      },
+      {
+        question: "¿Vivienda rural o casa en el interior?",
+        answer: "Sí. Cláusulas sobre suministros, accesos y mantenimiento adaptadas al uso real.",
+      },
+    ],
+    heroImage: "/images/gijon.jpg",
+    heroImageAlt: "Redactar contrato de alquiler profesional en Asturias — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("asturias"),
   },
 ];

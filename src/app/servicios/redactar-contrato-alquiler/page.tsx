@@ -452,9 +452,9 @@ export default async function RedactarContratoAlquilerPage() {
                 Redactar contrato de alquiler por ciudad
               </h2>
               <p className="mt-3 text-[#64748b]">
-                Misma landing de conversión con barrios, normativa local y mercado en 15 ciudades: Madrid, Barcelona,
-                Valencia, Sevilla, Málaga, Bilbao, Zaragoza, Alicante, Granada, Palma, Murcia, Valladolid, Vigo, Gijón
-                y Córdoba.
+                Misma landing de conversión con barrios, normativa local y mercado en 20 ciudades y territorios: Madrid,
+                Barcelona, Valencia, Sevilla, Málaga, Bilbao, Zaragoza, Alicante, Granada, Palma, Murcia, Valladolid,
+                Vigo, Gijón, Córdoba, Las Palmas, Santander, Pamplona, Oviedo y Asturias.
               </p>
               <RedactarContratoAlquilerLocalCityLinks className="mt-6" />
             </div>

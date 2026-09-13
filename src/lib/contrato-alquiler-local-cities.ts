@@ -41,6 +41,7 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "granada",
   "santander",
   "pamplona",
+  "oviedo",
 ];
 
 export function isContratoAlquilerLocalSlugPublished(slug: string): boolean {
@@ -732,5 +733,33 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     ],
     finalCtaLead:
       "Elige modalidad y deja cerrado tu expediente antes de firmar en Pamplona.",
+  },
+  {
+    slug: "oviedo",
+    city: "Oviedo",
+    schemaAdministrativeArea: "Principado de Asturias",
+    heroLead:
+      "En Oviedo capital y concejos próximos, revisamos tu contrato de alquiler con LAU, inventario del inmueble y foco en humedad, calefacción y comunidad en edificios asturianos.",
+    whyIntro:
+      "La demanda universitaria y propietarios fuera del Principado hacen frecuente el alquiler a distancia. Los PDF genéricos no cubren calderas comunitarias, humedades ni convivencia en pisos compartidos del campus.",
+    howIntro:
+      "Cuatro pasos hasta firmar con seguridad: Centro, La Ería, Los Pilares, Ciudad Naranco o Pumarín.",
+    testimonialsTitle: "Propietarios e inquilinos en Oviedo que ya revisaron su contrato con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en La Ería: inventario con humedades del baño documentadas antes de la fianza.",
+        author: "Clara S.",
+        role: "Propietaria, La Ería",
+      },
+      {
+        quote:
+          "Habitación cerca del campus: convivencia y reparto de gastos como lo habíamos pactado verbalmente.",
+        author: "Mario & Lucía",
+        role: "Inquilinos, Los Pilares",
+      },
+    ],
+    finalCtaLead:
+      "Contrata LAU, temporada o habitación y firma en Oviedo con revisión profesional aplicada.",
   },
 ];
