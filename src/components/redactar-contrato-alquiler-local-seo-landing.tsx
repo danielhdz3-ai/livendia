@@ -1,6 +1,8 @@
 import { FaqSection } from "@/components/faq-section";
 import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
+import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/components/redactar-contrato-alquiler-administracion-upsell-section";
 import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
+import { RedactarContratoAlquilerPlainLanguageHeroIntro } from "@/components/redactar-contrato-alquiler-plain-language-hero-intro";
 import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
@@ -26,6 +28,7 @@ import {
   REDACTAR_CONTRATO_ALQUILER_BASE,
   REDACTAR_CONTRATO_ALQUILER_FAQ,
   REDACTAR_CONTRATO_ONLINE_GESTOR,
+  REDACTAR_CONTRATO_PLAIN_LANGUAGE,
 } from "@/lib/redactar-contrato-alquiler-content";
 import { BUSINESS_EMAIL, buildBusinessPostalAddress } from "@/lib/business-nap";
 import { getContactPhoneE164Plus } from "@/lib/contact";
@@ -103,12 +106,15 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const temp = catalog.find((s) => s.slug === "contrato-alquiler-temporada");
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion");
+  const adminRental = catalog.find((s) => s.slug === "administracion-alquiler");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (lau) servicesBySlug["contrato-alquiler-lau"] = lau;
   if (temp) servicesBySlug["contrato-alquiler-temporada"] = temp;
   if (hab) servicesBySlug["contrato-alquiler-habitacion"] = hab;
+  if (adminRental) servicesBySlug["administracion-alquiler"] = adminRental;
 
   const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
+  const adminPriceLabel = resolveServicePriceLabel(adminRental, "49 €/mes");
   const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
   const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
   const comparisonRows = buildAgencyRentalComparisonRows();
@@ -129,6 +135,7 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                       ← Redactar contrato alquiler
                     </Link>
                   </p>
+                  <RedactarContratoAlquilerPlainLanguageHeroIntro placeLabel={config.placeLabel} />
                   <p className="mb-4 inline-block self-start rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide backdrop-blur-sm">
                     Entre particulares · {config.placeLabel}
                   </p>
@@ -153,7 +160,7 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                       slug="contrato-alquiler-lau"
                       className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50"
                     >
-                      Contratar LAU · {lauPrice}
+                      {REDACTAR_CONTRATO_PLAIN_LANGUAGE.ctaContractLabel} · {lauPrice}
                     </ContratarSlugButton>
                     <WhatsAppLeadLink
                       placement={`redactar_contrato_${config.slug}_hero_whatsapp`}
@@ -181,6 +188,12 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RedactarContratoAlquilerAdministracionUpsellSection
+            placeLabel={config.placeLabel}
+            citySlug={config.slug}
+            adminPriceLabel={adminPriceLabel}
+          />
 
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-5xl">
@@ -258,8 +271,8 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                     <h3 className="text-lg font-bold">Contrato Livendia · {config.placeLabel}</h3>
                   </div>
                   <p className="mt-3 text-sm text-[#1E293B]">
-                    LAU adaptada, inventario, fianza orientada, servicio 100% online y gestor con asesoramiento posterior
-                    — {lauPrice} IVA incl.
+                    Contrato legal adaptado, inventario, fianza orientada, servicio 100% online y gestor con asesoramiento
+                    posterior — {lauPrice} IVA incl.
                   </p>
                   <ContratarSlugButton
                     slug="contrato-alquiler-lau"
@@ -366,7 +379,8 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                 Contrato profesional en {config.placeLabel} desde {lauPrice}
               </h2>
               <p className="mt-4 text-blue-100">
-                Inventario, LAU adaptada, fianza orientada y plataforma privada — sin comisión de agencia.
+                Inventario, contrato con garantías jurídicas, fianza orientada y plataforma privada — sin comisión de
+                agencia.
               </p>
               <ContratarSlugButton
                 slug="contrato-alquiler-lau"

@@ -1,5 +1,7 @@
+import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/components/redactar-contrato-alquiler-administracion-upsell-section";
 import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
 import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
+import { RedactarContratoAlquilerPlainLanguageHeroIntro } from "@/components/redactar-contrato-alquiler-plain-language-hero-intro";
 import { FaqSection } from "@/components/faq-section";
 import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { PublicHeader } from "@/components/public-header";
@@ -23,6 +25,7 @@ import {
   buildAgencyRentalComparisonRows,
   REDACTAR_CONTRATO_ALQUILER_FAQ,
   REDACTAR_CONTRATO_ALQUILER_TESTIMONIALS,
+  REDACTAR_CONTRATO_PLAIN_LANGUAGE,
 } from "@/lib/redactar-contrato-alquiler-content";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -80,12 +83,15 @@ export default async function RedactarContratoAlquilerPage() {
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const temp = catalog.find((s) => s.slug === "contrato-alquiler-temporada");
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion");
+  const adminRental = catalog.find((s) => s.slug === "administracion-alquiler");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (lau) servicesBySlug["contrato-alquiler-lau"] = lau;
   if (temp) servicesBySlug["contrato-alquiler-temporada"] = temp;
   if (hab) servicesBySlug["contrato-alquiler-habitacion"] = hab;
+  if (adminRental) servicesBySlug["administracion-alquiler"] = adminRental;
 
   const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
+  const adminPriceLabel = resolveServicePriceLabel(adminRental, "49 €/mes");
   const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
   const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
   const comparisonRows = buildAgencyRentalComparisonRows();
@@ -101,6 +107,7 @@ export default async function RedactarContratoAlquilerPage() {
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[680px]">
                 <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-20">
+                  <RedactarContratoAlquilerPlainLanguageHeroIntro />
                   <p className="mb-4 inline-block self-start rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide backdrop-blur-sm sm:text-sm">
                     Entre particulares · Sin comisión de agencia
                   </p>
@@ -110,7 +117,7 @@ export default async function RedactarContratoAlquilerPage() {
                   <p className="mt-6 text-base leading-relaxed text-blue-50 sm:text-lg lg:text-xl">
                     Livendia es gestoría <strong className="text-white">especializada en contratos inmobiliarios</strong>{" "}
                     para particulares — <strong className="text-white">100% online, sin desplazarte</strong>: contrato
-                    LAU adaptado al Código Civil, inventario profesional, fianza orientada y un{" "}
+                    con garantías jurídicas (Ley de Arrendamientos Urbanos), inventario profesional, fianza orientada y un{" "}
                     <strong className="text-white">gestor operativo</strong> en todo el proceso (y asesoramiento posterior
                     incluido) — por <strong className="text-white">{lauPrice} IVA incl.</strong>
                   </p>
@@ -132,7 +139,7 @@ export default async function RedactarContratoAlquilerPage() {
                       slug="contrato-alquiler-lau"
                       className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50"
                     >
-                      Contratar LAU · {lauPrice}
+                      {REDACTAR_CONTRATO_PLAIN_LANGUAGE.ctaContractLabel} · {lauPrice}
                     </ContratarSlugButton>
                     <WhatsAppLeadLink
                       placement="redactar_contrato_alquiler_hero_whatsapp"
@@ -173,6 +180,8 @@ export default async function RedactarContratoAlquilerPage() {
               </div>
             </div>
           </section>
+
+          <RedactarContratoAlquilerAdministracionUpsellSection adminPriceLabel={adminPriceLabel} />
 
           {/* Por qué Livendia */}
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">

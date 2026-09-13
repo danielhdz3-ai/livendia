@@ -1,6 +1,52 @@
 import { CONTRATO_ALQUILER_LAU_PRICE_EUR, CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
+import {
+  isAdministracionAlquilerLocalSlugPublished,
+  localAdministracionAlquilerHref,
+} from "@/lib/administracion-alquiler-local-cities";
 
 export const REDACTAR_CONTRATO_ALQUILER_BASE = "/servicios/redactar-contrato-alquiler" as const;
+
+/** Mensaje claro al inicio de landings (sin asumir que el usuario conoce «LAU»). */
+export const REDACTAR_CONTRATO_PLAIN_LANGUAGE = {
+  brandLine: "Livendia, la gestoría inmobiliaria",
+  promiseLine: "Redactamos tu contrato de alquiler con todas las garantías jurídicas",
+  plainExplanation:
+    "Contrato de arrendamiento conforme a la ley (LAU), inventario del piso y un gestor que te lo explica en castellano claro — sin comisión de agencia.",
+  ctaContractLabel: "Contratar contrato de alquiler",
+  lawFootnote: "Incluye arrendamiento de vivienda habitual y cláusulas adaptadas a la normativa vigente.",
+} as const;
+
+/** Módulo transversal: upsell administración de alquiler (49 €/mes). */
+export const REDACTAR_CONTRATO_ADMIN_UPSELL = {
+  eyebrow: "Después de firmar el contrato",
+  title: "Livendia lleva la administración de tu alquiler",
+  intro:
+    "Si no quieres tratar directamente con el inquilino, Livendia asume todo el contacto: consultas, incidencias, averías y coordinación con técnicos. Tú decides; nosotros tramitamos.",
+  bullets: [
+    "Canal único con el inquilino — tú no atiendes llamadas ni urgencias",
+    "Gestión y seguimiento de incidencias hasta su cierre",
+    "Renovaciones, mediación y documentación de cada caso",
+    "Tarifa plana sin permanencia — contratas cuando lo necesites",
+  ] as const,
+  imageSrc: "/images/gestora7.jpg",
+  imageAlt: "Gestora Livendia administrando un alquiler entre particulares",
+  ctaPrimary: "Contratar administración",
+  ctaSecondary: "Ver administración de alquiler",
+} as const;
+
+const REDACTAR_SLUG_TO_ADMIN_LOCAL: Partial<Record<string, string>> = {
+  palma: "mallorca",
+  asturias: "gijon",
+};
+
+/** Enlace a admin local si existe; si no, landing nacional de administración. */
+export function redactarContratoAdministracionHref(redactarCitySlug: string): string {
+  const adminSlug = REDACTAR_SLUG_TO_ADMIN_LOCAL[redactarCitySlug] ?? redactarCitySlug;
+  if (isAdministracionAlquilerLocalSlugPublished(adminSlug)) {
+    return localAdministracionAlquilerHref(adminSlug);
+  }
+  return "/servicios/administracion-alquiler";
+}
 
 export const REDACTAR_CONTRATO_ALQUILER_PRICE_LABEL = CONTRATO_ALQUILER_LAU_PRICE_LABEL;
 export const REDACTAR_CONTRATO_ALQUILER_PRICE_EUR = CONTRATO_ALQUILER_LAU_PRICE_EUR;
