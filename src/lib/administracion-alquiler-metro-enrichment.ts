@@ -47,6 +47,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         title: "Ejemplo ilustrativo — Retraso reiterado de transferencia",
         body: "El inquilino lleva dos meses pagando entre el día 5 y el 8. Livendia aplica el protocolo de cobro: recordatorio automático el día 3, llamada de mediación el día 5 y aviso al propietario solo si no hay justificante antes del día 7. El propietario no persigue la renta por WhatsApp.",
       },
+      {
+        title: "Ejemplo ilustrativo — Conflicto por mascota en Zona Universitària",
+        body: "La comunidad cuestiona presencia de perro. Livendia revisa contrato y reglamento, habla con inquilino y propone solución documentada. El propietario recibe resumen sin reunión presencial en el edificio.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Suministro de agua sin lectura en Maternitat",
+        body: "Tras rotación de inquilino, la compañía reclama lectura estimada. Livendia gestiona baja/alta, recoge lectura real y archiva justificantes en panel.",
+      },
     ],
     nearbyLandmarks: [
       "Hospital Clínic de Barcelona",
@@ -87,6 +95,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       {
         title: "Ejemplo ilustrativo — Impago tras cambio de inquilino",
         body: "Tras una rotación en plena Festa Major, el nuevo inquilino no ingresa la renta el día 1. Livendia activa el protocolo desde el día 3, solicita justificante bancario y, si no hay respuesta, escala con mediación formal antes de informar al propietario de posibles pasos legales adicionales.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Obra de comunidad en Vila de Gràcia",
+        body: "Derrama por rehabilitación de fachada. Livendia explica cuota al propietario, plazos al inquilino y registra pagos sin mezclar conversaciones en el mismo hilo de WhatsApp.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Subarriendo sospechado en Camp d'en Grassot",
+        body: "Vecinos reportan personas extra. Livendia revisa contrato, contacta inquilino titular y escala al propietario con opciones legales documentadas.",
       },
     ],
     nearbyLandmarks: [
@@ -129,6 +145,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         title: "Ejemplo ilustrativo — Retraso de renta tras fin de mes",
         body: "La transferencia no aparece el día 1. Livendia envía recordatorio automático el día 3, contacta el día 5 y registra el justificante cuando llega el día 6. El propietario ve el estado en el panel; no envía mensajes personales al inquilino.",
       },
+      {
+        title: "Ejemplo ilustrativo — Humedad en sótano en Centre",
+        body: "Filtración en trastero/comunitario afecta percepción del inquilino. Livendia perita origen, habla con comunidad y presenta presupuesto antes de obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV en Collblanc",
+        body: "Propietario compara renta con Idealista 21 €/m². Livendia calcula tope legal en zona tensionada y envía propuesta válida — evitando reclamación posterior.",
+      },
     ],
     nearbyLandmarks: [
       "Metro Collblanc / L1",
@@ -169,6 +193,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       {
         title: "Ejemplo ilustrativo — Humedad por filtración en fachada",
         body: "Aparece humedad en un dormitorio tras lluvias. Livendia manda perito/industrial, determina si es origen comunitario o interior, abre conversación con la seguro-comunidad si procede y mantiene informado al propietario con fotos y presupuesto antes de cualquier obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago en Almeda",
+        body: "Inquilino retrasa dos meses. Protocolo de cobro con mediación formal antes de informar al propietario de escalado legal.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Rotación en Centre tras fin de contrato",
+        body: "Livendia coordina entrega de llaves, inventario, baja de suministros y depósito Incasòl — propietario no gestiona citas con nuevo inquilino.",
       },
     ],
     nearbyLandmarks: [
@@ -211,6 +243,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         title: "Ejemplo ilustrativo — Renovación con IRAV en Hostafrancs",
         body: "Antes del vencimiento, Livendia calcula incremento máximo legal y prepara propuesta documentada. El propietario revisa resumen online y aprueba sin reunión presencial.",
       },
+      {
+        title: "Ejemplo ilustrativo — Avería de ascensor en Poble-sec",
+        body: "Edificio bajo sin ascensor alternativo viable. Livendia coordina mantenedor y comunidad, informa plazos al inquilino y avisa al propietario solo si hay coste individual.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Conflicto por obras Fira / ruido en Montjuïc",
+        body: "Inquilino reclama por obras cercanas. Livendia verifica si afecta habitabilidad contractual, documenta respuesta y evita escalada directa propietario-inquilino.",
+      },
     ],
     nearbyLandmarks: [
       "Estació de Sants",
@@ -252,6 +292,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         title: "Ejemplo ilustrativo — Avería de ascensor en Clot",
         body: "Inquilino en planta alta sin ascensor operativo. Livendia coordina con comunidad y mantenedor, informa plazos al arrendatario y avisa al propietario solo si hay coste individual.",
       },
+      {
+        title: "Ejemplo ilustrativo — Impago en La Verneda",
+        body: "Dos meses de retraso. Protocolo de cobro con cronología visible en panel del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Entrega de llaves tras salida en Poblenou",
+        body: "Livendia coordina inventario, estado del piso y baja de suministros; propietario recibe informe fotográfico sin desplazarse.",
+      },
     ],
     nearbyLandmarks: [
       "22@ / Districte de la innovació",
@@ -260,6 +308,104 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       "Diagonal Mar i el Front Marítim",
       "Rambla del Poblenou",
       "Estació Clot-Aragó",
+    ],
+  },
+
+  "barcelona/horta-guinardo": {
+    rentPricePerSqm:
+      "Distrito Horta-Guinardó: 21,34 €/m² y renta media de publicación ~1.687 €/mes (Brains Real Estate, Q2 2026). La Clota y Horta centre suelen superar El Carmel y La Teixonera en oferta Idealista (2025). Vall d'Hebron muestra demanda estable de personal sanitario.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Horta-Guinardó, 2025.",
+    dominantHousingType:
+      "Bloques de los 60–70 en El Carmel, La Teixonera y Guinardó (55–75 m²) en pendiente, con humedades por filtración frecuentes. Horta centre y La Clota: pisos de 70–95 m² con familias estables. Montbau y Can Baró: mezcla de chalet adosado y bloques con vistas.",
+    tenantProfile: [
+      "Familias en contrato LAU largo en Horta centre y La Clota",
+      "Personal sanitario y investigadores del campus Vall d'Hebron",
+      "Parejas jóvenes en pisos compactos en El Carmel",
+      "Inquilinos estables en Guinardó con expectativa de mantenimiento profesional",
+    ],
+    localRegulatoryNote:
+      "Horta-Guinardó está en zona tensionada catalana. IRAV e Incasòl aplican en renovaciones; la heterogeneidad de €/m² entre La Clota y El Carmel obliga a contrastar referencia por barrio, no solo media de distrito.",
+    marketContext:
+      "Horta-Guinardó es un distrito residencial con fuerte componente familiar en Horta centre y La Clota, y parque en pendiente en El Carmel/La Teixonera donde las incidencias de fontanería y fachada son más costosas en tiempo que en distritos planos. Brains Real Estate (Q2 2026) lo sitúa en 21,34 €/m² de publicación. Vall d'Hebron añade demanda de perfiles sanitarios con turnos rotativos — si el propietario no vive en el distrito, las urgencias a horas atípicas acaban en su móvil sin gestor. Livendia desde Les Corts canaliza cobro, IRAV e industriales habituados en ladera.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Filtración en fachada en El Carmel",
+        body: "Tras lluvias persistentes aparece humedad en dormitorio. Livendia manda perito, determina origen comunitario, presiona a administrador de fincas y presenta presupuesto al propietario antes de obra. Inquilino recibe plazos por gestor.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Caldera comunitaria en Horta centre",
+        body: "Fallo de calefacción en diciembre. Livendia coordina urgencia con comunidad y mantenedor, informa al inquilino familia y avisa al propietario solo si hay derrama individual.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV en La Clota",
+        body: "Propietario quiere alinear renta con portal. Livendia calcula tope legal, explica diferencia baremo vs Idealista y envía propuesta válida al inquilino.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Incidencia nocturna cerca Vall d'Hebron",
+        body: "Inquilino sanitario reporta avería elécnica tras turno. Livendia abre incidencia, programa visita en franja acordada y reporta al propietario con fotos — sin llamada al móvil personal a las 23 h.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago en La Teixonera",
+        body: "Dos meses de retraso. Protocolo día 3 → mediación → aviso al propietario con cronología en panel.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Parc del Laberint d'Horta",
+      "Hospital Vall d'Hebron",
+      "Metro Horta (L5)",
+      "El Carmel / Parc Güell (límite)",
+      "Guinardó",
+      "Ronda de Dalt (acceso)",
+    ],
+  },
+
+  "barcelona/sant-andreu": {
+    rentPricePerSqm:
+      "Distrito Sant Andreu: 21,88 €/m² y renta media de publicación ~1.734 €/mes (Brains Real Estate, Q2 2026). Navas y La Sagrera suelen superar el centre tradicional en oferta Idealista (2025). Bon Pastor (límite) más contenido.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Sant Andreu, 2025.",
+    dominantHousingType:
+      "Fincas de 65–85 m² en Sant Andreu centre cerca del mercado. Bloques rehabilitados y obra nueva en La Sagrera y Navas (70–95 m²). Trinitat Vella (límite): parque envejecido similar a Nou Barris. La Maquinista: mix reformas recientes.",
+    tenantProfile: [
+      "Familias estables en Sant Andreu centre",
+      "Jóvenes profesionales en La Sagrera y Navas",
+      "Inquilinos en pisos compartidos con rotación moderada",
+      "Familias que priorizan metro L1/L5 frente a vivir en Eixample",
+    ],
+    localRegulatoryNote:
+      "Sant Andreu está en zona tensionada. IRAV en renovaciones; especial atención a contratos tras reforma donde el propietario intenta recuperar inversión — la subida debe encajar en baremo legal.",
+    marketContext:
+      "Sant Andreu combina tradición de barrio (mercado, tejido comercial) con transformación en La Sagrera y Navas por obra pública y nueva vivienda. Brains Real Estate (Q2 2026) cifra el distrito en 21,88 €/m². La demanda busca más metros por euro que en Eixample o Sarrià. Propietarios fuera del distrito enfrentan mezcla de peticiones administrativas (empadronamiento) e incidencias de convivencia en pisos compartidos. Livendia unifica canal, cobro e IRAV desde Les Corts.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Queja de convivencia en Sant Andreu centre",
+        body: "Vecinos reportan ruido en piso de tres habitaciones. Livendia revisa contrato, habla con arrendatarios, propone medidas y entrega acta al propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Ascensor en La Sagrera",
+        body: "Avería prolongada en edificio rehabilitado. Livendia presiona mantenedor y comunidad, informa plazos al inquilino y avisa al propietario si hay coste individual.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación tras reforma en Navas",
+        body: "Propietario quiere subir renta post-reforma. Livendia calcula IRAV, separa mejora voluntaria de obligación legal y comunica propuesta válida.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Certificado de empadronamiento",
+        body: "Inquilino familia solicita documento para escolarizar. Livendia coordina firma con propietario residente en otra provincia y entrega copia — sin llamadas en horario laboral.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Retraso de renta en Trinitat Vella (límite)",
+        body: "Transferencia día 8. Protocolo de cobro activado desde día 3; propietario ve estado en panel sin escribir al inquilino.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Mercat de Sant Andreu",
+      "Estació de La Sagrera (AVE / metro)",
+      "Navas",
+      "La Maquinista",
+      "Pg. Fabra i Puig",
+      "Metro Sant Andreu (L1)",
     ],
   },
 

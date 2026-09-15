@@ -27,6 +27,8 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "barcelona/sarria-sant-gervasi",
   "barcelona/nou-barris",
   "barcelona/ciutat-vella",
+  "barcelona/horta-guinardo",
+  "barcelona/sant-andreu",
   "sant-cugat",
   "badalona",
 ];
@@ -1116,6 +1118,215 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       addressRegion: "Ciutat Vella",
       geo: { latitude: "41.3825", longitude: "2.1769" },
       areaServedName: "Ciutat Vella, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "horta-guinardo"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/horta-guinardo`,
+    zoneLabel: "Horta-Guinardó",
+    metaTitle: `Administración de alquiler Horta-Guinardó — Horta, El Carmel, La Clota, Vall d'Hebron · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Horta-Guinardó: Horta centre, El Carmel, La Teixonera, Guinardó y Vall d'Hebron. Cobro, IRAV e incidencias en pendiente y bloques de los 60–70 por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Horta-Guinardó (Horta, El Carmel y Guinardó)",
+    subtitle:
+      `Distrito residencial en pendiente — gestión profesional por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Horta-Guinardó mezcla Horta centre familiar, El Carmel en pendiente y Guinardó con vistas: Brains Real Estate (Q2 2026) sitúa el distrito en 21,34 €/m² de publicación, con heterogeneidad entre La Clota (más premium) y barrios en ladera con edificios de los 60–70. Livendia cobra la renta, coordina industriales en zonas de difícil acceso y calcula IRAV en renovaciones. Tú no subes a El Carmel un sábado porque el inquilino no sabe cerrar la llave de paso.",
+    eeatHeading: "Horta-Guinardó: pendiente, familias y parque heterogéneo",
+    eeatBlock:
+      "Administramos alquileres en Horta centre, El Carmel, La Teixonera, El Coll (límite), Guinardó, La Clota, Montbau y Vall d'Hebron. Brains Real Estate (Q2 2026): 21,34 €/m² agregado; Idealista (2025) muestra La Clota y Horta centre por encima de El Carmel en €/m². Zona tensionada catalana: Incasòl e IRAV en cada renovación. Desde Les Corts (~20 min en metro L5/L3) asumimos canal con inquilino, cobro y mediación con comunidades muy participativas.",
+    whyIntro:
+      "En El Carmel y La Teixonera las incidencias de fontanería y humedades por filtración en ladera son recurrentes; en Horta centre predominan familias con contratos LAU largos y expectativa de estabilidad. Si el propietario vive en otro municipio, mezclar ambos perfiles en un solo WhatsApp personal es insostenible. Livendia segmenta comunicaciones, documenta presupuestos y te presenta decisiones con plazo.",
+    howIntro:
+      "Alta con geolocalización del inmueble (accesos, parking), canal Livendia-inquilino, protocolo de cobro, red de mantenimiento en Horta/Carmel y renovaciones con baremo verificado.",
+    barriosIntro:
+      "Horta centre y La Clota concentran pisos de 70–90 m² con familias estables cerca de parques y comercio de proximidad. El Carmel y La Teixonera tienen bloques en pendiente, calderas envejecidas y más rotación en pisos compactos. Guinardó y Montbau mezclan chalet adosado y bloques con vistas. Vall d'Hebron atrae personal sanitario del campus hospitalario — horarios de incidencia irregulares si no hay gestor.",
+    barrios: [
+      "Horta centre",
+      "La Clota",
+      "El Carmel",
+      "La Teixonera",
+      "El Guinardó",
+      "Montbau",
+      "Vall d'Hebron",
+      "Can Baró (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Incidencias en ladera y accesos difíciles",
+        description:
+          "Fontaneros y electricistas habituados en El Carmel/Teixonera con coordinación de horarios de obra con comunidad.",
+      },
+      {
+        title: "Renovaciones IRAV",
+        description:
+          "Cálculo legal por subzona — La Clota no tiene el mismo baremo efectivo que El Carmel en agregadores de portal.",
+      },
+      {
+        title: "Cobro en familias estables",
+        description:
+          "Protocolo día 3 con mediación antes de escalado — habitual en contratos largos en Horta centre.",
+      },
+      {
+        title: "INCASÒL y suministros",
+        description:
+          "Depósito, altas/bajas y archivo documental incluidos en la cuota mensual.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Horta-Guinardó que dejaron de subir a El Carmel por averías",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en El Carmel y yo en Sabadell. Livendia gestionó humedad por filtración en fachada y habló con la comunidad. Yo aprobé obra por panel.",
+        author: "Quim S.",
+        role: "Propietario, El Carmel",
+      },
+      {
+        quote:
+          "Alquilo en Horta centre. Livendia calculó IRAV en renovación y el inquilino familia no me llama — solo el gestor.",
+        author: "Teresa A.",
+        role: "Propietaria, Horta",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Horta-Guinardó?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra el distrito en 21,34 €/m² de publicación. La Clota y Horta centre suelen superar El Carmel en Idealista (2025). Tu gestor contrasta referencia por barrio.",
+      },
+      {
+        question: "¿Atendéis incidencias urgentes en El Carmel con calles empinadas?",
+        answer:
+          "Sí. Coordinamos industriales locales y horarios de acceso con inquilino y comunidad; el propietario recibe presupuesto antes de autorizar.",
+      },
+      {
+        question: "¿Gestionáis alquileres cerca del Hospital Vall d'Hebron?",
+        answer:
+          "Sí. Personal sanitario con turnos rotativos implica incidencias a horas atípicas — Livendia asume el canal 24/7 operativo vía gestor, no tu móvil personal.",
+      },
+      {
+        question: "¿Puedo contratar si heredé un piso en Guinardó y vivo fuera de Barcelona?",
+        answer:
+          "Es frecuente. Panel, WhatsApp con gestor y oficina en Les Corts para firma si hace falta.",
+      },
+    ],
+    finalCtaLead:
+      "Activa administración Livendia en Horta-Guinardó: cobro, IRAV e incidencias en pendiente con trazabilidad.",
+    primaryCtaLabel: "Consultar gestor Horta-Guinardó",
+    waPlaceLabel: "Horta-Guinardó, Barcelona",
+    heroImage: "/images/gestora7.jpg",
+    howImages: ["/images/gestoria6.jpg", "/images/familia2.jpg", "/images/equipo4.jpg", "/images/gestoria3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Horta-Guinardó",
+      addressLocality: "Barcelona",
+      addressRegion: "Horta-Guinardó",
+      geo: { latitude: "41.4190", longitude: "2.1690" },
+      areaServedName: "Horta-Guinardó, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "sant-andreu"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sant-andreu`,
+    zoneLabel: "Sant Andreu",
+    metaTitle: `Administración de alquiler Sant Andreu — centre, La Sagrera, Trinitat Vella · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sant Andreu: Sant Andreu de Palomar, La Sagrera, Navas, Bon Pastor (límite) y Trinitat Vella. Cobro, INCASÒL e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sant Andreu (centre, La Sagrera y Navas)",
+    subtitle:
+      `Distrito en transformación junto a La Sagrera — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Sant Andreu combina barrio de mercado tradicional, eje La Sagrera (AVE, metro) y promociones nuevas en Navas: Brains Real Estate (Q2 2026) sitúa el distrito en 21,88 €/m² de publicación, con demanda de familias que buscan más metros que en el Eixample. Livendia cobra la renta, media con comunidades activas en bloques de los 70–90 y verifica IRAV. Tú no persigues transferencias ni entras en conflictos de convivencia en pisos compartidos cerca del mercado.",
+    eeatHeading: "Sant Andreu: tradición, Sagrera y stock en renovación",
+    eeatBlock:
+      "Gestionamos arrendamientos en Sant Andreu de Palomar centre, La Sagrera, Navas, Bon Pastor (límite), Trinitat Vella (límite Nou Barris) y el barrio de la Maquinista. Brains Real Estate (Q2 2026): 21,88 €/m² en oferta agregada. Idealista (2025) muestra subidas moderadas en Navas tras obra pública. Zona tensionada: cada renovación exige IRAV. Operamos desde Les Corts (~18 min en metro L1/L5).",
+    whyIntro:
+      "La Sagrera concentra pisos reformados con inquilinos jóvenes; el centre de Sant Andreu mantiene familias en contratos largos con calderas comunitarias. Sin gestor, el propietario recibe mezcla de urgencias reales y peticiones administrativas (empadronamiento, certificados). Livendia filtra, prioriza y documenta.",
+    howIntro:
+      "Expediente en panel, canal único, cobro desde día 3, industriales en Sant Andreu/La Sagrera y renovaciones con resumen legal de una página.",
+    barriosIntro:
+      "Sant Andreu centre conserva fincas de 65–85 m² cerca del mercado y la estación. La Sagrera mezcla obra nueva y rehabilitación con expectativa de respuesta rápida por proximidad a nodos de transporte. Navas y la Maquinista atraen familias jóvenes; Trinitat Vella (límite) comparte parque envejecido con Nou Barris — humedades y ascensor son frecuentes.",
+    barrios: [
+      "Sant Andreu de Palomar centre",
+      "La Sagrera",
+      "Navas",
+      "La Maquinista",
+      "Bon Pastor (límite)",
+      "Trinitat Vella (límite)",
+      "Pg. Fabra i Puig",
+      "Mercat de Sant Andreu",
+    ],
+    serviceGrid: [
+      {
+        title: "Mediación en pisos compartidos",
+        description:
+          "Convivencia y ruido documentados — habitual cerca del centre y Navas con rotación moderada.",
+      },
+      {
+        title: "Renovaciones con IRAV",
+        description:
+          "Propuesta legal antes de subir renta tras reforma — evita reclamación cuando el inquilino compara con portal.",
+      },
+      {
+        title: "Cobro y empadronamientos",
+        description:
+          "Protocolo de renta + gestión de certificados sin exponer tu teléfono al inquilino.",
+      },
+      {
+        title: "INCASÒL",
+        description:
+          "Fianza y suministros en alta/baja de inquilino archivados en panel.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sant Andreu con el inquilino canalizado",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en La Sagrera y yo en Valencia. Livendia gestionó renovación con IRAV y una avería de ascensor. Solo firmé online.",
+        author: "Miguel R.",
+        role: "Propietario, La Sagrera",
+      },
+      {
+        quote:
+          "Alquilo cerca del mercado de Sant Andreu. Cuando hubo queja de vecinos por convivencia, Livendia medió y yo recibí acta — no diez llamadas.",
+        author: "Aina B.",
+        role: "Propietaria, Sant Andreu centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sant Andreu?",
+        answer:
+          "Brains Real Estate (Q2 2026) sitúa el distrito en 21,88 €/m² de publicación. Navas y La Sagrera suelen superar Bon Pastor en agregadores de Idealista (2025). Tu gestor contrasta referencia antes de renovar.",
+      },
+      {
+        question: "¿Gestionáis pisos reformados cerca de la estación de La Sagrera?",
+        answer:
+          "Sí. Mismo protocolo de cobro e incidencias; adaptamos comunicación a inquilinos jóvenes o familias según contrato LAU.",
+      },
+      {
+        question: "¿Qué pasa si el inquilino pide certificado de empadronamiento?",
+        answer:
+          "Livendia verifica procedencia, coordina firma contigo si hace falta y entrega documentación al arrendatario — sin interrumpir tu jornada laboral.",
+      },
+    ],
+    finalCtaLead:
+      `Delega en Sant Andreu cobros, IRAV e incidencias — gestor Livendia por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+    primaryCtaLabel: "Hablar con gestor Sant Andreu por WhatsApp",
+    waPlaceLabel: "Sant Andreu, Barcelona",
+    heroImage: "/images/gestora6.jpg",
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Andreu",
+      addressLocality: "Barcelona",
+      addressRegion: "Sant Andreu",
+      geo: { latitude: "41.4350", longitude: "2.1900" },
+      areaServedName: "Sant Andreu, Barcelona",
     },
   },
   {

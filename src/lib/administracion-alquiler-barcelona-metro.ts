@@ -71,6 +71,20 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     kind: "barrio" as const,
   },
   {
+    slug: "horta-guinardo",
+    segments: ["barcelona", "horta-guinardo"] as const,
+    name: "Horta-Guinardó, Barcelona",
+    shortName: "Horta-Guinardó",
+    kind: "barrio" as const,
+  },
+  {
+    slug: "sant-andreu",
+    segments: ["barcelona", "sant-andreu"] as const,
+    name: "Sant Andreu, Barcelona",
+    shortName: "Sant Andreu",
+    kind: "barrio" as const,
+  },
+  {
     slug: "l-hospitalet",
     segments: ["l-hospitalet"] as const,
     name: "L'Hospitalet de Llobregat",
