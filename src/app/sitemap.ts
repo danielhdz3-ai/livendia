@@ -95,7 +95,7 @@ import {
   getPublishedContratoEntreParticularesLocalCities,
 } from "@/lib/contrato-entre-particulares-local-cities";
 import {
-  ADMINISTRACION_ALQUILER_METRO_LANDINGS,
+  getPublishedAdministracionAlquilerMetroLandings,
 } from "@/lib/administracion-alquiler-metro-landings";
 import {
   getPublishedPackArrasGestionLocalSlugs,
@@ -384,7 +384,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
   const administracionAlquilerMetro: MetadataRoute.Sitemap =
-    ADMINISTRACION_ALQUILER_METRO_LANDINGS.map((l) => ({
+    getPublishedAdministracionAlquilerMetroLandings().map((l) => ({
       url: `${base}${l.path}`,
       lastModified: localDate,
       changeFrequency: "weekly" as const,

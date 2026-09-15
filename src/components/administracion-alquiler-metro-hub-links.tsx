@@ -4,6 +4,7 @@ import {
   ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS,
   administracionAlquilerMetroHref,
 } from "@/lib/administracion-alquiler-barcelona-metro";
+import { isAdministracionAlquilerMetroSegmentPublished } from "@/lib/administracion-alquiler-metro-landings";
 
 type Props = {
   /** Si true, muestra titular breve encima del listado */
@@ -18,8 +19,11 @@ export function AdministracionAlquilerMetroHubLinks({ showTitle = true, variant 
     ? "rounded-full bg-[#EFF6FF] px-3 py-1 text-xs font-semibold text-[#1A4FBF] ring-1 ring-[#BFDBFE] transition hover:bg-blue-100"
     : "rounded-full bg-[#EFF6FF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-[#BFDBFE] transition hover:bg-blue-100";
 
-  const barrios = ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS.filter((l) => l.kind === "barrio");
-  const municipios = ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS.filter((l) => l.kind === "municipio");
+  const published = ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS.filter((l) =>
+    isAdministracionAlquilerMetroSegmentPublished(l.segments),
+  );
+  const barrios = published.filter((l) => l.kind === "barrio");
+  const municipios = published.filter((l) => l.kind === "municipio");
 
   return (
     <div className="space-y-4">

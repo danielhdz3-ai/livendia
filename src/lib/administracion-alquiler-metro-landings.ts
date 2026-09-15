@@ -11,8 +11,17 @@
  */
 
 import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquiler-local-cities";
+import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
 
 export const ADMINISTRACION_ALQUILER_METRO_BASE = "/administracion-alquiler";
+
+/** Fase 1 Barcelona AMB — ampliar cuando publiques Eixample, Sant Cugat o Badalona. */
+export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly string[] = [
+  "barcelona/les-corts",
+  "barcelona/gracia",
+  "l-hospitalet",
+  "cornella",
+];
 
 const BARCELONA_CITY_HUB = `${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`;
 
@@ -76,9 +85,9 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
       "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Gràcia, Les Corts, Eixample) y en todo el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat, Badalona).",
   },
   {
-    question: "¿Qué incluye exactamente la cuota de 49 €/mes?",
+    question: `¿Qué incluye exactamente la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
     answer:
-      "Incluye la gestión integral: cobranza mensual de la renta, atención e intermediación de incidencias 24/7 con el inquilino, gestión de fianzas en INCASÒL, cambios de titularidad de suministros y actualización legal del contrato. Tú no hablas con el arrendatario: Livendia es el único canal.",
+      `Incluye la gestión integral de alquiler de larga duración (LAU): cobranza mensual de la renta, atención e intermediación de incidencias con el inquilino, gestión de fianzas en INCASÒL, cambios de titularidad de suministros y seguimiento de renovaciones en zona tensionada. Tú no hablas con el arrendatario: Livendia es el único canal.`,
   },
   {
     question: "¿Existe compromiso de permanencia?",
@@ -99,12 +108,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["barcelona", "les-corts"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/les-corts`,
     zoneLabel: "Les Corts",
-    metaTitle: "Gestión y Administración de Alquileres en Les Corts, Barcelona",
+    metaTitle: `Administración de alquiler Les Corts — Pedralbes, Maternitat, Zona Universitària · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      "Administramos tu piso en Les Corts (Pedralbes, Maternitat) por 49 €/mes. Oficina física en el propio distrito. Cobro garantizado, INCASÒL e incidencias.",
-    h1: "Gestión y Administración de Alquileres en Les Corts (Barcelona)",
+      `Gestión LAU en Les Corts: Pedralbes, La Maternitat, Les Corts centre y Zona Universitària. Despacho en Mejía Lequerica 44. Cobro, INCASÒL, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Les Corts con gestor en tu distrito (Mejía Lequerica 44)",
     subtitle:
-      "Asesoramiento legal y gestión integral con oficina física en tu propio distrito. Tu alquiler en manos de expertos por 49 €/mes sin permanencia.",
+      `Asesoramiento legal y gestión integral con oficina física en tu propio distrito. Tu alquiler en manos de expertos por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia.`,
     heroLead:
       "¿Cansado de que el inquilino te llame un domingo por una avería? En Les Corts —desde Pedralbes y La Maternitat hasta el eje Diagonal— Livendia se convierte en tu único interlocutor con el arrendatario: cobramos la renta, gestionamos incidencias con industriales de confianza y solo te avisamos cuando hace falta tu firma o tu decisión. Nuestra sede está en el propio distrito (Mejía Lequerica, 44): no somos un call center lejano.",
     eeatHeading: "Conocemos Les Corts porque estamos aquí",
@@ -115,12 +124,13 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     howIntro:
       "Cuatro hitos claros desde el alta hasta el día a día: onboarding con datos del piso y del inquilino en Les Corts o Pedralbes, canal único Livendia-inquilino, coordinación de reparaciones con trazabilidad y resumen mensual de lo relevante para ti.",
     barriosIntro:
-      "Administramos alquileres en Pedralbes, La Maternitat i Sant Ramon, Les Corts centre, Zona Universitària y enlace con Sants-Montjuïc cuando el inmueble cae en el límite del distrito.",
+      "En Pedralbes y Pedralbes i Malvasia el parque suele ser amplio (120–180 m²) con inquilinos familiares y expatriados del eje Diagonal. La Maternitat i Sant Ramon y Les Corts centre mezclan bloques de los 60–80 con calderas comunitarias y mucha demanda del Hospital Clínic. En Zona Universitària predominan contratos LAU con rotación de másteres y doctorandos. También damos cobertura en Numància y Travessera de Les Corts cuando el inmueble cae en el límite con Sants-Montjuïc.",
     barrios: [
       "Pedralbes",
+      "Pedralbes i Malvasia",
       "La Maternitat i Sant Ramon",
       "Les Corts centre",
-      "Zona Universitària",
+      "Zona Universitària (UB / UPC)",
       "Numància",
       "Travessera de Les Corts",
     ],
@@ -170,7 +180,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       {
         question: "¿Por qué contratar administración si mi oficina de gestoría está en Les Corts?",
         answer:
-          "Precisamente porque operamos en el distrito: conocemos el mercado local, los plazos de Incasòl y los industriales de la zona. Pagas 49 €/mes por delegar el canal con el inquilino sin desplazarte al despacho por cada incidencia.",
+          `Precisamente porque operamos en el distrito: conocemos el mercado local, los plazos de Incasòl y los industriales de la zona. Pagas ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} por delegar el canal con el inquilino sin desplazarte al despacho por cada incidencia.`,
       },
       {
         question: "¿Gestionáis pisos en Pedralbes con rentas altas?",
@@ -200,12 +210,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["barcelona", "gracia"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/gracia`,
     zoneLabel: "Gràcia",
-    metaTitle: "Administración de Alquiler en Gràcia (Barcelona)",
+    metaTitle: `Administración de alquiler Gràcia — Vila, Vallcarca, La Salut, Camp d'en Grassot · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      "Delegación integral de tu alquiler en Vila de Gràcia y Vallcarca por 49 €/mes. Control de cobros, contratos LAU/Temporada y resolución de incidencias.",
-    h1: "Administración Integral de Alquileres en Gràcia",
+      `Gestión de alquiler LAU y habitaciones en Vila de Gràcia, Vallcarca, La Salut y Camp d'en Grassot. Mediación con inquilinos, cobro e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Gestión de alquiler en Gràcia para propietarios (Vila, Vallcarca y La Salut)",
     subtitle:
-      "Transforma tu propiedad en Gràcia en un ingreso pasivo y protegido por 49 €/mes IVA incl.",
+      `Transforma tu propiedad en Gràcia en un ingreso pasivo y protegido por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
     heroLead:
       "Gràcia mezcla alquiler residencial LAU, pisos compartidos y estancias de temporada en Vila de Gràcia (25,7 €/m² en oferta, Properfy/Idealista 2026) o Vallcarca (20,7 €/m²). Esa mezcla multiplica llamadas del inquilino —ruido, convivencia, subarriendo— si no hay un gestor de por medio. Livendia filtra, cobra el día 1 y coordina averías; tú decides sobre la renta y las obras, no sobre el WhatsApp del domingo.",
     eeatHeading: "Gràcia: LAU, temporada y perfiles diversos",
@@ -215,13 +225,16 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "En Gràcia la rotación es alta —oferta a 25,30 €/m² según Brains RE (Q2 2026)— y los contratos mal redactados generan conflictos por ruido, mascotas o uso turístico encubierto. Livendia asume la mediación diaria: el inquilino sabe que debe pasar por nosotros; tú recibes un resumen claro cuando hay impago, renovación o una avería que supera el umbral que acordemos.",
     howIntro:
       "Alta del arrendamiento en panel, registro de contactos del inquilino, protocolo de incidencias con proveedores del barrio y avisos solo para pagos recibidos, impagos o decisiones que requieran tu firma en Vila de Gràcia o Camp d'en Grassot.",
-    barriosIntro: "Zonas donde administramos alquileres en el distrito de Gràcia:",
+    barriosIntro:
+      "Vila de Gràcia concentra pisos señoriales sin ascensor y convivencias compartidas cerca de Plaça del Sol. Camp d'en Grassot i Gràcia Nova y La Salut (límite Park Güell) mezclan familias y profesionales con oferta reformada. Vallcarca i els Penitents y El Coll tienen pendiente, edificios en terraza y más estancias medias. En cada barrio adaptamos el protocolo de cobro y mediación al tipo de contrato (LAU, habitaciones, temporada con causa).",
     barrios: [
       "Vila de Gràcia",
+      "Plaça del Sol / Plaça de la Vila",
       "Camp d'en Grassot i Gràcia Nova",
       "Vallcarca i els Penitents",
       "El Coll",
       "La Salut",
+      "Plaça de Lesseps",
     ],
     serviceBullets: [
       {
@@ -292,12 +305,12 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["l-hospitalet"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/l-hospitalet`,
     zoneLabel: "L'Hospitalet de Llobregat",
-    metaTitle: "Gestoría y Administración de Alquileres en L'Hospitalet de Llobregat",
+    metaTitle: `Administración de alquiler L'Hospitalet — Bellvitge, Collblanc, Centre · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      "Protege tu piso de alquiler en L'Hospitalet (Collblanc, Bellvitge, Santa Eulàlia). Cobro de rentas, gestión de incidencias y fianza por 49 €/mes.",
-    h1: "Administración de Alquileres para Propietarios en L'Hospitalet",
+      `Gestión LAU en L'Hospitalet: Collblanc, Bellvitge, Santa Eulàlia, Centre y Granvia Sud. Cobro, INCASÒL e incidencias en bloques compactos por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en L'Hospitalet de Llobregat (Bellvitge, Collblanc, Centre)",
     subtitle:
-      "Máxima rentabilidad y protección anti-impago en L'Hospitalet de Llobregat por 49 €/mes sin permanencia.",
+      `Máxima rentabilidad y protección anti-impago en L'Hospitalet de Llobregat por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia.`,
     heroLead:
       "L'Hospitalet concentra uno de los parques de alquiler más densos del área metropolitana —mediana ~56 m² en contratos registrados (AT 2024)— con barrios que van de 15 €/m² en Centre a 21 €/m² en Collblanc (Fotocasa, agosto 2026). El riesgo no es solo el impago: son incidencias en bloques con ascensor antiguo y comunidades exigentes. Livendia cobra, media y repara; tú no atiendes al inquilino en persona.",
     eeatHeading: "Área metropolitana, respuesta desde Les Corts",
@@ -307,15 +320,18 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "Muchos propietarios en L'Hospitalet viven fuera del municipio o tienen varios pisos de 55–75 m². Sin gestor, el inquilino contacta directamente para todo —retrasos, averías de ascensor, certificados—. Livendia establece canal único y plazos de respuesta; tú solo intervienes cuando la ley o el contrato lo exigen.",
     howIntro:
       "Registro del inmueble y arrendatario, seguimiento de renta (SEPA o transferencia), gestión de impagos desde el día 3, coordinación con industriales del Baix Llobregat y resumen mensual en panel.",
-    barriosIntro: "Barrios y núcleos de L'Hospitalet donde administramos alquileres:",
+    barriosIntro:
+      "Collblanc–La Torrassa y la frontera con Barcelona (L1/L5) concentran pisos de 55–70 m² con alta rotación. Bellvitge y Granvia Sud tienen bloques de los 70–80 con ascensores envejecidos y mucha demanda familiar. Centre y Can Serra ofrecen rentas más contenidas (~15 €/m² en oferta, Fotocasa 2026). Pubilla Cases y Santa Eulàlia completan el mapa con comunidades activas y propietarios que suelen vivir fuera del municipio.",
     barrios: [
       "Collblanc",
+      "La Torrassa",
       "Bellvitge",
+      "Granvia Sud",
       "Santa Eulàlia",
       "Pubilla Cases",
       "Centre",
       "Can Serra",
-      "Granvia Sud",
+      "Rambla de Just Oliveras",
     ],
     serviceBullets: [
       {
@@ -367,7 +383,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       },
     ],
     finalCtaLead:
-      "Protege tu alquiler en L'Hospitalet con un gestor que habla con el inquilino por ti — 49 €/mes, sin permanencia.",
+      `Protege tu alquiler en L'Hospitalet con un gestor que habla con el inquilino por ti — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia.`,
     primaryCtaLabel: "Solicitar Gestión en L'Hospitalet por WhatsApp",
     waPlaceLabel: "L'Hospitalet de Llobregat",
     heroImage: "/images/gestora3.jpg",
@@ -385,11 +401,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["cornella"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/cornella`,
     zoneLabel: "Cornellà de Llobregat",
-    metaTitle: "Administración de Alquiler en Cornellà de Llobregat",
+    metaTitle: `Administración de alquiler Cornellà — Sant Ildefons, Almeda, Centre · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      "Gestoría especializada en alquileres en Cornellà. Nos encargamos de tu inquilino, cobros y contrato por una tarifa fija de 49 €/mes.",
-    h1: "Gestoría e Inmobiliaria de Administración en Cornellà de Llobregat",
-    subtitle: "Delegación total de tu piso de alquiler en Cornellà por 49 €/mes.",
+      `Gestión LAU en Cornellà de Llobregat: Sant Ildefons, Almeda, Centre y Gavarra. FGC Cornellà Centre, INCASÒL e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Cornellà de Llobregat (Baix Llobregat, Sant Ildefons y Almeda)",
+    subtitle: `Delegación total de tu piso de alquiler en Cornellà por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     heroLead:
       "Cornellà —Almeda, Centre, Sant Ildefons, Gavarra— comparte la normativa catalana de zona tensionada y oferta de alquiler en torno a 15,22 €/m² en pisos (Engel & Völkers, julio 2026), por debajo de Barcelona capital. Livendia deposita la fianza en Incasòl, cobra cada mes y resuelve incidencias. Tú no negocias con el inquilino ni persigues transferencias.",
     eeatHeading: "Cornellà y Baix Llobregat",
@@ -399,8 +415,17 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "En Cornellà muchos propietarios alquilaron durante la subida de precios del Baix Llobregat y ahora renuevan con topes legales. Sin intermediario, cada petición de mejora o duda de suministros acaba en tu móvil. Livendia filtra lo urgente, contrasta presupuestos y te presenta opciones antes de gastar.",
     howIntro:
       "Expediente digital del piso, contacto único con el arrendatario, liquidación mensual de rentas, historial de incidencias en panel y gestión de renovaciones con límite legal de subida.",
-    barriosIntro: "Zonas de Cornellà donde llevamos la administración del alquiler:",
-    barrios: ["Almeda", "Centre", "Sant Ildefons", "Gavarra", "Riu Sud", "Sant Ildefons Mas"],
+    barriosIntro:
+      "Sant Ildefons y Centre concentran bloques de los 70–90 m² bien comunicados con FGC Cornellà Centre. Almeda y el polígono industrial atraen familias que trabajan en Barcelona o en el Baix Llobregat. Gavarra y Riu Sud mezclan chalets adosados y pisos más amplios. En cada zona aplicamos el mismo protocolo de cobro, pero el tipo de incidencia cambia: humedades en sótanos en Centre, comunidades muy activas en Sant Ildefons Mas.",
+    barrios: [
+      "Sant Ildefons",
+      "Sant Ildefons Mas",
+      "Centre",
+      "Almeda",
+      "Gavarra",
+      "Riu Sud",
+      "Can Mercader",
+    ],
     serviceBullets: [
       {
         title: "Redacción e inicio de expediente incluido",
@@ -451,7 +476,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       },
     ],
     finalCtaLead:
-      "Delega en Cornellà la relación con tu inquilino: renta cobrada, incidencias documentadas y gestor asignado por 49 €/mes.",
+      `Delega en Cornellà la relación con tu inquilino: renta cobrada, incidencias documentadas y gestor asignado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     primaryCtaLabel: "Contactar con el Gestor de Cornellà",
     waPlaceLabel: "Cornellà de Llobregat",
     heroImage: "/images/gestora4.jpg",
@@ -471,10 +496,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     zoneLabel: "Eixample",
     metaTitle: "Administración de Alquiler en Eixample, Barcelona",
     metaDescription:
-      "Delegación integral de tu alquiler en Eixample (Dreta, Esquerra, Sagrada Família) por 49 €/mes. Cobro, incidencias e IRAV en zona tensionada.",
+      `Delegación integral de tu alquiler en Eixample (Dreta, Esquerra, Sagrada Família) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro, incidencias e IRAV en zona tensionada.`,
     h1: "Administración Integral de Alquileres en el Eixample (Barcelona)",
     subtitle:
-      "Protege tu inversión en el corazón de Barcelona por 49 €/mes IVA incl. — sin permanencia.",
+      `Protege tu inversión en el corazón de Barcelona por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — sin permanencia.`,
     heroLead:
       "El Eixample concentra la oferta de alquiler más cara de Barcelona —30,32 €/m² en publicación (Brains Real Estate, Q2 2026)— con inquilinos exigentes y fincas centenarias. Livendia cobra la renta, gestiona incidencias con industriales del distrito y calcula topes IRAV en renovaciones. Tú no atiendes llamadas del inquilino ni persigues transferencias.",
     eeatHeading: "Eixample: precios altos, normativa estricta",
@@ -544,7 +569,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       {
         question: "¿Por qué contratar administración si el piso está en zona premium?",
         answer:
-          "Precisamente porque el ticket es alto: un impago o una renovación mal calculada cuesta más que 49 €/mes. Livendia asume el canal con el inquilino y verifica IRAV en cada subida legal.",
+          `Precisamente porque el ticket es alto: un impago o una renovación mal calculada cuesta más que ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Livendia asume el canal con el inquilino y verifica IRAV en cada subida legal.`,
       },
     ],
     finalCtaLead:
@@ -570,10 +595,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     zoneLabel: "Sant Cugat del Vallès",
     metaTitle: "Administración de Alquiler en Sant Cugat del Vallès",
     metaDescription:
-      "Gestión integral de alquileres en Sant Cugat (Mira-sol, Centre, Volpelleres) por 49 €/mes. Cobro, incidencias e IRAV desde Les Corts.",
+      `Gestión integral de alquileres en Sant Cugat (Mira-sol, Centre, Volpelleres) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro, incidencias e IRAV desde Les Corts.`,
     h1: "Administración de Alquileres en Sant Cugat del Vallès",
     subtitle:
-      "Familias, casas y pisos premium en el Vallès — gestionados por 49 €/mes sin permanencia.",
+      `Familias, casas y pisos premium en el Vallès — gestionados por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia.`,
     heroLead:
       "Sant Cugat combina vivienda unifamiliar en Mira-sol y Valldoreix con pisos en Centre-Vila —Fotocasa (agosto 2026) sitúa el municipio en 17 €/m², con ticket medio alto por superficie—. Livendia cobra la renta, coordina incidencias en casas y chalets, y calcula IRAV en renovaciones. Tú no negocias con el inquilino ni persigues transferencias.",
     eeatHeading: "Sant Cugat: calidad de vida, gestión profesional",
@@ -635,7 +660,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       },
     ],
     finalCtaLead:
-      "Delega en Sant Cugat la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado por 49 €/mes.",
+      `Delega en Sant Cugat la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     primaryCtaLabel: "Contactar con el Gestor de Sant Cugat",
     waPlaceLabel: "Sant Cugat del Vallès",
     heroImage: "/images/gestora6.jpg",
@@ -655,10 +680,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     zoneLabel: "Badalona",
     metaTitle: "Administración de Alquiler en Badalona",
     metaDescription:
-      "Gestión de alquileres en Badalona (Centre, Gorg, Montigalà) por 49 €/mes. Cobro de rentas, incidencias e IRAV en zona tensionada.",
+      `Gestión de alquileres en Badalona (Centre, Gorg, Montigalà) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro de rentas, incidencias e IRAV en zona tensionada.`,
     h1: "Administración de Alquileres en Badalona",
     subtitle:
-      "Protege tu piso en Badalona por 49 €/mes IVA incl. — metro directo a Barcelona, gestor desde Les Corts.",
+      `Protege tu piso en Badalona por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — metro directo a Barcelona, gestor desde Les Corts.`,
     heroLead:
       "Badalona —Centre, Gorg, Montigalà, Sant Roc— concentra alquiler asequible frente a Barcelona capital: Idealista (2025) en 19,22 €/m² de oferta, Engel & Völkers (julio 2026) en 14,16 €/m² para pisos. El parque envejecido multiplica incidencias si no hay gestor. Livendia cobra, media y repara; tú no atiendes al inquilino en persona.",
     eeatHeading: "Badalona: densidad, metro y normativa catalana",
@@ -720,7 +745,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       },
     ],
     finalCtaLead:
-      "Protege tu alquiler en Badalona con un gestor que habla con el inquilino por ti — 49 €/mes, sin permanencia.",
+      `Protege tu alquiler en Badalona con un gestor que habla con el inquilino por ti — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia.`,
     primaryCtaLabel: "Solicitar Gestión en Badalona por WhatsApp",
     waPlaceLabel: "Badalona",
     heroImage: "/images/gestora7.jpg",
@@ -736,8 +761,18 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
   },
 ];
 
+export function isAdministracionAlquilerMetroSegmentPublished(segments: readonly string[]): boolean {
+  return ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS.includes(segments.join("/"));
+}
+
+export function getPublishedAdministracionAlquilerMetroLandings(): AdministracionAlquilerMetroLanding[] {
+  return ADMINISTRACION_ALQUILER_METRO_LANDINGS.filter((l) =>
+    isAdministracionAlquilerMetroSegmentPublished(l.segments),
+  );
+}
+
 export function getMetroLandingSegments(): { segments: string[] }[] {
-  return ADMINISTRACION_ALQUILER_METRO_LANDINGS.map((l) => ({
+  return getPublishedAdministracionAlquilerMetroLandings().map((l) => ({
     segments: [...l.segments],
   }));
 }

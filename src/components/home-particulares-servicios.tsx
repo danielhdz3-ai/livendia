@@ -62,7 +62,7 @@ const SERVICIOS_PARTICULARES = [
   {
     href: "/para-propietarios",
     title: "Administración alquiler",
-    price: "49 €/mes",
+    price: "59 €/mes",
     note: "Sin permanencia",
     image: "/images/GESTORIA9.jpg",
     imageAlt: "Administración de alquileres",

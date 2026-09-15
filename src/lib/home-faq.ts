@@ -17,7 +17,7 @@ export const HOME_FAQ_ITEMS: FaqItem[] = [
   {
     question: "¿Cuánto cuesta la administración de alquiler?",
     answer:
-      "La administración para propietarios es 49 €/mes IVA incluido, sin permanencia. Incluye gestor asignado, contacto con el inquilino, incidencias, renovaciones y panel online. Puedes cancelar cuando quieras desde tu área de cliente.",
+      "La administración para propietarios es 59 €/mes IVA incluido, sin permanencia. Incluye gestor asignado, contacto con el inquilino, incidencias, renovaciones y panel online. Puedes cancelar cuando quieras desde tu área de cliente.",
   },
   {
     question: "¿Qué ocurre después de pagar?",

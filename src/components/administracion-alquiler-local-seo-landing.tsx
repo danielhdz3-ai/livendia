@@ -13,7 +13,10 @@ import {
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import type { AdministracionAlquilerLocalLandingConfig } from "@/lib/administracion-alquiler-local-cities";
-import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
+import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+} from "@/lib/catalog.public";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { getContactPhoneDisplay, getContactPhoneE164Plus, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
@@ -234,7 +237,9 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
 
                   <div className="mt-10 flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">49 €</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
+                      {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €
+                    </span>
                     <div className="text-lg text-blue-100">
                       <div>/mes · IVA incluido</div>
                     </div>
@@ -498,7 +503,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <ContratarSlugButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105" slug="administracion-alquiler">
-                  <span>Contratar por 49 €/mes</span>
+                  <span>Contratar por {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €/mes</span>
                   <CheckCircle className="h-6 w-6" aria-hidden />
                 </ContratarSlugButton>
                 <a

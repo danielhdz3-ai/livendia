@@ -18,6 +18,10 @@ import { getMetroEnrichment } from "@/lib/administracion-alquiler-metro-enrichme
 import { ALQUILER_REGULATORY_BY_SLUG } from "@/lib/administracion-alquiler-local-regulatory";
 import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquiler-local-cities";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+} from "@/lib/catalog.public";
+import {
   BUSINESS_EMAIL,
   buildBusinessPostalAddress,
   getBusinessAddressDisplayLine,
@@ -124,7 +128,7 @@ function buildMetroWorkflow(config: AdministracionAlquilerMetroLanding): GestorW
     ],
     primaryCtaLabel: config.primaryCtaLabel,
     secondaryCtaLabel: `Llamar: ${getContactPhoneDisplay()}`,
-    disclaimer: "Administración 49 €/mes IVA incl. · Sin permanencia · Oficina en Les Corts, Barcelona",
+    disclaimer: `Administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. · Sin permanencia · Oficina en Les Corts, Barcelona`,
   };
 }
 
@@ -259,7 +263,9 @@ export function AdministracionAlquilerMetroSeoLanding({
                   <p className="mt-4 text-base leading-relaxed text-blue-100/95">{config.heroLead}</p>
 
                   <div className="mt-8 flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold sm:text-5xl">49 €</span>
+                    <span className="text-4xl font-extrabold sm:text-5xl">
+                      {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €
+                    </span>
                     <div className="text-lg text-blue-100">/mes · IVA incluido · Sin permanencia</div>
                   </div>
 
@@ -612,7 +618,7 @@ export function AdministracionAlquilerMetroSeoLanding({
               </div>
               <LandingTrustBar
                 className="mt-8 text-blue-100"
-                items={["49 €/mes IVA incl.", "Sin permanencia", "Gestor en Les Corts"]}
+                items={[`${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`, "Sin permanencia", "Gestor en Les Corts"]}
               />
             </div>
           </section>

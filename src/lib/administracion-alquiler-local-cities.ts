@@ -148,12 +148,15 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata desde 49 € al mes sin permanencia: nos convertimos en vuestro interlocutor con el inquilino en Madrid, con mismo panel y WhatsApp profesional que en el servicio nacional.",
+      "Contrata desde 59 € al mes sin permanencia: nos convertimos en vuestro interlocutor con el inquilino en Madrid, con mismo panel y WhatsApp profesional que en el servicio nacional.",
   },
   {
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Gestión de alquileres LAU · Barcelona y AMB",
+    heroH1: "Administración de alquiler en Barcelona para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Administración de alquiler en Barcelona para propietarios",
     // Precio medio: Idealista, abril 2026 (~22 €/m², -7,6% interanual).
     heroLead:
       "Barcelona es, según Idealista (abril de 2026), la única gran capital española donde el alquiler ha bajado en el último año: el precio medio ronda los 22 €/m², con una caída interanual del 7,6 %. Aun con esa corrección, ciudad y área metropolitana mantienen alta demanda habitacional y normativas comunales exigentes; los propietarios siguen recibiendo dudas sobre subarrendamientos locales, obra menor o suministro compartido. Livendia da un canal único ante el arrendatario y os resume solo lo que requiere vuestra decisión.",
@@ -164,6 +167,17 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Barcelona está declarada zona de mercado residencial tensionado desde marzo de 2024, dentro de la declaración catalana que cubre 271 municipios, lo que implica límites legales a la subida de renta en nuevos contratos y condiciones específicas si el propietario es gran tenedor. La bajada de precios tampoco ha simplificado la burocracia: entre esos límites, normativas comunales exigentes y la complejidad de compatibilizar alquiler de temporada con la normativa turística, cada contrato en Barcelona requiere revisión caso a caso. Nuestro protocolo encaja tanto en Eixample como en Nou Barris o municipios próximos al TRAM.",
     howIntro:
       "Registramos contrato y contactos, asumimos la intermediación con el arrendatario, gestionamos incidencias con trazabilidad y os informamos solo de pagos, renovaciones o decisiones que requieran vuestra aprobación. Con el precio medio a la baja (-7,6 % interanual, Idealista abril 2026), prestamos especial atención a que cada renovación parta de una referencia de mercado actualizada, en Eixample, Nou Barris o municipios del TRAM.",
+    barriosIntro:
+      "Página general de Barcelona capital. Para contenido hiperlocal por barrio y municipio del área metropolitana (Les Corts, Gràcia, L'Hospitalet, Cornellà), consulta las landings enlazadas más abajo — cada una con barrios, precios de referencia y casos operativos propios.",
+    barrios: [
+      "Les Corts (Pedralbes, Maternitat)",
+      "Gràcia (Vila, Vallcarca)",
+      "Eixample",
+      "Sants-Montjuïc",
+      "Sant Martí",
+      "L'Hospitalet de Llobregat",
+      "Cornellà de Llobregat",
+    ],
     faq: [
       {
         question: "¿Cuál es el precio medio del alquiler en Barcelona?",
@@ -182,6 +196,11 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
         answer:
           "La combinación de nueva oferta regulada, cambios normativos y el ajuste tras varios años de subidas explica la corrección del 7,6 % interanual (Idealista, abril de 2026). Aun así, la ciudad mantiene algunas de las rentas más altas de España y una gestión de incidencias más compleja que la media.",
       },
+      {
+        question: "¿Tenéis administración de alquiler por barrio en Barcelona?",
+        answer:
+          "Sí. Además de esta página de Barcelona capital, publicamos landings hiperlocales con barrios, precios de referencia y casos operativos en Les Corts, Gràcia, L'Hospitalet de Llobregat y Cornellà de Llobregat (rutas bajo /administracion-alquiler/).",
+      },
     ],
     testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",
     testimonials: [
@@ -199,18 +218,18 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Activa administración profesional Livendia en Barcelona con un solo clic al checkout: mismo precio publicado sin permanencia, contacto WhatsApp igual que vuestra página /servicios/administracion-alquiler.",
+      "Activa administración profesional Livendia en Barcelona desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que el servicio nacional.",
   },
   {
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
     heroBadge: "Gestión de alquileres · Valencia y l'Horta",
-    heroH1: "Gestión de alquileres en Valencia para propietarios — desde 49 €/mes",
+    heroH1: "Gestión de alquileres en Valencia para propietarios — desde 59 €/mes",
     jsonLdServiceName: "Gestión de alquileres en Valencia para propietarios",
     // Precio medio: Idealista, junio 2026 (14,3 €/m²). Sin declaración de zona tensionada.
     heroLead:
-      "¿Buscas gestión de alquileres en Valencia sin hablar con el inquilino? Valencia capital y l'Horta tienen una de las rotaciones más altas de España: un piso en Ruzafa, Campanar o Malvarrosa puede alquilarse en 8–12 días (Idealista, junio de 2026, ~14,3 €/m²). Eso multiplica incidencias, entregas de llaves y dudas de comunidad. Livendia es tu gestoría de administración de propiedades para propietarios: canal único con el arrendatario, incidencias coordinadas y avisos solo cuando hace falta tu firma — 49 €/mes IVA incl., sin permanencia.",
+      "¿Buscas gestión de alquileres en Valencia sin hablar con el inquilino? Valencia capital y l'Horta tienen una de las rotaciones más altas de España: un piso en Ruzafa, Campanar o Malvarrosa puede alquilarse en 8–12 días (Idealista, junio de 2026, ~14,3 €/m²). Eso multiplica incidencias, entregas de llaves y dudas de comunidad. Livendia es tu gestoría de administración de propiedades para propietarios: canal único con el arrendatario, incidencias coordinadas y avisos solo cuando hace falta tu firma — 59 €/mes IVA incl., sin permanencia.",
     whyIntro:
       "La gestión de inmuebles para propietarios en Valencia no se reduce a cobrar la renta: con rotación alta, el 80 % de las llamadas llegan en las dos primeras semanas tras un cambio de inquilino — cerrajero, electrodomésticos, suministros, ascensor o vecinos en edificios del Eixample valenciano o Gran Vía. Valencia no está declarada zona tensionada (LAU general, sin IRAV), pero eso no simplifica el día a día. Si tienes piso en Benimaclet, Ciutat Vella, Extramurs, Mislata, Torrent o Paiporta y vives fuera de la ciudad, centralizar la gestión de alquiler evita que el WhatsApp personal se convierta en línea de averías 24/7.",
     howIntro:
@@ -237,7 +256,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       {
         question: "¿Cuánto cuesta la gestión de alquileres en Valencia?",
         answer:
-          "Livendia cobra 49 €/mes IVA incluido, sin permanencia ni comisión sobre la renta. Incluye intermediación con el inquilino, gestión de incidencias, coordinación de reparaciones y seguimiento de fechas contratuales. No incluye seguro de impago ni juicio de desahucio.",
+          "Livendia cobra 59 €/mes IVA incluido, sin permanencia ni comisión sobre la renta. Incluye intermediación con el inquilino, gestión de incidencias, coordinación de reparaciones y seguimiento de fechas contratuales. No incluye seguro de impago ni juicio de desahucio.",
       },
       {
         question: "¿Qué incluye la administración de propiedades para propietarios en Valencia?",
@@ -281,7 +300,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata la gestión de alquileres en Valencia desde 49 €/mes sin permanencia: activación online, gestor en 24 h y mismo panel que el servicio nacional de administración de alquiler Livendia.",
+      "Contrata la gestión de alquileres en Valencia desde 59 €/mes sin permanencia: activación online, gestor en 24 h y mismo panel que el servicio nacional de administración de alquiler Livendia.",
   },
   {
     slug: "mallorca",
@@ -332,7 +351,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Mallorca desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+      "Contrata administración profesional en Mallorca desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
   {
     slug: "sevilla",
@@ -395,7 +414,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Sevilla desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+      "Contrata administración profesional en Sevilla desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
   {
     slug: "malaga",
@@ -455,7 +474,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Málaga desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+      "Contrata administración profesional en Málaga desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
   {
     slug: "oviedo",
@@ -523,7 +542,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Oviedo desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+      "Contrata administración profesional en Oviedo desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
   {
     slug: "gijon",
@@ -590,7 +609,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Gijón desde 49 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
+      "Contrata administración profesional en Gijón desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que en el servicio nacional de Livendia.",
   },
   {
     slug: "zaragoza",
@@ -655,7 +674,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Zaragoza desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
+      "Contrata administración profesional en Zaragoza desde 59 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
   },
   {
     slug: "murcia",
@@ -720,7 +739,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Murcia desde 49 €/mes sin permanencia: gestor colegiado, panel online y WhatsApp profesional.",
+      "Contrata administración profesional en Murcia desde 59 €/mes sin permanencia: gestor colegiado, panel online y WhatsApp profesional.",
   },
   {
     slug: "bilbao",
@@ -787,6 +806,6 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       },
     ],
     finalCtaLead:
-      "Contrata administración profesional en Bilbao desde 49 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
+      "Contrata administración profesional en Bilbao desde 59 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
   },
 ];

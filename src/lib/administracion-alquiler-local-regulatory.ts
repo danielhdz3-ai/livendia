@@ -1,3 +1,5 @@
+import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
+
 /** Bloque regulatorio local — verificar zona tensionada y depósito antes de campañas SEO. */
 export type AlquilerRegulatoryLocal = {
   depositOrganism: string;
@@ -131,7 +133,7 @@ export const ADMINISTRACION_ALQUILER_TEMPLATE_FAQ = [
   {
     question: "¿Tenéis seguro de impago de alquiler?",
     answer:
-      "No incluimos póliza de impago en la cuota de 49 €/mes. Podemos orientarte sobre compañías especializadas si quieres contratar seguro aparte; nuestro servicio cubre gestión, comunicación e incidencias.",
+      `No incluimos póliza de impago en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Podemos orientarte sobre compañías especializadas si quieres contratar seguro aparte; nuestro servicio cubre gestión, comunicación e incidencias.`,
   },
   {
     question: "¿Puedo vender el piso con el inquilino dentro?",
@@ -146,7 +148,7 @@ export const ADMINISTRACION_ALQUILER_TEMPLATE_FAQ = [
   {
     question: "¿Hay permanencia en la administración Livendia?",
     answer:
-      "No. Son 49 €/mes IVA incluido y puedes cancelar cuando quieras desde el panel. Sin comisión sobre la renta ni honorarios ocultos.",
+      `No. Son ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incluido y puedes cancelar cuando quieras desde el panel. Sin comisión sobre la renta ni honorarios ocultos.`,
   },
 ] as const;
 

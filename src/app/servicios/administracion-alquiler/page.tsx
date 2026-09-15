@@ -10,6 +10,10 @@ import Image from "next/image";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, FileText, Wrench } from "lucide-react";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
+import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+} from "@/lib/catalog.public";
 
 /**
  * ISR: revalida cada 5 min para que los precios/estado del catalogo
@@ -20,7 +24,7 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Administración de alquileres para propietarios desde 49 €/mes",
+  title: `Administración de alquileres para propietarios desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
   description:
     "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y mediación. Sin permanencia. Gestoría inmobiliaria Livendia.",
   alternates: { canonical: `${getSiteUrl()}/servicios/administracion-alquiler` },
@@ -141,7 +145,9 @@ export default async function AdministracionAlquilerPage() {
                 </p>
 
                 <div className="mt-10 flex items-baseline gap-3">
-                  <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">49 €</span>
+                  <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
+                    {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €
+                  </span>
                   <div className="text-lg text-blue-100">
                     <div>/mes · IVA incluido</div>
                   </div>
@@ -393,7 +399,7 @@ export default async function AdministracionAlquilerPage() {
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105">
-                <span>Contratar por 49 €/mes</span>
+                <span>Contratar por {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}</span>
                 <CheckCircle className="h-6 w-6" aria-hidden />
               </ContratarServicioButton>
               <Link
