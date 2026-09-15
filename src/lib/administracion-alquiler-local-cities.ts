@@ -199,7 +199,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       {
         question: "¿Tenéis administración de alquiler por barrio en Barcelona?",
         answer:
-          "Sí. Además de esta página de Barcelona capital, publicamos landings hiperlocales con barrios, precios de referencia y casos operativos en Les Corts, Gràcia, L'Hospitalet de Llobregat y Cornellà de Llobregat (rutas bajo /administracion-alquiler/).",
+          "Sí. Además de esta página de Barcelona capital, hay landings hiperlocales bajo /administracion-alquiler/ en Les Corts, Gràcia, Eixample, Sants-Montjuïc, Sant Martí, L'Hospitalet, Cornellà, Sant Cugat y Badalona — cada una con barrios, precios de referencia y casos operativos.",
       },
     ],
     testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",

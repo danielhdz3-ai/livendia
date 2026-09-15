@@ -181,6 +181,88 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     ],
   },
 
+  "barcelona/sants-montjuic": {
+    rentPricePerSqm:
+      "Distrito Sants-Montjuïc: 23,58 €/m² y renta media de publicación agregada (Brains Real Estate, Q2 2026). Sants centre suele superar Poble-sec y Montjuïc en oferta Idealista (2025). La Bordeta y Hostafrancs se sitúan en la franja media del distrito.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Sants-Montjuïc, 2025.",
+    dominantHousingType:
+      "Bloques de los 60–80 en Sants, Hostafrancs y La Bordeta (60–85 m²) con calderas comunitarias frecuentes. Edificios bajos y casas entre medianeras en Poble-sec y Font de la Guatlla. En Montjuïc, parque más disperso con viviendas unifamiliares y pisos en urbanizaciones.",
+    tenantProfile: [
+      "Familias en La Bordeta y Hostafrancs con contrato LAU estable",
+      "Profesionales vinculados a Estació Sants, Fira y eje Diagonal",
+      "Parejas jóvenes en Poble-sec y convivencias compartidas",
+      "Inquilinos en rotación moderada cerca de Montjuïc y Zona Franca",
+    ],
+    localRegulatoryNote:
+      "Sants-Montjuïc está en zona tensionada catalana (271 municipios, MIVAU 2024–2027). Renovaciones con IRAV y depósito Incasòl obligatorio; la brecha entre oferta en portales y contratos registrados condiciona cada subida legal.",
+    marketContext:
+      "Sants-Montjuïc es uno de los distritos más conectados de Barcelona (L3, L5, L1, Rodalies en Sants) con parque envejecido y demanda estable de familias y profesionales. Brains Real Estate (Q2 2026) lo sitúa en 23,58 €/m² de publicación. La heterogeneidad entre Sants (más caro) y Poble-sec/Montjuïc (más asequible) obliga a contrastar referencia por barrio en cada renovación. Para el propietario fuera del distrito, el coste oculto son incidencias en calderas comunitarias, humedades en sótanos y mediación de cobros sin horario fijo.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Caldera comunitaria en La Bordeta",
+        body: "El inquilino avisa de falta de calefacción. Livendia abre incidencia con la comunidad y el mantenedor, hace seguimiento diario y reporta al propietario solo si hay derrama o gasto individual que deba autorizar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Retraso de renta en Sants",
+        body: "Transferencia el día 7 sin aviso previo. Livendia aplica protocolo desde el día 3, contacta al inquilino y registra justificante o escalado antes de informar al propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación con IRAV en Hostafrancs",
+        body: "Antes del vencimiento, Livendia calcula incremento máximo legal y prepara propuesta documentada. El propietario revisa resumen online y aprueba sin reunión presencial.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Estació de Sants",
+      "Plaça dels Països Catalans",
+      "Avinguda del Paral·lel",
+      "Montjuïc / MNAC",
+      "Parc de l'Espanya Industrial",
+      "Fira de Barcelona (Montjuïc)",
+    ],
+  },
+
+  "barcelona/sant-marti": {
+    rentPricePerSqm:
+      "Distrito Sant Martí: 24,12 €/m² y renta media de publicación (Brains Real Estate, Q2 2026). Poblenou y Diagonal Mar suelen superar La Verneda y el Besòs en oferta Idealista (2025). Clot se sitúa en la franja media-alta del distrito.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Sant Martí, 2025.",
+    dominantHousingType:
+      "Bloques de los 70–90 y promociones 2000–2015 en Poblenou y Diagonal Mar (75–110 m²). Edificios señoriales y reconversiones en Clot. En La Verneda i la Pau y Besòs, bloques compactos de los 60–80 con ascensores antiguos.",
+    tenantProfile: [
+      "Profesionales tech y familias jóvenes en Poblenou y 22@",
+      "Familias estables en Clot y La Verneda",
+      "Inquilinos con contrato LAU largo en Diagonal Mar",
+      "Trabajadores del litoral y logística del Besòs",
+    ],
+    localRegulatoryNote:
+      "Sant Martí está en zona tensionada catalana. IRAV en renovaciones, Incasòl en nuevos contratos y especial atención a contratos de habitaciones mal documentados en Poblenou.",
+    marketContext:
+      "Sant Martí combina la transformación del 22@ en Poblenou con barrios consolidados (Clot, Verneda) y nueva oferta en Diagonal Mar. Brains Real Estate (Q2 2026) cifra el distrito en 24,12 €/m² de publicación. La demanda de perfiles profesionales eleva expectativas de respuesta rápida a incidencias. Para propietarios que no viven en el distrito, Livendia desde Les Corts asume cobro, mediación comunitaria e industriales del Besòs-Maresme.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Queja de ruido en Poblenou",
+        body: "La comunidad alerta por actividad nocturna. Livendia recoge el parte, verifica cláusulas del contrato, habla con el inquilino y propone medidas. El propietario recibe acta resumida sin entrar en el chat de la finca.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación en Diagonal Mar",
+        body: "Livendia consulta renta de referencia, calcula tope IRAV y prepara comunicación al inquilino. El propietario solo firma si está de acuerdo con el resumen en una página.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Avería de ascensor en Clot",
+        body: "Inquilino en planta alta sin ascensor operativo. Livendia coordina con comunidad y mantenedor, informa plazos al arrendatario y avisa al propietario solo si hay coste individual.",
+      },
+    ],
+    nearbyLandmarks: [
+      "22@ / Districte de la innovació",
+      "Parc del Clot",
+      "Plaça de les Glòries",
+      "Diagonal Mar i el Front Marítim",
+      "Rambla del Poblenou",
+      "Estació Clot-Aragó",
+    ],
+  },
+
   "barcelona/eixample": {
     rentPricePerSqm:
       "Distrito Eixample: 30,32 €/m² y renta media de publicación ~3.113 €/mes (Brains Real Estate, Q2 2026). Idealista (abril 2025) sitúa la oferta del distrito en 26,5 €/m². Incasòl registró en contratos firmados una mediana de ~1.284 €/mes en el distrito (Nitia, datos agregados 2024). Por subzonas, Dreta de l'Eixample y Sagrada Família suelen superar la media municipal barcelonesa.",

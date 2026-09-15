@@ -36,6 +36,20 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     kind: "barrio" as const,
   },
   {
+    slug: "sants-montjuic",
+    segments: ["barcelona", "sants-montjuic"] as const,
+    name: "Sants-Montjuïc, Barcelona",
+    shortName: "Sants-Montjuïc",
+    kind: "barrio" as const,
+  },
+  {
+    slug: "sant-marti",
+    segments: ["barcelona", "sant-marti"] as const,
+    name: "Sant Martí, Barcelona",
+    shortName: "Sant Martí",
+    kind: "barrio" as const,
+  },
+  {
     slug: "l-hospitalet",
     segments: ["l-hospitalet"] as const,
     name: "L'Hospitalet de Llobregat",

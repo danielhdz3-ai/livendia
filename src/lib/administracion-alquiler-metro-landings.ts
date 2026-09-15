@@ -15,12 +15,17 @@ import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.publi
 
 export const ADMINISTRACION_ALQUILER_METRO_BASE = "/administracion-alquiler";
 
-/** Fase 1 Barcelona AMB — ampliar cuando publiques Eixample, Sant Cugat o Badalona. */
+/** Landings metro indexables (sitemap, generateStaticParams, enlaces hub). */
 export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly string[] = [
   "barcelona/les-corts",
   "barcelona/gracia",
+  "barcelona/eixample",
+  "barcelona/sants-montjuic",
+  "barcelona/sant-marti",
   "l-hospitalet",
   "cornella",
+  "sant-cugat",
+  "badalona",
 ];
 
 const BARCELONA_CITY_HUB = `${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`;
@@ -82,7 +87,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   {
     question: "¿Dónde están ubicadas las oficinas de Livendia?",
     answer:
-      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Gràcia, Les Corts, Eixample) y en todo el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat, Badalona).",
+      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Eixample, Gràcia, Les Corts, Sants-Montjuïc, Sant Martí) y en el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat, Badalona).",
   },
   {
     question: `¿Qué incluye exactamente la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
@@ -494,10 +499,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["barcelona", "eixample"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/eixample`,
     zoneLabel: "Eixample",
-    metaTitle: "Administración de Alquiler en Eixample, Barcelona",
+    metaTitle: `Administración de alquiler Eixample — Dreta, Esquerra, Sagrada Família · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      `Delegación integral de tu alquiler en Eixample (Dreta, Esquerra, Sagrada Família) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro, incidencias e IRAV en zona tensionada.`,
-    h1: "Administración Integral de Alquileres en el Eixample (Barcelona)",
+      `Gestión LAU en Eixample: Dreta, Antiga i Nova Esquerra, Fort Pienc y Sagrada Família. IRAV, cobro e incidencias en fincas regias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en el Eixample (Dreta, Esquerra y Sagrada Família)",
     subtitle:
       `Protege tu inversión en el corazón de Barcelona por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — sin permanencia.`,
     heroLead:
@@ -509,13 +514,15 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "En el Eixample un punto de €/m² representa cientos de euros anuales y un error en renovación o cobro puede costar más que años de gestoría. Livendia filtra el contacto diario con el inquilino —averías, suministros, quejas de vecinos— y te resume solo lo que requiere tu firma o decisión económica.",
     howIntro:
       "Alta del inmueble en panel, canal único Livendia-inquilino, protocolo de cobro desde el día 3, coordinación con industriales del Eixample y resumen mensual de rentas e incidencias.",
-    barriosIntro: "Barrios del Eixample donde administramos alquileres:",
+    barriosIntro:
+      "En Dreta de l'Eixample y Passeig de Gràcia predominan fincas regias de 90–130 m² con inquilinos ejecutivos y familias de alto ticket. Antiga i Nova Esquerra mezclan bloques del ensanche con convivencias compartidas cerca de Hospital Clínic. Fort Pienc y Sagrada Família concentran rotación moderada y edificios con ascensores antiguos. En el límite con Sant Antoni aplicamos el mismo protocolo de cobro adaptado a pisos más compactos (65–80 m²).",
     barrios: [
       "Dreta de l'Eixample",
       "Antiga Esquerra de l'Eixample",
       "Nova Esquerra de l'Eixample",
       "Fort Pienc",
       "Sagrada Família",
+      "Passeig de Gràcia (tramo Eixample)",
       "Sant Antoni (límite)",
     ],
     serviceGrid: [
@@ -587,6 +594,210 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       addressRegion: "Eixample",
       geo: { latitude: "41.3888", longitude: "2.1680" },
       areaServedName: "Eixample, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "sants-montjuic"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sants-montjuic`,
+    zoneLabel: "Sants-Montjuïc",
+    metaTitle: `Administración de alquiler Sants-Montjuïc — Sants, Poble-sec, Hostafrancs · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sants-Montjuïc: Sants, La Bordeta, Hostafrancs, Poble-sec y Montjuïc. Cobro, INCASÒL e incidencias cerca de Estació Sants por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sants-Montjuïc (Sants, Poble-sec y La Bordeta)",
+    subtitle:
+      `Delega el contacto con el inquilino en un distrito bien conectado — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Sants-Montjuïc concentra familias en La Bordeta, profesionales junto a Estació Sants y alquiler en Poble-sec con edificios de los 30–60. Brains Real Estate (Q2 2026) sitúa el distrito en 23,58 €/m² de publicación. Livendia cobra la renta, coordina industriales del eje Paral·lel–Sants y calcula IRAV en renovaciones. Tú no persigues transferencias ni atiendes averías un domingo.",
+    eeatHeading: "Sants-Montjuïc: conectividad, parque envejecido y zona tensionada",
+    eeatBlock:
+      "Administramos alquileres en Sants, Hostafrancs, La Bordeta, Poble-sec, Montjuïc y la frontera con Les Corts en Numància. Brains Real Estate (Q2 2026): 23,58 €/m² en oferta agregada del distrito. Idealista (2025) muestra Sants por encima de Poble-sec en €/m². Zona tensionada catalana: cada renovación exige IRAV antes de comunicar al inquilino. Operamos desde Les Corts (~10 min en metro L3/L5).",
+    whyIntro:
+      "En Sants la rotación es moderada pero las incidencias en bloques antiguos —calderas, humedades en sótanos, ascensores— consumen tiempo si el propietario vive fuera del distrito. Livendia filtra WhatsApp del inquilino, contrasta presupuestos y te presenta solo decisiones que requieren tu firma.",
+    howIntro:
+      "Alta en panel, canal único Livendia-inquilino, protocolo de cobro desde el día 3, coordinación con mantenimiento en Sants/Poble-sec y resumen mensual de rentas e incidencias.",
+    barriosIntro:
+      "Sants centre y Hostafrancs mezclan bloques de los 60–80 con familias estables y demanda del eje ferroviario. La Bordeta y Badal y Font de la Guatlla tienen pisos más compactos (55–70 m²) con calderas comunitarias. Poble-sec concentra edificios bajos y convivencias cerca de Avinguda del Paral·lel. Montjuïc y la Zona Franca completan el mapa con viviendas más dispersas y propietarios que suelen residir fuera del distrito.",
+    barrios: [
+      "Sants",
+      "Hostafrancs",
+      "La Bordeta",
+      "Badal",
+      "Poble-sec",
+      "Font de la Guatlla",
+      "Montjuïc",
+      "Estació Sants / Plaça dels Països Catalans",
+    ],
+    serviceGrid: [
+      {
+        title: "Incidencias en bloques de los 60–80",
+        description:
+          "Red de fontaneros y calderistas habituales en Sants y Poble-sec para urgencias fuera de horario laboral.",
+      },
+      {
+        title: "Renovaciones con IRAV",
+        description:
+          "Cálculo de incremento máximo en zona tensionada antes de enviar propuesta — habitual en contratos largos en La Bordeta.",
+      },
+      {
+        title: "Cobro y mediación",
+        description:
+          "Seguimiento de transferencias y escalado documentado cuando el inquilino retrasa el ingreso tras el día 3.",
+      },
+      {
+        title: "Depósito en INCASÒL",
+        description:
+          "Tramitación de fianza, cambio de suministros y archivo en panel del propietario.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sants-Montjuïc que delegaron el canal con el inquilino",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Sants cerca de la estación y yo en Tarragona. Livendia gestionó una avería de caldera comunitaria y yo solo aprobé el presupuesto por email. El inquilino no tiene mi móvil.",
+        author: "Núria C.",
+        role: "Propietaria, Sants",
+      },
+      {
+        quote:
+          "Alquilo en Poble-sec. Cuando el inquilino retrasó la renta, Livendia aplicó el protocolo de cobro antes de que yo tuviera que llamar. Todo quedó en el panel.",
+        author: "David L.",
+        role: "Propietario, Poble-sec",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Sants-Montjuïc?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra el distrito en 23,58 €/m² de publicación. Sants suele estar por encima de Poble-sec y Montjuïc en agregadores de Idealista (2025). Tu gestor contrasta referencia antes de cada renovación.",
+      },
+      {
+        question: "¿Gestionáis pisos cerca de Estació Sants o la Fira?",
+        answer:
+          "Sí. El protocolo de cobro e incidencias es el mismo; adaptamos comunicación al perfil del inquilino (familias, profesionales en traslado, estancias medias) y documentamos en el panel.",
+      },
+      {
+        question: "¿Atendéis incidencias en edificios sin ascensor en Poble-sec?",
+        answer:
+          "Sí. Coordinamos cerrajería, fontanería y electricistas del distrito; el inquilino contacta con Livendia, no contigo.",
+      },
+    ],
+    finalCtaLead:
+      "Activa administración Livendia en Sants-Montjuïc: gestor dedicado, cobro puntual y cero llamadas del inquilino a tu móvil.",
+    primaryCtaLabel: "Consultar con Gestor Sants-Montjuïc por WhatsApp",
+    waPlaceLabel: "Sants-Montjuïc, Barcelona",
+    heroImage: "/images/gestora8.jpg",
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sants-Montjuïc",
+      addressLocality: "Barcelona",
+      addressRegion: "Sants-Montjuïc",
+      geo: { latitude: "41.3750", longitude: "2.1490" },
+      areaServedName: "Sants-Montjuïc, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "sant-marti"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sant-marti`,
+    zoneLabel: "Sant Martí",
+    metaTitle: `Administración de alquiler Sant Martí — Poblenou, Clot, Diagonal Mar · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sant Martí: Poblenou, Clot, La Verneda, Besòs i el Maresme y Diagonal Mar. Cobro e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sant Martí (Poblenou, Clot y Diagonal Mar)",
+    subtitle:
+      `Protege tu piso en el distrito del 22@ y el Besòs por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — gestor desde Les Corts.`,
+    heroLead:
+      "Sant Martí mezcla Poblenou tech, Clot familiar y promociones en Diagonal Mar. Brains Real Estate (Q2 2026) sitúa el distrito en 24,12 €/m² de publicación, con fuerte demanda de profesionales y familias. Livendia cobra la renta, media incidencias en bloques de los 70–2000 y verifica IRAV en renovaciones. Tú no negocias con el inquilino ni persigues pagos.",
+    eeatHeading: "Sant Martí: 22@, litoral y normativa catalana",
+    eeatBlock:
+      "Gestionamos arrendamientos en Poblenou, Clot, La Verneda i la Pau, Besòs i el Maresme, Provençals del Poblenou y Diagonal Mar i el Front Marítim del Besòs. Brains Real Estate (Q2 2026): 24,12 €/m² en oferta del distrito. Zona tensionada: depósito Incasòl e IRAV en cada subida legal. Respuesta desde Les Corts (~15 min en metro L4/L2).",
+    whyIntro:
+      "En Poblenou y Diagonal Mar muchos propietarios compraron para alquilar a perfiles tech con contratos LAU estables; en La Verneda y el Besòs el parque es más compacto y las incidencias de comunidad son frecuentes. Livendia unifica el canal con el inquilino y documenta cada paso para que no dependas de grupos de WhatsApp con la finca.",
+    howIntro:
+      "Expediente del inmueble en panel, contacto único con el arrendatario, liquidación mensual, historial de incidencias y renovaciones con límite legal verificado.",
+    barriosIntro:
+      "Poblenou y Provençals concentran pisos reformados (70–95 m²) con inquilinos de startups y familias jóvenes. Clot y el Parc de la Estació del Nord mezclan bloques señoriales y edificios recientes. La Verneda i la Pau y el Besòs tienen rentas más contenidas y comunidades muy activas. Diagonal Mar aporta viviendas orientadas al mar con ticket medio alto y expectativas de respuesta rápida.",
+    barrios: [
+      "Poblenou",
+      "Provençals del Poblenou",
+      "Clot",
+      "La Verneda i la Pau",
+      "Besòs i el Maresme",
+      "Diagonal Mar i el Front Marítim del Besòs",
+      "El Parc i la Llacuna del Poblenou",
+      "22@ (distrito de innovación)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones con tope IRAV",
+        description:
+          "Cálculo legal antes de proponer subida — crítico en Poblenou y Diagonal Mar donde la oferta publicada supera la media municipal.",
+      },
+      {
+        title: "Mediación con la comunidad",
+        description:
+          "Gestión de quejas de vecinos, ruido o convivencia compartida con trazabilidad para el propietario.",
+      },
+      {
+        title: "Cobro profesional",
+        description:
+          "Protocolo desde el día 3 con recordatorios y escalado antes de que el impago llegue a tu móvil.",
+      },
+      {
+        title: "INCASÒL y suministros",
+        description:
+          "Fianza legal, altas/bajas de luz y agua y archivo documental en el panel.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sant Martí con el inquilino bajo control",
+    testimonials: [
+      {
+        quote:
+          "Tengo un piso en Poblenou y vivo en Madrid. Livendia calculó el tope IRAV en la renovación y yo solo firmé el resumen. El inquilino no me escribe desde hace meses.",
+        author: "Laura F.",
+        role: "Propietaria, Poblenou",
+      },
+      {
+        quote:
+          "Alquilo en Clot. Hubo un conflicto con la comunidad por ruido; Livendia medió con el inquilino y documentó las medidas. Yo recibí un acta, no veinte llamadas.",
+        author: "Sergi V.",
+        role: "Propietario, Clot",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sant Martí?",
+        answer:
+          "Brains Real Estate (Q2 2026) sitúa el distrito en 24,12 €/m² de publicación. Poblenou y Diagonal Mar suelen superar La Verneda o el Besòs en agregadores de Idealista (2025). Tu gestor contrasta referencia por barrio antes de renovar.",
+      },
+      {
+        question: "¿Gestionáis pisos en el 22@ o cerca de la playa?",
+        answer:
+          "Sí. Mismo protocolo de cobro e incidencias; adaptamos comunicación al perfil (profesionales tech, familias, estancias medias) y dejamos constancia en el panel.",
+      },
+      {
+        question: "¿Puedo contratar si vivo fuera de Barcelona?",
+        answer:
+          "Es habitual. Panel online y WhatsApp con tu gestor sustituyen desplazamientos; la oficina en Les Corts queda accesible si necesitas firma presencial.",
+      },
+    ],
+    finalCtaLead:
+      "Delega en Sant Martí la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado.",
+    primaryCtaLabel: "Contactar con el Gestor de Sant Martí",
+    waPlaceLabel: "Sant Martí, Barcelona",
+    heroImage: "/images/gestora9.jpg",
+    howImages: ["/images/gestoria3.jpg", "/images/familia3.jpg", "/images/equipo2.jpg", "/images/gestoria6.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Martí",
+      addressLocality: "Barcelona",
+      addressRegion: "Sant Martí",
+      geo: { latitude: "41.4180", longitude: "2.2000" },
+      areaServedName: "Sant Martí, Barcelona",
     },
   },
   {
