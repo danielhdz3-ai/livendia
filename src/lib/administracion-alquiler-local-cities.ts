@@ -1,3 +1,5 @@
+import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
+
 /**
  * Landings SEO locales: administración de alquiler por ciudad (España).
  * Rutas: /servicios/administracion-alquiler-local/[slug]
@@ -154,6 +156,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
+    heroImage: metroBarcelonaZoneImage("barcelona.jpg"),
     heroBadge: "Gestión de alquileres LAU · Barcelona y AMB",
     heroH1: "Administración de alquiler en Barcelona para propietarios — desde 59 €/mes",
     jsonLdServiceName: "Administración de alquiler en Barcelona para propietarios",

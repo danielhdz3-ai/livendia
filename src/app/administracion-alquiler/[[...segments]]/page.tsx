@@ -34,7 +34,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       locale: "es_ES",
       type: "website",
-      images: [{ url: landing.heroImage, alt: landing.h1 }],
+      images: [
+        {
+          url: landing.heroImage.startsWith("http")
+            ? landing.heroImage
+            : `${getSiteUrl().replace(/\/$/, "")}${encodeURI(landing.heroImage)}`,
+          alt: landing.h1,
+        },
+      ],
     },
   };
 }
