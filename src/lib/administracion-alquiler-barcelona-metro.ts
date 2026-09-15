@@ -50,6 +50,27 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     kind: "barrio" as const,
   },
   {
+    slug: "sarria-sant-gervasi",
+    segments: ["barcelona", "sarria-sant-gervasi"] as const,
+    name: "Sarrià-Sant Gervasi, Barcelona",
+    shortName: "Sarrià-Sant Gervasi",
+    kind: "barrio" as const,
+  },
+  {
+    slug: "nou-barris",
+    segments: ["barcelona", "nou-barris"] as const,
+    name: "Nou Barris, Barcelona",
+    shortName: "Nou Barris",
+    kind: "barrio" as const,
+  },
+  {
+    slug: "ciutat-vella",
+    segments: ["barcelona", "ciutat-vella"] as const,
+    name: "Ciutat Vella, Barcelona",
+    shortName: "Ciutat Vella",
+    kind: "barrio" as const,
+  },
+  {
     slug: "l-hospitalet",
     segments: ["l-hospitalet"] as const,
     name: "L'Hospitalet de Llobregat",

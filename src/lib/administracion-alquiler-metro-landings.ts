@@ -24,6 +24,9 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "barcelona/sant-marti",
   "l-hospitalet",
   "cornella",
+  "barcelona/sarria-sant-gervasi",
+  "barcelona/nou-barris",
+  "barcelona/ciutat-vella",
   "sant-cugat",
   "badalona",
 ];
@@ -801,13 +804,328 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     },
   },
   {
+    segments: ["barcelona", "sarria-sant-gervasi"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sarria-sant-gervasi`,
+    zoneLabel: "Sarrià-Sant Gervasi",
+    metaTitle: `Administración de alquiler Sarrià-Sant Gervasi — Tres Torres, Bonanova, Putxet · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sarrià-Sant Gervasi: Sarrià centre, Sant Gervasi, Les Tres Torres, Putxet i Farró y Bonanova. Rentas altas, IRAV, fincas señoriales e incidencias premium por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sarrià-Sant Gervasi (Tres Torres, Bonanova y Sarrià centre)",
+    subtitle:
+      `El distrito con mayor ticket medio de Barcelona — gestionado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Sarrià-Sant Gervasi concentra parte del alquiler más caro de Barcelona capital: Brains Real Estate (Q2 2026) sitúa el distrito en 28,76 €/m² de publicación, con pisos señoriales en Les Tres Torres, Bonanova y Sarrià centre donde un error en renovación o cobro cuesta más que años de cuota de gestoría. Livendia cobra la renta, coordina industriales habituados en fincas regias y calcula IRAV antes de cada subida legal. Tú no atiendes WhatsApp del inquilino ni negocias con la comunidad de propietarios en primera persona.",
+    eeatHeading: "Sarrià-Sant Gervasi: fincas premium y exigencia del inquilino",
+    eeatBlock:
+      "Administramos alquileres en Sarrià centre, Sant Gervasi – Galvany, Les Tres Torres, Putxet i Farró, Bonanova, Vallvidrera i el Penitents (límite) y La Bonanova. Brains Real Estate (Q2 2026): 28,76 €/m² en oferta agregada del distrito; Idealista (2025) muestra Bonanova y Tres Torres por encima de la media municipal. Zona tensionada catalana: cada renovación exige IRAV y depósito Incasòl. Operamos desde Les Corts (~15 min en FGC o bus) con gestores que conocen el protocolo de cobro en rentas altas.",
+    whyIntro:
+      "En Tres Torres o Bonanova el inquilino tipo —familia con hijos en colegio internacional, ejecutivo en traslado, expatriado— espera respuesta el mismo día ante avería de climatización o conflicto con portería. Si el propietario vive en Madrid, Londres o en otro barrio de Barcelona, ese ritmo es insostenible sin canal profesional. Livendia filtra peticiones, contrasta presupuestos de mantenimiento y documenta cada paso para que tú solo firmes lo crítico.",
+    howIntro:
+      "Alta con inventario y contrato en panel, canal único Livendia-inquilino, protocolo de cobro reforzado en rentas >2.000 €/mes, coordinación con comunidades exigentes y resumen mensual con KPIs de renta e incidencias abiertas/cerradas.",
+    barriosIntro:
+      "Les Tres Torres y Bonanova mezclan fincas regias de 120–200 m² con ascensores antiguos y portería física — incidencias de caldera comunitaria y ascensor son frecuentes y caras. Sant Gervasi – Galvany y Putxet i Farró tienen bloques del s. XX bien comunicados (FGC, metro L3/L6). Sarrià centre conserva casas entre medianeras y pisos de carácter con inquilinos estables. Vallvidrera (límite) aporta chalets con jardín donde filtraciones y cubiertas requieren industriales especializados.",
+    barrios: [
+      "Les Tres Torres",
+      "Bonanova",
+      "Sant Gervasi – Galvany",
+      "Putxet i Farró",
+      "Sarrià centre",
+      "La Bonanova",
+      "Vallvidrera i el Penitents (límite)",
+      "FGC Sarrià / Reina Elisenda",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV en renta alta",
+        description:
+          "Cálculo legal antes de proponer subida — crítico cuando la oferta publicada supera 28 €/m² y el inquilino conoce sus derechos en zona tensionada.",
+      },
+      {
+        title: "Incidencias en fincas señoriales",
+        description:
+          "Ascensores antiguos, fontanería comunitaria, climatización individual y portería: red de mantenimiento con SLA acordado con el propietario.",
+      },
+      {
+        title: "Cobro y mediación premium",
+        description:
+          "Seguimiento el día 1, recordatorios documentados y escalado antes de impago — sin que persigas transferencias por email personal.",
+      },
+      {
+        title: "INCASÒL y suministros",
+        description:
+          "Fianza legal, altas/bajas y archivo en panel — incluido en la cuota mensual.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sarrià-Sant Gervasi que dejaron de ser el teléfono de guardia del inquilino",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Tres Torres y yo en Suiza. Livendia gestionó una derrama de ascensor y una renovación con IRAV en el mismo trimestre. Solo firmé dos resúmenes en el panel.",
+        author: "Isabel K.",
+        role: "Propietaria, Les Tres Torres",
+      },
+      {
+        quote:
+          "Alquilo en Putxet. El inquilino es expatriado y muy exigente con plazos. Livendia canaliza averías y yo recibo un informe semanal, no cincuenta mensajes.",
+        author: "Albert P.",
+        role: "Propietario, Putxet i Farró",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Sarrià-Sant Gervasi?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra el distrito en 28,76 €/m² de publicación. Bonanova y Les Tres Torres suelen superar la media en agregadores de Idealista (2025). Tu gestor contrasta referencia por subzona antes de cada renovación.",
+      },
+      {
+        question: "¿Gestionáis pisos en fincas con portería y ascensor antiguo?",
+        answer:
+          "Sí. Coordinamos con portería y administrador de fincas, abrimos incidencias con mantenedores acreditados y reportamos al propietario solo cuando hay coste individual o derrama que deba autorizar.",
+      },
+      {
+        question: "¿Qué pasa si el inquilino retrasa una renta de 2.500 €/mes?",
+        answer:
+          "Aplicamos protocolo desde el día 3: recordatorio formal, mediación y escalado documentado. El propietario ve el estado en tiempo real en el panel; Livendia es el único canal con el arrendatario.",
+      },
+      {
+        question: "¿Puedo contratar si el piso está en Sarrià y yo vivo en otro distrito?",
+        answer:
+          "Es lo habitual. Panel online, WhatsApp con gestor asignado y oficina en Les Corts para firma presencial si la operación lo requiere.",
+      },
+    ],
+    finalCtaLead:
+      "Protege tu inversión en el distrito más premium de Barcelona: gestor dedicado, IRAV verificado y cero llamadas del inquilino a tu móvil.",
+    primaryCtaLabel: "Hablar con el Gestor de Sarrià-Sant Gervasi",
+    waPlaceLabel: "Sarrià-Sant Gervasi, Barcelona",
+    heroImage: "/images/gestora5.jpg",
+    howImages: ["/images/gestoria7.jpg", "/images/familia4.jpg", "/images/equipo5.jpg", "/images/gestoria8.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sarrià-Sant Gervasi",
+      addressLocality: "Barcelona",
+      addressRegion: "Sarrià-Sant Gervasi",
+      geo: { latitude: "41.4010", longitude: "2.1280" },
+      areaServedName: "Sarrià-Sant Gervasi, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "nou-barris"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/nou-barris`,
+    zoneLabel: "Nou Barris",
+    metaTitle: `Administración de alquiler Nou Barris — Verdum, Roquetes, Trinitat Vella · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Nou Barris: Verdum, Roquetes, Trinitat Vella, Porta y Ciutat Meridiana. Cobro, humedades en bloques de los 60–70 e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Nou Barris (Verdum, Roquetes y Trinitat Vella)",
+    subtitle:
+      `Parque compacto y rentas contenidas — gestión profesional por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Nou Barris es el distrito con rentas de publicación más contenidas de Barcelona capital: Brains Real Estate (Q2 2026) lo sitúa en 18,42 €/m², con bloques de los 60–80 en Verdum, Roquetes, Trinitat Vella y Ciutat Meridiana donde humedades, ascensor y calderas comunitarias son el día a día si no hay gestor. Livendia cobra la renta, media con comunidades muy activas y aplica IRAV en renovaciones. Tú no persigues pagos ni entras en chats de vecinos por un impago del inquilino.",
+    eeatHeading: "Nou Barris: densidad, parque envejecido y propietarios fuera del distrito",
+    eeatBlock:
+      "Administramos alquileres en Verdum, Roquetes, Trinitat Vella, Porta, Ciutat Meridiana, Vilaplana, Torre Baró i Vallbona y Can Peguera. Brains Real Estate (Q2 2026): 18,42 €/m² en oferta agregada. Idealista (2025) muestra heterogeneidad entre Verdum (más consolidado) y Torre Baró. Zona tensionada catalana: Incasòl e IRAV aplican igual que en distritos premium — el error en renovación no perdona. Desde Les Corts (~20–25 min en metro L3/L4) asumimos canal con inquilino e industriales del norte de Barcelona.",
+    whyIntro:
+      "Muchos pisos en Nou Barris son herencia o inversión de propietarios que viven en otro barrio o municipio. El inquilino llama por humedad, por retraso de la comunidad en reparar el ascensor o por interpretar una cláusula del contrato — y sin filtro acabas mediando entre tres partes. Livendia establece plazos de respuesta, registra incidencias y te envía solo decisiones con impacto económico o legal.",
+    howIntro:
+      "Expediente digital, contacto único Livendia-inquilino, protocolo de cobro desde el día 3, red de fontaneros/calderistas en Verdum y Roquetes, y renovaciones con baremo verificado.",
+    barriosIntro:
+      "Verdum y Roquetes mezclan bloques de los 70 con ascensor y viviendas de 55–70 m² con familias estables. Trinitat Vella y Ciutat Meridiana tienen parque más envejecido y comunidades con alta participación en obras. Porta y Vilaplana conectan con el eje Meridiana; Torre Baró i Vallbona y Can Peguera aportan edificios en pendiente con humedades por filtración frecuentes. En cada barrio el protocolo de cobro es el mismo; cambia el tipo de incidencia doméstica y comunitaria.",
+    barrios: [
+      "Verdum",
+      "Roquetes",
+      "Trinitat Vella",
+      "Ciutat Meridiana",
+      "Porta",
+      "Vilaplana",
+      "Torre Baró i Vallbona",
+      "Can Peguera",
+    ],
+    serviceGrid: [
+      {
+        title: "Humedades y fontanería en bloques antiguos",
+        description:
+          "Peritaje, origen comunitario vs interior, conversación con la finca y presupuesto antes de obra — habitual en Trinitat Vella y Roquetes.",
+      },
+      {
+        title: "Mediación con comunidades activas",
+        description:
+          "Quejas de vecinos, ruido o convivencia compartida documentadas para el propietario sin exponer su teléfono personal.",
+      },
+      {
+        title: "Cobro en rentas moderadas",
+        description:
+          "Impago de 750 € duele igual que uno de 2.500 €: protocolo idéntico con recordatorios y escalado trazable.",
+      },
+      {
+        title: "Renovaciones con IRAV",
+        description:
+          "Cálculo legal antes de comunicar subida — aunque la oferta publicada sea más baja que en Eixample, la normativa es la misma.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Nou Barris que delegaron cobros e incidencias",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Verdum y yo en Granollers. Livendia gestionó humedad por tubería comunitaria y el inquilino dejó de escribirme directamente. Todo en el panel.",
+        author: "Carmen V.",
+        role: "Propietaria, Verdum",
+      },
+      {
+        quote:
+          "Alquilo en Roquetes. Cuando retrasaron la renta dos meses seguidos, Livendia aplicó el protocolo antes de que yo tuviera que amenazar con abogado.",
+        author: "Héctor M.",
+        role: "Propietario, Roquetes",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Nou Barris?",
+        answer:
+          "Brains Real Estate (Q2 2026) sitúa el distrito en 18,42 €/m² de publicación. Verdum y Porta suelen estar por encima de Torre Baró en agregadores de Idealista (2025). Tu gestor contrasta referencia por barrio.",
+      },
+      {
+        question: "¿Gestionáis pisos alquilados por habitaciones en Nou Barris?",
+        answer:
+          "Administramos alquiler LAU de vivienda completa. Si hay habitaciones, revisamos que el contrato y la convivencia estén documentados; incidencias y cobro siguen canalizándose por Livendia.",
+      },
+      {
+        question: "¿Atendéis incidencias de ascensor en edificios sin mantenimiento al día?",
+        answer:
+          "Sí. Abrimos incidencia con comunidad y empresa de ascensores, hacemos seguimiento y reportamos al propietario si hay derrama o coste individual.",
+      },
+    ],
+    finalCtaLead:
+      `Activa administración Livendia en Nou Barris: cobro puntual, incidencias trazadas y gestor por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+    primaryCtaLabel: "Consultar gestor Nou Barris por WhatsApp",
+    waPlaceLabel: "Nou Barris, Barcelona",
+    heroImage: "/images/gestor6.jpg",
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Nou Barris",
+      addressLocality: "Barcelona",
+      addressRegion: "Nou Barris",
+      geo: { latitude: "41.4410", longitude: "2.1770" },
+      areaServedName: "Nou Barris, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "ciutat-vella"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/ciutat-vella`,
+    zoneLabel: "Ciutat Vella",
+    metaTitle: `Administración de alquiler Ciutat Vella — Gòtic, Born, Raval, Barceloneta · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Ciutat Vella: Barri Gòtic, El Born, El Raval y La Barceloneta. Turismo, convivencia, fincas centenarias e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Ciutat Vella (Gòtic, Born, Raval y Barceloneta)",
+    subtitle:
+      `Centro histórico con normativa estricta — gestionado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Ciutat Vella combina Barri Gòtic, El Born, El Raval y La Barceloneta: Brains Real Estate (Q2 2026) sitúa el distrito en 22,18 €/m² de publicación, con heterogeneidad extrema — pisos turísticos mal encuadrados, convivencias compartidas en El Raval y fincas centenarias en el Gòtic sin ascensor. Livendia cobra la renta, media conflictos de convivencia y verifica IRAV en renovaciones. Tú no eres el primer contacto cuando la comunidad se queja o el inquilino confunde temporada con LAU.",
+    eeatHeading: "Ciutat Vella: turismo, convivencia y edificios patrimoniales",
+    eeatBlock:
+      "Gestionamos arrendamientos en Barri Gòtic, Sant Pere/Santa Caterina i la Ribera (El Born), El Raval y La Barceloneta. Brains Real Estate (Q2 2026): 22,18 €/m² agregado; El Born y Barceloneta suelen superar El Raval en oferta Idealista (2025). Zona tensionada y escrutinio municipal sobre usos turísticos: cada contrato debe encajar en LAU o temporada con causa real. Operamos desde Les Corts con gestores que conocen la casuística de fincas estrechas, humedades en planta baja y ruido en calles de ocio.",
+    whyIntro:
+      "En Ciutat Vella el propietario arriesga sanciones si el contrato no refleja el uso real, y arriesga desgaste personal si el inquilino contacta por cada conflicto con vecinos o comercios. Livendia documenta comunicaciones, aplica protocolo de cobro y escala a asesoramiento legal cuando hay indicios de subarriendo o uso incompatible — sin que tú gestiones el día a día en calles saturadas.",
+    howIntro:
+      "Revisión de contrato y uso declarado, alta en panel, canal único con inquilino, mediación con comunidad, protocolo de cobro y renovaciones con IRAV verificado.",
+    barriosIntro:
+      "El Gòtic y El Born tienen fincas estrechas con escaleras interiores y humedades en planta baja; muchos propietarios no viven en el distrito. El Raval mezcla convivencias compartidas, familias y estudiantes — rotación e incidencias de convivencia son frecuentes. La Barceloneta aporta pisos pequeños (45–65 m²) con expectativa de respuesta rápida en temporada alta y normativa de usos muy vigilada. Sant Pere y la Ribera completan el mapa con edificios rehabilitados y rentas medias altas para el centro histórico.",
+    barrios: [
+      "Barri Gòtic",
+      "El Born (Sant Pere, Santa Caterina i la Ribera)",
+      "El Raval",
+      "La Barceloneta",
+      "Plaça Reial (límite)",
+      "Rambla del Raval",
+      "Passeig del Born",
+    ],
+    serviceGrid: [
+      {
+        title: "Convivencia y quejas de vecinos",
+        description:
+          "Mediación documentada en pisos compartidos o estancias medias — habitual en El Raval y Gòtic.",
+      },
+      {
+        title: "Fincas centenarias sin ascensor",
+        description:
+          "Fontanería, humedades por capilaridad y cerrajería con industriales habituados en patrimonio urbano.",
+      },
+      {
+        title: "Renovaciones IRAV en centro",
+        description:
+          "Cálculo legal antes de subida — la brecha oferta/contrato registrado es marcada en Ciutat Vella.",
+      },
+      {
+        title: "Cobro y canal único",
+        description:
+          "El inquilino no obtiene tu móvil personal; Livendia gestiona recordatorios y escalado.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Ciutat Vella que filtraron el contacto con el inquilino",
+    testimonials: [
+      {
+        quote:
+          "Tengo un piso en El Born y vivo en Sarrià. Livendia medió con la comunidad por ruido en terraza y yo solo leí el acta. El inquilino ya no me escribe.",
+        author: "Montse R.",
+        role: "Propietaria, El Born",
+      },
+      {
+        quote:
+          "Alquilo en El Raval. Livendia revisó la renovación con IRAV y gestionó una avería de fontanería en finca del s. XIX. Yo firmé dos resúmenes online.",
+        author: "Pau D.",
+        role: "Propietario, El Raval",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Ciutat Vella?",
+        answer:
+          "Brains Real Estate (Q2 2026) cifra el distrito en 22,18 €/m² de publicación. El Born y Barceloneta suelen superar El Raval en agregadores de Idealista (2025). Tu gestor contrasta referencia por subzona.",
+      },
+      {
+        question: "¿Administráis pisos con riesgo de uso turístico encubierto?",
+        answer:
+          "Trabajamos con contratos LAU o temporada con causa documentada. Si detectamos incoherencias entre uso declarado y realidad, lo escalamos al propietario con criterio legal — no sustituimos inspección municipal.",
+      },
+      {
+        question: "¿Gestionáis incidencias en edificios del Gòtic sin ascensor?",
+        answer:
+          "Sí. Coordinamos subidas de material, cerrajería de urgencia e industriales acostumbrados a fincas estrechas; el inquilino contacta con Livendia.",
+      },
+      {
+        question: "¿Puedo contratar si el piso está en Barceloneta y yo en el extranjero?",
+        answer:
+          "Es frecuente. Panel 24/7, WhatsApp con gestor en horario laboral español y documentación archivada para renovaciones e incidencias.",
+      },
+    ],
+    finalCtaLead:
+      "Delega en Ciutat Vella la relación con inquilino y comunidad: cobro, IRAV e incidencias con trazabilidad.",
+    primaryCtaLabel: "Contactar gestor Ciutat Vella",
+    waPlaceLabel: "Ciutat Vella, Barcelona",
+    heroImage: "/images/barcelona2.jpg",
+    howImages: ["/images/gestoria4.jpg", "/images/familia5.jpg", "/images/equipo6.jpg", "/images/gestoria2.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Ciutat Vella",
+      addressLocality: "Barcelona",
+      addressRegion: "Ciutat Vella",
+      geo: { latitude: "41.3825", longitude: "2.1769" },
+      areaServedName: "Ciutat Vella, Barcelona",
+    },
+  },
+  {
     segments: ["sant-cugat"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-cugat`,
     zoneLabel: "Sant Cugat del Vallès",
-    metaTitle: "Administración de Alquiler en Sant Cugat del Vallès",
+    metaTitle: `Administración de alquiler Sant Cugat — Mira-sol, Valldoreix, Volpelleres, chalets · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      `Gestión integral de alquileres en Sant Cugat (Mira-sol, Centre, Volpelleres) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro, incidencias e IRAV desde Les Corts.`,
-    h1: "Administración de Alquileres en Sant Cugat del Vallès",
+      `Gestión LAU en Sant Cugat del Vallès: Centre-Vila, Mira-sol, Valldoreix y Les Planes. Cobro en casas adosadas, IRAV e incidencias en urbanizaciones por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Desde Les Corts (~20 min FGC).`,
+    h1: "Administración de alquiler en Sant Cugat del Vallès (Mira-sol, Valldoreix y Centre-Vila)",
     subtitle:
       `Familias, casas y pisos premium en el Vallès — gestionados por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia.`,
     heroLead:
@@ -819,8 +1137,18 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "Muchos propietarios en Sant Cugat viven fuera del municipio o en el extranjero. Sin gestor, cada avería en jardín, piscina comunitaria o caldera acaba en tu móvil. Livendia establece canal único, contrasta presupuestos y te presenta opciones antes de autorizar gasto.",
     howIntro:
       "Expediente digital del inmueble, contacto único con el arrendatario, liquidación mensual de rentas, historial de incidencias en panel y gestión de renovaciones con límite legal.",
-    barriosIntro: "Zonas de Sant Cugat donde llevamos la administración:",
-    barrios: ["Centre-Vila", "Mira-sol", "Valldoreix", "Volpelleres", "Les Planes", "Can Matas", "Parc Central"],
+    barriosIntro:
+      "Centre-Vila y Volpelleres concentran pisos de 85–115 m² con familias en contratos LAU largos y colegios concertados. Mira-sol y Valldoreix (FGC) mezclan chalets adosados con jardín, piscina comunitaria y portería — donde más duele no tener gestor si vives fuera del Vallès. Les Planes y Can Matas aportan promociones recientes; Parc Central y Eixample Sant Cugat completan el mapa con ticket medio alto por metro cuadrado efectivo (superficie amplia).",
+    barrios: [
+      "Centre-Vila",
+      "Mira-sol",
+      "Valldoreix (FGC)",
+      "Volpelleres",
+      "Les Planes",
+      "Can Matas",
+      "Parc Central",
+      "Eixample Sant Cugat",
+    ],
     serviceBullets: [
       {
         title: "Casas y chalets adosados",
@@ -869,6 +1197,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
         answer:
           "Es el caso más habitual. El panel online y WhatsApp con tu gestor sustituyen los desplazamientos. La oficina en Les Corts queda a ~20 minutos si necesitas firma presencial.",
       },
+      {
+        question: "¿Qué ocurre si hay avería en piscina o jardín de una urbanización en Mira-sol?",
+        answer:
+          "Livendia contacta con administrador de la urbanización o comunidad, registra plazos y te presenta costes individuales antes de autorizar — el inquilino no canaliza la urgencia por tu móvil personal.",
+      },
     ],
     finalCtaLead:
       `Delega en Sant Cugat la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
@@ -889,10 +1222,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     segments: ["badalona"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/badalona`,
     zoneLabel: "Badalona",
-    metaTitle: "Administración de Alquiler en Badalona",
+    metaTitle: `Administración de alquiler Badalona — Gorg, Centre, Montigalà, metro L2 · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
     metaDescription:
-      `Gestión de alquileres en Badalona (Centre, Gorg, Montigalà) por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Cobro de rentas, incidencias e IRAV en zona tensionada.`,
-    h1: "Administración de Alquileres en Badalona",
+      `Gestión LAU en Badalona: Gorg, Centre, Montigalà, Sant Roc y Llefià. Cobro en bloques de los 60–80, humedades, INCASÒL e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Gestor desde Les Corts.`,
+    h1: "Administración de alquiler en Badalona (Gorg, Centre y Montigalà — metro a Barcelona)",
     subtitle:
       `Protege tu piso en Badalona por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — metro directo a Barcelona, gestor desde Les Corts.`,
     heroLead:
@@ -904,8 +1237,19 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       "Muchos propietarios en Badalona tienen el piso como inversión y viven en otro municipio. Sin intermediario, el inquilino contacta para todo —retrasos, ascensor, humedades—. Livendia establece canal único y plazos de respuesta; tú solo intervienes cuando la ley o el contrato lo exigen.",
     howIntro:
       "Registro del inmueble, seguimiento de renta, gestión de impagos desde el día 3, coordinación con industriales del Maresme-Besòs y resumen mensual en panel.",
-    barriosIntro: "Barrios de Badalona donde administramos alquileres:",
-    barrios: ["Centre", "Gorg", "Montigalà", "Bufalà", "Nova Lloreda", "Sant Roc", "Llefià"],
+    barriosIntro:
+      "Centre y Gorg (metro L2) concentran pisos de 55–75 m² con rotación moderada y comunidades muy activas. Montigalà y Bufalà mezclan bloques de los 70–90 con ascensores envejecidos. Nova Lloreda y el litoral del Besòs atraen familias que trabajan en Barcelona; Sant Roc y Llefià tienen parque compacto donde humedades, calderas y ascensor son la tríada habitual de incidencias si no hay gestor intermediando.",
+    barrios: [
+      "Centre",
+      "Gorg",
+      "Montigalà",
+      "Bufalà",
+      "Nova Lloreda",
+      "Sant Roc",
+      "Llefià",
+      "Artigues (límite)",
+      "Canyet",
+    ],
     serviceBullets: [
       {
         title: "Protocolo de cobros",
@@ -953,6 +1297,11 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
         question: "¿Puedo contratar si vivo en Barcelona capital?",
         answer:
           "Sí. Badalona está a 15–25 min en metro L2 desde el centro. El panel y WhatsApp sustituyen desplazamientos; la oficina en Les Corts queda accesible si necesitas firma presencial.",
+      },
+      {
+        question: "¿Cómo gestionáis la brecha entre precio de Idealista y contrato SERPAVI en Badalona?",
+        answer:
+          "En renovación calculamos IRAV y baremo legal antes de proponer subida — no copiamos el €/m² del portal sin verificar referencia oficial. Te explicamos la diferencia en resumen de una página.",
       },
     ],
     finalCtaLead:

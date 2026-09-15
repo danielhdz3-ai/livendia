@@ -263,6 +263,153 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     ],
   },
 
+  "barcelona/sarria-sant-gervasi": {
+    rentPricePerSqm:
+      "Distrito Sarrià-Sant Gervasi: 28,76 €/m² y renta media de publicación ~3.456 €/mes (Brains Real Estate, Q2 2026). Les Tres Torres y Bonanova suelen superar 30 €/m² en oferta Idealista (2025). Putxet i Farró y Sarrià centre se sitúan en la franja alta del distrito; Vallvidrera (límite) tiene ticket por superficie en chalets.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Sarrià-Sant Gervasi, 2025.",
+    dominantHousingType:
+      "Fincas regias del ensanche alto en Tres Torres y Bonanova (100–180 m², techos altos, ascensor antiguo o portería). Bloques señoriales en Sant Gervasi – Galvany y Putxet (80–110 m²). Sarrià centre: casas entre medianeras y pisos de carácter. Chalets y adosados en Vallvidrera con cubiertas y jardín.",
+    tenantProfile: [
+      "Familias con hijos en colegios internacionales o concertados del eje Sarrià–Bonanova",
+      "Ejecutivos y expatriados en traslado 12–36 meses",
+      "Profesionales sanitarios y académicos del entorno Diagonal–Zona Universitària",
+      "Inquilinos estables LAU en pisos >90 m² con expectativa de servicio premium",
+    ],
+    localRegulatoryNote:
+      "Sarrià-Sant Gervasi está en zona tensionada catalana. IRAV en renovaciones, Incasòl en altas y especial cuidado en contratos de larga duración con rentas >2.000 €/mes: un error de cálculo expone a reclamación del inquilino y costes de reversión.",
+    marketContext:
+      "Sarrià-Sant Gervasi encabeza el ranking de €/m² de Barcelona capital junto al Eixample. Brains Real Estate (Q2 2026) lo sitúa en 28,76 €/m² de publicación (+5,2 % interanual), con esfuerzo de alquiler elevado pero demanda estable de perfiles de alto poder adquisitivo. La gestión no es encontrar inquilino — es sostener la relación contractual sin desgaste: ascensores de finca regia, derramas sorpresa, renovaciones con IRAV cuando el inquilino conoce la normativa, y expectativa de respuesta inmediata. Propietarios fuera del distrito o en el extranjero delegan en Livendia desde Les Corts el canal único, el cobro el día 1 y la mediación con portería y comunidad.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Derrama de ascensor en finca de Les Tres Torres",
+        body: "La comunidad convoca derrama urgente por motor de ascensor. Livendia recibe el acta, verifica cuota del propietario, explica plazos al inquilino si afecta al uso del piso y solicita autorización de pago al propietario con desglose — sin cadenas de email con el presidente y el arrendatario a la vez.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV con renta de 2.800 €/mes en Bonanova",
+        body: "Tres meses antes del vencimiento, Livendia calcula incremento máximo legal, prepara propuesta documentada y canaliza conversación con inquilino. El propietario aprueba resumen de una página; si hay discrepancia, el gestor negocia dentro del marco legal sin exponer el móvil personal del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Avería de climatización en Putxet",
+        body: "Inquilino expatriado reporta fallo de aire acondicionado en julio. Livendia envía técnico en 24 h laborables, contrasta presupuesto con segundo proveedor si supera umbral acordado y ejecuta reparación tras OK del propietario por panel.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Conflicto con portería por paquetería",
+        body: "Portería limita entregas; inquilino presiona al propietario. Livendia media con portería y arrendatario, revisa reglamento de régimen interior y propone solución operativa (horarios, buzón). El propietario recibe acta, no veinte llamadas.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Retraso de transferencia internacional",
+        body: "Inquilino paga desde cuenta extranjera el día 10. Livendia activa protocolo desde el día 3, solicita justificante SWIFT y confirma abono al propietario en panel cuando se acredita — sin persecución manual de la renta.",
+      },
+    ],
+    nearbyLandmarks: [
+      "FGC Sarrià / Reina Elisenda",
+      "Monestir de Pedralbes (límite)",
+      "Avinguda Diagonal (tramo alto)",
+      "Tibidabo / Tramvia Blau (límite)",
+      "Putxet i Farró",
+      "Bonanova",
+    ],
+  },
+
+  "barcelona/nou-barris": {
+    rentPricePerSqm:
+      "Distrito Nou Barris: 18,42 €/m² y renta media de publicación ~1.456 €/mes (Brains Real Estate, Q2 2026). Verdum y Porta suelen superar la media; Torre Baró i Vallbona más contenidos en Idealista (2025). Ciutat Meridiana y Trinitat Vella muestran oferta compacta (55–70 m²).",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Nou Barris, 2025.",
+    dominantHousingType:
+      "Macrobloques y edificios de los 60–80 en Verdum, Roquetes y Trinitat Vella (55–75 m²), muchos con ascensor antiguo y calderas comunitarias. Ciutat Meridiana: parque envejecido con rehabilitaciones parciales. Torre Baró: edificios en pendiente con humedades por filtración frecuentes.",
+    tenantProfile: [
+      "Familias estables en contratos LAU largos en Verdum y Roquetes",
+      "Trabajadores con empleo en eje Meridiana o polígonos del Besòs",
+      "Parejas jóvenes en pisos compactos de Porta y Vilaplana",
+      "Convivencias compartidas puntuales — requieren cláusulas claras de convivencia",
+    ],
+    localRegulatoryNote:
+      "Nou Barris está en zona tensionada aunque la oferta publicada sea más baja que en Eixample. IRAV e Incasòl aplican igual; la trampa es proponer subidas copiando precios de portal sin baremo — Livendia verifica referencia oficial antes de notificar al inquilino.",
+    marketContext:
+      "Nou Barris es el distrito con menor €/m² de publicación entre los grandes de Barcelona capital (Brains Real Estate, Q2 2026: 18,42 €/m²), lo que atrae inversión de propietarios que buscan rentabilidad por volumen. El parque envejecido implica incidencias recurrentes: humedades, ascensores parados semanas, calderas comunitarias sin mantenimiento. Muchos propietarios no viven en el distrito — viven en otro municipio o heredaron el piso — y el inquilino acaba usando su WhatsApp personal como línea de mantenimiento. Livendia desde Les Corts establece canal único, protocolo de cobro idéntico al de distritos premium y red de industriales en Verdum/Roquetes con tiempos de respuesta acordados.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Humedad capilar en planta baja de Roquetes",
+        body: "Manchas en salón tras lluvias. Livendia manda perito, distingue origen comunitario (fachada) vs interior, abre conversación con administrador de fincas y presenta presupuesto al propietario antes de obra. Inquilino recibe plazos por gestor, no por propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Ascensor parado tres semanas en Trinitat Vella",
+        body: "Inquilino en planta 6 sin ascensor. Livendia presiona a comunidad y mantenedor con registro diario, informa al arrendatario de previsión y avisa al propietario solo si hay derrama individual.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago reiterado en Verdum",
+        body: "Dos meses de retraso. Protocolo día 3 → mediación → aviso formal. Propietario ve cronología en panel; Livendia no comparte teléfono del propietario con el inquilino en la fase de cobro.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Queja de ruido entre vecinos en Porta",
+        body: "Comunidad alerta por actividad nocturna. Livendia revisa contrato, habla con inquilino, propone medidas y documenta acta para el propietario sin meterlo en el chat de la finca.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación con IRAV en Ciutat Meridiana",
+        body: "Propietario quiere alinear renta con portal. Livendia calcula tope legal, explica diferencia entre oferta y baremo, y envía propuesta válida al inquilino — evitando reclamación posterior por subida indebida.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Metro Verdum (L3)",
+      "Trinitat Vella (L4)",
+      "Ciutat Meridiana (L11)",
+      "Avinguda Meridiana",
+      "Parc de la Guineueta",
+      "Torre Baró",
+    ],
+  },
+
+  "barcelona/ciutat-vella": {
+    rentPricePerSqm:
+      "Distrito Ciutat Vella: 22,18 €/m² y renta media de publicación ~1.892 €/mes (Brains Real Estate, Q2 2026). El Born y Barceloneta suelen superar El Raval en oferta Idealista (2025). Barri Gòtic: alta heterogeneidad por planta baja vs áticos reformados.",
+    rentPriceSourceNote:
+      "Brains Real Estate, informe alquiler Barcelona Q2 2026; Idealista, oferta por barrio Ciutat Vella, 2025.",
+    dominantHousingType:
+      "Fincas centenarias estrechas en Gòtic y Born (45–85 m²), muchas sin ascensor, humedades en planta baja. El Raval: bloques del s. XX y rehabilitaciones con convivencias compartidas. Barceloneta: pisos pequeños orientados al mar, ventilación salina y normativa de usos vigilada.",
+    tenantProfile: [
+      "Estudiantes y jóvenes profesionales en El Raval y Gòtic",
+      "Familias en El Born en pisos rehabilitados",
+      "Estancias medias y perfiles internacionales en Barceloneta",
+      "Inquilinos LAU estables en fincas reformadas del Gòtic",
+    ],
+    localRegulatoryNote:
+      "Ciutat Vella está en zona tensionada y bajo escrutinio de uso de vivienda (LAU vs temporada vs turístico). Contratos mal encuadrados exponen a sanciones; Livendia revisa coherencia de uso declarado y canaliza incidencias sin mezclar usos incompatibles.",
+    marketContext:
+      "Ciutat Vella concentra el centro histórico turístico y la mayor presión reputacional para propietarios: ruido, convivencia, comunidades pequeñas muy activas. Brains Real Estate (Q2 2026) sitúa el distrito en 22,18 €/m² — por debajo del Eixample pero con coste de gestión más alto en tiempo (accesos estrechos, fincas patrimoniales, mediación). La brecha entre precio de portal y contrato registrado sigue marcada por IRAV. Livendia filtra contacto diario, documenta mediaciones y aplica cobro profesional para que el propietario no sea el 'soporte técnico' del piso en calles de ocio.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Queja de terraza en El Born",
+        body: "Vecinos reportan ruido nocturno en terraza. Livendia verifica cláusulas de uso, habla con inquilino, propone horario y deja acta al propietario — sin reunión presencial en el barrio.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Humedad en planta baja del Gòtic",
+        body: "Filtración en dormitorio en edificio del s. XVIII. Livendia coordina perito especializado en patrimonio, comunidad y obra interior con permisos mínimos; propietario autoriza presupuesto online.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Confusión LAU vs temporada en Barceloneta",
+        body: "Inquilino solicita prórroga informal. Livendia revisa contrato vigente, explica marco legal al propietario y redacta comunicación formal al arrendatario — evitando prórroga tácita incompatible.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Convivencia tensa en piso compartido del Raval",
+        body: "Dos habitaciones, conflicto por limpieza y visitas. Livendia aplica protocolo de convivencia del contrato, separa comunicaciones y propone medidas; propietario recibe informe sin unirse al grupo de WhatsApp.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Cobro retrasado con inquilino en efectivo informal",
+        body: "Inquilino propone pago en mano. Livendia redirige a transferencia trazable, registra abono en panel y confirma al propietario — manteniendo trazabilidad fiscal y contractual.",
+      },
+    ],
+    nearbyLandmarks: [
+      "La Rambla (límite)",
+      "El Born / Passeig del Born",
+      "Barceloneta platja",
+      "MACBA / El Raval",
+      "Catedral de Barcelona (Gòtic)",
+      "Port Vell",
+    ],
+  },
+
   "barcelona/eixample": {
     rentPricePerSqm:
       "Distrito Eixample: 30,32 €/m² y renta media de publicación ~3.113 €/mes (Brains Real Estate, Q2 2026). Idealista (abril 2025) sitúa la oferta del distrito en 26,5 €/m². Incasòl registró en contratos firmados una mediana de ~1.284 €/mes en el distrito (Nitia, datos agregados 2024). Por subzonas, Dreta de l'Eixample y Sagrada Família suelen superar la media municipal barcelonesa.",
@@ -292,6 +439,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       {
         title: "Ejemplo ilustrativo — Retraso de transferencia en estancia corporativa",
         body: "Un inquilino con empresa pagadora retrasa la renta al día 8. Livendia aplica el protocolo desde el día 3, contacta con el arrendatario y con la empresa si procede, y registra el justificante. El propietario ve el estado en el panel sin perseguir pagos por email.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Fontanería comunitaria en Antiga Esquerra",
+        body: "Rotura en bajante comunitaria afecta a dos pisos. Livendia coordina urgencia con comunidad, informa plazos al inquilino y presenta al propietario solo la parte de derrama o reparación interior que deba autorizar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Subarriendo no declarado en Fort Pienc",
+        body: "Comunidad sospecha de tercera persona en el piso. Livendia revisa contrato, contacta inquilino, documenta respuesta y escala al propietario con opciones legales — sin confrontación directa del propietario en portal.",
       },
     ],
     nearbyLandmarks: [
@@ -334,6 +489,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         title: "Ejemplo ilustrativo — Cambio de titularidad de suministros",
         body: "Tras rotación de inquilino en Centre-Vila, Livendia gestiona baja/alta de luz y agua, recoge lecturas y archiva justificantes en el panel. El propietario no coordina citas con el nuevo arrendatario.",
       },
+      {
+        title: "Ejemplo ilustrativo — Piscina comunitaria averiada en urbanización de Mira-sol",
+        body: "Inquilino exige plazo de reparación. Livendia contacta administrador de la urbanización, registra incidencia y reporta al propietario si hay cuota extraordinaria — sin llamadas del inquilino al móvil del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Jardín y riego en chalet de Valldoreix",
+        body: "Fallo de programador de riego en verano. Livendia envía jardinero acordado, contrasta presupuesto y ejecuta tras OK del propietario residente en otra provincia.",
+      },
     ],
     nearbyLandmarks: [
       "Monestir de Sant Cugat",
@@ -374,6 +537,14 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       {
         title: "Ejemplo ilustrativo — Certificado de empadronamiento",
         body: "Un inquilino solicita documentación para escolarizar. Livendia verifica procedencia, coordina firma con el propietario y entrega copia al arrendatario — sin llamadas al móvil del propietario en horario laboral.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Calderas comunitarias en bloque de Montigalà",
+        body: "Fallo de caldera afecta a varias viviendas en invierno. Livendia presiona a comunidad y mantenedor, informa plazos al inquilino y avisa al propietario solo si hay derrama individual que deba autorizar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV en Gorg con referencia de portal",
+        body: "Propietario quiere alinear renta con Idealista. Livendia calcula tope legal en zona tensionada, explica brecha SERPAVI vs oferta y envía propuesta válida al inquilino — reduciendo riesgo de reclamación.",
       },
     ],
     nearbyLandmarks: [
