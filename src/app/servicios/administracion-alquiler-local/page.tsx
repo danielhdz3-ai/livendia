@@ -9,6 +9,7 @@ import {
   localAdministracionAlquilerHref,
 } from "@/lib/administracion-alquiler-local-cities";
 import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
+import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Administración de alquiler por ciudad",
     description:
-      "Intermediarios con tu inquilino desde 49 €/mes, sin permanencia. Elige ciudad y revisa contenido específico con datos estructurados.",
+      `Intermediarios con tu inquilino desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia. Elige ciudad y revisa contenido específico con datos estructurados.`,
     url: canonical,
     locale: "es_ES",
     type: "website",

@@ -709,7 +709,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       {
         title: "Fianza en INCASÒL",
         description:
-          "Depósito legal, suministros y documentación al alta — incluido en la cuota mensual de 49 €.",
+          `Depósito legal, suministros y documentación al alta — incluido en la cuota mensual de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
       },
     ],
     testimonialsTitle: "Propietarios en Badalona que dejaron de perseguir la renta",
