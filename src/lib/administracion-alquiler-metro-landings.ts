@@ -37,6 +37,9 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "sant-joan-despi",
   "sant-adria",
   "castelldefels",
+  "sant-boi",
+  "gava",
+  "mollet-del-valles",
   "sant-cugat",
   "badalona",
 ];
@@ -100,7 +103,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   {
     question: "¿Dónde están ubicadas las oficinas de Livendia?",
     answer:
-      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Eixample, Gràcia, Les Corts, Sants-Montjuïc, Sant Martí) y en el área metropolitana (L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Cugat, Badalona).",
+      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Eixample, Gràcia, Les Corts, Sants-Montjuïc, Sant Martí) y en el área metropolitana (L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Boi, Gavà, Mollet, Sant Cugat, Badalona).",
   },
   {
     question: `¿Qué incluye exactamente la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
@@ -1701,6 +1704,216 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     },
   },
   {
+    segments: ["sant-boi"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-boi`,
+    zoneLabel: "Sant Boi de Llobregat",
+    metaTitle: `Administración de alquiler Sant Boi — Centre, Marianao, Plaça Catalunya · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sant Boi de Llobregat: Centre, Marianao, Camps Blancs y Baix Llobregat. INCASÒL, cobro e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Gestor desde Les Corts.`,
+    h1: "Administración de alquiler en Sant Boi de Llobregat (Centre, Marianao y corredor Baix Llobregat)",
+    subtitle: `Delega tu piso en Sant Boi por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — canal único con el inquilino.`,
+    heroLead:
+      "Sant Boi —Centre, Marianao, Camps Blancs, Plaça Catalunya— es municipio tensionado del Baix Llobregat con parque envejecido y demanda familiar estable. Alquiler más asequible que Barcelona capital pero incidencias recurrentes en ascensor, calderas y humedades. Livendia cobra, media e industriales; tú no persigues transferencias.",
+    eeatHeading: "Sant Boi: Baix Llobregat y gestión LAU",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, Marianao, Camps Blancs y entorno hospitalario. Zona tensionada: Incasòl e IRAV en renovaciones. Operamos desde Les Corts (~20–25 min). Contrastamos referencia legal antes de cada subida de renta.",
+    whyIntro:
+      "Propietarios en Sant Boi suelen alquilar como inversión y vivir fuera del municipio. Sin gestor, impagos y averías comunitarias interrumpen el día a día. Livendia documenta cobros e incidencias en panel.",
+    howIntro:
+      "Alta en panel, protocolo de cobro desde el día 3, coordinación con técnicos del Baix Llobregat y resumen mensual.",
+    barriosIntro:
+      "Centre y Plaça Catalunya concentran bloques de los 70–85 m² con comunidades activas. Marianao y Camps Blancs mezclan vivienda compacta y familias con contratos LAU largos. El eje hospitalario y polígonos cercanos atraen inquilinos estables.",
+    barrios: ["Centre", "Marianao", "Camps Blancs", "Plaça Catalunya", "Baix Llobregat (límite)", "St. Boi centre"],
+    serviceBullets: [
+      { title: "IRAV en renovación", description: "Cálculo legal en municipio tensionado antes de comunicar al inquilino." },
+      { title: "Cobro y mediación", description: "Canal único Livendia-inquilino con escalado documentado." },
+      { title: "INCASÒL y suministros", description: "Fianza y rotaciones archivadas en panel del propietario." },
+    ],
+    testimonialsTitle: "Propietarios en Sant Boi con renta bajo control",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Marianao y yo en Tarragona. Livendia gestionó impago con protocolo de cobro; yo lo vi en el panel, no en llamadas.",
+        author: "Quim A.",
+        role: "Propietario, Marianao",
+      },
+      {
+        quote:
+          "Renové en Centre con IRAV calculado antes de hablar con el inquilino. Todo en una hoja resumen para firmar.",
+        author: "Silvia H.",
+        role: "Propietaria, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sant Boi?",
+        answer:
+          "Suele situarse por debajo de Barcelona capital en agregadores del Baix Llobregat (referencia habitual 12–16 €/m² según barrio y estado). Contrastamos baremo e IRAV antes de renovar.",
+      },
+      {
+        question: "¿Está Sant Boi en zona tensionada?",
+        answer:
+          "Sí, incluida en la declaración catalana. Cada renovación exige verificar IRAV y depósito Incasòl.",
+      },
+      {
+        question: "¿Atendéis Camps Blancs y Marianao?",
+        answer: "Sí. Mismo protocolo de cobro e incidencias con industriales habituales del municipio.",
+      },
+    ],
+    finalCtaLead: `Protege tu alquiler en Sant Boi — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia.`,
+    primaryCtaLabel: "WhatsApp gestor Sant Boi",
+    waPlaceLabel: "Sant Boi de Llobregat",
+    heroImage: metroBarcelonaHeroForSegments(["sant-boi"]),
+    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Boi de Llobregat",
+      addressLocality: "Sant Boi de Llobregat",
+      areaServedName: "Sant Boi de Llobregat",
+    },
+  },
+  {
+    segments: ["gava"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/gava`,
+    zoneLabel: "Gavà",
+    metaTitle: `Administración de alquiler Gavà — Centre, Gavà Mar, TRAM · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Gavà: Centre, Gavà Mar, Can Ros y TRAM. Cobro en bloques y chalets, INCASÒL e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Gavà (Centre, Gavà Mar y eje TRAM)",
+    subtitle: `Administración LAU en Gavà desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    heroLead:
+      "Gavà —Centre, Gavà Mar, Can Ros, Torre Lluch— combina litoral, TRAM y normativa catalana tensionada. Parque mixto de bloques y chalets con humedades, climatización y comunidades activas. Livendia asume cobro y mediación; tú no negocias con el inquilino.",
+    eeatHeading: "Gavà: Garraf, TRAM y alquiler LAU",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, Gavà Mar, Can Ros y urbanizaciones del TRAM. Municipio tensionado del Baix Llobregat. Desde Les Corts (~25–30 min). IRAV e Incasòl en cada renovación.",
+    whyIntro:
+      "Muchos pisos en Gavà Mar son segunda residencia o inversión de propietarios en Barcelona. Sin gestor, temporales y averías de climatización llegan fuera de horario. Livendia centraliza el canal.",
+    howIntro:
+      "Canal único, liquidación mensual, técnicos del Garraf y avisos solo para autorizar gastos o firmas.",
+    barriosIntro:
+      "Centre concentra bloques familiares bien comunicados con TRAM. Gavà Mar mezcla vivienda cerca del mar con estacionalidad moderada. Can Ros y Torre Lluch tienen casas adosadas con incidencias de cerramientos y humedad.",
+    barrios: ["Centre", "Gavà Mar", "Can Ros", "Torre Lluch", "TRAM Gavà", "Les Graudes (límite)"],
+    serviceBullets: [
+      { title: "Incidencias litorales", description: "Humedad, climatización y cerramientos con técnicos del Garraf." },
+      { title: "Renovaciones IRAV", description: "Propuesta legal documentada al inquilino en municipio tensionado." },
+      { title: "Panel remoto", description: "Cobro e incidencias sin desplazarte semanalmente a Gavà." },
+    ],
+    testimonialsTitle: "Propietarios en Gavà con gestión remota",
+    testimonials: [
+      {
+        quote:
+          "Alquilo en Gavà Mar y vivo en Gràcia. Livendia coordinó avería de climatización en verano; el inquilino no tiene mi móvil.",
+        author: "Oriol D.",
+        role: "Propietario, Gavà Mar",
+      },
+      {
+        quote:
+          "Renové contrato en Centre con tope IRAV. Panel con justificantes de cobro cada mes.",
+        author: "Laia P.",
+        role: "Propietaria, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Gavà es zona tensionada?",
+        answer: "Sí. Verificamos IRAV y referencia legal en cada renovación de contrato LAU.",
+      },
+      {
+        question: "¿Gestionáis pisos en Gavà Mar?",
+        answer: "Sí. Protocolo adaptado a humedad y climatización; cobro e incidencias igual que en Centre.",
+      },
+      {
+        question: "¿Cómo llegáis desde Les Corts?",
+        answer: "Gestión cotidiana remota; desplazamiento ~25–30 min por C-32/TRAM si hace falta firma presencial.",
+      },
+    ],
+    finalCtaLead: `Delega tu alquiler en Gavà — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, gestor Livendia.`,
+    primaryCtaLabel: "Consultar gestión Gavà",
+    waPlaceLabel: "Gavà",
+    heroImage: metroBarcelonaHeroForSegments(["gava"]),
+    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Gavà",
+      addressLocality: "Gavà",
+      areaServedName: "Gavà",
+    },
+  },
+  {
+    segments: ["mollet-del-valles"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/mollet-del-valles`,
+    zoneLabel: "Mollet del Vallès",
+    metaTitle: `Administración de alquiler Mollet del Vallès — Centre, Can Borrell, RENFE · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Mollet del Vallès: Centre, Can Borrell, Gallecs y estación RENFE. INCASÒL, cobro e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Mollet del Vallès (Centre, Can Borrell y RENFE)",
+    subtitle: `Protege tu piso en Mollet por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — sin permanencia.`,
+    heroLead:
+      "Mollet del Vallès —Centre, Can Borrell, Gallecs, estación RENFE— es alternativa residencial al Vallès con alquiler más contenido que Sant Cugat y buena conexión a Barcelona. Municipio tensionado; parque de bloques de los 80–00 con comunidades activas. Livendia cobra, calcula IRAV y gestiona incidencias.",
+    eeatHeading: "Mollet: Vallès y contratos LAU estables",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, Can Borrell, Gallecs y entorno estación. Zona tensionada catalana. Operamos desde Les Corts (~25–35 min). Documentación de cobros e incidencias en panel.",
+    whyIntro:
+      "Propietarios en Mollet suelen tener uno o dos pisos de inversión y no quieren mediación directa con inquilinos familiares de larga duración. Livendia filtra consultas y escala solo lo necesario.",
+    howIntro:
+      "Expediente digital, protocolo de impago, coordinación con industriales del Vallès y resumen mensual.",
+    barriosIntro:
+      "Centre y entorno estación concentran bloques de 75–95 m² con familias estables. Can Borrell y Gallecs mezclan promociones recientes y vivienda unifamiliar. Comunidades activas en ascensor y calderas.",
+    barrios: ["Centre", "Can Borrell", "Gallecs", "Estació Mollet-Sant Fost", "Plaça Catalunya Mollet", "Barri del Nord"],
+    serviceBullets: [
+      { title: "Familias y contratos largos", description: "Mediación y cobro sin fricción en renovaciones IRAV." },
+      { title: "Incidencias en bloques", description: "Ascensor, caldera comunitaria y humedades con seguimiento diario." },
+      { title: "Gestor desde Les Corts", description: "Panel y WhatsApp profesional aunque vivas fuera del Vallès." },
+    ],
+    testimonialsTitle: "Propietarios en Mollet con el inquilino canalizado",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Centre y yo en Madrid. Livendia gestionó ascensor parado dos semanas; yo solo autorizé derrama por email.",
+        author: "Albert C.",
+        role: "Propietario, Centre",
+      },
+      {
+        quote:
+          "Impago puntual resuelto con mediación antes de que yo interviniera. Todo registrado en panel.",
+        author: "Montse L.",
+        role: "Propietaria, Can Borrell",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Mollet?",
+        answer:
+          "Suele estar por debajo de Sant Cugat y Barcelona en agregadores del Vallès (referencia habitual 13–17 €/m² según barrio). Contrastamos IRAV antes de renovar.",
+      },
+      {
+        question: "¿Mollet está en zona tensionada?",
+        answer: "Sí, dentro de la declaración catalana. Cada subida legal pasa por cálculo IRAV.",
+      },
+      {
+        question: "¿Atendéis Can Borrell y Gallecs?",
+        answer: "Sí. Mismo protocolo Livendia en todo el municipio.",
+      },
+    ],
+    finalCtaLead: `Activa administración en Mollet — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, gestor dedicado.`,
+    primaryCtaLabel: "WhatsApp gestor Mollet",
+    waPlaceLabel: "Mollet del Vallès",
+    heroImage: metroBarcelonaHeroForSegments(["mollet-del-valles"]),
+    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Mollet del Vallès",
+      addressLocality: "Mollet del Vallès",
+      areaServedName: "Mollet del Vallès",
+    },
+  },
+  {
     segments: ["sant-cugat"],
     path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-cugat`,
     zoneLabel: "Sant Cugat del Vallès",
@@ -1789,7 +2002,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       `Delega en Sant Cugat la relación con tu inquilino: renta cobrada, incidencias resueltas y gestor asignado por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     primaryCtaLabel: "Contactar con el Gestor de Sant Cugat",
     waPlaceLabel: "Sant Cugat del Vallès",
-    heroImage: "/images/gestora6.jpg",
+    heroImage: metroBarcelonaHeroForSegments(["sant-cugat"]),
     howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,

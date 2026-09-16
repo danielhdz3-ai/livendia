@@ -31,5 +31,9 @@ export const METRO_BARCELONA_HERO_BY_SEGMENT_KEY: Record<string, string> = {
   "sant-joan-despi": metroBarcelonaZoneImage("santjoandespi.jpg"),
   "sant-adria": metroBarcelonaZoneImage("barcelona2.jpg"),
   castelldefels: metroBarcelonaZoneImage("barcelona.jpg"),
+  "sant-boi": metroBarcelonaZoneImage("barcelona2.jpg"),
+  gava: metroBarcelonaZoneImage("barcelona.jpg"),
+  "mollet-del-valles": metroBarcelonaZoneImage("barcelona2.jpg"),
+  "sant-cugat": metroBarcelonaZoneImage("pexels-albaladejoart-15978608.jpg"),
   badalona: metroBarcelonaZoneImage("barcelona2.jpg"),
 };

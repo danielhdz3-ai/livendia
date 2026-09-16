@@ -184,6 +184,9 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Sant Joan Despí",
       "Sant Adrià de Besòs",
       "Castelldefels",
+      "Sant Boi de Llobregat",
+      "Gavà",
+      "Mollet del Vallès",
     ],
     faq: [
       {

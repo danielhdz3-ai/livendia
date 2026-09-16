@@ -127,6 +127,27 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     kind: "municipio" as const,
   },
   {
+    slug: "sant-boi",
+    segments: ["sant-boi"] as const,
+    name: "Sant Boi de Llobregat",
+    shortName: "Sant Boi",
+    kind: "municipio" as const,
+  },
+  {
+    slug: "gava",
+    segments: ["gava"] as const,
+    name: "Gavà",
+    shortName: "Gavà",
+    kind: "municipio" as const,
+  },
+  {
+    slug: "mollet-del-valles",
+    segments: ["mollet-del-valles"] as const,
+    name: "Mollet del Vallès",
+    shortName: "Mollet",
+    kind: "municipio" as const,
+  },
+  {
     slug: "sant-cugat",
     segments: ["sant-cugat"] as const,
     name: "Sant Cugat del Vallès",

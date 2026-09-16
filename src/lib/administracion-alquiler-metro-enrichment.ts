@@ -850,6 +850,84 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     ],
   },
 
+  "sant-boi": {
+    rentPricePerSqm:
+      "Municipio Sant Boi: rango habitual 12–16 €/m² en pisos según agregadores Baix Llobregat (2025–2026), por debajo de Barcelona capital. Centre y Plaça Catalunya suelen marcar banda alta; Marianao y Camps Blancs más asequibles.",
+    rentPriceSourceNote: "Agregadores Baix Llobregat 2025–2026; comparativa municipios vecinos Cornellà/Esplugues.",
+    dominantHousingType:
+      "Bloques de los 70–90 en Centre y Marianao (60–85 m²) con ascensores y calderas comunitarias. Camps Blancs con parque compacto. Comunidades muy activas en edificios envejecidos.",
+    tenantProfile: [
+      "Familias con perceptor en Barcelona o polígonos del Llobregat",
+      "Inquilinos estables en Centre con contratos LAU largos",
+      "Trabajadores del sector sanitario y servicios del municipio",
+      "Parejas en pisos reformados cerca de Plaça Catalunya",
+    ],
+    localRegulatoryNote:
+      "Sant Boi está en zona tensionada catalana. IRAV e Incasòl en renovaciones; no copiar €/m² de portal sin baremo legal.",
+    marketContext:
+      "Sant Boi es municipio del Baix Llobregat con demanda familiar estable y alquiler más contenido que Barcelona. Propietarios ausentes necesitan canal único para cobro e incidencias de ascensor y humedades. Livendia desde Les Corts (~20–25 min) documenta todo en panel.",
+    operationalCases: [
+      { title: "Ejemplo ilustrativo — Impago en Marianao", body: "Retraso reiterado. Protocolo de cobro desde el día 3 con mediación formal antes de escalar al propietario." },
+      { title: "Ejemplo ilustrativo — IRAV en Centre", body: "Propuesta de subida según portal. Livendia calcula tope legal y envía documentación al inquilino." },
+      { title: "Ejemplo ilustrativo — Caldera comunitaria", body: "Falta de calefacción en invierno. Coordinación con comunidad y mantenedor; aviso al propietario solo si hay derrama individual." },
+      { title: "Ejemplo ilustrativo — Humedad en sótano", body: "Perito, origen comunitario vs interior, presupuesto antes de obra." },
+      { title: "Ejemplo ilustrativo — Rotación en Camps Blancs", body: "Entrega de llaves, suministros e Incasòl sin citas cruzadas propietario-inquilino." },
+    ],
+    nearbyLandmarks: ["Plaça Catalunya Sant Boi", "Marianao", "Camps Blancs", "Hospital Sant Boi (límite)", "Baix Llobregat", "Centre vila"],
+  },
+
+  gava: {
+    rentPricePerSqm:
+      "Municipio Gavà: oferta habitual 14–18 €/m² en pisos (Garraf/Baix Llobregat 2025–2026). Gavà Mar y Centre suelen superar barrios interiores; chalets marcan ticket distinto al €/m² de bloque.",
+    rentPriceSourceNote: "Agregadores Garraf 2025–2026; TRAM Baix Llobregat.",
+    dominantHousingType:
+      "Bloques en Centre y Can Ros (70–95 m²). Gavà Mar: vivienda cerca del litoral con más climatización y humedad. Casas adosadas en Torre Lluch y urbanizaciones TRAM.",
+    tenantProfile: [
+      "Familias residenciales en Centre",
+      "Profesionales con TRAM a Barcelona",
+      "Inquilinos en Gavà Mar con estacionalidad moderada",
+      "Inversores con piso en costa y residencia en capital",
+    ],
+    localRegulatoryNote:
+      "Gavà está en zona tensionada catalana. IRAV en renovaciones; distinguir LAU largo de usos turísticos regulados aparte.",
+    marketContext:
+      "Gavà combina TRAM, litoral y parque mixto. Gestión remota crítica para propietarios en Barcelona: climatización, temporales y renovaciones IRAV. Livendia coordina técnicos del Garraf desde Les Corts.",
+    operationalCases: [
+      { title: "Ejemplo ilustrativo — Climatización en Gavà Mar", body: "Avería en verano. Técnico urgente, presupuesto al propietario; inquilino no contacta móvil personal." },
+      { title: "Ejemplo ilustrativo — Humedad tras temporal", body: "Filtración en terraza. Perito y conversación con comunidad si origen comunitario." },
+      { title: "Ejemplo ilustrativo — IRAV en Centre", body: "Cálculo de incremento máximo antes de propuesta al inquilino." },
+      { title: "Ejemplo ilustrativo — Queja de vecinos", body: "Mediación Livendia según contrato LAU; acta al propietario." },
+      { title: "Ejemplo ilustrativo — Suministros post-rotación", body: "Alta/baja luz y agua con lecturas archivadas en panel." },
+    ],
+    nearbyLandmarks: ["Gavà Mar", "Centre vila", "TRAM Gavà", "Can Ros", "Torre Lluch", "C-32 / Garraf"],
+  },
+
+  "mollet-del-valles": {
+    rentPricePerSqm:
+      "Municipio Mollet: rango habitual 13–17 €/m² en pisos (Vallès 2025–2026), por debajo de Sant Cugat (~17 €/m² Fotocasa agosto 2026). Centre y estación RENFE suelen marcar banda alta del municipio.",
+    rentPriceSourceNote: "Agregadores Vallès 2025–2026; comparativa Sant Cugat Fotocasa agosto 2026.",
+    dominantHousingType:
+      "Bloques de los 80–00 en Centre y entorno estación (75–95 m²). Can Borrell con promociones recientes. Gallecs mezcla vivienda unifamiliar y bloques con comunidades activas.",
+    tenantProfile: [
+      "Familias estables en Centre con contratos LAU largos",
+      "Profesionales con RENFE a Barcelona",
+      "Inquilinos en Can Borrell en promociones recientes",
+      "Inversores con uno o dos pisos en el Vallès",
+    ],
+    localRegulatoryNote:
+      "Mollet del Vallès está en zona tensionada catalana. IRAV e Incasòl obligatorios en renovaciones.",
+    marketContext:
+      "Mollet es alternativa asequible al Vallès con buena RENFE. Demanda familiar favorece contratos largos; fricción en cobros e incidencias de ascensor sin gestor local. Livendia opera remoto con panel desde Les Corts.",
+    operationalCases: [
+      { title: "Ejemplo ilustrativo — Ascensor en Centre", body: "Avería prolongada. Seguimiento diario con comunidad; autorización de gasto individual si procede." },
+      { title: "Ejemplo ilustrativo — Renovación IRAV", body: "Propuesta documentada al inquilino tras cálculo legal." },
+      { title: "Ejemplo ilustrativo — Impago puntual", body: "Mediación antes de informar al propietario de escalado legal." },
+      { title: "Ejemplo ilustrativo — Certificado empadronamiento", body: "Coordinación de firma y entrega al arrendatario sin interrumpir jornada del propietario." },
+      { title: "Ejemplo ilustrativo — Incidencia en Can Borrell", body: "Fontanería en piso recién reformado. Presupuestos comparados presentados al propietario." },
+    ],
+    nearbyLandmarks: ["Estació Mollet-Sant Fost", "Centre Mollet", "Can Borrell", "Gallecs", "Plaça Catalunya Mollet", "Vallès Oriental (límite)"],
+  },
+
   badalona: {
     rentPricePerSqm:
       "Municipio Badalona: 19,22 €/m² en oferta (Idealista, datos agregados 2025). SERPAVI/contratos registrados 2024: mediana ~10,17 €/m² en alquiler real. Engel & Völkers (julio 2026) sitúa pisos en 14,16 €/m². Por barrios, Centre y Gorg suelen superar la mediana; Sant Roc y Llefià más asequibles.",
