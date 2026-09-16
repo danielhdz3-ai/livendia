@@ -78,6 +78,10 @@ export function getPublishedPackLauAdminLocalSlugs(): readonly string[] {
   return PACK_LAU_ADMIN_LOCAL_PUBLISHED_SLUGS;
 }
 
+export function getPackLocalCityLabel(slug: string): string {
+  return PACK_LOCAL_CITY_BASES[slug]?.city ?? slug;
+}
+
 export function getPublishedPackArrasGestionLocalSlugs(): readonly string[] {
   return PACK_ARRAS_GESTION_LOCAL_PUBLISHED_SLUGS;
 }

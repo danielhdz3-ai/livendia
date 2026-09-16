@@ -18,7 +18,10 @@ import { ServicioCompletoCompraLocalCityLinks } from "@/components/servicio-comp
 import { ServicioCompletoVentaLocalCityLinks } from "@/components/servicio-completo-venta-local-city-links";
 import { GestionDocumentalVendedorLocalCityLinks } from "@/components/gestion-documental-vendedor-local-city-links";
 import { RevisionDocumentalPostArrasLocalCityLinks } from "@/components/revision-documental-post-arras-local-city-links";
+import { CiudadesHubCityLinks } from "@/components/ciudades-hub-city-links";
+import { PackComercialLocalBlogLinks } from "@/components/pack-comercial-local-blog-links";
 import { VentaParticularesLocalCityLinks } from "@/components/venta-particulares-local-city-links";
+import { VenderPisoSinAgenciaCityLinks } from "@/components/vender-piso-sin-agencia-city-links";
 import { VenderPisoSinInmobiliariaLocalCityLinks } from "@/components/vender-piso-sin-inmobiliaria-local-city-links";
 import {
   ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE,
@@ -82,6 +85,9 @@ export function BlogLocalCitiesSection() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <CiudadesHubCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <GestoriaInmobiliariaLocalCityLinks />
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
@@ -119,6 +125,12 @@ export function BlogLocalCitiesSection() {
           ) : null}
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <ContratoAlquilerTemporadaLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <PackComercialLocalBlogLinks variant="lau-admin" />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <PackComercialLocalBlogLinks variant="arras-gestion" />
           </div>
           {revisionContrato.length > 0 ? (
             <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
@@ -197,6 +209,9 @@ export function BlogLocalCitiesSection() {
           ) : null}
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
             <VentaParticularesLocalCityLinks />
+          </div>
+          <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+            <VenderPisoSinAgenciaCityLinks />
           </div>
           <div className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-1">
             <VenderPisoSinInmobiliariaLocalCityLinks />

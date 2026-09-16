@@ -1,24 +1,20 @@
 import Link from "next/link";
-import {
-  getPublishedVenderPisoSinAgenciaCities,
-  localVenderPisoSinAgenciaHref,
-} from "@/lib/vender-piso-sin-agencia-local-cities";
-
-const VENDER_PISO_SIN_AGENCIA_HUB = "/servicios/vender-piso-sin-agencia";
+import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
+import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
 
 type Props = {
   showTitle?: boolean;
   variant?: "default" | "compact" | "footer";
 };
 
-export function VenderPisoSinAgenciaCityLinks({ showTitle = true, variant = "default" }: Props) {
-  const cities = getPublishedVenderPisoSinAgenciaCities();
+/** Hubs /ciudades/[slug] — índice transversal de servicios por ciudad. */
+export function CiudadesHubCityLinks({ showTitle = true, variant = "default" }: Props) {
   const isFooter = variant === "footer";
   const isCompact = variant === "compact" || isFooter;
 
   const linkClass = isCompact
     ? "text-[11px] text-blue-100 underline-offset-2 hover:text-white hover:underline"
-    : "rounded-full bg-white px-3 py-1.5 text-sm font-medium text-[#1E293B] shadow ring-1 ring-slate-200 transition hover:bg-blue-50 hover:ring-[#1A4FBF]";
+    : "rounded-full bg-white px-3 py-1 text-sm font-medium text-[#1E293B] shadow ring-1 ring-slate-200 transition hover:bg-blue-50 hover:ring-[#1A4FBF]";
 
   const wrapClass = isCompact ? "flex flex-wrap gap-x-2 gap-y-1" : "flex flex-wrap gap-2";
 
@@ -34,25 +30,25 @@ export function VenderPisoSinAgenciaCityLinks({ showTitle = true, variant = "def
                 : "text-sm font-semibold text-[#1E293B]"
           }
         >
-          {isFooter ? "Vender sin agencia" : "Vender piso sin agencia por ciudad"}
+          Índice Ciudades Livendia
         </p>
       ) : null}
-      <nav aria-label="Vender piso sin agencia por ciudad" className={wrapClass}>
-        {cities.map((c) => (
-          <Link key={c.slug} href={localVenderPisoSinAgenciaHref(c.slug)} className={linkClass}>
-            {c.city}
+      <nav aria-label="Hubs de ciudad Livendia" className={wrapClass}>
+        {HOME_COVERAGE_CITIES.map((c) => (
+          <Link key={c.slug} href={cityHubHref(c.slug)} className={linkClass}>
+            {c.name}
           </Link>
         ))}
       </nav>
       <Link
-        href={VENDER_PISO_SIN_AGENCIA_HUB}
+        href={CIUDADES_HUB_BASE}
         className={
           isCompact
             ? "inline-block text-[11px] font-semibold text-cyan-200 hover:text-white"
             : "inline-flex text-sm font-semibold text-[#1A4FBF] hover:underline"
         }
       >
-        {isFooter ? "Índice →" : "Ver servicio nacional →"}
+        {isFooter ? "Índice →" : "Ver todas las ciudades →"}
       </Link>
     </div>
   );
