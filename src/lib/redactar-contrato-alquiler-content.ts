@@ -32,7 +32,7 @@ export const REDACTAR_CONTRATO_REDACCION_SERVICIO = {
   imageAlt: "Gestor Livendia redactando un contrato de alquiler con inventario",
 } as const;
 
-/** Módulo transversal: upsell administración de alquiler (49 €/mes). */
+/** Módulo transversal: upsell administración de alquiler (59 €/mes IVA incl.). */
 export const REDACTAR_CONTRATO_ADMIN_UPSELL = {
   eyebrow: "Después de firmar el contrato",
   title: "Livendia lleva la administración de tu alquiler",

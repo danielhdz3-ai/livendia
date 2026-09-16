@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
 import { REDACTAR_CONTRATO_ONLINE_GESTOR } from "@/lib/redactar-contrato-alquiler-content";
 import { CheckCircle, Headphones, Laptop, MessageCircle, User } from "lucide-react";
 
@@ -75,7 +76,7 @@ export function RedactarContratoAlquilerOnlineGestorSection({ city }: Props) {
                   className="inline-flex items-center gap-2 rounded-full border border-[#1A4FBF] px-5 py-2.5 text-sm font-semibold text-[#1A4FBF] hover:bg-[#EFF6FF]"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden />
-                  Administración de alquiler (49 €/mes)
+                  Administración de alquiler ({ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL})
                 </Link>
               </div>
             </div>

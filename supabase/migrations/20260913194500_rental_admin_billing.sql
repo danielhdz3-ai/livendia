@@ -5,7 +5,7 @@ create table if not exists public.rental_admin_billing (
   service_id uuid not null references public.services (id) on delete restrict,
   status text not null default 'active' check (status in ('active', 'suspended')),
   billing_method text not null default 'transfer' check (billing_method in ('transfer', 'stripe')),
-  monthly_cents integer not null default 4900,
+  monthly_cents integer not null default 5900,
   started_on date not null default (current_date),
   first_period_amount_cents integer,
   suspended_at timestamptz,
@@ -70,3 +70,5 @@ create policy "rental_admin_fee_dues_admin_write"
   on public.rental_admin_fee_dues for all
   using (public.is_admin())
   with check (public.is_admin());
+
+notify pgrst, 'reload schema';

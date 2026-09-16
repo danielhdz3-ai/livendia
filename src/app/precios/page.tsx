@@ -4,6 +4,7 @@ import { PreciosPackOffers } from "@/components/precios-pack-offers";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { ServiceCardsClient } from "@/app/servicios/service-cards-client";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
@@ -28,7 +29,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Contratar gestoría inmobiliaria: precios y tarifas",
   description:
-    `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, pack LAU+admin ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL}, arras+gestión vendedor ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL}, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración 49 €/mes. Gestor por teléfono.`,
+    `Tarifas fijas IVA incl. para particulares: habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, pack LAU+admin ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL}, arras+gestión vendedor ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL}, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}, venta sin agencia 890 €, administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Gestor por teléfono.`,
   alternates: { canonical: `${getSiteUrl()}/precios` },
 };
 

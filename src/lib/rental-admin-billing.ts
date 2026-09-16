@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { SalesDayBucket } from "@/lib/admin-data";
+import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_CENTS } from "@/lib/catalog.public";
 
 export type RentalAdminBillingRow = {
   client_id: string;
@@ -82,7 +83,7 @@ export async function ensureRentalAdminBillingAccount(
       service_id: input.serviceId,
       status: "active",
       billing_method: input.billingMethod ?? "transfer",
-      monthly_cents: input.monthlyCents ?? 4900,
+      monthly_cents: input.monthlyCents ?? ADMINISTRACION_ALQUILER_MONTHLY_PRICE_CENTS,
       started_on: input.startedOn ?? new Date().toISOString().slice(0, 10),
       first_period_amount_cents: input.firstPeriodAmountCents ?? null,
     })

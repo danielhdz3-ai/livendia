@@ -12,7 +12,10 @@ import { MobileServicesList } from "@/components/mobile-services-list";
 import { HOME_FAQ_ITEMS } from "@/lib/home-faq";
 import { MultiServicePurchaseProvider, ContratarSlugButton } from "@/components/service-purchase-provider";
 import { PublicHeader } from "@/components/public-header";
-import type { PublicService } from "@/lib/catalog.public";
+import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  type PublicService,
+} from "@/lib/catalog.public";
 import { getPublicServices } from "@/lib/catalog";
 import { SiteFooter } from "@/components/site-footer";
 import Image from "next/image";
@@ -161,7 +164,7 @@ export default async function Home() {
                   Olvídate de llamadas, reclamaciones y gestiones. Nosotros somos el punto de contacto con tu inquilino.
                 </p>
                 <div className="mt-4 flex items-baseline gap-2 sm:mt-6">
-                  <span className="text-4xl font-extrabold sm:text-5xl">49 €</span>
+                  <span className="text-4xl font-extrabold sm:text-5xl">{ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €</span>
                   <span className="text-base text-blue-100 sm:text-lg">/ mes · IVA incluido</span>
                 </div>
                 <ul className="mt-6 space-y-2.5 text-sm text-blue-50 sm:mt-8 sm:space-y-3 sm:text-base">

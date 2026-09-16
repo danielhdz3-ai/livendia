@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Building2, FileText, KeyRound, Scale } from "lucide-react";
 
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
 } from "@/lib/catalog.public";
@@ -11,7 +12,7 @@ const QUICK_ACTIONS = [
   {
     href: "/para-propietarios",
     title: "Administración",
-    subtitle: "49 €/mes · sin permanencia",
+    subtitle: `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} · sin permanencia`,
     icon: KeyRound,
     tint: "bg-violet-50 ring-violet-100",
     iconColor: "text-violet-600",

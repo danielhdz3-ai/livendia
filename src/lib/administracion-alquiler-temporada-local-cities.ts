@@ -92,7 +92,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
       heroLead:
         "En Madrid capital conviven pisos compartidos por habitaciones, estancias de seis meses por oposiciones o proyectos laborales y rotación alta en barrios universitarios. Livendia administra entradas, salidas, incidencias y servicio técnico por 79 €/mes — sin que tú seas el teléfono de guardia.",
       whyIntro:
-        "La administración LAU a 49 €/mes está pensada para un inquilino estable. En Madrid, Chamberí, Malasaña o Vallecas muchos propietarios gestionan tres habitaciones con calendarios distintos: check-in en septiembre, baja en junio, avería un domingo. Nosotros filtramos ese ritmo.",
+        "La administración LAU a 59 €/mes está pensada para un inquilino estable. En Madrid, Chamberí, Malasaña o Vallecas muchos propietarios gestionan tres habitaciones con calendarios distintos: check-in en septiembre, baja en junio, avería un domingo. Nosotros filtramos ese ritmo.",
       marketContext:
         "Según Fotocasa (2026), el alquiler medio en Madrid ronda 21,6 €/m², pero el mercado por habitaciones y estancias cortas se mueve aparte: demanda de opositores, becarios ERASMUS y teletrabajadores que buscan contratos acotados sin comisión de agencia.",
       barriosIntro:
@@ -141,9 +141,9 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
             "Sí. Registramos fechas de entrada y salida, coordinamos check-in/check-out y el servicio técnico. Si hace falta un contrato de temporada nuevo, lo redactamos por la tarifa de contrato aparte.",
         },
         {
-          question: "¿Es lo mismo que la administración LAU a 49 €/mes?",
+          question: "¿Es lo mismo que la administración LAU a 59 €/mes?",
           answer:
-            "No. La de 49 €/mes es para un inquilino estable en vivienda habitual. Esta de 79 €/mes cubre el ritmo de habitaciones y temporadas con más rotación.",
+            "No. La de 59 €/mes es para un inquilino estable en vivienda habitual. Esta de 79 €/mes cubre el ritmo de habitaciones y temporadas con más rotación.",
         },
       ],
     },
@@ -392,7 +392,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
         {
           question: "¿Diferencia con administración LAU?",
           answer:
-            "La administración LAU (49 €/mes) es para un inquilino estable. Esta de 79 €/mes está pensada para habitaciones y temporadas con más rotación.",
+            "La administración LAU (59 €/mes) es para un inquilino estable. Esta de 79 €/mes está pensada para habitaciones y temporadas con más rotación.",
         },
       ],
     },

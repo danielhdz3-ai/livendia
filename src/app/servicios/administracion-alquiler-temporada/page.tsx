@@ -12,6 +12,7 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,
   resolveServicePriceLabel,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
@@ -311,7 +312,7 @@ export default async function AdministracionAlquilerTemporadaPage() {
                   href="/servicios/administracion-alquiler"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
                 >
-                  Ver admin. alquiler LAU (49 €/mes)
+                  Ver admin. alquiler LAU ({ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL})
                 </Link>
               </div>
             </div>

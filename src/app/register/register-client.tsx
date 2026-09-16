@@ -171,7 +171,7 @@ export function RegisterClient() {
                 <h3 className="font-semibold text-white">Precios transparentes</h3>
                 <p className="mt-1 text-sm leading-relaxed text-blue-100">
                   Tarifas claras sin letra pequeña. LAU {CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada{" "}
-                  {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, administración desde 49€/mes.
+                  {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}, administración desde 59€/mes IVA incl.
                 </p>
               </div>
             </div>

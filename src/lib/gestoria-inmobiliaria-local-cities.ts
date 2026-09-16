@@ -8,6 +8,8 @@ import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-prof
 import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
 
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_EUR,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_EUR,
@@ -26,6 +28,7 @@ const GESTORIA_H3_LAU = `Contrato LAU — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} (
 const GESTORIA_H3_TEMPORADA = `Contrato Temporada — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} (IVA incl.)`;
 const REVISION_META_SNIPPET = `revisión post-arras ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`;
 const LAU_TEMPORADA_CTA = `LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}`;
+const GESTORIA_H3_ADMIN = `Tarifa plana ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} (IVA incl.) — sin permanencia`;
 
 export const GESTORIA_INMOBILIARIA_LOCAL_BASE = "/gestoria";
 
@@ -124,7 +127,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Comunidad de Madrid",
     metaTitle: "Madrid: gestoría 890 € venta sin comisiones",
     metaDescription:
-      `Gestoría Madrid para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
+      `Gestoría Madrid para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria madrid particulares",
       "tramites compra piso madrid entre particulares",
@@ -169,7 +172,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Madrid",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Compatible con pisos en barrios residenciales, universitarios o municipios del cinturón.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario no atiende llamadas ni urgencias de fontanería: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
     },
@@ -191,7 +194,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Madrid: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Madrid: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     slug: "barcelona",
@@ -199,7 +202,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Cataluña",
     metaTitle: "Barcelona: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Barcelona para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
+      `Gestoría Barcelona para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria barcelona particulares",
       "venta de particular a particular barcelona gestoría",
@@ -244,7 +247,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Barcelona",
       incluyeCopy:
         "Intermediación ante el arrendatario, coordinación de reparaciones, seguimiento de pagos, mediación en conflictos y alertas cuando necesitas decidir.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "Despreocúpate de averías y disputas menores. Tarifa plana sin permanencia: el propietario delega; Livendia ejecuta con gestor asignado.",
     },
@@ -266,7 +269,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Empieza en Barcelona: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes. Contratación online.`,
+      `Empieza en Barcelona: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Contratación online.`,
   },
   {
     slug: "les-corts",
@@ -274,7 +277,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Cataluña",
     metaTitle: "Les Corts: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Les Corts para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Despacho en Mejía Lequerica 44. Gestor humano, sin comisiones del 3-5 %. Administración 49 €/mes.`,
+      `Gestoría Les Corts para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Despacho en Mejía Lequerica 44. Gestor humano, sin comisiones del 3-5 %. Administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria les corts",
       "gestoría inmobiliaria les corts barcelona",
@@ -320,7 +323,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Les Corts",
       incluyeCopy:
         "Intermediación ante el inquilino, coordinación de reparaciones, seguimiento de pagos y mediación en conflictos menores. Compatible con vivienda habitual y pisos en barrios residenciales del distrito.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "Despreocúpate de averías y llamadas del inquilino. Tarifa plana sin permanencia: el propietario delega; tu gestor Livendia ejecuta y documenta cada incidencia.",
     },
@@ -347,7 +350,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata en Les Corts: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes. Despacho en Mejía Lequerica 44 · trámite online con gestor asignado.`,
+      `Contrata en Les Corts: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Despacho en Mejía Lequerica 44 · trámite online con gestor asignado.`,
   },
   {
     slug: "valencia",
@@ -355,7 +358,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Comunidad Valenciana",
     metaTitle: "Valencia: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Valencia para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones de agencia. ${REVISION_META_SNIPPET} y administración 49 €/mes. Ruzafa, Benimaclet.`,
+      `Gestoría Valencia para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones de agencia. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Ruzafa, Benimaclet.`,
     keywords: [
       "gestoría inmobiliaria valencia particulares",
       "venta entre particulares valencia gestoría",
@@ -400,7 +403,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Valencia",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Compatible con pisos en barrios residenciales, universitarios o municipios del área metropolitana.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario no atiende llamadas ni urgencias: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
     },
@@ -422,7 +425,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Valencia: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Valencia: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     slug: "zaragoza",
@@ -430,7 +433,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Aragón",
     metaTitle: "Zaragoza: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Zaragoza para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+      `Gestoría Zaragoza para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     h1: "Gestoría inmobiliaria en Zaragoza: compraventa, contratos y administración de alquileres",
     heroLead:
       "Compra piso entre particulares, redacta contratos legales o delega la gestión del alquiler en Zaragoza capital y comarca. Precios fijos publicados, gestoría online y entrega en 48-72 h en contratos.",
@@ -466,7 +469,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Zaragoza",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Compatible con pisos en barrios universitarios, ensanche o municipios del cinturón.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario se desentiende de llamadas, urgencias de fontanería o conflictos menores. Sin letra pequeña ni permanencia: cancelas cuando quieras desde el panel Livendia.",
     },
@@ -487,7 +490,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Elige el servicio que necesitas en Zaragoza: compraventa desde 424 €, ${LAU_TEMPORADA_CTA} o administración 49 €/mes. Contratación online en minutos.`,
+      `Elige el servicio que necesitas en Zaragoza: compraventa desde 424 €, ${LAU_TEMPORADA_CTA} o administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Contratación online en minutos.`,
   },
   {
     slug: "alicante",
@@ -495,7 +498,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Comunidad Valenciana",
     metaTitle: "Alicante: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Alicante para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+      `Gestoría Alicante para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     h1: "Gestoría inmobiliaria en Alicante: compraventa, contratos y administración de alquileres",
     heroLead:
       "Gestoría inmobiliaria digital para propietarios e inversores en Alicante ciudad y zona costera. Precios transparentes en compraventa entre particulares, contratos legales y administración mensual del alquiler.",
@@ -531,7 +534,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Alicante",
       incluyeCopy:
         "Intermediación ante el arrendatario, coordinación de reparaciones, seguimiento de pagos, mediación en conflictos y alertas cuando necesitas decidir.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "Despreocúpate de averías, llamadas fuera de horario y pequeñas disputas. Tarifa plana sin permanencia: el propietario delega; Livendia ejecuta.",
     },
@@ -552,7 +555,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Alicante: compraventa 424 € o 890 €, ${LAU_TEMPORADA_CTA} y administración 49 €/mes. Sin permanencia en la gestión del alquiler.`,
+      `Contrata online en Alicante: compraventa 424 € o 890 €, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Sin permanencia en la gestión del alquiler.`,
   },
   {
     slug: "murcia",
@@ -560,7 +563,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Región de Murcia",
     metaTitle: "Murcia: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Murcia para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada y administración 49 €/mes.`,
+      `Gestoría Murcia para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     h1: "Gestoría inmobiliaria en Murcia: compraventa, contratos y administración de alquileres",
     heroLead:
       "Servicios de gestoría inmobiliaria en Murcia capital y área metropolitana con tarifas publicadas. Compraventa asistida, contratos en 48-72 h y administración mensual para propietarios que quieren desentenderse del inquilino.",
@@ -596,7 +599,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Murcia",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de renovaciones y mediación profesional si surge discrepancia sobre pagos o mantenimiento.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario no atiende llamadas ni urgencias: Livendia filtra, coordina técnicos y te informa solo cuando hace falta tu decisión. Sin permanencia ni costes ocultos.",
     },
@@ -618,7 +621,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Empieza en Murcia con precios fijos: 424 €, 890 €, ${LAU_TEMPORADA_CTA} o administración 49 €/mes. Contratación 100 % online.`,
+      `Empieza en Murcia con precios fijos: 424 €, 890 €, ${LAU_TEMPORADA_CTA} o administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Contratación 100 % online.`,
   },
   {
     slug: "malaga",
@@ -626,7 +629,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Andalucía",
     metaTitle: "Málaga: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Málaga para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
+      `Gestoría Málaga para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria malaga particulares",
       "tramites compra piso malaga entre particulares",
@@ -671,7 +674,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Málaga",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si vives fuera de la provincia.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario no atiende llamadas ni urgencias estivales: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
     },
@@ -692,7 +695,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Málaga: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Málaga: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     slug: "sevilla",
@@ -700,7 +703,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Andalucía",
     metaTitle: "Sevilla: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Sevilla para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. Triana, Nervión. ${REVISION_META_SNIPPET} y administración 49 €/mes.`,
+      `Gestoría Sevilla para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. Triana, Nervión. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria sevilla particulares",
       "tramites compra piso sevilla entre particulares",
@@ -745,7 +748,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Sevilla",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de renovaciones y mediación si surge discrepancia sobre pagos o mantenimiento.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario delega llamadas y urgencias: Livendia filtra, coordina técnicos y te informa solo cuando hace falta tu decisión.",
     },
@@ -767,7 +770,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Sevilla: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Sevilla: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     slug: "bilbao",
@@ -775,7 +778,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "País Vasco",
     metaTitle: "Bilbao: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Bilbao para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+      `Gestoría Bilbao para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria bilbao particulares",
       "tramites compra piso bilbao entre particulares",
@@ -820,7 +823,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Bilbao",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si vives fuera de Bizkaia.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario no atiende llamadas ni urgencias: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
     },
@@ -841,7 +844,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Bilbao: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Bilbao: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     slug: "granada",
@@ -849,7 +852,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     schemaAdministrativeArea: "Andalucía",
     metaTitle: "Granada: gestoría 890 € sin comisiones",
     metaDescription:
-      `Gestoría Granada para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración 49 €/mes.`,
+      `Gestoría Granada para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria granada particulares",
       "tramites compra piso granada entre particulares",
@@ -894,7 +897,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       h3Incluye: "Qué incluye la gestión integral de alquileres en Granada",
       incluyeCopy:
         "Canal único con el arrendatario, coordinación de reparaciones, control de pagos y alertas solo cuando hace falta tu firma. Ideal si no vives en la provincia.",
-      h3Precio: "Tarifa plana 49 €/mes (IVA incl.) — sin permanencia",
+      h3Precio: GESTORIA_H3_ADMIN,
       precioCopy:
         "El propietario delega llamadas y urgencias: Livendia filtra, coordina técnicos y te informa. Sin permanencia ni costes ocultos.",
     },
@@ -916,7 +919,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       },
     ],
     finalCtaLead:
-      `Contrata online en Granada: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración 49 €/mes.`,
+      `Contrata online en Granada: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
 ];
 
@@ -965,7 +968,7 @@ export const GESTORIA_SCHEMA_OFFERS = [
   {
     slug: "administracion-alquiler",
     name: "Administración mensual de alquiler",
-    price: "49.00",
+    price: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR.toFixed(2),
     unitText: "MONTH",
   },
 ] as const;

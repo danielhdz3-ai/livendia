@@ -1,7 +1,11 @@
 import type { AlquilerRegulatoryLocal } from "@/lib/administracion-alquiler-local-regulatory";
 import { ALQUILER_REGULATORY_BY_SLUG } from "@/lib/administracion-alquiler-local-regulatory";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+  CONTRATO_ALQUILER_LAU_PRICE_EUR,
   LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
+  LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR,
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
 } from "@/lib/catalog.public";
 
@@ -43,7 +47,7 @@ const LAU_EMPATHY_SHARED: readonly PackCommercialEmpathyCard[] = [
   },
   {
     title: "No quieres pagar comisión de agencia sobre la renta",
-    body: "Las inmobiliarias de gestión cobran un mes de renta al año solo por cobrar y atender averías. Livendia cobra tarifa plana: 145 € contrato + 49 €/mes administración.",
+    body: `Las inmobiliarias de gestión cobran un mes de renta al año solo por cobrar y atender averías. Livendia cobra tarifa plana: ${CONTRATO_ALQUILER_LAU_PRICE_EUR} € contrato + ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} administración.`,
   },
   {
     title: "Vives lejos del piso o tienes poco tiempo",
@@ -55,7 +59,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
   madrid: {
     precioMedioAlquiler: 1_350,
     heroSubtitle:
-      "Vas a alquilar tu piso en Madrid con inquilino ya seleccionado. Este pack une contrato LAU redactado por gestor legal (145 €) y el primer mes de administración Livendia (49 €) para que Chamberí, Salamanca o Vallecas no te exijan estar disponible 24/7 desde el día uno.",
+      `Vas a alquilar tu piso en Madrid con inquilino ya seleccionado. Este pack une contrato LAU redactado por gestor legal (145 €) y el primer mes de administración Livendia (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €) para que Chamberí, Salamanca o Vallecas no te exijan estar disponible 24/7 desde el día uno.`,
     marketIntro:
       "Madrid concentra el mercado de alquiler más activo de España: rotación rápida, visitas en 48 h y propietarios particulares que evitan comisiones del 10 % anual de las inmobiliarias de gestión. El ticket medio ronda 1.200–1.400 €/mes según distrito (Idealista, 2026).",
     localProblemIntro:
@@ -98,7 +102,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         question: "¿Cuánto cuesta el pack LAU + administración en Madrid?",
-        answer: `Mismos precios en toda España: ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl. estimados (contrato LAU 145 € + primer mes administración 49 €). Sin comisión sobre la renta.`,
+        answer: `Mismos precios en toda España: ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl. estimados (contrato LAU 145 € + primer mes administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €). Sin comisión sobre la renta.`,
       },
     ],
     barrios: [
@@ -124,14 +128,14 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Administración desde el primer mes en distritos con mucha rotación",
-        body: "En barrios universitarios o de alta demanda las incidencias son frecuentes. Por 49 €/mes Livendia asume cobro, seguimiento de averías y comunicación con el inquilino sin permanencia.",
+        body: `En barrios universitarios o de alta demanda las incidencias son frecuentes. Por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} Livendia asume cobro, seguimiento de averías y comunicación con el inquilino sin permanencia.`,
       },
     ],
   },
   barcelona: {
     precioMedioAlquiler: 1_556,
     heroSubtitle:
-      "Alquilas en Barcelona o área metropolitana con inquilino ya encontrado. Pack LAU + administración (194 € IVA incl. estimados): contrato adaptado a zona tensionada, INCASÒL e IRAV, más gestor que gestiona cobros e incidencias desde el primer mes.",
+      `Alquilas en Barcelona o área metropolitana con inquilino ya encontrado. Pack LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. estimados): contrato adaptado a zona tensionada, INCASÒL e IRAV, más gestor que gestiona cobros e incidencias desde el primer mes.`,
     marketIntro:
       "Barcelona es uno de los mercados más regulados de España: 271 municipios catalanes declarados zona tensionada, IRAV como tope en nuevos contratos y depósito en Incasòl. El ticket medio supera 1.500 €/mes (Brains Real Estate, Q1 2026).",
     localProblemIntro:
@@ -174,7 +178,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         question: "¿Cuánto cuesta el pack en Barcelona?",
-        answer: `Tarifa nacional sin recargo: ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl. (145 € LAU + 49 € 1.er mes admin). Sin comisión sobre la renta ni permanencia en administración.`,
+        answer: `Tarifa nacional sin recargo: ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl. (145 € LAU + ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} € 1.er mes admin). Sin comisión sobre la renta ni permanencia en administración.`,
       },
     ],
     barrios: [
@@ -199,14 +203,14 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Administración: evita ser el 'propietario de WhatsApp'",
-        body: "Averías, certificados de comunidad, retrasos de transferencia: 49 €/mes para que Livendia sea el interlocutor desde el día uno, sin comisión del 10 % anual de agencia.",
+        body: `Averías, certificados de comunidad, retrasos de transferencia: ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} para que Livendia sea el interlocutor desde el día uno, sin comisión del 10 % anual de agencia.`,
       },
     ],
   },
   valencia: {
     precioMedioAlquiler: 986,
     heroSubtitle:
-      "Alquilas en Valencia o l'Horta con inquilino ya seleccionado. Pack contrato LAU + administración (194 € IVA incl.): redacción conforme a LAU y normativa valenciana, más gestor que cobra renta y gestiona incidencias desde el primer mes.",
+      `Alquilas en Valencia o l'Horta con inquilino ya seleccionado. Pack contrato LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl.): redacción conforme a LAU y normativa valenciana, más gestor que cobra renta y gestiona incidencias desde el primer mes.`,
     marketIntro:
       "Valencia combina mercado dinámico (Ruzafa, Benimaclet, Ciutat Vella) con rotación rápida y muchos propietarios primerizos. Ticket medio ~950–1.000 €/mes (Enalquiler / Idealista, 2026), por debajo de Madrid y Barcelona.",
     localProblemIntro:
@@ -264,14 +268,14 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Administración sin comisión del 10 % anual",
-        body: "49 €/mes IVA incl. para cobro, incidencias y comunicación con inquilino. Cancelación con 30 días de preaviso, sin permanencia.",
+        body: `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. para cobro, incidencias y comunicación con inquilino. Cancelación con 30 días de preaviso, sin permanencia.`,
       },
     ],
   },
   malaga: {
     precioMedioAlquiler: 1_476,
     heroSubtitle:
-      "Vas a alquilar en Málaga con inquilino ya seleccionado — residente, expat o nómada digital. Pack LAU + administración (194 € IVA incl.): contrato adaptado a normativa andaluza, depósito de fianza en AVRA y gestor que cobra renta e incidencias desde el primer mes.",
+      `Vas a alquilar en Málaga con inquilino ya seleccionado — residente, expat o nómada digital. Pack LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl.): contrato adaptado a normativa andaluza, depósito de fianza en AVRA y gestor que cobra renta e incidencias desde el primer mes.`,
     marketIntro:
       "Málaga combina demanda residencial en Teatinos y Carretera de Cádiz con media estancia en Soho y Centro, y perfil internacional en la Costa del Sol. Ticket medio ~1.400–1.500 €/mes (Brains Real Estate, Q1 2026). Propietarios particulares evitan comisiones del 10 % anual de gestión inmobiliaria.",
     localProblemIntro:
@@ -279,7 +283,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     stepLocalNotes: [
       "Recogemos datos del piso en Teatinos, Centro, El Limonar o Soho y del inquilino; redactamos LAU o contrato de temporada según tipología real.",
       "Orientación sobre depósito de fianza legal en AVRA: plazos, documentación y registro obligatorio conforme a normativa de la Junta de Andalucía.",
-      "Tras la firma, administración Livendia (49 €/mes): canal único con inquilino, cobro de renta e incidencias en panel — útil si resides fuera de Málaga.",
+      `Tras la firma, administración Livendia (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}): canal único con inquilino, cobro de renta e incidencias en panel — útil si resides fuera de Málaga.`,
       "Inventario detallado y comunicaciones con comunidad en urbanizaciones de la costa: el gestor filtra contacto diario.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -319,7 +323,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         question: "¿Precio del pack LAU + administración en Málaga?",
-        answer: `194 € IVA incl. estimados (145 € contrato LAU + 49 € 1.er mes administración). Mismos precios en toda España. Sin comisión sobre la renta ni permanencia en administración.`,
+        answer: `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. estimados (145 € contrato LAU + ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} € 1.er mes administración). Mismos precios en toda España. Sin comisión sobre la renta ni permanencia en administración.`,
       },
     ],
     barrios: ["Teatinos", "Carretera de Cádiz", "Centro", "Soho", "El Limonar", "La Malagueta", "Pedregalejo", "El Palo"],
@@ -341,7 +345,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
   sevilla: {
     precioMedioAlquiler: 986,
     heroSubtitle:
-      "Alquilas en Sevilla con inquilino ya encontrado — familia, estudiante o profesional sanitario. Pack contrato LAU + administración (194 € IVA incl.): arrendamiento residencial o temporada académica, depósito AVRA e inventario detallado para prevenir conflictos al finalizar.",
+      `Alquilas en Sevilla con inquilino ya encontrado — familia, estudiante o profesional sanitario. Pack contrato LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl.): arrendamiento residencial o temporada académica, depósito AVRA e inventario detallado para prevenir conflictos al finalizar.`,
     marketIntro:
       "Sevilla mezcla demanda estable en Nervión y Los Remedios con rotación académica en Heliópolis y Macarena, y alquiler a profesionales del sector sanitario. Ticket medio ~950–1.000 €/mes (Enalquiler / Idealista, 2026). Muchos propietarios son particulares sin experiencia previa.",
     localProblemIntro:
@@ -389,7 +393,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         question: "¿Precio del pack en Sevilla?",
-        answer: `194 € IVA incl. (145 € LAU + 49 € 1.er mes admin). Administración cancelable con 30 días de preaviso, sin permanencia.`,
+        answer: `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. (145 € LAU + ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} € 1.er mes admin). Administración cancelable con 30 días de preaviso, sin permanencia.`,
       },
     ],
     barrios: ["Nervión", "Triana", "Macarena", "Los Remedios", "Sevilla Este", "Heliópolis", "Cerro-Amate", "Casco Antiguo"],
@@ -404,7 +408,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "AVRA y normativa andaluza desde el primer día",
-        body: "Depósito de fianza en AVRA no es opcional. Livendia orienta el trámite y activa administración (49 €/mes) para que no gestiones tú las incidencias del inquilino.",
+        body: `Depósito de fianza en AVRA no es opcional. Livendia orienta el trámite y activa administración (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}) para que no gestiones tú las incidencias del inquilino.`,
       },
     ],
   },

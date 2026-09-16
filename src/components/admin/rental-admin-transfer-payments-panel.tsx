@@ -23,7 +23,7 @@ function formatEuros(cents: number | null): string {
 export function RentalAdminTransferPaymentsPanel({
   clientId,
   orders,
-  defaultAmountEuros = "49,00",
+  defaultAmountEuros = "59,00",
 }: {
   clientId: string;
   orders: RentalAdminFeeOrderRow[];
@@ -67,7 +67,7 @@ export function RentalAdminTransferPaymentsPanel({
         <div>
           <h2 className="text-lg font-bold text-[#1E293B]">Cuotas de administración (transferencia)</h2>
           <p className="mt-1 text-sm text-[#64748B]">
-            Cliente sin Stripe: registra aquí cada transferencia mensual de la cuota de gestión (49 €/mes o
+            Cliente sin Stripe: registra aquí cada transferencia mensual de la cuota de gestión (59 €/mes IVA incl. o
             proporcional).
           </p>
         </div>

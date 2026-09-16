@@ -90,8 +90,8 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
               </Link>
             </div>
             <p className="mt-3 text-xs text-[#94a3b8]">
-              Orden recomendado: primero contrato LAU, después suscripción mensual de administración (49 €/mes, sin
-              permanencia).
+              Orden recomendado: primero contrato LAU, después suscripción mensual de administración (
+              {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia).
             </p>
           </li>
 

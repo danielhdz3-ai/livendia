@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { HomeCoverageCity } from "@/lib/home-coverage-cities";
 import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import {
@@ -53,7 +54,7 @@ export function CityHubServices({ city }: CityHubServicesProps) {
           </li>
           <li>
             <Link href={city.administracionHref} className="font-semibold text-[#1A4FBF] hover:underline">
-              Administración de alquiler — 49 €/mes
+              Administración de alquiler — {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}
             </Link>
           </li>
           {city.temporadaHref ? (

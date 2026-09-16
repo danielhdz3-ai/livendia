@@ -17,6 +17,7 @@ import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
@@ -92,7 +93,7 @@ export default async function RedactarContratoAlquilerPage() {
   if (adminRental) servicesBySlug["administracion-alquiler"] = adminRental;
 
   const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
-  const adminPriceLabel = resolveServicePriceLabel(adminRental, "49 €/mes");
+  const adminPriceLabel = resolveServicePriceLabel(adminRental, ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL);
   const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
   const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
   const comparisonRows = buildAgencyRentalComparisonRows();

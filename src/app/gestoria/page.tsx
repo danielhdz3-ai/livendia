@@ -10,6 +10,7 @@ import {
   type GestoriaInmobiliariaLocalCityDefinition,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
 } from "@/lib/catalog.public";
@@ -60,7 +61,7 @@ export default function GestoriaIndexPage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
               Gestoría inmobiliaria online en Madrid, Valencia, Barcelona y toda España. Compraventa entre
               particulares, contratos LAU/arras ({CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada{" "}
-              {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración 49 €/mes.
+              {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.
             </p>          </div>
         </section>
 

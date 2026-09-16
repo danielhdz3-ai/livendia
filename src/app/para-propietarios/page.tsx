@@ -5,6 +5,10 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 import { getPublicServices } from "@/lib/catalog";
 import { getWhatsAppHref, businessNap } from "@/lib/business-nap";
 import { CAMPAIGN_URLS } from "@/lib/campaign-links";
+import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+} from "@/lib/catalog.public";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,12 +25,11 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Administración de alquiler para propietarios — delega el contacto con el inquilino",
   description:
-    "Desde 49 €/mes sin permanencia. Gestor asignado, incidencias, renovaciones y panel online. Valoración 5.0 en Google. Contrata en Livendia.",
+    `Desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia. Gestor asignado, incidencias, renovaciones y panel online. Valoración 5.0 en Google. Contrata en Livendia.`,
   alternates: { canonical: "https://livendia.com/para-propietarios" },
 };
 
-const waPrefill =
-  "Hola, soy propietario y me interesa la administración de alquiler (49€/mes). ¿Me podéis orientar?";
+const waPrefill = `Hola, soy propietario y me interesa la administración de alquiler (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}). ¿Me podéis orientar?`;
 
 export default async function ParaPropietariosPage() {
   const services = await getPublicServices();
@@ -34,7 +37,11 @@ export default async function ParaPropietariosPage() {
   const waHref = getWhatsAppHref(waPrefill);
 
   const steps = [
-    { n: "1", title: "Contratas online", body: "49 €/mes IVA incl. Sin permanencia. Pago seguro con Stripe." },
+    {
+      n: "1",
+      title: "Contratas online",
+      body: `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Sin permanencia. Pago seguro con Stripe.`,
+    },
     { n: "2", title: "Subes datos del piso", body: "Contrato, inquilino y documentación en tu panel privado." },
     { n: "3", title: "Nosotros somos el contacto", body: "El inquilino escribe y llama a Livendia, no a ti." },
     { n: "4", title: "Te informamos lo importante", body: "Pagos, decisiones y renovaciones — sin ruido diario." },
@@ -58,7 +65,7 @@ export default async function ParaPropietariosPage() {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <ContratarServicioButton className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl hover:bg-blue-50 sm:w-auto">
-                  Contratar 49 €/mes
+                  Contratar {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}
                 </ContratarServicioButton>
                 <a
                   href={waHref}
@@ -170,7 +177,9 @@ export default async function ParaPropietariosPage() {
 
         <section className="bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] py-12 text-white sm:py-16">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <h2 className="text-2xl font-bold sm:text-3xl">49 €/mes · IVA incluido · Sin permanencia</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">
+              {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} · IVA incluido · Sin permanencia
+            </h2>
             <ul className="mx-auto mt-6 max-w-md space-y-2 text-left text-blue-50">
               {[
                 "Gestor asignado y panel online",

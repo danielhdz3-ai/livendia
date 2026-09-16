@@ -11,6 +11,8 @@ import {
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
@@ -212,7 +214,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                     </li>
                     <li className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
-                      <span>Administración alquiler: 49 €/mes sin permanencia</span>
+                      <span>Administración alquiler: {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia</span>
                     </li>
                   </ul>
                   <div className="mt-10 flex flex-wrap gap-4">
@@ -409,7 +411,9 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   <h3 className="text-xl font-bold text-[#1E293B]">{config.administracion.h3Precio}</h3>
                   <p className="mt-3 text-[#64748b] leading-relaxed">{config.administracion.precioCopy}</p>
                   <div className="mt-6 flex items-baseline gap-2">
-                    <span className="text-4xl font-extrabold text-[#1A4FBF] sm:text-5xl lg:text-6xl">49 €</span>
+                    <span className="text-4xl font-extrabold text-[#1A4FBF] sm:text-5xl lg:text-6xl">
+                      {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €
+                    </span>
                     <span className="text-lg text-[#64748b]">/mes · IVA incl.</span>
                   </div>
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">

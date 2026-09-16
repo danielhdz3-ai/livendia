@@ -37,7 +37,7 @@ export function getCategoryCta(category: BlogCategory): BlogCategoryCta {
     case "administracion":
       return {
         headline: "¿Quieres delegar la gestión con tu inquilino?",
-        subline: "Administración desde 49 €/mes IVA incl. Sin permanencia y panel online.",
+        subline: "Administración desde 59 €/mes IVA incl. Sin permanencia y panel online.",
         contratarHref: "/servicios/administracion-alquiler",
         contratarLabel: "Contratar administración",
         infoHref: "/para-propietarios",

@@ -1,4 +1,5 @@
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
@@ -52,20 +53,18 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
   path: PACK_LAU_ADMIN_LANDING_PATH,
   serviceSlugs: PACK_LAU_ADMIN_SLUGS,
   metaTitle: `Pack contrato LAU + administración de alquiler — ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl.`,
-  metaDescription:
-    "Pack para propietarios particulares: contrato de alquiler LAU (145 €) + primer mes de administración (49 €). Gestor legal, cobro de renta e incidencias desde el día uno. Sin permanencia.",
+  metaDescription: `Pack para propietarios particulares: contrato de alquiler LAU (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}) + primer mes de administración (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}). Gestor legal, cobro de renta e incidencias desde el día uno. Sin permanencia.`,
   keywords: [
     "pack contrato alquiler LAU administración",
     "contrato alquiler y gestión inquilino",
     "gestoría alquiler propietarios particulares",
     "administración alquiler contrato LAU",
     "alquilar piso con gestor legal",
-    "contrato LAU 145 euros administración 49",
+    `contrato LAU 145 euros administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR}`,
   ],
   heroBadge: "Alquiler · Propietarios particulares",
   heroH1: "Pack contrato LAU + administración de alquiler",
-  heroLead:
-    "¿Vas a alquilar tu piso a largo plazo? Este pack une lo esencial para arrancar bien: un contrato LAU redactado por gestor legal (145 € IVA incl.) y el primer mes de administración Livendia (49 €/mes) para que el inquilino no te llame al móvil personal desde el primer día.",
+  heroLead: `¿Vas a alquilar tu piso a largo plazo? Este pack une lo esencial para arrancar bien: un contrato LAU redactado por gestor legal (${CONTRATO_ALQUILER_LAU_PRICE_LABEL} IVA incl.) y el primer mes de administración Livendia (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}) para que el inquilino no te llame al móvil personal desde el primer día.`,
   heroImage: "/images/contratodealquiler.jpg",
   heroImageAlt: "Propietario firmando contrato de alquiler LAU con gestor Livendia",
   totalPriceLabel: LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
@@ -102,8 +101,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     },
     {
       title: "Activas la administración",
-      description:
-        "Tras el alta del arrendamiento, suscribes administración a 49 €/mes. Livendia pasa a ser el interlocutor del inquilino.",
+      description: `Tras el alta del arrendamiento, suscribes administración a ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Livendia pasa a ser el interlocutor del inquilino.`,
     },
     {
       title: "Día a día delegado",
@@ -118,7 +116,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     },
     {
       title: "¿Por qué añadir administración desde el primer mes?",
-      body: "El propietario particular suele subestimar el volumen de llamadas: averías, certificados, retrasos de transferencia, quejas de vecinos. Con 49 €/mes Livendia asume ese canal desde el día uno — especialmente útil si vives lejos del piso o tienes varios alquileres.",
+      body: `El propietario particular suele subestimar el volumen de llamadas: averías, certificados, retrasos de transferencia, quejas de vecinos. Con ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} Livendia asume ese canal desde el día uno — especialmente útil si vives lejos del piso o tienes varios alquileres.`,
     },
     {
       title: "Ideal si vienes de Idealista o conoces al inquilino",
@@ -174,7 +172,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     {
       question: "¿Incluye el pack la defensa en juicio de desahucio?",
       answer:
-        "La administración mensual cubre gestión ordinaria, cobro y mediación. Procedimientos judiciales de desahucio son servicios legales adicionales no incluidos en la cuota de 49 €/mes.",
+        `La administración mensual cubre gestión ordinaria, cobro y mediación. Procedimientos judiciales de desahucio son servicios legales adicionales no incluidos en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     },
     {
       question: "¿Atendéis alquileres en Barcelona, Madrid y otras ciudades?",

@@ -7,6 +7,7 @@ import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/s
 import { AdministracionAlquilerTemporadaLocalCityLinks } from "@/components/administracion-alquiler-temporada-local-city-links";
 import { getPublicServices } from "@/lib/catalog";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR,
   ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,
@@ -367,7 +368,7 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
                   <>
                     {" · "}
                     <Link href={config.adminLauHref} className="font-semibold text-[#1A4FBF] hover:underline">
-                      Admin. LAU {config.city} (49 €/mes)
+                      Admin. LAU {config.city} ({ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL})
                     </Link>
                   </>
                 ) : null}

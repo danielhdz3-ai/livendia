@@ -11,7 +11,11 @@ import {
 } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
-import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
+import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+  CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+  resolveServicePriceLabel,
+} from "@/lib/catalog.public";
 import type { ContratoAlquilerTemporadaLocalLandingConfig } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { temporadaSavingsDerived } from "@/lib/contrato-alquiler-temporada-local-seo-content";
 import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-local-cities";
@@ -522,7 +526,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                     href={localAdministracionAlquilerHref(adminSlug)}
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
-                    administración de alquiler en {config.city} (49 €/mes)
+                    administración de alquiler en {config.city} ({ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL})
                   </Link>{" "}
                   convierte a Livendia en único interlocutor ante el arrendatario.
                 </p>

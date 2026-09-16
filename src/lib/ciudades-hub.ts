@@ -1,5 +1,6 @@
 import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
@@ -138,7 +139,7 @@ export const CIUDADES_LOCAL_SERVICES: readonly CiudadesLocalServiceRow[] = [
   {
     id: "administracion",
     title: "Administración de alquiler",
-    price: "49 €/mes",
+    price: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
     description: "Gestión de incidencias, inquilino y renovaciones. Sin permanencia.",
     field: "administracionHref",
     nationalHref: "/servicios/administracion-alquiler",

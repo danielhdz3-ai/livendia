@@ -1,4 +1,5 @@
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL,
 } from "@/lib/catalog.public";
@@ -23,7 +24,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_NOT_INCLUDED = [
 ] as const;
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_SCOPE =
-  "Pensado para propietarios con vivienda de temporada o alquiler por habitaciones. Livendia lleva el control de inquilinos, entradas, salidas y servicio técnico. No sustituye la administración de alquiler LAU a 49 €/mes.";
+  `Pensado para propietarios con vivienda de temporada o alquiler por habitaciones. Livendia lleva el control de inquilinos, entradas, salidas y servicio técnico. No sustituye la administración de alquiler LAU a ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`;
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO =
   "Activas la administración online, nos das de alta los contratos o habitaciones activos y desde el primer día somos el interlocutor con tus inquilinos.";
@@ -112,7 +113,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_FAQ = [
   {
     question: "¿Para quién es este servicio?",
     answer:
-      "Para propietarios con vivienda de temporada o con inquilinos por habitaciones. Si tienes un alquiler de larga duración (vivienda habitual LAU), te conviene la administración estándar a 49 €/mes.",
+      `Para propietarios con vivienda de temporada o con inquilinos por habitaciones. Si tienes un alquiler de larga duración (vivienda habitual LAU), te conviene la administración estándar a ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
   {
     question: "¿Qué incluyen los 79 € al mes?",
@@ -132,8 +133,8 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_FAQ = [
     answer: "No. Puedes cancelar cuando quieras; mantienes el acceso hasta el final del periodo ya pagado.",
   },
   {
-    question: "¿En qué se diferencia de la administración a 49 €/mes?",
+    question: `¿En qué se diferencia de la administración a ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
     answer:
-      "La de 49 €/mes está orientada a alquileres de larga duración con un inquilino estable. Esta de 79 €/mes cubre el ritmo de temporada y habitaciones: más rotación, entradas/salidas y control de varios ocupantes.",
+      `La de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} está orientada a alquileres de larga duración con un inquilino estable. Esta de 79 €/mes cubre el ritmo de temporada y habitaciones: más rotación, entradas/salidas y control de varios ocupantes.`,
   },
 ] as const;

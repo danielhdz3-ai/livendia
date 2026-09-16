@@ -1,6 +1,10 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import {
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+  CONTRATO_ALQUILER_LAU_PRICE_EUR,
   LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
+  LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR,
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
 } from "@/lib/catalog.public";
 
@@ -8,7 +12,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
   madrid: {
     metaTitle: `Pack LAU + administración alquiler Madrid — ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl.`,
     metaDescription:
-      "Pack alquiler Madrid: contrato LAU (145 €) + 1.er mes administración (49 €). Propietarios particulares sin agencia. IVIMA, gestor dedicado, panel 24/7. Chamberí, Salamanca, Vallecas.",
+      `Pack alquiler Madrid: contrato LAU (145 €) + 1.er mes administración (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €). Propietarios particulares sin agencia. IVIMA, gestor dedicado, panel 24/7. Chamberí, Salamanca, Vallecas.`,
     keywords: [
       "pack alquiler madrid LAU administración",
       "contrato alquiler y gestión inquilino madrid",
@@ -35,7 +39,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
   barcelona: {
     metaTitle: `Pack LAU + administración alquiler Barcelona — ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl.`,
     metaDescription:
-      "Pack alquiler Barcelona: contrato LAU zona tensionada, INCASÒL, IRAV (145 €) + administración 49 €/mes. Eixample, Gràcia, L'Hospitalet. Sin comisión de agencia.",
+      `Pack alquiler Barcelona: contrato LAU zona tensionada, INCASÒL, IRAV (145 €) + administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Eixample, Gràcia, L'Hospitalet. Sin comisión de agencia.`,
     keywords: [
       "pack alquiler barcelona LAU administración",
       "contrato alquiler eixample gestoría",
@@ -62,7 +66,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
   valencia: {
     metaTitle: `Pack LAU + administración alquiler Valencia — ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl.`,
     metaDescription:
-      "Pack alquiler Valencia: contrato LAU (145 €) + administración 49 €/mes. Ruzafa, Benimaclet, Ciutat Vella. Propietarios particulares sin agencia. Gestor y panel Livendia.",
+      `Pack alquiler Valencia: contrato LAU (145 €) + administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Ruzafa, Benimaclet, Ciutat Vella. Propietarios particulares sin agencia. Gestor y panel Livendia.`,
     keywords: [
       "pack alquiler valencia LAU administración",
       "contrato alquiler ruzafa gestoría",
@@ -79,7 +83,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     ],
     whyTitle: "Valencia: contrato LAU y administración para propietarios particulares",
     whySubtitle:
-      "Reservas en 48 h y promesas verbales exigen un contrato que las recoja por escrito. Livendia + administración desde 49 €/mes sin permanencia.",
+      `Reservas en 48 h y promesas verbales exigen un contrato que las recoja por escrito. Livendia + administración desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia.`,
     localZonesHeading: "Zonas del pack en Valencia y área metropolitana",
     localZones:
       "Ciutat Vella, Ruzafa, Benimaclet, Malvarrosa, Patraix, Mislata, Torrent, Paterna y l'Horta. Gestoría digital con mismos precios que en toda España.",
@@ -87,9 +91,9 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     finalCtaTitle: "Alquila en Valencia con LAU y gestor desde el primer mes",
   },
   malaga: {
-    metaTitle: "Pack Contrato Alquiler y Administración en Málaga (194 €) | Livendia",
+    metaTitle: `Pack Contrato Alquiler y Administración en Málaga (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €) | Livendia`,
     metaDescription:
-      "Redacción de contrato LAU/Temporada, depósito de fianza en AVRA y 1er mes de gestión de alquiler en Málaga por 194 €.",
+      `Redacción de contrato LAU/Temporada, depósito de fianza en AVRA y 1er mes de gestión de alquiler en Málaga por ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €.`,
     keywords: [
       "pack alquiler malaga LAU administración",
       "contrato alquiler malaga AVRA",
@@ -103,11 +107,11 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     heroBullets: [
       "Teatinos, Carretera de Cádiz, Centro, El Limonar, Soho",
       "Depósito fianza en AVRA · LAU y media estancia",
-      "194 € IVA incl. · Sin comisión sobre renta",
+      `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. · Sin comisión sobre renta`
     ],
     whyTitle: "Alquilar en Málaga con contrato LAU, AVRA y gestor desde el día uno",
     whySubtitle:
-      "Costa del Sol, perfil internacional y media estancia: el contrato debe reflejar LAU, depósito en AVRA y cláusulas sobre suministros. Livendia redacta y administra desde 49 €/mes.",
+      `Costa del Sol, perfil internacional y media estancia: el contrato debe reflejar LAU, depósito en AVRA y cláusulas sobre suministros. Livendia redacta y administra desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     localZonesHeading: "Zonas del pack LAU + administración en Málaga",
     localZones:
       "Centro Histórico, Soho, El Limonar, Teatinos, Carretera de Cádiz, La Malagueta, Pedregalejo y área metropolitana (Torremolinos, Rincón de la Victoria). Gestoría online con normativa andaluza.",
@@ -115,9 +119,9 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     finalCtaTitle: "Alquila en Málaga con LAU, AVRA y administración Livendia",
   },
   sevilla: {
-    metaTitle: "Pack Contrato de Alquiler y Gestión en Sevilla (194 €) | Livendia",
+    metaTitle: `Pack Contrato de Alquiler y Gestión en Sevilla (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €) | Livendia`,
     metaDescription:
-      "Contrato de arrendamiento, depósito de fianza en AVRA y administración de inquilinos en Sevilla por 194 €. Sin permanencia.",
+      `Contrato de arrendamiento, depósito de fianza en AVRA y administración de inquilinos en Sevilla por ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €. Sin permanencia.`,
     keywords: [
       "pack alquiler sevilla LAU administración",
       "contrato alquiler sevilla AVRA",
@@ -131,7 +135,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     heroBullets: [
       "Nervión, Triana, Macarena, Los Remedios, Sevilla Este",
       "AVRA · inventario detallado · temporada académica",
-      "194 € IVA incl. · Admin sin permanencia",
+      `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. · Admin sin permanencia`
     ],
     whyTitle: "Alquilar en Sevilla con LAU, depósito AVRA e inventario profesional",
     whySubtitle:
