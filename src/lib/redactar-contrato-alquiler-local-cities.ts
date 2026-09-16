@@ -3,6 +3,7 @@
  * Rutas: /servicios/redactar-contrato-alquiler/[slug]
  */
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
+import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
 import { localContratoAlquilerHabitacionHref } from "@/lib/contrato-alquiler-habitacion-local-cities";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
@@ -13,6 +14,10 @@ export { REDACTAR_CONTRATO_ALQUILER_BASE };
 export const REDACTAR_CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "madrid",
   "barcelona",
+  "barcelona-les-corts",
+  "barcelona-eixample",
+  "hospitalet-de-llobregat",
+  "cornella-de-llobregat",
   "valencia",
   "sevilla",
   "malaga",
@@ -266,14 +271,338 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
           "Sí. Comprobamos que el contrato informe de la renta anterior y respete los límites aplicables en Barcelona.",
       },
       {
-        question: "¿Gestionáis L'Hospitalet o Badalona?",
-        answer: "Sí. Misma normativa cataluna (INCASÒL, zona tensionada) con adaptación al municipio.",
+        question: "¿Tenéis páginas por barrio en Barcelona?",
+        answer:
+          "Sí: Les Corts, Eixample, L'Hospitalet y Cornellà tienen landings propias con contenido diferenciado para Google — además de esta página general de Barcelona.",
       },
     ],
     heroImage: "/images/contratos2.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Barcelona — Livendia",
     contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
     contratoHabitacionHref: localContratoAlquilerHabitacionHref("barcelona"),
+  },
+  {
+    slug: "barcelona-les-corts",
+    city: "Les Corts",
+    placeLabel: "Les Corts (Barcelona)",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: `Contrato LAU Les Corts — Pedralbes, Zona Universitària · ${PRICE}`,
+    metaDescription: `Redactar contrato alquiler Les Corts: Diagonal, Camp Nou, INCASÒL y zona tensionada. ${PRICE} IVA incl. Entre particulares sin agencia.`,
+    heroTitle: "Contrato de alquiler en Les Corts — Diagonal, Maternitat e INCASÒL sin agencia",
+    heroLead:
+      "¿Propietario e inquilino en Pedralbes, la Zona Universitària o el entorno del Camp Nou y queréis firmar sin inmobiliaria? Livendia redacta LAU con inventario, renta anterior de Barcelona revisada y depósito orientado a INCASÒL — 145 € IVA incl.",
+    whyIntro:
+      "Les Corts concentra alquileres directos por Idealista cerca de Diagonal y edificios familiares en la Maternitat. Un PDF de otra ciudad no recoge terrazas comunitarias, tope de renta ni plazos del organismo catalán de fianzas.",
+    marketContext:
+      "Les Corts mezcla familias consolidadas, pisos cerca del campus y alquileres entre particulares en edificios de los 70 en Pedralbes o Numancia. Los borradores barceloneses genéricos no distinguen zona tensionada ni inventario de terrazas comunitarias. Livendia redacta LAU con barrios concretos del distrito.",
+    barriosIntro: "Barrios de Les Corts donde redactamos contratos LAU entre particulares:",
+    barrios: [
+      "Pedralbes",
+      "Zona Universitària",
+      "La Maternitat i Sant Ramon",
+      "Les Corts",
+      "Entorno Camp Nou",
+      "Numància",
+      "Travessera de Les Corts",
+    ],
+    regulatoryBlock:
+      "Barcelona es zona tensionada: el contrato debe informar de la renta del arrendamiento anterior y respetar topes legales. En Cataluña la fianza se deposita en INCASÒL en un plazo máximo de dos meses — no en la cuenta del propietario.",
+    localDifferentiators: [
+      {
+        title: "Diagonal y oficinas: entradas rápidas",
+        description: "Cláusulas de mudanza, fianza e inventario cuando la negociación cierra en días.",
+      },
+      {
+        title: "Campus y pisos compartidos",
+        description: "LAU de piso entero o habitación con normas de convivencia en la Zona Universitària.",
+      },
+      {
+        title: "Pedralbes: comunidad y parking",
+        description: "Reparto de gastos, plaza de garaje y ascensor documentados antes de la firma.",
+      },
+      {
+        title: "Gestoría online 48–72 h",
+        description: "Briefing, documentos e inventario fotográfico desde el panel Livendia.",
+      },
+    ],
+    agencyLocalNote:
+      "En Les Corts las agencias piden comisión más gestión. Si ya tenéis contraparte en Diagonal o Pedralbes, Livendia redacta el LAU por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 3 hab. · Travessera de Les Corts 180, Barcelona (Les Corts)",
+    testimonialsTitle: "Particulares en Les Corts con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Pedralbes sin agencia: Livendia incluyó renta anterior, depósito INCASÒL e inventario de terraza comunitaria antes de transferir la fianza.",
+        author: "Clara V.",
+        role: "Inquilina · Pedralbes",
+      },
+      {
+        quote:
+          "Piso cerca del campus: cláusulas de visitas del propietario y comunidad cerradas en castellano claro — sin ir al despacho.",
+        author: "Marc T.",
+        role: "Propietario · Zona Universitària",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Redactáis contratos en Pedralbes y Maternitat?",
+        answer: "Sí. LAU adaptado al edificio, con inventario y revisión de zona tensionada de Barcelona.",
+      },
+      {
+        question: "¿La fianza va al propietario en Les Corts?",
+        answer: "No. Debe depositarse en INCASÒL. Te orientamos para verificar el trámite antes de firmar.",
+      },
+      {
+        question: "¿Contrato por habitación cerca del campus?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+    ],
+    heroImage: metroBarcelonaZoneImage("barcelona2.jpg"),
+    heroImageAlt: "Redactar contrato de alquiler en Les Corts, Barcelona — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
+    contratoHabitacionHref: localContratoAlquilerHabitacionHref("barcelona"),
+  },
+  {
+    slug: "barcelona-eixample",
+    city: "Eixample",
+    placeLabel: "Eixample (Barcelona)",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: `Contrato LAU Eixample — Dreta, Esquerra, Sagrada Família · ${PRICE}`,
+    metaDescription: `Contrato alquiler Eixample entre particulares: fincas del ensanche, derramas, INCASÒL. ${PRICE} IVA incl. Redacción LAU Livendia.`,
+    heroTitle: "Contrato de alquiler en el Eixample — fincas regias, IRAV e inventario entre particulares",
+    heroLead:
+      "¿Cerráis alquiler en Dreta, Esquerra, Fort Pienc o Sagrada Família sin pagar mes de agencia? Livendia redacta LAU con renta anterior revisada, cláusulas de comunidad en edificios centenarios e inventario profesional — 145 € IVA incl.",
+    whyIntro:
+      "El Eixample combina ticket alto, ascensores antiguos y obras en acta de comunidad. Entre particulares es habitual firmar plantillas que no mencionan derramas pendientes ni el tope legal de subida en zona tensionada.",
+    marketContext:
+      "El Eixample combina fincas regias del ensanche, ascensores antiguos y rentas entre las más altas de Barcelona (publicación agregada ~26–30 €/m² según barrio). Entre particulares, un LAU copiado no recoge derramas en edificios centenarios ni la renta anterior en zona tensionada. Livendia redacta contrato e inventario por barrio — Dreta, Esquerra o Sagrada Família.",
+    barriosIntro: "Tramos del Eixample donde redactamos contratos LAU:",
+    barrios: [
+      "Dreta de l'Eixample",
+      "Antiga Esquerra",
+      "Nova Esquerra",
+      "Fort Pienc",
+      "Sagrada Família",
+      "Provença i Girona",
+      "Límite Sant Antoni",
+    ],
+    regulatoryBlock:
+      "En Barcelona capital aplican zona tensionada e información de renta anterior en cada LAU nuevo. La fianza catalana se deposita en INCASÒL; revisamos coherencia entre anuncio, contrato y depósito antes de la entrada.",
+    localDifferentiators: [
+      {
+        title: "Derramas y ascensor comunitario",
+        description: "Cláusulas alineadas con actas frecuentes en fincas regias del ensanche.",
+      },
+      {
+        title: "Pisos amueblados premium",
+        description: "Inventario fotográfico de electrodomésticos, suelos y carpintería de época.",
+      },
+      {
+        title: "Renta anterior en Provença o Girona",
+        description: "Comprobamos topes legales antes de rubricar entre propietario e inquilino.",
+      },
+      {
+        title: "Sin comisión de captación",
+        description: "Livendia no publica el anuncio ni cobra porcentaje sobre la renta mensual.",
+      },
+    ],
+    agencyLocalNote:
+      "En el Eixample las agencias suelen cobrar un mes de renta más honorarios altos. Con inquilino ya elegido en Antiga Esquerra o Dreta, Livendia cierra el LAU por 145 €.",
+    platformDemoProperty: "Piso 2 hab. · Carrer de Provença 214, Barcelona (Eixample)",
+    testimonialsTitle: "Particulares en el Eixample con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilamos en Antiga Esquerra sin inmobiliaria. Livendia incluyó renta anterior, depósito INCASÒL e inventario de suelos antes de la fianza.",
+        author: "Helena R.",
+        role: "Propietaria · Antiga Esquerra",
+      },
+      {
+        quote:
+          "Piso en Dreta con derrama pendiente: el gestor dejó por escrito qué paga el inquilino y plazos de comunidad.",
+        author: "Oriol V.",
+        role: "Inquilino · Dreta de l'Eixample",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis alquileres en Dreta de l'Eixample?",
+        answer: "Sí. LAU de piso entero, habitación o temporada según el uso acordado, con inventario incluido.",
+      },
+      {
+        question: "¿Qué pasa si hay derrama en la comunidad?",
+        answer: "Revisamos actas recientes y dejamos por escrito reparto de gastos antes de la entrada del inquilino.",
+      },
+      {
+        question: "¿Revisáis el tope de renta de zona tensionada?",
+        answer: "Sí. Comprobamos renta anterior e información obligatoria en Barcelona.",
+      },
+    ],
+    heroImage: metroBarcelonaZoneImage("eixample.jpg"),
+    heroImageAlt: "Redactar contrato de alquiler en el Eixample, Barcelona — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
+    contratoHabitacionHref: localContratoAlquilerHabitacionHref("barcelona"),
+  },
+  {
+    slug: "hospitalet-de-llobregat",
+    city: "L'Hospitalet de Llobregat",
+    placeLabel: "L'Hospitalet de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: `Contrato LAU L'Hospitalet — Collblanc, Bellvitge · ${PRICE}`,
+    metaDescription: `Redactar contrato alquiler L'Hospitalet entre particulares: Collblanc, Bellvitge, INCASÒL. ${PRICE} IVA incl. Sin comisión de agencia.`,
+    heroTitle: "Contrato de alquiler en L'Hospitalet — Collblanc, Bellvitge e INCASÒL entre particulares",
+    heroLead:
+      "¿Propietario e inquilino en L'Hospitalet y queréis LAU sin inmobiliaria? Livendia redacta contrato con inventario, comunidad en bloques densos y depósito orientado a INCASÒL — 145 € IVA incl., gestoría online.",
+    whyIntro:
+      "L'Hospitalet recibe inquilinos que trabajan en Barcelona y cierran por Idealista en Collblanc o La Florida. Copiar un LAU de Barcelona capital sin adaptar plazos de comunidad o inventario en bloques de muchas viviendas es el error más habitual.",
+    marketContext:
+      "L'Hospitalet recibe inquilinos que trabajan en Barcelona y buscan renta más asequible en Collblanc o Bellvitge. Los alquileres entre particulares suelen usar contratos de Barcelona capital sin adaptar INCASÒL ni plazos de comunidad en bloques densos. Livendia revisa depósito, renta anterior e inventario antes de la fianza.",
+    barriosIntro: "Barrios de L'Hospitalet donde redactamos contratos LAU:",
+    barrios: [
+      "Collblanc",
+      "Bellvitge",
+      "La Florida",
+      "Centre",
+      "Sant Josep",
+      "Pubilla Cases",
+      "Can Serra",
+    ],
+    regulatoryBlock:
+      "L'Hospitalet comparte normativa catalana: INCASÒL para la fianza y zona tensionada con información de renta anterior. Revisamos coherencia entre municipio, edificio y borrador antes de firmar.",
+    localDifferentiators: [
+      {
+        title: "Comunidad en bloques densos",
+        description: "Cláusulas sobre derramas y certificado de deuda cuando el edificio tiene muchas viviendas.",
+      },
+      {
+        title: "Negociación rápida por precio",
+        description: "LAU cerrado antes de la señal cuando el inquilino viene de Barcelona capital.",
+      },
+      {
+        title: "Piso compartido en Bellvitge",
+        description: "Contrato por habitación con reparto de gastos y normas de convivencia.",
+      },
+      {
+        title: "Gestoría metropolitana online",
+        description: "Misma operativa Livendia que en Barcelona, adaptada al municipio.",
+      },
+    ],
+    agencyLocalNote:
+      "En L'Hospitalet muchas agencias cobran gestión completa aunque ya tengáis contraparte. Livendia redacta el LAU por 145 € con inventario incluido.",
+    platformDemoProperty: "Piso 2 hab. · Carrer de la Tecla Sala 45, L'Hospitalet (Collblanc)",
+    testimonialsTitle: "Particulares en L'Hospitalet con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Collblanc entre particulares: comunidad, fianza INCASÒL e inventario cerrados online antes de la entrada.",
+        author: "Sandra L.",
+        role: "Propietaria · Collblanc",
+      },
+      {
+        quote:
+          "Venía de buscar piso en Barcelona y firmamos en Bellvitge. El contrato dejó claro depósito, IPC y visitas del propietario.",
+        author: "Ahmed K.",
+        role: "Inquilino · Bellvitge",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Gestionáis Bellvitge y La Florida?",
+        answer: "Sí. LAU adaptado al barrio y al tipo de edificio, con inventario incluido.",
+      },
+      {
+        question: "¿Es lo mismo que un contrato de Barcelona capital?",
+        answer: "La normativa catalana es común, pero adaptamos cláusulas al municipio y a la comunidad concreta.",
+      },
+      {
+        question: "¿Contrato por habitación en L'Hospitalet?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+    ],
+    heroImage: metroBarcelonaZoneImage("hospitalet.jpg"),
+    heroImageAlt: "Redactar contrato de alquiler en L'Hospitalet — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
+    contratoHabitacionHref: localContratoAlquilerHabitacionHref("hospitalet-de-llobregat"),
+  },
+  {
+    slug: "cornella-de-llobregat",
+    city: "Cornellà de Llobregat",
+    placeLabel: "Cornellà de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: `Contrato LAU Cornellà — Sant Ildefons, FGC · ${PRICE}`,
+    metaDescription: `Contrato alquiler Cornellà entre particulares: Sant Ildefons, Can Mercader, INCASÒL. ${PRICE} IVA incl. Redacción LAU Livendia.`,
+    heroTitle: "Contrato de alquiler en Cornellà — Sant Ildefons, Renfe e inventario sin agencia",
+    heroLead:
+      "¿Alquiláis en Cornellà de Llobregat entre particulares — Sant Ildefons, centre o zona FGC — y necesitáis LAU serio? Livendia redacta contrato con inventario, zona tensionada catalana e INCASÒL orientado — 145 € IVA incl.",
+    whyIntro:
+      "Cornellà comparte mercado metropolitano con L'Hospitalet: operaciones directas cuando el inquilino ya está elegido. Un PDF de otra ciudad no refleja el edificio ni el reparto de gastos en bloques del Baix Llobregat.",
+    marketContext:
+      "Cornellà de Llobregat comparte mercado metropolitano con L'Hospitalet: operaciones directas en Sant Ildefons o Can Mercader cuando el inquilino ya está elegido. Livendia redacta LAU del Baix Llobregat con zona tensionada catalana e inventario — sin comisión de agencia de alquiler.",
+    barriosIntro: "Zonas de Cornellà donde redactamos contratos LAU:",
+    barrios: [
+      "Sant Ildefons",
+      "Can Mercader",
+      "Centre",
+      "Estació Renfe",
+      "Parc de Can Mercader",
+      "Zona FGC",
+    ],
+    regulatoryBlock:
+      "En Cornellà aplican las mismas reglas catalanas de fianza (INCASÒL) y zona tensionada que en Barcelona metropolitana. Revisamos renta anterior, depósito e inventario antes de la mudanza.",
+    localDifferentiators: [
+      {
+        title: "Alquiler metropolitano sin intermediario",
+        description: "Ideal cuando ya tenéis fecha de entrada y solo falta cerrar el texto legal del LAU.",
+      },
+      {
+        title: "Sant Ildefons y Can Mercader",
+        description: "Cláusulas adaptadas a bloques del Baix Llobregat y acceso Renfe/FGC.",
+      },
+      {
+        title: "Zona tensionada catalana",
+        description: "Comprobamos tope de renta e información de contrato anterior.",
+      },
+      {
+        title: "Inventario antes de la fianza",
+        description: "Estado de pintura, electrodomésticos y parking documentados con fotos.",
+      },
+    ],
+    agencyLocalNote:
+      "En Cornellà las agencias piden comisión aunque el inquilino llegue por recomendación. Entre particulares, Livendia redacta por 145 € con gestor online.",
+    platformDemoProperty: "Piso 2 hab. · Avinguda del Parc 12, Cornellà (Sant Ildefons)",
+    testimonialsTitle: "Particulares en Cornellà con contrato Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Sant Ildefons sin agencia: inventario, INCASÒL y cláusulas de comunidad cerradas en 72 horas.",
+        author: "Marta G.",
+        role: "Propietaria · Sant Ildefons",
+      },
+      {
+        quote:
+          "Trabajo en Barcelona y firmamos en Cornellà. El LAU dejó claro fianza, gastos y duración sin sorpresas.",
+        author: "Pau S.",
+        role: "Inquilino · Centre",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Redactáis contratos en Sant Ildefons y Can Mercader?",
+        answer: "Sí. LAU adaptado al barrio y al edificio, con inventario incluido.",
+      },
+      {
+        question: "¿La fianza va al propietario en Cornellà?",
+        answer: "No. Debe depositarse en INCASÒL. Te orientamos para verificar el trámite.",
+      },
+      {
+        question: "¿Contrato por habitación en Cornellà?",
+        answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
+      },
+    ],
+    heroImage: metroBarcelonaZoneImage("barcelona.jpg"),
+    heroImageAlt: "Redactar contrato de alquiler en Cornellà de Llobregat — Livendia",
+    contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
+    contratoHabitacionHref: localContratoAlquilerHabitacionHref("cornella-de-llobregat"),
   },
   {
     slug: "valencia",

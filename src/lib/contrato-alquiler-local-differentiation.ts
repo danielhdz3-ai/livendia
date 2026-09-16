@@ -388,6 +388,72 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
       },
     ],
   },
+  "barcelona-eixample": {
+    metaTitle: "Contrato alquiler Eixample entre particulares — Dreta, Esquerra · 145 € IVA incl.",
+    metaDescription:
+      "Contrato LAU en el Eixample sin agencia: Dreta, Esquerra, Fort Pienc, Sagrada Família. INCASÒL, renta anterior e inventario. 145 € IVA incl. Livendia.",
+    keywords: [
+      "contrato alquiler eixample barcelona",
+      "contrato lau dreta eixample particular",
+      "contrato alquiler entre particulares eixample",
+      "redactar contrato alquiler sagrada familia",
+      "contrato alquiler antiga esquerra",
+      "alquilar piso eixample sin agencia contrato",
+      "contrato lau fort pienc",
+    ],
+    heroBadge: "Entre particulares · Eixample",
+    heroH1: "Contrato de alquiler en el Eixample entre particulares — LAU del ensanche",
+    heroBullets: [
+      "Dreta, Esquerra, Fort Pienc, Sagrada Família",
+      "145 € IVA incl. — gestoría, no mes de agencia",
+      "Fincas regias: comunidad, derramas e INCASÒL",
+    ],
+    whyTitle: "Eixample: ticket alto, zona tensionada y contrato LAU a medida",
+    whySubtitle:
+      "Si ya tenéis inquilino en Provença o Girona, el riesgo está en firmar plantillas que no mencionan renta anterior ni obras comunitarias. Livendia redacta cláusulas del ensanche real.",
+    localZonesHeading: "Tramos del Eixample donde redactamos contratos LAU",
+    localZones:
+      "Dreta de l'Eixample, Antiga i Nova Esquerra, Fort Pienc, Sagrada Família y límite Sant Antoni. Misma gestoría online con revisión de topes legales.",
+    localBenefits: [
+      {
+        title: "Renta anterior y tope legal",
+        description: "Comprobamos coherencia con zona tensionada de Barcelona antes de firmar.",
+      },
+      {
+        title: "Derramas y ascensor comunitario",
+        description: "Cláusulas alineadas con actas frecuentes en edificios centenarios.",
+      },
+      {
+        title: "Inventario en pisos amueblados premium",
+        description: "Electrodomésticos y carpintería documentados con fotografías.",
+      },
+      {
+        title: "Sin comisión de captación",
+        description: "Livendia no publica el anuncio ni cobra porcentaje sobre la renta.",
+      },
+      {
+        title: "Depósito orientado a INCASÒL",
+        description: "Te guiamos para no ingresar la fianza solo en cuenta del propietario.",
+      },
+      {
+        title: "Gestor online en 48–72 h",
+        description: "Briefing, documentos e inventario desde el panel Livendia.",
+      },
+    ],
+    finalCtaTitle: "Firma tu LAU en el Eixample entre particulares — con gestor Livendia",
+    faq: [
+      {
+        question: "¿Gestionáis alquileres en Dreta de l'Eixample?",
+        answer:
+          "Sí. Redactamos LAU para pisos enteros, habitaciones o temporada según el uso acordado, con inventario incluido.",
+      },
+      {
+        question: "¿Qué pasa si hay derrama en la comunidad?",
+        answer:
+          "Revisamos actas recientes y dejamos por escrito reparto de gastos y plazos antes de la entrada del inquilino.",
+      },
+    ],
+  },
   "hospitalet-de-llobregat": {
     metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl.",
     metaDescription:

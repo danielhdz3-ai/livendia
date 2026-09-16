@@ -22,6 +22,7 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona",
   "barcelona-les-corts",
   "barcelona-gracia",
+  "barcelona-eixample",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "valencia",
@@ -201,6 +202,34 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     ],
     finalCtaLead:
       "Elige modalidad y deja listo tu expediente antes de firmar en Gràcia — particulares con gestoría profesional.",
+  },
+  {
+    slug: "barcelona-eixample",
+    city: "Eixample",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Propietario e inquilino en el Eixample — Dreta, Esquerra, Fort Pienc o Sagrada Família — y queréis LAU sin agencia? Redacción o revisión por 145 € IVA incl.: renta anterior en zona tensionada, INCASÒL, derramas comunitarias e inventario en fincas del ensanche.",
+    whyIntro:
+      "El Eixample mezcla edificios centenarios, ascensores comunitarios y ticket alto: un PDF genérico no recoge obras en acta de comunidad ni el tope legal de subida. Muchos alquileres cierran entre particulares tras una visita en Provença o Girona sin revisar cláusulas de mantenimiento.",
+    howIntro:
+      "Cuatro pasos hasta firmar con seguridad en Dreta de l'Eixample, Antiga o Nova Esquerra, Fort Pienc, Sagrada Família o límite Sant Antoni.",
+    testimonialsTitle: "Particulares en el Eixample que cerraron contrato LAU con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquilamos en Antiga Esquerra sin inmobiliaria. Livendia incluyó renta anterior, depósito INCASÒL e inventario de suelos y carpintería antes de la fianza.",
+        author: "Helena R.",
+        role: "Propietaria · Antiga Esquerra",
+      },
+      {
+        quote:
+          "Piso en Dreta con derrama pendiente en acta: el gestor dejó por escrito qué paga el inquilino y plazos de comunidad — evitamos sorpresas.",
+        author: "Oriol V.",
+        role: "Inquilino · Dreta de l'Eixample",
+      },
+    ],
+    finalCtaLead:
+      "Contrata LAU, temporada o habitación online y firma en el Eixample con gestoría — no comisión sobre la renta.",
   },
   {
     slug: "hospitalet-de-llobregat",

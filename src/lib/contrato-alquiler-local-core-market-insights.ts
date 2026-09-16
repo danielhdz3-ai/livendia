@@ -12,6 +12,8 @@ export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
     "Les Corts mezcla familias consolidadas, pisos cerca del campus y alquileres entre particulares en edificios de los 70 en Pedralbes o Numancia. Los borradores barceloneses genéricos no distinguen zona tensionada ni inventario de terrazas comunitarias. Livendia redacta LAU con barrios concretos del distrito.",
   "barcelona-gracia":
     "Gràcia concentra pisos compartidos, plantas sin ascensor y alquileres entre particulares con acuerdo verbal en la visita. Sin contrato adaptado, los conflictos por reformas, ruido o reparto de gastos aparecen en el primer año. Livendia incluye inventario y normas de convivencia en el expediente LAU.",
+  "barcelona-eixample":
+    "El Eixample combina fincas regias del ensanche, ascensores antiguos y rentas entre las más altas de Barcelona (publicación agregada ~26–30 €/m² según barrio). Entre particulares, un LAU copiado no recoge derramas en edificios centenarios ni la renta anterior en zona tensionada. Livendia redacta contrato e inventario por barrio — Dreta, Esquerra o Sagrada Família.",
   "hospitalet-de-llobregat":
     "L'Hospitalet recibe inquilinos que trabajan en Barcelona y buscan renta más asequible en Collblanc o Bellvitge. Los alquileres entre particulares suelen usar contratos de Barcelona capital sin adaptar INCASÒL ni plazos de comunidad en bloques densos. Livendia revisa depósito, renta anterior e inventario antes de la fianza.",
   "cornella-de-llobregat":

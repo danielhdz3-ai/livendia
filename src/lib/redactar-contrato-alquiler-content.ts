@@ -55,8 +55,19 @@ const REDACTAR_SLUG_TO_ADMIN_LOCAL: Partial<Record<string, string>> = {
   asturias: "gijon",
 };
 
+/** Landings metro administración de alquiler (Barcelona AMB). */
+const REDACTAR_SLUG_TO_METRO_ADMIN_PATH: Partial<Record<string, string>> = {
+  "barcelona-les-corts": "/administracion-alquiler/barcelona/les-corts",
+  "barcelona-eixample": "/administracion-alquiler/barcelona/eixample",
+  "hospitalet-de-llobregat": "/administracion-alquiler/l-hospitalet",
+  "cornella-de-llobregat": "/administracion-alquiler/cornella",
+};
+
 /** Enlace a admin local si existe; si no, landing nacional de administración. */
 export function redactarContratoAdministracionHref(redactarCitySlug: string): string {
+  const metro = REDACTAR_SLUG_TO_METRO_ADMIN_PATH[redactarCitySlug];
+  if (metro) return metro;
+
   const adminSlug = REDACTAR_SLUG_TO_ADMIN_LOCAL[redactarCitySlug] ?? redactarCitySlug;
   if (isAdministracionAlquilerLocalSlugPublished(adminSlug)) {
     return localAdministracionAlquilerHref(adminSlug);
