@@ -5,9 +5,10 @@ import {
   localContratoAlquilerHref,
 } from "@/lib/contrato-alquiler-local-cities";
 import {
-  BARCELONA_METRO_ALQUILER_CITIES,
-  barcelonaMetroAlquilerHref,
-} from "@/lib/contrato-alquiler-barcelona-metro";
+  BARCELONA_METRO_CONTRATO_ALQUILER_SLUG_SET,
+  getPublishedBarcelonaMetroContratoAlquilerLinks,
+} from "@/lib/barcelona-metro-contrato-alquiler-slugs";
+import { barcelonaMetroAlquilerHref } from "@/lib/contrato-alquiler-barcelona-metro";
 
 type Props = {
   /** Si true, muestra titular breve encima del listado */
@@ -16,11 +17,11 @@ type Props = {
   variant?: "default" | "compact" | "footer";
 };
 
-const BARCELONA_METRO_SLUGS = new Set<string>(BARCELONA_METRO_ALQUILER_CITIES.map((c) => c.slug));
-
 export function ContratoAlquilerLocalCityLinks({ showTitle = true, variant = "default" }: Props) {
   const cities = getPublishedContratoAlquilerLocalCities();
-  const primaryCities = cities.filter((c) => !BARCELONA_METRO_SLUGS.has(c.slug));
+  const publishedSlugs = new Set(cities.map((c) => c.slug));
+  const primaryCities = cities.filter((c) => !BARCELONA_METRO_CONTRATO_ALQUILER_SLUG_SET.has(c.slug));
+  const metroLinks = getPublishedBarcelonaMetroContratoAlquilerLinks(publishedSlugs, barcelonaMetroAlquilerHref);
   const isFooter = variant === "footer";
   const isCompact = variant === "compact" || isFooter;
 
@@ -57,28 +58,30 @@ export function ContratoAlquilerLocalCityLinks({ showTitle = true, variant = "de
         ))}
       </nav>
 
-      {!isFooter ? (
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
-            Área metropolitana de Barcelona
-          </p>
+      {metroLinks.length > 0 ? (
+        !isFooter ? (
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+              Área metropolitana de Barcelona
+            </p>
+            <nav aria-label="Contrato de alquiler área metropolitana Barcelona" className={wrapClass}>
+              {metroLinks.map((m) => (
+                <Link key={m.slug} href={m.href} className={metroLinkClass}>
+                  {m.shortName}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        ) : (
           <nav aria-label="Contrato de alquiler área metropolitana Barcelona" className={wrapClass}>
-            {BARCELONA_METRO_ALQUILER_CITIES.map((c) => (
-              <Link key={c.slug} href={barcelonaMetroAlquilerHref(c.slug)} className={metroLinkClass}>
-                {c.shortName}
+            {metroLinks.map((m) => (
+              <Link key={m.slug} href={m.href} className={linkClass}>
+                {m.shortName}
               </Link>
             ))}
           </nav>
-        </div>
-      ) : (
-        <nav aria-label="Contrato de alquiler área metropolitana Barcelona" className={wrapClass}>
-          {BARCELONA_METRO_ALQUILER_CITIES.map((c) => (
-            <Link key={c.slug} href={barcelonaMetroAlquilerHref(c.slug)} className={linkClass}>
-              {c.shortName}
-            </Link>
-          ))}
-        </nav>
-      )}
+        )
+      ) : null}
 
       <Link
         href={CONTRATO_ALQUILER_LOCAL_BASE}

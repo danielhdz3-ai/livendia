@@ -175,7 +175,11 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
                       WhatsApp
                     </WhatsAppLeadLink>
                   </div>
-                  <RedactarContratoAlquilerLocalCityLinks currentSlug={config.slug} className="mt-8 justify-start" />
+                  <RedactarContratoAlquilerLocalCityLinks
+                    variant="landing"
+                    currentSlug={config.slug}
+                    className="mt-8 justify-start"
+                  />
                 </div>
                 <div className="relative order-2 h-56 sm:h-72 lg:order-none lg:h-auto lg:min-h-[480px]">
                   <Image
