@@ -654,6 +654,202 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     ],
   },
 
+  esplugues: {
+    rentPricePerSqm:
+      "Municipio Esplugues: oferta agregada habitualmente 15–18 €/m² en pisos (portales locales y agregadores 2025–2026), por debajo de Barcelona capital (~22 €/m², Idealista abril 2026). Can Vidalet y Centre suelen marcar la banda alta del municipio; Finestrelles y Les Planes varían según tipo (bloque vs adosado).",
+    rentPriceSourceNote:
+      "Idealista agregados Baix Llobregat, 2025–2026; comparativa Barcelona capital Idealista abril 2026.",
+    dominantHousingType:
+      "Bloques de los 70–90 en Can Vidalet y Centre (70–95 m²) con ascensores y calderas comunitarias frecuentes. Finestrelles y Les Planes mezclan casas adosadas en ladera y pisos con accesos en cuesta. Can Clota combina vivienda unifamiliar y bloques compactos cerca del eje hospitalario.",
+    tenantProfile: [
+      "Familias que trabajan en Barcelona y priorizan metro L5",
+      "Profesionales del eje Diagonal y Zona Universitària en desplazamiento corto",
+      "Inquilinos estables en Centre y Can Vidalet con contratos LAU largos",
+      "Parejas en pisos reformados de Finestrelles",
+    ],
+    localRegulatoryNote:
+      "Esplugues está en zona tensionada catalana (271 municipios, MIVAU 2024–2027). Renovaciones con IRAV e Incasòl obligatorio; contrastar baremo estatal antes de copiar €/m² de portales.",
+    marketContext:
+      "Esplugues equilibra precio de alquiler más contenido que Barcelona capital y excelente acceso por metro L5 y Diagonal. La demanda es mayoritariamente residencial estable — familias y profesionales — con menos rotación turística que distritos céntricos. El parque envejecido implica incidencias recurrentes en ascensores en ladera, calderas y humedades en sótanos. Para propietarios fuera del municipio, Livendia desde Les Corts (~15–20 min) asume cobro, mediación e industriales del Baix Llobregat.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Ascensor en ladera en Finestrelles",
+        body: "El inquilino avisa de avería en ascensor de edificio en cuesta. Livendia abre incidencia con comunidad y mantenedor, hace seguimiento diario y reporta al propietario solo si hay derrama o gasto individual que deba autorizar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV en Can Vidalet",
+        body: "Propietario quiere alinear renta con oferta de portal. Livendia calcula tope legal, explica diferencia con baremo y envía propuesta documentada al inquilino — el propietario firma resumen de una página.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago reiterado en Centre",
+        body: "Dos meses de retraso en transferencia. Protocolo de cobro desde el día 3, mediación formal y aviso al propietario solo si no hay justificante antes del día 7.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Filtración en fachada comunitaria",
+        body: "Humedad tras lluvias en dormitorio. Livendia manda perito, determina origen comunitario o interior y coordina con seguro-comunidad antes de obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Rotación en Les Planes",
+        body: "Fin de contrato en adosado: Livendia coordina entrega de llaves, inventario, baja de suministros y depósito Incasòl — sin citas cruzadas entre propietario e inquilino.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Metro Can Vidalet / Esplugues (L5)",
+      "Hospital Sant Joan Despí (límite)",
+      "Finestrelles",
+      "Les Planes",
+      "Can Clota",
+      "Diagonal / Zona Universitària (cercanía)",
+    ],
+  },
+
+  "sant-joan-despi": {
+    rentPricePerSqm:
+      "Municipio Sant Joan Despí: rango habitual 13–17 €/m² en pisos según agregadores del Baix Llobregat (2025–2026). Centre y Torreblanca suelen superar Les Fonts en oferta publicada; chalets y adosados marcan ticket distinto al €/m² de bloque.",
+    rentPriceSourceNote:
+      "Agregadores inmobiliarios Baix Llobregat, 2025–2026; comparativa Engel & Völkers municipios vecinos julio 2026.",
+    dominantHousingType:
+      "Bloques de los 80–00 en Centre y Torreblanca (75–100 m²) con comunidades activas. Les Fonts y Can Trabal mezclan casas adosadas y pisos en urbanizaciones. Parque en buen estado en zonas nuevas; ascensores y calderas siguen siendo foco de incidencias.",
+    tenantProfile: [
+      "Familias con perceptor en Barcelona o polígonos del Llobregat",
+      "Inquilinos vinculados al TRAM T1/T2",
+      "Contratos LAU estables en Centre",
+      "Profesionales del Hospital Sant Joan Despí (límite)",
+    ],
+    localRegulatoryNote:
+      "Sant Joan Despí está en zona tensionada catalana. IRAV en renovaciones; depósito Incasòl y comunicación formal antes de subida de renta.",
+    marketContext:
+      "Sant Joan Despí crece como alternativa residencial al corredor TRAM con alquiler más asequible que Barcelona y buena conexión a polígonos y capital. La demanda familiar favorece contratos largos, pero el propietario ausente sufre fricción en cobros e incidencias comunitarias. Livendia opera desde Les Corts con panel remoto y desplazamiento puntual si hace falta firma.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Caldera comunitaria en Torreblanca",
+        body: "Falta de calefacción en invierno. Livendia presiona a comunidad y mantenedor, informa plazos al inquilino y avisa al propietario solo si hay derrama individual.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Certificado de empadronamiento",
+        body: "Inquilino solicita documentación para escolarizar. Livendia verifica procedencia, coordina firma con propietario y entrega copia — sin llamadas en horario laboral.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Mediación por convivencia en Centre",
+        body: "Queja de vecinos por ruido. Livendia documenta conversación con inquilino, propone medidas del contrato LAU y resume al propietario en acta — sin escalado innecesario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Cambio de suministros tras rotación",
+        body: "Alta de nuevo arrendatario: Livendia gestiona luz y agua, recoge lecturas y archiva justificantes en panel.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago con mediación TRAM",
+        body: "Inquilino retrasa renta alegando desplazamiento laboral. Protocolo de cobro con plazos claros y aviso al propietario solo si persiste sin justificante.",
+      },
+    ],
+    nearbyLandmarks: [
+      "TRAM T1/T2 Sant Joan Despí",
+      "Centre vila",
+      "Torreblanca",
+      "Les Fonts",
+      "Can Trabal",
+      "Hospital Sant Joan Despí",
+    ],
+  },
+
+  "sant-adria": {
+    rentPricePerSqm:
+      "Municipio Sant Adrià: oferta en corredor Besòs habitualmente 12–17 €/m² en pisos (agregadores 2025–2026), por debajo de Barcelona capital. Centre y Parc del Besòs suelen superar La Mina en ticket según estado y metro L2.",
+    rentPriceSourceNote:
+      "Agregadores corredor Besòs 2025–2026; comparativa Badalona Idealista 2025 y SERPAVI 2024.",
+    dominantHousingType:
+      "Bloques de los 60–80 en Centre, La Mina y Parc del Besòs (55–75 m²) con ascensores envejecidos. Entorno Fòrum mezcla vivienda más reciente. Parque compacto en La Mina con humedades y calderas frecuentes.",
+    tenantProfile: [
+      "Familias que trabajan en Barcelona con metro L2",
+      "Trabajadores del sector logístico e industrial del Besòs",
+      "Inquilinos jóvenes cerca de Fòrum y Parc del Besòs",
+      "Contratos estables en Centre",
+    ],
+    localRegulatoryNote:
+      "Sant Adrià está en zona tensionada catalana. Misma lógica IRAV/Incasòl que Badalona y Barcelona; brecha oferta portal vs contrato registrado exige cálculo antes de renovar.",
+    marketContext:
+      "Sant Adrià comparte dinámica con Badalona: alquiler asequible, metro directo a Barcelona y parque envejecido. Propietarios inversores fuera del municipio necesitan canal único para cobro e incidencias de humedad y ascensor. Livendia desde Les Corts (~20–25 min L2) documenta todo en panel.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Humedad en La Mina",
+        body: "Filtración en salón tras temporal. Livendia manda perito, abre conversación con comunidad si origen comunitario y mantiene al propietario informado con fotos y presupuesto.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago en Parc del Besòs",
+        body: "Retraso reiterado de transferencia. Protocolo de cobro desde el día 3 con mediación formal documentada.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV en renovación Centre",
+        body: "Propietario propone subida según portal. Livendia calcula tope legal y envía propuesta válida al inquilino.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Ascensor en bloque de los 70",
+        body: "Avería prolongada. Livendia coordina mantenedor y comunidad; propietario autoriza gasto individual solo si procede.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Queja de vecinos por convivencia",
+        body: "Mediación Livendia con inquilino según contrato LAU; propietario recibe acta sin diez llamadas directas.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Metro Artigues / Sant Adrià (L2)",
+      "Parc del Besòs",
+      "La Mina",
+      "Fòrum (límite Barcelona)",
+      "Riu Besòs",
+      "Centre vila",
+    ],
+  },
+
+  castelldefels: {
+    rentPricePerSqm:
+      "Municipio Castelldefels: oferta habitual 14–19 €/m² en pisos (agregadores Garraf/Baix Llobregat 2025–2026). Platja y Bellamar suelen marcar banda alta; Centre más estable. Chalets y adosados tienen ticket mensual distinto al cálculo por m² de bloque.",
+    rentPriceSourceNote:
+      "Agregadores Garraf y Baix Llobregat, 2025–2026; Rodalies R2 acceso Barcelona.",
+    dominantHousingType:
+      "Chalets adosados y casas en Bellamar, Montmar y Can Roca. Bloques de los 80–00 en Centre y cerca de platja (70–110 m²). Exposición litoral implica más incidencias de humedad, cerramientos y climatización.",
+    tenantProfile: [
+      "Familias residenciales estables en Centre y Montmar",
+      "Profesionales con Rodalies R2 a Barcelona",
+      "Inquilinos en viviendas cerca de platja con estacionalidad moderada",
+      "Propietarios-inversores con segunda residencia en la costa",
+    ],
+    localRegulatoryNote:
+      "Castelldefels está en zona tensionada catalana del Baix Llobregat. IRAV en renovaciones; distinguir contrato LAU largo de usos turísticos regulados por normativa aparte.",
+    marketContext:
+      "Castelldefels combina litoral, Rodalies R2 y parque mixto (chalets + bloques). La gestión remota es crítica para propietarios que no están en temporada en la costa: averías de climatización, temporales y renovaciones con IRAV. Livendia desde Les Corts coordina técnicos del Garraf y centraliza cobro e incidencias.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Avería de climatización en Bellamar",
+        body: "Verano sin aire acondicionado. Livendia abre incidencia urgente, coordina técnico y reporta presupuesto al propietario para autorización — inquilino no contacta móvil personal.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Humedad tras temporal en platja",
+        body: "Filtración en terraza o fachada. Perito, origen comunitario vs interior, conversación con seguro-comunidad si aplica.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV en Centre",
+        body: "Cálculo de incremento máximo legal antes de enviar propuesta al inquilino en municipio tensionado.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Chalet adosado en Montmar",
+        body: "Incidencia de persiana o cerramiento exterior. Livendia solicita presupuestos comparados y presenta opciones al propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Rotación post-contrato Rodalies",
+        body: "Entrega de llaves, inventario y suministros en piso cerca estación — propietario en Barcelona capital sin desplazamiento semanal.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Platja de Castelldefels",
+      "Bellamar",
+      "Estació Castelldefels (Rodalies R2)",
+      "Centre vila",
+      "Montmar",
+      "Can Roca",
+    ],
+  },
+
   badalona: {
     rentPricePerSqm:
       "Municipio Badalona: 19,22 €/m² en oferta (Idealista, datos agregados 2025). SERPAVI/contratos registrados 2024: mediana ~10,17 €/m² en alquiler real. Engel & Völkers (julio 2026) sitúa pisos en 14,16 €/m². Por barrios, Centre y Gorg suelen superar la mediana; Sant Roc y Llefià más asequibles.",

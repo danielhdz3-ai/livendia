@@ -27,5 +27,9 @@ export const METRO_BARCELONA_HERO_BY_SEGMENT_KEY: Record<string, string> = {
   "barcelona/sant-andreu": metroBarcelonaZoneImage("santandreu.jpg"),
   "l-hospitalet": metroBarcelonaZoneImage("hospitalet.jpg"),
   cornella: metroBarcelonaZoneImage("barcelona.jpg"),
+  esplugues: metroBarcelonaZoneImage("esplugues.jpg"),
+  "sant-joan-despi": metroBarcelonaZoneImage("santjoandespi.jpg"),
+  "sant-adria": metroBarcelonaZoneImage("barcelona2.jpg"),
+  castelldefels: metroBarcelonaZoneImage("barcelona.jpg"),
   badalona: metroBarcelonaZoneImage("barcelona2.jpg"),
 };

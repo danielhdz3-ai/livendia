@@ -33,6 +33,10 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "barcelona/ciutat-vella",
   "barcelona/horta-guinardo",
   "barcelona/sant-andreu",
+  "esplugues",
+  "sant-joan-despi",
+  "sant-adria",
+  "castelldefels",
   "sant-cugat",
   "badalona",
 ];
@@ -96,7 +100,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   {
     question: "¿Dónde están ubicadas las oficinas de Livendia?",
     answer:
-      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Eixample, Gràcia, Les Corts, Sants-Montjuïc, Sant Martí) y en el área metropolitana (L'Hospitalet, Cornellà, Sant Cugat, Badalona).",
+      "Nuestra sede central está en el distrito de Les Corts en Barcelona (Carrer de Mejía Lequerica, 44), lo que nos permite dar servicio presencial y ágil en Barcelona capital (Eixample, Gràcia, Les Corts, Sants-Montjuïc, Sant Martí) y en el área metropolitana (L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Cugat, Badalona).",
   },
   {
     question: `¿Qué incluye exactamente la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
@@ -1366,6 +1370,334 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       addressRegion: "Sant Andreu",
       geo: { latitude: "41.4350", longitude: "2.1900" },
       areaServedName: "Sant Andreu, Barcelona",
+    },
+  },
+  {
+    segments: ["esplugues"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/esplugues`,
+    zoneLabel: "Esplugues de Llobregat",
+    metaTitle: `Administración de alquiler Esplugues — Can Vidalet, Finestrelles, FGC · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Esplugues de Llobregat: Can Vidalet, Centre, Finestrelles y Les Planes. Metro L5, INCASÒL e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Gestor desde Les Corts.`,
+    h1: "Administración de alquiler en Esplugues de Llobregat (Can Vidalet, Finestrelles y metro L5)",
+    subtitle: `Delega tu piso en Esplugues por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — canal único con el inquilino.`,
+    heroLead:
+      "Esplugues —Can Vidalet, Centre, Finestrelles, Les Planes— combina metro L5, casas adosadas en ladera y normativa catalana de zona tensionada. Oferta de alquiler más contenida que Barcelona capital pero parque envejecido con calderas y ascensores exigentes. Livendia cobra, media e incidencias; tú no persigues transferencias ni llamadas del inquilino.",
+    eeatHeading: "Esplugues: Baix Llobregat y acceso rápido a Barcelona",
+    eeatBlock:
+      "Gestionamos arrendamientos en Can Vidalet, Centre, Finestrelles, Les Planes y Can Clota. Municipio tensionado: Incasòl e IRAV en renovaciones. Operamos desde Les Corts (~15–20 min en metro L5 o coche por Diagonal). Contrastamos referencia de mercado antes de cada subida legal.",
+    whyIntro:
+      "Muchos propietarios en Esplugues alquilaron pisos reformados durante la subida del Baix Llobregat y ahora renuevan con topes IRAV. Sin gestor, cada avería de ascensor en ladera o duda de suministros acaba en tu móvil. Livendia filtra urgencias, coordina industriales locales y te resume solo lo que requiere firma o presupuesto.",
+    howIntro:
+      "Alta en panel, protocolo de cobro desde el día 3, coordinación con comunidades activas y resumen mensual de rentas e incidencias.",
+    barriosIntro:
+      "Can Vidalet y Centre concentran bloques de los 70–90 m² bien comunicados con metro L5. Finestrelles y Les Planes mezclan casas adosadas y pisos en ladera con más incidencias de fontanería y accesos. Can Clota y el entorno del Hospital Sant Joan Despí atraen familias con contratos LAU estables.",
+    barrios: ["Can Vidalet", "Centre", "Finestrelles", "Les Planes", "Can Clota", "Hospital Sant Joan Despí (límite)"],
+    serviceBullets: [
+      {
+        title: "Renovaciones con IRAV",
+        description: "Cálculo de incremento máximo en zona tensionada antes de enviar propuesta al inquilino.",
+      },
+      {
+        title: "Incidencias en ladera y bloques",
+        description: "Coordinación con mantenedores del Baix Llobregat para ascensores, calderas y humedades.",
+      },
+      {
+        title: "Panel y cobro mensual",
+        description: "Liquidación de renta, historial de incidencias y contacto único Livendia-inquilino.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Esplugues que dejaron de gestionar el día a día",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en Can Vidalet y yo en Madrid. Livendia gestionó una filtración en fachada con la comunidad; yo solo autorizé el presupuesto por email.",
+        author: "Laura P.",
+        role: "Propietaria, Can Vidalet",
+      },
+      {
+        quote:
+          "Renové contrato en Finestrelles y Livendia calculó IRAV antes de hablar con el inquilino. El panel me dice si pagaron el día 1.",
+        author: "Marc T.",
+        role: "Propietario, Finestrelles",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Esplugues?",
+        answer:
+          "El alquiler suele situarse por debajo de Barcelona capital en agregadores locales (rango habitual 14–18 €/m² según barrio y estado). Tu gestor contrasta baremo estatal e IRAV antes de renovar o firmar contrato nuevo.",
+      },
+      {
+        question: "¿Atendéis incidencias en casas adosadas de Les Planes?",
+        answer:
+          "Sí. Mismo protocolo de cobro e incidencias; adaptamos coordinación a comunidades pequeñas o viviendas unifamiliares con accesos en cuesta.",
+      },
+      {
+        question: "¿Puedo contratar si vivo en Barcelona capital?",
+        answer:
+          "Sí. Esplugues está a minutos en metro L5 desde Diagonal. El panel y WhatsApp sustituyen desplazamientos habituales.",
+      },
+    ],
+    finalCtaLead:
+      `Protege tu alquiler en Esplugues con gestor Livendia — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia.`,
+    primaryCtaLabel: "Contactar gestor Esplugues por WhatsApp",
+    waPlaceLabel: "Esplugues de Llobregat",
+    heroImage: metroBarcelonaHeroForSegments(["esplugues"]),
+    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Esplugues de Llobregat",
+      addressLocality: "Esplugues de Llobregat",
+      areaServedName: "Esplugues de Llobregat",
+    },
+  },
+  {
+    segments: ["sant-joan-despi"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-joan-despi`,
+    zoneLabel: "Sant Joan Despí",
+    metaTitle: `Administración de alquiler Sant Joan Despí — Centre, Torreblanca, TRAM · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sant Joan Despí: Centre, Torreblanca, Les Fonts y TRAM T1/T2. INCASÒL, cobro e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sant Joan Despí (Centre, Torreblanca y eje TRAM)",
+    subtitle: `Administración LAU en Sant Joan Despí desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    heroLead:
+      "Sant Joan Despí —Centre, Torreblanca, Les Fonts, Can Trabal— es municipio tensionado del Baix Llobregat con buena conexión TRAM y demanda familiar estable. Parque mixto de bloques y chalets donde humedades, ascensor y suministros generan fricción si el propietario no está cerca. Livendia asume cobro, mediación e industriales; tú no hablas con el inquilino.",
+    eeatHeading: "Sant Joan Despí y corredor del TRAM",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, Torreblanca, Les Fonts, Can Trabal y entorno del Hospital. Verificamos IRAV en renovaciones, depositamos en Incasòl y canalizamos incidencias desde Les Corts con plazos documentados en panel.",
+    whyIntro:
+      "Propietarios que invirtieron cerca del TRAM suelen vivir fuera del municipio. Cada consulta de empadronamiento, retraso de renta o avería comunitaria distrae del trabajo. Livendia establece un único canal y escala solo lo que requiere tu decisión.",
+    howIntro:
+      "Expediente digital, seguimiento de transferencias, mediación de impagos y coordinación con técnicos del Baix Llobregat.",
+    barriosIntro:
+      "Centre y Torreblanca concentran bloques de los 80–95 m² con comunidades muy activas. Les Fonts y Can Trabal mezclan casas adosadas y pisos con más rotación moderada. El eje TRAM (T1/T2) atrae inquilinos que trabajan en Barcelona o en polígonos del Llobregat.",
+    barrios: ["Centre", "Torreblanca", "Les Fonts", "Can Trabal", "La Plana", "TRAM Sant Joan Despí"],
+    serviceBullets: [
+      {
+        title: "Cobro y protocolo de impago",
+        description: "Recordatorios automatizados, mediación formal y aviso al propietario solo si no hay justificante.",
+      },
+      {
+        title: "TRAM y desplazamientos",
+        description: "Gestión remota con panel; oficina Les Corts accesible si necesitas firma presencial.",
+      },
+      {
+        title: "Renovaciones LAU",
+        description: "IRAV y documentación para archivo antes de enviar propuesta al inquilino.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sant Joan Despí con renta bajo control",
+    testimonials: [
+      {
+        quote:
+          "Alquilo en Torreblanca y vivo en Girona. Livendia aplicó el protocolo de cobro cuando el inquilino retrasó la transferencia — yo lo supe por el panel, no por llamadas.",
+        author: "Núria F.",
+        role: "Propietaria, Torreblanca",
+      },
+      {
+        quote:
+          "Hubo avería de ascensor en Centre. Livendia presionó a comunidad y mantenedor; yo recibí acta y presupuesto, nada más.",
+        author: "David S.",
+        role: "Propietario, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Está Sant Joan Despí en zona tensionada?",
+        answer:
+          "Sí, forma parte de la declaración catalana de mercado residencial tensionado. Cada renovación exige contrastar IRAV y baremo estatal antes de comunicar subida al inquilino.",
+      },
+      {
+        question: "¿Gestionáis pisos cerca de la parada TRAM?",
+        answer:
+          "Sí. El protocolo es el mismo en Centre o Les Fonts; documentamos incidencias y cobros con el mismo panel que en Barcelona capital.",
+      },
+      {
+        question: "¿Incluye cambio de suministros?",
+        answer:
+          "Coordinamos alta/baja de luz y agua en rotaciones, recogemos lecturas y archivamos justificantes — sin que negocies directamente con el inquilino.",
+      },
+    ],
+    finalCtaLead:
+      `Activa administración Livendia en Sant Joan Despí — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, gestor dedicado.`,
+    primaryCtaLabel: "Solicitar gestión Sant Joan Despí",
+    waPlaceLabel: "Sant Joan Despí",
+    heroImage: metroBarcelonaHeroForSegments(["sant-joan-despi"]),
+    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Joan Despí",
+      addressLocality: "Sant Joan Despí",
+      areaServedName: "Sant Joan Despí",
+    },
+  },
+  {
+    segments: ["sant-adria"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/sant-adria`,
+    zoneLabel: "Sant Adrià de Besòs",
+    metaTitle: `Administración de alquiler Sant Adrià — Parc del Besòs, metro L2, La Mina · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sant Adrià de Besòs: Centre, La Mina, Parc del Besòs y Fòrum. Cobro en bloques del litoral, INCASÒL e IRAV por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sant Adrià de Besòs (Parc del Besòs, La Mina y metro L2)",
+    subtitle: `Protege tu piso en Sant Adrià por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor desde Les Corts.`,
+    heroLead:
+      "Sant Adrià —Centre, La Mina, Parc del Besòs, Fòrum— comparte el corredor del Besòs con Badalona: alquiler más asequible que Barcelona, parque envejecido y normativa catalana tensionada. Livendia cobra la renta, media incidencias de humedad y ascensor, y calcula IRAV en renovaciones. Tú no atiendes al inquilino en persona.",
+    eeatHeading: "Sant Adrià: litoral del Besòs y normativa catalana",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, La Mina, Parc del Besòs y entorno Fòrum. Zona tensionada: Incasòl e IRAV. Operamos desde Les Corts (~20–25 min metro L2). Contrastamos oferta de portales y referencia legal antes de cada renovación.",
+    whyIntro:
+      "Muchos pisos en Sant Adrià son inversión de propietarios que viven en Barcelona o fuera de Cataluña. Sin intermediario, retrasos de renta y quejas de vecinos por convivencia llegan directo a tu móvil. Livendia documenta cada paso en panel.",
+    howIntro:
+      "Canal único con arrendatario, industriales del Maresme-Besòs, liquidación mensual y avisos solo para firmas o gastos que autorices.",
+    barriosIntro:
+      "Centre y Parc del Besòs concentran bloques de los 60–80 m² con metro L2 hacia Barcelona. La Mina tiene parque compacto donde humedades y calderas son frecuentes. El entorno Fòrum mezcla vivienda más reciente con rotación moderada de inquilinos jóvenes.",
+    barrios: ["Centre", "La Mina", "Parc del Besòs", "Fòrum (límite)", "Artigues (límite Badalona)"],
+    serviceBullets: [
+      {
+        title: "Mediación en el Besòs",
+        description: "Cobro, convivencia y incidencias sin que el propietario sea el primer contacto.",
+      },
+      {
+        title: "IRAV en renovación",
+        description: "Propuesta documentada al inquilino tras cálculo legal en municipio tensionado.",
+      },
+      {
+        title: "INCASÒL y suministros",
+        description: "Fianza y cambios de titularidad archivados en panel del propietario.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sant Adrià que delegaron el contacto",
+    testimonials: [
+      {
+        quote:
+          "Mi piso está en La Mina y yo en Tarragona. Livendia gestionó humedad por filtración con la comunidad; yo vi fotos y presupuesto en el panel.",
+        author: "Sergi M.",
+        role: "Propietario, La Mina",
+      },
+      {
+        quote:
+          "Renové en Centre con tope IRAV. Livendia llevó la conversación con el inquilino; yo firmé el resumen.",
+        author: "Elena V.",
+        role: "Propietaria, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sant Adrià?",
+        answer:
+          "Suele situarse por debajo de Barcelona capital en agregadores del corredor Besòs (referencia habitual 12–17 €/m² según barrio y estado). Contrastamos baremo e IRAV antes de renovar.",
+      },
+      {
+        question: "¿Atendéis La Mina y Parc del Besòs?",
+        answer:
+          "Sí. Mismo protocolo de cobro e incidencias con industriales habituales del litoral.",
+      },
+      {
+        question: "¿Cómo llegáis desde la oficina Livendia?",
+        answer:
+          "Sede en Les Corts; Sant Adrià está a ~20–25 min en metro L2. Gestión diaria es remota vía panel y WhatsApp profesional.",
+      },
+    ],
+    finalCtaLead:
+      `Delega tu alquiler en Sant Adrià — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, sin permanencia.`,
+    primaryCtaLabel: "WhatsApp gestor Sant Adrià",
+    waPlaceLabel: "Sant Adrià de Besòs",
+    heroImage: metroBarcelonaHeroForSegments(["sant-adria"]),
+    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sant Adrià de Besòs",
+      addressLocality: "Sant Adrià de Besòs",
+      areaServedName: "Sant Adrià de Besòs",
+    },
+  },
+  {
+    segments: ["castelldefels"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/castelldefels`,
+    zoneLabel: "Castelldefels",
+    metaTitle: `Administración de alquiler Castelldefels — platja, Bellamar, Rodalies · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Castelldefels: Centre, platja, Bellamar y Montmar. Temporada alta, INCASÒL e incidencias en chalets y bloques por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Castelldefels (platja, Bellamar y Rodalies)",
+    subtitle: `Administración de alquiler en Castelldefels desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    heroLead:
+      "Castelldefels —Centre, platja, Bellamar, Montmar— mezcla demanda residencial estable y estacionalidad cerca del litoral. Chalets adosados, bloques con vistas y normativa catalana tensionada. Livendia cobra, gestiona incidencias (humedades, clima, comunidades) y verifica IRAV; tú no negocias con el inquilino.",
+    eeatHeading: "Castelldefels: litoral, Rodalies y gestión LAU",
+    eeatBlock:
+      "Gestionamos arrendamientos en Centre, platja, Bellamar, Montmar y Can Roca. Municipio tensionado del Baix Llobregat. Operamos desde Les Corts (~25–35 min Rodalies R2). Documentamos cobros e incidencias en panel aunque vivas fuera del Garraf.",
+    whyIntro:
+      "Propietarios en Castelldefels suelen alquilar pisos o chalets como segunda residencia o inversión. Sin gestor, averías de climatización, filtraciones tras temporal o dudas de temporada larga acaban en llamadas fuera de horario. Livendia centraliza el canal.",
+    howIntro:
+      "Alta documental, protocolo de cobro, coordinación con mantenedores del Garraf y resumen mensual para propietarios en Barcelona o fuera de España.",
+    barriosIntro:
+      "La platja y Bellamar concentran viviendas con más exposición a humedad salina y rotación estacional moderada. Centre y Montmar mezclan bloques familiares bien comunicados con Rodalies R2. Can Roca y urbanizaciones interiores tienen casas adosadas con incidencias de jardín, persianas y comunidades pequeñas.",
+    barrios: ["Centre", "Platja de Castelldefels", "Bellamar", "Montmar", "Can Roca", "Estació Castelldefels (Rodalies)"],
+    serviceBullets: [
+      {
+        title: "Incidencias litorales",
+        description: "Coordinación de humedades, climatización y cerramientos con técnicos del Garraf.",
+      },
+      {
+        title: "Contratos LAU largos",
+        description: "Mediación y cobro aunque el propietario no esté en temporada en la costa.",
+      },
+      {
+        title: "Renovaciones IRAV",
+        description: "Cálculo legal antes de proponer subida en municipio tensionado.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Castelldefels con gestión remota",
+    testimonials: [
+      {
+        quote:
+          "Tengo un piso en Bellamar y vivo en Eixample. Livendia gestionó una avería de aire acondicionado en verano; el inquilino no tiene mi teléfono.",
+        author: "Pau L.",
+        role: "Propietario, Bellamar",
+      },
+      {
+        quote:
+          "Alquilo cerca de la estación. Livendia calculó IRAV en renovación y archivó todo en panel — útil porque no voy cada semana a Castelldefels.",
+        author: "Isabel R.",
+        role: "Propietaria, Centre",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Gestionáis chalets adosados en Castelldefels?",
+        answer:
+          "Sí. Adaptamos coordinación a comunidades pequeñas o viviendas unifamiliares; el protocolo de cobro y panel es el mismo que en bloques.",
+      },
+      {
+        question: "¿Castelldefels es zona tensionada?",
+        answer:
+          "Sí, incluida en la declaración catalana. Verificamos IRAV y referencia legal en cada renovación de contrato LAU.",
+      },
+      {
+        question: "¿Puedo contratar desde Barcelona capital?",
+        answer:
+          "Sí. Rodalies R2 conecta en ~25–35 min; la gestión cotidiana es remota con panel y WhatsApp de tu gestor Livendia.",
+      },
+    ],
+    finalCtaLead:
+      `Protege tu alquiler en Castelldefels — ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}, gestor desde Les Corts.`,
+    primaryCtaLabel: "Consultar gestión Castelldefels",
+    waPlaceLabel: "Castelldefels",
+    heroImage: metroBarcelonaHeroForSegments(["castelldefels"]),
+    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Castelldefels",
+      addressLocality: "Castelldefels",
+      areaServedName: "Castelldefels",
     },
   },
   {

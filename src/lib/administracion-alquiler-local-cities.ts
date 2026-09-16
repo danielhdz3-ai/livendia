@@ -180,6 +180,10 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Sant Martí",
       "L'Hospitalet de Llobregat",
       "Cornellà de Llobregat",
+      "Esplugues de Llobregat",
+      "Sant Joan Despí",
+      "Sant Adrià de Besòs",
+      "Castelldefels",
     ],
     faq: [
       {
@@ -202,7 +206,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       {
         question: "¿Tenéis administración de alquiler por barrio en Barcelona?",
         answer:
-          "Sí. Además de esta página de Barcelona capital, hay landings hiperlocales bajo /administracion-alquiler/ en Les Corts, Gràcia, Eixample, Sants-Montjuïc, Sant Martí, Sarrià-Sant Gervasi, Nou Barris, Ciutat Vella, Horta-Guinardó, Sant Andreu, L'Hospitalet, Cornellà, Sant Cugat y Badalona — cada una con barrios, precios de referencia y situaciones operativas ilustrativas.",
+          "Sí. Además de esta página de Barcelona capital, hay landings hiperlocales bajo /administracion-alquiler/ en los diez distritos de Barcelona, L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Cugat y Badalona — cada una con barrios, precios de referencia y situaciones operativas ilustrativas.",
       },
     ],
     testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",
