@@ -21,10 +21,10 @@ export function FloatingWhatsAppButton() {
 
   return (
     <div
-      className="livendia-wa-fab-anchor pointer-events-none fixed z-[55] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] sm:bottom-6 sm:right-6"
+      className="livendia-wa-fab-anchor pointer-events-none fixed z-[70] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2 bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(0.75rem,env(safe-area-inset-right))] sm:bottom-6 sm:right-6"
       aria-hidden={false}
     >
-      <span className="pointer-events-none hidden max-w-[11rem] rounded-2xl bg-[#1E293B] px-3 py-2 text-left text-[11px] font-medium leading-snug text-white shadow-lg sm:block">
+      <span className="pointer-events-none max-w-[11rem] rounded-2xl bg-[#1E293B] px-3 py-2 text-left text-[11px] font-medium leading-snug text-white shadow-lg max-sm:hidden sm:block">
         <span className="block font-semibold">¿Te ayudamos?</span>
         <span className="mt-0.5 block text-[10px] font-normal text-slate-300">{WHATSAPP_RESPONSE_HOURS}</span>
       </span>

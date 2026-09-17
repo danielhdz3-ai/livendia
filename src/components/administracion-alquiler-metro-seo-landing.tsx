@@ -1,5 +1,6 @@
 import { AlquilerRegulatoryLocalSection } from "@/components/alquiler-regulatory-local-section";
 import { FaqSection } from "@/components/faq-section";
+import { LandingProminentWhatsAppCta } from "@/components/landing-prominent-whatsapp-cta";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
@@ -46,13 +47,6 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-
-function buildWaHref(place: string): string {
-  const text = `Hola, quiero información sobre la administración de mi alquiler en ${place}`;
-  return `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
-}
 
 function MetroRealEstateAgentJsonLd({ config }: { config: AdministracionAlquilerMetroLanding }) {
   const base = getSiteUrl().replace(/\/$/, "");
@@ -140,8 +134,8 @@ export function AdministracionAlquilerMetroSeoLanding({
   config: AdministracionAlquilerMetroLanding;
 }) {
   const enrichment = getMetroEnrichment(config.segments);
-  const waHref = buildWaHref(config.waPlaceLabel);
   const telHref = getContactPhoneTelHref();
+  const waServiceLabel = `Administración de alquiler en ${config.zoneLabel}`;
   const mapsUrl = getBusinessMapsExternalUrl();
   const faqItems = mergeMetroFaq(config.localFaq);
   const regulatory = config.regulatorySlug ? ALQUILER_REGULATORY_BY_SLUG[config.regulatorySlug] : undefined;
@@ -283,16 +277,14 @@ export function AdministracionAlquilerMetroSeoLanding({
                   </ul>
 
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-analytics-placement={`${placement}_hero_wa`}
-                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50"
-                    >
-                      <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
-                      {config.primaryCtaLabel}
-                    </a>
+                    <LandingProminentWhatsAppCta
+                      placement={`${placement}_hero_wa`}
+                      serviceLabel={waServiceLabel}
+                      needType="administracion"
+                      city={config.zoneLabel}
+                      label={`WhatsApp — ${config.zoneLabel}`}
+                      variant="hero-on-blue"
+                    />
                     <a
                       href={telHref}
                       data-analytics-placement={`${placement}_hero_phone`}
@@ -500,8 +492,13 @@ export function AdministracionAlquilerMetroSeoLanding({
             workflow={workflow}
             city={config.zoneLabel}
             serviceLabel={`Administración de alquiler en ${config.zoneLabel}`}
-            primaryHrefOverride={waHref}
-            primaryExternal
+            primaryWhatsApp={{
+              placement: `${placement}_workflow_wa`,
+              serviceLabel: waServiceLabel,
+              needType: "administracion",
+              city: config.zoneLabel,
+              label: `WhatsApp — ${config.zoneLabel}`,
+            }}
           />
 
           {/* Oficina Les Corts */}
@@ -598,16 +595,14 @@ export function AdministracionAlquilerMetroSeoLanding({
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>
               <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-analytics-placement={`${placement}_final_wa`}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-10 py-4 text-lg font-bold text-[#1A4FBF] shadow-2xl transition hover:scale-105 hover:bg-blue-50"
-                >
-                  <MessageCircle className="h-6 w-6" aria-hidden />
-                  {config.primaryCtaLabel}
-                </a>
+                <LandingProminentWhatsAppCta
+                  placement={`${placement}_final_wa`}
+                  serviceLabel={waServiceLabel}
+                  needType="administracion"
+                  city={config.zoneLabel}
+                  label={`WhatsApp — ${config.zoneLabel}`}
+                  variant="footer-on-blue"
+                />
                 <a
                   href={telHref}
                   className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-white px-10 py-4 text-lg font-semibold hover:bg-white/10"

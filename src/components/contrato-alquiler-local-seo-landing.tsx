@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { LandingProminentWhatsAppCta } from "@/components/landing-prominent-whatsapp-cta";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
@@ -33,9 +34,6 @@ import {
   ClipboardList,
   KeyRound,
 } from "lucide-react";
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 function LocalServiceJsonLd({
   path,
@@ -264,20 +262,20 @@ export async function ContratoAlquilerLocalSeoLanding({
                   </ul>
 
                   <div className="mt-10 flex flex-wrap gap-4">
+                    <LandingProminentWhatsAppCta
+                      placement={`contrato_local_${config.path.split("/").pop() ?? "city"}_hero_wa`}
+                      serviceLabel={`Contrato de alquiler LAU en ${config.city}`}
+                      needType="alquiler"
+                      city={config.city}
+                      label={`WhatsApp — ${config.city}`}
+                      variant="hero-on-blue"
+                    />
                     <ContratarSlugButton
                       slug="contrato-alquiler-lau"
                       className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50"
                     >
                       Contratar LAU · {lauPrice}
                     </ContratarSlugButton>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
-                    >
-                      Consultar por WhatsApp
-                    </a>
                   </div>
                 </div>
 
@@ -462,14 +460,14 @@ export async function ContratoAlquilerLocalSeoLanding({
                 >
                   Contratar habitación · {habPrice}
                 </ContratarSlugButton>
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-10 py-5 text-lg font-semibold transition hover:bg-white/10"
-                >
-                  WhatsApp
-                </a>
+                <LandingProminentWhatsAppCta
+                  placement={`contrato_local_${config.path.split("/").pop() ?? "city"}_final_wa`}
+                  serviceLabel={`Contrato de alquiler LAU en ${config.city}`}
+                  needType="alquiler"
+                  city={config.city}
+                  label={`WhatsApp — ${config.city}`}
+                  variant="footer-on-blue"
+                />
               </div>
 
               <p className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-blue-200">

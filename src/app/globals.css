@@ -80,8 +80,7 @@ body {
   }
 
   body.livendia-modal-open .mobile-bottom-nav,
-  body.livendia-modal-open .livendia-wa-fab-anchor,
-  body.livendia-menu-open .livendia-wa-fab-anchor {
+  body.livendia-modal-open .livendia-wa-fab-anchor {
     display: none;
   }
 

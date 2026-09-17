@@ -56,7 +56,24 @@ const CITY_SLUG_LABELS: Record<string, string> = {
   "hospitalet-de-llobregat": "L'Hospitalet de Llobregat",
   "cornella-de-llobregat": "Cornellà de Llobregat",
   "les-corts": "Les Corts",
+  "sant-joan-despi": "Sant Joan Despí",
+  esplugues: "Esplugues de Llobregat",
+  "sant-adria": "Sant Adrià de Besòs",
+  castelldefels: "Castelldefels",
+  "sant-boi": "Sant Boi de Llobregat",
+  gava: "Gavà",
+  "mollet-del-valles": "Mollet del Vallès",
+  "sant-cugat": "Sant Cugat del Vallès",
   badalona: "Badalona",
+  gracia: "Gràcia",
+  eixample: "Eixample",
+  "sants-montjuic": "Sants-Montjuïc",
+  "sant-marti": "Sant Martí",
+  "sarria-sant-gervasi": "Sarrià-Sant Gervasi",
+  "nou-barris": "Nou Barris",
+  "ciutat-vella": "Ciutat Vella",
+  "horta-guinardo": "Horta-Guinardó",
+  "sant-andreu": "Sant Andreu",
   "sant-cugat-del-valles": "Sant Cugat del Vallès",
   sabadell: "Sabadell",
   terrassa: "Terrassa",
@@ -81,7 +98,14 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
 
   let city: string | undefined;
   const last = segments[segments.length - 1];
-  if (
+
+  if (segments[0] === "administracion-alquiler" && segments.length >= 2 && last) {
+    if (segments[1] === "barcelona" && segments[2]) {
+      city = `${slugToCityLabel(segments[2])} (Barcelona)`;
+    } else {
+      city = slugToCityLabel(segments[1] ?? last);
+    }
+  } else if (
     segments.length >= 2 &&
     (segments[0] === "servicios" || segments[0] === "gestoria" || segments[0] === "ciudades") &&
     last &&

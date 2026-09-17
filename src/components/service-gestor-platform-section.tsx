@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ClientPlatformShowcase } from "@/components/client-platform-showcase";
+import { LandingProminentWhatsAppCta } from "@/components/landing-prominent-whatsapp-cta";
+import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import type { GestorWorkflowContent } from "@/lib/gestor-workflow-content";
+import type { WhatsAppNeedType } from "@/lib/whatsapp-prefill";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
@@ -15,6 +18,14 @@ export type ServiceGestorPlatformSectionProps = {
   primaryHrefOverride?: string;
   /** Si true, el CTA principal abre en nueva pestaña (enlaces externos) */
   primaryExternal?: boolean;
+  /** CTA principal WhatsApp modal (prioritario frente a primaryHrefOverride) */
+  primaryWhatsApp?: {
+    placement: string;
+    serviceLabel: string;
+    needType?: WhatsAppNeedType;
+    city?: string;
+    label?: string;
+  };
   /** Fondo superior del bloque de pasos (continúa hacia el showcase) */
   sectionClassName?: string;
 };
@@ -30,14 +41,19 @@ export function ServiceGestorPlatformSection({
   primarySlug,
   primaryHrefOverride,
   primaryExternal = false,
+  primaryWhatsApp,
   sectionClassName = "border-b border-slate-200 bg-gradient-to-b from-cyan-50 via-[#EFF6FF] to-[#F8FAFC]",
 }: ServiceGestorPlatformSectionProps) {
   const secondaryHref = waHref;
   const secondaryLabel = workflow.secondaryCtaLabel ?? "Consultar por WhatsApp";
+  const telHref = getContactPhoneTelHref();
   const primaryHref = primaryHrefOverride ?? (primarySlug ? `/servicios/${primarySlug}` : "/dashboard/servicios");
   const primaryLabel = workflow.primaryCtaLabel ?? "Contratar con gestor asignado";
   const primaryClassName =
     "inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50";
+  const usePhoneSecondary =
+    Boolean(primaryWhatsApp) &&
+    (workflow.secondaryCtaLabel?.toLowerCase().includes("llamar") ?? false);
 
   return (
     <div id="tramite-gestor-plataforma" className="scroll-mt-20">
@@ -60,7 +76,16 @@ export function ServiceGestorPlatformSection({
               ))}
             </ol>
             <div className="mt-8 flex flex-wrap gap-3">
-              {primaryExternal ? (
+              {primaryWhatsApp ? (
+                <LandingProminentWhatsAppCta
+                  placement={primaryWhatsApp.placement}
+                  serviceLabel={primaryWhatsApp.serviceLabel}
+                  needType={primaryWhatsApp.needType ?? "administracion"}
+                  city={primaryWhatsApp.city ?? city}
+                  label={primaryWhatsApp.label ?? "WhatsApp — consultar con gestor"}
+                  variant="compact-on-blue"
+                />
+              ) : primaryExternal ? (
                 <a
                   href={primaryHref}
                   target="_blank"
@@ -74,14 +99,23 @@ export function ServiceGestorPlatformSection({
                   {primaryLabel}
                 </Link>
               )}
-              <a
-                href={secondaryHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
-              >
-                {secondaryLabel}
-              </a>
+              {usePhoneSecondary ? (
+                <a
+                  href={telHref}
+                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
+                >
+                  {secondaryLabel}
+                </a>
+              ) : (
+                <a
+                  href={secondaryHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full border border-white/70 px-6 py-3 text-sm font-semibold hover:bg-white/10"
+                >
+                  {secondaryLabel}
+                </a>
+              )}
             </div>
           </div>
           {workflow.disclaimer ? (

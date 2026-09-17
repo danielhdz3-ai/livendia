@@ -1,6 +1,7 @@
 import { AlquilerRegulatoryLocalSection } from "@/components/alquiler-regulatory-local-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { FaqSection } from "@/components/faq-section";
+import { LandingProminentWhatsAppCta } from "@/components/landing-prominent-whatsapp-cta";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { GestorMiniCard } from "@/components/gestor-mini-card";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
@@ -43,9 +44,6 @@ import {
   Wrench,
   MapPin,
 } from "lucide-react";
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 function LocalAdministracionJsonLd({
   path,
@@ -261,20 +259,20 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-4">
+                    <LandingProminentWhatsAppCta
+                      placement={`admin_local_${config.path.split("/").pop() ?? "city"}_hero_wa`}
+                      serviceLabel={`Administración de alquiler en ${config.city}`}
+                      needType="administracion"
+                      city={config.city}
+                      label={`WhatsApp — ${config.city}`}
+                      variant="hero-on-blue"
+                    />
                     <ContratarSlugButton
                       slug="administracion-alquiler"
                       className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50"
                     >
                       Contratar ahora
                     </ContratarSlugButton>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
-                    >
-                      Más información — WhatsApp
-                    </a>
                   </div>
 
                   <LandingTrustBar className="mt-6 text-blue-100" />
@@ -286,14 +284,6 @@ export async function AdministracionAlquilerLocalSeoLanding({
                     >
                       <Phone className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
                       <span>Llamar: {getContactPhoneDisplay()}</span>
-                    </a>
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
-                    >
-                      WhatsApp
                     </a>
                   </div>
                 </div>
@@ -502,18 +492,18 @@ export async function AdministracionAlquilerLocalSeoLanding({
               <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-blue-50">{config.finalCtaLead}</p>
 
               <div className="mt-10 flex flex-wrap justify-center gap-4">
+                <LandingProminentWhatsAppCta
+                  placement={`admin_local_${config.path.split("/").pop() ?? "city"}_final_wa`}
+                  serviceLabel={`Administración de alquiler en ${config.city}`}
+                  needType="administracion"
+                  city={config.city}
+                  label={`WhatsApp — ${config.city}`}
+                  variant="footer-on-blue"
+                />
                 <ContratarSlugButton className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-10 py-5 text-lg font-bold text-[#1E293B] shadow-2xl transition hover:scale-105" slug="administracion-alquiler">
                   <span>Contratar por {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR} €/mes</span>
                   <CheckCircle className="h-6 w-6" aria-hidden />
                 </ContratarSlugButton>
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-white px-10 py-5 text-lg font-semibold hover:bg-white/10"
-                >
-                  WhatsApp — dudas
-                </a>
               </div>
 
               <LandingTrustBar
