@@ -1171,6 +1171,246 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       "Fort Pienc (límite)",
     ],
   },
+
+  "barcelona/born": {
+    rentPricePerSqm:
+      "El Born (Ciutat Vella): 22–26 €/m² en oferta según calle (Idealista/Properfy, 2025–2026). Picos en Passeig del Born y entorno Santa Maria del Mar.",
+    rentPriceSourceNote: "Idealista/Properfy Ciutat Vella y Born, 2025–2026.",
+    dominantHousingType:
+      "Edificios del s. XVIII–XIX con patios interiores, plantas bajas con local comercial y pisos de 60–90 m² reformados. Humedades y ascensores pequeños frecuentes.",
+    tenantProfile: [
+      "Familias consolidadas en el Born",
+      "Profesionales internacionales",
+      "Parejas en pisos reformados cerca del Picasso",
+      "Inquilinos LAU estables en fincas históricas",
+    ],
+    localRegulatoryNote:
+      "El Born (Ciutat Vella) en zona tensionada. IRAV e Incasòl; uso mixto vivienda–local exige contrato claro antes de incidencias.",
+    marketContext:
+      "El Born combina demanda residencial premium y fricción por edificios antiguos: el coste oculto es la mediación continua entre inquilino, comunidad y locales. Livendia documenta humedades, filtra conflictos y aplica protocolo de cobro desde el día 3.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Humedad patio interior",
+        body: "Perito, origen comunitario vs vivienda, presupuesto antes de obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Passeig del Born",
+        body: "Cálculo legal antes de comunicar subida al inquilino.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Ruido local comercial",
+        body: "Mediación según contrato; propietario recibe acta.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Passeig del Born",
+      "Basílica de Santa Maria del Mar",
+      "Museu Picasso",
+      "Mercat de Santa Caterina (límite)",
+      "Parc de la Ciutadella (límite)",
+      "Metro Jaume I (L4)",
+    ],
+  },
+
+  "barcelona/vila-olimpica": {
+    rentPricePerSqm:
+      "Vila Olímpica / Port Olímpic: 25–28 €/m² en oferta (Idealista/Properfy, 2025–2026). Brains Real Estate Sant Martí Q2 2026: ~24 €/m² agregado distrito.",
+    rentPriceSourceNote: "Idealista/Properfy Vila Olímpica, 2025–2026; Brains Sant Martí Q2 2026.",
+    dominantHousingType:
+      "Bloques olímpicos de los 90 (70–100 m²) con terrazas, parking comunitario y trasteros. Climatización individual; ascensores en buen estado.",
+    tenantProfile: [
+      "Familias con vistas al mar",
+      "Profesionales internacionales",
+      "Segunda residencia con inquilino LAU",
+      "Parejas en pisos con terraza Icària",
+    ],
+    localRegulatoryNote:
+      "Vila Olímpica (Sant Martí) en zona tensionada. IRAV e Incasòl en renovaciones; terrazas y parking comunitario generan consultas frecuentes.",
+    marketContext:
+      "La Vila Olímpica atrae perfiles exigentes y uso estacional residual en algunas fincas. Propietarios no residentes delegan para evitar mediación sobre parking, climatización y obras en el paseo marítimo.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Avería climatización verano",
+        body: "Técnico, presupuesto al propietario, plazos al inquilino sin WhatsApp cruzado.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Port Olímpic",
+        body: "Propuesta legal vs referencia Idealista en edificio Icària.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Parking comunitario",
+        body: "Coordinación con administrador de finca y inquilino.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Port Olímpic",
+      "Platja de la Nova Icària",
+      "Parc de la Nova Icària",
+      "Torre Mapfre / Hotel Arts (entorno)",
+      "Metro Ciutadella–Vila Olímpica (L4)",
+      "Poblenou (límite nord)",
+    ],
+  },
+
+  "barcelona/gotic": {
+    rentPricePerSqm:
+      "Barri Gòtic (Ciutat Vella): 22–27 €/m² en oferta según calle (Idealista/Properfy, 2025–2026). Picos en Plaça Reial y entorno Catedral.",
+    rentPriceSourceNote: "Idealista/Properfy Ciutat Vella y Gòtic, 2025–2026.",
+    dominantHousingType:
+      "Fincas medievales y del s. XIX, 50–80 m² sin ascensor, patios interiores y plantas bajas con local. Humedades y escaleras estrechas frecuentes.",
+    tenantProfile: [
+      "Familias en el centro histórico",
+      "Profesionales internacionales",
+      "Parejas en pisos reformados junto a Jaume I",
+      "Inquilinos LAU estables en fincas patrimoniales",
+    ],
+    localRegulatoryNote:
+      "Barri Gòtic (Ciutat Vella) en zona tensionada. IRAV e Incasòl; edificios sin ascensor exigen protocolos de acceso claros.",
+    marketContext:
+      "El Gòtic combina demanda premium y fricción operativa en fincas centenarias. Propietarios no residentes delegan para evitar cerrajería de urgencia y mediación en calles de ocio.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Cerrajería finca sin ascensor",
+        body: "Coordinación de acceso, técnico y acta para el propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Plaça Reial",
+        body: "Cálculo legal antes de comunicar subida.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Queja ruido calle ocio",
+        body: "Mediación documentada con comunidad.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Catedral de Barcelona",
+      "Plaça Reial",
+      "Plaça de Sant Jaume",
+      "Metro Jaume I (L4)",
+      "El Born (límite)",
+      "MACBA / El Raval (límite)",
+    ],
+  },
+
+  "barcelona/barceloneta": {
+    rentPricePerSqm:
+      "La Barceloneta: 24–28 €/m² en oferta (Idealista/Properfy, 2025–2026). Brains Ciutat Vella Q2 2026: ~22 €/m² agregado distrito.",
+    rentPriceSourceNote: "Idealista/Properfy Barceloneta, 2025–2026; Brains Ciutat Vella Q2 2026.",
+    dominantHousingType:
+      "Pisos tradicionales de 45–65 m², orientación mar, terrazas pequeñas. Humedad salina y climatización individual frecuentes.",
+    tenantProfile: [
+      "Familias junto a la platja",
+      "Profesionales internacionales",
+      "Segunda residencia con inquilino LAU",
+      "Parejas en pisos de pescadores reformados",
+    ],
+    localRegulatoryNote:
+      "La Barceloneta (Ciutat Vella) en zona tensionada. IRAV e Incasòl; escrutinio municipal sobre usos turísticos.",
+    marketContext:
+      "La Barceloneta mezcla demanda residencial y presión turística residual. Propietarios delegan cobro e incidencias para evitar gestión estacional directa.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Climatización verano",
+        body: "Técnico, presupuesto al propietario, plazos al inquilino.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Joan de Borbó",
+        body: "Propuesta legal vs referencia Idealista.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Revisión uso contrato",
+        body: "Escalado al propietario si hay incoherencia LAU/temporada.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Platja de la Barceloneta",
+      "Passeig de Joan de Borbó",
+      "Port Vell",
+      "W Hotel (entorno)",
+      "Metro Barceloneta (L4)",
+      "Vila Olímpica (límite)",
+    ],
+  },
+
+  "barcelona/sarria": {
+    rentPricePerSqm:
+      "Sarrià: 28–34 €/m² en oferta (Idealista/Properfy y Brains Q2 2026). Entre los niveles más altos de Barcelona capital.",
+    rentPriceSourceNote: "Idealista/Properfy Sarrià, 2025–2026; Brains Sarrià-Sant Gervasi Q2 2026.",
+    dominantHousingType:
+      "Pisos señoriales 90–140 m² y casas unifamiliares con jardín, parking y portería. Climatización centralizada o individual de calidad.",
+    tenantProfile: [
+      "Familias con colegios internacionales",
+      "Expatriados consolidados",
+      "Propietarios que alquilan casa unifamiliar",
+      "Inquilinos LAU de larga duración",
+    ],
+    localRegulatoryNote:
+      "Sarrià (Sarrià-Sant Gervasi) en zona tensionada. IRAV e Incasòl; fincas premium con parking comunitario.",
+    marketContext:
+      "Sarrià atrae inquilinos exigentes y propietarios que no quieren gestionar incidencias de standing desde fuera del barrio. Livendia centraliza renovaciones IRAV y mantenimiento.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — IRAV Reina Elisenda",
+        body: "Cálculo legal en piso señorial antes de renovar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Jardín casa unifamiliar",
+        body: "Coordinación mantenimiento exterior con presupuesto al propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Parking comunitario",
+        body: "Mediación entre inquilino y administrador de finca.",
+      },
+    ],
+    nearbyLandmarks: [
+      "FGC Reina Elisenda",
+      "Sarrià centre",
+      "Vallvidrera (límite)",
+      "Pedralbes (límite)",
+      "Sant Gervasi (límite)",
+      "Colegios internacionales (entorno)",
+    ],
+  },
+
+  "barcelona/vila-de-gracia": {
+    rentPricePerSqm:
+      "Vila de Gràcia: 24–27 €/m² en oferta (Idealista/Properfy, 2025–2026). Brains Gràcia Q2 2026: ~24–26 €/m² agregado distrito.",
+    rentPriceSourceNote: "Idealista/Properfy Vila de Gràcia, 2025–2026; Brains Gràcia Q2 2026.",
+    dominantHousingType:
+      "Fincas modernistas del s. XX, 70–100 m² con ascensor y terrazas. Plazas con vida comercial intensa (Sol, Virreina).",
+    tenantProfile: [
+      "Familias en la Vila",
+      "Jóvenes profesionales",
+      "Parejas en pisos con terraza",
+      "Inquilinos LAU estables en Gràcia",
+    ],
+    localRegulatoryNote:
+      "Vila de Gràcia (Gràcia) en zona tensionada. IRAV e Incasòl; Festa Major y terrazas generan consultas de convivencia.",
+    marketContext:
+      "La Vila de Gràcia combina demanda estable y fricción por eventos locales y fincas con terrazas. Propietarios no residentes delegan mediación y cobro.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Ruido Festa Major",
+        body: "Mediación documentada; propietario recibe acta.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Plaça del Sol",
+        body: "Referencia por edificio antes de renovar.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Fontanería finca modernista",
+        body: "Técnico, presupuesto y seguimiento sin WhatsApp cruzado.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Plaça del Sol",
+      "Plaça de la Virreina",
+      "Carrer Gran de Gràcia",
+      "Verdi / Verdi Park",
+      "Metro Fontana (L3)",
+      "Joanic (L4)",
+    ],
+  },
 };
 
 export function getMetroEnrichment(segments: readonly string[]): MetroLandingEnrichment | undefined {

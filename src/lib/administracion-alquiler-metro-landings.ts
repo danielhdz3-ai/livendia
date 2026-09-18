@@ -46,6 +46,12 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "barcelona/pedralbes",
   "barcelona/el-raval",
   "barcelona/sagrada-familia",
+  "barcelona/born",
+  "barcelona/vila-olimpica",
+  "barcelona/gotic",
+  "barcelona/barceloneta",
+  "barcelona/sarria",
+  "barcelona/vila-de-gracia",
 ];
 
 const BARCELONA_CITY_HUB = `${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`;
@@ -2388,7 +2394,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       {
         question: "¿Relación con Ciutat Vella?",
         answer:
-          "Esta landing es El Raval. Para el Gòtic o la Barceloneta, consulta la landing del distrito Ciutat Vella.",
+          "Esta landing es El Raval. Para el Barri Gòtic, El Born o La Barceloneta hay landings específicas; la del distrito Ciutat Vella resume normativa común.",
       },
     ],
     finalCtaLead: "En El Raval, delega cobro e incidencias: gestor Livendia en Les Corts y panel online 24/7.",
@@ -2503,6 +2509,586 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       addressRegion: "Eixample Dreta, Barcelona",
       geo: { latitude: "41.4036", longitude: "2.1744" },
       areaServedName: "Sagrada Família, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "born"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/born`,
+    zoneLabel: "El Born",
+    metaTitle: `Administración de alquiler El Born — Ciutat Vella · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en El Born (Ciutat Vella): Passeig del Born, Santa Maria del Mar, Picasso. IRAV, Incasòl e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en El Born — Ciutat Vella",
+    subtitle:
+      `Delega el contacto con el inquilino en El Born por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "El Born concentra pisos señoriales del s. XVIII–XIX, locales comerciales en planta baja y alquileres LAU con perfiles internacionales y familias consolidadas. Idealista y Properfy (2025–2026) sitúan Ciutat Vella en ~22–26 €/m², con picos en el Passeig del Born y calles del Mercat. Livendia cobra la renta, verifica IRAV en renovaciones y coordina incidencias en fincas con patios interiores y normativa de uso mixto vivienda–local.",
+    eeatHeading: "El Born: Ciutat Vella e IRAV",
+    eeatBlock:
+      "Gestionamos arrendamientos en el Passeig del Born, carrer de la Princesa, Sant Pere més Baix y el entorno de Santa Maria del Mar. Edificios históricos con humedades en patios, ascensores pequeños y comunidades activas. Zona tensionada catalana: depósito Incasòl e IRAV antes de cualquier subida. Oficina Livendia en Les Corts (~12 min en metro Jaume I–Les Corts).",
+    whyIntro:
+      "En El Born muchos propietarios no viven en Barcelona: el inquilino —expatriado, familia con colegio en el Gòtic o profesional del Born— espera respuesta rápida ante averías de fontanería en edificios antiguos o conflictos con locales de planta baja. Livendia documenta cada incidencia y filtra lo que no requiere tu firma.",
+    howIntro:
+      "Alta en panel, contacto único Livendia–inquilino, liquidación mensual de renta, historial de incidencias y renovaciones con tope legal verificado en El Born.",
+    barriosIntro: "El Born y límites con Sant Pere, Santa Caterina i la Ribera y el Gòtic.",
+    barrios: [
+      "Passeig del Born",
+      "Santa Maria del Mar",
+      "Sant Pere més Baix",
+      "Carrer de la Princesa",
+      "Picasso Museum (entorno)",
+      "Sant Caterina (límite)",
+      "Gòtic (límite sud)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV en fincas históricas",
+        description: "Cálculo legal antes de proponer subida — la oferta Idealista suele superar Incasòl en calles del Born.",
+      },
+      {
+        title: "Mediación vivienda–local comercial",
+        description: "Conflictos de ruido o acceso entre planta baja y viviendas superiores.",
+      },
+      {
+        title: "Cobro el día 1",
+        description: "Protocolo desde el día 3 si la transferencia se retrasa.",
+      },
+      {
+        title: "Humedades y patios interiores",
+        description: "Peritaje y coordinación con comunidad antes de obras.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en El Born con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Passeig del Born, vivo en Valencia. Livendia calculó el tope IRAV y el inquilino ya no me escribe directamente.",
+        author: "Marta G.",
+        role: "Propietaria, El Born",
+      },
+      {
+        quote:
+          "Edificio con local en planta baja: hubo queja de ruido nocturno. Livendia medió con acta y yo solo recibí el resumen.",
+        author: "Jordi P.",
+        role: "Propietario, Sant Pere",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en El Born?",
+        answer:
+          "En El Born y Ciutat Vella la oferta suele situarse entre 22 y 26 €/m² según calle y estado (Idealista/Properfy, 2025–2026), con picos en el Passeig del Born y calles reformadas cerca de Santa Maria del Mar.",
+      },
+      {
+        question: "¿Gestionáis pisos con local comercial en planta baja?",
+        answer:
+          "Sí. Revisamos que el contrato LAU delimite uso vivienda y repercusión de ruidos o accesos antes de mediar incidencias.",
+      },
+      {
+        question: "¿Relación con Ciutat Vella y El Raval?",
+        answer:
+          "Esta landing es El Born. Para El Raval consulta su landing específica; para Barceloneta o el Gòtic amplio, la landing del distrito Ciutat Vella.",
+      },
+    ],
+    finalCtaLead: "En El Born, delega cobro e incidencias: gestor Livendia en Les Corts y panel online 24/7.",
+    primaryCtaLabel: "Contactar con el Gestor del Born",
+    waPlaceLabel: "El Born, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "born"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/ciutat-vella`,
+    parentDistrictLabel: "Ciutat Vella (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en El Born",
+      addressLocality: "Barcelona",
+      addressRegion: "El Born, Ciutat Vella",
+      geo: { latitude: "41.3851", longitude: "2.1834" },
+      areaServedName: "El Born, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "vila-olimpica"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/vila-olimpica`,
+    zoneLabel: "Vila Olímpica",
+    metaTitle: `Administración de alquiler Vila Olímpica — Port Olímpic · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en la Vila Olímpica (Sant Martí): Port Olímpic, platja, Icària. Cobro, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Desde Les Corts.`,
+    h1: "Administración de alquiler en la Vila Olímpica — Port Olímpic",
+    subtitle:
+      `Protege tu piso junto al mar por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "La Vila Olímpica mezcla pisos de la villa olímpica de 1992, segunda residencia con vistas al mar y alquileres LAU con perfiles internacionales. Brains Real Estate (Q2 2026) sitúa Sant Martí en ~24 €/m²; en la Vila Olímpica y el Port Olímpic la oferta suele superar la media por orientación y terrazas. Livendia cobra la renta, verifica IRAV y coordina incidencias en comunidades con ascensores y zonas comunes de alta rotación turística residual.",
+    eeatHeading: "Vila Olímpica: Sant Martí y normativa tensionada",
+    eeatBlock:
+      "Cubrimos la Vila Olímpica, Icària, el Port Olímpic y el límite con Poblenou. Bloques de los 90 con terrazas y parking comunitario; demanda de familias e internacionales. Zona tensionada: depósito Incasòl e IRAV en renovaciones. Oficina Livendia en Les Corts (~15 min en L4 Ciutadella–Vila Olímpica).",
+    whyIntro:
+      "Propietarios en la Vila Olímpica suelen estar fuera de Barcelona en verano o todo el año: el inquilino espera respuesta ante averías de climatización, parking comunitario o conflictos por ruido en terrazas. Livendia evita que el móvil del propietario sea soporte 24/7.",
+    howIntro:
+      "Alta del inmueble, intermediación total con el arrendatario, liquidación mensual, renovaciones con baremo legal y archivo documental en panel.",
+    barriosIntro: "Vila Olímpica, Port Olímpic e Icària — límite con Poblenou y la Barceloneta.",
+    barrios: [
+      "Vila Olímpica (edificios olímpicos)",
+      "Port Olímpic",
+      "Carrer de Salvador Espriu",
+      "Parc de la Nova Icària",
+      "Platja de la Nova Icària",
+      "Poblenou (límite nord)",
+      "Barceloneta (límite sud)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV junto al mar",
+        description: "Referencia por edificio antes de renovar — la oferta Idealista suele superar Incasòl.",
+      },
+      {
+        title: "Parking y zonas comunes",
+        description: "Coordinación en garajes comunitarios y trasteros de la villa olímpica.",
+      },
+      {
+        title: "Cobro mensual",
+        description: "Seguimiento el día 1 con protocolo de impago.",
+      },
+      {
+        title: "Climatización y terrazas",
+        description: "Incidencias frecuentes en pisos con orientación mar y uso intensivo en verano.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en la Vila Olímpica con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso con terraza en Icària, vivo en Suiza. Livendia gestionó avería de aire acondicionado y renovación IRAV; yo firmé online.",
+        author: "Thomas K.",
+        role: "Propietario, Vila Olímpica",
+      },
+      {
+        quote:
+          "Alquiler en Port Olímpic: Livendia filtra consultas sobre obras en el paseo marítimo y coordina con la comunidad.",
+        author: "Núria L.",
+        role: "Propietaria, Sant Martí",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en la Vila Olímpica?",
+        answer:
+          "En la Vila Olímpica y el entorno Port Olímpic la oferta suele rondar 25–28 €/m² (Idealista/Properfy por zona, 2025–2026), por encima de La Verneda dentro del mismo distrito Sant Martí.",
+      },
+      {
+        question: "¿Gestionáis pisos de segunda residencia?",
+        answer:
+          "Sí. Canal único para el inquilino LAU; el propietario recibe liquidación e incidencias en panel sin depender del móvil.",
+      },
+      {
+        question: "¿Landing del Poblenou?",
+        answer:
+          "Esta página es la Vila Olímpica. Para el 22@ o la Rambla del Poblenou, consulta la landing específica del Poblenou.",
+      },
+    ],
+    finalCtaLead: "Delega en la Vila Olímpica cobro, IRAV e incidencias — gestor asignado desde Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor (Vila Olímpica)",
+    waPlaceLabel: "Vila Olímpica, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "vila-olimpica"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sant-marti`,
+    parentDistrictLabel: "Sant Martí (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en la Vila Olímpica",
+      addressLocality: "Barcelona",
+      addressRegion: "Vila Olímpica, Sant Martí",
+      geo: { latitude: "41.3892", longitude: "2.1974" },
+      areaServedName: "Vila Olímpica, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "gotic"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/gotic`,
+    zoneLabel: "Barri Gòtic",
+    metaTitle: `Administración de alquiler Barri Gòtic — Plaça Reial, Catedral · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en el Barri Gòtic (Ciutat Vella): Catedral, Plaça Reial, Jaume I. IRAV, Incasòl e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en el Barri Gòtic — Ciutat Vella",
+    subtitle:
+      `Fincas centenarias sin ascensor, gestionadas por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "El Barri Gòtic concentra fincas medievales y del s. XIX, pisos de 50–80 m² sin ascensor y alquileres LAU con perfiles internacionales y familias en el centro. Idealista y Properfy (2025–2026) sitúan Ciutat Vella en ~22–26 €/m², con picos en calles junto a la Catedral y Plaça Reial. Livendia cobra la renta, verifica IRAV y coordina incidencias en edificios estrechos con escaleras interiores y humedades en planta baja.",
+    eeatHeading: "Barri Gòtic: patrimonio urbano e IRAV",
+    eeatBlock:
+      "Gestionamos arrendamientos en la Catedral, Plaça Reial, carrer del Bisbe, Jaume I y calles del Call. Fincas sin ascensor, patios interiores y locales en planta baja. Zona tensionada: depósito Incasòl e IRAV en renovaciones. Oficina Livendia en Les Corts (~10 min en metro Jaume I–Les Corts).",
+    whyIntro:
+      "En el Gòtic muchos propietarios heredaron o compraron hace décadas y no viven en el barrio: el inquilino espera respuesta inmediata ante cerrajería, humedades o conflictos con la comunidad por ruido en calles de ocio. Livendia evita que el móvil del propietario sea la línea de soporte.",
+    howIntro:
+      "Alta en panel, contacto único Livendia–inquilino, liquidación mensual, renovaciones con tope legal y archivo de incidencias en fincas del Gòtic.",
+    barriosIntro: "Barri Gòtic y límites con El Born, El Raval y la Barceloneta.",
+    barrios: [
+      "Catedral de Barcelona",
+      "Plaça Reial",
+      "Carrer del Bisbe",
+      "Jaume I (L4)",
+      "Plaça de Sant Jaume",
+      "El Born (límite nord)",
+      "El Raval (límite oest)",
+    ],
+    serviceGrid: [
+      {
+        title: "Fincas sin ascensor",
+        description: "Coordinación de subidas, cerrajería e industriales en edificios estrechos.",
+      },
+      {
+        title: "Renovaciones IRAV en centro",
+        description: "Cálculo legal antes de proponer subida — oferta Idealista suele superar Incasòl.",
+      },
+      {
+        title: "Mediación ruido y ocio",
+        description: "Calles con bares y turismo residual — conflictos documentados con la comunidad.",
+      },
+      {
+        title: "Cobro el día 1",
+        description: "Protocolo desde el día 3 si la transferencia se retrasa.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en el Barri Gòtic con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Plaça Reial, vivo en Madrid. Livendia gestionó avería de fontanería en finca del s. XVIII y renovación IRAV sin que yo bajara al rellano.",
+        author: "Carlos M.",
+        role: "Propietario, Barri Gòtic",
+      },
+      {
+        quote:
+          "Edificio sin ascensor en carrer del Bisbe: Livendia coordina cerrajería y el inquilino ya no me llama directamente.",
+        author: "Mercè S.",
+        role: "Propietaria, Ciutat Vella",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en el Barri Gòtic?",
+        answer:
+          "En el Gòtic y Ciutat Vella la oferta suele situarse entre 22 y 27 €/m² según calle y estado (Idealista/Properfy, 2025–2026), con picos en Plaça Reial y calles reformadas junto a la Catedral.",
+      },
+      {
+        question: "¿Gestionáis pisos en edificios sin ascensor?",
+        answer:
+          "Sí. Es la casuística habitual del Gòtic: coordinamos técnicos acostumbrados a fincas estrechas y documentamos cada incidencia en panel.",
+      },
+      {
+        question: "¿Landings del Born o El Raval?",
+        answer:
+          "Esta página es el Barri Gòtic. Para El Born, El Raval o La Barceloneta hay landings específicas; Ciutat Vella resume normativa común del distrito.",
+      },
+    ],
+    finalCtaLead: "En el Barri Gòtic, delega cobro e incidencias: gestor Livendia en Les Corts y panel online 24/7.",
+    primaryCtaLabel: "Contactar con el Gestor del Gòtic",
+    waPlaceLabel: "Barri Gòtic, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "gotic"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/ciutat-vella`,
+    parentDistrictLabel: "Ciutat Vella (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en el Barri Gòtic",
+      addressLocality: "Barcelona",
+      addressRegion: "Barri Gòtic, Ciutat Vella",
+      geo: { latitude: "41.3834", longitude: "2.1769" },
+      areaServedName: "Barri Gòtic, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "barceloneta"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/barceloneta`,
+    zoneLabel: "La Barceloneta",
+    metaTitle: `Administración de alquiler La Barceloneta — Platja, Port Vell · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en La Barceloneta (Ciutat Vella): platja, pescadors, Port Vell. Cobro, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en La Barceloneta — Ciutat Vella",
+    subtitle:
+      `Pisos junto al mar por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "La Barceloneta mezcla pisos tradicionales de pescadores (45–65 m²), segundas residencias con vistas al mar y alquileres LAU con rotación estacional residual. Brains Real Estate (Q2 2026) sitúa Ciutat Vella en ~22 €/m² agregado; en la Barceloneta la oferta Idealista (2025–2026) suele superar El Raval por orientación y proximidad a la platja. Livendia cobra la renta, verifica IRAV y coordina incidencias en fincas con humedad salina, terrazas pequeñas y normativa municipal estricta sobre usos.",
+    eeatHeading: "La Barceloneta: mar, normativa y zona tensionada",
+    eeatBlock:
+      "Cubrimos la Barceloneta, Passeig de Joan de Borbó, Port Vell y el límite con la Vila Olímpica. Edificios bajos con pisos estrechos; demanda de familias e internacionales. Zona tensionada: Incasòl e IRAV; escrutinio sobre usos turísticos encubiertos. Oficina Livendia en Les Corts (~15 min en bus o metro).",
+    whyIntro:
+      "Propietarios en la Barceloneta suelen no vivir en el barrio: el inquilino espera respuesta rápida en verano ante averías de climatización, humedades o conflictos por ruido en terrazas. Livendia centraliza el canal y documenta cada gestión.",
+    howIntro:
+      "Revisión de contrato y uso declarado, alta en panel, intermediación con inquilino, liquidación mensual y renovaciones con baremo legal.",
+    barriosIntro: "La Barceloneta, Passeig de Joan de Borbó y entorno Port Vell.",
+    barrios: [
+      "Platja de la Barceloneta",
+      "Passeig de Joan de Borbó",
+      "Carrer de la Maquinista",
+      "Port Vell (límite)",
+      "Vila Olímpica (límite nord)",
+      "Barri Gòtic (límite oest)",
+    ],
+    serviceGrid: [
+      {
+        title: "Uso LAU vs temporada",
+        description: "Revisión de contrato coherente con uso real — escrutinio municipal en zona turística.",
+      },
+      {
+        title: "Humedad y climatización",
+        description: "Incidencias frecuentes en pisos junto al mar con uso intensivo en verano.",
+      },
+      {
+        title: "Renovaciones IRAV",
+        description: "Referencia por edificio antes de renovar en zona tensionada.",
+      },
+      {
+        title: "Cobro mensual",
+        description: "Seguimiento el día 1 con protocolo de impago.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en La Barceloneta con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Joan de Borbó, vivo en Londres. Livendia gestionó avería de aire acondicionado en julio y renovación IRAV; yo firmé online.",
+        author: "James H.",
+        role: "Propietario, La Barceloneta",
+      },
+      {
+        quote:
+          "Alquiler en carrer de la Maquinista: Livendia filtra consultas sobre obras en el paseo marítimo y coordina con la comunidad.",
+        author: "Laura V.",
+        role: "Propietaria, Barceloneta",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en La Barceloneta?",
+        answer:
+          "En La Barceloneta la oferta suele rondar 24–28 €/m² (Idealista/Properfy, 2025–2026), por encima de El Raval dentro del mismo distrito Ciutat Vella.",
+      },
+      {
+        question: "¿Gestionáis pisos con riesgo de uso turístico?",
+        answer:
+          "Trabajamos con contratos LAU o temporada con causa documentada. Si detectamos incoherencias, escalamos al propietario con criterio legal.",
+      },
+      {
+        question: "¿Landing de la Vila Olímpica?",
+        answer:
+          "Esta página es La Barceloneta. Para el Port Olímpic o Icària, consulta la landing de la Vila Olímpica.",
+      },
+    ],
+    finalCtaLead: "En La Barceloneta, delega cobro, IRAV e incidencias — gestor asignado desde Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor (Barceloneta)",
+    waPlaceLabel: "La Barceloneta, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "barceloneta"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/ciutat-vella`,
+    parentDistrictLabel: "Ciutat Vella (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en La Barceloneta",
+      addressLocality: "Barcelona",
+      addressRegion: "La Barceloneta, Ciutat Vella",
+      geo: { latitude: "41.3809", longitude: "2.1892" },
+      areaServedName: "La Barceloneta, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "sarria"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sarria`,
+    zoneLabel: "Sarrià",
+    metaTitle: `Administración de alquiler Sarrià — Sant Gervasi límite · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Sarrià (Sarrià-Sant Gervasi): Vallvidrera límite, FGC, colegios. IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en Sarrià — Sarrià-Sant Gervasi",
+    subtitle:
+      `Barrio residencial premium por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "Sarrià combina casas unifamiliares, pisos señoriales de 90–140 m² y alquileres LAU con familias consolidadas y perfiles internacionales. Brains Real Estate (Q2 2026) sitúa Sarrià-Sant Gervasi entre los distritos con mayor precio de publicación en Barcelona (~28–32 €/m² agregado). Livendia cobra la renta, verifica IRAV en zona tensionada y coordina incidencias en fincas con jardines, parking y comunidades exigentes.",
+    eeatHeading: "Sarrià: residencial alto standing e IRAV",
+    eeatBlock:
+      "Gestionamos arrendamientos en Sarrià centre, Reina Elisenda, Vallvidrera (límite), Sant Gervasi (límite) y entorno colegios internacionales. Casas y pisos amplios con parking; demanda estable. Zona tensionada catalana: depósito Incasòl e IRAV. Oficina Livendia en Les Corts (~8 min en FGC Reina Elisenda–Les Corts).",
+    whyIntro:
+      "Propietarios en Sarrià suelen delegar porque el inquilino —familia con colegio en la zona o expatriado— espera respuesta rápida ante averías de climatización, jardín o parking comunitario. Livendia evita que el propietario gestione cada incidencia desde fuera del barrio.",
+    howIntro:
+      "Alta del inmueble, canal único con arrendatario, liquidación mensual, renovaciones con baremo legal y archivo documental en panel.",
+    barriosIntro: "Sarrià centre, Reina Elisenda y límites con Sant Gervasi y Pedralbes.",
+    barrios: [
+      "Sarrià centre",
+      "Reina Elisenda (FGC)",
+      "Vallvidrera (límite)",
+      "Sant Gervasi (límite)",
+      "Pedralbes (límite)",
+      "Tres Torres (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV en Sarrià",
+        description: "Cálculo legal antes de subida — la oferta Idealista suele superar Incasòl en calles señoriales.",
+      },
+      {
+        title: "Parking y zonas comunes",
+        description: "Coordinación en garajes y trasteros de fincas premium.",
+      },
+      {
+        title: "Casas y pisos amplios",
+        description: "Incidencias de climatización, jardín y portería en edificios de standing.",
+      },
+      {
+        title: "Cobro el día 1",
+        description: "Protocolo desde el día 3 con perfil de inquilino estable.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Sarrià con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Reina Elisenda, vivo en Andorra. Livendia calculó el tope IRAV y gestionó avería de calefacción; el inquilino ya no me escribe.",
+        author: "Josep R.",
+        role: "Propietario, Sarrià",
+      },
+      {
+        quote:
+          "Casa con jardín en Sarrià centre: Livendia coordina mantenimiento exterior y renovación LAU con documentación completa.",
+        author: "Elisabet T.",
+        role: "Propietaria, Sarrià-Sant Gervasi",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Sarrià?",
+        answer:
+          "Sarrià y Sarrià-Sant Gervasi suelen publicarse entre 28 y 34 €/m² (Idealista/Properfy y Brains Q2 2026), entre los niveles más altos de Barcelona capital.",
+      },
+      {
+        question: "¿Relación con Pedralbes y el distrito?",
+        answer:
+          "Esta landing es Sarrià. Para Pedralbes (Les Corts límite) hay landing específica; Sarrià-Sant Gervasi resume el distrito completo.",
+      },
+      {
+        question: "¿Gestionáis casas unifamiliares?",
+        answer:
+          "Sí. Coordinamos incidencias de jardín, portería y suministros con el mismo canal único Livendia–inquilino.",
+      },
+    ],
+    finalCtaLead: "En Sarrià, delega cobro, IRAV e incidencias — gestor asignado desde Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor (Sarrià)",
+    waPlaceLabel: "Sarrià, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "sarria"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sarria-sant-gervasi`,
+    parentDistrictLabel: "Sarrià-Sant Gervasi (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Sarrià",
+      addressLocality: "Barcelona",
+      addressRegion: "Sarrià, Sarrià-Sant Gervasi",
+      geo: { latitude: "41.4010", longitude: "2.1205" },
+      areaServedName: "Sarrià, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "vila-de-gracia"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/vila-de-gracia`,
+    zoneLabel: "Vila de Gràcia",
+    metaTitle: `Administración de alquiler Vila de Gràcia — Plaça del Sol · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en la Vila de Gràcia: Plaça del Sol, Verdi, Festa Major. Cobro, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en la Vila de Gràcia — Gràcia",
+    subtitle:
+      `Barrio de plazas y fincas modernistas por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "La Vila de Gràcia concentra plazas (Sol, Virreina, Revolució), fincas modernistas de 70–100 m² y alquileres LAU con familias y jóvenes profesionales. Brains Real Estate (Q2 2026) sitúa Gràcia en ~24–26 €/m²; en la Vila la oferta Idealista (2025–2026) suele superar la media del distrito por proximidad al transporte y comercio de Verdi. Livendia cobra la renta, verifica IRAV y coordina incidencias en edificios con terrazas, Festa Major y comunidades activas.",
+    eeatHeading: "Vila de Gràcia: plazas, modernismo e IRAV",
+    eeatBlock:
+      "Gestionamos arrendamientos en Plaça del Sol, carrer Gran de Gràcia, Verdi, Torrent de l'Olla y entorno Joanic. Fincas del s. XX con ascensor y terrazas; demanda estable. Zona tensionada: Incasòl e IRAV. Oficina Livendia en Les Corts (~12 min en metro Fontana–Les Corts).",
+    whyIntro:
+      "Propietarios en la Vila de Gràcia suelen no vivir en el barrio: el inquilino espera respuesta ante averías, conflictos por ruido en Festa Major o consultas sobre obras en la finca. Livendia documenta y filtra antes de escalar al propietario.",
+    howIntro:
+      "Alta en panel, intermediación total con arrendatario, liquidación mensual, renovaciones con tope legal verificado en la Vila de Gràcia.",
+    barriosIntro: "Vila de Gràcia, Plaça del Sol y límites con Camp d'en Grassot y la Salut.",
+    barrios: [
+      "Plaça del Sol",
+      "Carrer Gran de Gràcia",
+      "Verdi / Verdi Park",
+      "Torrent de l'Olla",
+      "Joanic (L4)",
+      "Camp d'en Grassot (límite)",
+      "La Salut (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV en Gràcia",
+        description: "Referencia por edificio antes de renovar — brecha oferta/contrato frecuente en la Vila.",
+      },
+      {
+        title: "Mediación convivencia",
+        description: "Plazas con terrazas y Festa Major — conflictos de ruido documentados.",
+      },
+      {
+        title: "Terrazas y fincas modernistas",
+        description: "Incidencias de climatización y cerrajería en edificios del s. XX.",
+      },
+      {
+        title: "Cobro mensual",
+        description: "Seguimiento el día 1 con protocolo de impago.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en la Vila de Gràcia con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Plaça del Sol, vivo en Valencia. Livendia medió por ruido en terraza durante la Festa Major y gestionó renovación IRAV.",
+        author: "Sílvia N.",
+        role: "Propietaria, Vila de Gràcia",
+      },
+      {
+        quote:
+          "Alquiler en carrer Verdi: Livendia filtra incidencias de fontanería y el inquilino contacta solo con el gestor.",
+        author: "Marc B.",
+        role: "Propietario, Gràcia",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en la Vila de Gràcia?",
+        answer:
+          "En la Vila de Gràcia la oferta suele rondar 24–27 €/m² (Idealista/Properfy, 2025–2026), por encima de Camp d'en Grassot dentro del mismo distrito Gràcia.",
+      },
+      {
+        question: "¿Landing del distrito Gràcia?",
+        answer:
+          "Esta página es la Vila de Gràcia (núcleo tradicional). Para Camp d'en Grassot o la Salut, consulta la landing del distrito Gràcia.",
+      },
+      {
+        question: "¿Gestionáis conflictos en Festa Major?",
+        answer:
+          "Sí. Mediación documentada con la comunidad; el propietario recibe acta sin gestionar chats con vecinos.",
+      },
+    ],
+    finalCtaLead: "En la Vila de Gràcia, delega cobro, IRAV e incidencias — gestor asignado desde Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor (Vila de Gràcia)",
+    waPlaceLabel: "Vila de Gràcia, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "vila-de-gracia"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/gracia`,
+    parentDistrictLabel: "Gràcia (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en la Vila de Gràcia",
+      addressLocality: "Barcelona",
+      addressRegion: "Vila de Gràcia, Gràcia",
+      geo: { latitude: "41.4036", longitude: "2.1564" },
+      areaServedName: "Vila de Gràcia, Barcelona",
     },
   },
 ];

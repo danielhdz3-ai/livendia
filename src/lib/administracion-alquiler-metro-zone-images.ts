@@ -40,4 +40,10 @@ export const METRO_BARCELONA_HERO_BY_SEGMENT_KEY: Record<string, string> = {
   "barcelona/pedralbes": metroBarcelonaZoneImage("barcelona2.jpg"),
   "barcelona/el-raval": metroBarcelonaZoneImage("rabal.jpg"),
   "barcelona/sagrada-familia": metroBarcelonaZoneImage("sagradafamilia.jpg"),
+  "barcelona/born": metroBarcelonaZoneImage("ciutatvella.jpg"),
+  "barcelona/vila-olimpica": metroBarcelonaZoneImage("santmarti.jpg"),
+  "barcelona/gotic": metroBarcelonaZoneImage("ciutatvella.jpg"),
+  "barcelona/barceloneta": metroBarcelonaZoneImage("barcelona.jpg"),
+  "barcelona/sarria": metroBarcelonaZoneImage("santgervasi2.jpg"),
+  "barcelona/vila-de-gracia": metroBarcelonaZoneImage("gracia2.jpg"),
 };

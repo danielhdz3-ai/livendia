@@ -15,7 +15,7 @@ export const BLOG_LOCAL_LANDING_HUB_PATHS = [
   { id: "contrato-habitacion", title: "Contrato alquiler habitación por ciudad", hub: "/servicios/contrato-alquiler-habitacion" },
   { id: "contrato-arras", title: "Contrato de arras por ciudad", hub: "/servicios/contrato-arras-local" },
   { id: "admin-alquiler", title: "Administración de alquiler por ciudad", hub: "/servicios/administracion-alquiler-local" },
-  { id: "admin-alquiler-metro", title: "Administración alquiler — AMB Barcelona", hub: "/administracion-alquiler/barcelona" },
+  { id: "admin-alquiler-metro", title: "Administración alquiler — AMB Barcelona", hub: "/servicios/administracion-alquiler-local/barcelona" },
   { id: "admin-temporada", title: "Admin. temporada / habitaciones por ciudad", hub: "/servicios/administracion-alquiler-temporada-local" },
   { id: "contrato-temporada", title: "Contrato alquiler temporada por ciudad", hub: "/servicios/contrato-alquiler-temporada-local" },
   { id: "pack-lau-admin", title: "Pack LAU + administración por ciudad", hub: "/servicios/pack-contrato-lau-administracion-alquiler" },
