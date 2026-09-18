@@ -115,7 +115,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   {
     question: `¿Qué incluye exactamente la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
     answer:
-      `Incluye la gestión integral de alquiler de larga duración (LAU): cobranza mensual de la renta, atención e intermediación de incidencias con el inquilino, gestión de fianzas en INCASÒL, cambios de titularidad de suministros y seguimiento de renovaciones en zona tensionada. Tú no hablas con el arrendatario: Livendia es el único canal.`,
+      `Incluye, en un mismo módulo de administración: cobro y reclamación de la renta, incidencias y consultas del inquilino, siniestros con la aseguradora (continente y contenido), reparaciones con industriales si no cubre el seguro, actualización anual de renta según índice legal, renovación del contrato, formalización de altas/bajas/rescisiones, y comunicados relevantes de la comunidad. Fuera de Barcelona el trámite es 100% online; en Barcelona/AMB también puedes acudir a Les Corts. Tú no hablas con el arrendatario: Livendia es el único canal.`,
   },
   {
     question: "¿Existe compromiso de permanencia?",

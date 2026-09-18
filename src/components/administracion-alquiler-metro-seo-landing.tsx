@@ -11,6 +11,7 @@ import { ServiceGestorPlatformSection } from "@/components/service-gestor-platfo
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { SiteFooter } from "@/components/site-footer";
 import { MetroLocalMarketSection } from "@/components/metro-local-market-section";
+import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import {
   mergeMetroFaq,
   type AdministracionAlquilerMetroLanding,
@@ -354,6 +355,8 @@ export function AdministracionAlquilerMetroSeoLanding({
               </ul>
             </div>
           </section>
+
+          <AdministracionAlquilerOperationsScopeSection variant="barcelona-area" cityLabel={config.zoneLabel} />
 
           {/* EEAT local */}
           <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6" aria-labelledby="eeat-heading">

@@ -28,6 +28,7 @@ import {
 } from "@/lib/administracion-alquiler-local-regulatory";
 import { AdministracionAlquilerLocalRelatedServices } from "@/components/administracion-alquiler-local-related-services";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
+import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import { ADMINISTRACION_ALQUILER_BARCELONA_CITY_HUB } from "@/lib/administracion-alquiler-barcelona-metro";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import Image from "next/image";
@@ -335,6 +336,11 @@ export async function AdministracionAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <AdministracionAlquilerOperationsScopeSection
+            variant={slug === "barcelona" ? "barcelona-area" : "local-outside-barcelona"}
+            cityLabel={config.city}
+          />
 
           {config.barrios?.length ? (
             <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
