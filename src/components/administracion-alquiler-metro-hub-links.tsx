@@ -23,6 +23,7 @@ export function AdministracionAlquilerMetroHubLinks({ showTitle = true, variant 
     isAdministracionAlquilerMetroSegmentPublished(l.segments),
   );
   const barrios = published.filter((l) => l.kind === "barrio");
+  const subbarrios = published.filter((l) => l.kind === "subbarrio");
   const municipios = published.filter((l) => l.kind === "municipio");
 
   return (
@@ -43,8 +44,8 @@ export function AdministracionAlquilerMetroHubLinks({ showTitle = true, variant 
       ) : null}
 
       <div className="space-y-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">Barrios de Barcelona</p>
-        <nav aria-label="Administración de alquiler por barrio en Barcelona" className="flex flex-wrap gap-2">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">Distritos de Barcelona</p>
+        <nav aria-label="Administración de alquiler por distrito en Barcelona" className="flex flex-wrap gap-2">
           {barrios.map((l) => (
             <Link key={l.slug} href={administracionAlquilerMetroHref(l.segments)} className={linkClass}>
               {l.shortName}
@@ -52,6 +53,19 @@ export function AdministracionAlquilerMetroHubLinks({ showTitle = true, variant 
           ))}
         </nav>
       </div>
+
+      {subbarrios.length > 0 ? (
+        <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">Barrios destacados</p>
+          <nav aria-label="Administración de alquiler por barrio en Barcelona" className="flex flex-wrap gap-2">
+            {subbarrios.map((l) => (
+              <Link key={l.slug} href={administracionAlquilerMetroHref(l.segments)} className={linkClass}>
+                {l.shortName}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      ) : null}
 
       <div className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">Municipios del área metropolitana</p>

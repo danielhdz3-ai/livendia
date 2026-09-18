@@ -4,9 +4,10 @@ import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquile
 /**
  * Jerarquía URL — landings hiperlocales administración de alquiler (área metropolitana Barcelona).
  *
- * Dos formas intencionadas (no compiten entre sí):
- * 1. Barrios/distritos DENTRO de Barcelona ciudad → /administracion-alquiler/barcelona/{barrio}
- * 2. Municipios independientes del AMB → /administracion-alquiler/{municipio}
+ * Tres niveles intencionados (no compiten entre sí):
+ * 1. Distritos oficiales de Barcelona → /administracion-alquiler/barcelona/{distrito}
+ * 2. Barrios finos dentro de la ciudad → /administracion-alquiler/barcelona/{barrio} (p. ej. Poblenou, Pedralbes)
+ * 3. Municipios independientes del AMB → /administracion-alquiler/{municipio}
  *
  * Página madre SEO (ciudad): /servicios/administracion-alquiler-local/barcelona
  * Las landings de barrio/municipio canonicalizan a sí mismas; enlazan hacia la madre con ancla explícita.
@@ -83,6 +84,34 @@ export const ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS = [
     name: "Sant Andreu, Barcelona",
     shortName: "Sant Andreu",
     kind: "barrio" as const,
+  },
+  {
+    slug: "poblenou",
+    segments: ["barcelona", "poblenou"] as const,
+    name: "Poblenou, Barcelona",
+    shortName: "Poblenou",
+    kind: "subbarrio" as const,
+  },
+  {
+    slug: "pedralbes",
+    segments: ["barcelona", "pedralbes"] as const,
+    name: "Pedralbes, Barcelona",
+    shortName: "Pedralbes",
+    kind: "subbarrio" as const,
+  },
+  {
+    slug: "el-raval",
+    segments: ["barcelona", "el-raval"] as const,
+    name: "El Raval, Barcelona",
+    shortName: "El Raval",
+    kind: "subbarrio" as const,
+  },
+  {
+    slug: "sagrada-familia",
+    segments: ["barcelona", "sagrada-familia"] as const,
+    name: "Sagrada Família (Eixample), Barcelona",
+    shortName: "Sagrada Família",
+    kind: "subbarrio" as const,
   },
   {
     slug: "l-hospitalet",

@@ -36,4 +36,8 @@ export const METRO_BARCELONA_HERO_BY_SEGMENT_KEY: Record<string, string> = {
   "mollet-del-valles": metroBarcelonaZoneImage("barcelona2.jpg"),
   "sant-cugat": metroBarcelonaZoneImage("pexels-albaladejoart-15978608.jpg"),
   badalona: metroBarcelonaZoneImage("barcelona2.jpg"),
+  "barcelona/poblenou": metroBarcelonaZoneImage("poblenou.jpg"),
+  "barcelona/pedralbes": metroBarcelonaZoneImage("barcelona2.jpg"),
+  "barcelona/el-raval": metroBarcelonaZoneImage("rabal.jpg"),
+  "barcelona/sagrada-familia": metroBarcelonaZoneImage("sagradafamilia.jpg"),
 };

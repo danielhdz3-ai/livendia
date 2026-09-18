@@ -24,6 +24,10 @@ export const ADMINISTRACION_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = 
   "zaragoza",
   "murcia",
   "bilbao",
+  "granada",
+  "alicante",
+  "vigo",
+  "pamplona",
 ];
 
 export function isAdministracionAlquilerLocalSlugPublished(slug: string): boolean {
@@ -209,7 +213,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       {
         question: "¿Tenéis administración de alquiler por barrio en Barcelona?",
         answer:
-          "Sí. Además de esta página de Barcelona capital, hay landings hiperlocales bajo /administracion-alquiler/ en los diez distritos de Barcelona, L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Cugat y Badalona — cada una con barrios, precios de referencia y situaciones operativas ilustrativas.",
+          "Sí. Además de esta página de Barcelona capital, hay landings hiperlocales bajo /administracion-alquiler/ en los diez distritos, barrios finos como Poblenou, Pedralbes, El Raval o la Sagrada Família, y municipios del AMB (L'Hospitalet, Cornellà, Esplugues, Sant Joan Despí, Sant Adrià, Castelldefels, Sant Cugat, Badalona) — cada una con precios de referencia y casos operativos propios.",
       },
     ],
     testimonialsTitle: "Propietarias y propietarios en Barcelona ya descansaron del día a día con Livendia",
@@ -817,5 +821,261 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     ],
     finalCtaLead:
       "Contrata administración profesional en Bilbao desde 59 €/mes sin permanencia: panel online, WhatsApp profesional y gestor colegiado.",
+  },
+  {
+    slug: "granada",
+    city: "Granada",
+    schemaAdministrativeArea: "Andalucía",
+    heroImage: "/images/tipo2.jpg",
+    heroBadge: "Gestión de alquileres LAU · Granada y entorno UGR",
+    heroH1: "Administración de alquiler en Granada para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Administración de alquiler en Granada para propietarios",
+    heroLead:
+      "Granada mezcla casco histórico UNESCO, pisos compartidos de la UGR y familias en Zaidín con un precio medio de alquiler de 12,2 €/m² según Idealista (julio de 2026). Esa combinación multiplica rotación en Cartuja y Realejo, dudas sobre humedades en edificios antiguos del Albaicín y llamadas del inquilino que no entienden de horario lectivo. Livendia es vuestro único interlocutor ante el arrendatario: filtramos urgencias, coordinamos técnicos y solo os avisamos cuando hace falta vuestra firma.",
+    whyIntro:
+      "La Junta de Andalucía no ha declarado Granada zona de mercado residencial tensionado, pero el mercado local no es menos exigente: en el Albaicín y Realejo las averías de comunidad chocan con normativa de patrimonio; en Zaidín y Cartuja la rotación universitaria concentra incidencias en las dos primeras semanas tras cada entrada. Propietarios que viven fuera de Granada —Madrid, Barcelona o el extranjero— suelen delegar porque el WhatsApp personal se convierte en línea de averías 24/7.",
+    howIntro:
+      "Alta del arrendamiento en panel, canal único con el inquilino, resolución de averías con proveedores de confianza y resumen periódico de lo relevante — con refuerzo documental en edificios históricos (fotos de humedades preexistentes) y seguimiento de renovaciones en distritos con más rotación, como Cartuja o el Centro.",
+    barriosIntro:
+      "Administramos alquileres en los barrios donde más conviven turismo residencial, estudiantes UGR y familias consolidadas.",
+    barrios: [
+      "Albaicín",
+      "Realejo",
+      "Centro",
+      "Zaidín",
+      "Cartuja",
+      "Ronda",
+      "Chana",
+      "Genil",
+      "La Chana",
+      "Armilla",
+      "Maracena",
+    ],
+    faq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Granada?",
+        answer:
+          "Según Idealista (julio de 2026), el precio medio ronda los 12,2 €/m², con rangos más altos en Albaicín y Centro y más contenidos en Zaidín o periferia como Armilla.",
+      },
+      {
+        question: "¿Está Granada declarada zona tensionada?",
+        answer:
+          "No. La Junta de Andalucía no ha declarado Granada zona de mercado residencial tensionado; las renovaciones se rigen por la LAU general, sin los límites adicionales de actualización de renta de zonas declaradas tensionadas.",
+      },
+      {
+        question: "¿Gestionáis pisos compartidos cerca de la UGR?",
+        answer:
+          "Sí. Canalizamos incidencias de convivencia, averías comunes y entregas de llaves en Cartuja, Zaidín o Realejo; el contrato LAU inicial lo podéis encargar aparte si hace falta redactarlo.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Granada que delegaron el día a día del alquiler en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Realejo con humedad recurrente en patio interior. Antes el inquilino me llamaba directamente los fines de semana; Livendia documenta cada visita del fontanero y me resume solo lo que requiere autorizar gasto.",
+        author: "Carmen D.",
+        role: "Propietaria, Realejo",
+      },
+      {
+        quote:
+          "Varias habitaciones en Cartuja: cada septiembre hay cambio de inquilinos. Livendia coordina entradas, inventarios y filtra consultas menores para que yo no gestione cinco WhatsApp a la vez.",
+        author: "Héctor M.",
+        role: "Propietario, Cartuja (piso compartido UGR)",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Granada desde 59 €/mes sin permanencia: mismo checkout Stripe, panel online y WhatsApp que el servicio nacional de Livendia.",
+  },
+  {
+    slug: "alicante",
+    city: "Alicante",
+    schemaAdministrativeArea: "Comunidad Valenciana",
+    heroImage: "/images/contratos2.jpg",
+    heroBadge: "Gestión de alquileres · Alicante y l'Alacantí",
+    heroH1: "Gestión de alquileres en Alicante para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Gestión de alquileres en Alicante para propietarios",
+    heroLead:
+      "Alicante capital combina alquiler anual, teletrabajadores europeos y demanda universitaria con un precio medio de 13,1 €/m² según Idealista (agosto de 2026). En Playa de San Juan, el Centro o San Vicente del Raspeig las incidencias de terraza, comunidad y suministros se acumulan justo cuando vosotros no estáis en la ciudad. Livendia centraliza el contacto con el inquilino y os informa solo de pagos, renovaciones o decisiones que requieran vuestra aprobación.",
+    whyIntro:
+      "Alicante no está declarada zona de mercado residencial tensionado, pero la mezcla costa–campus obliga a distinguir LAU habitual de estancias de meses mal documentadas. Propietarios con piso en Carolinas Altas, Benalúa o Albufereta comparten el mismo problema operativo: averías en edificios del s. XX, dudas sobre quién paga la comunidad y llamadas fuera de horario. Si vivís fuera de la provincia, un gestor único ante el arrendatario evita que cada incidencia dependa de un vecino de confianza.",
+    howIntro:
+      "Onboarding con datos del inmueble y del inquilino, intermediación como único canal de contacto, coordinación de incidencias con trazabilidad y avisos cuando hace falta vuestra firma — con atención extra en las dos primeras semanas tras cada cambio de inquilino en zonas de rotación como Playa de San Juan o el entorno de la UA.",
+    barriosIntro:
+      "Cubrimos administración de alquiler en barrios de la capital y municipios limítrofes con demanda estable.",
+    barrios: [
+      "Centro",
+      "Playa de San Juan",
+      "Carolinas Altas",
+      "San Blas",
+      "Benalúa",
+      "Albufereta",
+      "San Gabriel",
+      "San Vicente del Raspeig",
+      "Muchamiel",
+      "El Campello",
+      "San Juan de Alicante",
+    ],
+    faq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Alicante?",
+        answer:
+          "Según Idealista (agosto de 2026), el precio medio ronda los 13,1 €/m², con picos en Centro y primera línea de playa y rangos más moderados en San Blas o zonas periféricas.",
+      },
+      {
+        question: "¿Está Alicante en zona tensionada?",
+        answer:
+          "No. Alicante capital no figura como zona de mercado residencial tensionado; el contrato se rige por la LAU general, sin los límites adicionales de actualización de renta de zonas declaradas tensionadas.",
+      },
+      {
+        question: "¿Administráis pisos en Playa de San Juan todo el año?",
+        answer:
+          "Sí. Gestionamos incidencias, comunicación con el inquilino y coordinación con la comunidad tanto en vivienda habitual como en segundas residencias alquiladas de forma continuada.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Alicante que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Apartamento en Playa de San Juan alquilado todo el año. Livendia explicó al inquilino el protocolo de terraza y filtraciones sin que yo volara desde Madrid cada vez que llovía fuerte.",
+        author: "Rosa C.",
+        role: "Propietaria, Playa de San Juan",
+      },
+      {
+        quote:
+          "Piso en Carolinas Altas con ascensor antiguo. Cuando falló, Livendia coordinó con la comunidad y el técnico; yo solo recibí un resumen con presupuesto para autorizar.",
+        author: "David N.",
+        role: "Propietario, Carolinas Altas",
+      },
+    ],
+    finalCtaLead:
+      "Activa administración profesional Livendia en Alicante desde 59 €/mes sin permanencia: gestor colegiado, panel online y WhatsApp profesional.",
+  },
+  {
+    slug: "vigo",
+    city: "Vigo",
+    schemaAdministrativeArea: "Galicia",
+    heroImage: "/images/vigo.jpg",
+    heroBadge: "Administración de alquiler · Vigo y área metropolitana",
+    heroH1: "Administración de alquiler en Vigo para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Administración de alquiler en Vigo para propietarios",
+    heroLead:
+      "Vigo es el mayor núcleo del sur de Galicia: precio medio de alquiler de 11,3 €/m² según Idealista (agosto de 2026), demanda portuaria y universitaria, y edificios costeros donde la humedad aparece en el primer invierno. Propietarios en Bouzas, Coia o el Centro reciben llamadas sobre calderas comunitarias, filtraciones y vecinos sin saber si corresponde al inquilino o a la comunidad. Livendia asume la intermediación completa ante el arrendatario.",
+    whyIntro:
+      "Galicia no ha declarado zona de mercado residencial tensionado, pero Vigo no es un mercado sencillo: la salinidad en Bouzas, los bloques de Teis con fontanería envejecida y la distancia de propietarios en Madrid o el extranjero convierten cada avería en un proyecto logístico. Centralizar el canal reduce fricción con la comunidad y deja constancia escrita de cada incidencia — útil si más adelante hay disputa sobre mantenimiento.",
+    howIntro:
+      "Registramos contrato y contactos, gestionamos incidencias con trazabilidad fotográfica cuando hace falta — especialmente humedades — y os informamos solo de pagos, renovaciones o gastos que requieran vuestra aprobación, en Centro, Navia, Teis o municipios del área como Mos o Redondela.",
+    barriosIntro:
+      "Administración de alquiler en barrios de Vigo capital y municipios próximos con demanda residencial estable.",
+    barrios: [
+      "Centro",
+      "Coia",
+      "Navia",
+      "Teis",
+      "Bouzas",
+      "Casco Viejo",
+      "Lavadores",
+      "Samil",
+      "Moaña",
+      "Redondela",
+      "Mos",
+    ],
+    faq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Vigo?",
+        answer:
+          "Según Idealista (agosto de 2026), el precio medio ronda los 11,3 €/m², con rangos superiores en Centro, Bouzas o Samil y más contenidos en Teis o barrios periféricos.",
+      },
+      {
+        question: "¿Vigo está en zona tensionada?",
+        answer:
+          "No. Galicia no ha activado la figura de zona de mercado residencial tensionado; las renovaciones en Vigo se rigen por la LAU general.",
+      },
+      {
+        question: "¿Coordináis incidencias de humedad en edificios costeros?",
+        answer:
+          "Sí. Documentamos el estado inicial, filtramos consultas del inquilino y coordinamos técnicos y comunidad con registro en panel — habitual en Bouzas y fachadas expuestas al mar.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Vigo que delegaron el día a día del alquiler en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Bouzas con filtración en fachada. Livendia hizo seguimiento con la comunidad y el aparejador; yo vivo en Bilbao y solo autorizé el presupuesto por WhatsApp.",
+        author: "Diego R.",
+        role: "Propietario, Bouzas",
+      },
+      {
+        quote:
+          "Alquiler en Coia: el inquilino llamaba por cualquier avería menor. Ahora Livendia distingue urgencias reales y me avisa cuando hace falta mi firma en una reparación.",
+        author: "Sandra P.",
+        role: "Propietaria, Coia",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Vigo desde 59 €/mes sin permanencia: mismo panel y WhatsApp profesional que en el servicio nacional Livendia.",
+  },
+  {
+    slug: "pamplona",
+    city: "Pamplona",
+    schemaAdministrativeArea: "Navarra",
+    heroImage: "/images/gestoria3.jpg",
+    heroBadge: "Gestión de alquileres LAU · Pamplona y Comarca",
+    heroH1: "Administración de alquiler en Pamplona para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Administración de alquiler en Pamplona para propietarios",
+    heroLead:
+      "Pamplona combina demanda universitaria UPNA, familias en Iturrama y picos estacionales en julio con un precio medio de 13,2 €/m² según Idealista (julio de 2026). En San Juan, Rochapea o el Casco Antiguo las rotaciones de curso y las dudas sobre patrimonio histórico generan incidencias justo cuando vosotros no podéis desplazaros. Livendia es el único intermediario ante el inquilino: incidencias coordinadas, renovaciones con referencia de mercado y avisos solo cuando hace falta vuestra decisión.",
+    whyIntro:
+      "Navarra no ha declarado Pamplona zona de mercado residencial tensionado, pero la mezcla Ensanche estable + campus San Juan obliga a protocolos distintos según el barrio. Propietarios con varios pisos o con inquilinos compartidos en San Juan saben que septiembre concentra entregas de llaves, inventarios y consultas sobre convivencia. Livendia filtra ese pico operativo para que no dependa de vuestra disponibilidad personal.",
+    howIntro:
+      "Intermediación desde el alta, gestión de averías y comunicación con la comunidad, seguimiento de vencimientos y resumen periódico — con refuerzo en las dos primeras semanas tras cada entrada en San Juan, Casco Antiguo o municipios limítrofes como Burlada o Barañáin.",
+    barriosIntro:
+      "Barrios de Pamplona y municipios de la comarca donde más delegáis la gestión del inquilino.",
+    barrios: [
+      "Casco Antiguo",
+      "Iturrama",
+      "San Juan",
+      "Rochapea",
+      "Ensanche",
+      "Burlada",
+      "Barañáin",
+      "Ansoáin",
+      "Villava",
+      "Mendillorri",
+      "Lezkairu",
+    ],
+    faq: [
+      {
+        question: "¿Cuál es el precio medio del alquiler en Pamplona?",
+        answer:
+          "Según Idealista (julio de 2026), el precio medio ronda los 13,2 €/m², con máximos en Casco Antiguo y Ensanche y rangos más moderados en Rochapea o Burlada.",
+      },
+      {
+        question: "¿Pamplona es zona tensionada?",
+        answer:
+          "No. Navarra no ha declarado Pamplona zona de mercado residencial tensionado; las renovaciones se rigen por la LAU general.",
+      },
+      {
+        question: "¿Gestionáis entradas de inquilinos en septiembre cerca del campus?",
+        answer:
+          "Sí. Coordinamos llaves, incidencias iniciales y canal con el inquilino en San Juan, Lezkairu y barrios universitarios; la redacción del contrato LAU puede contratarse aparte si lo necesitáis.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Pamplona que delegaron el contacto con el inquilino en Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Iturrama con inquilino estable, pero cada avería de comunidad me interrumpía en el trabajo. Livendia habla con el presidente y me manda solo el resumen con lo que debo firmar.",
+        author: "Iñaki A.",
+        role: "Propietario, Iturrama",
+      },
+      {
+        quote:
+          "Varias habitaciones en San Juan: en septiembre Livendia organizó entregas e incidencias de convivencia sin que yo estuviera en Pamplona todo el mes.",
+        author: "Lucía V.",
+        role: "Propietaria, San Juan (piso compartido UPNA)",
+      },
+    ],
+    finalCtaLead:
+      "Contrata administración profesional en Pamplona desde 59 €/mes sin permanencia: checkout Stripe, panel online y gestor colegiado Livendia.",
   },
 ];

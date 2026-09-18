@@ -976,6 +976,201 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       "Hospital Germans Trias i Pujol (límite)",
     ],
   },
+
+  "barcelona/poblenou": {
+    rentPricePerSqm:
+      "Barrio Poblenou: oferta habitual 25–28 €/m² en pisos reformados (Idealista/Properfy por barrio, 2025–2026), por encima de La Verneda o el Besòs en el mismo distrito Sant Martí (Brains Real Estate Q2 2026: 24,12 €/m² agregado distrito).",
+    rentPriceSourceNote:
+      "Idealista/Properfy por barrio Poblenou, 2025–2026; Brains Real Estate, Sant Martí Q2 2026.",
+    dominantHousingType:
+      "Bloques de los 60–80 reformados (70–95 m²) en el Parc i la Llacuna y Provençals; naves reconvertidas del 22@ con viviendas de planta abierta. Calderas comunitarias y climatización individual en edificios recientes.",
+    tenantProfile: [
+      "Profesionales tech y nómadas en el 22@",
+      "Familias jóvenes en la Rambla del Poblenou",
+      "Parejas en pisos reformados cerca de metro Llacuna / Bogatell",
+      "Inquilinos estables LAU en bloques pre-olímpicos",
+    ],
+    localRegulatoryNote:
+      "Poblenou está en zona tensionada catalana (271 municipios). IRAV e Incasòl en renovaciones; la oferta Idealista suele superar la renta registrada en contratos anteriores.",
+    marketContext:
+      "El Poblenou es el barrio de referencia del distrito 22@: demanda de perfiles cualificados, stock reformado y expectativa de respuesta rápida ante incidencias. La brecha entre €/m² de portal y contratos con topes legales obliga a calcular IRAV antes de cada renovación. Propietarios no residentes delegan para evitar mediación directa con inquilinos exigentes y comunidades activas en bloques del Llacuna.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Climatización en piso 22@",
+        body: "Avería en verano. Livendia coordina técnico, presupuesto al propietario e informa plazos al inquilino sin WhatsApp cruzado.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV en Rambla del Poblenou",
+        body: "Propietario compara con Idealista 27 €/m². Livendia calcula tope legal y envía propuesta válida.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Queja de ruido en convivencia",
+        body: "Mediación documentada según contrato LAU; acta al propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Rotación post-contrato",
+        body: "Entrega llaves, suministros e Incasòl sin citas cruzadas.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago día 5",
+        body: "Protocolo de cobro antes de escalar al propietario.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Rambla del Poblenou",
+      "22@ Barcelona",
+      "Metro Bogatell / Llacuna",
+      "Disseny Hub Barcelona",
+      "Parc Central de Poblenou",
+      "Platja de la Nova Icària (límite)",
+    ],
+  },
+
+  "barcelona/pedralbes": {
+    rentPricePerSqm:
+      "Pedralbes: ~23 €/m² en oferta (Fotocasa, agosto 2026). Distrito Les Corts agregado: 24,90 €/m² (Brains Real Estate Q2 2026). Tickets mensuales altos por superficie (120–200 m²).",
+    rentPriceSourceNote:
+      "Fotocasa Pedralbes, agosto 2026; Brains Real Estate Les Corts Q2 2026.",
+    dominantHousingType:
+      "Pisos señoriales y chalets adosados en calles residenciales; bloques premium con portería en Diagonal. Ascensores y climatización individual de gama alta.",
+    tenantProfile: [
+      "Familias con hijos en colegios del eje Pedralbes–Maternitat",
+      "Expatriados e IESE / ESADE",
+      "Personal médico del Hospital Clínic",
+      "Ejecutivos en traslado temporal LAU",
+    ],
+    localRegulatoryNote:
+      "Pedralbes (Les Corts) en zona tensionada. IRAV obligatorio; gran tenedor puede condicionar renovación.",
+    marketContext:
+      "Pedralbes combina máxima renta por m² del distrito Les Corts con inquilinos que exigen mantenimiento premium. Livendia opera desde Mejía Lequerica 44 en el mismo distrito: desplazamientos cortos si hace falta presencia, panel online para propietarios internacionales.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Avería climatización Pedralbes",
+        body: "Técnico autorizado mismo día laborable; propietario autoriza gasto por email.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Renovación IRAV",
+        body: "Documentación completa antes de firma del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Portería y acceso",
+        body: "Livendia coordina llaves y visitas técnicas con portería.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Certificado empadronamiento",
+        body: "Coordinación de firma sin llamadas al móvil del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Conflicto comunidad",
+        body: "Mediación con presidente y acta resumen.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Avinguda Diagonal",
+      "IESE Business School",
+      "Hospital Clínic",
+      "Real Club de Polo",
+      "Monestir de Pedralbes",
+      "Zona Universitària (límite)",
+    ],
+  },
+
+  "barcelona/el-raval": {
+    rentPricePerSqm:
+      "El Raval dentro de Ciutat Vella: oferta ~22–26 €/m² según calle (Idealista/Properfy, 2025–2026). Rambla del Raval y MACBA en banda alta; Raval sud más contenido.",
+    rentPriceSourceNote: "Idealista/Properfy por barrio, 2025–2026; Ciutat Vella agregado Brains Q2 2026.",
+    dominantHousingType:
+      "Edificios del s. XIX–XX sin ascensor en muchas manzanas; plantas bajas con local comercial. Pisos compartidos y habitaciones frecuentes. Humedades en patios interiores.",
+    tenantProfile: [
+      "Estudiantes y jóvenes profesionales",
+      "Familias en calles consolidadas del Raval sud",
+      "Inquilinos en pisos compartidos Rambla del Raval",
+      "Perfil internacional cerca del MACBA",
+    ],
+    localRegulatoryNote:
+      "El Raval (Ciutat Vella) en zona tensionada. IRAV en renovaciones; uso mixto vivienda/local exige revisar contrato antes de incidencias.",
+    marketContext:
+      "El Raval tiene rotación elevada y edificios envejecidos: el coste oculto del alquiler es la mediación continua. Livendia documenta humedades preexistentes, filtra conflictos de convivencia y aplica protocolo de cobro desde el día 3.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Humedad patio interior",
+        body: "Perito, origen comunitario vs interior, presupuesto antes de obra.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Ruido en piso compartido",
+        body: "Mediación según contrato; propietario recibe acta.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Rambla del Raval",
+        body: "Cálculo legal antes de comunicar subida.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Rotación rápida",
+        body: "Inventario y suministros en entrada/salida.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Impago",
+        body: "Mediación formal antes de informar al propietario.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Rambla del Raval",
+      "MACBA",
+      "Mercat de la Boqueria (límite)",
+      "Hospital Clínic (límite)",
+      "Liceu (límite Gòtic)",
+      "Montjuïc (límite sud)",
+    ],
+  },
+
+  "barcelona/sagrada-familia": {
+    rentPricePerSqm:
+      "Zona Sagrada Família / Eixample Dreta: 24–27 €/m² en oferta (Brains Eixample Q2 2026 ~25 €/m² agregado; Idealista por calle Provença/Marina, 2025–2026).",
+    rentPriceSourceNote:
+      "Brains Real Estate Eixample Q2 2026; Idealista Provença/Marina, 2025–2026.",
+    dominantHousingType:
+      "Bloques modernistas y del s. XX de 70–110 m², muchos con portería y ascensor centenario. Reformas parciales orientadas a familias e internacionales.",
+    tenantProfile: [
+      "Familias en Eixample Dreta",
+      "Profesionales internacionales cerca del temple",
+      "Parejas en pisos reformados Provença / Marina",
+      "Inquilinos LAU estables en fincas señoriales",
+    ],
+    localRegulatoryNote:
+      "Eixample Dreta en zona tensionada. IRAV e Incasòl; obras en entorno Sagrada Família pueden generar consultas sobre ruido — Livendia filtra comunicación.",
+    marketContext:
+      "La microzona Sagrada Família combina demanda turística residual en plantas bajas con alquiler LAU estable en plantas altas. Propietarios compiten por stock reformado; renovaciones mal calculadas generan reclamaciones. Livendia verifica IRAV y coordina ascensor/portería en fincas exigentes.",
+    operationalCases: [
+      {
+        title: "Ejemplo ilustrativo — Ascensor finca señorial",
+        body: "Coordinación con mantenedor y comunidad; aviso al propietario solo si hay derrama.",
+      },
+      {
+        title: "Ejemplo ilustrativo — IRAV Provença",
+        body: "Propuesta legal vs referencia Idealista.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Obras entorno temple",
+        body: "Livendia informa al inquilino sobre plazos sin involucrar móvil del propietario.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Suministros post-rotación",
+        body: "Alta/baja con lecturas en panel.",
+      },
+      {
+        title: "Ejemplo ilustrativo — Queja vecinal",
+        body: "Mediación documentada.",
+      },
+    ],
+    nearbyLandmarks: [
+      "Temple Expiatori de la Sagrada Família",
+      "Avinguda Gaudí",
+      "Metro Sagrada Família (L2/L5)",
+      "Hospital de Sant Pau (límite)",
+      "Provença / Marina",
+      "Fort Pienc (límite)",
+    ],
+  },
 };
 
 export function getMetroEnrichment(segments: readonly string[]): MetroLandingEnrichment | undefined {

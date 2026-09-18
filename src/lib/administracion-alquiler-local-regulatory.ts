@@ -122,6 +122,55 @@ export const ALQUILER_REGULATORY_BY_SLUG: Record<string, AlquilerRegulatoryLocal
       "Bilbao está declarada zona de mercado residencial tensionado desde el 31 de octubre de 2025, junto con Vitoria-Gasteiz y San Sebastián (las tres capitales vascas). Esto implica límites legales a la subida de renta en nuevos contratos de alquiler y condiciones específicas para grandes tenedores.",
     rentIndex: "Índice de precios de referencia del Ministerio de Vivienda (BOE, en vigor desde abril de 2026), tope aplicable a la actualización de renta en nuevos contratos mientras la declaración siga vigente.",
   },
+  // Precio medio: Idealista, índice Granada capital, julio 2026 (12,2 €/m²).
+  // Fuente zona tensionada: MIVAU, registro oficial, verificado en vivo el 25/07/2026 (Andalucía no
+  // ha activado el mecanismo en Granada). Revisar cada 3-6 meses.
+  granada: {
+    depositOrganism: "Junta de Andalucía",
+    depositNote: "Fianza legal depositada en el organismo autonómico andaluz conforme a LAU.",
+    tensionedZone:
+      "La Junta de Andalucía no ha declarado Granada zona de mercado residencial tensionado; el alquiler se rige por la LAU general, sin los límites adicionales de actualización de renta que aplican en zonas declaradas tensionadas.",
+    rentIndex: "LAU general — no aplica IRAV al no existir declaración oficial de zona tensionada en Granada; revisar en cada renovación.",
+    extraNote:
+      "Albaicín, Realejo y Cartuja concentran rotación universitaria y turismo residencial; conviene documentar humedades y estado de edificios históricos en cada incidencia.",
+  },
+  // Precio medio: Idealista, índice Alicante capital, agosto 2026 (13,1 €/m²).
+  // Fuente zona tensionada: MIVAU, registro oficial, verificado en vivo el 25/07/2026 (Comunitat
+  // Valenciana sin declaración activa en Alicante capital). Revisar cada 3-6 meses.
+  alicante: {
+    depositOrganism: "Generalitat Valenciana (organismo autonómico de vivienda)",
+    depositNote:
+      "La fianza de un mes debe depositarse en el organismo de la Comunitat Valenciana según la LAU.",
+    tensionedZone:
+      "Alicante no está declarada zona de mercado residencial tensionado: el contrato de alquiler se rige por la LAU general, sin los límites adicionales de actualización de renta que aplican en zonas declaradas tensionadas.",
+    rentIndex: "LAU general — no aplica IRAV al no existir declaración de zona tensionada en Alicante capital.",
+    extraNote:
+      "Playa de San Juan y el entorno universitario (San Vicente del Raspeig) mezclan LAU habitual y estancias de meses; cada renovación debe partir de una referencia de mercado actualizada.",
+  },
+  // Precio medio: Idealista, índice Vigo capital, agosto 2026 (11,3 €/m²).
+  // Fuente zona tensionada: MIVAU, registro oficial, verificado en vivo el 25/07/2026 (Galicia no
+  // ha activado el mecanismo). Revisar cada 3-6 meses.
+  vigo: {
+    depositOrganism: "Xunta de Galicia",
+    depositNote: "Depósito de la fianza legal ante el organismo autonómico gallego conforme a LAU.",
+    tensionedZone:
+      "Galicia no ha activado la figura de zona de mercado residencial tensionado, por lo que Vigo se rige por la LAU general sin límites adicionales de actualización de renta en las renovaciones.",
+    rentIndex: "LAU general — no aplica IRAV al no existir declaración de zona tensionada en Galicia.",
+    extraNote:
+      "En Bouzas y edificios costeros las incidencias de humedad y fachada son frecuentes; centralizamos el canal con el inquilino y la comunidad con trazabilidad.",
+  },
+  // Precio medio: Idealista, índice Pamplona capital, julio 2026 (13,2 €/m²).
+  // Fuente zona tensionada: MIVAU, registro oficial, verificado en vivo el 25/07/2026 (Navarra no
+  // ha activado el mecanismo). Revisar cada 3-6 meses.
+  pamplona: {
+    depositOrganism: "Gobierno de Navarra",
+    depositNote: "Fianza legal depositada ante el organismo autonómico navarro conforme a LAU.",
+    tensionedZone:
+      "Navarra no ha declarado Pamplona zona de mercado residencial tensionado; el alquiler se rige por la LAU general, sin los límites adicionales de actualización de renta de zonas declaradas tensionadas.",
+    rentIndex: "LAU general — no aplica IRAV al no existir declaración oficial de zona tensionada en Navarra.",
+    extraNote:
+      "San Juan y el campus UPNA concentran rotación en septiembre; Iturrama y el Ensanche tienen perfil más estable de familias.",
+  },
 };
 
 export const ADMINISTRACION_ALQUILER_TEMPLATE_FAQ = [

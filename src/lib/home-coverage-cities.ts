@@ -111,7 +111,7 @@ export const HOME_COVERAGE_CITIES: readonly HomeCoverageCity[] = [
     name: "Granada",
     gestoriaHref: "/gestoria/granada",
     venderSinAgenciaHref: "/servicios/vender-piso-sin-agencia-granada",
-    administracionHref: "/servicios/administracion-alquiler",
+    administracionHref: "/servicios/administracion-alquiler-local/granada",
     compraHref: "/servicios/servicio-completo-compra",
     ventaLocalHref: "/servicios/servicio-completo-venta-local/granada",
     parkingTrasteroHref: "/servicios/acompanamiento-compra-parking-trastero",

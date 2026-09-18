@@ -239,6 +239,16 @@ export function AdministracionAlquilerMetroSeoLanding({
                   {config.parentCityHubLabel}
                 </Link>
               </li>
+              {config.parentDistrictPath && config.parentDistrictLabel ? (
+                <>
+                  <li aria-hidden="true">/</li>
+                  <li>
+                    <Link href={config.parentDistrictPath} className="hover:text-[#1A4FBF] hover:underline">
+                      {config.parentDistrictLabel}
+                    </Link>
+                  </li>
+                </>
+              ) : null}
               <li aria-hidden="true">/</li>
               <li className="font-semibold text-[#1E293B]">{config.zoneLabel}</li>
             </ol>

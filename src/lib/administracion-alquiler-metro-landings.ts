@@ -42,6 +42,10 @@ export const ADMINISTRACION_ALQUILER_METRO_PUBLISHED_SEGMENT_KEYS: readonly stri
   "mollet-del-valles",
   "sant-cugat",
   "badalona",
+  "barcelona/poblenou",
+  "barcelona/pedralbes",
+  "barcelona/el-raval",
+  "barcelona/sagrada-familia",
 ];
 
 const BARCELONA_CITY_HUB = `${ADMINISTRACION_ALQUILER_LOCAL_BASE}/barcelona`;
@@ -89,6 +93,9 @@ export type AdministracionAlquilerMetroLanding = {
   /** Página madre (ciudad) — canonical propio en esta landing; enlace ascendente para jerarquía SEO */
   parentCityHubPath: string;
   parentCityHubLabel: string;
+  /** Barrio fino: enlace al distrito de Barcelona que lo contiene */
+  parentDistrictPath?: string;
+  parentDistrictLabel?: string;
   jsonLd: {
     name: string;
     addressLocality: string;
@@ -2112,6 +2119,390 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
       name: "Livendia — Administración de alquiler en Badalona",
       addressLocality: "Badalona",
       areaServedName: "Badalona",
+    },
+  },
+  {
+    segments: ["barcelona", "poblenou"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/poblenou`,
+    zoneLabel: "Poblenou",
+    metaTitle: `Administración de alquiler Poblenou — 22@, Rambla del Poblenou · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en el barrio del Poblenou (Sant Martí): 22@, Llacuna, Rambla del Poblenou. Cobro, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. Desde Les Corts.`,
+    h1: "Administración de alquiler en el Poblenou — 22@ y Rambla del Poblenou",
+    subtitle:
+      `Delega el contacto con el inquilino en el barrio tech de Barcelona por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor desde Mejía Lequerica 44.`,
+    heroLead:
+      "El Poblenou concentra startups, familias en bloques reformados y rentas por encima de la media de Sant Martí. Idealista y Brains Real Estate (2025–2026) sitúan el distrito en ~24 €/m², con picos en edificios del 22@ y primera línea de la Rambla del Poblenou. Livendia cobra la renta, verifica IRAV en renovaciones y coordina incidencias en comunidades exigentes. Tú no persigues transferencias ni medias con vecinos.",
+    eeatHeading: "Poblenou: mercado tech y normativa tensionada",
+    eeatBlock:
+      "Gestionamos pisos en el Parc i la Llacuna del Poblenou, Provençals del Poblenou y el eje Rambla del Poblenou–22@. Oferta habitual 25–28 €/m² en pisos reformados (Idealista por barrio, 2025–2026). Zona tensionada catalana: depósito Incasòl e IRAV antes de cualquier subida. Oficina Livendia en Les Corts (~15 min en L4 Bogatell–Les Corts).",
+    whyIntro:
+      "En el Poblenou muchos propietarios viven fuera de Barcelona: el inquilino tipo —profesional tech, pareja con hijos en escuela del 22@— espera respuesta rápida ante averías de climatización o conflictos de convivencia. Sin canal profesional, el móvil del propietario se convierte en soporte 24/7. Livendia documenta cada incidencia y filtra lo que no requiere tu firma.",
+    howIntro:
+      "Alta en panel, contacto único Livendia–inquilino, liquidación mensual de renta, historial de incidencias y renovaciones con tope legal verificado en el barrio del Poblenou.",
+    barriosIntro:
+      "Dentro del barrio del Poblenou y límites con Provençals, el Llacuna y la Rambla del Poblenou.",
+    barrios: [
+      "Parc i la Llacuna del Poblenou",
+      "Provençals del Poblenou",
+      "Rambla del Poblenou",
+      "22@ (distrito de innovación)",
+      "Diagonal Mar (límite)",
+      "Clot (límite norte)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV en 22@",
+        description: "Cálculo legal antes de proponer subida — la oferta publicada suele superar la renta registrada en Incasòl.",
+      },
+      {
+        title: "Mediación ruido y convivencia",
+        description: "Quejas de vecinos en bloques con pisos compartidos o teletrabajo — trazabilidad para el propietario.",
+      },
+      {
+        title: "Cobro el día 1",
+        description: "Protocolo desde el día 3 si la transferencia se retrasa.",
+      },
+      {
+        title: "INCASÒL y suministros",
+        description: "Fianza, altas/bajas de luz y agua tras rotación de inquilino tech o familiar.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en el Poblenou con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Rambla del Poblenou, vivo en Madrid. Livendia calculó el tope IRAV y el inquilino ya no me escribe directamente.",
+        author: "Laura F.",
+        role: "Propietaria, Poblenou",
+      },
+      {
+        quote:
+          "Reforma reciente en el 22@: hubo conflicto por horarios de obra con la comunidad. Livendia medió y yo solo recibí el acta.",
+        author: "Marc T.",
+        role: "Propietario, 22@",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en el Poblenou?",
+        answer:
+          "La oferta en el barrio suele situarse entre 25 y 28 €/m² en pisos reformados (Idealista/Properfy, 2025–2026), por encima de La Verneda o el Besòs dentro del mismo distrito de Sant Martí.",
+      },
+      {
+        question: "¿Gestionáis pisos en el 22@?",
+        answer:
+          "Sí. Mismo protocolo de cobro e incidencias; adaptamos comunicación al perfil profesional y dejamos constancia en el panel.",
+      },
+      {
+        question: "¿Enlace con el distrito Sant Martí?",
+        answer:
+          "Esta página es específica del barrio del Poblenou. Para Clot, Diagonal Mar o La Verneda, consulta la landing del distrito Sant Martí.",
+      },
+    ],
+    finalCtaLead: "Delega en el Poblenou la relación con tu inquilino: renta cobrada, IRAV verificado y gestor en Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor del Poblenou",
+    waPlaceLabel: "Poblenou, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "poblenou"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sant-marti`,
+    parentDistrictLabel: "Sant Martí (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en el Poblenou",
+      addressLocality: "Barcelona",
+      addressRegion: "Poblenou, Sant Martí",
+      geo: { latitude: "41.4035", longitude: "2.1965" },
+      areaServedName: "Poblenou, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "pedralbes"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/pedralbes`,
+    zoneLabel: "Pedralbes",
+    metaTitle: `Administración de alquiler Pedralbes — Diagonal, IESE · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en Pedralbes (Les Corts): pisos señoriales, Diagonal, IESE. IRAV, Incasòl e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Oficina en el propio distrito.`,
+    h1: "Administración de alquiler en Pedralbes — Diagonal e IESE",
+    subtitle:
+      `Gestor con oficina en Les Corts para tu piso en Pedralbes: ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl., sin permanencia.`,
+    heroLead:
+      "Pedralbes es la referencia premium del eje Diagonal: Fotocasa (agosto 2026) sitúa la oferta en torno a 23 €/m², con tickets altos en pisos amplios y chalets adosados. Familias, expatriados del IESE y personal del Hospital Clínic exigen respuesta rápida y renovaciones con IRAV impecable. Livendia tiene sede en Mejía Lequerica 44 —en el mismo distrito— y asume todo el canal con el inquilino.",
+    eeatHeading: "Pedralbes desde Les Corts: mismo distrito, criterio IRAV",
+    eeatBlock:
+      "Conocemos Pedralbes, La Maternitat y el eje Diagonal porque operamos desde Les Corts. Brains Real Estate (Q2 2026) cifra el distrito en 24,90 €/m²; Pedralbes suele publicarse algo por debajo del pico del Eixample pero con tickets mensuales muy superiores por superficie. Zona tensionada: cada renovación exige baremo e IRAV antes de firmar.",
+    whyIntro:
+      "En Pedralbes el propietario suele residir fuera de Barcelona o delegar por falta de tiempo: una avería de climatización o un conflicto con portería no puede esperar al fin de semana. Livendia filtra peticiones, contrasta presupuestos de mantenimiento premium y documenta cada paso para auditorías de comunidad exigentes.",
+    howIntro:
+      "Onboarding con datos del inmueble, canal único con el arrendatario, coordinación de reparaciones con trazabilidad y resumen mensual — con especial atención a renovaciones IRAV en viviendas de alta renta.",
+    barriosIntro: "Pedralbes y entorno inmediato dentro del distrito de Les Corts.",
+    barrios: [
+      "Pedralbes",
+      "Sant Ramon (límite Maternitat)",
+      "Eixample esquerre (límite Diagonal)",
+      "Zona Universitària (límite sud)",
+      "Les Corts centre (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovación con IRAV",
+        description: "Propuesta documentada al inquilino antes de que firmes — crítico en Pedralbes.",
+      },
+      {
+        title: "Incidencias en pisos señoriales",
+        description: "Climatización, portería y comunidades con exigencia alta.",
+      },
+      {
+        title: "Cobro y reporting",
+        description: "Liquidación mensual clara para propietarios no residentes.",
+      },
+      {
+        title: "Despacho en el distrito",
+        description: "Mejía Lequerica 44 — visitas presenciales si las necesitas.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en Pedralbes con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Pedralbes, vivo en Suiza. Livendia gestionó renovación IRAV y avería de climatización sin que yo llamara al inquilino.",
+        author: "Fernando R.",
+        role: "Propietario, Pedralbes",
+      },
+      {
+        quote:
+          "Comunidad muy exigente: Livendia coordina con el presidente y yo solo autorizo gastos por email.",
+        author: "Elisabeth K.",
+        role: "Propietaria, Pedralbes",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en Pedralbes?",
+        answer:
+          "Fotocasa (agosto 2026) sitúa Pedralbes en torno a 23 €/m² en oferta; el ticket mensual sube mucho por superficie (pisos 120–200 m² habituales).",
+      },
+      {
+        question: "¿Tenéis oficina cerca de Pedralbes?",
+        answer:
+          "Sí. Carrer de Mejía Lequerica 44, en el distrito de Les Corts — a pocos minutos en coche o metro de Pedralbes.",
+      },
+      {
+        question: "¿Landing del distrito Les Corts?",
+        answer:
+          "Esta página es solo Pedralbes. Para Maternitat o Zona Universitària, consulta la landing del distrito Les Corts.",
+      },
+    ],
+    finalCtaLead: "Protege tu activo en Pedralbes con gestor en el mismo distrito: cobro, IRAV e incidencias sin hablar con el inquilino.",
+    primaryCtaLabel: "Contactar con el Gestor de Pedralbes",
+    waPlaceLabel: "Pedralbes, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "pedralbes"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/les-corts`,
+    parentDistrictLabel: "Les Corts (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en Pedralbes",
+      addressLocality: "Barcelona",
+      addressRegion: "Pedralbes, Les Corts",
+      geo: { latitude: "41.3902", longitude: "2.1134" },
+      areaServedName: "Pedralbes, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "el-raval"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/el-raval`,
+    zoneLabel: "El Raval",
+    metaTitle: `Administración de alquiler El Raval — Rambla, MACBA · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU en El Raval (Ciutat Vella): Rambla del Raval, MACBA, Gòtic límite. Cobro, IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en El Raval — Rambla del Raval y MACBA",
+    subtitle:
+      `Intermediación profesional en el Raval por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor desde Les Corts.`,
+    heroLead:
+      "El Raval mezcla edificios del s. XIX, pisos compartidos, comercio en planta baja y presión turística residual. Idealista (2025–2026) sitúa Ciutat Vella entre los distritos con oferta más tensionada; dentro del Raval, la Rambla del Raval y el entorno MACBA concentran rotación y conflictos de convivencia. Livendia asume cobro, mediación con la comunidad y renovaciones con IRAV — tú no negocias en el portal del edificio.",
+    eeatHeading: "El Raval: patrimonio, rotación y zona tensionada",
+    eeatBlock:
+      "Gestionamos arrendamientos en la Rambla del Raval, Sant Antoni (límite), Hospital Clínic (límite), MACBA y calles del Gòtic próximas. Edificios sin ascensor, humedades en plantas bajas y locales en uso mixto exigen protocolos distintos al Eixample. Zona tensionada catalana: Incasòl e IRAV obligatorios en renovaciones.",
+    whyIntro:
+      "Propietarios del Raval suelen tener pisos heredados o comprados hace años: el inquilino cambia con frecuencia, las incidencias de fontanería antigua son habituales y las quejas de vecinos por ruido escalan rápido. Centralizar el canal evita que el propietario —a menudo fuera del barrio— tenga que intervenir en cada conflicto.",
+    howIntro:
+      "Expediente digital, contacto único con el arrendatario, seguimiento de cobros, mediación documentada y renovaciones con límite legal verificado en El Raval.",
+    barriosIntro: "El Raval y calles límite con Sant Antoni, Gòtic y el Raval sud.",
+    barrios: [
+      "Rambla del Raval",
+      "MACBA / Carme",
+      "Raval sud (Montjuïc límite)",
+      "Sant Antoni (límite)",
+      "Gòtic (límite Rambla)",
+      "Hospital Clínic (límite)",
+    ],
+    serviceGrid: [
+      {
+        title: "Mediación convivencia",
+        description: "Pisos compartidos y plantas bajas con actividad comercial — conflictos frecuentes.",
+      },
+      {
+        title: "Incidencias en edificios antiguos",
+        description: "Humedades, tuberías comunitarias y ascensores pequeños.",
+      },
+      {
+        title: "IRAV en Ciutat Vella",
+        description: "Renovaciones con baremo antes de comunicar al inquilino.",
+      },
+      {
+        title: "Cobro profesional",
+        description: "Protocolo desde el día 3 en un barrio con rotación elevada.",
+      },
+    ],
+    testimonialsTitle: "Propietarios en El Raval con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en la Rambla del Raval con habitaciones. Livendia filtra conflictos de convivencia; yo ya no entro en chats de WhatsApp con cinco inquilinos.",
+        author: "Jordi P.",
+        role: "Propietario, Rambla del Raval",
+      },
+      {
+        quote:
+          "Renovación con tope IRAV: Livendia preparó la documentación y el inquilino firmó sin reunirnos en el rellano.",
+        author: "Ana M.",
+        role: "Propietaria, MACBA",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar en El Raval?",
+        answer:
+          "Dentro de Ciutat Vella, el Raval suele publicarse entre 22 y 26 €/m² según calle y estado (Idealista/Properfy, 2025–2026), con picos en calles reformadas cerca del MACBA.",
+      },
+      {
+        question: "¿Gestionáis pisos compartidos?",
+        answer:
+          "Sí. Canal único para incidencias comunes; el contrato LAU por habitaciones puede contratarse aparte si hace falta redactarlo.",
+      },
+      {
+        question: "¿Relación con Ciutat Vella?",
+        answer:
+          "Esta landing es El Raval. Para el Gòtic o la Barceloneta, consulta la landing del distrito Ciutat Vella.",
+      },
+    ],
+    finalCtaLead: "En El Raval, delega cobro e incidencias: gestor Livendia en Les Corts y panel online 24/7.",
+    primaryCtaLabel: "Contactar con el Gestor del Raval",
+    waPlaceLabel: "El Raval, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "el-raval"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/ciutat-vella`,
+    parentDistrictLabel: "Ciutat Vella (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en El Raval",
+      addressLocality: "Barcelona",
+      addressRegion: "El Raval, Ciutat Vella",
+      geo: { latitude: "41.3802", longitude: "2.1699" },
+      areaServedName: "El Raval, Barcelona",
+    },
+  },
+  {
+    segments: ["barcelona", "sagrada-familia"],
+    path: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/sagrada-familia`,
+    zoneLabel: "Sagrada Família",
+    metaTitle: `Administración de alquiler Sagrada Família — Eixample Dreta · ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+    metaDescription:
+      `Gestión LAU junto a la Sagrada Família (Eixample): Provença, Marina, Dreta de l'Eixample. IRAV e incidencias por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.`,
+    h1: "Administración de alquiler en la Sagrada Família — Eixample Dreta",
+    subtitle:
+      `Protege tu piso cerca del Temple Expiatori por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} — gestor Livendia en Les Corts.`,
+    heroLead:
+      "La zona de la Sagrada Família concentra edificios modernistas, pisos turísticos mal regularizados en plantas bajas y familias en el Eixample Dreta. Brains Real Estate (Q2 2026) sitúa el Eixample en ~25 €/m² de publicación; alrededor del temple, la oferta suele superar la media por orientación y estado. Livendia cobra la renta, verifica IRAV y coordina incidencias en fincas con portería y ascensores centenarios.",
+    eeatHeading: "Sagrada Família: Eixample Dreta e IRAV",
+    eeatBlock:
+      "Cubrimos Provença, Marina, Sardenya, Lepant y el entorno inmediato del Temple Expiatori. Pisos de 70–110 m² en bloques del s. XX con reformas parciales; demanda de familias y profesionales internacionales. Zona tensionada: cada renovación requiere cálculo IRAV antes de proponer subida.",
+    whyIntro:
+      "Propietarios cerca de la Sagrada Família compiten con stock reformado para perfiles internacionales: el inquilino espera mantenimiento rápido y comunicación clara sobre obras de la zona. Livendia evita que el propietario reciba llamadas sobre ruidos de construcción o averías de ascensor en edificios protegidos.",
+    howIntro:
+      "Alta del inmueble, intermediación total con el arrendatario, liquidación mensual, renovaciones con baremo legal y archivo documental en panel.",
+    barriosIntro: "Entorno Sagrada Família y Eixample Dreta inmediato.",
+    barrios: [
+      "Sagrada Família (Provença / Marina)",
+      "Fort Pienc (límite)",
+      "Dreta de l'Eixample",
+      "Sant Antoni (límite sud)",
+      "Gràcia (límite nord)",
+      "Clot (límite est)",
+    ],
+    serviceGrid: [
+      {
+        title: "Renovaciones IRAV",
+        description: "Referencia por calle antes de renovar — la oferta Idealista suele superar Incasòl.",
+      },
+      {
+        title: "Ascensor y portería",
+        description: "Coordinación en fincas señoriales del Eixample Dreta.",
+      },
+      {
+        title: "Cobro mensual",
+        description: "Seguimiento el día 1 con protocolo de impago.",
+      },
+      {
+        title: "Mediación vecinal",
+        description: "Obras en entorno Sagrada Família y convivencia en pisos compartidos.",
+      },
+    ],
+    testimonialsTitle: "Propietarios junto a la Sagrada Família con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Provença con inquilino expatriado. Livendia gestionó avería de ascensor y renovación IRAV; yo firmé online.",
+        author: "Claire D.",
+        role: "Propietaria, Sagrada Família",
+      },
+      {
+        quote:
+          "Alquiler en Marina: Livendia filtra consultas sobre obras del temple y coordina con la comunidad sin que yo visite Barcelona cada mes.",
+        author: "Pau S.",
+        role: "Propietario, Eixample Dreta",
+      },
+    ],
+    localFaq: [
+      {
+        question: "¿Cuánto cuesta alquilar cerca de la Sagrada Família?",
+        answer:
+          "En Eixample Dreta la oferta suele rondar 24–27 €/m² (Brains Real Estate Q2 2026 e Idealista por zona, 2025–2026), según planta, ascensor y estado de reforma.",
+      },
+      {
+        question: "¿Gestionáis pisos con licencia turística?",
+        answer:
+          "La administración Livendia cubre alquiler LAU de larga duración. Usos turísticos regulados van aparte del pack mensual.",
+      },
+      {
+        question: "¿Landing del Eixample completo?",
+        answer:
+          "Esta página es la zona Sagrada Família / Dreta. Para Sants o l'Antiga Esquerra, consulta la landing del distrito Eixample.",
+      },
+    ],
+    finalCtaLead: "Delega en la Sagrada Família cobro, IRAV e incidencias — gestor asignado desde Les Corts.",
+    primaryCtaLabel: "Contactar con el Gestor (Sagrada Família)",
+    waPlaceLabel: "Sagrada Família, Barcelona",
+    heroImage: metroBarcelonaHeroForSegments(["barcelona", "sagrada-familia"]),
+    howImages: HOW_IMAGES_DEFAULT,
+    regulatorySlug: "barcelona",
+    parentCityHubPath: BARCELONA_CITY_HUB,
+    parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
+    parentDistrictPath: `${ADMINISTRACION_ALQUILER_METRO_BASE}/barcelona/eixample`,
+    parentDistrictLabel: "Eixample (distrito)",
+    jsonLd: {
+      name: "Livendia — Administración de alquiler en la Sagrada Família",
+      addressLocality: "Barcelona",
+      addressRegion: "Eixample Dreta, Barcelona",
+      geo: { latitude: "41.4036", longitude: "2.1744" },
+      areaServedName: "Sagrada Família, Barcelona",
     },
   },
 ];
