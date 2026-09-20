@@ -6,6 +6,10 @@ export const BARCELONA_METRO_CONTRATO_ALQUILER_ENTRIES = [
   { slug: "barcelona-les-corts", shortName: "Les Corts" },
   { slug: "barcelona-gracia", shortName: "Gràcia" },
   { slug: "barcelona-eixample", shortName: "Eixample" },
+  { slug: "barcelona-sants-montjuic", shortName: "Sants-Montjuïc" },
+  { slug: "barcelona-poblenou", shortName: "Poblenou" },
+  { slug: "barcelona-gotic", shortName: "Barri Gòtic" },
+  { slug: "barcelona-sarria", shortName: "Sarrià" },
   { slug: "hospitalet-de-llobregat", shortName: "L'Hospitalet" },
   { slug: "cornella-de-llobregat", shortName: "Cornellà" },
 ] as const;

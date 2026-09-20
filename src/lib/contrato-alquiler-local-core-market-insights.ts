@@ -14,6 +14,14 @@ export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
     "Gràcia concentra pisos compartidos, plantas sin ascensor y alquileres entre particulares con acuerdo verbal en la visita. Sin contrato adaptado, los conflictos por reformas, ruido o reparto de gastos aparecen en el primer año. Livendia incluye inventario y normas de convivencia en el expediente LAU.",
   "barcelona-eixample":
     "El Eixample combina fincas regias del ensanche, ascensores antiguos y rentas entre las más altas de Barcelona (publicación agregada ~26–30 €/m² según barrio). Entre particulares, un LAU copiado no recoge derramas en edificios centenarios ni la renta anterior en zona tensionada. Livendia redacta contrato e inventario por barrio — Dreta, Esquerra o Sagrada Família.",
+  "barcelona-sants-montjuic":
+    "Sants-Montjuïc concentra familias en La Bordeta, profesionales junto a Estació Sants y alquileres entre particulares en Poble-sec con rotación moderada (referencia distrito ~23,6 €/m², Brains Q2 2026). Bloques de los 60–80 con calderas comunitarias y zona tensionada catalana: un LAU genérico no recoge INCASÒL ni renta anterior. Livendia redacta contrato e inventario por barrio — Sants, Hostafrancs o Poble-sec.",
+  "barcelona-poblenou":
+    "Poblenou mezcla lofts del 22@, familias en la Rambla del Poblenou y rentas del distrito Sant Martí en torno a 24 €/m² (Brains Q2 2026). Los alquileres entre particulares cierran rápido tras la visita, pero los borradores copiados no distinguen uso vivienda vs. local ni terrazas en naves reconvertidas. Livendia adapta LAU, inventario e INCASÒL al inmueble concreto.",
+  "barcelona-gotic":
+    "El Barri Gòtic combina fincas medievales, pisos sin ascensor y alquileres LAU entre particulares con acuerdo en Plaça Reial o Carrer del Bisbe. Humedades, escaleras estrechas y locales en planta baja exigen cláusulas que una plantilla no contempla — en zona tensionada con renta anterior obligatoria. Livendia redacta contrato e inventario adaptado a Ciutat Vella.",
+  "barcelona-sarria":
+    "Sarrià encabeza el ticket de alquiler barcelonés (~28,8 €/m² distrito Sarrià-Sant Gervasi, Brains Q2 2026) con familias, colegios internacionales y pisos señoriales alquilados entre particulares. Un LAU genérico no recoge parking, IRAV en renovación ni depósito INCASÒL. Livendia redacta contrato premium con inventario y gestoría online.",
   "hospitalet-de-llobregat":
     "L'Hospitalet recibe inquilinos que trabajan en Barcelona y buscan renta más asequible en Collblanc o Bellvitge. Los alquileres entre particulares suelen usar contratos de Barcelona capital sin adaptar INCASÒL ni plazos de comunidad en bloques densos. Livendia revisa depósito, renta anterior e inventario antes de la fianza.",
   "cornella-de-llobregat":

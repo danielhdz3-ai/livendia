@@ -23,6 +23,10 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona-les-corts",
   "barcelona-gracia",
   "barcelona-eixample",
+  "barcelona-sants-montjuic",
+  "barcelona-poblenou",
+  "barcelona-gotic",
+  "barcelona-sarria",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "valencia",
@@ -82,7 +86,14 @@ export function toLandingConfig(def: ContratoAlquilerLocalCityDefinition): Contr
     { ...def, path: localContratoAlquilerHref(def.slug) },
     diff,
   );
-  return enrichWithCityMarketProfile(def.slug, "alquiler-lau", merged) as ContratoAlquilerLocalLandingConfig;
+  const enriched = enrichWithCityMarketProfile(def.slug, "alquiler-lau", merged) as ContratoAlquilerLocalLandingConfig;
+  if (diff.localServiceNotes?.length) {
+    return {
+      ...enriched,
+      localServiceNotes: [...(enriched.localServiceNotes ?? []), ...diff.localServiceNotes],
+    };
+  }
+  return enriched;
 }
 
 export function getContratoAlquilerLocalCity(slug: string): ContratoAlquilerLocalCityDefinition | undefined {
@@ -230,6 +241,118 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     ],
     finalCtaLead:
       "Contrata LAU, temporada o habitación online y firma en el Eixample con gestoría — no comisión sobre la renta.",
+  },
+  {
+    slug: "barcelona-sants-montjuic",
+    city: "Sants-Montjuïc",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "¿Alquilas o alquilas en Sants-Montjuïc entre particulares — Sants, Hostafrancs, la Bordeta o Poble-sec — sin agencia? Redactamos tu contrato de alquiler de larga duración (LAU) por 145 € IVA incl.: inventario, INCASÒL, zona tensionada e inventario antes de la fianza. Tramitación 100 % online con gestor dedicado.",
+    whyIntro:
+      "Sants concentra familias consolidadas, pisos junto a la estación de Sants y alquileres que cierran por Idealista en días. Poble-sec y Montjuïc mezclan edificios del s. XX, locales en planta baja y rotación laboral. Sin contrato LAU profesional, los PDF genéricos no recogen comunidad en bloques densos ni la renta anterior obligatoria en Barcelona.",
+    howIntro:
+      "Cuatro pasos online hasta firmar en Sants, Hostafrancs, la Bordeta, Poble-sec o la Marina del Port.",
+    testimonialsTitle: "Particulares en Sants-Montjuïc que redactaron su LAU con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler en Hostafrancs sin agencia: Livendia redactó LAU con renta anterior, INCASÒL e inventario de la cocina reformada. Todo por panel y WhatsApp.",
+        author: "Elena C.",
+        role: "Propietaria · Sants",
+      },
+      {
+        quote:
+          "Piso en Poble-sec encontrado por Idealista. El gestor explicó zona tensionada y dejó clausurada la derrama del edificio antes de firmar.",
+        author: "Marc V.",
+        role: "Inquilino · Poble-sec",
+      },
+    ],
+    finalCtaLead:
+      "Redacta tu contrato LAU en Sants-Montjuïc online — gestoría Livendia, no comisión de inmobiliaria.",
+  },
+  {
+    slug: "barcelona-poblenou",
+    city: "Poblenou",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Alquiler de larga duración para particulares en Poblenou: redactamos o revisamos tu contrato LAU por 145 € IVA incl. cuando propietario e inquilino ya se han encontrado — 22@, Rambla del Poblenou, Vila Olímpica límite. Servicio online, inventario incluido y gestor humano.",
+    whyIntro:
+      "Poblenou combina lofts del 22@, familias en la Rambla del Poblenou y alquileres entre particulares con prisa tras la visita. Los borradores copiados no distinguen uso vivienda vs. local en planta baja ni clausulan terrazas en edificios industriales reconvertidos.",
+    howIntro:
+      "Cuatro hitos digitales hasta la firma en el 22@, la Rambla del Poblenou, la Vila Olímpica límite o el Parc del Centre del Poblenou.",
+    testimonialsTitle: "Propietarios e inquilinos del Poblenou con contrato LAU Livendia",
+    testimonials: [
+      {
+        quote:
+          "Loft en 22@ alquilado entre particulares. Livendia adaptó LAU a uso mixto oficina-vivienda acordado e inventario de instalaciones.",
+        author: "Jordi M.",
+        role: "Propietario · Poblenou",
+      },
+      {
+        quote:
+          "Entramos en un piso de la Rambla del Poblenou. Contrato con INCASÒL, preaviso y comunidad explicados en castellano claro — sin ir a un despacho.",
+        author: "Ana & Leo",
+        role: "Inquilinos · Sant Martí",
+      },
+    ],
+    finalCtaLead:
+      "Contrato LAU en Poblenou entre particulares — redacción profesional online con panel Livendia.",
+  },
+  {
+    slug: "barcelona-gotic",
+    city: "Barri Gòtic",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Redactamos tu contrato de alquiler de larga duración en el Barri Gòtic: LAU entre particulares por 145 € IVA incl. Plaça Reial, Carrer del Bispe, Jaume I — fincas sin ascensor, INCASÒL e inventario. Gestoría online Livendia, referente en contratos de alquiler en Barcelona.",
+    whyIntro:
+      "El Gòtic mezcla fincas medievales, pisos turísticos mal encuadrados y alquileres LAU entre particulares con acuerdo en la visita. Humedades, escaleras estrechas y locales en planta baja exigen cláusulas concretas que una plantilla de internet no contempla.",
+    howIntro:
+      "Cuatro pasos online hasta firmar en el Barri Gòtic, el Call, Plaça Sant Jaume o calles límite con El Born y El Raval.",
+    testimonialsTitle: "Particulares en el Barri Gòtic que confiaron su LAU a Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Carrer del Bisbe sin ascensor. Livendia redactó LAU con protocolo de acceso para reparaciones e inventario del piso amueblado.",
+        author: "Montse R.",
+        role: "Propietaria · Barri Gòtic",
+      },
+      {
+        quote:
+          "Alquiler cerca de Plaça Reial entre particulares. El gestor revisó renta anterior en zona tensionada y depósito INCASÒL antes de la fianza.",
+        author: "Thomas H.",
+        role: "Inquilino · Ciutat Vella",
+      },
+    ],
+    finalCtaLead:
+      "Firma en el Gòtic con contrato LAU redactado por gestoría — 100 % online, sin agencia de alquiler.",
+  },
+  {
+    slug: "barcelona-sarria",
+    city: "Sarrià",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Contrato de alquiler de larga duración en Sarrià para particulares: redacción o revisión LAU por 145 € IVA incl. Sarrià centre, Reina Elisenda, colegios internacionales — INCASÒL, IRAV e inventario en pisos señoriales. Servicio online con plataforma Livendia.",
+    whyIntro:
+      "Sarrià atrae familias con colegios internacionales, pisos señoriales y alquileres entre particulares sin agencia. Ticket alto y zona tensionada: un LAU genérico no recoge parking comunitario, jardín privado ni tope legal de subida en renovación.",
+    howIntro:
+      "Cuatro hitos digitales hasta la firma en Sarrià centre, Reina Elisenda, Vallvidrera límite o Tres Torres.",
+    testimonialsTitle: "Propietarios en Sarrià que redactaron LAU con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Reina Elisenda alquilado sin inmobiliaria. Livendia incluyó parking, trastero e inventario premium — gestor disponible en panel.",
+        author: "Josep R.",
+        role: "Propietario · Sarrià",
+      },
+      {
+        quote:
+          "Familia entrando en Sarrià centre. Contrato LAU con IRAV explicado y cláusulas de jardín comunitario — todo online desde Suiza.",
+        author: "Elisabet T.",
+        role: "Propietaria · Sarrià-Sant Gervasi",
+      },
+    ],
+    finalCtaLead:
+      "Redacta tu LAU en Sarrià entre particulares — gestoría Livendia, plataforma y entrega en 48–72 h.",
   },
   {
     slug: "hospitalet-de-llobregat",

@@ -1094,6 +1094,174 @@ export const LOCAL_CITY_MARKET_PROFILES: Record<string, LocalCityMarketProfile> 
     ],
   },
 
+  "barcelona-sants-montjuic": {
+    slug: "barcelona-sants-montjuic",
+    cityLabel: "Sants-Montjuïc, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "23,58 €/m²",
+      rentalRangePerSqm: "19–26 €/m²",
+      saleAvgPerSqm: "4.420 €/m²",
+      saleRangePerSqm: "3.600–5.400 €/m²",
+      avgSalePrice: "365.000 €",
+      sourceNote:
+        "Alquiler: Brains Real Estate, informe Sants-Montjuïc Q2 2026; Idealista por barrio, 2025. Venta: Idealista, precio medio distrito Sants-Montjuïc, julio 2026.",
+    },
+    marketSummary:
+      "Sants-Montjuïc es uno de los distritos mejor conectados de Barcelona (Estació Sants, L3, L5) con parque envejecido y demanda estable de familias y profesionales. Zona tensionada catalana: cada LAU debe respetar renta anterior e INCASÒL.",
+    neighborhoods: [
+      {
+        name: "Sants centre",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "4.600–5.400 €/m²",
+        note: "Núcleo comercial y estación: alquileres entre particulares frecuentes tras visita rápida. Calderas comunitarias y ascensores antiguos como fricción habitual.",
+      },
+      {
+        name: "Hostafrancs",
+        rentalPerSqm: "22–24 €/m²",
+        salePerSqm: "4.200–5.000 €/m²",
+        note: "Familias consolidadas en bloques de los 70–80. Operaciones directas sin agencia; conviene inventario antes de fianza.",
+      },
+      {
+        name: "Poble-sec",
+        rentalPerSqm: "21–23 €/m²",
+        salePerSqm: "4.000–4.800 €/m²",
+        note: "Edificios bajos y rotación laboral moderada. Pisos compartidos mal documentados generan conflictos de convivencia.",
+      },
+      {
+        name: "La Bordeta",
+        rentalPerSqm: "20–22 €/m²",
+        salePerSqm: "3.800–4.600 €/m²",
+        note: "Barrio familiar con buena conexión metro. LAU genéricos ignoran derramas en bloques densos.",
+      },
+    ],
+  },
+
+  "barcelona-poblenou": {
+    slug: "barcelona-poblenou",
+    cityLabel: "Poblenou, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "24,12 €/m²",
+      rentalRangePerSqm: "21–28 €/m²",
+      saleAvgPerSqm: "4.950 €/m²",
+      saleRangePerSqm: "4.200–6.200 €/m²",
+      avgSalePrice: "410.000 €",
+      sourceNote:
+        "Alquiler: Brains Real Estate, informe Sant Martí Q2 2026; Idealista Poblenou/22@, 2025. Venta: Idealista, precio medio Sant Martí, julio 2026.",
+    },
+    marketSummary:
+      "Poblenou combina transformación del 22@ con familias en la Rambla del Poblenou y demanda tech. Zona tensionada: IRAV en renovaciones e INCASÒL en altas; lofts y reconversiones exigen cláusulas a medida.",
+    neighborhoods: [
+      {
+        name: "22@",
+        rentalPerSqm: "26–28 €/m²",
+        salePerSqm: "5.400–6.200 €/m²",
+        note: "Lofts y pisos en naves reconvertidas. Alquileres entre particulares con prisa; contratos deben reflejar instalaciones y terrazas.",
+      },
+      {
+        name: "Rambla del Poblenou",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "5.000–5.800 €/m²",
+        note: "Eje comercial con familias y jóvenes profesionales. Inventario fotográfico imprescindible antes de la fianza.",
+      },
+      {
+        name: "Parc del Centre del Poblenou",
+        rentalPerSqm: "23–25 €/m²",
+        salePerSqm: "4.800–5.600 €/m²",
+        note: "Zona residencial consolidada post-olímpica. Operaciones LAU directas frecuentes.",
+      },
+      {
+        name: "Diagonal Mar (límite)",
+        rentalPerSqm: "25–27 €/m²",
+        salePerSqm: "5.200–6.000 €/m²",
+        note: "Promociones recientes con ascensor y parking. Cláusulas de garaje y trastero en contrato.",
+      },
+    ],
+  },
+
+  "barcelona-gotic": {
+    slug: "barcelona-gotic",
+    cityLabel: "Barri Gòtic, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "22,80 €/m²",
+      rentalRangePerSqm: "19–26 €/m²",
+      saleAvgPerSqm: "4.680 €/m²",
+      saleRangePerSqm: "3.800–5.800 €/m²",
+      avgSalePrice: "380.000 €",
+      sourceNote:
+        "Alquiler: Brains Real Estate, informe Ciutat Vella Q2 2026; Idealista Barri Gòtic, 2025. Venta: Idealista, precio medio Ciutat Vella, julio 2026.",
+    },
+    marketSummary:
+      "El Barri Gòtic concentra fincas históricas, pisos sin ascensor y mezcla de uso residencial y comercial en planta baja. Ciutat Vella está en zona tensionada: renta anterior e INCASÒL son obligatorios en cada LAU entre particulares.",
+    neighborhoods: [
+      {
+        name: "Plaça Reial y entorno",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "5.000–5.800 €/m²",
+        note: "Alquileres entre particulares con acuerdo rápido en visita. Ruido y normas de comunidad deben quedar por escrito.",
+      },
+      {
+        name: "Carrer del Bisbe",
+        rentalPerSqm: "23–25 €/m²",
+        salePerSqm: "4.800–5.600 €/m²",
+        note: "Fincas medievales sin ascensor. Inventario y protocolo de acceso para reparaciones imprescindibles.",
+      },
+      {
+        name: "Jaume I / Plaça Sant Jaume",
+        rentalPerSqm: "22–24 €/m²",
+        salePerSqm: "4.600–5.400 €/m²",
+        note: "Mezcla residencial y oficinas en planta baja. Verificar uso acordado en el LAU.",
+      },
+      {
+        name: "El Call",
+        rentalPerSqm: "21–23 €/m²",
+        salePerSqm: "4.400–5.200 €/m²",
+        note: "Calles estrechas y edificios antiguos. Humedades preexistentes deben documentarse antes de la fianza.",
+      },
+    ],
+  },
+
+  "barcelona-sarria": {
+    slug: "barcelona-sarria",
+    cityLabel: "Sarrià, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "28,76 €/m²",
+      rentalRangePerSqm: "24–32 €/m²",
+      saleAvgPerSqm: "6.120 €/m²",
+      saleRangePerSqm: "5.000–8.500 €/m²",
+      avgSalePrice: "620.000 €",
+      sourceNote:
+        "Alquiler: Brains Real Estate, informe Sarrià-Sant Gervasi Q2 2026; Idealista Sarrià/Reina Elisenda, 2025. Venta: Idealista, precio medio distrito, julio 2026.",
+    },
+    marketSummary:
+      "Sarrià encabeza el ticket de alquiler de Barcelona capital con familias, colegios internacionales y pisos señoriales. Zona tensionada: IRAV en renovaciones y depósito INCASÒL; errores en rentas altas exponen a reclamaciones costosas.",
+    neighborhoods: [
+      {
+        name: "Sarrià centre",
+        rentalPerSqm: "28–30 €/m²",
+        salePerSqm: "6.200–7.500 €/m²",
+        note: "Casas entre medianeras y pisos de carácter. Alquileres entre particulares sin agencia con expectativa de servicio premium.",
+      },
+      {
+        name: "Reina Elisenda",
+        rentalPerSqm: "29–32 €/m²",
+        salePerSqm: "6.800–8.500 €/m²",
+        note: "Fincas señoriales con parking y trastero. LAU debe reflejar anexos e inventario detallado.",
+      },
+      {
+        name: "Les Tres Torres (límite)",
+        rentalPerSqm: "30–32 €/m²",
+        salePerSqm: "7.000–8.200 €/m²",
+        note: "Segmento premium con portería frecuente. Derramas de ascensor y comunidad en cláusulas contractuales.",
+      },
+      {
+        name: "Vallvidrera (límite)",
+        rentalPerSqm: "24–28 €/m²",
+        salePerSqm: "5.500–7.000 €/m²",
+        note: "Chalets y adosados con jardín. Contratos deben cubrir mantenimiento exterior acordado.",
+      },
+    ],
+  },
+
   "hospitalet-de-llobregat": {
     slug: "hospitalet-de-llobregat",
     cityLabel: "L'Hospitalet de Llobregat",

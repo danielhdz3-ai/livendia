@@ -4,6 +4,25 @@ import { ALQUILER_LOCAL_CORE_MARKET_INSIGHTS } from "@/lib/contrato-alquiler-loc
 import { attachLocalMarketInsights, type LocalDifferentiationFields } from "@/lib/merge-local-differentiation";
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 
+const BCN_LAU_PLATFORM_NOTES: LocalCityLandingFields["localServiceNotes"] = [
+  {
+    title: "Servicio 100 % online — sin visitar un despacho",
+    body: "Contratas en livendia.com, subes documentación al panel y hablas con tu gestor por WhatsApp. No hace falta acudir a Les Corts ni a un despacho del Eixample para redactar el LAU.",
+  },
+  {
+    title: "Plataforma Livendia: expediente centralizado",
+    body: "Documentos, inventario fotográfico, estado del contrato y mensajes con el gestor en un solo panel. Propietario e inquilino siguen el avance antes de firmar.",
+  },
+  {
+    title: "Livendia, referente en contratos de alquiler",
+    body: "No somos agencia de captación: no publicamos tu anuncio ni cobramos un mes de renta. Nos especializamos en LAU, temporada, habitación, administración del alquiler y revisión legal de borradores.",
+  },
+  {
+    title: "Otros servicios en Barcelona",
+    body: "Administración de alquiler desde 65 €/mes, contrato de arras local, pack LAU + administración, contrato de habitación y revisión de contrato — accesibles desde el hub de servicios Livendia.",
+  },
+];
+
 /** Copy único por ciudad — contrato de alquiler local. */
 const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFields> = {
   madrid: {
@@ -451,6 +470,369 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
         question: "¿Qué pasa si hay derrama en la comunidad?",
         answer:
           "Revisamos actas recientes y dejamos por escrito reparto de gastos y plazos antes de la entrada del inquilino.",
+      },
+    ],
+  },
+  "barcelona-sants-montjuic": {
+    metaTitle: "Contrato alquiler larga duración Sants — redactamos tu LAU · 145 €",
+    metaDescription:
+      "Redactamos tu contrato de alquiler de larga duración en Sants-Montjuïc entre particulares: Sants, Poble-sec, Hostafrancs. LAU 145 € IVA incl., INCASÒL, inventario y gestor online. Livendia.",
+    keywords: [
+      "contrato alquiler larga duracion sants",
+      "redactar contrato alquiler sants montjuic",
+      "contrato lau sants entre particulares",
+      "alquiler poble sec contrato profesional",
+      "contrato alquiler hostafrancs sin agencia",
+      "contrato alquiler larga duracion barcelona sants",
+      "livendia contrato alquiler online sants",
+    ],
+    heroBadge: "Entre particulares · Sants-Montjuïc",
+    heroH1: "Redactamos tu contrato de alquiler de larga duración en Sants",
+    heroBullets: [
+      "Sants, Hostafrancs, La Bordeta, Poble-sec y Montjuïc",
+      "145 € IVA incl. — gestoría online, no mes de agencia",
+      "Inventario, INCASÒL y renta anterior antes de la fianza",
+    ],
+    whyTitle: "Sants-Montjuïc: acuerdo en Idealista, contrato LAU que aguanta",
+    whySubtitle:
+      "Cuando propietario e inquilino ya se han encontrado en Sants o Poble-sec, el riesgo no es la visita sino firmar un PDF genérico sin renta anterior, depósito en INCASÒL ni cláusulas de calderas comunitarias. Livendia redacta el LAU a medida del piso concreto.",
+    localZonesHeading: "Barrios de Sants-Montjuïc donde redactamos contratos LAU",
+    localZones:
+      "Sants centre, Hostafrancs, La Bordeta, Poble-sec, Font de la Guatlla, la Marina del Port y Montjuïc. Misma gestoría digital con panel Livendia y gestor por WhatsApp.",
+    localBenefits: [
+      {
+        title: "Ideal tras cerrar en Idealista sin agencia",
+        description:
+          "Redactamos cuando ya hay acuerdo de renta y fecha — no captamos inquilinos ni cobramos comisión sobre la mensualidad.",
+      },
+      {
+        title: "Zona tensionada e IRAV explicados",
+        description:
+          "Comprobamos tope legal, renta del arrendamiento anterior y coherencia con lo publicado en el anuncio.",
+      },
+      {
+        title: "Calderas y comunidad en bloques de los 60–80",
+        description:
+          "Cláusulas sobre calefacción comunitaria, ascensor y derramas frecuentes en La Bordeta o Hostafrancs.",
+      },
+      {
+        title: "Inventario fotográfico incluido",
+        description: "Estado de cocina, baños y pintura documentado antes de entregar llaves y fianza.",
+      },
+      {
+        title: "Plataforma Livendia y gestor humano",
+        description:
+          "Subes DNI, contrato previo y fotos al panel; el gestor responde por WhatsApp — servicio 100 % online.",
+      },
+      {
+        title: "LAU, temporada o habitación",
+        description: `Piso entero (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}), habitación o temporada con el mismo equipo.`,
+      },
+    ],
+    finalCtaTitle: "Firma tu LAU en Sants-Montjuïc — redacción profesional online",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Cómo funciona Livendia para redactar un contrato en Sants?",
+        answer:
+          "Contratas en livendia.com, completas el briefing online, subes documentación al panel y un gestor te contacta por WhatsApp. En 48–72 h laborables recibes borrador LAU con inventario — sin visitar un despacho en Sants ni pagar comisión de agencia.",
+      },
+      {
+        question: "¿Puedo alquilar en Poble-sec o Hostafrancs entre particulares?",
+        answer:
+          "Sí. Muchos arrendamientos en Sants-Montjuïc cierran directo tras la visita. Livendia no busca inquilino: redacta o revisa el contrato LAU por 145 € IVA incl. cuando ambas partes ya están de acuerdo.",
+      },
+      {
+        question: "¿Qué es la plataforma Livendia para propietario e inquilino?",
+        answer:
+          "Es el panel donde centralizáis documentos, inventario fotográfico, estado del expediente y mensajes con el gestor. Propietario e inquilino ven el avance antes de firmar — alternativa ordenada a cadenas de email y PDFs sueltos.",
+      },
+      {
+        question: "¿Dónde ingreso la fianza en Barcelona?",
+        answer:
+          "En Cataluña el depósito legal suele gestionarse en INCASÒL, no solo en cuenta del propietario. Te orientamos sobre plazos y documentación antes de la entrada en Sants o Poble-sec.",
+      },
+      {
+        question: "¿Qué otros servicios ofrece Livendia además del LAU?",
+        answer:
+          "Administración de alquiler desde 65 €/mes, contrato de arras, pack LAU + administración, contrato de habitación, temporada y revisión de borradores — todos accesibles desde el hub de servicios Livendia en Barcelona.",
+      },
+      {
+        question: "¿Cuánto cuesta frente a una inmobiliaria en Sants?",
+        answer:
+          "Livendia cobra 145 € IVA incl. por redacción o revisión LAU. Una agencia de alquiler suele cobrar un mes de renta o porcentaje sobre la renta anual — aquí solo pagas gestoría contractual cuando ya tienes inquilino.",
+      },
+    ],
+  },
+  "barcelona-poblenou": {
+    metaTitle: "Alquiler larga duración Poblenou particulares — contrato LAU · 145 €",
+    metaDescription:
+      "Alquiler de larga duración para particulares en Poblenou: redactamos tu contrato LAU por 145 € IVA incl. 22@, Rambla del Poblenou, inventario e INCASÒL. Servicio online Livendia.",
+    keywords: [
+      "alquiler larga duracion poblenou particulares",
+      "contrato alquiler poblenou entre particulares",
+      "contrato lau 22 barcelona",
+      "redactar contrato alquiler rambla poblenou",
+      "contrato alquiler sant marti particular",
+      "contrato alquiler larga duracion poblenou",
+      "livendia contrato alquiler online poblenou",
+    ],
+    heroBadge: "Entre particulares · Poblenou",
+    heroH1: "Alquiler de larga duración para particulares en Poblenou",
+    heroBullets: [
+      "22@, Rambla del Poblenou, Clot límite, Vila Olímpica límite",
+      "145 € IVA incl. — redacción LAU, no captación de inquilino",
+      "Lofts, pisos familiares e inventario de instalaciones",
+    ],
+    whyTitle: "Poblenou: tech, familias y contratos LAU bien redactados",
+    whySubtitle:
+      "En el 22@ y la Rambla del Poblenou es habitual alquilar entre particulares tras pocas visitas. Los borradores copiados no distinguen uso vivienda vs. local en planta baja, terrazas en naves reconvertidas ni renta anterior en zona tensionada.",
+    localZonesHeading: "Zonas del Poblenou y Sant Martí donde redactamos LAU",
+    localZones:
+      "22@, Rambla del Poblenou, Parc del Centre del Poblenou, Diagonal Mar límite, Clot límite y Vila Olímpica límite. Gestoría online Livendia con entrega en 48–72 h laborables.",
+    localBenefits: [
+      {
+        title: "Lofts y reconversiones industriales",
+        description:
+          "Cláusulas sobre instalaciones eléctricas, terrazas y uso acordado en edificios del 22@.",
+      },
+      {
+        title: "Renta anterior en zona tensionada",
+        description: "Verificamos coherencia con normativa de Barcelona antes de firmar en Sant Martí.",
+      },
+      {
+        title: "Servicio online sin despacho en Poblenou",
+        description:
+          "Briefing, documentos e inventario desde el panel — gestor disponible por WhatsApp.",
+      },
+      {
+        title: "Inventario antes de la fianza",
+        description: "Electrodomésticos, suelos y carpintería documentados con fotografías.",
+      },
+      {
+        title: "Referente Livendia en contratos de alquiler",
+        description:
+          "Especialistas en LAU, habitación, temporada y administración — no agencia de captación.",
+      },
+      {
+        title: "Depósito orientado a INCASÒL",
+        description: "Te guiamos para cumplir plazos legales del depósito catalán.",
+      },
+    ],
+    finalCtaTitle: "Contrato LAU en Poblenou entre particulares — gestoría Livendia",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Redactáis contratos LAU en el 22@ y la Rambla del Poblenou?",
+        answer:
+          "Sí. Adaptamos el contrato al inmueble concreto — loft, piso familiar o planta baja con uso mixto acordado — con inventario incluido y revisión de zona tensionada.",
+      },
+      {
+        question: "¿Cómo trabaja Livendia si ya tengo inquilino en Poblenou?",
+        answer:
+          "Cuando propietario e inquilino ya han acordado renta y entrada, contratas online, subes datos al panel y el gestor redacta el LAU. No publicamos tu anuncio ni intervenimos en la negociación del precio.",
+      },
+      {
+        question: "¿Es un servicio 100 % online?",
+        answer:
+          "Sí. Todo el proceso — contratación, documentación, inventario y entrega del borrador — se gestiona por livendia.com, panel Livendia y WhatsApp con tu gestor dedicado.",
+      },
+      {
+        question: "¿Qué incluye la plataforma para clientes?",
+        answer:
+          "Expediente centralizado: contratos, fotos del inventario, hitos del servicio y comunicación con el gestor. Propietario e inquilino pueden seguir el estado sin depender de emails dispersos.",
+      },
+      {
+        question: "¿Puedo combinar LAU con administración del alquiler?",
+        answer:
+          "Sí. Ofrecemos pack LAU + administración y administración mensual desde 65 €/mes para quien quiera delegar cobros, incidencias y renovaciones tras firmar en Poblenou.",
+      },
+      {
+        question: "¿Temporada laboral o LAU habitual en Poblenou?",
+        answer:
+          `Te orientamos según la duración real: LAU de larga duración (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}) o contrato de temporada (${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) si la estancia es acotada por trabajo o proyecto.`,
+      },
+    ],
+  },
+  "barcelona-gotic": {
+    metaTitle: "Contrato alquiler larga duración Barri Gòtic — LAU particulares · 145 €",
+    metaDescription:
+      "Redactamos tu contrato de alquiler de larga duración en el Barri Gòtic entre particulares. Plaça Reial, Carrer del Bisbe, INCASÒL e inventario. 145 € IVA incl. Livendia online.",
+    keywords: [
+      "contrato alquiler larga duracion gotic",
+      "contrato lau barri gothic entre particulares",
+      "redactar contrato alquiler plaça reial",
+      "contrato alquiler ciutat vella particular",
+      "alquiler gotic sin agencia contrato",
+      "contrato alquiler carrer del bisbe",
+      "livendia contrato alquiler online gotic",
+    ],
+    heroBadge: "Entre particulares · Barri Gòtic",
+    heroH1: "Redactamos tu contrato de alquiler de larga duración en el Barri Gòtic",
+    heroBullets: [
+      "Plaça Reial, Carrer del Bisbe, Jaume I, Call",
+      "145 € IVA incl. — fincas sin ascensor e inventario",
+      "INCASÒL, humedades y acceso estrecho documentados",
+    ],
+    whyTitle: "Barri Gòtic: fincas históricas exigen LAU a medida, no plantilla",
+    whySubtitle:
+      "En Ciutat Vella mezclan alquileres LAU entre particulares, locales en planta baja y pisos con humedades o escaleras estrechas. Un contrato genérico no protege a propietario ni inquilino antes de ingresar la fianza.",
+    localZonesHeading: "Calles y zonas del Gòtic donde redactamos contratos LAU",
+    localZones:
+      "Barri Gòtic propiamente dicho, el Call, Plaça Sant Jaume, Plaça Reial, Carrer del Bisbe y límites con El Born y El Raval. Gestoría digital Livendia con precio cerrado.",
+    localBenefits: [
+      {
+        title: "Fincas sin ascensor y accesos estrechos",
+        description:
+          "Protocolo de visitas de mantenimiento y mudanza documentado en el contrato.",
+      },
+      {
+        title: "Humedades y estado del inmueble",
+        description:
+          "Inventario y cláusulas sobre patologías conocidas antes de la entrada — clave en edificios medievales.",
+      },
+      {
+        title: "Renta anterior en zona tensionada",
+        description: "Revisión obligatoria en todo Barcelona antes de firmar en Ciutat Vella.",
+      },
+      {
+        title: "Servicio online Livendia",
+        description:
+          "Sin desplazarte a un despacho en Jaume I: briefing, panel y WhatsApp con gestor dedicado.",
+      },
+      {
+        title: "Plataforma con expediente compartido",
+        description: "Documentos e inventario visibles para propietario e inquilino antes de la firma.",
+      },
+      {
+        title: "Otros servicios: arras, habitación, revisión",
+        description:
+          "Hub Livendia con contrato de arras, revisión de borrador ajeno y administración del alquiler.",
+      },
+    ],
+    finalCtaTitle: "Firma en el Gòtic con LAU redactado por gestoría — 100 % online",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Puedo alquilar en el Barri Gòtic entre particulares sin agencia?",
+        answer:
+          "Sí. Es habitual cerrar en visita por Idealista o recomendación. Livendia redacta el LAU por 145 € IVA incl. cuando ya hay contraparte — no cobramos mes de agencia ni publicamos el anuncio.",
+      },
+      {
+        question: "¿Cómo documentáis humedades o escaleras estrechas?",
+        answer:
+          "Con inventario fotográfico y cláusulas que reflejan el estado real del piso. En el Gòtic esto evita disputas sobre patologías preexistentes tras la mudanza.",
+      },
+      {
+        question: "¿Qué es Livendia y en qué se diferencia de una inmobiliaria?",
+        answer:
+          "Somos gestoría inmobiliaria digital especializada en contratos: LAU, temporada, habitación, arras y administración. No captamos inquilinos ni vendemos pisos — redactamos y revisamos contratos entre particulares.",
+      },
+      {
+        question: "¿El servicio es online aunque el piso esté en Plaça Reial?",
+        answer:
+          "Sí. Contratas en livendia.com, subes documentación al panel Livendia y el gestor coordina todo por WhatsApp. La firma puede ser presencial entre las partes con el borrador ya revisado.",
+      },
+      {
+        question: "¿Dónde deposito la fianza en Ciutat Vella?",
+        answer:
+          "En Cataluña el depósito legal se gestiona habitualmente en INCASÒL. Te orientamos sobre plazos y documentación antes de entregar llaves en el Gòtic.",
+      },
+      {
+        question: "¿Ofrecéis revisión si ya tengo un borrador del casero?",
+        answer:
+          "Sí. Además de redactar desde cero, revisamos contratos aportados por cualquiera de las partes para detectar cláusulas abusivas, lagunas de INCASÒL o errores de zona tensionada.",
+      },
+    ],
+  },
+  "barcelona-sarria": {
+    metaTitle: "Contrato alquiler larga duración Sarrià particulares — LAU · 145 €",
+    metaDescription:
+      "Contrato de alquiler de larga duración en Sarrià para particulares: Reina Elisenda, Tres Torres, INCASÒL, IRAV e inventario premium. 145 € IVA incl. Livendia online.",
+    keywords: [
+      "contrato alquiler larga duracion sarria",
+      "contrato lau sarria entre particulares",
+      "alquiler sarria sin agencia contrato",
+      "redactar contrato alquiler reina elisenda",
+      "contrato alquiler tres torres barcelona",
+      "contrato alquiler sarria sant gervasi",
+      "livendia contrato alquiler online sarria",
+    ],
+    heroBadge: "Entre particulares · Sarrià",
+    heroH1: "Contrato de alquiler de larga duración en Sarrià para particulares",
+    heroBullets: [
+      "Sarrià centre, Reina Elisenda, Tres Torres, Vallvidrera límite",
+      "145 € IVA incl. — pisos señoriales, parking e inventario",
+      "IRAV, INCASÒL y cláusulas de finca premium",
+    ],
+    whyTitle: "Sarrià: ticket alto, familias exigentes y LAU sin lagunas",
+    whySubtitle:
+      "En Sarrià y Reina Elisenda los alquileres entre particulares superan con frecuencia los 2.000 €/mes. Un LAU genérico no recoge parking, trastero, jardín privado ni tope IRAV en renovación — y ahí empiezan los conflictos costosos.",
+    localZonesHeading: "Zonas de Sarrià-Sant Gervasi donde redactamos LAU",
+    localZones:
+      "Sarrià centre, Reina Elisenda, Les Tres Torres límite, Putxet i Farró límite, Vallvidrera límite y Bonanova límite. Misma gestoría online con panel Livendia.",
+    localBenefits: [
+      {
+        title: "Parking, trastero y zonas comunes",
+        description:
+          "Anexos y plazas de garaje reflejados en el contrato e inventario — habitual en fincas de Sarrià.",
+      },
+      {
+        title: "IRAV en renovaciones de renta alta",
+        description:
+          "Verificamos incremento máximo legal antes de proponer subida al inquilino en zona tensionada.",
+      },
+      {
+        title: "Inventario premium en pisos señoriales",
+        description: "Carpintería, suelos y electrodomésticos de gama alta documentados con fotos.",
+      },
+      {
+        title: "Gestión online para propietarios en el extranjero",
+        description:
+          "Briefing y firma coordinados por panel y WhatsApp — sin volar a Barcelona solo por el contrato.",
+      },
+      {
+        title: "Plataforma Livendia para ambas partes",
+        description: "Expediente centralizado con hitos visibles antes de ingresar la fianza.",
+      },
+      {
+        title: "Pack LAU + administración disponible",
+        description:
+          "Tras firmar, puedes delegar cobros e incidencias con administración desde 65 €/mes.",
+      },
+    ],
+    finalCtaTitle: "Redacta tu LAU en Sarrià entre particulares — gestoría Livendia",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Redactáis contratos LAU en Sarrià y Reina Elisenda?",
+        answer:
+          "Sí. Adaptamos cláusulas a pisos señoriales, parking, trastero y expectativas de familias con colegios internacionales — siempre entre particulares, sin comisión de captación.",
+      },
+      {
+        question: "¿Cómo funciona el proceso online en Livendia?",
+        answer:
+          "Contratas en la web, completas datos del inmueble y las partes, subes documentos al panel y un gestor redacta el LAU en 48–72 h laborables. Comunicación por WhatsApp y estado visible en la plataforma.",
+      },
+      {
+        question: "¿Qué es la plataforma Livendia para clientes?",
+        answer:
+          "Panel donde centralizáis contratos, inventario fotográfico, mensajes con el gestor y avance del servicio. Diseñada para propietarios e inquilinos que quieren trazabilidad sin depender de una agencia tradicional.",
+      },
+      {
+        question: "¿Cómo se calcula la subida de renta con IRAV en Sarrià?",
+        answer:
+          "Barcelona está en zona tensionada: la renovación tiene tope legal vinculado al IRAV. Revisamos coherencia entre renta pactada, renta anterior e incremento permitido antes de firmar o renovar.",
+      },
+      {
+        question: "¿Qué otros servicios tiene Livendia en Barcelona?",
+        answer:
+          "Administración de alquiler, contrato de arras, contrato de habitación, temporada, revisión de borradores y packs combinados — consultables en el hub de servicios Livendia.",
+      },
+      {
+        question: "¿Por qué Livendia y no una plantilla de internet?",
+        answer:
+          "Las plantillas no conocen tu piso en Sarrià ni la normativa catalana actual (INCASÒL, IRAV, renta anterior). Un gestor humano adapta cláusulas al inmueble y responde dudas antes de la fianza — por 145 € IVA incl.",
       },
     ],
   },
