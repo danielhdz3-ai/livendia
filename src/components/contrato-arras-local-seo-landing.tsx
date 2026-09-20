@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
+import { ArrasLandingLeadModules } from "@/components/arras-landing-lead-modules";
 import { ContratoArrasLocalCityLinks } from "@/components/contrato-arras-local-city-links";
 import { FaqSection } from "@/components/faq-section";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
@@ -294,10 +295,10 @@ export async function ContratoArrasLocalSeoLanding({
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/contratodearras.jpg"
-                    alt={`Revisión profesional de contrato de arras en ${config.city}`}
+                    src="/images/contratodealquiler.jpg"
+                    alt={`Gestor Livendia redactando contrato de arras en ${config.city}`}
                     fill
-                    className="object-cover object-[center_25%]"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
@@ -305,6 +306,11 @@ export async function ContratoArrasLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <ArrasLandingLeadModules
+            placeLabel={config.city}
+            legalRegion={arrasLegalRegion}
+          />
 
           {seo ? (
             <>

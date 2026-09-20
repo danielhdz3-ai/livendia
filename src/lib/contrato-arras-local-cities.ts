@@ -374,7 +374,7 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     city: "Cornellà de Llobregat",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Arras entre particulares · Cornellà",
-    heroH1: "Tramitar contrato de arras en Cornellà con gestor especializado",
+    heroH1: "Livendia redacta tu contrato de arras en Cornellà de Llobregat",
     metaTitle: `Contrato de arras Cornellà — gestor asignado ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
     metaDescription:
       `Gestor que tramita arras en Cornellà de Llobregat. CCCat 621-4 a 621-9 y art. 621-49 (financiación). ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Sant Ildefons, Can Mercader.`,
