@@ -10,6 +10,7 @@ import {
   FolderOpen,
   LayoutDashboard,
   MessageCircle,
+  Search,
   TrendingUp,
 } from "lucide-react";
 import { AdminExitActions } from "@/components/admin-exit-actions";
@@ -28,6 +29,10 @@ const OPS_NAV = [
   { href: "/admin/alquileres", label: "Alquileres", icon: Building2 },
   { href: "/admin/incidencias", label: "Incidencias", icon: AlertCircle },
   { href: "/admin/chat", label: "Chat", icon: MessageCircle },
+] as const;
+
+const SYSTEM_NAV = [
+  { href: "/admin/seo", label: "SEO", subtitle: "Landing pages", icon: Search },
 ] as const;
 
 function navActive(pathname: string, href: string, exact?: boolean) {
@@ -68,6 +73,27 @@ export function AdminSidebar({ adminEmail }: { adminEmail: string }) {
             </Link>
           );
         })}
+
+        <div className="my-4 border-t border-white/20 pt-4">
+          <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-white/50">Sistema</p>
+          {SYSTEM_NAV.map((item) => {
+            const { href, label, subtitle, icon: Icon } = item;
+            const active = navActive(pathname, href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-start gap-3 rounded-xl px-3 py-3 ${active ? ADMIN_NAV_ACTIVE : ADMIN_NAV_IDLE}`}
+              >
+                <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${active ? "text-white" : "text-white/70"}`} aria-hidden />
+                <span>
+                  <span className="block text-sm font-semibold">{label}</span>
+                  <span className="block text-[11px] text-white/60">{subtitle}</span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
 
         <div className="my-4 border-t border-white/20 pt-4">
           <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-white/50">Operaciones</p>
