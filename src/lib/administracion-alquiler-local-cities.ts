@@ -835,7 +835,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "granada",
     city: "Granada",
     schemaAdministrativeArea: "Andalucía",
-    heroImage: "/images/tipo2.jpg",
+    heroImage: "/images/granada.jpg",
     heroBadge: "Gestión de alquileres LAU · Granada y entorno UGR",
     heroH1: "Administración de alquiler en Granada para propietarios — desde 59 €/mes",
     jsonLdServiceName: "Administración de alquiler en Granada para propietarios",

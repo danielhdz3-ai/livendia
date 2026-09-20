@@ -14,6 +14,17 @@ import {
   barcelonaMetroArrasHref,
 } from "@/lib/contrato-arras-barcelona-metro";
 import {
+  getPublishedBarcelonaMetroContratoAlquilerLinks,
+} from "@/lib/barcelona-metro-contrato-alquiler-slugs";
+import {
+  getPublishedContratoAlquilerLocalCities,
+} from "@/lib/contrato-alquiler-local-cities";
+import { getPublishedContratoArrasLocalCities } from "@/lib/contrato-arras-local-cities";
+import { barcelonaMetroAlquilerHref } from "@/lib/contrato-alquiler-barcelona-metro";
+import {
+  getPublishedBarcelonaMetroContratoArrasBarrioLinks,
+} from "@/lib/barcelona-metro-contrato-arras-slugs";
+import {
   BARCELONA_METRO_VENTA_PARTICULAR_CITIES,
   barcelonaMetroVentaParticularHref,
 } from "@/lib/venta-piso-particular-barcelona-metro";
@@ -107,6 +118,32 @@ export function CityHubServices({ city }: CityHubServicesProps) {
 
       {city.slug === "barcelona" ? (
         <>
+          <MetroSection
+            title="Contrato LAU — barrios y municipios AMB"
+            description="Redacción LAU entre particulares · 145 € IVA incl. · inventario, INCASÒL y gestor online."
+            cities={getPublishedBarcelonaMetroContratoAlquilerLinks(
+              new Set(getPublishedContratoAlquilerLocalCities().map((c) => c.slug)),
+              barcelonaMetroAlquilerHref,
+            ).map((metro) => ({
+              name: metro.shortName,
+              href: metro.href,
+            }))}
+            primaryHref="/servicios/contrato-alquiler-local/barcelona"
+            primaryLabel="Barcelona"
+          />
+          <MetroSection
+            title="Contrato de arras — barrios de Barcelona"
+            description="Gestor asignado · CCCat (621-4 a 621-9) y cláusula 621-49 · arras justas entre particulares."
+            cities={getPublishedBarcelonaMetroContratoArrasBarrioLinks(
+              new Set(getPublishedContratoArrasLocalCities().map((c) => c.slug)),
+              barcelonaMetroArrasHref,
+            ).map((metro) => ({
+              name: metro.shortName,
+              href: metro.href,
+            }))}
+            primaryHref="/servicios/contrato-arras-local/barcelona"
+            primaryLabel="Barcelona"
+          />
           <MetroSection
             title="Contrato de arras — área metropolitana"
             description="Gestor asignado · CCCat (621-4 a 621-9) y financiación (621-49) · arras justas sin perder la señal."

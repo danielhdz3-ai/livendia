@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
@@ -281,6 +282,8 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RentalLandingLeadModules placeLabel={config.city} citySlug={config.path.split("/").pop() ?? config.city} />
 
           {seo ? (
             <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">

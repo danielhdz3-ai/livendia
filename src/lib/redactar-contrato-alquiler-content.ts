@@ -1,8 +1,12 @@
-import { CONTRATO_ALQUILER_LAU_PRICE_EUR, CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
+import {
+  ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS,
+  administracionAlquilerMetroHref,
+} from "@/lib/administracion-alquiler-barcelona-metro";
 import {
   isAdministracionAlquilerLocalSlugPublished,
   localAdministracionAlquilerHref,
 } from "@/lib/administracion-alquiler-local-cities";
+import { CONTRATO_ALQUILER_LAU_PRICE_EUR, CONTRATO_ALQUILER_LAU_PRICE_LABEL } from "@/lib/catalog.public";
 
 export const REDACTAR_CONTRATO_ALQUILER_BASE = "/servicios/redactar-contrato-alquiler" as const;
 
@@ -55,20 +59,42 @@ const REDACTAR_SLUG_TO_ADMIN_LOCAL: Partial<Record<string, string>> = {
   asturias: "gijon",
 };
 
-/** Landings metro administración de alquiler (Barcelona AMB). */
-const REDACTAR_SLUG_TO_METRO_ADMIN_PATH: Partial<Record<string, string>> = {
-  "barcelona-les-corts": "/administracion-alquiler/barcelona/les-corts",
-  "barcelona-eixample": "/administracion-alquiler/barcelona/eixample",
-  "hospitalet-de-llobregat": "/administracion-alquiler/l-hospitalet",
-  "cornella-de-llobregat": "/administracion-alquiler/cornella",
+const LOCAL_SLUG_TO_METRO_MUNICIPIO_SEGMENTS: Partial<Record<string, readonly string[]>> = {
+  "hospitalet-de-llobregat": ["l-hospitalet"],
+  "cornella-de-llobregat": ["cornella"],
+  badalona: ["badalona"],
+  "sant-cugat-del-valles": ["sant-cugat"],
+  sabadell: ["sabadell"],
+  terrassa: ["terrassa"],
 };
 
-/** Enlace a admin local si existe; si no, landing nacional de administración. */
-export function redactarContratoAdministracionHref(redactarCitySlug: string): string {
-  const metro = REDACTAR_SLUG_TO_METRO_ADMIN_PATH[redactarCitySlug];
-  if (metro) return metro;
+function metroAdministracionHrefForLocalSlug(localSlug: string): string | undefined {
+  if (localSlug.startsWith("barcelona-")) {
+    const zone = localSlug.slice("barcelona-".length);
+    const entry = ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS.find(
+      (l) => l.slug === zone || l.segments[1] === zone,
+    );
+    if (entry) return administracionAlquilerMetroHref(entry.segments);
+  }
 
-  const adminSlug = REDACTAR_SLUG_TO_ADMIN_LOCAL[redactarCitySlug] ?? redactarCitySlug;
+  const municipioSegments = LOCAL_SLUG_TO_METRO_MUNICIPIO_SEGMENTS[localSlug];
+  if (municipioSegments) {
+    const entry = ADMINISTRACION_ALQUILER_BARCELONA_METRO_LANDINGS.find(
+      (l) => l.segments.join("/") === municipioSegments.join("/"),
+    );
+    if (entry) return administracionAlquilerMetroHref(entry.segments);
+    return administracionAlquilerMetroHref(municipioSegments);
+  }
+
+  return undefined;
+}
+
+/** Enlace a admin local/metro si existe; si no, landing nacional de administración. */
+export function redactarContratoAdministracionHref(localCitySlug: string): string {
+  const metroHref = metroAdministracionHrefForLocalSlug(localCitySlug);
+  if (metroHref) return metroHref;
+
+  const adminSlug = REDACTAR_SLUG_TO_ADMIN_LOCAL[localCitySlug] ?? localCitySlug;
   if (isAdministracionAlquilerLocalSlugPublished(adminSlug)) {
     return localAdministracionAlquilerHref(adminSlug);
   }

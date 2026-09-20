@@ -1,3 +1,5 @@
+import { ARRAS_BCN_BARRIO_SEO_CONTENT } from "@/lib/contrato-arras-local-seo-content-bcn-barrios";
+import { ARRAS_BCN_BARRIO_SEO_CONTENT_PHASE2 } from "@/lib/contrato-arras-local-seo-content-bcn-barrios-phase2";
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 
@@ -87,6 +89,76 @@ export function buildSpanishArrasFinancingEducation(city: string): ArrasFinancin
 }
 
 export const ARRAS_LOCAL_SEO_CONTENT: Record<string, Omit<ArrasLocalSeoContent, "financingEducation">> = {
+  barcelona: {
+    heroSubtitle: `Livendia redacta tu contrato de arras en Barcelona entre particulares por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Gestor asignado, CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca. Eixample, Gràcia, Sant Martí — servicio online sin comisión de agencia.`,
+    gestorPitch:
+      "No firmes arras copiadas de una inmobiliaria barcelonesa. En Livendia un gestor inmobiliario-jurídico se asigna a tu expediente: explica penitenciales vs confirmatorias conforme al CCCat, calibra la señal y redacta el contrato antes de que transfieras un euro.",
+    fairArrasHeading: "Redacción de arras justas en Barcelona entre particulares",
+    fairArrasIntro:
+      "En Barcelona capital circulan borradores pensados para otra operación. Livendia contrasta penalidades, plazos hasta escritura, derramas comunitarias y coherencia registral — en cualquier distrito donde cierres entre particulares.",
+    legalSpanish:
+      "El Código Civil español (art. 1454 y ss.) complementa el marco autonómico. En operaciones inmobiliarias en Barcelona aplican las reglas del Codi civil de Catalunya sobre compraventa y señal.",
+    legalCatalan:
+      "En Barcelona rige el Codi civil de Catalunya. Los arts. 621-4 a 621-9 definen arras penitenciarias y confirmatòries, sus efectos si una parte incumple y cómo se vincula la señal al contrato definitivo.",
+    legalCatalanFinancing:
+      "El art. 621-49 CCCat regula el desistimiento del comprador cuando no obtiene la financiación bancaria en los términos pactados. Si compras con hipoteca en Barcelona, el gestor redacta esta cláusula para no perder la señal si el banco deniega el préstamo.",
+    cccatArrasArticles: "621-4 a 621-9",
+    cccatFinancingArticle: "621-49",
+    localMarketIntro:
+      "Barcelona concentra compraventas rápidas entre particulares en Eixample, Gràcia, Sant Martí, Ciutat Vella y área metropolitana. Muchos borradores mezclan plantillas de agencia con cláusulas desactualizadas — ahí empiezan las pérdidas de señal mal calibradas.",
+    zonesHeading: "Contrato de arras en distritos de Barcelona",
+    zonesParagraph: "Gestor asignado para particulares en:",
+    zoneGroups: [
+      { district: "Eixample — Gràcia", areas: "Eixample, Gràcia, Les Corts, Sarrià" },
+      { district: "Ciutat Vella", areas: "Gòtic, Born, Raval, Barceloneta" },
+      { district: "Sants — Sant Martí", areas: "Sants-Montjuïc, Poblenou, Vila Olímpica" },
+      { district: "Área metropolitana", areas: "L'Hospitalet, Cornellà, Badalona, Sant Cugat" },
+    ],
+    arrasTypesIntro:
+      "Te orientamos entre arras penitenciales (621-4 CCCat) y confirmatorias según tu operación. El gestor adapta plazos, objeto del inmueble y documentación exigible antes del resto del precio.",
+    moneyLossRisks: [
+      {
+        title: "Penalidad desproporcionada",
+        body: "Señales mal calibradas en operaciones premium — el gestor recalibra conforme al CCCat antes de firmar.",
+      },
+      {
+        title: "Financiación sin art. 621-49",
+        body: "Comprador con hipoteca sin cláusula de desistimiento — riesgo de perder toda la señal si el banco dice no.",
+      },
+      {
+        title: "Objeto del inmueble ambiguo",
+        body: "Parking, trastero o local en planta baja no descritos igual que en registro — grieta entre arras y notaría.",
+      },
+    ],
+    faqLocal: [
+      {
+        question: "¿Cómo funciona Livendia para tramitar arras en Barcelona?",
+        answer:
+          "Contratas online, un gestor se asigna a tu caso, revisa el borrador por videollamada o teléfono y redacta el contrato en 48–72 h. Expediente en panel Livendia — servicio 100 % digital.",
+      },
+      {
+        question: "¿Livendia busca comprador o vende mi piso?",
+        answer:
+          "No. Somos gestoría: redactamos o revisamos arras por 145 € IVA incl. cuando comprador y vendedor ya se han encontrado sin agencia.",
+      },
+      {
+        question: "¿Tenéis landings por barrio en Barcelona?",
+        answer:
+          "Sí. Eixample, Gràcia, Les Corts, El Born, Poblenou, Sants, Gòtic, Sarrià, Barceloneta, Vila Olímpica y El Raval — cada una con contenido adaptado al mercado local.",
+      },
+      {
+        question: "¿Incluye cláusula art. 621-49 para hipoteca?",
+        answer:
+          "Sí, si la operación lo requiere. El gestor redacta plazo, importe del préstamo y documentación bancaria exigible conforme al CCCat.",
+      },
+      {
+        question: "¿Qué otros servicios ofrece Livendia?",
+        answer:
+          "Servicio completo de venta (890 €), LAU, administración de alquiler, revisión post-arras y pack arras + gestión documental — hub en livendia.com.",
+      },
+    ],
+  },
+
   "hospitalet-de-llobregat": {
     heroSubtitle:
       `¿Buscas un gestor que te tramite el contrato de arras en L'Hospitalet entre particulares? Por ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. tendrás un gestor asignado a tu caso, especialista en Código Civil español y Código Civil de Catalunya — con arras justas y sin perder la señal por cláusulas desequilibradas.`,
@@ -756,6 +828,9 @@ export const ARRAS_LOCAL_SEO_CONTENT: Record<string, Omit<ArrasLocalSeoContent, 
       },
     ],
   },
+
+  ...ARRAS_BCN_BARRIO_SEO_CONTENT,
+  ...ARRAS_BCN_BARRIO_SEO_CONTENT_PHASE2,
 };
 
 export function getArrasLocalSeoContent(slug: string, city?: string): ArrasLocalSeoContent | undefined {

@@ -5,20 +5,23 @@ import {
   localContratoArrasHref,
 } from "@/lib/contrato-arras-local-cities";
 import {
-  BARCELONA_METRO_ARRAS_CITIES,
-  barcelonaMetroArrasHref,
-} from "@/lib/contrato-arras-barcelona-metro";
+  getPublishedBarcelonaMetroContratoArrasBarrioLinks,
+  getPublishedBarcelonaMetroContratoArrasMunicipioLinks,
+  BARCELONA_METRO_CONTRATO_ARRAS_SLUG_SET,
+} from "@/lib/barcelona-metro-contrato-arras-slugs";
+import { barcelonaMetroArrasHref } from "@/lib/contrato-arras-barcelona-metro";
 
 type Props = {
   showTitle?: boolean;
   variant?: "default" | "compact" | "footer";
 };
 
-const BARCELONA_METRO_SLUGS = new Set<string>(BARCELONA_METRO_ARRAS_CITIES.map((c) => c.slug));
-
 export function ContratoArrasLocalCityLinks({ showTitle = true, variant = "default" }: Props) {
   const cities = getPublishedContratoArrasLocalCities();
-  const primaryCities = cities.filter((c) => !BARCELONA_METRO_SLUGS.has(c.slug));
+  const publishedSlugs = new Set(cities.map((c) => c.slug));
+  const primaryCities = cities.filter((c) => !BARCELONA_METRO_CONTRATO_ARRAS_SLUG_SET.has(c.slug));
+  const barrioLinks = getPublishedBarcelonaMetroContratoArrasBarrioLinks(publishedSlugs, barcelonaMetroArrasHref);
+  const municipioLinks = getPublishedBarcelonaMetroContratoArrasMunicipioLinks(publishedSlugs, barcelonaMetroArrasHref);
   const isFooter = variant === "footer";
   const isCompact = variant === "compact" || isFooter;
 
@@ -55,28 +58,55 @@ export function ContratoArrasLocalCityLinks({ showTitle = true, variant = "defau
         ))}
       </nav>
 
-      {!isFooter ? (
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
-            Área metropolitana de Barcelona
-          </p>
-          <nav aria-label="Contrato de arras área metropolitana Barcelona" className={wrapClass}>
-            {BARCELONA_METRO_ARRAS_CITIES.map((c) => (
-              <Link key={c.slug} href={barcelonaMetroArrasHref(c.slug)} className={metroLinkClass}>
-                {c.shortName}
+      {barrioLinks.length > 0 ? (
+        !isFooter ? (
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+              Barrios de Barcelona
+            </p>
+            <nav aria-label="Contrato de arras barrios Barcelona" className={wrapClass}>
+              {barrioLinks.map((m) => (
+                <Link key={m.slug} href={m.href} className={metroLinkClass}>
+                  {m.shortName}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        ) : (
+          <nav aria-label="Contrato de arras barrios Barcelona" className={wrapClass}>
+            {barrioLinks.map((m) => (
+              <Link key={m.slug} href={m.href} className={linkClass}>
+                {m.shortName}
               </Link>
             ))}
           </nav>
-        </div>
-      ) : (
-        <nav aria-label="Contrato de arras área metropolitana Barcelona" className={wrapClass}>
-          {BARCELONA_METRO_ARRAS_CITIES.map((c) => (
-            <Link key={c.slug} href={barcelonaMetroArrasHref(c.slug)} className={linkClass}>
-              {c.shortName}
-            </Link>
-          ))}
-        </nav>
-      )}
+        )
+      ) : null}
+
+      {municipioLinks.length > 0 ? (
+        !isFooter ? (
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+              Área metropolitana de Barcelona
+            </p>
+            <nav aria-label="Contrato de arras área metropolitana Barcelona" className={wrapClass}>
+              {municipioLinks.map((m) => (
+                <Link key={m.slug} href={m.href} className={metroLinkClass}>
+                  {m.shortName}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        ) : (
+          <nav aria-label="Contrato de arras área metropolitana Barcelona" className={wrapClass}>
+            {municipioLinks.map((m) => (
+              <Link key={m.slug} href={m.href} className={linkClass}>
+                {m.shortName}
+              </Link>
+            ))}
+          </nav>
+        )
+      ) : null}
 
       <Link
         href={CONTRATO_ARRAS_LOCAL_BASE}

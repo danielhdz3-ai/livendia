@@ -206,6 +206,8 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
             adminPriceLabel={adminPriceLabel}
           />
 
+          <RedactarContratoAlquilerOnlineGestorSection city={config.placeLabel} />
+
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-5xl">
               <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
@@ -242,8 +244,6 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
-
-          <RedactarContratoAlquilerOnlineGestorSection city={config.placeLabel} />
 
           <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-5xl">

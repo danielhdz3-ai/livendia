@@ -33,16 +33,12 @@ import {
   Gavel,
 } from "lucide-react";
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
+import { BARCELONA_METRO_CONTRATO_ARRAS_SLUG_SET } from "@/lib/barcelona-metro-contrato-arras-slugs";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const CATALAN_ARRAS_SLUGS = new Set([
   "barcelona",
-  "hospitalet-de-llobregat",
-  "cornella-de-llobregat",
-  "badalona",
-  "sant-cugat-del-valles",
-  "sabadell",
-  "terrassa",
+  ...BARCELONA_METRO_CONTRATO_ARRAS_SLUG_SET,
 ]);
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 

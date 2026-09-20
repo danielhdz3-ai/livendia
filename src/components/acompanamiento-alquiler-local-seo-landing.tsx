@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -194,6 +195,11 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RentalLandingLeadModules
+            placeLabel={config.placeLabel}
+            citySlug={config.path.split("/").pop() ?? config.city}
+          />
 
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

@@ -77,7 +77,7 @@ export const CITY_HUB_IMAGES: Record<HomeCoverageCitySlug, { src: string; alt: s
   malaga: { src: "/images/malaga.jpg", alt: "Málaga, plaza de toros y puerto — gestoría inmobiliaria Livendia" },
   sevilla: { src: "/images/sevilla2.jpg", alt: "Sevilla — gestoría inmobiliaria Livendia" },
   bilbao: { src: "/images/bilbao2.jpg", alt: "Bilbao — gestoría inmobiliaria Livendia" },
-  granada: { src: "/images/tipo2.jpg", alt: "Granada — gestoría inmobiliaria Livendia" },
+  granada: { src: "/images/granada.jpg", alt: "Granada — gestoría inmobiliaria Livendia" },
   zaragoza: { src: "/images/zaragoza.jpg", alt: "Zaragoza — gestoría inmobiliaria Livendia" },
 };
 

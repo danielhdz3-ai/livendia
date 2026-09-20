@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { LandingProminentWhatsAppCta } from "@/components/landing-prominent-whatsapp-cta";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
@@ -292,6 +293,11 @@ export async function ContratoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RentalLandingLeadModules
+            placeLabel={config.city}
+            citySlug={config.path.split("/").pop() ?? config.city}
+          />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

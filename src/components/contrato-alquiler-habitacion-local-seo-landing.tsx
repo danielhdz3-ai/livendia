@@ -1,6 +1,7 @@
 import { ContratoAlquilerHabitacionLocalCityLinks } from "@/components/contrato-alquiler-habitacion-local-city-links";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { FaqSection } from "@/components/faq-section";
+import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
@@ -156,6 +157,8 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <RentalLandingLeadModules placeLabel={config.city} citySlug={config.slug} />
 
           <section className="border-b border-slate-200 bg-amber-50 px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-4xl">

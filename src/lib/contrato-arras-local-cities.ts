@@ -5,6 +5,7 @@
  * Publicación gradual: amplía `CONTRATO_ARRAS_LOCAL_PUBLISHED_SLUGS` cuando publiques cada ciudad.
  */
 
+import { CONTRATO_ARRAS_BCN_BARRIO_PHASE2_CITIES } from "@/lib/contrato-arras-local-cities-bcn-barrios-phase2";
 import { getArrasLocalSeoContent } from "@/lib/contrato-arras-local-seo-content";
 import { CONTRATO_ARRAS_LOCAL_PRICE_LABEL } from "@/lib/catalog.public";
 
@@ -13,6 +14,17 @@ export const CONTRATO_ARRAS_LOCAL_BASE = "/servicios/contrato-arras-local";
 export const CONTRATO_ARRAS_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "madrid",
   "barcelona",
+  "barcelona-eixample",
+  "barcelona-gracia",
+  "barcelona-les-corts",
+  "barcelona-born",
+  "barcelona-sants-montjuic",
+  "barcelona-poblenou",
+  "barcelona-gotic",
+  "barcelona-sarria",
+  "barcelona-barceloneta",
+  "barcelona-vila-olimpica",
+  "barcelona-el-raval",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "badalona",
@@ -108,8 +120,22 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Barcelona",
+    heroH1: "Livendia redacta tu contrato de arras en Barcelona entre particulares",
+    metaTitle: `Contrato arras Barcelona particulares — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
+    metaDescription:
+      `Livendia redacta tu contrato de arras en Barcelona entre particulares. Gestor asignado, CCCat 621-4 a 621-9, cláusula 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Eixample, Gràcia, Sant Martí.`,
+    keywords: [
+      "contrato arras barcelona",
+      "redactar arras barcelona entre particulares",
+      "gestor contrato arras barcelona",
+      "arras penitenciales barcelona cccat",
+      "contrato arras confirmatorias barcelona",
+      "firmar arras barcelona sin agencia",
+      "livendia arras online barcelona",
+    ],
     heroLead:
-      "En Barcelona ciudad y área metropolitana, revisamos tu contrato de arras con el mismo rigor que en despacho: tipo de arras claro, consecuencias del impago o del desistimiento y calendarios realistas hasta escritura.",
+      "Livendia redacta tu contrato de arras en Barcelona entre particulares por 145 € IVA incl.: gestor asignado, CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca. Eixample, Gràcia, Sant Martí o área metropolitana — trámite online con panel Livendia.",
     whyIntro:
       "Mercado competido y documentos que circulan entre agencias y particulares: no es raro mezclar figuras o arrastrar cláusulas desactualizadas. Afinamos el texto para que refleje lo pactado y reduzca disputas entre arras y notaría.",
     howIntro:
@@ -132,6 +158,175 @@ export const CONTRATO_ARRAS_LOCAL_CITIES: ContratoArrasLocalCityDefinition[] = [
     finalCtaLead:
       "Contrata penitenciales o confirmatorias online y prepara una firma coherente en Barcelona con expediente digital.",
   },
+  {
+    slug: "barcelona-eixample",
+    city: "Eixample",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Eixample",
+    heroH1: "Tramitamos tu contrato de arras en el Eixample entre particulares",
+    metaTitle: `Contrato arras Eixample particulares — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
+    metaDescription:
+      `Tramitamos tu contrato de arras en el Eixample entre particulares. Gestor asignado, CCCat 621-4 a 621-9 y cláusula 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Livendia online.`,
+    keywords: [
+      "contrato arras eixample barcelona",
+      "tramitar arras eixample entre particulares",
+      "gestor contrato arras dreta eixample",
+      "arras penitenciales eixample",
+      "contrato arras sagrada familia",
+      "firmar arras esquerra eixample",
+      "livendia arras online eixample",
+    ],
+    heroLead:
+      "¿Compras o vendes en el Eixample sin agencia? Un gestor Livendia asignado tramita tu contrato de arras por 145 € IVA incl.: penitenciales o confirmatorias conforme al CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca. Servicio online con panel Livendia.",
+    whyIntro:
+      "En Dreta o Esquerra circulan borradores del ensanche mal calibrados: penalidades altas, plazos irreales de financiación o derramas comunitarias omitidas. Livendia redacta arras equilibradas antes de ingresar la señal.",
+    howIntro:
+      "Cuatro fases con gestor asignado: diagnóstico, revisión de riesgos, redacción CCCat y firma informada en el Eixample.",
+    testimonialsTitle: "Particulares en el Eixample que tramitaron sus arras con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Dreta y el vendedor trajo arras penitenciales duras. El gestor recalibró la señal conforme al CCCat y añadió cláusula 621-49 para nuestra hipoteca.",
+        author: "Montserrat V.",
+        role: "Compradora · Eixample",
+      },
+      {
+        quote:
+          "Venta entre particulares en Esquerra: Livendia redactó confirmatorias con plazos realistas de cancelación de hipoteca del comprador.",
+        author: "Arnau L.",
+        role: "Vendedor · Antiga Esquerra",
+      },
+    ],
+    finalCtaLead:
+      "Arras justas en el Eixample con gestor asignado — contrata online y firma con criterio.",
+  },
+  {
+    slug: "barcelona-gracia",
+    city: "Gràcia",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Gràcia",
+    heroH1: "Contrato de arras en Gràcia para particulares — gestor asignado",
+    metaTitle: `Contrato arras Gràcia particulares — CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
+    metaDescription:
+      `Contrato de arras en Gràcia para compradores y vendedores particulares. Gestor Livendia, CCCat 621-4 a 621-9, cláusula 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Vila de Gràcia, Camp d'en Grassot.`,
+    keywords: [
+      "contrato arras gracia barcelona",
+      "tramitar arras gracia entre particulares",
+      "gestor arras vila de gracia",
+      "arras penitenciales gracia",
+      "contrato arras camp d en grassot",
+      "firmar arras gracia sin agencia",
+      "livendia arras online gracia",
+    ],
+    heroLead:
+      "Contrato de arras en Gràcia para particulares: gestor Livendia asignado redacta o revisa penitenciales o confirmatorias por 145 € IVA incl. CCCat, cláusula 621-49 si compras con hipoteca — trámite 100 % online.",
+    whyIntro:
+      "En Gràcia es habitual vender entre conocidos cuando ya hay comprador. El riesgo está en arras copiadas que no reflejan reformas pendientes, inquilino en LAU o estado real del piso sin ascensor.",
+    howIntro:
+      "Gestor asignado, llamada previa y contrato en 48–72 h: arras adaptadas a tu compraventa en Vila de Gràcia, La Salut o Camp d'en Grassot.",
+    testimonialsTitle: "Compradores y vendedores en Gràcia con arras Livendia",
+    testimonials: [
+      {
+        quote:
+          "Vendía en Vila de Gràcia sin agencia. Livendia redactó arras con hitos de documentación antes del resto del precio — todo por panel.",
+        author: "Laia M.",
+        role: "Vendedora · Gràcia",
+      },
+      {
+        quote:
+          "El borrador mezclaba penitenciales y confirmatorias. El gestor lo aclaró y dejó la señal justa para ambos en Camp d'en Grassot.",
+        author: "Pau R.",
+        role: "Comprador · Gràcia",
+      },
+    ],
+    finalCtaLead:
+      "Tramita arras en Gràcia con gestor especialista — 145 € IVA incl., plataforma Livendia.",
+  },
+  {
+    slug: "barcelona-les-corts",
+    city: "Les Corts",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · Les Corts",
+    heroH1: "Gestor que tramita tu contrato de arras en Les Corts",
+    metaTitle: `Contrato arras Les Corts — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
+    metaDescription:
+      `Gestor que tramita tu contrato de arras en Les Corts. Pedralbes, Zona Universitària, CCCat 621-4 a 621-9 y 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Livendia online.`,
+    keywords: [
+      "contrato arras les corts barcelona",
+      "tramitar arras les corts particulares",
+      "gestor arras pedralbes",
+      "arras penitenciales les corts",
+      "contrato arras zona universitaria",
+      "firmar arras diagonal barcelona",
+      "livendia arras online les corts",
+    ],
+    heroLead:
+      "Gestor que tramita tu contrato de arras en Les Corts: Pedralbes, Diagonal o Zona Universitària entre particulares por 145 € IVA incl. CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca — servicio online Livendia.",
+    whyIntro:
+      "En Pedralbes y Les Corts centre las señales suelen ser elevadas: una penalidad mal calibrada cuesta miles de euros. Livendia revisa coherencia registral, parking anexo y plazos de financiación antes de firmar.",
+    howIntro:
+      "Cuatro fases con gestor asignado hasta rubricar arras equilibradas en Les Corts o Pedralbes.",
+    testimonialsTitle: "Particulares en Les Corts que pasaron sus arras por Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Pedralbes con hipoteca. El gestor integró art. 621-49 y plazos realistas — firmamos sin miedo a perder la señal si el banco tardaba.",
+        author: "Helena R.",
+        role: "Compradora · Pedralbes",
+      },
+      {
+        quote:
+          "Venta en Zona Universitària entre particulares. Livendia redactó arras claras con anexo de plaza de parking incluida en el precio.",
+        author: "Oriol V.",
+        role: "Vendedor · Les Corts",
+      },
+    ],
+    finalCtaLead:
+      "Arras en Les Corts con gestor asignado — contrata online, panel Livendia y entrega en 48–72 h.",
+  },
+  {
+    slug: "barcelona-born",
+    city: "El Born",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Arras entre particulares · El Born",
+    heroH1: "Redactamos tu contrato de arras en El Born entre particulares",
+    metaTitle: `Contrato arras El Born — gestor CCCat ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL}`,
+    metaDescription:
+      `Redactamos tu contrato de arras en El Born entre particulares. Passeig del Born, Santa Maria del Mar, CCCat 621-49. ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} IVA incl. Livendia online.`,
+    keywords: [
+      "contrato arras born barcelona",
+      "tramitar arras el born particulares",
+      "gestor arras passeig del born",
+      "arras penitenciales born",
+      "contrato arras santa maria del mar",
+      "firmar arras ciutat vella born",
+      "livendia arras online born",
+    ],
+    heroLead:
+      "Redactamos tu contrato de arras en El Born entre particulares por 145 € IVA incl.: gestor Livendia asignado, CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca. Passeig del Born, Santa Maria del Mar — trámite online con plataforma Livendia.",
+    whyIntro:
+      "El Born mezcla fincas históricas, locales en planta baja y compradores internacionales. Arras genéricas no documentan humedades en patio ni uso mixto vivienda–local — Livendia adapta el contrato al inmueble.",
+    howIntro:
+      "Gestor asignado, revisión del borrador y redacción en 48–72 h para compraventas en El Born y Sant Pere.",
+    testimonialsTitle: "Particulares en El Born que tramitaron arras con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos cerca de Santa Maria del Mar. El gestor reflejó humedades conocidas en patio y cláusula 621-49 para nuestra hipoteca suiza.",
+        author: "Marta G.",
+        role: "Compradora · El Born",
+      },
+      {
+        quote:
+          "Vendía en Passeig del Born sin agencia. Livendia redactó confirmatorias con plazos de escritura realistas y checklist de comunidad.",
+        author: "Jordi P.",
+        role: "Vendedor · Sant Pere",
+      },
+    ],
+    finalCtaLead:
+      "Firma arras en El Born con gestoría Livendia — 100 % online, sin comisión de inmobiliaria.",
+  },
+  ...CONTRATO_ARRAS_BCN_BARRIO_PHASE2_CITIES,
   {
     slug: "hospitalet-de-llobregat",
     city: "L'Hospitalet de Llobregat",

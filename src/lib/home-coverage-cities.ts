@@ -138,7 +138,7 @@ export const HOME_CITY_CARD_IMAGES: Record<HomeCoverageCitySlug, string> = {
   malaga: "/images/malaga.jpg",
   sevilla: "/images/sevilla.jpg",
   bilbao: "/images/bilbao2.jpg",
-  granada: "/images/tipo2.jpg",
+  granada: "/images/granada.jpg",
   zaragoza: "/images/zaragoza.jpg",
 };
 

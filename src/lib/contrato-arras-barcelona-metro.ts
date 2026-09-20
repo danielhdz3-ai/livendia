@@ -1,19 +1,35 @@
+import {
+  BARCELONA_METRO_CONTRATO_ARRAS_BARRIO_ENTRIES,
+  BARCELONA_METRO_CONTRATO_ARRAS_ENTRIES,
+  BARCELONA_METRO_CONTRATO_ARRAS_MUNICIPIO_ENTRIES,
+  type BarcelonaMetroContratoArrasSlug,
+} from "@/lib/barcelona-metro-contrato-arras-slugs";
 import { localContratoArrasHref } from "@/lib/contrato-arras-local-cities";
 
-/** Municipios del área metropolitana de Barcelona con landing de contrato de arras. */
-export const BARCELONA_METRO_ARRAS_CITIES = [
-  { slug: "hospitalet-de-llobregat", name: "L'Hospitalet de Llobregat", shortName: "L'Hospitalet" },
-  { slug: "cornella-de-llobregat", name: "Cornellà de Llobregat", shortName: "Cornellà" },
-  { slug: "badalona", name: "Badalona", shortName: "Badalona" },
-  { slug: "sant-cugat-del-valles", name: "Sant Cugat del Vallès", shortName: "Sant Cugat" },
-  { slug: "sabadell", name: "Sabadell", shortName: "Sabadell" },
-  { slug: "terrassa", name: "Terrassa", shortName: "Terrassa" },
-] as const;
+/** Barrios de Barcelona con landing de contrato de arras. */
+export const BARCELONA_METRO_ARRAS_BARRIO_CITIES = BARCELONA_METRO_CONTRATO_ARRAS_BARRIO_ENTRIES.map((e) => ({
+  slug: e.slug,
+  name: e.shortName,
+  shortName: e.shortName,
+}));
 
-export type BarcelonaMetroArrasSlug = (typeof BARCELONA_METRO_ARRAS_CITIES)[number]["slug"];
+/** Municipios del área metropolitana de Barcelona con landing de contrato de arras. */
+export const BARCELONA_METRO_ARRAS_CITIES = BARCELONA_METRO_CONTRATO_ARRAS_MUNICIPIO_ENTRIES.map((e) => ({
+  slug: e.slug,
+  name: e.shortName,
+  shortName: e.shortName,
+}));
+
+export const BARCELONA_METRO_ARRAS_ALL_CITIES = BARCELONA_METRO_CONTRATO_ARRAS_ENTRIES.map((e) => ({
+  slug: e.slug,
+  name: e.shortName,
+  shortName: e.shortName,
+}));
+
+export type BarcelonaMetroArrasSlug = BarcelonaMetroContratoArrasSlug;
 
 export function isBarcelonaMetroArrasSlug(slug: string): slug is BarcelonaMetroArrasSlug {
-  return BARCELONA_METRO_ARRAS_CITIES.some((c) => c.slug === slug);
+  return BARCELONA_METRO_CONTRATO_ARRAS_ENTRIES.some((c) => c.slug === slug);
 }
 
 export function barcelonaMetroArrasHref(slug: BarcelonaMetroArrasSlug): string {

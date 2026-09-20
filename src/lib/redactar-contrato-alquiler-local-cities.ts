@@ -1183,7 +1183,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
         answer: "No. Todo el servicio es online: panel, documentación y gestor asignado.",
       },
     ],
-    heroImage: "/images/contratos5.jpg",
+    heroImage: "/images/granada.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Granada — Livendia",
   },
   {
@@ -1665,7 +1665,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
         answer: "Sí. Inventario descriptivo y fotográfico de zonas exteriores y mobiliario incluido.",
       },
     ],
-    heroImage: "/images/contratos7.jpg",
+    heroImage: "/images/cordoba.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Córdoba — Livendia",
   },
   {
@@ -1745,7 +1745,7 @@ export const REDACTAR_CONTRATO_ALQUILER_LOCAL_CITIES: RedactarContratoAlquilerLo
         answer: "Sí. LAU por habitación con reparto de gastos y normas de convivencia.",
       },
     ],
-    heroImage: "/images/menorca1.jpg",
+    heroImage: "/images/laspalmas.jpg",
     heroImageAlt: "Redactar contrato de alquiler profesional en Las Palmas de Gran Canaria — Livendia",
   },
   {
