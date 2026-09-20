@@ -17,7 +17,7 @@ export default async function AdminSeoPage() {
     <>
       <AdminPageHeader
         title="SEO — Landing pages"
-        subtitle="Inventario de landings publicadas, agrupadas por servicio y ciudad"
+        subtitle="Landings locales por servicio y ciudad"
         actions={
           <>
             <Link href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className={ADMIN_BTN_GHOST}>

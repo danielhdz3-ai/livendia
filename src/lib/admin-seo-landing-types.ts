@@ -89,3 +89,39 @@ export function getBarcelonaBarrioEntries(entries: AdminSeoLandingEntry[]): Admi
       return (a.barrioAmb ?? "").localeCompare(b.barrioAmb ?? "", "es");
     });
 }
+
+/** Landings locales indexables (ciudad, barrio AMB, pack, pilar). Excluye hubs nacionales y blog. */
+export function isLocalSeoLanding(entry: AdminSeoLandingEntry): boolean {
+  return (
+    entry.kind === "local-ciudad" ||
+    entry.kind === "barrio-amb" ||
+    entry.kind === "pack" ||
+    entry.kind === "pillar"
+  );
+}
+
+/** Etiqueta corta para chip de ciudad / barrio. */
+export function getEntryChipLabel(entry: AdminSeoLandingEntry): string {
+  if (entry.barrioAmb) return entry.barrioAmb;
+  const city = entry.city.replace(/\s*\([^)]*\)\s*/g, "").trim();
+  if (city && city !== "Nacional") return city;
+  if (entry.slug === "barcelona") return "Barcelona";
+  return entry.slug
+    .replace(/^barcelona-/, "")
+    .replace(/-de-llobregat$/, "")
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+export function groupLocalEntriesByService(
+  entries: AdminSeoLandingEntry[],
+): { serviceLabel: string; serviceOrder: number; items: AdminSeoLandingEntry[] }[] {
+  const local = entries.filter(isLocalSeoLanding);
+  const grouped = groupEntriesByService(local);
+  return grouped.map((g) => ({
+    serviceLabel: g.serviceLabel,
+    serviceOrder: g.items[0]?.serviceOrder ?? 999,
+    items: g.items,
+  }));
+}
