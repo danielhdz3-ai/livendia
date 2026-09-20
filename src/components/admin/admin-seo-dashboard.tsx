@@ -9,12 +9,12 @@ import {
   ADMIN_STAT_LABEL,
   ADMIN_TABLE_HEAD,
 } from "@/lib/admin-ui";
-import type { AdminSeoLandingEntry, AdminSeoLandingIndex } from "@/lib/admin-seo-landing-index";
+import type { AdminSeoLandingEntry, AdminSeoLandingIndex } from "@/lib/admin-seo-landing-types";
 import {
   getBarcelonaBarrioEntries,
   groupEntriesByCity,
   groupEntriesByService,
-} from "@/lib/admin-seo-landing-index";
+} from "@/lib/admin-seo-landing-types";
 import { AdminStatCard } from "@/components/admin/admin-page-header";
 
 type ViewMode = "all" | "service" | "city" | "barcelona";
