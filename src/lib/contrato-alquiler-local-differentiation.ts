@@ -836,6 +836,354 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
       },
     ],
   },
+  "barcelona-born": {
+    metaTitle: "Contrato alquiler larga duración El Born — LAU particulares · 145 €",
+    metaDescription:
+      "Redactamos tu contrato de alquiler de larga duración en El Born entre particulares. Passeig del Born, Santa Maria del Mar, INCASÒL e inventario. 145 € IVA incl. Livendia online.",
+    keywords: [
+      "contrato alquiler larga duracion born",
+      "contrato lau el born entre particulares",
+      "redactar contrato alquiler passeig del born",
+      "alquiler born barcelona sin agencia",
+      "contrato alquiler santa maria del mar",
+      "contrato alquiler ciutat vella born",
+      "livendia contrato alquiler online born",
+    ],
+    heroBadge: "Entre particulares · El Born",
+    heroH1: "Redactamos tu contrato de alquiler de larga duración en El Born",
+    heroBullets: [
+      "Passeig del Born, Santa Maria del Mar, Sant Pere",
+      "145 € IVA incl. — fincas históricas e inventario",
+      "INCASÒL, renta anterior e IRAV revisados",
+    ],
+    whyTitle: "El Born: acuerdo en visita, LAU que refleja la finca real",
+    whySubtitle:
+      "En El Born es habitual alquilar entre particulares tras pocas visitas en calles del s. XVIII. El riesgo está en firmar plantillas que ignoran patios interiores, local en planta baja o renta anterior obligatoria en Barcelona.",
+    localZonesHeading: "Calles de El Born donde redactamos contratos LAU",
+    localZones:
+      "Passeig del Born, carrer de la Princesa, Sant Pere més Baix, entorno Santa Maria del Mar, Sant Caterina límite y Gòtic límite. Gestoría digital Livendia con precio cerrado.",
+    localBenefits: [
+      {
+        title: "Fincas del s. XVIII con patio interior",
+        description: "Inventario de humedades conocidas y protocolo de acceso para reparaciones.",
+      },
+      {
+        title: "Vivienda vs. local en planta baja",
+        description: "Cláusulas sobre ruido, accesos y uso mixto acordado entre las partes.",
+      },
+      {
+        title: "Servicio 100 % online Livendia",
+        description: "Briefing, panel y WhatsApp — sin desplazarte a un despacho en Ciutat Vella.",
+      },
+      {
+        title: "Renta anterior en zona tensionada",
+        description: "Comprobamos coherencia con normativa municipal antes de firmar en El Born.",
+      },
+      {
+        title: "Plataforma con expediente centralizado",
+        description: "Documentos e inventario visibles para propietario e inquilino antes de la firma.",
+      },
+      {
+        title: "Referente en contratos de alquiler",
+        description: "LAU, habitación, temporada, administración y revisión — hub Livendia Barcelona.",
+      },
+    ],
+    finalCtaTitle: "Firma tu LAU en El Born entre particulares — gestoría Livendia",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Cómo funciona Livendia para redactar un LAU en El Born?",
+        answer:
+          "Contratas en livendia.com, subes documentación al panel y un gestor redacta el contrato en 48–72 h laborables. Comunicación por WhatsApp — servicio online sin comisión de agencia de alquiler.",
+      },
+      {
+        question: "¿Puedo alquilar en El Born entre particulares sin inmobiliaria?",
+        answer:
+          "Sí. Livendia no busca inquilino ni cobra mes de renta: redacta o revisa el LAU por 145 € IVA incl. cuando propietario e inquilino ya están de acuerdo.",
+      },
+      {
+        question: "¿Qué incluye la plataforma Livendia?",
+        answer:
+          "Panel con expediente, inventario fotográfico, estado del servicio y mensajes con el gestor. Propietario e inquilino siguen el avance antes de firmar.",
+      },
+      {
+        question: "¿Gestionáis pisos con local comercial en planta baja?",
+        answer:
+          "Sí. Dejamos por escrito uso vivienda, repercusión de ruidos y accesos — frecuente en edificios históricos del Born.",
+      },
+      {
+        question: "¿Dónde ingreso la fianza en Ciutat Vella?",
+        answer:
+          "En Cataluña el depósito legal se gestiona habitualmente en INCASÒL. Te orientamos sobre plazos antes de entregar llaves en El Born.",
+      },
+      {
+        question: "¿Qué otros servicios ofrece Livendia?",
+        answer:
+          "Administración de alquiler, contrato de arras, pack LAU + administración, habitación, temporada y revisión de borradores — accesibles desde el hub de servicios.",
+      },
+    ],
+  },
+  "barcelona-barceloneta": {
+    metaTitle: "Alquiler larga duración La Barceloneta particulares — LAU · 145 €",
+    metaDescription:
+      "Alquiler de larga duración para particulares en La Barceloneta: contrato LAU por 145 € IVA incl. Joan de Borbó, platja, INCASÒL e inventario. Servicio online Livendia.",
+    keywords: [
+      "alquiler larga duracion barceloneta particulares",
+      "contrato alquiler barceloneta entre particulares",
+      "contrato lau joan de borbo",
+      "redactar contrato alquiler barceloneta",
+      "alquiler barceloneta sin agencia contrato",
+      "contrato alquiler larga duracion platja barcelona",
+      "livendia contrato alquiler online barceloneta",
+    ],
+    heroBadge: "Entre particulares · La Barceloneta",
+    heroH1: "Alquiler de larga duración para particulares en La Barceloneta",
+    heroBullets: [
+      "Joan de Borbó, platja, barrio de pescadores",
+      "145 € IVA incl. — pisos tradicionales e inventario",
+      "LAU habitual vs. temporada bien definido",
+    ],
+    whyTitle: "La Barceloneta: pisos junto al mar, contrato LAU sin ambigüedades",
+    whySubtitle:
+      "En La Barceloneta mezclan familias locales, expatriados y alquileres cerrados en días por Idealista. Un borrador genérico no distingue LAU de uso estacional ni documenta humedad salina o climatización.",
+    localZonesHeading: "Zonas de La Barceloneta donde redactamos LAU",
+    localZones:
+      "Passeig de Joan de Borbó, calles del barrio de pescadores, Platja de la Barceloneta, Port Vell límite y calles interiores de Ciutat Vella marítima. Gestoría online Livendia.",
+    localBenefits: [
+      {
+        title: "Pisos tradicionales 45–65 m²",
+        description: "Inventario adaptado a superficies compactas y orientación mar.",
+      },
+      {
+        title: "LAU habitual vs. temporada",
+        description: "Te orientamos si el arrendamiento es residencial estable o estancia acotada.",
+      },
+      {
+        title: "Climatización y humedad salina",
+        description: "Estado de instalaciones documentado en inventario antes de la fianza.",
+      },
+      {
+        title: "INCASÒL y renta anterior",
+        description: "Revisión obligatoria en zona tensionada de Barcelona.",
+      },
+      {
+        title: "Servicio online con gestor humano",
+        description: "Panel Livendia y WhatsApp — sin comisión de captación inmobiliaria.",
+      },
+      {
+        title: "Otros servicios Livendia",
+        description: "Administración mensual, arras, habitación y revisión de contrato ajeno.",
+      },
+    ],
+    finalCtaTitle: "Contrato LAU en La Barceloneta — redacción profesional online",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Redactáis contratos LAU en La Barceloneta?",
+        answer:
+          "Sí. Adaptamos cláusulas a pisos tradicionales junto a la platja, con inventario incluido y revisión de zona tensionada e INCASÒL.",
+      },
+      {
+        question: "¿Es Livendia un servicio online?",
+        answer:
+          "Sí. Contratas en la web, gestionas documentos en el panel y hablas con tu gestor por WhatsApp. No hace falta acudir a un despacho para redactar el LAU.",
+      },
+      {
+        question: "¿Cómo trabaja Livendia si ya tengo inquilino?",
+        answer:
+          "Cuando ambas partes han acordado renta y fecha, el gestor redacta el contrato. Livendia no publica anuncios ni cobra porcentaje sobre la renta.",
+      },
+      {
+        question: "¿Qué es la plataforma para clientes?",
+        answer:
+          "Expediente centralizado con contratos, fotos del inventario, hitos del servicio y chat con el gestor — visible para propietario e inquilino.",
+      },
+      {
+        question: "¿Cuánto cuesta frente a una agencia?",
+        answer:
+          "145 € IVA incl. por redacción o revisión LAU. Una inmobiliaria suele cobrar un mes de renta — aquí solo pagas gestoría contractual.",
+      },
+      {
+        question: "¿Puedo combinar con administración del alquiler?",
+        answer:
+          "Sí. Tras firmar, puedes contratar administración desde 65 €/mes o pack LAU + administración desde el hub Livendia.",
+      },
+    ],
+  },
+  "barcelona-vila-olimpica": {
+    metaTitle: "Contrato alquiler larga duración Vila Olímpica — LAU · 145 €",
+    metaDescription:
+      "Redactamos tu contrato de alquiler de larga duración en la Vila Olímpica entre particulares. Port Olímpic, Icària, parking e INCASÒL. 145 € IVA incl. Livendia online.",
+    keywords: [
+      "contrato alquiler larga duracion vila olimpica",
+      "contrato lau vila olimpica particulares",
+      "alquiler port olimpic contrato profesional",
+      "redactar contrato alquiler icaria barcelona",
+      "contrato alquiler vila olimpica sin agencia",
+      "contrato alquiler larga duracion sant marti",
+      "livendia contrato alquiler online vila olimpica",
+    ],
+    heroBadge: "Entre particulares · Vila Olímpica",
+    heroH1: "Redactamos tu contrato de alquiler de larga duración en la Vila Olímpica",
+    heroBullets: [
+      "Port Olímpic, Nova Icària, terrazas y parking",
+      "145 € IVA incl. — bloques olímpicos e inventario",
+      "IRAV, INCASÒL y zonas comunes documentadas",
+    ],
+    whyTitle: "Vila Olímpica: vistas al mar, contrato LAU con parking y terraza",
+    whySubtitle:
+      "En la Vila Olímpica alquilan familias y expatriados entre particulares en bloques de los 90. Un LAU genérico no recoge plaza de parking, trastero, terraza ni tope IRAV en renovación.",
+    localZonesHeading: "Zonas de la Vila Olímpica donde redactamos LAU",
+    localZones:
+      "Vila Olímpica propiamente dicha, Port Olímpic, Platja de la Nova Icària, Parc de la Nova Icària, Ciutadella límite y Poblenou límite. Gestoría digital Livendia.",
+    localBenefits: [
+      {
+        title: "Parking y trastero en anexo",
+        description: "Plazas de garaje y trasteros reflejados en contrato e inventario.",
+      },
+      {
+        title: "Terrazas y zonas comunes olímpicas",
+        description: "Cláusulas sobre uso de terraza y mantenimiento acordado.",
+      },
+      {
+        title: "Gestión online para propietarios en el extranjero",
+        description: "Briefing y firma coordinados por panel — sin volar solo por el contrato.",
+      },
+      {
+        title: "IRAV en zona tensionada",
+        description: "Verificamos incremento máximo legal antes de renovar en Sant Martí.",
+      },
+      {
+        title: "Plataforma Livendia",
+        description: "Expediente, inventario y mensajes con gestor en un solo panel.",
+      },
+      {
+        title: "Livendia, referente en contratos",
+        description: "LAU, temporada, habitación, administración y revisión legal.",
+      },
+    ],
+    finalCtaTitle: "Firma en la Vila Olímpica con LAU redactado por gestoría Livendia",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Cómo funciona Livendia en la Vila Olímpica?",
+        answer:
+          "Contratas online, subes datos al panel y un gestor redacta el LAU en 48–72 h. Comunicación por WhatsApp — servicio 100 % digital sin comisión de agencia.",
+      },
+      {
+        question: "¿Incluís parking comunitario en el contrato?",
+        answer:
+          "Sí. Anexos de plaza de garaje y trastero quedan reflejados en el LAU e inventario — habitual en edificios olímpicos.",
+      },
+      {
+        question: "¿Qué es la plataforma Livendia?",
+        answer:
+          "Panel donde centralizáis documentos, inventario fotográfico y avance del servicio. Propietario e inquilino ven el estado antes de firmar.",
+      },
+      {
+        question: "¿Alquiler entre particulares sin inmobiliaria?",
+        answer:
+          "Sí. Livendia redacta el contrato cuando ya hay acuerdo entre las partes — no captamos inquilinos ni cobramos mes de renta.",
+      },
+      {
+        question: "¿Otros servicios en Barcelona?",
+        answer:
+          "Administración de alquiler, arras, pack LAU + admin, habitación, temporada y revisión de borradores en livendia.com.",
+      },
+      {
+        question: "¿Temporada o LAU en piso con vistas al mar?",
+        answer:
+          `Te orientamos según duración real: LAU habitual (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}) o temporada (${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) si la estancia es acotada.`,
+      },
+    ],
+  },
+  "barcelona-el-raval": {
+    metaTitle: "Contrato alquiler larga duración El Raval particulares — LAU · 145 €",
+    metaDescription:
+      "Contrato de alquiler de larga duración en El Raval para particulares: Rambla del Raval, MACBA, INCASÒL e inventario. 145 € IVA incl. Livendia online.",
+    keywords: [
+      "contrato alquiler larga duracion raval",
+      "contrato lau el raval entre particulares",
+      "redactar contrato alquiler rambla del raval",
+      "alquiler raval sin agencia contrato",
+      "contrato alquiler macba barcelona",
+      "contrato habitacion raval lau",
+      "livendia contrato alquiler online raval",
+    ],
+    heroBadge: "Entre particulares · El Raval",
+    heroH1: "Contrato de alquiler de larga duración en El Raval para particulares",
+    heroBullets: [
+      "Rambla del Raval, MACBA, Raval sud, Sant Antoni límite",
+      "145 € IVA incl. — pisos compartidos e inventario",
+      "Convivencia, humedades e INCASÒL revisados",
+    ],
+    whyTitle: "El Raval: rotación alta, LAU con convivencia e inventario serio",
+    whySubtitle:
+      "El Raval concentra pisos compartidos, edificios del s. XIX y alquileres entre particulares con acuerdo verbal. Sin contrato adaptado, humedades, ruido y habitaciones mal reguladas generan conflictos en semanas.",
+    localZonesHeading: "Calles de El Raval donde redactamos contratos LAU",
+    localZones:
+      "Rambla del Raval, entorno MACBA, Raval sud, Sant Antoni límite, Hospital Clínic límite y Gòtic límite. Gestoría online Livendia con entrega en 48–72 h.",
+    localBenefits: [
+      {
+        title: "Piso entero vs. habitación en piso compartido",
+        description: "LAU habitual o contrato de habitación según uso real del inmueble.",
+      },
+      {
+        title: "Normas de convivencia por escrito",
+        description: "Limpieza, ruido y visitas documentadas — clave en pisos compartidos.",
+      },
+      {
+        title: "Humedades en patios interiores",
+        description: "Inventario de patologías conocidas antes de entregar la fianza.",
+      },
+      {
+        title: "Servicio online Livendia",
+        description: "Panel, WhatsApp y gestor humano — sin despacho en Ciutat Vella.",
+      },
+      {
+        title: "Renta anterior e INCASÒL",
+        description: "Revisión en zona tensionada catalana antes de firmar en El Raval.",
+      },
+      {
+        title: "Hub de servicios Livendia",
+        description: "Administración, arras, revisión de borrador ajeno y pack LAU + admin.",
+      },
+    ],
+    finalCtaTitle: "Redacta tu LAU en El Raval entre particulares — gestoría Livendia",
+    localServiceNotes: BCN_LAU_PLATFORM_NOTES,
+    faq: [
+      {
+        question: "¿Redactáis LAU para pisos compartidos en El Raval?",
+        answer:
+          "Sí. LAU de piso entero o contrato de habitación con normas de convivencia — según el uso acordado entre las partes.",
+      },
+      {
+        question: "¿Cómo funciona el servicio online de Livendia?",
+        answer:
+          "Contratas en livendia.com, subes documentación al panel y el gestor redacta el contrato. Todo por WhatsApp y plataforma — sin visitar un despacho.",
+      },
+      {
+        question: "¿Qué es Livendia frente a una inmobiliaria?",
+        answer:
+          "Gestoría especializada en contratos: no publicamos anuncios ni cobramos comisión sobre la renta. Redactamos LAU por tarifa plana de 145 € IVA incl.",
+      },
+      {
+        question: "¿Documentáis humedades antes de firmar?",
+        answer:
+          "Sí. Inventario fotográfico de estado del piso y patologías conocidas — imprescindible en edificios antiguos del Raval.",
+      },
+      {
+        question: "¿Qué incluye la plataforma para clientes?",
+        answer:
+          "Expediente centralizado: contratos, fotos, hitos del servicio y mensajes con el gestor visible para propietario e inquilino.",
+      },
+      {
+        question: "¿Qué otros servicios tiene Livendia?",
+        answer:
+          "Administración de alquiler desde 65 €/mes, contrato de arras, temporada, revisión legal y packs combinados — en el hub de servicios Livendia Barcelona.",
+      },
+    ],
+  },
   "hospitalet-de-llobregat": {
     metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl.",
     metaDescription:

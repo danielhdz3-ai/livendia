@@ -1262,6 +1262,174 @@ export const LOCAL_CITY_MARKET_PROFILES: Record<string, LocalCityMarketProfile> 
     ],
   },
 
+  "barcelona-born": {
+    slug: "barcelona-born",
+    cityLabel: "El Born, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "24,00 €/m²",
+      rentalRangePerSqm: "22–26 €/m²",
+      saleAvgPerSqm: "4.920 €/m²",
+      saleRangePerSqm: "4.200–5.800 €/m²",
+      avgSalePrice: "405.000 €",
+      sourceNote:
+        "Alquiler: Idealista/Properfy El Born, 2025–2026; Brains Ciutat Vella Q2 2026. Venta: Idealista Ciutat Vella, julio 2026.",
+    },
+    marketSummary:
+      "El Born concentra fincas históricas del s. XVIII–XIX, locales en planta baja y demanda internacional en Ciutat Vella. Zona tensionada: renta anterior e INCASÒL obligatorios en cada LAU entre particulares.",
+    neighborhoods: [
+      {
+        name: "Passeig del Born",
+        rentalPerSqm: "25–26 €/m²",
+        salePerSqm: "5.200–5.800 €/m²",
+        note: "Eje comercial con pisos reformados y perfiles internacionales. LAU debe reflejar patio interior y local en planta baja.",
+      },
+      {
+        name: "Santa Maria del Mar",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "5.000–5.600 €/m²",
+        note: "Entorno monumental con fincas estrechas. Inventario imprescindible antes de fianza.",
+      },
+      {
+        name: "Sant Pere més Baix",
+        rentalPerSqm: "23–25 €/m²",
+        salePerSqm: "4.800–5.400 €/m²",
+        note: "Mezcla residencial y comercio. Operaciones directas sin agencia frecuentes.",
+      },
+      {
+        name: "Sant Caterina (límite)",
+        rentalPerSqm: "22–24 €/m²",
+        salePerSqm: "4.600–5.200 €/m²",
+        note: "Barrio consolidado colindante. Edificios rehabilitados con ascensor pequeño.",
+      },
+    ],
+  },
+
+  "barcelona-barceloneta": {
+    slug: "barcelona-barceloneta",
+    cityLabel: "La Barceloneta, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "25,50 €/m²",
+      rentalRangePerSqm: "24–28 €/m²",
+      saleAvgPerSqm: "4.580 €/m²",
+      saleRangePerSqm: "3.800–5.200 €/m²",
+      avgSalePrice: "340.000 €",
+      sourceNote:
+        "Alquiler: Idealista/Properfy Barceloneta, 2025–2026; Brains Ciutat Vella Q2 2026. Venta: Idealista Barceloneta, julio 2026.",
+    },
+    marketSummary:
+      "La Barceloneta concentra pisos tradicionales orientados al mar y presión residencial en Ciutat Vella. Zona tensionada con escrutinio sobre usos turísticos: el LAU debe distinguir arrendamiento habitual de estancia acotada.",
+    neighborhoods: [
+      {
+        name: "Passeig de Joan de Borbó",
+        rentalPerSqm: "26–28 €/m²",
+        salePerSqm: "4.800–5.200 €/m²",
+        note: "Fachada marítima con pisos reformados. Climatización e inventario clave en verano.",
+      },
+      {
+        name: "Barrio de pescadores (interior)",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "4.200–4.800 €/m²",
+        note: "Calles estrechas y pisos compactos. Familias locales y alquileres entre particulares rápidos.",
+      },
+      {
+        name: "Platja de la Barceloneta",
+        rentalPerSqm: "25–27 €/m²",
+        salePerSqm: "4.600–5.000 €/m²",
+        note: "Orientación mar y rotación moderada. Verificar LAU vs. temporada.",
+      },
+      {
+        name: "Port Vell (límite)",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "4.400–5.000 €/m²",
+        note: "Mezcla residencial y actividad portuaria. Cláusulas de ruido recomendadas.",
+      },
+    ],
+  },
+
+  "barcelona-vila-olimpica": {
+    slug: "barcelona-vila-olimpica",
+    cityLabel: "Vila Olímpica, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "26,50 €/m²",
+      rentalRangePerSqm: "25–28 €/m²",
+      saleAvgPerSqm: "5.280 €/m²",
+      saleRangePerSqm: "4.600–6.200 €/m²",
+      avgSalePrice: "445.000 €",
+      sourceNote:
+        "Alquiler: Idealista/Properfy Vila Olímpica, 2025–2026; Brains Sant Martí Q2 2026. Venta: Idealista Sant Martí, julio 2026.",
+    },
+    marketSummary:
+      "La Vila Olímpica combina bloques de los 90, terrazas, parking comunitario y demanda de familias con vistas al mar. Sant Martí está en zona tensionada: IRAV e INCASÒL en cada renovación o alta.",
+    neighborhoods: [
+      {
+        name: "Vila Olímpica centre",
+        rentalPerSqm: "26–28 €/m²",
+        salePerSqm: "5.400–6.000 €/m²",
+        note: "Edificios olímpicos con ascensor y zonas comunes. Parking y trastero en contrato.",
+      },
+      {
+        name: "Port Olímpic",
+        rentalPerSqm: "25–27 €/m²",
+        salePerSqm: "5.200–5.800 €/m²",
+        note: "Perfiles internacionales y segunda residencia. Expectativa de respuesta rápida.",
+      },
+      {
+        name: "Nova Icària",
+        rentalPerSqm: "26–28 €/m²",
+        salePerSqm: "5.300–6.200 €/m²",
+        note: "Terrazas y orientación mar. Inventario de climatización imprescindible.",
+      },
+      {
+        name: "Parc de la Nova Icària (límite)",
+        rentalPerSqm: "25–26 €/m²",
+        salePerSqm: "5.000–5.600 €/m²",
+        note: "Familias consolidadas post-olímpico. LAU estable entre particulares frecuente.",
+      },
+    ],
+  },
+
+  "barcelona-el-raval": {
+    slug: "barcelona-el-raval",
+    cityLabel: "El Raval, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "23,00 €/m²",
+      rentalRangePerSqm: "20–26 €/m²",
+      saleAvgPerSqm: "4.120 €/m²",
+      saleRangePerSqm: "3.400–4.800 €/m²",
+      avgSalePrice: "310.000 €",
+      sourceNote:
+        "Alquiler: Idealista/Properfy El Raval, 2025–2026; Brains Ciutat Vella Q2 2026. Venta: Idealista El Raval, julio 2026.",
+    },
+    marketSummary:
+      "El Raval mezcla edificios del s. XIX, pisos compartidos, plantas bajas comerciales y rotación elevada en Ciutat Vella. Zona tensionada: LAU e inventario antes de fianza evitan conflictos por humedades y convivencia.",
+    neighborhoods: [
+      {
+        name: "Rambla del Raval",
+        rentalPerSqm: "24–26 €/m²",
+        salePerSqm: "4.400–4.800 €/m²",
+        note: "Rotación alta y pisos compartidos. Normas de convivencia en contrato imprescindibles.",
+      },
+      {
+        name: "MACBA / Carme",
+        rentalPerSqm: "23–25 €/m²",
+        salePerSqm: "4.200–4.600 €/m²",
+        note: "Perfil internacional y estudiantes. Edificios sin ascensor frecuentes.",
+      },
+      {
+        name: "Raval sud",
+        rentalPerSqm: "20–22 €/m²",
+        salePerSqm: "3.400–4.000 €/m²",
+        note: "Familias consolidadas y ticket más contenido. Humedades en patios interiores.",
+      },
+      {
+        name: "Sant Antoni (límite)",
+        rentalPerSqm: "22–24 €/m²",
+        salePerSqm: "4.000–4.600 €/m²",
+        note: "Transición hacia Eixample sud. Operaciones entre particulares en aumento.",
+      },
+    ],
+  },
+
   "hospitalet-de-llobregat": {
     slug: "hospitalet-de-llobregat",
     cityLabel: "L'Hospitalet de Llobregat",

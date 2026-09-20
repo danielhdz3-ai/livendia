@@ -10,6 +10,10 @@ export const BARCELONA_METRO_CONTRATO_ALQUILER_ENTRIES = [
   { slug: "barcelona-poblenou", shortName: "Poblenou" },
   { slug: "barcelona-gotic", shortName: "Barri Gòtic" },
   { slug: "barcelona-sarria", shortName: "Sarrià" },
+  { slug: "barcelona-born", shortName: "El Born" },
+  { slug: "barcelona-barceloneta", shortName: "La Barceloneta" },
+  { slug: "barcelona-vila-olimpica", shortName: "Vila Olímpica" },
+  { slug: "barcelona-el-raval", shortName: "El Raval" },
   { slug: "hospitalet-de-llobregat", shortName: "L'Hospitalet" },
   { slug: "cornella-de-llobregat", shortName: "Cornellà" },
 ] as const;

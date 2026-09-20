@@ -22,6 +22,14 @@ export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
     "El Barri Gòtic combina fincas medievales, pisos sin ascensor y alquileres LAU entre particulares con acuerdo en Plaça Reial o Carrer del Bisbe. Humedades, escaleras estrechas y locales en planta baja exigen cláusulas que una plantilla no contempla — en zona tensionada con renta anterior obligatoria. Livendia redacta contrato e inventario adaptado a Ciutat Vella.",
   "barcelona-sarria":
     "Sarrià encabeza el ticket de alquiler barcelonés (~28,8 €/m² distrito Sarrià-Sant Gervasi, Brains Q2 2026) con familias, colegios internacionales y pisos señoriales alquilados entre particulares. Un LAU genérico no recoge parking, IRAV en renovación ni depósito INCASÒL. Livendia redacta contrato premium con inventario y gestoría online.",
+  "barcelona-born":
+    "El Born combina fincas del s. XVIII, locales en planta baja y alquileres entre particulares con perfiles internacionales (22–26 €/m² Ciutat Vella, Idealista 2025–2026). Un LAU copiado no recoge patios interiores, uso mixto vivienda–local ni renta anterior. Livendia redacta contrato e inventario adaptado al Born.",
+  "barcelona-barceloneta":
+    "La Barceloneta concentra pisos tradicionales de 45–65 m² junto a la platja y alquileres entre particulares con prisa tras la visita (24–28 €/m² oferta local). Los borradores genéricos confunden LAU con temporada y omiten humedad salina o climatización. Livendia adapta cláusulas al piso concreto.",
+  "barcelona-vila-olimpica":
+    "La Vila Olímpica mezcla bloques de los 90, terrazas, parking comunitario y alquileres LAU entre particulares con ticket superior a la media de Sant Martí (~25–28 €/m²). Un contrato genérico no recoge anexos de garaje ni IRAV en renovación. Livendia redacta LAU con inventario y gestoría online.",
+  "barcelona-el-raval":
+    "El Raval tiene rotación elevada, pisos compartidos y edificios del s. XIX sin ascensor (22–26 €/m² según calle). Entre particulares, un LAU genérico no regula convivencia ni documenta humedades preexistentes. Livendia redacta contrato e inventario antes de la fianza en Ciutat Vella.",
   "hospitalet-de-llobregat":
     "L'Hospitalet recibe inquilinos que trabajan en Barcelona y buscan renta más asequible en Collblanc o Bellvitge. Los alquileres entre particulares suelen usar contratos de Barcelona capital sin adaptar INCASÒL ni plazos de comunidad en bloques densos. Livendia revisa depósito, renta anterior e inventario antes de la fianza.",
   "cornella-de-llobregat":

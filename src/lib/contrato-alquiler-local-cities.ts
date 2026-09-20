@@ -27,6 +27,10 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona-poblenou",
   "barcelona-gotic",
   "barcelona-sarria",
+  "barcelona-born",
+  "barcelona-barceloneta",
+  "barcelona-vila-olimpica",
+  "barcelona-el-raval",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "valencia",
@@ -353,6 +357,118 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     ],
     finalCtaLead:
       "Redacta tu LAU en Sarrià entre particulares — gestoría Livendia, plataforma y entrega en 48–72 h.",
+  },
+  {
+    slug: "barcelona-born",
+    city: "El Born",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Redactamos tu contrato de alquiler de larga duración en El Born: LAU entre particulares por 145 € IVA incl. Passeig del Born, Santa Maria del Mar, Picasso — fincas del s. XVIII, INCASÒL e inventario. Servicio online Livendia con gestor dedicado.",
+    whyIntro:
+      "El Born mezcla pisos señoriales reformados, locales en planta baja y alquileres entre particulares con perfiles internacionales. Un LAU copiado no recoge humedades en patios interiores, conflicto vivienda–local ni renta anterior en zona tensionada.",
+    howIntro:
+      "Cuatro pasos online hasta firmar en el Passeig del Born, Sant Pere, Santa Caterina o límites con el Gòtic.",
+    testimonialsTitle: "Particulares en El Born que redactaron su LAU con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Passeig del Born alquilado sin agencia. Livendia redactó LAU con renta anterior, INCASÒL e inventario del patio interior — todo por panel.",
+        author: "Marta G.",
+        role: "Propietaria · El Born",
+      },
+      {
+        quote:
+          "Entramos cerca de Santa Maria del Mar entre particulares. El gestor explicó IRAV y dejó clausurado el local de planta baja antes de firmar.",
+        author: "Lucas & Emma",
+        role: "Inquilinos · Ciutat Vella",
+      },
+    ],
+    finalCtaLead:
+      "Contrato LAU en El Born entre particulares — gestoría Livendia online, no comisión de inmobiliaria.",
+  },
+  {
+    slug: "barcelona-barceloneta",
+    city: "La Barceloneta",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Alquiler de larga duración para particulares en La Barceloneta: redactamos o revisamos tu contrato LAU por 145 € IVA incl. Joan de Borbó, platja, pisos tradicionales — INCASÒL, inventario y gestor online Livendia.",
+    whyIntro:
+      "La Barceloneta concentra pisos pequeños orientados al mar, familias locales y alquileres entre particulares con prisa tras la visita. Los borradores genéricos no distinguen LAU habitual de uso estacional ni humedad salina en fincas tradicionales.",
+    howIntro:
+      "Cuatro hitos digitales hasta la firma en La Barceloneta, Passeig de Joan de Borbó o calles del barrio de pescadores.",
+    testimonialsTitle: "Propietarios en La Barceloneta con contrato LAU Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso en Joan de Borbó alquilado entre particulares. Livendia incluyó inventario, INCASÒL y cláusulas de climatización — sin ir a un despacho.",
+        author: "Carmen S.",
+        role: "Propietaria · La Barceloneta",
+      },
+      {
+        quote:
+          "Encontramos piso junto a la platja por Idealista. Contrato LAU con renta anterior revisada y depósito orientado a INCASÒL antes de la fianza.",
+        author: "Pierre D.",
+        role: "Inquilino · Ciutat Vella",
+      },
+    ],
+    finalCtaLead:
+      "Redacta tu LAU en La Barceloneta online — gestoría Livendia, referente en contratos de alquiler.",
+  },
+  {
+    slug: "barcelona-vila-olimpica",
+    city: "Vila Olímpica",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Redactamos tu contrato de alquiler de larga duración en la Vila Olímpica: LAU entre particulares por 145 € IVA incl. Port Olímpic, Icària, terrazas y parking comunitario — servicio 100 % online con plataforma Livendia.",
+    whyIntro:
+      "La Vila Olímpica atrae familias con vistas al mar, expatriados y alquileres LAU entre particulares en bloques olímpicos de los 90. Un contrato genérico no recoge parking, trastero, terrazas ni tope IRAV en renovación.",
+    howIntro:
+      "Cuatro pasos online hasta firmar en la Vila Olímpica, Port Olímpic, Nova Icària o límite Poblenou.",
+    testimonialsTitle: "Particulares en la Vila Olímpica que confiaron su LAU a Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso con terraza en Icària alquilado sin inmobiliaria. Livendia redactó LAU con parking, trastero e inventario — gestor por WhatsApp y panel.",
+        author: "Sandra L.",
+        role: "Propietaria · Vila Olímpica",
+      },
+      {
+        quote:
+          "Familia entrando en edificio olímpico. Contrato con INCASÒL, IRAV explicado y cláusulas de zonas comunes — todo online desde Londres.",
+        author: "James W.",
+        role: "Propietario · Sant Martí",
+      },
+    ],
+    finalCtaLead:
+      "Firma en la Vila Olímpica con LAU redactado por gestoría — panel Livendia y entrega en 48–72 h.",
+  },
+  {
+    slug: "barcelona-el-raval",
+    city: "El Raval",
+    schemaAdministrativeArea: "Cataluña",
+    heroLead:
+      "Contrato de alquiler de larga duración en El Raval para particulares: redacción o revisión LAU por 145 € IVA incl. Rambla del Raval, MACBA, Raval sud — inventario, INCASÒL y convivencia en pisos compartidos. Livendia online.",
+    whyIntro:
+      "El Raval mezcla edificios del s. XIX, pisos compartidos, plantas bajas comerciales y rotación elevada. Sin LAU adaptado, los conflictos por humedades, ruido o habitaciones mal reguladas aparecen en el primer mes.",
+    howIntro:
+      "Cuatro hitos digitales hasta la firma en la Rambla del Raval, MACBA, Raval sud o límites con Sant Antoni y el Gòtic.",
+    testimonialsTitle: "Particulares en El Raval que redactaron LAU con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Piso compartido en Rambla del Raval: Livendia redactó LAU con normas de convivencia e inventario antes de entregar llaves.",
+        author: "Jordi P.",
+        role: "Propietario · El Raval",
+      },
+      {
+        quote:
+          "Alquiler cerca del MACBA entre particulares. El gestor revisó renta anterior, INCASÒL y humedades documentadas en el inventario.",
+        author: "Ana M.",
+        role: "Inquilina · Ciutat Vella",
+      },
+    ],
+    finalCtaLead:
+      "Redacta tu LAU en El Raval entre particulares — gestoría Livendia, plataforma y sin comisión de agencia.",
   },
   {
     slug: "hospitalet-de-llobregat",
