@@ -68,6 +68,18 @@ import {
   CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE,
   getPublishedContratoEntreParticularesLocalCities,
 } from "@/lib/contrato-entre-particulares-local-cities";
+import {
+  ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE,
+  getPublishedAcompanamientoReservaArrasLocalCities,
+} from "@/lib/acompanamiento-reserva-arras-local-cities";
+import {
+  REVISION_CONTRATO_ALQUILER_LOCAL_BASE,
+  getPublishedRevisionContratoAlquilerLocalCities,
+} from "@/lib/revision-contrato-alquiler-local-cities";
+import { PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH } from "@/lib/catalog.public";
+import { getPublishedPackArrasGestionLocalSlugs } from "@/lib/pack-comercial-local-cities";
+import { AdministracionAlquilerMetroBlogLinks } from "@/components/administracion-alquiler-metro-blog-links";
+import { getExtendedRedactarDiscoverabilityLinks } from "@/lib/local-discoverability-links";
 
 const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios", label: "Todos los servicios" },
@@ -83,8 +95,11 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
   { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },
   { href: "/servicios/redactar-contrato-alquiler", label: "Redactar contrato alquiler" },
+  { href: "/servicios/revision-contrato-alquiler-local", label: "Revisión contrato alquiler" },
+  { href: "/servicios/acompanamiento-reserva-arras-local", label: "Acompañamiento hasta arras" },
   { href: "/servicios/contrato-alquiler-temporada-local", label: "Contrato alquiler temporada" },
   { href: "/servicios/administracion-alquiler-temporada-local", label: "Admin. temporada por ciudad" },
+  { href: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH, label: "Pack arras + gestión vendedor" },
   { href: "/servicios/revision-documental-post-arras", label: "Revisión comprador post-arras" },
   { href: "/servicios/gestion-documental-vendedor", label: "Gestión vendedor post-arras" },
   { href: "/gestoria", label: "Gestoría por ciudad" },
@@ -122,6 +137,10 @@ export function FooterDiscoverabilityLinks() {
   const gestoriaLocal = getPublishedGestoriaInmobiliariaLocalCities();
   const venderSinInmobiliariaLocal = getPublishedVenderPisoSinInmobiliariaCities();
   const contratoEntreParticularesLocal = getPublishedContratoEntreParticularesLocalCities();
+  const revisionContratoLocal = getPublishedRevisionContratoAlquilerLocalCities();
+  const reservaArrasLocal = getPublishedAcompanamientoReservaArrasLocalCities();
+  const packArrasSlugs = getPublishedPackArrasGestionLocalSlugs();
+  const extendedRedactarLinks = getExtendedRedactarDiscoverabilityLinks();
   const cityPriorityLinks = getHomeCoverageCityFlatLinks();
   const extendedVentaLinks = getExtendedVentaSinAgenciaLinks();
 
@@ -193,6 +212,24 @@ export function FooterDiscoverabilityLinks() {
           cities={redactarContratoLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
         />
         <LocalGroup
+          title="Revisión contrato alquiler por ciudad"
+          hub={REVISION_CONTRATO_ALQUILER_LOCAL_BASE}
+          cities={revisionContratoLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
+        />
+        <LocalGroup
+          title="Acompañamiento reserva arras por ciudad"
+          hub={ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE}
+          cities={reservaArrasLocal.map((c) => ({ slug: c.slug, name: c.placeLabel }))}
+        />
+        <LocalGroup
+          title="Pack arras + gestión vendedor"
+          hub={PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH}
+          cities={packArrasSlugs.map((slug) => ({
+            slug,
+            name: slug.charAt(0).toUpperCase() + slug.slice(1),
+          }))}
+        />
+        <LocalGroup
           title="Compra completa por ciudad"
           hub={`${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}`}
           cities={compraLocal.map((c) => ({ slug: c.slug, name: c.city }))}
@@ -250,6 +287,25 @@ export function FooterDiscoverabilityLinks() {
           hub={CONTRATO_ENTRE_PARTICULARES_LOCAL_BASE}
           cities={contratoEntreParticularesLocal.map((c) => ({ slug: c.slug, name: c.city }))}
         />
+      </div>
+
+      {extendedRedactarLinks.length > 0 ? (
+        <div className="mt-3">
+          <p className="font-semibold text-blue-50">Redactar contrato — más ciudades</p>
+          <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-blue-100">
+            {extendedRedactarLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-white transition-colors">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      <div className="mt-3">
+        <AdministracionAlquilerMetroBlogLinks variant="footer" />
       </div>
     </nav>
   );

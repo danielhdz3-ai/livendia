@@ -1,3 +1,5 @@
+import { getHubCityDiscoverabilityLinks } from "@/lib/local-discoverability-links";
+
 /** Ciudades prioritarias en home y footer. */
 export const HOME_COVERAGE_CITY_SLUGS = [
   "madrid",
@@ -162,5 +164,9 @@ export function getHomeCoverageCityFlatLinks(): { href: string; label: string }[
     ...(c.arrasLocalHref
       ? [{ href: c.arrasLocalHref, label: `Contrato arras ${c.name}` }]
       : []),
+    ...getHubCityDiscoverabilityLinks(c.slug, c.name).map((link) => ({
+      href: link.href,
+      label: link.label,
+    })),
   ]);
 }

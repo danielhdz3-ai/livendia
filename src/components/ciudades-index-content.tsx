@@ -11,8 +11,12 @@ import {
   getLocalServiceHref,
 } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
+import { getExtendedRedactarDiscoverabilityLinks } from "@/lib/local-discoverability-links";
+import { ADMINISTRACION_ALQUILER_METRO_BASE } from "@/lib/administracion-alquiler-metro-landings";
 
 export function CiudadesIndexContent() {
+  const extendedRedactarLinks = getExtendedRedactarDiscoverabilityLinks();
+
   return (
     <>
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
@@ -218,9 +222,42 @@ export function CiudadesIndexContent() {
             >
               Habitación metro
             </Link>
+            <Link
+              href={ADMINISTRACION_ALQUILER_METRO_BASE}
+              className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-slate-200 hover:bg-blue-50"
+            >
+              Admin. alquiler metro
+            </Link>
           </nav>
         </div>
       </section>
+
+      {extendedRedactarLinks.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100 sm:p-8">
+            <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">
+              Redactar contrato de alquiler — más ciudades
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm text-[#475569]">
+              Landings locales con gestor online y redacción profesional LAU · 145 € IVA incl.
+            </p>
+            <nav
+              aria-label="Redactar contrato de alquiler en más ciudades"
+              className="mt-4 flex flex-wrap gap-2"
+            >
+              {extendedRedactarLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full bg-[#EFF6FF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-[#BFDBFE] hover:bg-blue-100"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-t border-slate-200 bg-[#F8FAFC] py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

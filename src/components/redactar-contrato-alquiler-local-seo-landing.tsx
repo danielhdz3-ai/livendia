@@ -1,3 +1,4 @@
+import { AlquilerLocalRelatedServiceLinks } from "@/components/alquiler-local-related-service-links";
 import { FaqSection } from "@/components/faq-section";
 import { RedactarContratoAlquilerLocalCityLinks } from "@/components/redactar-contrato-alquiler-local-city-links";
 import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/components/redactar-contrato-alquiler-administracion-upsell-section";
@@ -207,6 +208,16 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
           />
 
           <RedactarContratoAlquilerOnlineGestorSection city={config.placeLabel} />
+
+          <section className="border-b border-slate-200 bg-white px-4 py-8 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <AlquilerLocalRelatedServiceLinks
+                slug={config.slug}
+                cityName={config.city}
+                currentPath={config.path}
+              />
+            </div>
+          </section>
 
           <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-5xl">

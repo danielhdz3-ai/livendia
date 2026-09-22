@@ -29,6 +29,12 @@ import {
   barcelonaMetroVentaParticularHref,
 } from "@/lib/venta-piso-particular-barcelona-metro";
 import { CITY_PILLAR_PATHS } from "@/lib/ciudades-hub";
+import { getHubCityDiscoverabilityLinks } from "@/lib/local-discoverability-links";
+import {
+  getPublishedRedactarContratoAlquilerLocalCities,
+  localRedactarContratoAlquilerHref,
+} from "@/lib/redactar-contrato-alquiler-local-cities";
+import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
 
 type CityHubServicesProps = {
   city: HomeCoverageCity;
@@ -37,6 +43,7 @@ type CityHubServicesProps = {
 /** Listado completo de servicios locales por ciudad (hub /ciudades/[slug]). */
 export function CityHubServices({ city }: CityHubServicesProps) {
   const pillarHref = CITY_PILLAR_PATHS[city.slug];
+  const discoverabilityLinks = getHubCityDiscoverabilityLinks(city.slug, city.name);
 
   return (
     <div className="space-y-8">
@@ -113,6 +120,13 @@ export function CityHubServices({ city }: CityHubServicesProps) {
               </Link>
             </li>
           ) : null}
+          {discoverabilityLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="font-semibold text-[#1A4FBF] hover:underline">
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -131,6 +145,22 @@ export function CityHubServices({ city }: CityHubServicesProps) {
             primaryHref="/servicios/contrato-alquiler-local/barcelona"
             primaryLabel="Barcelona"
           />
+          <MetroSection
+            title="Redactar contrato LAU — barrios y municipios AMB"
+            description="Misma redacción profesional con gestor online · 145 € IVA incl."
+            cities={getPublishedBarcelonaMetroContratoAlquilerLinks(
+              new Set(getPublishedRedactarContratoAlquilerLocalCities().map((c) => c.slug)),
+              localRedactarContratoAlquilerHref,
+            ).map((metro) => ({
+              name: metro.shortName,
+              href: metro.href,
+            }))}
+            primaryHref="/servicios/redactar-contrato-alquiler/barcelona"
+            primaryLabel="Barcelona"
+          />
+          <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <AdministracionAlquilerMetroHubLinks />
+          </section>
           <MetroSection
             title="Contrato de arras — barrios de Barcelona"
             description="Gestor asignado · CCCat (621-4 a 621-9) y cláusula 621-49 · arras justas entre particulares."

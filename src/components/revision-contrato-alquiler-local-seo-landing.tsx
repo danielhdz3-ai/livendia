@@ -1,3 +1,4 @@
+import { AlquilerLocalRelatedServiceLinks } from "@/components/alquiler-local-related-service-links";
 import { FaqSection } from "@/components/faq-section";
 import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
@@ -197,6 +198,16 @@ export async function RevisionContratoAlquilerLocalSeoLanding({
             placeLabel={config.placeLabel}
             citySlug={config.path.split("/").pop() ?? config.city}
           />
+
+          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-8 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <AlquilerLocalRelatedServiceLinks
+                slug={config.path.split("/").pop() ?? ""}
+                cityName={config.city}
+                currentPath={config.path}
+              />
+            </div>
+          </section>
 
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">
