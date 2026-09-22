@@ -16,6 +16,13 @@ import {
   metroBarcelonaZoneImage,
 } from "@/lib/administracion-alquiler-metro-zone-images";
 import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
+import {
+  ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT,
+  ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
+  ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_C,
+  adminAlquilerHowImagesWithTwoZones,
+  adminAlquilerHowImagesWithZone,
+} from "@/lib/administracion-alquiler-how-images";
 
 export const ADMINISTRACION_ALQUILER_METRO_BASE = "/administracion-alquiler";
 
@@ -130,12 +137,7 @@ export const METRO_ADMINISTRACION_FAQ: readonly { question: string; answer: stri
   },
 ];
 
-const HOW_IMAGES_DEFAULT = [
-  "/images/gestoria.jpg",
-  "/images/familia2.jpg",
-  "/images/equipo1.jpg",
-  "/images/gestoria5.jpg",
-] as const;
+const HOW_IMAGES_DEFAULT = ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT;
 
 export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetroLanding[] = [
   {
@@ -324,12 +326,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Consultar con Gestor en Gràcia por WhatsApp",
     waPlaceLabel: "Gràcia, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "gracia"]),
-    howImages: [
-      metroBarcelonaZoneImage("gracia2.jpg"),
-      "/images/familia2.jpg",
-      "/images/equipo2.jpg",
-      "/images/gestoria3.jpg",
-    ],
+    howImages: adminAlquilerHowImagesWithZone(metroBarcelonaZoneImage("gracia2.jpg")),
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -524,7 +521,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Contactar con el Gestor de Cornellà",
     waPlaceLabel: "Cornellà de Llobregat",
     heroImage: metroBarcelonaHeroForSegments(["cornella"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -623,12 +620,10 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Consultar con Gestor en Eixample por WhatsApp",
     waPlaceLabel: "Eixample, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "eixample"]),
-    howImages: [
+    howImages: adminAlquilerHowImagesWithTwoZones(
       metroBarcelonaZoneImage("sagradafamilia.jpg"),
       metroBarcelonaZoneImage("eixample2.jpg"),
-      "/images/familia2.jpg",
-      "/images/equipo1.jpg",
-    ],
+    ),
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -832,12 +827,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Contactar con el Gestor de Sant Martí",
     waPlaceLabel: "Sant Martí, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "sant-marti"]),
-    howImages: [
-      metroBarcelonaZoneImage("poblenou.jpg"),
-      "/images/familia3.jpg",
-      "/images/equipo2.jpg",
-      "/images/gestoria6.jpg",
-    ],
+    howImages: adminAlquilerHowImagesWithZone(metroBarcelonaZoneImage("poblenou.jpg")),
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -944,12 +934,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Hablar con el Gestor de Sarrià-Sant Gervasi",
     waPlaceLabel: "Sarrià-Sant Gervasi, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "sarria-sant-gervasi"]),
-    howImages: [
-      metroBarcelonaZoneImage("santgervasi2.jpg"),
-      "/images/familia4.jpg",
-      "/images/equipo5.jpg",
-      "/images/gestoria8.jpg",
-    ],
+    howImages: adminAlquilerHowImagesWithZone(metroBarcelonaZoneImage("santgervasi2.jpg")),
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -1157,12 +1142,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Contactar gestor Ciutat Vella",
     waPlaceLabel: "Ciutat Vella, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "ciutat-vella"]),
-    howImages: [
-      metroBarcelonaZoneImage("rabal.jpg"),
-      "/images/familia5.jpg",
-      "/images/equipo6.jpg",
-      "/images/gestoria2.jpg",
-    ],
+    howImages: adminAlquilerHowImagesWithZone(metroBarcelonaZoneImage("rabal.jpg")),
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -1269,12 +1249,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Consultar gestor Horta-Guinardó",
     waPlaceLabel: "Horta-Guinardó, Barcelona",
     heroImage: metroBarcelonaHeroForSegments(["barcelona", "horta-guinardo"]),
-    howImages: [
-      "/images/gestoria6.jpg",
-      "/images/familia2.jpg",
-      "/images/equipo4.jpg",
-      "/images/gestoria3.jpg",
-    ],
+    howImages: HOW_IMAGES_DEFAULT,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona (ciudad)",
@@ -1460,7 +1435,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Contactar gestor Esplugues por WhatsApp",
     waPlaceLabel: "Esplugues de Llobregat",
     heroImage: metroBarcelonaHeroForSegments(["esplugues"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1542,7 +1517,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Solicitar gestión Sant Joan Despí",
     waPlaceLabel: "Sant Joan Despí",
     heroImage: metroBarcelonaHeroForSegments(["sant-joan-despi"]),
-    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_C,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1624,7 +1599,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "WhatsApp gestor Sant Adrià",
     waPlaceLabel: "Sant Adrià de Besòs",
     heroImage: metroBarcelonaHeroForSegments(["sant-adria"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1706,7 +1681,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Consultar gestión Castelldefels",
     waPlaceLabel: "Castelldefels",
     heroImage: metroBarcelonaHeroForSegments(["castelldefels"]),
-    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_C,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1777,7 +1752,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "WhatsApp gestor Sant Boi",
     waPlaceLabel: "Sant Boi de Llobregat",
     heroImage: metroBarcelonaHeroForSegments(["sant-boi"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1846,7 +1821,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Consultar gestión Gavà",
     waPlaceLabel: "Gavà",
     heroImage: metroBarcelonaHeroForSegments(["gava"]),
-    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_C,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -1916,7 +1891,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "WhatsApp gestor Mollet",
     waPlaceLabel: "Mollet del Vallès",
     heroImage: metroBarcelonaHeroForSegments(["mollet-del-valles"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -2016,7 +1991,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Contactar con el Gestor de Sant Cugat",
     waPlaceLabel: "Sant Cugat del Vallès",
     heroImage: metroBarcelonaHeroForSegments(["sant-cugat"]),
-    howImages: ["/images/gestoria2.jpg", "/images/familia1.jpg", "/images/equipo4.jpg", "/images/modelo3.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_B,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",
@@ -2117,7 +2092,7 @@ export const ADMINISTRACION_ALQUILER_METRO_LANDINGS: AdministracionAlquilerMetro
     primaryCtaLabel: "Solicitar Gestión en Badalona por WhatsApp",
     waPlaceLabel: "Badalona",
     heroImage: metroBarcelonaHeroForSegments(["badalona"]),
-    howImages: ["/images/gestoria1.jpg", "/images/familia6.jpg", "/images/equipo3.jpg", "/images/gestoria4.jpg"],
+    howImages: ADMINISTRACION_ALQUILER_HOW_IMAGES_SET_C,
     regulatorySlug: "barcelona",
     parentCityHubPath: BARCELONA_CITY_HUB,
     parentCityHubLabel: "Administración de alquiler en Barcelona y área metropolitana",

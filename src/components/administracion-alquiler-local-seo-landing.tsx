@@ -32,6 +32,7 @@ import { AdministracionAlquilerOperationsScopeSection } from "@/components/admin
 import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
 import { AdministracionAlquilerPresencialSection } from "@/components/administracion-alquiler-presencial-section";
 import { ADMINISTRACION_ALQUILER_BARCELONA_CITY_HUB } from "@/lib/administracion-alquiler-barcelona-metro";
+import { ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT } from "@/lib/administracion-alquiler-how-images";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import Image from "next/image";
 import Link from "next/link";
@@ -199,12 +200,7 @@ export async function AdministracionAlquilerLocalSeoLanding({
     },
   ];
 
-  const howImages = [
-    "/images/gestoria.jpg",
-    "/images/familia2.jpg",
-    "/images/equipo1.jpg",
-    "/images/gestoria5.jpg",
-  ];
+  const howImages = ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT;
 
   const heroImage = config.heroImage ?? "/images/modelo3.jpg";
   const slug = config.path.split("/").pop() ?? "";
