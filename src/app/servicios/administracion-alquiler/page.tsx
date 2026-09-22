@@ -15,6 +15,7 @@ import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
+import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
 
 /**
  * ISR: revalida cada 5 min para que los precios/estado del catalogo
@@ -257,6 +258,8 @@ export default async function AdministracionAlquilerPage() {
         </section>
 
         <AdministracionAlquilerOperationsScopeSection variant="national" />
+
+        <AdministracionAlquilerOnlineOnlySection />
 
         {/* Cómo funciona */}
         <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">

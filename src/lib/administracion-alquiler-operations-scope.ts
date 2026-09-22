@@ -62,11 +62,11 @@ export function getAdministracionAlquilerOnlineScopeIntro(
   switch (variant) {
     case "local-outside-barcelona":
       return {
-        heading: `Administración de alquiler en ${cityLabel ?? "tu ciudad"} — 100% online`,
+        heading: `Alcance operativo en ${cityLabel ?? "tu ciudad"}`,
         lead:
-          `Si tu piso está en ${cityLabel ?? "una ciudad fuera de Barcelona"}, todos los trámites con Livendia son 100% online: alta del servicio, seguimiento de la renta, incidencias, siniestros, renovaciones y relación con el inquilino mediante panel del propietario, WhatsApp y email. No necesitas acudir a un despacho en Barcelona ni desplazarte para firmar cada gestión rutinaria.`,
+          `Mismo protocolo mensual en ${cityLabel ?? "tu municipio"}: cobro de renta, incidencias, siniestros, renovaciones y canal único con el inquilino. Livendia no desplaza gestores a tu provincia; la operativa es remota desde Barcelona.`,
         note:
-          "En Barcelona y área metropolitana también puedes visitarnos en Les Corts (Mejía Lequerica 44) si lo prefieres; fuera de Barcelona el protocolo es íntegramente a distancia.",
+          "Pensado para propietarios que ya tienen inquilino y quieren delegar la administración sin hablar con el arrendatario.",
       };
     case "barcelona-area":
       return {
@@ -79,11 +79,11 @@ export function getAdministracionAlquilerOnlineScopeIntro(
     case "national":
     default:
       return {
-        heading: "Fuera de Barcelona, trámite 100% online",
+        heading: "Alcance operativo en toda España (online)",
         lead:
-          "Si tu vivienda en alquiler está fuera de Barcelona, todos los trámites con Livendia son 100% online: alta, cobro de renta, incidencias, siniestros con la aseguradora, renovaciones, comunicación con el inquilino y con la comunidad. Panel del propietario, WhatsApp y gestor asignado — sin visitar un despacho.",
+          "Cobro de renta, incidencias, siniestros, renovaciones y relación con el inquilino con gestor asignado y panel del propietario. Fuera de Barcelona/AMB no hay visitas presenciales de Livendia al inmueble.",
         note:
-          "En Barcelona y área metropolitana también operamos online; además, puedes acudir presencialmente a Mejía Lequerica 44 (Les Corts) si lo deseas.",
+          "Servicio orientado a propietarios con inquilino ya instalado que delegan el contacto diario en Livendia.",
       };
   }
 }
