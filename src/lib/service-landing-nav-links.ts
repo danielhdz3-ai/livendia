@@ -65,6 +65,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/redactar-contrato-alquiler", label: "Redactar contrato alquiler" },
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-opcion-compra", label: "Alquiler con opción a compra" },
+      { href: "/servicios/contrato-alquiler-opcion-compra-local", label: "Opción a compra por ciudad" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
       { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
       { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },

@@ -1,3 +1,4 @@
+import { ContratoAlquilerOpcionCompraLocalCityLinks } from "@/components/contrato-alquiler-opcion-compra-local-city-links";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
@@ -181,6 +182,12 @@ export default async function ContratoAlquilerOpcionCompraPage() {
                   );
                 })}
               </div>
+            </div>
+          </section>
+
+          <section className="border-t border-slate-200 bg-white px-4 py-12 sm:px-6">
+            <div className="mx-auto max-w-4xl">
+              <ContratoAlquilerOpcionCompraLocalCityLinks />
             </div>
           </section>
 

@@ -1,4 +1,4 @@
--- Contrato de alquiler con opción a compra (rent-to-own)
+-- Contrato de alquiler con opción a compra (rent-to-own) — 145 € IVA incl. (14500 céntimos)
 
 INSERT INTO public.services (slug, name, description, category, price_cents, is_recurring, features, badge, is_active)
 VALUES (

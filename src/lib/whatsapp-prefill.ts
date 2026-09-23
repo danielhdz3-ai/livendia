@@ -142,6 +142,11 @@ export function resolveWhatsAppPageContext(pathname: string): WhatsAppPageContex
     { match: (p) => p.includes("revision-contrato-alquiler"), label: "Revisión contrato de alquiler", need: "alquiler" },
     { match: (p) => p.includes("contrato-alquiler-habitacion"), label: "Contrato de habitación", need: "alquiler" },
     {
+      match: (p) => p.includes("contrato-alquiler-opcion-compra-local"),
+      label: "Contrato alquiler opción a compra (local)",
+      need: "alquiler",
+    },
+    {
       match: (p) => p.includes("contrato-alquiler-opcion-compra"),
       label: "Contrato alquiler con opción a compra",
       need: "alquiler",
