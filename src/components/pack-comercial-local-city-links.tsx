@@ -1,18 +1,11 @@
 import Link from "next/link";
 import {
+  getPackLocalCityLabel,
   getPublishedPackArrasGestionLocalSlugs,
   getPublishedPackLauAdminLocalSlugs,
   localPackArrasGestionHref,
   localPackLauAdminHref,
 } from "@/lib/pack-comercial-local-cities";
-
-const CITY_LABELS: Record<string, string> = {
-  madrid: "Madrid",
-  barcelona: "Barcelona",
-  valencia: "Valencia",
-  malaga: "Málaga",
-  sevilla: "Sevilla",
-};
 
 type Props = {
   variant: "lau-admin" | "arras-gestion";
@@ -43,7 +36,7 @@ export function PackComercialLocalCityLinks({ variant }: Props) {
               href={hrefFn(slug)}
               className="rounded-full bg-[#EFF6FF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-[#BFDBFE] hover:bg-[#DBEAFE]"
             >
-              {CITY_LABELS[slug] ?? slug}
+              {getPackLocalCityLabel(slug)}
             </Link>
           ))}
         </nav>

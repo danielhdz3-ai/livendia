@@ -27,6 +27,8 @@ type ServiceLandingSharedSectionsProps = {
   skipCoverage?: boolean;
   /** Omitir TrustReviewsBlock global si la landing ya tiene testimonios locales */
   skipTestimonials?: boolean;
+  /** Omitir banner genérico de fundadores (p. ej. si la landing ya muestra perfiles con foto). */
+  skipFoundersBanner?: boolean;
   /** CTA del bloque de testimonios */
   testimonialsCtaHref?: string;
   testimonialsCtaLabel?: string;
@@ -44,6 +46,7 @@ export function ServiceLandingSharedSections({
   skipGestorPlatform = false,
   skipCoverage = false,
   skipTestimonials = false,
+  skipFoundersBanner = false,
   testimonialsCtaHref = "/servicios",
   testimonialsCtaLabel = "Ver todos los servicios",
 }: ServiceLandingSharedSectionsProps) {
@@ -83,7 +86,7 @@ export function ServiceLandingSharedSections({
           </div>
         </section>
       )}
-      <LivendiaFoundersBanner />
+      {skipFoundersBanner ? null : <LivendiaFoundersBanner />}
       {skipGestorPlatform ? null : (
         <ServiceGestorPlatformSection
           workflow={resolvedWorkflow}

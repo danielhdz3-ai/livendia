@@ -14,6 +14,13 @@ import {
   PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION,
 } from "@/lib/pack-comercial-local-differentiation";
 import {
+  PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES,
+  PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION,
+  PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS,
+  getPackArrasGestionBcnMetroSeo,
+  isPackArrasGestionBcnMetroSlug,
+} from "@/lib/pack-comercial-arras-gestion-barcelona-metro";
+import {
   getPackArrasGestionLocalSeo,
   getPackLauAdminLocalSeo,
   type PackCommercialLocalSeoContent,
@@ -29,6 +36,7 @@ export const PACK_LAU_ADMIN_LOCAL_PUBLISHED_SLUGS = [
 export const PACK_ARRAS_GESTION_LOCAL_PUBLISHED_SLUGS = [
   "madrid",
   "barcelona",
+  ...PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS,
   "valencia",
   "malaga",
   "sevilla",
@@ -79,7 +87,24 @@ export function getPublishedPackLauAdminLocalSlugs(): readonly string[] {
 }
 
 export function getPackLocalCityLabel(slug: string): string {
-  return PACK_LOCAL_CITY_BASES[slug]?.city ?? slug;
+  return (
+    PACK_LOCAL_CITY_BASES[slug]?.city ??
+    PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES[slug as keyof typeof PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES]
+      ?.city ??
+    slug
+  );
+}
+
+function resolvePackArrasGestionCityBase(slug: string): PackLocalCityBase | null {
+  return PACK_LOCAL_CITY_BASES[slug] ?? PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES[slug as keyof typeof PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES] ?? null;
+}
+
+function resolvePackArrasGestionDifferentiation(slug: string): LocalCityLandingFields | null {
+  return (
+    PACK_ARRAS_GESTION_LOCAL_DIFFERENTIATION[slug] ??
+    PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION[slug as keyof typeof PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION] ??
+    null
+  );
 }
 
 export function getPublishedPackArrasGestionLocalSlugs(): readonly string[] {
@@ -180,15 +205,35 @@ export function toPackLauAdminLocalConfig(slug: string): PackCommercialLocalLand
 }
 
 export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocalLandingConfig | null {
-  const cityBase = PACK_LOCAL_CITY_BASES[slug];
-  const diff = PACK_ARRAS_GESTION_LOCAL_DIFFERENTIATION[slug];
-  const localSeo = getPackArrasGestionLocalSeo(slug);
+  const cityBase = resolvePackArrasGestionCityBase(slug);
+  const diff = resolvePackArrasGestionDifferentiation(slug);
+  const localSeo = getPackArrasGestionBcnMetroSeo(slug) ?? getPackArrasGestionLocalSeo(slug);
   if (!cityBase || !diff || !localSeo) return null;
 
+  const gestionDocSlug = isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
+  const ventaLocalSlug = slug === "hospitalet-de-llobregat" ? slug : isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
+
+  const metroSiblingLinks =
+    slug === "barcelona"
+      ? PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS.map((metroSlug) => ({
+          href: localPackArrasGestionHref(metroSlug),
+          label: `Pack ${getPackLocalCityLabel(metroSlug)}`,
+        }))
+      : isPackArrasGestionBcnMetroSlug(slug)
+        ? [{ href: localPackArrasGestionHref("barcelona"), label: "Pack Barcelona ciudad" }]
+        : [];
+
   const relatedLinksExtra = [
+    ...metroSiblingLinks,
     { href: `/servicios/contrato-arras-local/${slug}`, label: `Contrato arras ${cityBase.city}` },
-    { href: `/servicios/gestion-documental-vendedor/${slug}`, label: `Gestión documental ${cityBase.city}` },
-    { href: `/servicios/servicio-completo-venta-local/${slug}`, label: `Venta completa ${cityBase.city}` },
+    {
+      href: `/servicios/gestion-documental-vendedor/${gestionDocSlug}`,
+      label: `Gestión documental ${gestionDocSlug === "barcelona" ? "Barcelona" : cityBase.city}`,
+    },
+    {
+      href: `/servicios/servicio-completo-venta-local/${ventaLocalSlug}`,
+      label: `Venta completa ${getPackLocalCityLabel(ventaLocalSlug)}`,
+    },
     { href: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH, label: "Pack nacional arras + gestión" },
   ] as const;
 

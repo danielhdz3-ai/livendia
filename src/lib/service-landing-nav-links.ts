@@ -28,6 +28,12 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/madrid", label: "Pack arras + gestión Madrid" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona", label: "Pack arras + gestión Barcelona" },
+      { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-eixample", label: "Pack arras Eixample" },
+      { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-les-corts", label: "Pack arras Les Corts" },
+      {
+        href: "/servicios/pack-arras-gestion-documental-vendedor/hospitalet-de-llobregat",
+        label: "Pack arras L'Hospitalet",
+      },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/valencia", label: "Pack arras + gestión Valencia" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/malaga", label: "Pack arras + gestión Málaga" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/sevilla", label: "Pack arras + gestión Sevilla" },

@@ -11,6 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
+import { LivendiaExpertGestorsSection } from "@/components/livendia-expert-gestors-section";
 import { PackComercialLocalCityLinks } from "@/components/pack-comercial-local-city-links";
 import { PackCommercialWhatsAppLink } from "@/components/pack-comercial-whatsapp-link";
 import { PublicHeader } from "@/components/public-header";
@@ -427,6 +428,10 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
             </section>
           ) : null}
 
+          {isVentaPack ? (
+            <LivendiaExpertGestorsSection city={local?.city} className="bg-[#F8FAFC]" />
+          ) : null}
+
           <section className="border-t border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl space-y-6">
               {config.infoBanners.map((banner) => (
@@ -551,7 +556,9 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
         </main>
         <ServiceLandingSharedSections
           serviceLabel={config.heroH1}
+          city={local?.city}
           skipGestorPlatform={false}
+          skipFoundersBanner={isVentaPack}
           testimonialsCtaHref={config.path}
           testimonialsCtaLabel="Contratar este pack"
         />

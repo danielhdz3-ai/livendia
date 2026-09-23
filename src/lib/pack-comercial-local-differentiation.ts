@@ -199,7 +199,7 @@ export const PACK_ARRAS_GESTION_LOCAL_DIFFERENTIATION: Record<string, LocalCityL
       "Comunidades lentas, cèdula obligatoria e ITE en edificios antiguos: el gestor Livendia persigue certificados mientras tú cierras con el comprador.",
     localZonesHeading: "Barrios y municipios del pack venta en Barcelona",
     localZones:
-      "Barcelona ciudad, Eixample, Gràcia, L'Hospitalet, Cornellà, Badalona y área metropolitana. Normativa catalana cubierta por gestor Livendia.",
+      "Barcelona ciudad, Eixample, Gràcia, L'Hospitalet, Cornellà, Badalona y área metropolitana. Landings específicas del pack en Les Corts, Eixample y L'Hospitalet. Normativa catalana cubierta por gestor Livendia.",
     heroImage: "/images/barcelona.jpg",
     finalCtaTitle: "Vende en Barcelona con arras y documentación hasta notaría",
   },

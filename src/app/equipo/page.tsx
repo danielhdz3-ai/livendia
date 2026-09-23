@@ -5,6 +5,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { LIVENDIA_FOUNDERS } from "@/lib/livendia-founders";
 import {
   BookOpen,
   CheckCircle,
@@ -24,53 +25,6 @@ export const metadata: Metadata = {
     "Conoce al equipo y a los fundadores de Livendia: gestoría inmobiliaria digital en toda España. Abogados, gestores y API colegiados especializados en derecho inmobiliario.",
   alternates: { canonical: `${getSiteUrl()}/equipo` },
 };
-
-const founders = [
-  {
-    name: "Arnau Martí",
-    role: "Socio fundador",
-    credentials: ["Abogado colegiado (ICAB)", "Gestor administrativo colegiado", "Derecho inmobiliario"],
-    image: "/images/fundador-arnau.png",
-    imageAlt: "Arnau Martí, socio fundador de Livendia",
-    seals: [
-      {
-        src: "/images/sello confianza/Logo-ICAB-2023-scaled.jpg",
-        alt: "Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB)",
-      },
-      {
-        src: "/images/sello confianza/banner-consejo.jpg",
-        alt: "Consejo General de Colegios de Gestores Administrativos de España",
-      },
-    ],
-    paragraphs: [
-      "Arnau Martí es abogado colegiado en el Il·lustre Col·legi de l'Advocacia de Barcelona (ICAB) y gestor administrativo colegiado, con especialización en derecho inmobiliario y en la gestión de operaciones entre particulares.",
-      "Lleva más de una década acompañando compradores, vendedores e inversores en operaciones donde el detalle importa: contratos de arras con garantías bien calibradas, alquileres con cláusulas LAU ajustadas al caso real, compraventas con riesgos identificados antes de firmar y revisiones documentales cuando la operación ya está en marcha.",
-      "En Livendia lidera el criterio jurídico del despacho: traduce la normativa en decisiones comprensibles, anticipa escenarios de conflicto y diseña procesos que protegen al cliente sin frenar la operación. Su enfoque combina rigor de despacho con cercanía de gestor: escucha antes de redactar, explica antes de firmar y no desaparece cuando la documentación se complica.",
-    ],
-  },
-  {
-    name: "Daniel Hernández",
-    role: "Socio fundador",
-    credentials: ["API colegiado", "Gestor administrativo", "+15 años en el sector inmobiliario"],
-    image: "/images/fundador-daniel.png",
-    imageAlt: "Daniel Hernández, socio fundador de Livendia",
-    seals: [
-      {
-        src: "/images/sello confianza/api.jpg",
-        alt: "Asociación Profesional Inmobiliaria (API)",
-      },
-      {
-        src: "/images/sello confianza/banner-consejo.jpg",
-        alt: "Consejo General de Colegios de Gestores Administrativos de España",
-      },
-    ],
-    paragraphs: [
-      "Daniel Hernández es Agente de la Propiedad Inmobiliaria (API) colegiado y gestor administrativo, con más de quince años de experiencia en compraventas, alquileres y tramitación inmobiliaria.",
-      "Domina la redacción de contratos de alquiler y de compraventa, la preparación documental previa a la firma y el acompañamiento integral de compradores y vendedores: desde la revisión de garantías y plazos hasta la coordinación con notaría, registro, entidades financieras y terceros implicados en la operación.",
-      "En Livendia aplica ese recorrido para que cada expediente avance con orden: documentación completa, cláusulas adaptadas al caso concreto y un interlocutor identificable que explica cada paso. Su objetivo es que compres o vendas con todas las garantías, sin sorpresas de última hora ni procesos a medias.",
-    ],
-  },
-] as const;
 
 const pillars = [
   {
@@ -370,7 +324,7 @@ export default function EquipoPage() {
             </div>
 
             <div className="mt-14 grid gap-10 lg:grid-cols-2">
-              {founders.map((founder) => (
+              {LIVENDIA_FOUNDERS.map((founder) => (
                 <article
                   key={founder.name}
                   className="overflow-hidden rounded-2xl bg-slate-50 shadow-lg ring-1 ring-slate-200"
