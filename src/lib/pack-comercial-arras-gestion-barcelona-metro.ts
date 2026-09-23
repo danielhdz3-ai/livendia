@@ -6,6 +6,15 @@ import {
   PACK_ARRAS_GESTION_BCN_METRO_BATCH2,
   PACK_ARRAS_GESTION_BCN_METRO_BATCH2_SLUGS,
 } from "@/lib/pack-comercial-arras-gestion-barcelona-metro-zones-batch2";
+import {
+  PACK_ARRAS_GESTION_BCN_METRO_BATCH3,
+  PACK_ARRAS_GESTION_BCN_METRO_BATCH3_SLUGS,
+} from "@/lib/pack-comercial-arras-gestion-barcelona-metro-zones-batch3";
+
+const PACK_ARRAS_GESTION_BCN_METRO_EXTRA_ZONES = [
+  ...PACK_ARRAS_GESTION_BCN_METRO_BATCH2,
+  ...PACK_ARRAS_GESTION_BCN_METRO_BATCH3,
+] as const;
 
 const PACK_ARRAS_GESTION_BCN_METRO_CORE_SLUGS = [
   "barcelona-les-corts",
@@ -17,16 +26,17 @@ const PACK_ARRAS_GESTION_BCN_METRO_CORE_SLUGS = [
 export const PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS = [
   ...PACK_ARRAS_GESTION_BCN_METRO_CORE_SLUGS,
   ...PACK_ARRAS_GESTION_BCN_METRO_BATCH2_SLUGS,
+  ...PACK_ARRAS_GESTION_BCN_METRO_BATCH3_SLUGS,
 ] as const;
 
 export type PackArrasGestionBcnMetroSlug = (typeof PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS)[number];
 
-function mergeBatch2CityBases(): Record<
+function mergeExtraMetroCityBases(): Record<
   PackArrasGestionBcnMetroSlug,
   { slug: string; city: string; schemaAdministrativeArea: string }
 > {
   const batch = Object.fromEntries(
-    PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [
+    PACK_ARRAS_GESTION_BCN_METRO_EXTRA_ZONES.map((z) => [
       z.slug,
       { slug: z.slug, city: z.city, schemaAdministrativeArea: "Cataluña" as const },
     ]),
@@ -37,16 +47,16 @@ function mergeBatch2CityBases(): Record<
   >;
 }
 
-function mergeBatch2Differentiation(): Record<PackArrasGestionBcnMetroSlug, LocalCityLandingFields> {
-  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [z.slug, z.diff]));
+function mergeExtraMetroDifferentiation(): Record<PackArrasGestionBcnMetroSlug, LocalCityLandingFields> {
+  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_EXTRA_ZONES.map((z) => [z.slug, z.diff]));
   return { ...PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION_CORE, ...batch } as unknown as Record<
     PackArrasGestionBcnMetroSlug,
     LocalCityLandingFields
   >;
 }
 
-function mergeBatch2Seo(): Record<PackArrasGestionBcnMetroSlug, PackCommercialLocalSeoContent> {
-  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [z.slug, z.seo]));
+function mergeExtraMetroSeo(): Record<PackArrasGestionBcnMetroSlug, PackCommercialLocalSeoContent> {
+  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_EXTRA_ZONES.map((z) => [z.slug, z.seo]));
   return { ...PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE, ...batch } as unknown as Record<
     PackArrasGestionBcnMetroSlug,
     PackCommercialLocalSeoContent
@@ -71,7 +81,7 @@ const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES_CORE = {
   },
 } as const;
 
-export const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES = mergeBatch2CityBases();
+export const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES = mergeExtraMetroCityBases();
 
 const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION_CORE = {
   "barcelona-les-corts": {
@@ -163,7 +173,7 @@ const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION_CORE = {
   },
 } as const;
 
-export const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION = mergeBatch2Differentiation();
+export const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION = mergeExtraMetroDifferentiation();
 
 const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
   "barcelona-les-corts": {
@@ -400,7 +410,7 @@ const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
   },
 } as const;
 
-export const PACK_ARRAS_GESTION_BCN_METRO_SEO = mergeBatch2Seo();
+export const PACK_ARRAS_GESTION_BCN_METRO_SEO = mergeExtraMetroSeo();
 
 export function isPackArrasGestionBcnMetroSlug(slug: string): slug is PackArrasGestionBcnMetroSlug {
   return (PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS as readonly string[]).includes(slug);

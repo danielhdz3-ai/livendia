@@ -211,7 +211,12 @@ export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocal
   if (!cityBase || !diff || !localSeo) return null;
 
   const gestionDocSlug = isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
-  const ventaLocalSlug = slug === "hospitalet-de-llobregat" ? slug : isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
+  const ventaLocalSlug =
+    slug === "hospitalet-de-llobregat" || slug === "cornella-de-llobregat"
+      ? slug
+      : isPackArrasGestionBcnMetroSlug(slug)
+        ? "barcelona"
+        : slug;
 
   const metroSiblingLinks =
     slug === "barcelona"
