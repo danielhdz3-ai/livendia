@@ -8,9 +8,10 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import {
   ContratarSlugButton,
-  ServicePurchaseProvider,
+  MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
 import { getPublicServices } from "@/lib/catalog";
+import type { PublicService } from "@/lib/catalog.public";
 import {
   CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL,
   resolveServicePriceLabel,
@@ -72,6 +73,8 @@ export async function ContratoAlquilerOpcionCompraLocalSeoLanding({
 }) {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "contrato-alquiler-opcion-compra") ?? null;
+  const servicesBySlug: Partial<Record<string, PublicService>> = {};
+  if (service) servicesBySlug["contrato-alquiler-opcion-compra"] = service;
   const priceLabel = resolveServicePriceLabel(service, CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL);
 
   const howItWorks = [
@@ -127,7 +130,7 @@ export async function ContratoAlquilerOpcionCompraLocalSeoLanding({
   ];
 
   return (
-    <ServicePurchaseProvider service={service}>
+    <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <LocalOpcionCompraJsonLd
         path={config.path}
         city={config.city}
@@ -341,6 +344,6 @@ export async function ContratoAlquilerOpcionCompraLocalSeoLanding({
         <ServiceLandingSharedSections />
         <SiteFooter />
       </div>
-    </ServicePurchaseProvider>
+    </MultiServicePurchaseProvider>
   );
 }
