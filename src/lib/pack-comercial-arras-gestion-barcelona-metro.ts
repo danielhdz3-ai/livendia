@@ -2,20 +2,58 @@ import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
+import {
+  PACK_ARRAS_GESTION_BCN_METRO_BATCH2,
+  PACK_ARRAS_GESTION_BCN_METRO_BATCH2_SLUGS,
+} from "@/lib/pack-comercial-arras-gestion-barcelona-metro-zones-batch2";
 
-/** Landings metro del pack arras + gestión documental vendedor (Barcelona). */
-export const PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS = [
+const PACK_ARRAS_GESTION_BCN_METRO_CORE_SLUGS = [
   "barcelona-les-corts",
   "barcelona-eixample",
   "hospitalet-de-llobregat",
 ] as const;
 
+/** Landings metro del pack arras + gestión documental vendedor (Barcelona). */
+export const PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS = [
+  ...PACK_ARRAS_GESTION_BCN_METRO_CORE_SLUGS,
+  ...PACK_ARRAS_GESTION_BCN_METRO_BATCH2_SLUGS,
+] as const;
+
 export type PackArrasGestionBcnMetroSlug = (typeof PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS)[number];
 
-export const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES: Record<
+function mergeBatch2CityBases(): Record<
   PackArrasGestionBcnMetroSlug,
   { slug: string; city: string; schemaAdministrativeArea: string }
-> = {
+> {
+  const batch = Object.fromEntries(
+    PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [
+      z.slug,
+      { slug: z.slug, city: z.city, schemaAdministrativeArea: "Cataluña" as const },
+    ]),
+  );
+  return { ...PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES_CORE, ...batch } as unknown as Record<
+    PackArrasGestionBcnMetroSlug,
+    { slug: string; city: string; schemaAdministrativeArea: string }
+  >;
+}
+
+function mergeBatch2Differentiation(): Record<PackArrasGestionBcnMetroSlug, LocalCityLandingFields> {
+  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [z.slug, z.diff]));
+  return { ...PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION_CORE, ...batch } as unknown as Record<
+    PackArrasGestionBcnMetroSlug,
+    LocalCityLandingFields
+  >;
+}
+
+function mergeBatch2Seo(): Record<PackArrasGestionBcnMetroSlug, PackCommercialLocalSeoContent> {
+  const batch = Object.fromEntries(PACK_ARRAS_GESTION_BCN_METRO_BATCH2.map((z) => [z.slug, z.seo]));
+  return { ...PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE, ...batch } as unknown as Record<
+    PackArrasGestionBcnMetroSlug,
+    PackCommercialLocalSeoContent
+  >;
+}
+
+const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES_CORE = {
   "barcelona-les-corts": {
     slug: "barcelona-les-corts",
     city: "Les Corts",
@@ -31,12 +69,11 @@ export const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES: Record<
     city: "L'Hospitalet de Llobregat",
     schemaAdministrativeArea: "Cataluña",
   },
-};
+} as const;
 
-export const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION: Record<
-  PackArrasGestionBcnMetroSlug,
-  LocalCityLandingFields
-> = {
+export const PACK_ARRAS_GESTION_BCN_METRO_CITY_BASES = mergeBatch2CityBases();
+
+const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION_CORE = {
   "barcelona-les-corts": {
     metaTitle: `Pack arras + gestión vendedor Les Corts — ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.`,
     metaDescription:
@@ -124,12 +161,11 @@ export const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION: Record<
     heroImage: metroBarcelonaZoneImage("hospitalet.jpg"),
     finalCtaTitle: "Vende en L'Hospitalet con arras y gestor documental hasta notaría",
   },
-};
+} as const;
 
-export const PACK_ARRAS_GESTION_BCN_METRO_SEO: Record<
-  PackArrasGestionBcnMetroSlug,
-  PackCommercialLocalSeoContent
-> = {
+export const PACK_ARRAS_GESTION_BCN_METRO_DIFFERENTIATION = mergeBatch2Differentiation();
+
+const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
   "barcelona-les-corts": {
     precioMedioVenta: 480_000,
     heroSubtitle:
@@ -362,7 +398,9 @@ export const PACK_ARRAS_GESTION_BCN_METRO_SEO: Record<
       },
     ],
   },
-};
+} as const;
+
+export const PACK_ARRAS_GESTION_BCN_METRO_SEO = mergeBatch2Seo();
 
 export function isPackArrasGestionBcnMetroSlug(slug: string): slug is PackArrasGestionBcnMetroSlug {
   return (PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS as readonly string[]).includes(slug);
