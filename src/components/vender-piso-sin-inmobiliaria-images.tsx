@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE = "/images/comercial1.jpg";
+export const VENDER_PISO_SIN_INMOBILIARIA_HERO_IMAGE = "/images/servicio-completo-venta-hero.jpg";
 export const VENDER_PISO_SIN_INMOBILIARIA_SIGNING_IMAGE = "/images/firma11.jpg";
 
 export function VenderPisoSinInmobiliariaPillarHeroImage({ alt }: { alt: string }) {
