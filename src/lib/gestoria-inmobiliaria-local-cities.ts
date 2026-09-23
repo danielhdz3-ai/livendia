@@ -14,6 +14,7 @@ import {
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_EUR,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_EUR,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR,
@@ -954,6 +955,11 @@ export const GESTORIA_SCHEMA_OFFERS = [
     slug: "contrato-alquiler-lau",
     name: "Contrato LAU",
     price: CONTRATO_ALQUILER_LAU_PRICE_EUR.toFixed(2),
+  },
+  {
+    slug: "contrato-alquiler-opcion-compra",
+    name: "Alquiler con opción a compra",
+    price: CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_EUR.toFixed(2),
   },
   {
     slug: "contrato-alquiler-temporada",

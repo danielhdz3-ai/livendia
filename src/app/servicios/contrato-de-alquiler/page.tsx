@@ -10,6 +10,7 @@ import type { PublicService } from "@/lib/catalog.public";
 import {
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   resolveServicePriceLabel,
 } from "@/lib/catalog.public";
@@ -53,14 +54,17 @@ export default async function ContratoDeAlquilerPage() {
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const temp = catalog.find((s) => s.slug === "contrato-alquiler-temporada");
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion");
+  const opcionCompra = catalog.find((s) => s.slug === "contrato-alquiler-opcion-compra");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (lau) servicesBySlug["contrato-alquiler-lau"] = lau;
   if (temp) servicesBySlug["contrato-alquiler-temporada"] = temp;
   if (hab) servicesBySlug["contrato-alquiler-habitacion"] = hab;
+  if (opcionCompra) servicesBySlug["contrato-alquiler-opcion-compra"] = opcionCompra;
 
   const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
   const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
   const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
+  const opcionCompraPrice = resolveServicePriceLabel(opcionCompra, CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL);
 
   const howItWorks = [
     {
@@ -207,6 +211,12 @@ export default async function ContratoDeAlquilerPage() {
                         className="rounded-full border border-white/60 px-4 py-2 font-semibold text-white hover:bg-white/10"
                       >
                         Contratar habitación · {habPrice}
+                      </ContratarSlugButton>
+                      <ContratarSlugButton
+                        slug="contrato-alquiler-opcion-compra"
+                        className="rounded-full border border-white/60 px-4 py-2 font-semibold text-white hover:bg-white/10"
+                      >
+                        Opción a compra · {opcionCompraPrice}
                       </ContratarSlugButton>
                     </div>
                   </div>

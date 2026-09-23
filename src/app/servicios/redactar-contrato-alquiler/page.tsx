@@ -20,6 +20,7 @@ import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+  CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
   resolveServicePriceLabel,
 } from "@/lib/catalog.public";
@@ -85,17 +86,20 @@ export default async function RedactarContratoAlquilerPage() {
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const temp = catalog.find((s) => s.slug === "contrato-alquiler-temporada");
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion");
+  const opcionCompra = catalog.find((s) => s.slug === "contrato-alquiler-opcion-compra");
   const adminRental = catalog.find((s) => s.slug === "administracion-alquiler");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (lau) servicesBySlug["contrato-alquiler-lau"] = lau;
   if (temp) servicesBySlug["contrato-alquiler-temporada"] = temp;
   if (hab) servicesBySlug["contrato-alquiler-habitacion"] = hab;
+  if (opcionCompra) servicesBySlug["contrato-alquiler-opcion-compra"] = opcionCompra;
   if (adminRental) servicesBySlug["administracion-alquiler"] = adminRental;
 
   const lauPrice = resolveServicePriceLabel(lau, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
   const adminPriceLabel = resolveServicePriceLabel(adminRental, ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL);
   const tempPrice = resolveServicePriceLabel(temp, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
   const habPrice = resolveServicePriceLabel(hab, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
+  const opcionCompraPrice = resolveServicePriceLabel(opcionCompra, CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL);
   const comparisonRows = buildAgencyRentalComparisonRows();
   const highlightRow = comparisonRows.find((r) => r.monthlyRent === 1_000) ?? comparisonRows[1];
 
@@ -165,6 +169,12 @@ export default async function RedactarContratoAlquilerPage() {
                       className="rounded-full border border-white/40 px-4 py-1.5 text-sm font-semibold text-white hover:bg-white/10"
                     >
                       Habitación · {habPrice}
+                    </ContratarSlugButton>
+                    <ContratarSlugButton
+                      slug="contrato-alquiler-opcion-compra"
+                      className="rounded-full border border-white/40 px-4 py-1.5 text-sm font-semibold text-white hover:bg-white/10"
+                    >
+                      Opción a compra · {opcionCompraPrice}
                     </ContratarSlugButton>
                   </div>
                 </div>

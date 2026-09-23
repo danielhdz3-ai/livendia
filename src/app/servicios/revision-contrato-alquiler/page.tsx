@@ -187,6 +187,13 @@ export default async function RevisionContratoAlquilerPage() {
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
                     temporada
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/servicios/contrato-alquiler-opcion-compra"
+                    className="font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    alquiler con opción a compra
                   </Link>{" "}
                   o{" "}
                   <Link

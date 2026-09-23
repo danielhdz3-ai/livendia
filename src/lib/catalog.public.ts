@@ -116,6 +116,12 @@ export const CONTRATO_ALQUILER_HABITACION_PRICE_CENTS = CONTRATO_ALQUILER_HABITA
 export const CONTRATO_ALQUILER_HABITACION_PRICE_LABEL = `${CONTRATO_ALQUILER_HABITACION_PRICE_EUR} €`;
 export const CONTRATO_ALQUILER_HABITACION_SLUG = "contrato-alquiler-habitacion" as const;
 
+/** Contrato de alquiler con opción a compra — precio comercial IVA incl. */
+export const CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_EUR = 145;
+export const CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_CENTS = CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_EUR * 100;
+export const CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL = `${CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_EUR} €`;
+export const CONTRATO_ALQUILER_OPCION_COMPRA_SLUG = "contrato-alquiler-opcion-compra" as const;
+
 /** Acompañamiento reserva hasta arras (compradores) — precio comercial IVA incl. */
 export const ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_EUR = 424;
 export const ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_CENTS = ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_EUR * 100;
@@ -141,6 +147,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [CONTRATO_ALQUILER_LAU_SLUG]: CONTRATO_ALQUILER_LAU_PRICE_CENTS,
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
   [CONTRATO_ALQUILER_HABITACION_SLUG]: CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
+  [CONTRATO_ALQUILER_OPCION_COMPRA_SLUG]: CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_CENTS,
   [REVISION_CONTRATO_ALQUILER_SLUG]: REVISION_CONTRATO_ALQUILER_PRICE_CENTS,
   [ACOMPANAMIENTO_RESERVA_ARRAS_SLUG]: ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_CENTS,
   [ACOMPANAMIENTO_ALQUILER_SLUG]: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
@@ -380,7 +387,13 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
       if (i !== -1) return i;
     }
     if (category === "alquiler") {
-      const order = ["acompanamiento-alquiler", "contrato-alquiler-lau", "contrato-alquiler-temporada", "contrato-alquiler-habitacion"];
+      const order = [
+        "acompanamiento-alquiler",
+        "contrato-alquiler-lau",
+        "contrato-alquiler-opcion-compra",
+        "contrato-alquiler-temporada",
+        "contrato-alquiler-habitacion",
+      ];
       const i = order.indexOf(s.slug);
       if (i !== -1) return i;
     }
@@ -412,6 +425,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "contrato-alquiler-lau": "/images/contratos.jpg",
   "contrato-alquiler-temporada": "/images/contratos5.jpg",
   "contrato-alquiler-habitacion": "/images/contratos2.jpg",
+  "contrato-alquiler-opcion-compra": "/images/contratos7.jpg",
   "contrato-arras-penitenciales": "/images/contratos1.jpg",
   "contrato-arras-confirmatorias": "/images/contratos7.jpg",
   "reserva-de-compra": "/images/contratos6.jpg",
@@ -458,6 +472,7 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "contrato-alquiler-lau": "Contrato alquiler LAU",
   "contrato-alquiler-temporada": "Alquiler por temporada",
   "contrato-alquiler-habitacion": "Alquiler de habitación",
+  "contrato-alquiler-opcion-compra": "Alquiler con opción a compra",
   "revision-contrato-alquiler": "Revisión contrato alquiler",
   "acompanamiento-alquiler": "Acompañamiento de alquiler",
   "administracion-alquiler": "Administración de alquiler",

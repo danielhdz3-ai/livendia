@@ -111,6 +111,7 @@ const SERVICIO_SLUGS = [
   "contrato-alquiler-habitacion",
   "contrato-alquiler-lau",
   "contrato-alquiler-temporada",
+  "contrato-alquiler-opcion-compra",
   // contrato-arras-confirmatorias: retirada (301 a /servicios/contrato-de-arras, ver next.config.ts).
   "contrato-arras-penitenciales",
   "vender-piso-sin-agencia",
