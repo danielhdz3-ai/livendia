@@ -212,7 +212,9 @@ export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocal
 
   const gestionDocSlug = isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
   const ventaLocalSlug =
-    slug === "hospitalet-de-llobregat" || slug === "cornella-de-llobregat"
+    slug === "hospitalet-de-llobregat" ||
+    slug === "cornella-de-llobregat" ||
+    slug === "esplugues-de-llobregat"
       ? slug
       : isPackArrasGestionBcnMetroSlug(slug)
         ? "barcelona"
