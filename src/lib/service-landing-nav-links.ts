@@ -50,6 +50,14 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
         href: "/servicios/pack-arras-gestion-documental-vendedor/esplugues-de-llobregat",
         label: "Pack arras Esplugues",
       },
+      {
+        href: "/servicios/pack-arras-gestion-documental-vendedor/sant-joan-despi",
+        label: "Pack arras Sant Joan Despí",
+      },
+      {
+        href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-sarria-sant-gervasi",
+        label: "Pack arras Sarrià-Sant Gervasi",
+      },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/valencia", label: "Pack arras + gestión Valencia" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/malaga", label: "Pack arras + gestión Málaga" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/sevilla", label: "Pack arras + gestión Sevilla" },
