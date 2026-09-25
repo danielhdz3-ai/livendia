@@ -13,6 +13,11 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS = [
   "barcelona-sants-montjuic",
   "badalona",
   "sabadell",
+  "barcelona-sarria-sant-gervasi",
+  "barcelona-nou-barris",
+  "barcelona-ciutat-vella",
+  "terrassa",
+  "cornella-de-llobregat",
 ] as const;
 
 export type VenderPisoSinAgenciaBcnMetroSlug =
@@ -305,6 +310,136 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES: VenderPisoSinAgenciaCityD
     faq: faqZone("Sabadell"),
     analyticsPlacement: "vender_piso_sabadell",
     gestorCtaPlacement: "vender_piso_sabadell",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-sarria-sant-gervasi",
+    city: "Sarrià-Sant Gervasi",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso entre particulares en Sarrià-Sant Gervasi — 890 €",
+    metaDescription:
+      "¿Vendes en Sarrià-Sant Gervasi entre particulares? Gestoría Livendia 890 € IVA incl. Pedralbes, Sant Gervasi, Les Tres Torres. Arras CCCat y notaría sin comisión de agencia.",
+    keywords: [
+      "vender piso entre particulares sarria sant gervasi",
+      "vender piso sin comisiones sarria barcelona",
+      "venta entre particulares pedralbes",
+      "vender piso sin agencia sant gervasi",
+      "vender piso particular les tres torres",
+    ],
+    savingsSalePrices: [380_000, 450_000, 520_000, 580_000, 650_000, 720_000, 850_000],
+    highlightSalePrice: 580_000,
+    tramitesAreaNote:
+      "En Sarrià-Sant Gervasi (Pedralbes, Sant Gervasi, Bonanova), venta entre particulares con revisión de parking, anexos y arras CCCat en operaciones de alto importe.",
+    benefitsAreaNote:
+      "Gestor experto en fincas señoriales, ITE y certificados de comunidad exigentes antes de escritura.",
+    faq: faqZone("Sarrià-Sant Gervasi"),
+    analyticsPlacement: "vender_piso_sarria_sant_gervasi",
+    gestorCtaPlacement: "vender_piso_sarria_sant_gervasi",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-nou-barris",
+    city: "Nou Barris",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender sin agencia en Nou Barris — gestoría 890 €",
+    metaDescription:
+      "¿Vendes tu piso sin agencia en Nou Barris? Livendia 890 € IVA incl. Venta entre particulares: Verdun, Roquetes, Trinitat Vella. Arras, trámites y notaría.",
+    keywords: [
+      "vender piso sin agencia nou barris",
+      "venta entre particulares nou barris barcelona",
+      "vender piso sin comisiones verdun",
+      "vender piso de particular a particular nou barris",
+      "vender piso sin inmobiliaria trinitat vella",
+    ],
+    savingsSalePrices: [160_000, 190_000, 220_000, 240_000, 260_000, 290_000, 320_000],
+    highlightSalePrice: 240_000,
+    tramitesAreaNote:
+      "En Nou Barris (Verdun, Roquetes, Trinitat Vella, Porta), gestoría para vender sin agencia con arras claras y seguimiento de comunidad en bloques de los años 60-70.",
+    benefitsAreaNote:
+      "Checklist documental, deuda cero de comunidad y coordinación hasta notaría con compradores de Barcelona.",
+    faq: faqZone("Nou Barris"),
+    analyticsPlacement: "vender_piso_nou_barris",
+    gestorCtaPlacement: "vender_piso_nou_barris",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-ciutat-vella",
+    city: "Ciutat Vella",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso de particular a particular en Ciutat Vella — 890 €",
+    metaDescription:
+      "¿Vendes piso de particular a particular en Ciutat Vella? Gestoría Livendia 890 € IVA incl. Gòtic, El Raval, Born, Barceloneta. Arras CCCat sin comisión de agencia.",
+    keywords: [
+      "vender piso de particular a particular gothic quarter",
+      "vender piso sin agencia ciutat vella",
+      "venta entre particulares el raval barcelona",
+      "vender piso sin comisiones barrio gotico",
+      "vender piso particular born barcelona",
+    ],
+    savingsSalePrices: [250_000, 290_000, 330_000, 360_000, 400_000, 450_000, 520_000],
+    highlightSalePrice: 360_000,
+    tramitesAreaNote:
+      "En Ciutat Vella (Gòtic, Raval, Born, Barceloneta), venta de particular a particular con foco en ITE, cèdula, protección patrimonial y arras equilibradas.",
+    benefitsAreaNote:
+      "Gestor que conoce fincas centenarias, cargas ocultas y plazos de certificados en el casco antiguo.",
+    faq: faqZone("Ciutat Vella"),
+    analyticsPlacement: "vender_piso_ciutat_vella",
+    gestorCtaPlacement: "vender_piso_ciutat_vella",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "terrassa",
+    city: "Terrassa",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender vivienda sin comisiones en Terrassa — 890 € IVA incl.",
+    metaDescription:
+      "¿Vendes tu vivienda sin comisiones en Terrassa? Venta entre particulares con Livendia por 890 € IVA incl. Centre, Sant Pere, Les Fonts. Arras y notaría.",
+    keywords: [
+      "vender piso sin comisiones terrassa",
+      "venta entre particulares terrassa",
+      "vender piso sin agencia terrassa",
+      "vender piso de particular a particular terrassa",
+      "gestoría venta piso terrassa",
+    ],
+    savingsSalePrices: [170_000, 200_000, 230_000, 250_000, 270_000, 300_000, 340_000],
+    highlightSalePrice: 250_000,
+    tramitesAreaNote:
+      "En Terrassa (centre, Sant Pere, Sant Pere Nord, Les Fonts), venta entre particulares con arras CCCat y documentación para compradores del Vallès y Barcelona.",
+    benefitsAreaNote:
+      "Tarifa plana frente al 3 % de inmobiliaria; seguimiento de comunidad e ITE en edificios industriales reconvertidos.",
+    faq: faqZone("Terrassa"),
+    analyticsPlacement: "vender_piso_terrassa",
+    gestorCtaPlacement: "vender_piso_terrassa",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "cornella-de-llobregat",
+    city: "Cornellà de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender entre particulares en Cornellà — gestoría 890 €",
+    metaDescription:
+      "¿Vendes tu piso entre particulares en Cornellà de Llobregat? Livendia 890 € IVA incl. Sin comisión de agencia. Centre, Sant Ildefons, Almeda. Arras y notaría.",
+    keywords: [
+      "vender piso entre particulares cornella de llobregat",
+      "vender piso sin comisiones cornella",
+      "vender piso sin agencia cornella",
+      "venta entre particulares cornella barcelona",
+      "vender piso particular sant ildefons",
+    ],
+    savingsSalePrices: [180_000, 210_000, 240_000, 260_000, 280_000, 310_000, 350_000],
+    highlightSalePrice: 260_000,
+    tramitesAreaNote:
+      "En Cornellà (centre, Sant Ildefons, Almeda), venta entre particulares del Baix Llobregat con plazos realistas de comunidad y arras adaptadas al comprador barcelonés.",
+    benefitsAreaNote:
+      "Gestor dedicado, informe semáforo pre-escritura y coordinación con notaría sin desplazamientos a gestoría física.",
+    faq: faqZone("Cornellà de Llobregat"),
+    analyticsPlacement: "vender_piso_cornella",
+    gestorCtaPlacement: "vender_piso_cornella",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
     showBarcelonaVentaModules: true,
   },

@@ -733,4 +733,149 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       ],
     },
   },
+  "barcelona-sarria-sant-gervasi": {
+    copy: {
+      heroBadge: "Entre particulares · Sarrià",
+      heroH1: "¿Vendes tu piso entre particulares en Sarrià-Sant Gervasi?",
+      heroLead:
+        "Pedralbes, Sant Gervasi o Les Tres Torres: operaciones de alto importe donde el 3 % pesa mucho. Livendia gestiona venta entre particulares por {{price}} (IVA incl.) — arras, anexos y notaría sin comisión de agencia.",
+      heroBullets: [
+        "Vender entre particulares en el distrito con precios más altos de Barcelona",
+        "Revisión de parking, trasteros y cargas en arras",
+        "Gestor legal fijo hasta escritura",
+      ],
+      savingsIntro:
+        "En Sarrià, el 3 % sobre 580.000 € supera 17.000 € + IVA. Livendia fija la gestoría en 890 € IVA incl.",
+      finalCtaTitle: "Cierra en Sarrià-Sant Gervasi entre particulares",
+      faqTitle: "Vender piso entre particulares en Sarrià-Sant Gervasi — FAQ",
+      waPrefill:
+        "Hola, vendo en Sarrià-Sant Gervasi entre particulares (comprador confirmado). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso entre particulares en Sarrià-Sant Gervasi",
+      imageAlt: "Venta entre particulares Sarrià Pedralbes Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sarrià-Sant Gervasi · Pedralbes y Bonanova",
+      title: "Venta entre particulares en Sarrià con gestoría de alto nivel",
+      paragraphs: [
+        "En Sarrià es habitual cerrar con comprador recomendado o de portal sin pagar comisión sobre el precio. Livendia blinda arras CCCat y documentación en fincas exigentes.",
+        "No captamos comprador: somos gestoría con tarifa plana y panel online para tu expediente.",
+      ],
+    },
+  },
+  "barcelona-nou-barris": {
+    copy: {
+      heroBadge: "Sin agencia · Nou Barris",
+      heroH1: "¿Vendes tu piso sin agencia en Nou Barris?",
+      heroLead:
+        "Verdun, Roquetes o Trinitat Vella: si ya tienes comprador, Livendia te acompaña por {{price}} (IVA incl.) — venta entre particulares con arras claras y trámites hasta notaría.",
+      heroBullets: [
+        "Vender sin agencia cuando tú llevas la captación",
+        "Tarifa plana vs comisión del 3–5 %",
+        "Gestor por WhatsApp, no call center",
+      ],
+      savingsIntro:
+        "En Nou Barris, una comisión del 3 % sobre 240.000 € son 7.200 € + IVA. Vender sin agencia con Livendia deja la gestoría en 890 €.",
+      finalCtaTitle: "Vende en Nou Barris con gestoría Livendia",
+      faqTitle: "Vender piso sin agencia en Nou Barris — preguntas frecuentes",
+      waPrefill:
+        "Hola, vendo en Nou Barris sin agencia (entre particulares). Me interesa el servicio Livendia.",
+      jsonLdServiceName: "Vender piso sin agencia en Nou Barris",
+      imageAlt: "Vender sin agencia Nou Barris Verdun",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Nou Barris · Verdun y Roquetes",
+      title: "Vender sin agencia en Nou Barris entre particulares",
+      paragraphs: [
+        "Muchos vecinos de Nou Barris publican el piso ellos mismos y cierran con conocidos o compradores de Idealista. Livendia ordena la parte jurídica por tarifa plana.",
+        "Persiguimos certificado de comunidad, cèdula si procede y calendario realista hasta la firma en notaría.",
+      ],
+    },
+  },
+  "barcelona-ciutat-vella": {
+    copy: {
+      heroBadge: "Particular a particular · Ciutat Vella",
+      heroH1: "¿Vendes piso de particular a particular en Ciutat Vella?",
+      heroLead:
+        "Gòtic, El Raval, Born o Barceloneta: venta de particular a particular con Livendia por {{price}} (IVA incl.) — arras CCCat, ITE, cèdula y notaría sin pagar comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender en el casco antiguo con checklist documental",
+        "Arras a medida — no plantillas de internet",
+        "Gestor que conoce fincas centenarias",
+      ],
+      savingsIntro:
+        "En Ciutat Vella, el 3 % sobre 360.000 € son 10.800 € + IVA. Livendia cubre el tramo legal por 890 € fijos.",
+      finalCtaTitle: "Cierra en Ciutat Vella de particular a particular",
+      faqTitle: "Vender de particular a particular en Ciutat Vella — FAQ",
+      waPrefill:
+        "Hola, vendo en Ciutat Vella de particular a particular (ya tengo comprador). Quiero gestoría Livendia.",
+      jsonLdServiceName: "Vender piso de particular a particular en Ciutat Vella",
+      imageAlt: "Venta particular a particular Gòtic Barcelona",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Ciutat Vella · Gòtic y Born",
+      title: "Venta de particular a particular en Ciutat Vella con trámites bajo control",
+      paragraphs: [
+        "El casco antiguo exige revisar ITE, cargas y protección patrimonial antes de vincular arras. Livendia acompaña la venta entre particulares con gestor dedicado.",
+        "No somos agencia: no publicamos tu anuncio ni cobramos porcentaje sobre el precio de venta.",
+      ],
+    },
+  },
+  terrassa: {
+    copy: {
+      heroBadge: "Sin comisiones · Terrassa",
+      heroH1: "¿Vendes tu vivienda sin comisiones en Terrassa?",
+      heroLead:
+        "Centre, Sant Pere o Les Fonts: venta entre particulares con gestoría Livendia por {{price}} (IVA incl.) — arras, documentación y notaría sin el 3–5 % de una agencia.",
+      heroBullets: [
+        "Vender sin comisiones en el Vallès Occidental",
+        "Compradores de Terrassa y Barcelona",
+        "Mismo gestor desde arras hasta escritura",
+      ],
+      savingsIntro:
+        "En Terrassa, una comisión del 3 % sobre 250.000 € ronda 7.500 € + IVA. Livendia fija la gestoría en 890 € IVA incl.",
+      finalCtaTitle: "Vende en Terrassa sin comisiones de agencia",
+      faqTitle: "Vender vivienda sin comisiones en Terrassa — FAQ",
+      waPrefill:
+        "Hola, vendo en Terrassa sin comisiones (entre particulares). Quiero Livendia.",
+      jsonLdServiceName: "Vender vivienda sin comisiones en Terrassa",
+      imageAlt: "Venta sin comisiones Terrassa entre particulares",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Terrassa · Vallès",
+      title: "Vender sin comisiones en Terrassa entre particulares",
+      paragraphs: [
+        "Terrassa mueve muchas ventas entre particulares hacia compradores de Barcelona o del propio municipio. Livendia gestiona contratos y certificados por tarifa plana.",
+        "Gestoría digital con panel: subes documentos y hablas con tu gestor por WhatsApp.",
+      ],
+    },
+  },
+  "cornella-de-llobregat": {
+    copy: {
+      heroBadge: "Entre particulares · Cornellà",
+      heroH1: "¿Vendes tu piso entre particulares en Cornellà de Llobregat?",
+      heroLead:
+        "Sant Ildefons, centre o Almeda: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras CCCat, comunidad y notaría sin comisión sobre el precio de venta.",
+      heroBullets: [
+        "Vender entre particulares en el Baix Llobregat",
+        "Documentación al día para compradores exigentes",
+        "Tarifa plana frente a miles de euros de agencia",
+      ],
+      savingsIntro:
+        "En Cornellà, el 3 % sobre 260.000 € son 7.800 € + IVA. Livendia cubre la gestoría por 890 €.",
+      finalCtaTitle: "Cierra en Cornellà entre particulares",
+      faqTitle: "Vender piso entre particulares en Cornellà — FAQ",
+      waPrefill:
+        "Hola, vendo en Cornellà entre particulares (comprador confirmado). Me interesa Livendia.",
+      jsonLdServiceName: "Vender piso entre particulares en Cornellà de Llobregat",
+      imageAlt: "Venta entre particulares Cornellà Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Cornellà · Baix Llobregat",
+      title: "Venta entre particulares en Cornellà con gestor legal",
+      paragraphs: [
+        "Cornellà comparte mercado con Barcelona: muchos propietarios cierran sin agencia cuando ya tienen comprador. Livendia ordena arras y certificados hasta la escritura.",
+        "No buscamos comprador ni cobramos comisión del 3–5 % sobre el precio.",
+      ],
+    },
+  },
 };
