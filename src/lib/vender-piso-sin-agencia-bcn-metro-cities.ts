@@ -8,6 +8,11 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS = [
   "barcelona-horta-guinardo",
   "barcelona-sant-marti",
   "barcelona-sant-andreu",
+  "barcelona-eixample",
+  "barcelona-gracia",
+  "barcelona-sants-montjuic",
+  "badalona",
+  "sabadell",
 ] as const;
 
 export type VenderPisoSinAgenciaBcnMetroSlug =
@@ -170,6 +175,136 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES: VenderPisoSinAgenciaCityD
     faq: faqZone("Sant Andreu"),
     analyticsPlacement: "vender_piso_sant_andreu",
     gestorCtaPlacement: "vender_piso_sant_andreu",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-eixample",
+    city: "Eixample",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso sin comisiones en el Eixample — 890 € IVA incl.",
+    metaDescription:
+      "¿Vendes tu piso en Barcelona sin comisiones en el Eixample? Gestoría Livendia 890 € IVA incl. Venta entre particulares: arras CCCat, documentación y notaría. Dreta, Esquerra, Sagrada Família.",
+    keywords: [
+      "vender piso sin comisiones eixample",
+      "vender piso sin comisiones barcelona eixample",
+      "venta entre particulares eixample",
+      "vender piso sin agencia eixample barcelona",
+      "vender piso de particular a particular eixample",
+    ],
+    savingsSalePrices: [350_000, 400_000, 450_000, 480_000, 520_000, 560_000, 620_000],
+    highlightSalePrice: 450_000,
+    tramitesAreaNote:
+      "En el Eixample (Dreta, Esquerra, Sagrada Família), venta entre particulares con arras CCCat, certificados de comunidad en fincas señoriales y plazos realistas hasta notaría.",
+    benefitsAreaNote:
+      "Gestor que revisa cargas, parking y trasteros anexos en contrato antes de vincular arras definitivas.",
+    faq: faqZone("Eixample"),
+    analyticsPlacement: "vender_piso_eixample",
+    gestorCtaPlacement: "vender_piso_eixample",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-gracia",
+    city: "Gràcia",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso entre particulares en Gràcia — 890 €",
+    metaDescription:
+      "¿Vendes tu piso entre particulares en Gràcia? Livendia gestoría 890 € IVA incl. Vila de Gràcia, Camp d'en Grassot, Vallcarca. Arras, trámites y notaría sin comisión de agencia.",
+    keywords: [
+      "vender piso entre particulares gracia barcelona",
+      "venta entre particulares gracia",
+      "vender piso sin agencia gracia",
+      "vender piso sin comisiones gracia barcelona",
+      "vender piso particular vila de gracia",
+    ],
+    savingsSalePrices: [300_000, 340_000, 380_000, 410_000, 440_000, 480_000, 530_000],
+    highlightSalePrice: 410_000,
+    tramitesAreaNote:
+      "En Gràcia y barrios del distrito, venta entre particulares con foco en ITE, cèdula y arras equilibradas en edificios de principios de siglo.",
+    benefitsAreaNote:
+      "Checklist documental, comunidad y coordinación pre-escritura con compradores exigentes del centro de Barcelona.",
+    faq: faqZone("Gràcia"),
+    analyticsPlacement: "vender_piso_gracia",
+    gestorCtaPlacement: "vender_piso_gracia",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-sants-montjuic",
+    city: "Sants-Montjuïc",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender sin agencia en Sants-Montjuïc — gestoría 890 €",
+    metaDescription:
+      "¿Vendes tu piso sin agencia en Sants-Montjuïc? Livendia 890 € IVA incl. Sants, Hostafrancs, Poble-sec, Montjuïc. Venta entre particulares con arras y documentación hasta notaría.",
+    keywords: [
+      "vender piso sin agencia sants",
+      "vender piso sin agencia poble sec",
+      "venta entre particulares sants montjuic",
+      "vender piso sin comisiones sants barcelona",
+      "vender piso de particular a particular sants",
+    ],
+    savingsSalePrices: [240_000, 270_000, 300_000, 330_000, 360_000, 390_000, 430_000],
+    highlightSalePrice: 330_000,
+    tramitesAreaNote:
+      "En Sants-Montjuïc (Sants, Hostafrancs, Poble-sec), gestoría para vender sin agencia cuando ya tienes comprador, con arras CCCat y seguimiento de comunidad.",
+    benefitsAreaNote:
+      "Informe semáforo, plazos de certificados y coordinación con notaría en operaciones rápidas del distrito.",
+    faq: faqZone("Sants-Montjuïc"),
+    analyticsPlacement: "vender_piso_sants_montjuic",
+    gestorCtaPlacement: "vender_piso_sants_montjuic",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "badalona",
+    city: "Badalona",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender vivienda sin comisiones en Badalona — 890 €",
+    metaDescription:
+      "¿Vendes tu vivienda sin comisiones en Badalona? Gestoría Livendia 890 € IVA incl. Venta entre particulares: arras, documentación y notaría. Centre, Montigala, Gorg, La Salut.",
+    keywords: [
+      "vender piso sin comisiones badalona",
+      "venta entre particulares badalona",
+      "vender piso sin agencia badalona",
+      "vender piso de particular a particular badalona",
+      "vender piso sin inmobiliaria badalona",
+    ],
+    savingsSalePrices: [170_000, 200_000, 230_000, 250_000, 270_000, 300_000, 340_000],
+    highlightSalePrice: 250_000,
+    tramitesAreaNote:
+      "En Badalona (centre, Montigala, Gorg, La Salut), venta entre particulares con plazos de comunidad y arras adaptados al mercado del Maresme metropolitano.",
+    benefitsAreaNote:
+      "Gestor que persigue certificado de deuda cero y documentación al día para compradores de Barcelona y Badalona.",
+    faq: faqZone("Badalona"),
+    analyticsPlacement: "vender_piso_badalona",
+    gestorCtaPlacement: "vender_piso_badalona",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "sabadell",
+    city: "Sabadell",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso de particular a particular en Sabadell — 890 €",
+    metaDescription:
+      "¿Vendes piso de particular a particular en Sabadell? Livendia gestoría 890 € IVA incl. Sin comisión de agencia. Centre, Eixample sabadellense, Gràcia. Arras y notaría.",
+    keywords: [
+      "vender piso de particular a particular sabadell",
+      "venta entre particulares sabadell",
+      "vender piso sin comisiones sabadell",
+      "vender piso sin agencia sabadell",
+      "gestoría venta piso particular sabadell",
+    ],
+    savingsSalePrices: [180_000, 210_000, 240_000, 260_000, 280_000, 310_000, 350_000],
+    highlightSalePrice: 260_000,
+    tramitesAreaNote:
+      "En Sabadell capital y barrios (centre, Eixample, Gràcia), venta de particular a particular con arras CCCat y revisión de ITE en fincas antiguas del Vallès.",
+    benefitsAreaNote:
+      "Tarifa plana frente al 3 % de inmobiliaria; gestor dedicado hasta escritura para compradores locales y de Barcelona.",
+    faq: faqZone("Sabadell"),
+    analyticsPlacement: "vender_piso_sabadell",
+    gestorCtaPlacement: "vender_piso_sabadell",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
     showBarcelonaVentaModules: true,
   },

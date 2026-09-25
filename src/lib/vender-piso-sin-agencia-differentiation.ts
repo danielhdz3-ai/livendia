@@ -588,4 +588,149 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       ],
     },
   },
+  "barcelona-eixample": {
+    copy: {
+      heroBadge: "Sin comisiones · Eixample",
+      heroH1: "¿Vendes tu piso en Barcelona sin comisiones en el Eixample?",
+      heroLead:
+        "Dreta, Esquerra o Sagrada Família: si ya tienes comprador, Livendia gestiona venta entre particulares por {{price}} (IVA incl.) — arras CCCat, documentación y notaría sin el 3–5 % de agencia.",
+      heroBullets: [
+        "Vender sin comisiones en fincas señoriales del Eixample",
+        "Revisión de parking y anexos en contrato",
+        "Gestor legal hasta la escritura",
+      ],
+      savingsIntro:
+        "En el Eixample, el 3 % sobre 450.000 € son 13.500 € + IVA. Vender sin comisiones con Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en el Eixample entre particulares",
+      faqTitle: "Vender piso sin comisiones en el Eixample — FAQ",
+      waPrefill:
+        "Hola, vendo en el Eixample sin comisiones (ya tengo comprador particular). Quiero gestoría Livendia.",
+      jsonLdServiceName: "Vender piso sin comisiones en el Eixample con gestoría Livendia",
+      imageAlt: "Venta sin comisiones Eixample Barcelona Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Eixample · Barcelona",
+      title: "Vender sin comisiones en el Eixample cuando ya tienes comprador",
+      paragraphs: [
+        "El Eixample concentra operaciones de alto importe donde una comisión del 3 % pesa mucho. Si tú captas al comprador, Livendia cubre reserva, arras y trámites con tarifa plana.",
+        "Aplicamos el Código Civil de Catalunya y persiguimos documentación de comunidad, cèdula e ITE hasta coordinar la firma en notaría.",
+      ],
+    },
+  },
+  "barcelona-gracia": {
+    copy: {
+      heroBadge: "Entre particulares · Gràcia",
+      heroH1: "¿Vendes tu piso entre particulares en Gràcia?",
+      heroLead:
+        "Vila de Gràcia, Camp d'en Grassot o Vallcarca: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras, trámites y notaría sin comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender entre particulares en el distrito más demandado",
+        "Checklist CCCat antes de arras definitivas",
+        "Gestor online dedicado",
+      ],
+      savingsIntro:
+        "En Gràcia, una comisión del 3 % sobre 410.000 € supera 12.000 € + IVA. Livendia cubre el tramo legal por tarifa plana.",
+      finalCtaTitle: "Vende en Gràcia entre particulares con gestoría",
+      faqTitle: "Vender piso entre particulares en Gràcia — preguntas frecuentes",
+      waPrefill:
+        "Hola, vendo mi piso en Gràcia entre particulares (comprador confirmado). Me interesa Livendia.",
+      jsonLdServiceName: "Vender piso entre particulares en Gràcia",
+      imageAlt: "Venta entre particulares Gràcia Barcelona",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Gràcia · Vila de Gràcia",
+      title: "Venta entre particulares en Gràcia con trámites profesionales",
+      paragraphs: [
+        "En Gràcia es habitual cerrar con comprador de portal o recomendación. Livendia no sustituye a una agencia de marketing: blindamos contratos y documentación.",
+        "Seguimos comunidad, cargas registrales y plazos hasta la escritura mientras mantienes la venta entre particulares.",
+      ],
+    },
+  },
+  "barcelona-sants-montjuic": {
+    copy: {
+      heroBadge: "Sin agencia · Sants-Montjuïc",
+      heroH1: "¿Vendes tu piso sin agencia en Sants-Montjuïc?",
+      heroLead:
+        "Sants, Poble-sec o Hostafrancs: si ya tienes comprador, gestoría Livendia por {{price}} (IVA incl.) — venta entre particulares con arras CCCat y coordinación hasta notaría.",
+      heroBullets: [
+        "Vender sin agencia en un distrito muy activo",
+        "Tarifa plana vs comisión sobre el precio",
+        "Mismo gestor desde arras hasta firma",
+      ],
+      savingsIntro:
+        "En Sants, el 3 % sobre 330.000 € son 9.900 € + IVA. Vender sin agencia con Livendia deja la gestoría en 890 € fijos.",
+      finalCtaTitle: "Cierra en Sants-Montjuïc con gestor legal",
+      faqTitle: "Vender piso sin agencia en Sants-Montjuïc — FAQ",
+      waPrefill:
+        "Hola, vendo en Sants sin agencia (entre particulares, ya tengo comprador). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso sin agencia en Sants-Montjuïc",
+      imageAlt: "Vender sin agencia Sants Poble-sec Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sants-Montjuïc · Sants y Poble-sec",
+      title: "Vender sin agencia en Sants-Montjuïc con gestoría Livendia",
+      paragraphs: [
+        "Muchos propietarios en Sants publican ellos mismos y prefieren vender sin agencia cuando aparece el comprador. Livendia ordena la parte jurídica por tarifa plana.",
+        "Gestionamos arras, certificados de comunidad y calendario realista hasta la notaría.",
+      ],
+    },
+  },
+  badalona: {
+    copy: {
+      heroBadge: "Sin comisiones · Badalona",
+      heroH1: "¿Vendes tu vivienda sin comisiones en Badalona?",
+      heroLead:
+        "Centre, Montigala, Gorg o La Salut: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras, documentación y notaría sin pagar comisión de agencia sobre el precio.",
+      heroBullets: [
+        "Vender sin comisiones en el Maresme metropolitano",
+        "Compradores de Barcelona y Badalona",
+        "Gestor legal por WhatsApp",
+      ],
+      savingsIntro:
+        "En Badalona, el 3 % sobre 250.000 € son 7.500 € + IVA. Livendia cubre la gestoría por 890 € IVA incl.",
+      finalCtaTitle: "Vende en Badalona sin comisiones de inmobiliaria",
+      faqTitle: "Vender vivienda sin comisiones en Badalona — FAQ",
+      waPrefill:
+        "Hola, vendo en Badalona sin comisiones (entre particulares). Me interesa gestoría Livendia.",
+      jsonLdServiceName: "Vender vivienda sin comisiones en Badalona",
+      imageAlt: "Venta sin comisiones Badalona entre particulares",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Badalona · Àrea metropolitana",
+      title: "Vender sin comisiones en Badalona entre particulares",
+      paragraphs: [
+        "Badalona comparte mercado con Barcelona capital: muchas ventas cierran entre particulares sin pasar por inmobiliaria. Livendia acompaña con contratos y trámites por tarifa plana.",
+        "No buscamos comprador ni cobramos porcentaje sobre el precio de venta.",
+      ],
+    },
+  },
+  sabadell: {
+    copy: {
+      heroBadge: "Particular a particular · Sabadell",
+      heroH1: "¿Vendes piso de particular a particular en Sabadell?",
+      heroLead:
+        "Centre o Eixample sabadellense: venta de particular a particular con Livendia por {{price}} (IVA incl.) — arras, ITE si procede, documentación y notaría sin comisión del 3–5 %.",
+      heroBullets: [
+        "Vender de particular a particular en el Vallès",
+        "Revisión documental pre-arras",
+        "Tarifa plana frente a miles de euros de agencia",
+      ],
+      savingsIntro:
+        "En Sabadell, una comisión del 3 % sobre 260.000 € ronda 7.800 € + IVA. Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en Sabadell de particular a particular",
+      faqTitle: "Vender piso de particular a particular en Sabadell — FAQ",
+      waPrefill:
+        "Hola, vendo en Sabadell de particular a particular (ya tengo comprador). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso de particular a particular en Sabadell",
+      imageAlt: "Venta particular a particular Sabadell Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sabadell · Vallès Occidental",
+      title: "Venta de particular a particular en Sabadell con gestor dedicado",
+      paragraphs: [
+        "En Sabadell muchos propietarios encuentran comprador por Idealista o recomendación y cierran sin agencia. Livendia gestiona arras CCCat y certificados hasta la escritura.",
+        "Somos gestoría inmobiliaria digital: no publicamos anuncios ni cobramos comisión sobre el precio.",
+      ],
+    },
+  },
 };
