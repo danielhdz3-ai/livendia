@@ -31,6 +31,14 @@ import {
   Handshake,
   Shield,
 } from "lucide-react";
+import { LivendiaExpertGestorsSection } from "@/components/livendia-expert-gestors-section";
+import { VenderBarcelonaSinAgenciaIntroSection } from "@/components/vender-barcelona-sin-agencia-intro-section";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import {
+  buildVenderSinAgenciaBarcelonaSteps,
+  VENDER_SIN_AGENCIA_BARCELONA_INTRO,
+  VENDER_SIN_AGENCIA_BARCELONA_PROCESS,
+} from "@/lib/vender-piso-sin-agencia-barcelona-modules";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -130,6 +138,8 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
   const pageCopy = resolvePageCopy(config, priceLabel);
   const finalCtaSubtitle = interpolateVenderPisoCopy(pageCopy.finalCtaSubtitle, priceLabel);
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(pageCopy.waPrefill)}`;
+  const isBarcelonaExtended = config.slug === "barcelona";
+  const barcelonaProcessSteps = isBarcelonaExtended ? buildVenderSinAgenciaBarcelonaSteps(priceLabel) : null;
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -216,6 +226,27 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          {isBarcelonaExtended ? (
+            <>
+              <VenderBarcelonaSinAgenciaIntroSection
+                eyebrow={VENDER_SIN_AGENCIA_BARCELONA_INTRO.eyebrow}
+                title={VENDER_SIN_AGENCIA_BARCELONA_INTRO.title}
+                paragraphs={VENDER_SIN_AGENCIA_BARCELONA_INTRO.paragraphs}
+              />
+              <VentaSinAgenciaPasoAPasoSection
+                city={config.city}
+                priceLabel={priceLabel}
+                eyebrow={VENDER_SIN_AGENCIA_BARCELONA_PROCESS.eyebrow}
+                title={VENDER_SIN_AGENCIA_BARCELONA_PROCESS.title}
+                intro={VENDER_SIN_AGENCIA_BARCELONA_PROCESS.intro}
+                steps={barcelonaProcessSteps!}
+                alwaysWithYouTitle={VENDER_SIN_AGENCIA_BARCELONA_PROCESS.alwaysWithYouTitle}
+                alwaysWithYouBody={VENDER_SIN_AGENCIA_BARCELONA_PROCESS.alwaysWithYouBody}
+              />
+              <LivendiaExpertGestorsSection city={config.city} variant="servicio-completo-venta" />
+            </>
+          ) : null}
 
           <section
             className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6"

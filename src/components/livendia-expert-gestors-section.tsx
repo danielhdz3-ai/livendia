@@ -6,27 +6,48 @@ type LivendiaExpertGestorsSectionProps = {
   /** Ciudad o zona de la landing local (opcional). */
   city?: string;
   className?: string;
+  /** Copy del bloque según servicio de la landing. */
+  variant?: "pack-arras" | "servicio-completo-venta";
 };
 
-export function LivendiaExpertGestorsSection({ city, className = "" }: LivendiaExpertGestorsSectionProps) {
+export function LivendiaExpertGestorsSection({
+  city,
+  className = "",
+  variant = "pack-arras",
+}: LivendiaExpertGestorsSectionProps) {
   const placeLabel = city ?? "toda España";
+  const isVentaCompleta = variant === "servicio-completo-venta";
+
+  const heading = city
+    ? isVentaCompleta
+      ? `Tus co-gestores expertos en la venta de tu piso en ${city}`
+      : `Las personas que redactan tus arras en ${city}`
+    : isVentaCompleta
+      ? "Las personas detrás de tu venta entre particulares"
+      : "Las personas detrás de tu pack de venta";
+
+  const lead = isVentaCompleta ? (
+    <>
+      No es un formulario anónimo: detrás del servicio completo de venta hay{" "}
+      <strong className="font-semibold text-[#1E293B]">co-gestores colegiados</strong> — Arnau Martí y Daniel
+      Hernández — con experiencia real en compraventas entre particulares en {placeLabel}. Conócelos antes de
+      contratar.
+    </>
+  ) : (
+    <>
+      No es un formulario anónimo: detrás del pack arras + gestión documental hay{" "}
+      <strong className="font-semibold text-[#1E293B]">profesionales colegiados</strong> con experiencia real en
+      ventas entre particulares en {placeLabel}. Conoce a los socios fundadores de Livendia antes de contratar.
+    </>
+  );
 
   return (
     <section className={`border-t border-slate-200 bg-white px-4 py-16 sm:px-6 sm:py-20 ${className}`}>
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="text-sm font-bold uppercase tracking-wider text-[#1A4FBF]">Gestores expertos</p>
-          <h2 className="mt-3 text-2xl font-extrabold text-[#1E293B] sm:text-3xl lg:text-4xl">
-            {city
-              ? `Las personas que redactan tus arras en ${city}`
-              : "Las personas detrás de tu pack de venta"}
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-[#64748b] sm:text-lg">
-            No es un formulario anónimo: detrás del pack arras + gestión documental hay{" "}
-            <strong className="font-semibold text-[#1E293B]">profesionales colegiados</strong> con experiencia real
-            en ventas entre particulares en {placeLabel}. Conoce a los socios fundadores de Livendia antes de
-            contratar.
-          </p>
+          <h2 className="mt-3 text-2xl font-extrabold text-[#1E293B] sm:text-3xl lg:text-4xl">{heading}</h2>
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-[#64748b] sm:text-lg">{lead}</p>
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-10">
