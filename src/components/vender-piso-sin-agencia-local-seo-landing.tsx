@@ -138,7 +138,8 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
   const pageCopy = resolvePageCopy(config, priceLabel);
   const finalCtaSubtitle = interpolateVenderPisoCopy(pageCopy.finalCtaSubtitle, priceLabel);
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(pageCopy.waPrefill)}`;
-  const isBarcelonaExtended = config.slug === "barcelona";
+  const isBarcelonaExtended = config.slug === "barcelona" || config.showBarcelonaVentaModules === true;
+  const barcelonaIntro = config.barcelonaZoneIntro ?? VENDER_SIN_AGENCIA_BARCELONA_INTRO;
   const barcelonaProcessSteps = isBarcelonaExtended ? buildVenderSinAgenciaBarcelonaSteps(priceLabel) : null;
 
   return (
@@ -230,9 +231,9 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
           {isBarcelonaExtended ? (
             <>
               <VenderBarcelonaSinAgenciaIntroSection
-                eyebrow={VENDER_SIN_AGENCIA_BARCELONA_INTRO.eyebrow}
-                title={VENDER_SIN_AGENCIA_BARCELONA_INTRO.title}
-                paragraphs={VENDER_SIN_AGENCIA_BARCELONA_INTRO.paragraphs}
+                eyebrow={barcelonaIntro.eyebrow}
+                title={barcelonaIntro.title}
+                paragraphs={barcelonaIntro.paragraphs}
               />
               <VentaSinAgenciaPasoAPasoSection
                 city={config.city}

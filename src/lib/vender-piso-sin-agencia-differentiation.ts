@@ -7,6 +7,11 @@ type VenderPisoDiff = {
   tramitesAreaNote?: string;
   benefitsAreaNote?: string;
   faq?: readonly { question: string; answer: string }[];
+  barcelonaZoneIntro?: {
+    eyebrow: string;
+    title: string;
+    paragraphs: readonly string[];
+  };
   copy?: VenderPisoSinAgenciaCopyOverrides;
 };
 
@@ -436,6 +441,151 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       waPrefill:
         "Hola, vendo en Zaragoza entre particulares con comprador confirmado. Me interesa Livendia sin comisiones de agencia.",
       jsonLdServiceName: "Vender piso sin comisiones en Zaragoza con gestoría Livendia",
+    },
+  },
+  "barcelona-les-corts": {
+    copy: {
+      heroBadge: "Particular a particular · Les Corts",
+      heroH1: "¿Vendes tu vivienda sin agencia y de particular en Les Corts?",
+      heroLead:
+        "Si ya tienes comprador en Pedralbes, Zona Universitària o Les Corts, Livendia es gestoría por {{price}} (IVA incl.): venta de particular a particular con arras CCCat, documentación y notaría — sin comisión sobre el precio.",
+      heroBullets: [
+        "Vender sin agencia cuando tú captas al comprador",
+        "Tarifa plana frente al 3–5 % en fincas de Les Corts",
+        "Gestor legal dedicado hasta la escritura",
+      ],
+      savingsIntro:
+        "En Les Corts, con precios medios altos, una comisión del 3 % puede superar 14.000 € + IVA. Vender de particular a particular con Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Vende en Les Corts entre particulares — con gestoría Livendia",
+      faqTitle: "Vender sin agencia y de particular en Les Corts — FAQ",
+      waPrefill:
+        "Hola, vendo mi vivienda en Les Corts sin agencia (particular a particular, ya tengo comprador). Me interesa Livendia.",
+      jsonLdServiceName: "Vender vivienda sin agencia y de particular en Les Corts",
+      imageAlt: "Vender piso de particular a particular en Les Corts con Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Les Corts · venta entre particulares",
+      title: "Vender de particular a particular en Les Corts sin pagar comisión de agencia",
+      paragraphs: [
+        "Muchos propietarios en Pedralbes y Zona Universitària encuentran comprador por Idealista, recomendación o familia y prefieren vender sin agencia. Livendia no sustituye a una inmobiliaria de marketing: somos gestoría inmobiliaria digital con tarifa plana.",
+        "Redactamos reserva y arras conforme al Código Civil de Catalunya, persiguimos cèdula d'habitabilitat, certificado de comunidad e ITE si procede, y coordinamos la firma en notaría mientras tú mantienes la venta entre particulares.",
+      ],
+    },
+  },
+  "hospitalet-de-llobregat": {
+    copy: {
+      heroBadge: "Sin comisiones · L'Hospitalet",
+      heroH1: "¿Vendes tu vivienda sin comisiones en L'Hospitalet?",
+      heroLead:
+        "¿Comprador en Collblanc, Bellvitge o centre de L'Hospitalet? Por {{price}} (IVA incl.) gestionamos venta entre particulares: arras, trámites y notaría — vender piso sin comisiones de agencia sobre el precio de venta.",
+      heroBullets: [
+        "Vender piso sin comisiones con comprador ya confirmado",
+        "Gestoría fija en el Baix Llobregat",
+        "Documentación al día para compradores de Barcelona",
+      ],
+      savingsIntro:
+        "En L'Hospitalet, el 3 % sobre 240.000 € son 7.200 € + IVA solo por intermediar. Si vendes sin comisiones entre particulares, Livendia cubre el tramo legal por tarifa plana.",
+      finalCtaTitle: "Cierra tu venta en L'Hospitalet sin comisiones de agencia",
+      faqTitle: "Vender vivienda sin comisiones en L'Hospitalet — preguntas frecuentes",
+      waPrefill:
+        "Hola, vendo en L'Hospitalet sin comisiones (entre particulares, ya tengo comprador). Quiero gestoría Livendia.",
+      jsonLdServiceName: "Vender vivienda sin comisiones en L'Hospitalet con gestoría Livendia",
+      imageAlt: "Vender piso sin comisiones en L'Hospitalet entre particulares",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "L'Hospitalet · sin comisiones",
+      title: "Vender piso sin comisiones en L'Hospitalet con gestor legal",
+      paragraphs: [
+        "En L'Hospitalet es habitual publicar el piso tú mismo y cerrar con un comprador particular. Livendia te acompaña en la parte jurídica por 890 € IVA incl., sin porcentaje sobre el precio.",
+        "Gestionamos arras, deuda cero de comunidad en bloques densos y coordinación con notaría — la misma rigurosidad que esperarías de una agencia, pero sin comisión del 3–5 %.",
+      ],
+    },
+  },
+  "barcelona-horta-guinardo": {
+    copy: {
+      heroBadge: "Entre particulares · Horta-Guinardó",
+      heroH1: "¿Vendes tu piso entre particulares en Horta-Guinardó?",
+      heroLead:
+        "Guinardó, El Carmel, Horta centre o La Teixonera: si ya tienes comprador, Livendia gestiona venta entre particulares por {{price}} (IVA incl.) — arras, ITE, cèdula y notaría sin comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender piso entre particulares en fincas en ladera",
+        "Checklist CCCat antes de firmar arras",
+        "Gestor online hasta la escritura",
+      ],
+      savingsIntro:
+        "En Horta-Guinardó, una comisión del 3 % sobre 310.000 € supera 9.000 € + IVA. Vender entre particulares con gestoría Livendia fija el coste legal en 890 €.",
+      finalCtaTitle: "Vende en Horta-Guinardó entre particulares con seguridad jurídica",
+      faqTitle: "Vender piso entre particulares en Horta-Guinardó — FAQ",
+      waPrefill:
+        "Hola, vendo mi piso en Horta-Guinardó entre particulares (ya tengo comprador). Me interesa el servicio Livendia.",
+      jsonLdServiceName: "Vender piso entre particulares en Horta-Guinardó",
+      imageAlt: "Venta entre particulares Horta-Guinardó con gestoría Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Horta-Guinardó · Guinardó y El Carmel",
+      title: "Venta entre particulares en Horta-Guinardó con trámites bajo control",
+      paragraphs: [
+        "El distrito mezcla edificios con ITE pendiente y compradores exigentes. Si vendes tu piso entre particulares, un gestor Livendia ordena documentación y plazos antes de vincular arras definitivas.",
+        "No buscamos comprador ni publicamos anuncios: blindamos la venta de particular a particular desde la reserva hasta la escritura.",
+      ],
+    },
+  },
+  "barcelona-sant-marti": {
+    copy: {
+      heroBadge: "Particular a particular · Sant Martí",
+      heroH1: "¿Vendes piso de particular a particular en Sant Martí?",
+      heroLead:
+        "Poblenou, El Clot, Diagonal Mar o La Verneda: venta de particular a particular con Livendia por {{price}} (IVA incl.) — reserva, arras CCCat, comunidad multi-bloque y notaría sin pagar comisión de agencia.",
+      heroBullets: [
+        "Vender piso de particular a particular en el 22@ y Poblenou",
+        "Tarifa plana vs miles de euros de inmobiliaria",
+        "Gestor legal fijo por WhatsApp",
+      ],
+      savingsIntro:
+        "En Sant Martí, el 3 % sobre 390.000 € son 11.700 € + IVA. Si ya negociaste con un comprador particular, Livendia cubre la gestoría por 890 € IVA incl.",
+      finalCtaTitle: "Cierra en Sant Martí de particular a particular",
+      faqTitle: "Vender piso de particular a particular en Sant Martí — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Martí de particular a particular (comprador confirmado). Quiero gestoría Livendia.",
+      jsonLdServiceName: "Vender piso de particular a particular en Sant Martí",
+      imageAlt: "Venta de particular a particular Sant Martí Poblenou",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Martí · Poblenou y El Clot",
+      title: "Vender de particular a particular en Sant Martí con gestoría Livendia",
+      paragraphs: [
+        "Sant Martí concentra operaciones rápidas y compradores de Barcelona capital. Livendia acompaña la venta de particular a particular con contratos a medida y seguimiento documental post-arras.",
+        "Ideal si publicaste en Idealista o cerraste con un conocido: nosotros no cobramos comisión sobre el precio, solo la tarifa plana de gestoría.",
+      ],
+    },
+  },
+  "barcelona-sant-andreu": {
+    copy: {
+      heroBadge: "Sin comisiones · Sant Andreu",
+      heroH1: "¿Vendes sin comisiones de agencia en Sant Andreu?",
+      heroLead:
+        "La Sagrera, Bon Pastor o Sant Andreu de Palomar: venta entre particulares con gestoría Livendia por {{price}} (IVA incl.) — arras, trámites y notaría sin el 3–5 % de una inmobiliaria.",
+      heroBullets: [
+        "Vender sin comisiones cuando ya tienes comprador",
+        "Cláusulas CCCat y hipoteca del comprador (621-49)",
+        "Mismo gestor desde arras hasta escritura",
+      ],
+      savingsIntro:
+        "En Sant Andreu, una comisión del 3 % sobre 280.000 € ronda 8.400 € + IVA. Vender sin comisiones de agencia con Livendia deja la gestoría en 890 € fijos.",
+      finalCtaTitle: "Vende en Sant Andreu sin comisiones — con gestor dedicado",
+      faqTitle: "Vender sin comisiones de agencia en Sant Andreu — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Andreu sin comisiones de agencia (entre particulares). Me interesa Livendia.",
+      jsonLdServiceName: "Vender sin comisiones de agencia en Sant Andreu",
+      imageAlt: "Vender piso sin comisiones Sant Andreu La Sagrera",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Andreu · La Sagrera y Palomar",
+      title: "Vender sin comisiones de agencia en Sant Andreu entre particulares",
+      paragraphs: [
+        "Muchos vecinos de Sant Andreu prefieren vender sin comisiones cuando el comprador llega por recomendación o portal. Livendia ordena reserva, arras y certificados hasta la notaría.",
+        "Somos gestoría, no agencia: no publicamos tu piso ni cobramos porcentaje sobre el precio de venta.",
+      ],
     },
   },
 };

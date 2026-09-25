@@ -1,0 +1,38 @@
+import { VenderPisoSinAgenciaLocalSeoLanding } from "@/components/vender-piso-sin-agencia-local-seo-landing";
+import type { VenderPisoSinAgenciaBcnMetroSlug } from "@/lib/vender-piso-sin-agencia-bcn-metro-cities";
+import {
+  getVenderPisoSinAgenciaLandingConfig,
+  localVenderPisoSinAgenciaHref,
+} from "@/lib/vender-piso-sin-agencia-local-cities";
+import { getSiteUrl } from "@/lib/site-url";
+import type { Metadata } from "next";
+
+export function venderPisoMetroPageMetadata(slug: VenderPisoSinAgenciaBcnMetroSlug): Metadata {
+  const config = getVenderPisoSinAgenciaLandingConfig(slug)!;
+  const canonical = `${getSiteUrl()}${localVenderPisoSinAgenciaHref(slug)}`;
+
+  return {
+    title: config.metaTitle,
+    description: config.metaDescription,
+    alternates: { canonical },
+    keywords: [...config.keywords],
+    openGraph: {
+      title: config.metaTitle,
+      description: config.metaDescription,
+      url: canonical,
+      locale: "es_ES",
+      type: "website",
+      images: [
+        {
+          url: "/images/servicio-completo-venta-hero.jpg",
+          alt: config.copy?.imageAlt ?? `Vender piso sin agencia en ${config.city} con Livendia`,
+        },
+      ],
+    },
+  };
+}
+
+export function VenderPisoMetroPage({ slug }: { slug: VenderPisoSinAgenciaBcnMetroSlug }) {
+  const config = getVenderPisoSinAgenciaLandingConfig(slug)!;
+  return <VenderPisoSinAgenciaLocalSeoLanding config={config} />;
+}

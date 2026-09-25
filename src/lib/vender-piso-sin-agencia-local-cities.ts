@@ -1,5 +1,9 @@
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
+import {
+  VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES,
+  VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS,
+} from "@/lib/vender-piso-sin-agencia-bcn-metro-cities";
 import { VENDER_PISO_DIFFERENTIATION } from "@/lib/vender-piso-sin-agencia-differentiation";
 
 export const VENTA_PARTICULAR_TRAMITES = [
@@ -79,6 +83,13 @@ export type VenderPisoSinAgenciaLandingConfig = {
   optionalLocalVentaHref?: string;
   copy?: VenderPisoSinAgenciaCopyOverrides;
   localMarketInsight?: string;
+  /** Módulos intro + 6 pasos + gestores (Barcelona y zonas AMB). */
+  showBarcelonaVentaModules?: boolean;
+  barcelonaZoneIntro?: {
+    eyebrow: string;
+    title: string;
+    paragraphs: readonly string[];
+  };
 } & Pick<
   import("@/lib/local-city-landing-fields").LocalCityLandingFields,
   "localPriceSnapshot" | "localNeighborhoods" | "localServiceNotes"
@@ -95,7 +106,13 @@ export const VENDER_PISO_SIN_AGENCIA_PUBLISHED_SLUGS: readonly string[] = [
   "bilbao",
   "granada",
   "zaragoza",
+  ...VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS,
 ];
+
+export {
+  VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS,
+  isVenderPisoSinAgenciaBcnMetroSlug,
+} from "@/lib/vender-piso-sin-agencia-bcn-metro-cities";
 
 export function interpolateVenderPisoCopy(template: string, priceLabel: string): string {
   return template.replace(/\{\{price\}\}/g, priceLabel);
@@ -447,6 +464,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     gestorCtaPlacement: "vender_piso_zaragoza",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta",
   },
+  ...VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES,
 ];
 
 export function toVenderPisoSinAgenciaConfig(
@@ -461,6 +479,7 @@ export function toVenderPisoSinAgenciaConfig(
     ...(diff?.tramitesAreaNote ? { tramitesAreaNote: diff.tramitesAreaNote } : {}),
     ...(diff?.benefitsAreaNote ? { benefitsAreaNote: diff.benefitsAreaNote } : {}),
     ...(diff?.faq ? { faq: diff.faq } : {}),
+    ...(diff?.barcelonaZoneIntro ? { barcelonaZoneIntro: diff.barcelonaZoneIntro } : {}),
     copy: { ...def.copy, ...diff?.copy },
     path: localVenderPisoSinAgenciaHref(def.slug),
   };
