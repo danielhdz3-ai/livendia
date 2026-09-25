@@ -102,6 +102,7 @@ import {
 } from "@/lib/contrato-entre-particulares-local-cities";
 import { getPublishedAdministracionAlquilerMetroLandings } from "@/lib/administracion-alquiler-metro-landings";
 import {
+  getPackLocalCityLabel,
   getPublishedPackArrasGestionLocalSlugs,
   getPublishedPackLauAdminLocalSlugs,
   localPackArrasGestionHref,
@@ -130,15 +131,22 @@ type LocalCitySource = {
 const BARCELONA_AMB_SLUGS = new Set([
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
-  "esplugues",
+  "esplugues-de-llobregat",
   "sant-joan-despi",
-  "sant-adria",
+  "sant-adria-de-besos",
   "castelldefels",
-  "sant-boi",
+  "sant-boi-de-llobregat",
   "gava",
   "mollet-del-valles",
-  "sant-cugat",
+  "sant-cugat-del-valles",
+  "sabadell",
+  "terrassa",
   "badalona",
+  /** Slugs legacy (admin alquiler metro, otros servicios) */
+  "esplugues",
+  "sant-adria",
+  "sant-boi",
+  "sant-cugat",
   "l-hospitalet",
   "cornella",
 ]);
@@ -175,6 +183,18 @@ const BARCELONA_DISTRICT_CITY_NAMES = new Set([
   "Mollet",
   "Sant Cugat",
   "Badalona",
+  "Sabadell",
+  "Terrassa",
+  "Mollet del Vallès",
+  "Sant Adrià de Besòs",
+  "Esplugues de Llobregat",
+  "Cornellà de Llobregat",
+  "L'Hospitalet de Llobregat",
+  "Sant Boi de Llobregat",
+  "Castelldefels",
+  "Gavà",
+  "Sant Cugat del Vallès",
+  "Sant Joan Despí",
 ]);
 
 const SERVICE_HUB_LABELS: Record<string, string> = {
@@ -475,16 +495,20 @@ export function buildAdminSeoLandingIndex(): AdminSeoLandingIndex {
   }
 
   for (const slug of getPublishedPackArrasGestionLocalSlugs()) {
+    const cityLabel = getPackLocalCityLabel(slug);
+    const barrioAmb = detectBarcelonaBarrio(slug, cityLabel);
+    const parentCity = parentCityForEntry(slug, cityLabel);
+    const isNationalHub = slug in PACK_CITY_NAMES;
     entries.push({
       id: `pack-arras-gestion:${slug}`,
       serviceId: "pack-arras-gestion",
       serviceLabel: "Pack arras + gestión documental",
       serviceOrder: 71,
-      city: PACK_CITY_NAMES[slug] ?? slug,
-      citySortKey: normalizeCitySort(PACK_CITY_NAMES[slug] ?? slug),
-      barrioAmb: null,
-      kind: "pack",
-      name: `Pack arras + gestión — ${PACK_CITY_NAMES[slug] ?? slug}`,
+      city: isNationalHub ? (PACK_CITY_NAMES[slug] ?? parentCity) : parentCity,
+      citySortKey: normalizeCitySort(isNationalHub ? (PACK_CITY_NAMES[slug] ?? parentCity) : parentCity),
+      barrioAmb,
+      kind: barrioAmb ? "barrio-amb" : "pack",
+      name: `Pack arras + gestión — ${cityLabel}`,
       slug,
       path: localPackArrasGestionHref(slug),
     });
