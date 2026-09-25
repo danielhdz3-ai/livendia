@@ -201,10 +201,11 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Barcelona: gestoría 890 € sin comisiones",
+    metaTitle: "Gestoría inmobiliaria Barcelona para particulares — desde 145 €",
     metaDescription:
-      `Gestoría Barcelona para particulares: venta sin agencia 890 €, arras 145 €, habitación ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+      `Gestoría inmobiliaria en Barcelona para particulares. Venta sin agencia 890 € IVA incl., arras y LAU desde 145 €, zona tensionada e ITE. Gestor dedicado, sin comisión del 3-5 %. ${REVISION_META_SNIPPET}.`,
     keywords: [
+      "gestoría inmobiliaria para particulares barcelona",
       "gestoría inmobiliaria barcelona particulares",
       "venta de particular a particular barcelona gestoría",
       "tramites compra piso barcelona entre particulares",
@@ -213,7 +214,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       "administración alquiler barcelona particulares",
       "vender piso sin agencia barcelona gestoría",
     ],
-    h1: "Gestoría inmobiliaria en Barcelona para particulares: venta, compra y alquileres",
+    h1: "Gestoría inmobiliaria para particulares en Barcelona",
     heroLead:
       "Gestoría especializada en servicios inmobiliarios para particulares en Barcelona capital y área metropolitana. Tarifa plana sin comisiones abusivas, gestor legal experto dedicado y acompañamiento en venta de particular a particular.",
     compraventa: {

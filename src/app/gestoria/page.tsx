@@ -16,20 +16,21 @@ import {
 } from "@/lib/catalog.public";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
 import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
-import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
 const canonical = `${getSiteUrl()}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`;
 
+const GESTORIA_INDEX_DESCRIPTION =
+  "Gestoría inmobiliaria para particulares en España: venta y compra entre particulares, contratos LAU y arras, revisión documental y administración de alquiler. Madrid, Barcelona, Valencia y más — tarifa plana, gestor dedicado, 100 % online.";
+
 export const metadata: Metadata = {
-  title: "Gestoría inmobiliaria por ciudad",
-  description: SITE_DEFAULT_DESCRIPTION,
+  title: "Gestoría inmobiliaria para particulares | Livendia",
+  description: GESTORIA_INDEX_DESCRIPTION,
   alternates: { canonical },
   openGraph: {
-    title: "Gestoría inmobiliaria por ciudad",
-    description:
-      "Compraventa, contratos y administración de alquileres. Madrid, Valencia, Barcelona y más ciudades — mismo servicio online en toda España.",
+    title: "Gestoría inmobiliaria para particulares | Livendia",
+    description: GESTORIA_INDEX_DESCRIPTION,
     url: canonical,
     locale: "es_ES",
     type: "website",
@@ -56,12 +57,12 @@ export default function GestoriaIndexPage() {
           <div className="mx-auto max-w-4xl text-center">
             <p className={LANDING_HERO_EYEBROW}>{LANDING_HUB_EYEBROW.gestoria}</p>
             <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Gestoría inmobiliaria por ciudad
+              Gestoría inmobiliaria para particulares en España
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
-              Gestoría inmobiliaria online en Madrid, Valencia, Barcelona y toda España. Compraventa entre
-              particulares, contratos LAU/arras ({CONTRATO_ALQUILER_LAU_PRICE_LABEL}, temporada{" "}
-              {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.
+              Compraventa entre particulares sin comisiones abusivas, contratos LAU y arras ({CONTRATO_ALQUILER_LAU_PRICE_LABEL},
+              temporada {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.
+              Madrid, Barcelona, Valencia y más ciudades — mismo servicio online.
             </p>          </div>
         </section>
 
