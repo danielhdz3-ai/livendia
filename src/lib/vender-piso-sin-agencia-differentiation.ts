@@ -878,4 +878,149 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       ],
     },
   },
+  "sant-cugat-del-valles": {
+    copy: {
+      heroBadge: "Sin comisiones · Sant Cugat",
+      heroH1: "¿Vendes tu piso sin comisiones en Sant Cugat del Vallès?",
+      heroLead:
+        "Centre, Mira-sol o Valldoreix: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras CCCat, documentación y notaría sin el 3–5 % de agencia sobre el precio de venta.",
+      heroBullets: [
+        "Vender sin comisiones en uno de los mercados más caros del Vallès",
+        "Gestor dedicado hasta la escritura",
+        "Panel online para documentación",
+      ],
+      savingsIntro:
+        "En Sant Cugat, el 3 % sobre 460.000 € supera 13.800 € + IVA. Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en Sant Cugat sin comisiones de inmobiliaria",
+      faqTitle: "Vender piso sin comisiones en Sant Cugat — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Cugat sin comisiones (entre particulares, ya tengo comprador). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso sin comisiones en Sant Cugat del Vallès",
+      imageAlt: "Venta sin comisiones Sant Cugat Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Cugat · Vallès",
+      title: "Vender sin comisiones en Sant Cugat entre particulares",
+      paragraphs: [
+        "En Sant Cugat muchas ventas cierran entre particulares sin pasar por inmobiliaria. Livendia cubre contratos y trámites con tarifa plana y gestor asignado.",
+        "Somos gestoría digital: no publicamos anuncios ni cobramos porcentaje sobre el precio.",
+      ],
+    },
+  },
+  "esplugues-de-llobregat": {
+    copy: {
+      heroBadge: "Sin agencia · Esplugues",
+      heroH1: "¿Vendes tu piso sin agencia en Esplugues de Llobregat?",
+      heroLead:
+        "Can Vidalet, centre o Finestrelles: si ya tienes comprador, Livendia gestiona venta entre particulares por {{price}} (IVA incl.) — arras, trámites y notaría sin comisión de agencia.",
+      heroBullets: [
+        "Vender sin agencia en el Baix Llobregat",
+        "Compradores habituales desde Barcelona",
+        "Arras CCCat a medida",
+      ],
+      savingsIntro:
+        "En Esplugues, una comisión del 3 % sobre 330.000 € son 9.900 € + IVA. Livendia cubre la gestoría por 890 €.",
+      finalCtaTitle: "Vende en Esplugues con gestoría Livendia",
+      faqTitle: "Vender piso sin agencia en Esplugues — preguntas frecuentes",
+      waPrefill:
+        "Hola, vendo en Esplugues sin agencia (entre particulares). Me interesa Livendia.",
+      jsonLdServiceName: "Vender piso sin agencia en Esplugues de Llobregat",
+      imageAlt: "Vender sin agencia Esplugues Can Vidalet",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Esplugues · Baix Llobregat",
+      title: "Vender sin agencia en Esplugues entre particulares",
+      paragraphs: [
+        "Esplugues concentra ventas a compradores de Barcelona que buscan precio y buenas conexiones. Livendia ordena la parte jurídica cuando tú ya tienes comprador.",
+        "Persiguimos certificados de comunidad y calendario realista hasta la firma en notaría.",
+      ],
+    },
+  },
+  castelldefels: {
+    copy: {
+      heroBadge: "Particular a particular · Castelldefels",
+      heroH1: "¿Vendes piso de particular a particular en Castelldefels?",
+      heroLead:
+        "Centre, Montmar o Bellamar: venta de particular a particular con Livendia por {{price}} (IVA incl.) — arras, ITE si procede, documentación y notaría sin comisión sobre el precio.",
+      heroBullets: [
+        "Vender de particular a particular en el Garraf",
+        "Operaciones con segunda residencia y compradores de Barcelona",
+        "Gestor legal fijo por WhatsApp",
+      ],
+      savingsIntro:
+        "En Castelldefels, el 3 % sobre 400.000 € son 12.000 € + IVA. Livendia fija la gestoría en 890 € IVA incl.",
+      finalCtaTitle: "Cierra en Castelldefels de particular a particular",
+      faqTitle: "Vender de particular a particular en Castelldefels — FAQ",
+      waPrefill:
+        "Hola, vendo en Castelldefels de particular a particular (comprador confirmado). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso de particular a particular en Castelldefels",
+      imageAlt: "Venta particular a particular Castelldefels Bellamar",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Castelldefels · Garraf",
+      title: "Venta de particular a particular en Castelldefels con gestoría",
+      paragraphs: [
+        "Castelldefels mezcla vivienda habitual y segunda residencia: la documentación debe estar impecable antes de arras. Livendia acompaña la venta entre particulares por tarifa plana.",
+        "No somos agencia inmobiliaria: no captamos comprador ni cobramos comisión del 3–5 %.",
+      ],
+    },
+  },
+  gava: {
+    copy: {
+      heroBadge: "Entre particulares · Gavà",
+      heroH1: "¿Vendes tu vivienda entre particulares en Gavà?",
+      heroLead:
+        "Centre, Gavà Mar o Santa Rosa: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras CCCat, trámites y notaría sin pagar comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender entre particulares en Gavà y Gavà Mar",
+        "Tarifa plana vs miles de euros de agencia",
+        "Mismo gestor desde arras hasta escritura",
+      ],
+      savingsIntro:
+        "En Gavà, una comisión del 3 % sobre 310.000 € ronda 9.300 € + IVA. Livendia deja la gestoría en 890 € fijos.",
+      finalCtaTitle: "Vende en Gavà entre particulares con seguridad jurídica",
+      faqTitle: "Vender vivienda entre particulares en Gavà — FAQ",
+      waPrefill:
+        "Hola, vendo en Gavà entre particulares (ya tengo comprador). Me interesa Livendia.",
+      jsonLdServiceName: "Vender vivienda entre particulares en Gavà",
+      imageAlt: "Venta entre particulares Gavà Mar Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Gavà · Garraf",
+      title: "Venta entre particulares en Gavà con gestor dedicado",
+      paragraphs: [
+        "Muchos propietarios en Gavà cierran con comprador de Idealista o recomendación. Livendia gestiona arras y certificados hasta la escritura.",
+        "Gestoría 100 % online con panel para subir documentos y hablar con tu gestor.",
+      ],
+    },
+  },
+  "sant-adria-de-besos": {
+    copy: {
+      heroBadge: "Sin comisiones · Sant Adrià",
+      heroH1: "¿Vendes sin comisiones de agencia en Sant Adrià de Besòs?",
+      heroLead:
+        "Venta entre particulares con Livendia por {{price}} (IVA incl.) — arras, documentación de comunidad y notaría sin el 3–5 % de una inmobiliaria sobre el precio de venta.",
+      heroBullets: [
+        "Vender sin comisiones cuando ya tienes comprador",
+        "Compradores de Barcelona y Badalona",
+        "Checklist CCCat pre-escritura",
+      ],
+      savingsIntro:
+        "En Sant Adrià, el 3 % sobre 260.000 € son 7.800 € + IVA. Vender sin comisiones con Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en Sant Adrià sin comisiones de agencia",
+      faqTitle: "Vender sin comisiones de agencia en Sant Adrià — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Adrià sin comisiones de agencia (entre particulares). Quiero Livendia.",
+      jsonLdServiceName: "Vender sin comisiones de agencia en Sant Adrià de Besòs",
+      imageAlt: "Vender sin comisiones Sant Adrià de Besòs",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Adrià · Besòs",
+      title: "Vender sin comisiones de agencia en Sant Adrià entre particulares",
+      paragraphs: [
+        "Sant Adrià comparte demanda con el litoral barcelonés y Badalona. Si vendes entre particulares, Livendia blinda contratos y plazos por tarifa plana.",
+        "No buscamos comprador: somos gestoría inmobiliaria digital para propietarios con comprador ya encontrado.",
+      ],
+    },
+  },
 };

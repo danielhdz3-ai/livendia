@@ -18,6 +18,11 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS = [
   "barcelona-ciutat-vella",
   "terrassa",
   "cornella-de-llobregat",
+  "sant-cugat-del-valles",
+  "esplugues-de-llobregat",
+  "castelldefels",
+  "gava",
+  "sant-adria-de-besos",
 ] as const;
 
 export type VenderPisoSinAgenciaBcnMetroSlug =
@@ -440,6 +445,136 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES: VenderPisoSinAgenciaCityD
     faq: faqZone("Cornellà de Llobregat"),
     analyticsPlacement: "vender_piso_cornella",
     gestorCtaPlacement: "vender_piso_cornella",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "sant-cugat-del-valles",
+    city: "Sant Cugat del Vallès",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso sin comisiones en Sant Cugat — 890 € IVA incl.",
+    metaDescription:
+      "¿Vendes tu piso sin comisiones en Sant Cugat del Vallès? Gestoría Livendia 890 € IVA incl. Venta entre particulares: arras CCCat, documentación y notaría. Centre, Mira-sol, Valldoreix.",
+    keywords: [
+      "vender piso sin comisiones sant cugat",
+      "venta entre particulares sant cugat del valles",
+      "vender piso sin agencia sant cugat",
+      "vender piso de particular a particular sant cugat",
+      "gestoría venta vivienda sant cugat",
+    ],
+    savingsSalePrices: [320_000, 380_000, 420_000, 460_000, 500_000, 550_000, 620_000],
+    highlightSalePrice: 460_000,
+    tramitesAreaNote:
+      "En Sant Cugat (centre, Mira-sol, Valldoreix), venta entre particulares con arras CCCat y revisión documental para compradores del Vallès y Barcelona.",
+    benefitsAreaNote:
+      "Tarifa plana en un mercado de precios altos; gestor dedicado hasta escritura sin comisión del 3–5 %.",
+    faq: faqZone("Sant Cugat del Vallès"),
+    analyticsPlacement: "vender_piso_sant_cugat",
+    gestorCtaPlacement: "vender_piso_sant_cugat",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "esplugues-de-llobregat",
+    city: "Esplugues de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender sin agencia en Esplugues — gestoría 890 €",
+    metaDescription:
+      "¿Vendes tu piso sin agencia en Esplugues de Llobregat? Livendia 890 € IVA incl. Venta entre particulares. Can Vidalet, centre, Finestrelles. Arras y notaría.",
+    keywords: [
+      "vender piso sin agencia esplugues",
+      "venta entre particulares esplugues de llobregat",
+      "vender piso sin comisiones esplugues",
+      "vender piso entre particulares esplugues barcelona",
+      "vender piso particular can vidalet",
+    ],
+    savingsSalePrices: [240_000, 270_000, 300_000, 330_000, 360_000, 390_000, 430_000],
+    highlightSalePrice: 330_000,
+    tramitesAreaNote:
+      "En Esplugues (Can Vidalet, centre, Finestrelles), gestoría para vender sin agencia con plazos de comunidad y arras adaptados al comprador barcelonés.",
+    benefitsAreaNote:
+      "Checklist pre-escritura, certificado de deuda cero y coordinación con notaría 100 % online.",
+    faq: faqZone("Esplugues de Llobregat"),
+    analyticsPlacement: "vender_piso_esplugues",
+    gestorCtaPlacement: "vender_piso_esplugues",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "castelldefels",
+    city: "Castelldefels",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso de particular a particular en Castelldefels — 890 €",
+    metaDescription:
+      "¿Vendes piso de particular a particular en Castelldefels? Gestoría Livendia 890 € IVA incl. Sin comisión de agencia. Centre, Montmar, Bellamar. Arras CCCat y notaría.",
+    keywords: [
+      "vender piso de particular a particular castelldefels",
+      "venta entre particulares castelldefels",
+      "vender piso sin comisiones castelldefels",
+      "vender piso sin agencia castelldefels",
+      "vender piso particular bellamar",
+    ],
+    savingsSalePrices: [280_000, 320_000, 360_000, 400_000, 440_000, 480_000, 550_000],
+    highlightSalePrice: 400_000,
+    tramitesAreaNote:
+      "En Castelldefels (centre, Montmar, Bellamar), venta de particular a particular con foco en segunda residencia, ITE y documentación de comunidad costera.",
+    benefitsAreaNote:
+      "Gestor que persigue certificados y arras equilibradas en operaciones con compradores de Barcelona y Baix Llobregat.",
+    faq: faqZone("Castelldefels"),
+    analyticsPlacement: "vender_piso_castelldefels",
+    gestorCtaPlacement: "vender_piso_castelldefels",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "gava",
+    city: "Gavà",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender vivienda entre particulares en Gavà — 890 €",
+    metaDescription:
+      "¿Vendes tu vivienda entre particulares en Gavà? Livendia gestoría 890 € IVA incl. Centre, Gavà Mar, Santa Rosa. Arras, trámites y notaría sin comisión.",
+    keywords: [
+      "vender piso entre particulares gava",
+      "venta entre particulares gava mar",
+      "vender piso sin comisiones gava",
+      "vender piso sin agencia gava",
+      "vender piso de particular a particular gava",
+    ],
+    savingsSalePrices: [220_000, 250_000, 280_000, 310_000, 340_000, 380_000, 420_000],
+    highlightSalePrice: 310_000,
+    tramitesAreaNote:
+      "En Gavà (centre, Gavà Mar, Santa Rosa), venta entre particulares del Garraf con arras CCCat y seguimiento documental hasta notaría.",
+    benefitsAreaNote:
+      "Tarifa plana frente a inmobiliaria; ideal si ya tienes comprador por portal o recomendación.",
+    faq: faqZone("Gavà"),
+    analyticsPlacement: "vender_piso_gava",
+    gestorCtaPlacement: "vender_piso_gava",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "sant-adria-de-besos",
+    city: "Sant Adrià de Besòs",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender sin comisiones de agencia en Sant Adrià — 890 €",
+    metaDescription:
+      "¿Vendes sin comisiones de agencia en Sant Adrià de Besòs? Venta entre particulares con Livendia por 890 € IVA incl. Arras, documentación y notaría.",
+    keywords: [
+      "vender piso sin comisiones sant adria de besos",
+      "vender piso sin agencia sant adria",
+      "venta entre particulares sant adria besos",
+      "vender piso de particular a particular sant adria",
+      "vender piso sin inmobiliaria sant adria barcelona",
+    ],
+    savingsSalePrices: [180_000, 210_000, 240_000, 260_000, 280_000, 310_000, 350_000],
+    highlightSalePrice: 260_000,
+    tramitesAreaNote:
+      "En Sant Adrià de Besòs, venta entre particulares con arras claras, comunidad en bloques densos y compradores de Barcelona capital y Badalona.",
+    benefitsAreaNote:
+      "Gestor legal dedicado, informe semáforo y coordinación hasta escritura sin pagar el 3–5 % sobre el precio.",
+    faq: faqZone("Sant Adrià de Besòs"),
+    analyticsPlacement: "vender_piso_sant_adria",
+    gestorCtaPlacement: "vender_piso_sant_adria",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
     showBarcelonaVentaModules: true,
   },
