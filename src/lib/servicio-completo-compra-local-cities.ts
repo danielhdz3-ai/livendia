@@ -10,6 +10,10 @@ import {
   SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_CITIES,
   SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_PUBLISHED_SLUGS,
 } from "@/lib/servicio-completo-compra-local-extra-cities";
+import {
+  SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES,
+  SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_PUBLISHED_SLUGS,
+} from "@/lib/servicio-completo-compra-local-bcn-zones";
 
 /**
  * Landings SEO locales: servicio completo de compra por ciudad.
@@ -35,6 +39,7 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISHED_SLUGS: readonly string[] =
   "sabadell",
   "terrassa",
   ...SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_PUBLISHED_SLUGS,
+  ...SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_PUBLISHED_SLUGS,
 ];
 
 export type ServicioCompletoCompraLocalLandingConfig = {
@@ -522,4 +527,5 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
       `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Terrassa con un asesor experto hasta la escritura.`,
   },
   ...SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_CITIES,
+  ...SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES,
 ];

@@ -89,7 +89,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Les Corts"),
     analyticsPlacement: "comprar_piso_les_corts",
     gestorCtaPlacement: "comprar_piso_les_corts",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-les-corts"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -219,7 +219,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Eixample"),
     analyticsPlacement: "comprar_piso_eixample",
     gestorCtaPlacement: "comprar_piso_eixample",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-eixample"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -245,7 +245,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Gràcia"),
     analyticsPlacement: "comprar_piso_gracia",
     gestorCtaPlacement: "comprar_piso_gracia",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-gracia"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -271,7 +271,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sants-Montjuïc"),
     analyticsPlacement: "comprar_piso_sants_montjuic",
     gestorCtaPlacement: "comprar_piso_sants_montjuic",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-sants-montjuic"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -349,7 +349,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sarrià-Sant Gervasi"),
     analyticsPlacement: "comprar_piso_sarria_sant_gervasi",
     gestorCtaPlacement: "comprar_piso_sarria_sant_gervasi",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-sarria-sant-gervasi"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -687,7 +687,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Poblenou"),
     analyticsPlacement: "comprar_piso_poblenou",
     gestorCtaPlacement: "comprar_piso_poblenou",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-poblenou"),
     showBarcelonaCompraModules: true,
   },
   {

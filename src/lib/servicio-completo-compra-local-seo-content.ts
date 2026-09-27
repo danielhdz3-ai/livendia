@@ -1,5 +1,6 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import { COMPRA_LOCAL_EXTRA_SEO_CONTENT } from "@/lib/servicio-completo-compra-local-extra-seo";
+import { COMPRA_LOCAL_BCN_ZONE_SEO } from "@/lib/servicio-completo-compra-local-bcn-zones";
 
 export type CompraLocalFaqItem = { question: string; answer: string };
 
@@ -488,6 +489,7 @@ export const COMPRA_LOCAL_SEO_CONTENT: Record<string, CompraLocalSeoContent> = {
     ],
   },
   ...COMPRA_LOCAL_EXTRA_SEO_CONTENT,
+  ...COMPRA_LOCAL_BCN_ZONE_SEO,
 };
 
 export function getCompraLocalSeoContent(slug: string): CompraLocalSeoContent | undefined {

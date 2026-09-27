@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import { COMPRA_LOCAL_EXTRA_DIFFERENTIATION } from "@/lib/servicio-completo-compra-local-extra-differentiation";
+import { COMPRA_LOCAL_BCN_ZONE_DIFFERENTIATION } from "@/lib/servicio-completo-compra-local-bcn-zones";
 
 /** Copy y keywords únicos por ciudad — compra entre particulares. */
 export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields> = {
@@ -884,4 +885,5 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     finalCtaTitle: "Cierra la compra en Terrassa con documentación profesional",
   },
   ...COMPRA_LOCAL_EXTRA_DIFFERENTIATION,
+  ...COMPRA_LOCAL_BCN_ZONE_DIFFERENTIATION,
 };

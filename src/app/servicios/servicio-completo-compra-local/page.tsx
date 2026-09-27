@@ -7,6 +7,7 @@ import {
   COMPRA_LOCAL_BARCELONA_METRO_CITIES,
   barcelonaMetroCompraHref,
 } from "@/lib/compra-local-barcelona-metro";
+import { COMPRA_LOCAL_BARCELONA_DISTRICTS } from "@/lib/servicio-completo-compra-local-bcn-zones";
 import {
   SERVICIO_COMPLETO_COMPRA_LOCAL_BASE,
   getPublishedServicioCompletoCompraLocalCities,
@@ -78,6 +79,36 @@ export default function ServicioCompletoCompraLocalIndexPage() {
             }))}
             title="Ciudades disponibles ahora"
           />
+        </section>
+
+        <section className="border-t border-slate-200 bg-[#F8FAFC]">
+          <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div className="rounded-2xl border border-[#1A4FBF]/20 bg-white p-6 shadow-sm sm:p-8">
+              <p className="text-sm font-semibold uppercase tracking-wide text-[#1A4FBF]">Barcelona · Distritos</p>
+              <h2 className="mt-2 text-2xl font-bold text-[#1E293B]">
+                Servicio completo de compra por barrio en Barcelona
+              </h2>
+              <p className="mt-3 max-w-3xl text-[#475569]">
+                Landings con título y enfoque propios por zona: Eixample, Gràcia, Poblenou, Les Corts, Sarrià-Sant
+                Gervasi y Sants-Montjuïc. Mismo precio ({""}
+                <Link href="/servicios/servicio-completo-compra" className="font-semibold text-[#1A4FBF] hover:underline">
+                  servicio completo de compra
+                </Link>
+                ), gestor CCCat y panel Livendia.
+              </p>
+              <nav aria-label="Compra completa por distrito Barcelona" className="mt-6 flex flex-wrap gap-2">
+                {COMPRA_LOCAL_BARCELONA_DISTRICTS.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={localServicioCompletoCompraHref(c.slug)}
+                    className="rounded-full bg-[#EFF6FF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-[#1A4FBF]/20 transition hover:bg-blue-100 hover:ring-[#1A4FBF]"
+                  >
+                    {c.shortName}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </div>
         </section>
 
         <section className="border-t border-slate-200 bg-white">

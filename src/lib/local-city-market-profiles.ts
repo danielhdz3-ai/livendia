@@ -14,6 +14,8 @@ const PROFILE_ALIASES: Record<string, string> = {
 /** Si no hay perfil propio, resolver a esta clave (p. ej. comarca → capital). */
 const PROFILE_FALLBACKS: Record<string, string> = {
   "baix-llobregat": "barcelona",
+  "barcelona-eixample": "barcelona",
+  "barcelona-sarria-sant-gervasi": "barcelona-sarria",
 };
 
 export function resolveCityProfileSlug(slug: string): string | undefined {
