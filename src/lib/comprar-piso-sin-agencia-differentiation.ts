@@ -110,6 +110,11 @@ export const COMPRAR_PISO_DIFFERENTIATION: Record<string, ComprarPisoDiff> = {
         answer:
           "Sí. Te explicamos obligaciones reales aunque el borrador mezcle idiomas o referencias a normativa autonómica.",
       },
+      {
+        question: "¿Hay una guía larga sobre comprar sin agencia?",
+        answer:
+          "Sí: en /blog/comprar-piso-entre-particulares-sin-agencia-guia-completa encontrarás reserva, arras, checklist documental y enlaces al servicio completo de compra y a gestoría por ciudad.",
+      },
     ],
     copy: {
       heroBadge: "Compra entre particulares · Barcelona",

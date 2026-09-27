@@ -399,7 +399,16 @@ export default async function ServicioCompletoCompraPage() {
               </Link>
             </p>
             <p className="mt-2 text-sm text-blue-200">
-              ¿Tienes dudas? Escríbenos y te asesoramos sin compromiso
+              <Link
+                href="/blog/comprar-piso-entre-particulares-sin-agencia-guia-completa"
+                className="font-semibold underline hover:text-white"
+              >
+                Guía: comprar entre particulares sin agencia
+              </Link>
+              {" · "}
+              <Link href="/gestoria" className="font-semibold underline hover:text-white">
+                Gestoría inmobiliaria
+              </Link>
             </p>
           </div>
         </section>

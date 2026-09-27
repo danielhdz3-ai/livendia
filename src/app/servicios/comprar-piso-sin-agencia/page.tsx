@@ -240,6 +240,20 @@ export default async function ComprarPisoSinAgenciaNacionalPage() {
                 >
                   Compra local Madrid
                 </Link>
+                {" · "}
+                <Link href="/gestoria" className="font-semibold text-[#1A4FBF] hover:underline">
+                  Gestoría inmobiliaria
+                </Link>
+              </p>
+              <p className="mt-4 rounded-2xl bg-white p-5 text-sm leading-relaxed text-[#475569] ring-1 ring-slate-200">
+                <strong className="text-[#1E293B]">Guía en el blog:</strong>{" "}
+                <Link
+                  href="/blog/comprar-piso-entre-particulares-sin-agencia-guia-completa"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  Comprar piso entre particulares sin agencia — guía completa
+                </Link>
+                . Reserva, arras, documentación, enlaces por ciudad y comparativa gestoría vs agencia.
               </p>
             </div>
           </section>
