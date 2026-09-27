@@ -74,6 +74,10 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import {
+  getPublishedComprarPisoSinAgenciaCities,
+  localComprarPisoSinAgenciaHref,
+} from "@/lib/comprar-piso-sin-agencia-local-cities";
+import {
   getPublishedVentaPisoParticularCities,
   localVentaPisoParticularSinAgenciaHref,
   VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE,
@@ -120,6 +124,7 @@ const SERVICIO_SLUGS = [
   // contrato-arras-confirmatorias: retirada (301 a /servicios/contrato-de-arras, ver next.config.ts).
   "contrato-arras-penitenciales",
   "vender-piso-sin-agencia",
+  "comprar-piso-sin-agencia",
   "contrato-entre-particulares-local",
   "servicio-completo-compra",
   "acompanamiento-compra-parking-trastero",
@@ -274,6 +279,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const ventaSeoLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinAgenciaCities().map((c) => ({
     url: `${base}${localVenderPisoSinAgenciaHref(c.slug)}`,
+    lastModified: ventaSeoDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.88,
+  }));
+
+  const compraSeoLocal: MetadataRoute.Sitemap = getPublishedComprarPisoSinAgenciaCities().map((c) => ({
+    url: `${base}${localComprarPisoSinAgenciaHref(c.slug)}`,
     lastModified: ventaSeoDate,
     changeFrequency: "weekly" as const,
     priority: 0.88,
@@ -434,6 +446,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
+    ...compraSeoLocal,
     ...ventaParticularMetroHub,
     ...ventaParticularMetroCiudades,
     ...venderSinInmobiliariaHub,

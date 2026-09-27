@@ -7,7 +7,7 @@ type LivendiaExpertGestorsSectionProps = {
   city?: string;
   className?: string;
   /** Copy del bloque según servicio de la landing. */
-  variant?: "pack-arras" | "servicio-completo-venta";
+  variant?: "pack-arras" | "servicio-completo-venta" | "servicio-completo-compra";
 };
 
 export function LivendiaExpertGestorsSection({
@@ -17,16 +17,28 @@ export function LivendiaExpertGestorsSection({
 }: LivendiaExpertGestorsSectionProps) {
   const placeLabel = city ?? "toda España";
   const isVentaCompleta = variant === "servicio-completo-venta";
+  const isCompraCompleta = variant === "servicio-completo-compra";
 
   const heading = city
-    ? isVentaCompleta
-      ? `Tus co-gestores expertos en la venta de tu piso en ${city}`
-      : `Las personas que redactan tus arras en ${city}`
-    : isVentaCompleta
-      ? "Las personas detrás de tu venta entre particulares"
-      : "Las personas detrás de tu pack de venta";
+    ? isCompraCompleta
+      ? `Tus co-gestores expertos en la compra de tu piso en ${city}`
+      : isVentaCompleta
+        ? `Tus co-gestores expertos en la venta de tu piso en ${city}`
+        : `Las personas que redactan tus arras en ${city}`
+    : isCompraCompleta
+      ? "Las personas detrás de tu compra entre particulares"
+      : isVentaCompleta
+        ? "Las personas detrás de tu venta entre particulares"
+        : "Las personas detrás de tu pack de venta";
 
-  const lead = isVentaCompleta ? (
+  const lead = isCompraCompleta ? (
+    <>
+      No es un formulario anónimo: detrás del servicio completo de compra hay{" "}
+      <strong className="font-semibold text-[#1E293B]">co-gestores colegiados</strong> — Arnau Martí y Daniel
+      Hernández — con experiencia real en compraventas entre particulares en {placeLabel}. Conócelos antes de
+      contratar.
+    </>
+  ) : isVentaCompleta ? (
     <>
       No es un formulario anónimo: detrás del servicio completo de venta hay{" "}
       <strong className="font-semibold text-[#1E293B]">co-gestores colegiados</strong> — Arnau Martí y Daniel
@@ -81,7 +93,7 @@ export function LivendiaExpertGestorsSection({
                   ))}
                 </div>
                 <div className="mt-5 space-y-3 text-sm leading-relaxed text-[#475569] sm:text-base">
-                  {founder.ventaBio.map((paragraph) => (
+                  {(isCompraCompleta ? founder.compraBio : founder.ventaBio).map((paragraph) => (
                     <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                   ))}
                 </div>

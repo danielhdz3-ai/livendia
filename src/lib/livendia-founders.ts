@@ -11,6 +11,8 @@ export type LivendiaFounder = {
   paragraphs: readonly string[];
   /** Bio orientada a venta, arras y gestión documental — landings comerciales. */
   ventaBio: readonly string[];
+  /** Bio orientada a compra entre particulares — landings comprador. */
+  compraBio: readonly string[];
 };
 
 export const LIVENDIA_FOUNDERS: readonly LivendiaFounder[] = [
@@ -39,6 +41,10 @@ export const LIVENDIA_FOUNDERS: readonly LivendiaFounder[] = [
       "Abogado colegiado en el ICAB y gestor administrativo colegiado. Especialista en contratos de arras con garantías bien calibradas, CCCat (621-4 a 621-9) y revisión documental cuando la venta ya está en marcha.",
       "En operaciones entre particulares lidera el criterio jurídico del pack: coherencia entre señal, arras y documentación hasta notaría — sin cláusulas genéricas que den margen al comprador para pedir rebaja.",
     ],
+    compraBio: [
+      "Abogado colegiado en el ICAB y gestor administrativo colegiado. Revisa arras y reservas desde la perspectiva del comprador: cargas, plazos de hipoteca y cláusulas CCCat antes de que ingreses la señal.",
+      "En compras entre particulares traduce riesgos registrales y de comunidad a decisiones concretas — qué negociar, qué condicionar y qué no firmar sin documentación completa.",
+    ],
   },
   {
     name: "Daniel Hernández",
@@ -64,6 +70,10 @@ export const LIVENDIA_FOUNDERS: readonly LivendiaFounder[] = [
     ventaBio: [
       "Agente de la Propiedad Inmobiliaria (API) colegiado y gestor administrativo, con más de quince años en compraventas y tramitación inmobiliaria entre particulares.",
       "Coordina redacción de arras, preparación documental post-arras y seguimiento con notaría, registro y entidades financieras. Interlocutor identificable: no desaparece cuando la comunidad tarda o el banco pide más papeles.",
+    ],
+    compraBio: [
+      "Agente de la Propiedad Inmobiliaria (API) colegiado y gestor administrativo, con más de quince años acompañando compradores en operaciones entre particulares y con agencia solo del vendedor.",
+      "Coordina due diligence, revisión de contratos del vendedor, calendario con banco y notaría. Interlocutor fijo por WhatsApp: no desaparece cuando la ITE tarda o el vendedor presiona para firmar arras.",
     ],
   },
 ] as const;

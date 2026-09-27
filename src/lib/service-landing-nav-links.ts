@@ -79,6 +79,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
     subtitle: "Compra con respaldo legal",
     links: [
       { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
+      { href: "/servicios/comprar-piso-sin-agencia", label: "Comprar sin agencia" },
       { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
     ],

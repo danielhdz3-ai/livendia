@@ -11,6 +11,10 @@ type Props = {
   steps: readonly VenderSinAgenciaProcessStep[];
   alwaysWithYouTitle: string;
   alwaysWithYouBody: string;
+  /** Etiqueta bajo la imagen de cada paso. */
+  serviceLine?: string;
+  /** Texto junto a la tarifa plana. */
+  feeNote?: string;
 };
 
 function StepImageCard({
@@ -18,11 +22,13 @@ function StepImageCard({
   city,
   priceLabel,
   imageOnLeft,
+  serviceLine,
 }: {
   step: VenderSinAgenciaProcessStep;
   city: string;
   priceLabel: string;
   imageOnLeft: boolean;
+  serviceLine: string;
 }) {
   return (
     <div
@@ -43,9 +49,7 @@ function StepImageCard({
           </div>
         </div>
         <div className="border-t border-[#1A4FBF]/10 bg-white px-5 py-4">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-[#1A4FBF]">
-            Servicio completo venta · Livendia
-          </p>
+          <p className="text-[11px] font-bold uppercase tracking-wider text-[#1A4FBF]">{serviceLine}</p>
           <p className="mt-1 text-lg font-bold text-[#1E293B]">Paso {step.step}</p>
           <p className="mt-0.5 text-sm text-[#64748B]">
             {city} · 100 % online · gestor asignado
@@ -96,7 +100,12 @@ export function VentaSinAgenciaPasoAPasoSection({
   steps,
   alwaysWithYouTitle,
   alwaysWithYouBody,
+  serviceLine = "Servicio completo venta · Livendia",
+  feeNote,
 }: Props) {
+  const resolvedFeeNote =
+    feeNote ??
+    `Sin comisión sobre el precio del piso. Trámite 100 % online con gestor real en ${city}.`;
   return (
     <section
       className="border-b border-[#1A4FBF]/10 bg-[#F8FAFC] px-4 py-16 sm:px-6 sm:py-20"
@@ -120,7 +129,7 @@ export function VentaSinAgenciaPasoAPasoSection({
             <p className="text-3xl font-extrabold text-[#1E293B] sm:text-4xl">{priceLabel}</p>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-[#64748B] sm:mt-0 sm:max-w-md sm:text-right">
-            Sin comisión sobre el precio del piso. Trámite 100 % online con gestor real en {city}.
+            {resolvedFeeNote}
           </p>
         </div>
 
@@ -146,6 +155,7 @@ export function VentaSinAgenciaPasoAPasoSection({
               city={city}
               priceLabel={priceLabel}
               imageOnLeft={index % 2 === 0}
+              serviceLine={serviceLine}
             />
           ))}
         </div>

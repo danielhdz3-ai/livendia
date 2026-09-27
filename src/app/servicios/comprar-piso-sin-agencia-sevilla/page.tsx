@@ -1,0 +1,13 @@
+import {
+  ComprarPisoSinAgenciaLocalPage,
+  comprarPisoSinAgenciaLocalPageMetadata,
+} from "@/lib/comprar-piso-sin-agencia-local-page";
+
+const slug = "sevilla";
+
+export const revalidate = 300;
+export const metadata = comprarPisoSinAgenciaLocalPageMetadata(slug);
+
+export default function Page() {
+  return <ComprarPisoSinAgenciaLocalPage slug={slug} />;
+}

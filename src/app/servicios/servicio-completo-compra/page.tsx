@@ -388,9 +388,14 @@ export default async function ServicioCompletoCompraPage() {
             </div>
 
                 <p className="mt-6 text-sm text-blue-200">
-              ¿Vendes tu piso entre particulares?{" "}
+              ¿Compras entre particulares sin agencia?{" "}
+              <Link href="/servicios/comprar-piso-sin-agencia" className="font-semibold underline hover:text-white">
+                Comprar piso sin agencia
+              </Link>
+              {" · "}
+              ¿Vendes?{" "}
               <Link href="/servicios/servicio-completo-venta" className="font-semibold underline hover:text-white">
-                Ver servicio completo de venta
+                Servicio completo de venta
               </Link>
             </p>
             <p className="mt-2 text-sm text-blue-200">

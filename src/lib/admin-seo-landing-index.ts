@@ -77,6 +77,10 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import {
+  getPublishedComprarPisoSinAgenciaCities,
+  localComprarPisoSinAgenciaHref,
+} from "@/lib/comprar-piso-sin-agencia-local-cities";
+import {
   getPublishedVentaPisoParticularCities,
   localVentaPisoParticularSinAgenciaHref,
   VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE,
@@ -205,6 +209,7 @@ const SERVICE_HUB_LABELS: Record<string, string> = {
   "contrato-alquiler-temporada": "Contrato alquiler temporada",
   "contrato-arras-penitenciales": "Contrato arras penitenciales",
   "vender-piso-sin-agencia": "Vender piso sin agencia",
+  "comprar-piso-sin-agencia": "Comprar piso sin agencia",
   "contrato-entre-particulares-local": "Contrato entre particulares (hub)",
   "servicio-completo-compra": "Servicio completo compra",
   "acompanamiento-compra-parking-trastero": "Compra parking/trastero",
@@ -362,6 +367,13 @@ const LOCAL_CITY_SOURCES: LocalCitySource[] = [
     serviceOrder: 60,
     getPublished: getPublishedVenderPisoSinAgenciaCities,
     href: localVenderPisoSinAgenciaHref,
+  },
+  {
+    serviceId: "comprar-piso-sin-agencia",
+    serviceLabel: "Comprar piso sin agencia",
+    serviceOrder: 59,
+    getPublished: getPublishedComprarPisoSinAgenciaCities,
+    href: localComprarPisoSinAgenciaHref,
   },
   {
     serviceId: "vender-piso-sin-inmobiliaria",
