@@ -1023,4 +1023,149 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       ],
     },
   },
+  "sant-boi-de-llobregat": {
+    copy: {
+      heroBadge: "Sin agencia · Sant Boi",
+      heroH1: "¿Vendes tu piso sin agencia en Sant Boi de Llobregat?",
+      heroLead:
+        "Centre, Marianao o Camps Blancs: venta entre particulares con Livendia por {{price}} (IVA incl.) — arras, trámites y notaría sin comisión del 3–5 % sobre el precio de venta.",
+      heroBullets: [
+        "Vender sin agencia en el Baix Llobregat",
+        "Tarifa plana con gestor dedicado",
+        "Panel online para documentación",
+      ],
+      savingsIntro:
+        "En Sant Boi, el 3 % sobre 250.000 € son 7.500 € + IVA. Livendia cubre la gestoría por 890 €.",
+      finalCtaTitle: "Vende en Sant Boi entre particulares con Livendia",
+      faqTitle: "Vender piso sin agencia en Sant Boi — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Boi sin agencia (entre particulares, ya tengo comprador). Quiero Livendia.",
+      jsonLdServiceName: "Vender piso sin agencia en Sant Boi de Llobregat",
+      imageAlt: "Vender sin agencia Sant Boi Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Boi · Baix Llobregat",
+      title: "Vender sin agencia en Sant Boi entre particulares",
+      paragraphs: [
+        "Sant Boi concentra ventas a compradores de Barcelona que buscan mejor relación calidad-precio. Livendia ordena arras y certificados cuando tú ya tienes comprador.",
+        "Somos gestoría, no agencia inmobiliaria: no cobramos comisión sobre el precio.",
+      ],
+    },
+  },
+  "sant-joan-despi": {
+    copy: {
+      heroBadge: "Entre particulares · Sant Joan Despí",
+      heroH1: "¿Vendes tu piso entre particulares en Sant Joan Despí?",
+      heroLead:
+        "Les Planes, Torreblanca o centre: gestoría Livendia por {{price}} (IVA incl.) — venta entre particulares con arras CCCat y coordinación hasta notaría sin comisión de agencia.",
+      heroBullets: [
+        "Vender entre particulares cerca de Barcelona",
+        "Checklist documental pre-arras",
+        "Gestor legal por WhatsApp",
+      ],
+      savingsIntro:
+        "En Sant Joan Despí, una comisión del 3 % sobre 310.000 € supera 9.300 € + IVA. Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en Sant Joan Despí entre particulares",
+      faqTitle: "Vender piso entre particulares en Sant Joan Despí — FAQ",
+      waPrefill:
+        "Hola, vendo en Sant Joan Despí entre particulares (comprador confirmado). Me interesa Livendia.",
+      jsonLdServiceName: "Vender piso entre particulares en Sant Joan Despí",
+      imageAlt: "Venta entre particulares Sant Joan Despí",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Sant Joan Despí · Baix Llobregat",
+      title: "Venta entre particulares en Sant Joan Despí con gestoría",
+      paragraphs: [
+        "Muchos propietarios en Sant Joan Despí cierran sin agencia cuando el comprador llega por portal o recomendación. Livendia blinda la parte jurídica por tarifa plana.",
+        "Persiguimos certificado de comunidad y plazos hasta la escritura en notaría.",
+      ],
+    },
+  },
+  "mollet-del-valles": {
+    copy: {
+      heroBadge: "Particular a particular · Mollet",
+      heroH1: "¿Vendes piso de particular a particular en Mollet del Vallès?",
+      heroLead:
+        "Centre o Gallecs: venta de particular a particular con Livendia por {{price}} (IVA incl.) — arras, documentación y notaría sin pagar comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender de particular a particular en el Vallès Oriental",
+        "Tarifa plana vs 3 % sobre el precio",
+        "Mismo gestor hasta la firma",
+      ],
+      savingsIntro:
+        "En Mollet, el 3 % sobre 240.000 € son 7.200 € + IVA. Livendia deja la gestoría en 890 € fijos.",
+      finalCtaTitle: "Vende en Mollet de particular a particular",
+      faqTitle: "Vender de particular a particular en Mollet — FAQ",
+      waPrefill:
+        "Hola, vendo en Mollet de particular a particular (ya tengo comprador). Quiero gestoría Livendia.",
+      jsonLdServiceName: "Vender piso de particular a particular en Mollet del Vallès",
+      imageAlt: "Venta particular a particular Mollet Livendia",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Mollet · Vallès Oriental",
+      title: "Venta de particular a particular en Mollet con gestor dedicado",
+      paragraphs: [
+        "Mollet mueve ventas entre vecinos y compradores de Barcelona o Gran Barcelona. Livendia gestiona arras CCCat y trámites hasta notaría.",
+        "No publicamos anuncios ni cobramos porcentaje sobre el precio de venta.",
+      ],
+    },
+  },
+  "barcelona-poblenou": {
+    copy: {
+      heroBadge: "Sin comisiones · Poblenou",
+      heroH1: "¿Vendes sin comisiones en Poblenou?",
+      heroLead:
+        "22@, Diagonal Mar o La Verneda: venta entre particulares con Livendia por {{price}} (IVA incl.) — reserva, arras CCCat y notaría sin el 3–5 % de agencia sobre el precio.",
+      heroBullets: [
+        "Vender sin comisiones en uno de los barrios más dinámicos",
+        "Operaciones rápidas con documentación al día",
+        "Gestor experto en Sant Martí / Poblenou",
+      ],
+      savingsIntro:
+        "En Poblenou, el 3 % sobre 410.000 € son 12.300 € + IVA. Vender sin comisiones con Livendia fija la gestoría en 890 €.",
+      finalCtaTitle: "Cierra en Poblenou entre particulares",
+      faqTitle: "Vender sin comisiones en Poblenou — preguntas frecuentes",
+      waPrefill:
+        "Hola, vendo en Poblenou sin comisiones (entre particulares). Quiero Livendia.",
+      jsonLdServiceName: "Vender sin comisiones en Poblenou con gestoría Livendia",
+      imageAlt: "Venta sin comisiones Poblenou 22@",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "Poblenou · 22@",
+      title: "Vender sin comisiones en Poblenou cuando ya tienes comprador",
+      paragraphs: [
+        "Poblenou concentra operaciones de tech y familias con plazos ajustados. Livendia acompaña la venta entre particulares con contratos a medida y seguimiento post-arras.",
+        "Gestoría digital: tarifa plana, sin comisión sobre el precio del piso.",
+      ],
+    },
+  },
+  "barcelona-born": {
+    copy: {
+      heroBadge: "Sin agencia · El Born",
+      heroH1: "¿Vendes tu vivienda sin agencia en El Born?",
+      heroLead:
+        "El Born (Ciutat Vella): si ya tienes comprador, Livendia gestiona venta entre particulares por {{price}} (IVA incl.) — arras CCCat, ITE, cèdula y notaría sin comisión de inmobiliaria.",
+      heroBullets: [
+        "Vender sin agencia en fincas del casco histórico",
+        "Arras equilibradas en operaciones delicadas",
+        "Gestor hasta la escritura",
+      ],
+      savingsIntro:
+        "En El Born, una comisión del 3 % sobre 430.000 € supera 12.900 € + IVA. Livendia cubre el tramo legal por 890 €.",
+      finalCtaTitle: "Vende en El Born con gestoría de confianza",
+      faqTitle: "Vender vivienda sin agencia en El Born — FAQ",
+      waPrefill:
+        "Hola, vendo en El Born sin agencia (particular a particular). Me interesa Livendia.",
+      jsonLdServiceName: "Vender vivienda sin agencia en El Born Barcelona",
+      imageAlt: "Vender sin agencia El Born Ciutat Vella",
+    },
+    barcelonaZoneIntro: {
+      eyebrow: "El Born · Ciutat Vella",
+      title: "Vender sin agencia en El Born entre particulares",
+      paragraphs: [
+        "En El Born el comprador suele ser exigente con documentación e ITE. Livendia ordena trámites antes de firmar arras definitivas mientras mantienes la venta entre particulares.",
+        "No somos agencia: no captamos comprador ni cobramos comisión sobre el precio.",
+      ],
+    },
+  },
 };

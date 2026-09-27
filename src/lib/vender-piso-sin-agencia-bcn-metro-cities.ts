@@ -23,6 +23,11 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS = [
   "castelldefels",
   "gava",
   "sant-adria-de-besos",
+  "sant-boi-de-llobregat",
+  "sant-joan-despi",
+  "mollet-del-valles",
+  "barcelona-poblenou",
+  "barcelona-born",
 ] as const;
 
 export type VenderPisoSinAgenciaBcnMetroSlug =
@@ -575,6 +580,136 @@ export const VENDER_PISO_SIN_AGENCIA_BCN_METRO_CITIES: VenderPisoSinAgenciaCityD
     faq: faqZone("Sant Adrià de Besòs"),
     analyticsPlacement: "vender_piso_sant_adria",
     gestorCtaPlacement: "vender_piso_sant_adria",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "sant-boi-de-llobregat",
+    city: "Sant Boi de Llobregat",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso sin agencia en Sant Boi — 890 € IVA incl.",
+    metaDescription:
+      "¿Vendes tu piso sin agencia en Sant Boi de Llobregat? Livendia gestoría 890 € IVA incl. Venta entre particulares: centre, Marianao, Camps Blancs. Arras y notaría.",
+    keywords: [
+      "vender piso sin agencia sant boi de llobregat",
+      "venta entre particulares sant boi",
+      "vender piso sin comisiones sant boi",
+      "vender piso de particular a particular sant boi",
+      "vender piso sin inmobiliaria sant boi",
+    ],
+    savingsSalePrices: [170_000, 200_000, 230_000, 250_000, 270_000, 300_000, 330_000],
+    highlightSalePrice: 250_000,
+    tramitesAreaNote:
+      "En Sant Boi (centre, Marianao, Camps Blancs), venta entre particulares del Baix Llobregat con arras CCCat y seguimiento de comunidad hasta notaría.",
+    benefitsAreaNote:
+      "Tarifa plana frente al 3 %; gestor dedicado para compradores de Barcelona y área metropolitana.",
+    faq: faqZone("Sant Boi de Llobregat"),
+    analyticsPlacement: "vender_piso_sant_boi",
+    gestorCtaPlacement: "vender_piso_sant_boi",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "sant-joan-despi",
+    city: "Sant Joan Despí",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender entre particulares en Sant Joan Despí — 890 €",
+    metaDescription:
+      "¿Vendes tu piso entre particulares en Sant Joan Despí? Gestoría Livendia 890 € IVA incl. Sin comisión de agencia. Centre, Les Planes, Torreblanca. Arras CCCat.",
+    keywords: [
+      "vender piso entre particulares sant joan despi",
+      "vender piso sin comisiones sant joan despi",
+      "vender piso sin agencia sant joan despi",
+      "venta entre particulares sant joan despi barcelona",
+      "vender piso particular les planes",
+    ],
+    savingsSalePrices: [220_000, 250_000, 280_000, 310_000, 340_000, 370_000, 410_000],
+    highlightSalePrice: 310_000,
+    tramitesAreaNote:
+      "En Sant Joan Despí (centre, Les Planes, Torreblanca), venta entre particulares con plazos realistas de documentación y arras adaptadas al comprador barcelonés.",
+    benefitsAreaNote:
+      "Checklist pre-escritura, informe semáforo y coordinación con notaría 100 % online.",
+    faq: faqZone("Sant Joan Despí"),
+    analyticsPlacement: "vender_piso_sant_joan_despi",
+    gestorCtaPlacement: "vender_piso_sant_joan_despi",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "mollet-del-valles",
+    city: "Mollet del Vallès",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender piso de particular a particular en Mollet — 890 €",
+    metaDescription:
+      "¿Vendes piso de particular a particular en Mollet del Vallès? Livendia 890 € IVA incl. Gestoría venta sin comisiones de agencia. Centre, Gallecs. Arras y notaría.",
+    keywords: [
+      "vender piso de particular a particular mollet del valles",
+      "venta entre particulares mollet",
+      "vender piso sin comisiones mollet",
+      "vender piso sin agencia mollet",
+      "gestoría venta piso mollet",
+    ],
+    savingsSalePrices: [160_000, 190_000, 220_000, 240_000, 260_000, 290_000, 320_000],
+    highlightSalePrice: 240_000,
+    tramitesAreaNote:
+      "En Mollet del Vallès (centre, Gallecs), venta de particular a particular con arras CCCat y revisión documental para compradores del Vallès Oriental.",
+    benefitsAreaNote:
+      "Gestor legal dedicado; tarifa plana frente a comisión del 3–5 % sobre el precio de venta.",
+    faq: faqZone("Mollet del Vallès"),
+    analyticsPlacement: "vender_piso_mollet",
+    gestorCtaPlacement: "vender_piso_mollet",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-poblenou",
+    city: "Poblenou",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender sin comisiones en Poblenou — gestoría 890 €",
+    metaDescription:
+      "¿Vendes sin comisiones en Poblenou (Sant Martí)? Livendia 890 € IVA incl. Venta entre particulares 22@, Diagonal Mar, La Verneda. Arras CCCat y notaría.",
+    keywords: [
+      "vender piso sin comisiones poblenou",
+      "vender piso sin agencia poblenou barcelona",
+      "venta entre particulares poblenou",
+      "vender piso de particular a particular poblenou",
+      "vender piso sin inmobiliaria 22 barcelona",
+    ],
+    savingsSalePrices: [300_000, 340_000, 380_000, 410_000, 440_000, 480_000, 530_000],
+    highlightSalePrice: 410_000,
+    tramitesAreaNote:
+      "En Poblenou (22@, Diagonal Mar, La Verneda), venta entre particulares con arras CCCat, comunidades multi-bloque y compradores exigentes del distrito de Sant Martí.",
+    benefitsAreaNote:
+      "Gestor que conoce el mercado del 22@ y operaciones rápidas con documentación al día.",
+    faq: faqZone("Poblenou"),
+    analyticsPlacement: "vender_piso_poblenou",
+    gestorCtaPlacement: "vender_piso_poblenou",
+    optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
+    showBarcelonaVentaModules: true,
+  },
+  {
+    slug: "barcelona-born",
+    city: "El Born",
+    schemaAdministrativeArea: "Cataluña",
+    metaTitle: "Vender vivienda sin agencia en El Born — 890 €",
+    metaDescription:
+      "¿Vendes tu vivienda sin agencia en El Born? Gestoría Livendia 890 € IVA incl. Venta entre particulares Ciutat Vella. Arras, ITE, cèdula y notaría sin comisión.",
+    keywords: [
+      "vender piso sin agencia el born barcelona",
+      "venta entre particulares born barcelona",
+      "vender piso sin comisiones el born",
+      "vender piso de particular a particular born",
+      "vender piso sin inmobiliaria ciutat vella born",
+    ],
+    savingsSalePrices: [320_000, 360_000, 400_000, 430_000, 460_000, 500_000, 560_000],
+    highlightSalePrice: 430_000,
+    tramitesAreaNote:
+      "En El Born (Ciutat Vella), vender sin agencia con foco en fincas históricas, ITE, cèdula d'habitabilitat y arras CCCat equilibradas.",
+    benefitsAreaNote:
+      "Gestor experto en casco antiguo; informe semáforo antes de vincular arras definitivas.",
+    faq: faqZone("El Born"),
+    analyticsPlacement: "vender_piso_born",
+    gestorCtaPlacement: "vender_piso_born",
     optionalLocalVentaHref: "/servicios/servicio-completo-venta-local/barcelona",
     showBarcelonaVentaModules: true,
   },
