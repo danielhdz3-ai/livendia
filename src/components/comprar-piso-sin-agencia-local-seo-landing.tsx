@@ -1,5 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
+import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { SiteFooter } from "@/components/site-footer";
 import { FaqSection } from "@/components/faq-section";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
@@ -147,6 +149,11 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
     ? buildComprarSinAgenciaBarcelonaSteps(priceLabel)
     : null;
   const processTitle = COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS.title.replace("Barcelona", config.city);
+  const gestorPlatformWorkflow = buildGestorWorkflowContent({
+    city: config.city,
+    service: "servicio-completo-compra",
+    serviceLabel: "Servicio completo de compra",
+  });
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -319,15 +326,6 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
             </div>
           </section>
 
-          <LocalCityContextSectionFromConfig
-            city={config.city}
-            heading={`Comprar sin agencia en ${config.city}: mercado y barrios`}
-            localMarketInsight={config.localMarketInsight}
-            localPriceSnapshot={config.localPriceSnapshot}
-            localNeighborhoods={config.localNeighborhoods}
-            localServiceNotes={config.localServiceNotes}
-          />
-
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
@@ -406,6 +404,23 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <ServiceGestorPlatformSection
+            workflow={gestorPlatformWorkflow}
+            city={config.city}
+            serviceLabel="Servicio completo de compra"
+            primarySlug="servicio-completo-compra"
+            platformServiceKind="compra"
+          />
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            heading={`Comprar sin agencia en ${config.city}: mercado y barrios`}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+          />
 
           {config.optionalLocalCompraHref ? (
             <section className="border-b border-slate-200 bg-[#EFF6FF] px-4 py-12 sm:px-6">
@@ -494,6 +509,7 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
           serviceLabel="Servicio completo de compra"
           primarySlug="servicio-completo-compra"
           platformServiceKind="compra"
+          skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}
         />
 

@@ -1,5 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
+import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { SiteFooter } from "@/components/site-footer";
 import { FaqSection } from "@/components/faq-section";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
@@ -141,6 +143,11 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
   const isBarcelonaExtended = config.slug === "barcelona" || config.showBarcelonaVentaModules === true;
   const barcelonaIntro = config.barcelonaZoneIntro ?? VENDER_SIN_AGENCIA_BARCELONA_INTRO;
   const barcelonaProcessSteps = isBarcelonaExtended ? buildVenderSinAgenciaBarcelonaSteps(priceLabel) : null;
+  const gestorPlatformWorkflow = buildGestorWorkflowContent({
+    city: config.city,
+    service: "servicio-completo-venta",
+    serviceLabel: "Servicio completo de venta",
+  });
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -313,15 +320,6 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
             </div>
           </section>
 
-          <LocalCityContextSectionFromConfig
-            city={config.city}
-            heading={`Vender sin agencia en ${config.city}: mercado y barrios`}
-            localMarketInsight={config.localMarketInsight}
-            localPriceSnapshot={config.localPriceSnapshot}
-            localNeighborhoods={config.localNeighborhoods}
-            localServiceNotes={config.localServiceNotes}
-          />
-
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">
@@ -400,6 +398,23 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <ServiceGestorPlatformSection
+            workflow={gestorPlatformWorkflow}
+            city={config.city}
+            serviceLabel="Servicio completo de venta"
+            primarySlug="servicio-completo-venta"
+            platformServiceKind="venta"
+          />
+
+          <LocalCityContextSectionFromConfig
+            city={config.city}
+            heading={`Vender sin agencia en ${config.city}: mercado y barrios`}
+            localMarketInsight={config.localMarketInsight}
+            localPriceSnapshot={config.localPriceSnapshot}
+            localNeighborhoods={config.localNeighborhoods}
+            localServiceNotes={config.localServiceNotes}
+          />
 
           {config.optionalLocalVentaHref ? (
             <section className="border-b border-slate-200 bg-[#EFF6FF] px-4 py-12 sm:px-6">
@@ -490,6 +505,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
           serviceLabel="Servicio completo de venta"
           primarySlug="servicio-completo-venta"
           platformServiceKind="venta"
+          skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}
         />
 
