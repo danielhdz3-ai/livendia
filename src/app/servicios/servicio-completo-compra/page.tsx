@@ -416,6 +416,7 @@ export default async function ServicioCompletoCompraPage() {
         <ServiceLandingSharedSections
           serviceLabel="Servicio completo de compra"
           primarySlug="servicio-completo-compra"
+          platformServiceKind="compra"
         />
 
 

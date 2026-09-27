@@ -1,4 +1,5 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { COMPRA_LOCAL_EXTRA_SEO_CONTENT } from "@/lib/servicio-completo-compra-local-extra-seo";
 
 export type CompraLocalFaqItem = { question: string; answer: string };
 
@@ -486,6 +487,7 @@ export const COMPRA_LOCAL_SEO_CONTENT: Record<string, CompraLocalSeoContent> = {
       },
     ],
   },
+  ...COMPRA_LOCAL_EXTRA_SEO_CONTENT,
 };
 
 export function getCompraLocalSeoContent(slug: string): CompraLocalSeoContent | undefined {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check } from "lucide-react";
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
 
@@ -163,6 +164,14 @@ export function VentaSinAgenciaPasoAPasoSection({
         <div className="mx-auto mt-16 max-w-3xl rounded-2xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-6 py-8 text-center text-white sm:px-10">
           <p className="text-sm font-bold uppercase tracking-wider text-blue-100">{alwaysWithYouTitle}</p>
           <p className="mt-3 text-base leading-relaxed text-blue-50 sm:text-lg">{alwaysWithYouBody}</p>
+          <p className="mt-6">
+            <Link
+              href="#plataforma-cliente"
+              className="inline-flex min-h-11 items-center rounded-full bg-white px-6 py-2.5 text-sm font-bold text-[#1A4FBF] hover:bg-blue-50"
+            >
+              Ver cómo funciona la plataforma
+            </Link>
+          </p>
         </div>
       </div>
     </section>

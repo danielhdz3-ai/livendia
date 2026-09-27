@@ -28,6 +28,7 @@ export type ServiceGestorPlatformSectionProps = {
   };
   /** Fondo superior del bloque de pasos (continúa hacia el showcase) */
   sectionClassName?: string;
+  platformServiceKind?: "compra" | "venta" | "generic";
 };
 
 /**
@@ -43,6 +44,7 @@ export function ServiceGestorPlatformSection({
   primaryExternal = false,
   primaryWhatsApp,
   sectionClassName = "border-b border-slate-200 bg-gradient-to-b from-cyan-50 via-[#EFF6FF] to-[#F8FAFC]",
+  platformServiceKind = "generic",
 }: ServiceGestorPlatformSectionProps) {
   const secondaryHref = waHref;
   const secondaryLabel = workflow.secondaryCtaLabel ?? "Consultar por WhatsApp";
@@ -129,6 +131,7 @@ export function ServiceGestorPlatformSection({
         serviceLabel={serviceLabel}
         variant="compact"
         className="border-t-0 bg-[#F8FAFC] pt-0"
+        serviceKind={platformServiceKind}
       />
     </div>
   );

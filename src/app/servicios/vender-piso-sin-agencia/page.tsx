@@ -259,7 +259,11 @@ export default async function VenderPisoSinAgenciaNacionalPage() {
 
           <GestorContactCta placement="vender_piso_nacional" serviceLabel={SERVICE_LABEL} />
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          serviceLabel="Servicio completo de venta"
+          primarySlug="servicio-completo-venta"
+          platformServiceKind="venta"
+        />
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>

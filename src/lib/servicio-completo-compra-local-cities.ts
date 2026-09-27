@@ -6,6 +6,10 @@ import {
   getCompraLocalSeoContent,
   type CompraLocalFaqItem,
 } from "@/lib/servicio-completo-compra-local-seo-content";
+import {
+  SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_CITIES,
+  SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_PUBLISHED_SLUGS,
+} from "@/lib/servicio-completo-compra-local-extra-cities";
 
 /**
  * Landings SEO locales: servicio completo de compra por ciudad.
@@ -30,6 +34,7 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISHED_SLUGS: readonly string[] =
   "sant-andreu",
   "sabadell",
   "terrassa",
+  ...SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_PUBLISHED_SLUGS,
 ];
 
 export type ServicioCompletoCompraLocalLandingConfig = {
@@ -516,4 +521,5 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_CITIES: ServicioCompletoCompraLocalC
     finalCtaLead:
       `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incluido) y compra en Terrassa con un asesor experto hasta la escritura.`,
   },
+  ...SERVICIO_COMPLETO_COMPRA_LOCAL_EXTRA_CITIES,
 ];

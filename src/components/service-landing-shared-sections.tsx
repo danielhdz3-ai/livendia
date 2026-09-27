@@ -21,6 +21,8 @@ type ServiceLandingSharedSectionsProps = {
   gestorWorkflow?: GestorWorkflowContent;
   /** Slug catálogo para CTA del bloque gestor + plataforma */
   primarySlug?: string;
+  /** Tutorial plataforma orientado a compra o venta */
+  platformServiceKind?: "compra" | "venta" | "generic";
   /** Omitir bloque gestor + plataforma (cuando ya va en el cuerpo de la landing) */
   skipGestorPlatform?: boolean;
   /** Omitir cobertura si la página ya la incluye dentro del main */
@@ -43,6 +45,7 @@ export function ServiceLandingSharedSections({
   serviceLabel,
   gestorWorkflow,
   primarySlug,
+  platformServiceKind = "generic",
   skipGestorPlatform = false,
   skipCoverage = false,
   skipTestimonials = false,
@@ -93,6 +96,7 @@ export function ServiceLandingSharedSections({
           city={city}
           serviceLabel={serviceLabel}
           primarySlug={primarySlug}
+          platformServiceKind={platformServiceKind}
         />
       )}
     </>

@@ -17,9 +17,9 @@ export const COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS = {
   title: "Cómo funciona comprar tu piso en Barcelona sin agencia, paso a paso",
   intro:
     "Cinco fases con el mismo gestor Livendia. Tú negocias precio y visitas; nosotros revisamos contratos, documentación y calendario hasta la escritura pública.",
-  alwaysWithYouTitle: "Siempre contigo",
+  alwaysWithYouTitle: "Tu expediente en el panel",
   alwaysWithYouBody:
-    "Un gestor legal experto — no un call center — responde por WhatsApp y teléfono, conoce tu expediente y te orienta cuando surgen dudas de comunidad, hipoteca, ITE o notaría.",
+    "Cada documento, revisión y avance queda en tu área de cliente Livendia: referencia de expediente, barra de progreso e historial de actividad. Consulta en qué punto está tu compra sin depender de correos sueltos.",
 } as const;
 
 export function buildComprarSinAgenciaBarcelonaSteps(

@@ -25,9 +25,9 @@ export const VENDER_SIN_AGENCIA_BARCELONA_PROCESS = {
   title: "Cómo funciona vender tu piso en Barcelona sin agencia, paso a paso",
   intro:
     "Seis fases con el mismo gestor Livendia. Tú sigues negociando con tu comprador; nosotros blindamos contratos, documentación y calendario hasta la escritura pública.",
-  alwaysWithYouTitle: "Siempre contigo",
+  alwaysWithYouTitle: "Tu expediente en el panel",
   alwaysWithYouBody:
-    "Un gestor legal experto — no un call center — responde por WhatsApp y teléfono, conoce tu expediente y te orienta cuando surgen dudas de comunidad, hipoteca o notaría.",
+    "Cada documento, revisión y avance queda en tu área de cliente Livendia: referencia de expediente, barra de progreso e historial de actividad. Consulta en qué punto está tu venta sin depender de correos sueltos.",
 } as const;
 
 export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonly VenderSinAgenciaProcessStep[] {

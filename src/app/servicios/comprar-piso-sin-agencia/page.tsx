@@ -117,7 +117,7 @@ export default async function ComprarPisoSinAgenciaNacionalPage() {
                     {[
                       "Tú eliges el piso; nosotros revisamos contratos y trámites",
                       "Due diligence antes de ingresar la señal",
-                      "Gestor personal hasta escritura — no call center",
+                      "Expediente digital con progreso y documentación centralizada",
                     ].map((line) => (
                       <li key={line} className="flex items-start gap-3 text-sm sm:text-base lg:text-lg">
                         <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
@@ -282,7 +282,11 @@ export default async function ComprarPisoSinAgenciaNacionalPage() {
 
           <GestorContactCta placement="comprar_piso_nacional" serviceLabel={SERVICE_LABEL} />
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          serviceLabel="Servicio completo de compra"
+          primarySlug="servicio-completo-compra"
+          platformServiceKind="compra"
+        />
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ClientPlatformTutorialStrip } from "@/components/client-platform-tutorial-strip";
 import {
   Bell,
   CheckCircle2,
@@ -44,6 +45,9 @@ export type ClientPlatformShowcaseProps = {
   /** Variante compacta (menos padding) */
   variant?: "default" | "compact";
   className?: string;
+  /** Tutorial visual bajo el mockup (compra / venta / genérico) */
+  serviceKind?: "compra" | "venta" | "generic";
+  showTutorial?: boolean;
 };
 
 const DEFAULT_HEADLINE = "Tu expediente privado en la plataforma Livendia";
@@ -57,6 +61,8 @@ export function ClientPlatformShowcase({
   city,
   variant = "default",
   className = "",
+  serviceKind = "generic",
+  showTutorial = true,
 }: ClientPlatformShowcaseProps) {
   const resolvedSubtitle =
     subtitle ??
@@ -74,8 +80,8 @@ export function ClientPlatformShowcase({
     },
     {
       icon: User,
-      title: "Gestor que trabaja tu trámite",
-      body: "Una gestora inmobiliaria revisa tu documentación, redacta contratos y te acompaña hasta cerrar el servicio.",
+      title: "Gestor con nombre en tu expediente",
+      body: "Profesional colegiado asignado a tu caso: revisa documentación, redacta contratos y deja constancia de cada actuación en el panel.",
     },
     {
       icon: Upload,
@@ -302,6 +308,8 @@ export function ClientPlatformShowcase({
             </div>
           </div>
         </div>
+
+        {showTutorial ? <ClientPlatformTutorialStrip city={city} serviceKind={serviceKind} /> : null}
       </div>
     </section>
   );

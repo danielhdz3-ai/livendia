@@ -489,7 +489,13 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Servicio completo de compra"
+          primarySlug="servicio-completo-compra"
+          platformServiceKind="compra"
+          skipFoundersBanner={isBarcelonaExtended}
+        />
 
         <SiteFooter />
       </div>

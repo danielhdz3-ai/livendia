@@ -115,7 +115,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("L'Hospitalet de Llobregat"),
     analyticsPlacement: "comprar_piso_hospitalet",
     gestorCtaPlacement: "comprar_piso_hospitalet",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("hospitalet-de-llobregat"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -193,7 +193,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sant Andreu"),
     analyticsPlacement: "comprar_piso_sant_andreu",
     gestorCtaPlacement: "comprar_piso_sant_andreu",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("sant-andreu"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -297,7 +297,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Badalona"),
     analyticsPlacement: "comprar_piso_badalona",
     gestorCtaPlacement: "comprar_piso_badalona",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("badalona"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -323,7 +323,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sabadell"),
     analyticsPlacement: "comprar_piso_sabadell",
     gestorCtaPlacement: "comprar_piso_sabadell",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("sabadell"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -427,7 +427,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Terrassa"),
     analyticsPlacement: "comprar_piso_terrassa",
     gestorCtaPlacement: "comprar_piso_terrassa",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("terrassa"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -453,7 +453,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Cornellà de Llobregat"),
     analyticsPlacement: "comprar_piso_cornella",
     gestorCtaPlacement: "comprar_piso_cornella",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("cornella-de-llobregat"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -479,7 +479,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sant Cugat del Vallès"),
     analyticsPlacement: "comprar_piso_sant_cugat",
     gestorCtaPlacement: "comprar_piso_sant_cugat",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("sant-cugat-del-valles"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -505,7 +505,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Esplugues de Llobregat"),
     analyticsPlacement: "comprar_piso_esplugues",
     gestorCtaPlacement: "comprar_piso_esplugues",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("esplugues-de-llobregat"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -531,7 +531,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Castelldefels"),
     analyticsPlacement: "comprar_piso_castelldefels",
     gestorCtaPlacement: "comprar_piso_castelldefels",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("castelldefels"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -557,7 +557,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Gavà"),
     analyticsPlacement: "comprar_piso_gava",
     gestorCtaPlacement: "comprar_piso_gava",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("gava"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -609,7 +609,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sant Boi de Llobregat"),
     analyticsPlacement: "comprar_piso_sant_boi",
     gestorCtaPlacement: "comprar_piso_sant_boi",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("sant-boi-de-llobregat"),
     showBarcelonaCompraModules: true,
   },
   {
