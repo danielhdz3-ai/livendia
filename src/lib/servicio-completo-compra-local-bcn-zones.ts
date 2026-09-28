@@ -1,4 +1,5 @@
 import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 import type { CompraLocalSeoContent } from "@/lib/servicio-completo-compra-local-seo-content";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 
@@ -10,6 +11,11 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_PUBLISHED_SLUGS = [
   "barcelona-les-corts",
   "barcelona-sarria-sant-gervasi",
   "barcelona-sants-montjuic",
+  "barcelona-ciutat-vella",
+  "barcelona-horta-guinardo",
+  "barcelona-nou-barris",
+  "barcelona-sant-andreu",
+  "barcelona-sant-marti",
 ] as const;
 
 export const SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES = [
@@ -175,6 +181,141 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES = [
     ],
     finalCtaLead: `Contrata el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Sants-Montjuïc con gestor experto hasta escritura.`,
   },
+  {
+    slug: "barcelona-ciutat-vella",
+    city: "Ciutat Vella (Barcelona)",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras en Ciutat Vella entre particulares? Un gestor revisa reserva y arras bajo CCCat en el Gòtic, El Raval, Born o la Barceloneta — fincas centenarias, protección patrimonial, ITE exigente y locales en planta baja mal delimitados en contrato.",
+    whyIntro:
+      "En el casco antiguo, una plantilla genérica no cubre servidumbres, usos turísticos encubiertos ni obras en finca protegida. Livendia alinea objeto del contrato, cèdula e inspección técnica antes de que ingreses señal.",
+    howIntro:
+      "Cuatro hitos hasta escritura en notaría barcelonesa: due diligence en edificios históricos, arras CCCat equilibradas, gestor con panel Livendia y calendario con vendedor e hipoteca.",
+    testimonialsTitle: "Compradores en Ciutat Vella que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en El Born. Livendia revisó actas con obras de fachada y dejó por escrito qué incluía la planta baja antes de arras confirmatorias.",
+        author: "Marta & Oriol",
+        role: "Compradores, Born",
+      },
+      {
+        quote:
+          "Piso en El Raval: el gestor detectó discrepancias entre cèdula y distribución real y renegoció plazos de hipoteca con cláusula 621-49 CCCat.",
+        author: "Lucía G.",
+        role: "Compradora, El Raval",
+      },
+    ],
+    finalCtaLead: `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Ciutat Vella con gestor hasta la escritura.`,
+  },
+  {
+    slug: "barcelona-horta-guinardo",
+    city: "Horta-Guinardó (Barcelona)",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras en Horta-Guinardó entre particulares? Un gestor experto revisa reserva y arras en El Carmel, La Teixonera, Horta centre o el Guinardó — fincas en ladera, ITE pendiente y comunidades con obras estructurales no comentadas en la visita.",
+    whyIntro:
+      "En el distrito norte, muchas operaciones se cierran rápido entre vecinos con arras copiadas. Sin revisión registral y de comunidad, derramas en bloques de los años 60-70 pueden sorprender después de la señal.",
+    howIntro:
+      "Protocolo Livendia en cuatro fases: documentación, contratos CCCat, gestor asignado y coordinación hasta notaría — Vall d'Hebron, Montbau o barrios del Carmel con el mismo estándar.",
+    testimonialsTitle: "Compradores en Horta-Guinardó que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en El Carmel. Livendia revisó ITE del edificio en ladera y una derrama de ascensor en actas que no figuraba en el anuncio.",
+        author: "Jordi & Núria",
+        role: "Compradores, El Carmel",
+      },
+      {
+        quote:
+          "Primera vivienda en Horta centre: el gestor explicó arras penitenciarias CCCat y plazos realistas antes de transferir la señal.",
+        author: "Alejandro R.",
+        role: "Comprador, Horta",
+      },
+    ],
+    finalCtaLead: `Contrata el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Horta-Guinardó con asesor experto hasta escritura.`,
+  },
+  {
+    slug: "barcelona-nou-barris",
+    city: "Nou Barris (Barcelona)",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras en Nou Barris entre particulares? Un gestor revisa reserva y arras en Verdun, Roquetes, Trinitat Vella o la Porta — bloques de gran escala, deuda de comunidad y plazos de hipoteca apretados en borradores del vendedor.",
+    whyIntro:
+      "En Nou Barris el precio por m² atrae compradores con prisa, pero las plantillas suelen proteger solo al vendedor. Livendia verifica certificado de deuda cero, actas y coherencia entre anuncio y contrato antes de la señal.",
+    howIntro:
+      "Cuatro hitos hasta escritura: revisión documental en comunidades multi-bloque, defensa frente a cláusulas desequilibradas, panel Livendia y coordinación con notaría.",
+    testimonialsTitle: "Compradores en Nou Barris que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en Roquetes a un particular. Livendia persiguió certificado de comunidad y incluyó 621-49 CCCat con plazos que el banco aceptó.",
+        author: "Rosa & Joel",
+        role: "Compradores, Roquetes",
+      },
+      {
+        quote:
+          "Piso en Verdun: el gestor marcó una penalización desproporcionada en reserva y la renegociamos antes de ingresar señal.",
+        author: "Miquel T.",
+        role: "Comprador, Nou Barris",
+      },
+    ],
+    finalCtaLead: `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Nou Barris con gestor hasta notaría.`,
+  },
+  {
+    slug: "barcelona-sant-andreu",
+    city: "Sant Andreu (Barcelona)",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras en Sant Andreu entre particulares? Un gestor revisa reserva y arras en Sant Andreu de Palomar, La Sagrera, Bon Pastor o Trinitat Vella — mezcla de finca industrial reconvertida, obra reciente y bloques familiares con arras estándar poco equilibradas.",
+    whyIntro:
+      "Sant Andreu crece con la Sagrera y atrae compradores de toda Barcelona. Sin gestoría del comprador, lo pactado en visita sobre parking, trastero o calidades suele no reflejarse en arras copiadas de otra operación.",
+    howIntro:
+      "Mismo recorrido Livendia en cuatro fases: documentación, contratos CCCat, gestor personal y calendario hasta escritura en notaría barcelonesa.",
+    testimonialsTitle: "Compradores en Sant Andreu que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en La Sagrera. Livendia alineó arras con fecha de entrega y anexos que habíamos acordado con el vendedor particular.",
+        author: "Anna & Sergi",
+        role: "Compradores, La Sagrera",
+      },
+      {
+        quote:
+          "En Sant Andreu de Palomar, el gestor revisó nota simple y actas de comunidad en un edificio de dos escaleras antes de confirmar arras.",
+        author: "Imma L.",
+        role: "Compradora, Sant Andreu",
+      },
+    ],
+    finalCtaLead: `Contrata el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Sant Andreu con gestor experto hasta escritura.`,
+  },
+  {
+    slug: "barcelona-sant-marti",
+    city: "Sant Martí (Barcelona)",
+    schemaAdministrativeArea: "Barcelona · Cataluña",
+    heroLead:
+      "¿Compras en Sant Martí entre particulares? Un gestor revisa reserva y arras en El Clot, La Verneda, Diagonal Mar o el 22@ — además de Poblenou: promociones recientes, comunidades multi-bloque y anexos mal descritos en el anuncio.",
+    whyIntro:
+      "Sant Martí concentra reconversiones, familias en La Verneda y compradores exigentes en Diagonal Mar. Livendia complementa la landing de Poblenou con foco en todo el distrito: mismo protocolo CCCat y tarifa plana de gestoría del comprador.",
+    howIntro:
+      "Cuatro hitos hasta escritura: due diligence según tipo de edificio, cláusula 621-49 si pides hipoteca, expediente digital y coordinación con vendedor y notaría.",
+    testimonialsTitle: "Compradores en Sant Martí que ya compraron con acompañamiento Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprábamos en El Clot. Livendia coordinó certificados de una comunidad grande y plazos de hipoteca que el borrador del vendedor acortaba demasiado.",
+        author: "Laura & Pau",
+        role: "Compradores, El Clot",
+      },
+      {
+        quote:
+          "Obra nueva en Diagonal Mar: el gestor revisó anexos de calidades y parking antes de arras confirmatorias.",
+        author: "Arnau M.",
+        role: "Comprador, Sant Martí",
+      },
+    ],
+    finalCtaLead: `Contrata online el servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}, IVA incl.) y compra en Sant Martí con gestor hasta la escritura.`,
+  },
 ];
 
 function zoneDiff(options: {
@@ -186,8 +327,10 @@ function zoneDiff(options: {
   whySubtitle: string;
   localZones: string;
   keywords: string[];
+  heroImage?: string;
 }): LocalCityLandingFields {
-  const { zoneShort, heroH1, metaTitle, metaDescription, whySubtitle, localZones, keywords } = options;
+  const { zoneShort, heroH1, metaTitle, metaDescription, whySubtitle, localZones, keywords, heroImage } =
+    options;
   return {
     keywords,
     heroBadge: `Servicio completo de compra · ${zoneShort} · CCCat`,
@@ -203,7 +346,7 @@ function zoneDiff(options: {
     whySubtitle,
     localZonesHeading: `Barrios de ${zoneShort} donde acompañamos compradores`,
     localZones,
-    heroImage: "/images/barcelona2.jpg",
+    heroImage: heroImage ?? getLocalCityCardImage(options.slug),
     localBenefits: [
       {
         title: "Arras conforme al CCCat",
@@ -337,6 +480,91 @@ export const COMPRA_LOCAL_BCN_ZONE_DIFFERENTIATION: Record<string, LocalCityLand
       "gestor compra hostafrancs",
     ],
   }),
+  "barcelona-ciutat-vella": zoneDiff({
+    slug: "barcelona-ciutat-vella",
+    zoneShort: "Ciutat Vella",
+    heroH1: "Comprar en Ciutat Vella — finca histórica, ITE y arras CCCat revisadas antes de la señal",
+    metaTitle: "Servicio completo de compra en Ciutat Vella Barcelona | Gestor Livendia",
+    metaDescription: `¿Compras en Gòtic, Raval, Born o Barceloneta? Gestor comprador: arras, ITE, cèdula. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
+    whySubtitle:
+      "Casco antiguo: protección patrimonial, locales en planta baja y contratos que no reflejan el estado real del inmueble. Revisamos antes de vincular arras.",
+    localZones:
+      "Gòtic, El Raval, El Born, La Barceloneta, Sant Pere — due diligence en fincas centenarias y panel Livendia hasta notaría.",
+    keywords: [
+      "servicio completo compra ciutat vella",
+      "comprar piso entre particulares gothic quarter",
+      "gestor compra vivienda born barcelona",
+      "revisar arras raval barcelona",
+    ],
+  }),
+  "barcelona-horta-guinardo": zoneDiff({
+    slug: "barcelona-horta-guinardo",
+    zoneShort: "Horta-Guinardó",
+    heroH1: "Servicio completo de compra en Horta-Guinardó — ITE en ladera y comunidad antes de firmar",
+    metaTitle: "Servicio completo de compra Horta-Guinardó Barcelona | Gestor comprador Livendia",
+    metaDescription: `¿Compras en El Carmel o Guinardó entre particulares? Arras CCCat, ITE y derramas. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
+    whySubtitle:
+      "El Carmel y La Teixonera: edificios en pendiente con inspecciones exigentes. Livendia cruza actas, ITE y contrato antes de la señal.",
+    localZones:
+      "El Carmel, La Teixonera, Horta centre, El Guinardó, Montbau, Vall d'Hebron — gestoría del comprador con tarifa plana.",
+    keywords: [
+      "servicio completo compra horta guinardo",
+      "comprar piso el carmel gestoria",
+      "gestor compra vivienda guinardo",
+      "revisar arras horta barcelona",
+    ],
+  }),
+  "barcelona-nou-barris": zoneDiff({
+    slug: "barcelona-nou-barris",
+    zoneShort: "Nou Barris",
+    heroH1: "Comprar en Nou Barris entre particulares — deuda de comunidad y arras equilibradas",
+    metaTitle: "Servicio completo de compra Nou Barris Barcelona | Gestor Livendia",
+    metaDescription: `¿Compras en Verdun, Roquetes o Trinitat Vella? Gestor comprador: arras CCCat y certificados. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
+    whySubtitle:
+      "Bloques de los años 60-70 con derramas recurrentes: verificamos certificado de deuda y cláusulas antes de ingresar señal.",
+    localZones:
+      "Verdun, Roquetes, Trinitat Vella, la Porta, Torre Baró — mismo gestor de referencia y protocolo CCCat.",
+    keywords: [
+      "servicio completo compra nou barris",
+      "comprar piso entre particulares verdun",
+      "gestor compra vivienda nou barris",
+      "revisar arras trinitat vella",
+    ],
+  }),
+  "barcelona-sant-andreu": zoneDiff({
+    slug: "barcelona-sant-andreu",
+    zoneShort: "Sant Andreu",
+    heroH1: "Comprar en Sant Andreu — La Sagrera, Palomar y arras CCCat con gestor Livendia",
+    metaTitle: "Servicio completo de compra Sant Andreu Barcelona | Gestor comprador Livendia",
+    metaDescription: `¿Compras en Sant Andreu entre particulares? Reserva, arras, anexos e hipoteca. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
+    whySubtitle:
+      "Palomar, Bon Pastor y La Sagrera: operaciones rápidas donde lo verbal sobre anexos debe quedar en contrato antes de la señal.",
+    localZones:
+      "Sant Andreu de Palomar, La Sagrera, Bon Pastor, Trinitat Vella (límite) — panel Livendia hasta notaría.",
+    keywords: [
+      "servicio completo compra sant andreu barcelona",
+      "comprar piso la sagrera gestoria",
+      "gestor compra vivienda sant andreu",
+      "revisar arras bon pastor",
+    ],
+  }),
+  "barcelona-sant-marti": zoneDiff({
+    slug: "barcelona-sant-marti",
+    zoneShort: "Sant Martí",
+    heroH1: "Servicio completo de compra en Sant Martí — El Clot, Verneda y Diagonal Mar sin firmar a ciegas",
+    metaTitle: "Servicio completo de compra Sant Martí Barcelona | Gestor comprador Livendia",
+    metaDescription: `¿Compras en Sant Martí (El Clot, Verneda, Diagonal Mar)? Arras CCCat e ITE. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. También Poblenou.`,
+    whySubtitle:
+      "Distrito completo más allá del 22@: comunidades multi-bloque, promociones nuevas y arras copiadas que no describen parking ni trastero.",
+    localZones:
+      "El Clot, La Verneda, Diagonal Mar, Provençals, Besòs i Maresme — complementa la landing de Poblenou con foco en todo Sant Martí.",
+    keywords: [
+      "servicio completo compra sant marti barcelona",
+      "comprar piso el clot gestoria",
+      "gestor compra vivienda diagonal mar",
+      "revisar arras la verneda",
+    ],
+  }),
 };
 
 function faqZone(zoneLabel: string): CompraLocalSeoContent {
@@ -379,6 +607,11 @@ export const COMPRA_LOCAL_BCN_ZONE_SEO: Record<string, CompraLocalSeoContent> = 
   "barcelona-les-corts": faqZone("Les Corts"),
   "barcelona-sarria-sant-gervasi": faqZone("Sarrià-Sant Gervasi"),
   "barcelona-sants-montjuic": faqZone("Sants-Montjuïc"),
+  "barcelona-ciutat-vella": faqZone("Ciutat Vella"),
+  "barcelona-horta-guinardo": faqZone("Horta-Guinardó"),
+  "barcelona-nou-barris": faqZone("Nou Barris"),
+  "barcelona-sant-andreu": faqZone("Sant Andreu"),
+  "barcelona-sant-marti": faqZone("Sant Martí"),
 };
 
 /** Hub índice compra local — enlaces a distritos Barcelona. */
@@ -393,4 +626,9 @@ export const COMPRA_LOCAL_BARCELONA_DISTRICTS = [
     name: "Sarrià-Sant Gervasi",
   },
   { slug: "barcelona-sants-montjuic", shortName: "Sants-Montjuïc", name: "Sants-Montjuïc" },
+  { slug: "barcelona-ciutat-vella", shortName: "Ciutat Vella", name: "Ciutat Vella (Barcelona)" },
+  { slug: "barcelona-horta-guinardo", shortName: "Horta-Guinardó", name: "Horta-Guinardó" },
+  { slug: "barcelona-nou-barris", shortName: "Nou Barris", name: "Nou Barris" },
+  { slug: "barcelona-sant-andreu", shortName: "Sant Andreu", name: "Sant Andreu (distrito)" },
+  { slug: "barcelona-sant-marti", shortName: "Sant Martí", name: "Sant Martí (distrito)" },
 ] as const;

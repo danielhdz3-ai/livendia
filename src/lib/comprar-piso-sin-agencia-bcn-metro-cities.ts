@@ -141,7 +141,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Horta-Guinardó"),
     analyticsPlacement: "comprar_piso_horta_guinardo",
     gestorCtaPlacement: "comprar_piso_horta_guinardo",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-horta-guinardo"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -167,7 +167,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sant Martí"),
     analyticsPlacement: "comprar_piso_sant_marti",
     gestorCtaPlacement: "comprar_piso_sant_marti",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-sant-marti"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -193,7 +193,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Sant Andreu"),
     analyticsPlacement: "comprar_piso_sant_andreu",
     gestorCtaPlacement: "comprar_piso_sant_andreu",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("sant-andreu"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-sant-andreu"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -375,7 +375,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Nou Barris"),
     analyticsPlacement: "comprar_piso_nou_barris",
     gestorCtaPlacement: "comprar_piso_nou_barris",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-nou-barris"),
     showBarcelonaCompraModules: true,
   },
   {
@@ -401,7 +401,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     faq: faqZone("Ciutat Vella"),
     analyticsPlacement: "comprar_piso_ciutat_vella",
     gestorCtaPlacement: "comprar_piso_ciutat_vella",
-    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona"),
+    optionalLocalCompraHref: localServicioCompletoCompraHref("barcelona-ciutat-vella"),
     showBarcelonaCompraModules: true,
   },
   {

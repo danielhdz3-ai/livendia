@@ -89,8 +89,8 @@ export default function ServicioCompletoCompraLocalIndexPage() {
                 Servicio completo de compra por barrio en Barcelona
               </h2>
               <p className="mt-3 max-w-3xl text-[#475569]">
-                Landings con título y enfoque propios por zona: Eixample, Gràcia, Poblenou, Les Corts, Sarrià-Sant
-                Gervasi y Sants-Montjuïc. Mismo precio ({""}
+                Landings con título y enfoque propios por distrito de Barcelona (10 distritos + Poblenou como zona
+                Sant Martí). Mismo precio ({""}
                 <Link href="/servicios/servicio-completo-compra" className="font-semibold text-[#1A4FBF] hover:underline">
                   servicio completo de compra
                 </Link>
