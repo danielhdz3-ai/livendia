@@ -9,6 +9,9 @@ import {
   BARCELONA_METRO_HABITACION_CITIES,
   barcelonaMetroHabitacionHref,
 } from "@/lib/contrato-alquiler-habitacion-barcelona-metro";
+import {
+  HABITACION_BCN_BARRIO_HUB,
+} from "@/lib/contrato-alquiler-habitacion-bcn-barrios";
 
 type Props = {
   showTitle?: boolean;
@@ -77,6 +80,25 @@ export function ContratoAlquilerHabitacionLocalCityLinks({
           </Link>
         ))}
       </nav>
+
+      {!isFooter ? (
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+            Distritos de Barcelona (contrato habitación)
+          </p>
+          <nav aria-label="Contrato habitación por distrito Barcelona" className={wrapClass}>
+            {HABITACION_BCN_BARRIO_HUB.map((c) => (
+              <Link
+                key={c.slug}
+                href={localContratoAlquilerHabitacionHref(c.slug)}
+                className={metroLinkClass}
+              >
+                {c.shortName}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      ) : null}
 
       {!isFooter ? (
         <div className="space-y-2">

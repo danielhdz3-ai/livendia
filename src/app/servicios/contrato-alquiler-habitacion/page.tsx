@@ -292,7 +292,7 @@ export default async function ContratoHabitacionPage() {
         <section className="border-t border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6 lg:py-20">
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl">
-              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">Proceso en cuatro pasos</h2>
+              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">Proceso en cinco pasos</h2>
               <p className="mt-4 text-lg leading-relaxed text-[#475569]">{HABITACION_PROCESS_INTRO}</p>
             </div>
 

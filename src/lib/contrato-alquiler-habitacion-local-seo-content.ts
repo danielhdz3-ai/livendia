@@ -1,4 +1,5 @@
 import { CONTRATO_ALQUILER_HABITACION_PRICE_LABEL } from "@/lib/catalog.public";
+import { getHabitacionBcnBarrioSeoContent } from "@/lib/contrato-alquiler-habitacion-bcn-barrios";
 
 export type HabitacionCityComparisonRow = {
   aspect: string;
@@ -1206,5 +1207,5 @@ export const HABITACION_LOCAL_SEO_CONTENT: Record<string, HabitacionLocalSeoCont
 };
 
 export function getHabitacionLocalSeoContent(slug: string): HabitacionLocalSeoContent | undefined {
-  return HABITACION_LOCAL_SEO_CONTENT[slug];
+  return HABITACION_LOCAL_SEO_CONTENT[slug] ?? getHabitacionBcnBarrioSeoContent(slug);
 }

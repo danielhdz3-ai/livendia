@@ -16,6 +16,14 @@ import {
   HABITACION_PROCESS_STEPS,
 } from "@/lib/contrato-alquiler-habitacion-local-shared";
 import {
+  buildHabitacionBarcelonaSteps,
+  HABITACION_BARCELONA_PROCESS,
+  HABITACION_LEGAL_GUARANTEES,
+  habitacionBarcelonaProcessTitle,
+  isHabitacionBarcelonaExtendedSlug,
+} from "@/lib/contrato-alquiler-habitacion-barcelona-modules";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import {
   CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_SLUG,
@@ -82,7 +90,11 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
   )}`;
   const telHref = getContactPhoneTelHref();
   const phoneDisplay = getContactPhoneDisplay();
-  const processIcons = [PhoneCall, CreditCard, UserRound, FileCheck] as const;
+  const processIcons = [PhoneCall, CreditCard, UserRound, FileCheck, FileText] as const;
+  const isBarcelonaExtended = isHabitacionBarcelonaExtendedSlug(config.slug);
+  const barcelonaProcessSteps = isBarcelonaExtended
+    ? buildHabitacionBarcelonaSteps(config.city, priceLabel)
+    : null;
   const lauLocalHref = isContratoAlquilerLocalSlugPublished(config.slug)
     ? localContratoAlquilerHref(config.slug)
     : isContratoAlquilerLocalSlugPublished("barcelona")
@@ -270,6 +282,32 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
             </section>
           ) : null}
 
+          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                Garantías del servicio Livendia en {config.city}
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-[#475569]">
+                Contrato de habitación en piso compartido con criterio legal, tarifa plana y gestor que te acompaña
+                hasta la firma.
+              </p>
+              <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {HABITACION_LEGAL_GUARANTEES.map((item) => (
+                  <li
+                    key={item.title}
+                    className="flex gap-3 rounded-xl bg-[#F8FAFC] p-5 ring-1 ring-slate-200"
+                  >
+                    <Scale className="mt-0.5 h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
+                    <div>
+                      <p className="font-semibold text-[#1E293B]">{item.title}</p>
+                      <p className="mt-1 text-sm text-[#64748b]">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
           <section className="border-b border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-6xl">
               <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
@@ -310,81 +348,94 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
             </section>
           ) : null}
 
-          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6 lg:py-20">
-            <div className="mx-auto max-w-6xl">
-              <div className="max-w-3xl">
-                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                  Proceso en cuatro pasos
-                </h2>
-                <p className="mt-4 text-lg leading-relaxed text-[#475569]">{HABITACION_PROCESS_INTRO}</p>
-              </div>
+          {isBarcelonaExtended && barcelonaProcessSteps ? (
+            <VentaSinAgenciaPasoAPasoSection
+              city={config.city}
+              priceLabel={priceLabel}
+              eyebrow={HABITACION_BARCELONA_PROCESS.eyebrow}
+              title={habitacionBarcelonaProcessTitle(config.city)}
+              intro={HABITACION_BARCELONA_PROCESS.intro}
+              steps={barcelonaProcessSteps}
+              alwaysWithYouTitle={HABITACION_BARCELONA_PROCESS.alwaysWithYouTitle}
+              alwaysWithYouBody={HABITACION_BARCELONA_PROCESS.alwaysWithYouBody}
+              serviceLine="Contrato alquiler habitación · Livendia"
+              feeNote={`Precio legal garantizado. Trámite 100 % online con gestor real en ${config.city}. Inventario con fotos incluido en el expediente.`}
+            />
+          ) : (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6 lg:py-20">
+              <div className="mx-auto max-w-6xl">
+                <div className="max-w-3xl">
+                  <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">Proceso en cinco pasos</h2>
+                  <p className="mt-4 text-lg leading-relaxed text-[#475569]">{HABITACION_PROCESS_INTRO}</p>
+                </div>
 
-              <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
-                <ol className="space-y-5">
-                  {HABITACION_PROCESS_STEPS.map((step, i) => {
-                    const Icon = processIcons[i] ?? FileCheck;
-                    return (
-                      <li
-                        key={step.title}
-                        className="flex gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6"
-                      >
-                        <div className="flex shrink-0 flex-col items-center gap-2">
-                          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-lg font-bold text-white shadow-md">
-                            {i + 1}
-                          </span>
-                          <Icon className="h-5 w-5 text-[#06B6D4]" aria-hidden />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-[#1E293B]">{step.title}</h3>
-                          <p className="mt-2 leading-relaxed text-[#475569]">{step.description}</p>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ol>
+                <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-start">
+                  <ol className="space-y-5">
+                    {HABITACION_PROCESS_STEPS.map((step, i) => {
+                      const Icon = processIcons[i] ?? FileCheck;
+                      return (
+                        <li
+                          key={step.title}
+                          className="flex gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6"
+                        >
+                          <div className="flex shrink-0 flex-col items-center gap-2">
+                            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-lg font-bold text-white shadow-md">
+                              {i + 1}
+                            </span>
+                            <Icon className="h-5 w-5 text-[#06B6D4]" aria-hidden />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold text-[#1E293B]">{step.title}</h3>
+                            <p className="mt-2 leading-relaxed text-[#475569]">{step.description}</p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
 
-                <aside className="lg:sticky lg:top-24">
-                  <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
-                    <p className="text-sm font-semibold uppercase tracking-wider text-cyan-200">
-                      Asesoramiento antes de contratar
-                    </p>
-                    <h3 className="mt-3 text-xl font-extrabold leading-snug">
-                      Habla con tu gestor especializado en habitación
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-blue-100">
-                      Cuéntanos tu caso por teléfono o WhatsApp. Te orientamos sobre convivencia, gastos y fianza
-                      antes de que pagues el servicio.
-                    </p>
-                    <a
-                      href={telHref}
-                      className="mt-6 block text-2xl font-extrabold tracking-tight text-white transition hover:text-cyan-200"
-                    >
-                      {phoneDisplay}
-                    </a>
-                    <p className="mt-1 text-xs text-blue-200/90">L–V · 9:00 – 19:30</p>
-                    <div className="mt-6 flex flex-col gap-3">
+                  <aside className="lg:sticky lg:top-24">
+                    <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] p-6 text-white shadow-xl ring-1 ring-white/10">
+                      <p className="text-sm font-semibold uppercase tracking-wider text-cyan-200">
+                        Asesoramiento antes de contratar
+                      </p>
+                      <h3 className="mt-3 text-xl font-extrabold leading-snug">
+                        Habla con tu gestor especializado en habitación
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-blue-100">
+                        Cuéntanos tu caso por teléfono o WhatsApp. Te orientamos sobre convivencia, gastos y fianza
+                        antes de que pagues el servicio.
+                      </p>
                       <a
                         href={telHref}
-                        className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl border-2 border-white bg-white/10 px-5 py-3 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20"
+                        className="mt-6 block text-2xl font-extrabold tracking-tight text-white transition hover:text-cyan-200"
                       >
-                        <Phone className="h-5 w-5 shrink-0" aria-hidden />
-                        Llamar ahora
+                        {phoneDisplay}
                       </a>
-                      <a
-                        href={waConsultHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#20bd5a]"
-                      >
-                        <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
-                        WhatsApp con gestor
-                      </a>
+                      <p className="mt-1 text-xs text-blue-200/90">L–V · 9:00 – 19:30</p>
+                      <div className="mt-6 flex flex-col gap-3">
+                        <a
+                          href={telHref}
+                          className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl border-2 border-white bg-white/10 px-5 py-3 text-sm font-bold backdrop-blur-sm transition hover:bg-white/20"
+                        >
+                          <Phone className="h-5 w-5 shrink-0" aria-hidden />
+                          Llamar ahora
+                        </a>
+                        <a
+                          href={waConsultHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#20bd5a]"
+                        >
+                          <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
+                          WhatsApp con gestor
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </aside>
+                  </aside>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           <LandingLocalTestimonialsSection
             title={

@@ -6,20 +6,24 @@ export const HABITACION_INCLUDES = [
     description: "Cláusulas adaptadas al arrendamiento de una habitación, no a un piso LAU completo.",
   },
   {
-    title: "Normas de convivencia",
-    description: "Horarios, visitas, limpieza, cocina, salón y baños compartidos por escrito.",
+    title: "Fianza garantizada conforme a la ley",
+    description: "Importe, depósito y devolución redactados con criterio legal y enlace al inventario fotográfico.",
   },
   {
-    title: "Gastos y suministros",
-    description: "Qué incluye la renta (luz, agua, internet, comunidad) y cómo se reparten.",
+    title: "Precio legal garantizado",
+    description: `Tarifa plana ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. en web — sin comisión sobre la renta mensual.`,
   },
   {
-    title: "Fianza y depósito",
-    description: "Importe, devolución y estado del mobiliario de la habitación al entrar y salir.",
+    title: "Derechos claros en la convivencia",
+    description: "Horarios, visitas, limpieza, cocina, salón y baños compartidos por escrito para propietario e inquilino.",
   },
   {
-    title: "Inventario de la habitación",
-    description: "Estado y elementos incluidos para evitar disputas al finalizar.",
+    title: "Contrato blindado bajo la ley",
+    description: "Redacción profesional del régimen de habitación, no plantilla genérica copiada de otra operación.",
+  },
+  {
+    title: "Inventario detallado con fotos",
+    description: "Estado de la habitación, mobiliario y zonas comunes documentados para evitar disputas al salir.",
   },
   {
     title: "Entrega en 48–72 h",
@@ -28,28 +32,33 @@ export const HABITACION_INCLUDES = [
 ] as const;
 
 export const HABITACION_PROCESS_INTRO =
-  "Primero hablas con un gestor especializado; después contratas y envías la documentación. En todo el proceso tienes asesoramiento personalizado por llamada o WhatsApp.";
+  "Cinco fases con gestor especializado: llamada previa para propietarios e inquilinos, contratación online, documentación en panel, redacción del contrato e implementación para firmar — también con firma electrónica certificada y explicación de cláusulas clave.";
 
 export const HABITACION_PROCESS_STEPS = [
   {
-    title: "Solicita una llamada con tu gestor",
+    title: "Llamada con tu gestor: le cuentas la operación",
     description:
-      "Antes de pagar, puedes reservar una llamada con un gestor especializado en alquiler de habitación. Le explicas tu caso — piso compartido, convivencia, gastos, fianza — y te asesoramos sin compromiso.",
+      "Antes de pagar, hablas con un gestor de habitación en piso compartido. Explicas si eres propietario o inquilino, renta, fianza, convivencia y dudas sobre el contrato — te orientamos sin compromiso.",
   },
   {
-    title: "Paga el servicio y envía la documentación",
+    title: "Contratas el servicio desde la web",
     description:
-      "Cuando decidas contratar, pagas online y nos envías la documentación del inquilino y del propietario: DNI, datos del piso, renta acordada y condiciones de convivencia.",
+      "Contratas online el servicio de contrato de alquiler de habitación y se abre tu expediente Livendia con precio legal garantizado (IVA incl.).",
   },
   {
-    title: "El gestor tramita tu contrato",
+    title: "Envías datos y documentación",
     description:
-      "Un gestor redacta y adapta el contrato a tu situación real. En todo momento tienes asesoramiento por llamada o WhatsApp: estudiamos tu caso y nos adaptamos a las circunstancias del piso.",
+      "Subes DNI, datos del piso, renta acordada, condiciones de convivencia y fotos para el inventario detallado de la habitación y zonas comunes.",
   },
   {
-    title: "Entrega lista para firmar",
+    title: "Tramitamos y redactamos el contrato",
     description:
-      "Recibes el contrato revisado en tu expediente. Resolvemos las dudas de propietario e inquilino antes de firmar o entregar llaves.",
+      "El gestor analiza la documentación, contrasta lo pactado y redacta el contrato blindado bajo la ley: fianza, gastos, preaviso e inventario. Te enviamos el borrador al panel.",
+  },
+  {
+    title: "Implementación para firmar y asesoramiento",
+    description:
+      "Entrega lista para firmar en papel o con firma electrónica certificada. El gestor explica las cláusulas más importantes hasta que propietario e inquilino firmen con criterio.",
   },
 ] as const;
 

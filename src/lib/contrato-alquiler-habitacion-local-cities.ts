@@ -4,6 +4,10 @@ import {
   getHabitacionLocalSeoContent,
   type HabitacionLocalSeoContent,
 } from "@/lib/contrato-alquiler-habitacion-local-seo-content";
+import {
+  HABITACION_BCN_BARRIO_CITIES,
+  HABITACION_BCN_BARRIO_PUBLISHED_SLUGS,
+} from "@/lib/contrato-alquiler-habitacion-bcn-barrios";
 
 export const CONTRATO_ALQUILER_HABITACION_LOCAL_BASE = "/servicios/contrato-alquiler-habitacion";
 
@@ -21,6 +25,7 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_PUBLISHED_SLUGS: readonly string
   "cornella-de-llobregat",
   "sabadell",
   "terrassa",
+  ...HABITACION_BCN_BARRIO_PUBLISHED_SLUGS,
   "madrid",
   "valencia",
   "malaga",
@@ -539,4 +544,5 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
       },
     ],
   },
+  ...(HABITACION_BCN_BARRIO_CITIES as ContratoAlquilerHabitacionLocalCityDefinition[]),
 ];
