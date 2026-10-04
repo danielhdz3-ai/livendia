@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog — Gestoría inmobiliaria y derecho aplicado",
   description:
-    "Artículos y guías sobre contratos de alquiler y compraventa, LAU, arras, administración de alquiler y gestión inmobiliaria con Livendia.",
+    "Artículos y guías sobre contratos de alquiler y compraventa, LAU, arras, administración de alquiler y gestión inmobiliaria con Livendia. Incluye una sección de actualidad con la normativa y las novedades del sector.",
   alternates: { canonical: "https://livendia.com/blog" },
 };
 

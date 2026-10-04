@@ -54,6 +54,13 @@ export function PublicHeader() {
             Equipo
           </Link>
           <Link
+            href="/blog?categoria=actualidad"
+            className="text-sm font-medium hover:text-cyan-300"
+            title="Actualidad inmobiliaria: normativa, mercado y novedades"
+          >
+            Actualidad
+          </Link>
+          <Link
             href="/blog"
             className="text-sm font-medium hover:text-cyan-300"
             title="Blog de gestoría inmobiliaria y contratos"

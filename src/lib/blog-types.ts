@@ -1,4 +1,4 @@
-export const BLOG_CATEGORIES = ["alquiler", "compraventa", "administracion", "legal"] as const;
+export const BLOG_CATEGORIES = ["alquiler", "compraventa", "administracion", "legal", "actualidad"] as const;
 
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
 
@@ -29,6 +29,7 @@ export const BLOG_CATEGORY_LABEL: Record<BlogCategory, string> = {
   compraventa: "Compraventa",
   administracion: "Administración",
   legal: "Legal",
+  actualidad: "Actualidad",
 };
 
 export const BLOG_CATEGORY_IMAGES: Record<BlogCategory, string> = {
@@ -36,6 +37,7 @@ export const BLOG_CATEGORY_IMAGES: Record<BlogCategory, string> = {
   compraventa: "/images/contratodearras.jpg",
   administracion: "/images/gestoria20.jpg",
   legal: "/images/contratos2.jpg",
+  actualidad: "/images/gestoria20.jpg",
 };
 
 export const BLOG_DEFAULT_OG_IMAGE = "/images/contratos2.jpg";

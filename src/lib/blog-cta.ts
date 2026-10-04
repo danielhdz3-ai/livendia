@@ -44,6 +44,18 @@ export function getCategoryCta(category: BlogCategory): BlogCategoryCta {
         infoLabel: "Guía para propietarios",
         whatsappPrefill: "Hola, leo el blog y me interesa la administración de alquiler.",
       };
+    case "actualidad":
+      return {
+        headline: "Aplica cada cambio a tu caso con un gestor",
+        subline:
+          "Revisión de contratos, declaración de IRPF, CEE y adecuación a zonas tensionadas: nos adaptamos a la normativa que acaba de entrar en vigor.",
+        contratarHref: "/servicios",
+        contratarLabel: "Ver todos los servicios",
+        infoHref: "/contacto",
+        infoLabel: "Hablar con un gestor",
+        whatsappPrefill:
+          "Hola, leo el blog de actualidad inmobiliaria y quiero que un gestor revise mi caso tras los últimos cambios normativos.",
+      };
     case "legal":
     default:
       return {
