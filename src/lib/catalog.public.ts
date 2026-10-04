@@ -451,7 +451,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
 export const SERVICE_IMAGES: Record<string, string> = {
   "administracion-alquiler": "/images/gestoria.jpg",
   "administracion-alquiler-temporada": "/images/gestoria20.jpg",
-  "servicio-alquiler-integral": "/images/contratodealquiler.jpg",
+  "servicio-alquiler-integral": "/images/servicio-alquiler-integral-hero.jpg",
   "acompanamiento-alquiler": "/images/tipo1.jpg",
   "contrato-alquiler-lau": "/images/contratos.jpg",
   "contrato-alquiler-temporada": "/images/contratos5.jpg",

@@ -142,8 +142,8 @@ export default async function ServicioAlquilerIntegralPage() {
 
                 <div className="relative h-44 sm:h-56 lg:h-auto">
                   <Image
-                    src="/images/contratodealquiler.jpg"
-                    alt="Propietario y gestor Livendia en la puesta en marcha de un alquiler"
+                    src="/images/servicio-alquiler-integral-hero.jpg"
+                    alt="Gestora Livendia coordinando la puesta en marcha de un alquiler para propietarios"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
