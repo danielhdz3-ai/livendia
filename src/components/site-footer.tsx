@@ -122,6 +122,14 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
                   </li>
                   <li>
                     <Link
+                      href="/servicios/servicio-alquiler-integral"
+                      className="text-blue-100 hover:text-white transition-colors"
+                    >
+                      Alquiler integral
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/servicios/administracion-alquiler-temporada"
                       className="text-blue-100 hover:text-white transition-colors"
                     >

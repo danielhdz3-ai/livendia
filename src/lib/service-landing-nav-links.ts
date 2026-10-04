@@ -88,6 +88,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
     title: "Alquiler",
     subtitle: "Propietarios e inquilinos",
     links: [
+      { href: "/servicios/servicio-alquiler-integral", label: "Alquiler integral (captación)" },
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/madrid", label: "Pack LAU + admin Madrid" },
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/barcelona", label: "Pack LAU + admin Barcelona" },
       { href: "/servicios/pack-contrato-lau-administracion-alquiler/valencia", label: "Pack LAU + admin Valencia" },

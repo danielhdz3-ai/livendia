@@ -78,6 +78,13 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_SLUG = "administracion-alquiler-t
 export const ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_EUR = 100;
 export const ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL = `${ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_EUR} €`;
 
+/** Servicio de alquiler integral (captación + puesta en marcha) — referencia IVA incl. */
+export const SERVICIO_ALQUILER_INTEGRAL_PRICE_EUR = 599;
+export const SERVICIO_ALQUILER_INTEGRAL_PRICE_CENTS = SERVICIO_ALQUILER_INTEGRAL_PRICE_EUR * 100;
+export const SERVICIO_ALQUILER_INTEGRAL_PRICE_LABEL = `${SERVICIO_ALQUILER_INTEGRAL_PRICE_EUR} €`;
+export const SERVICIO_ALQUILER_INTEGRAL_SLUG = "servicio-alquiler-integral" as const;
+export const SERVICIO_ALQUILER_INTEGRAL_PATH = "/servicios/servicio-alquiler-integral" as const;
+
 /** Contrato de alquiler LAU — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_LAU_PRICE_EUR = 145;
 export const CONTRATO_ALQUILER_LAU_PRICE_CENTS = CONTRATO_ALQUILER_LAU_PRICE_EUR * 100;
@@ -153,6 +160,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [ACOMPANAMIENTO_ALQUILER_SLUG]: ACOMPANAMIENTO_ALQUILER_PRICE_CENTS,
   [ADMINISTRACION_ALQUILER_SLUG]: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_CENTS,
   [ADMINISTRACION_ALQUILER_TEMPORADA_SLUG]: ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_CENTS,
+  [SERVICIO_ALQUILER_INTEGRAL_SLUG]: SERVICIO_ALQUILER_INTEGRAL_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -318,6 +326,24 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
     ],
     badge: "Temporada · Habitaciones",
   },
+  {
+    slug: SERVICIO_ALQUILER_INTEGRAL_SLUG,
+    name: "Servicio de alquiler integral",
+    description:
+      "Para propietarios que quieren alquilar sin agencia tradicional: búsqueda activa de inquilinos, filtrado de solvencia con seguro de impago recomendado, contrato, fianza, suministros y entrega de llaves. Administración mensual opcional.",
+    category: "administracion_alquiler",
+    price_cents: SERVICIO_ALQUILER_INTEGRAL_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Captación y filtrado de candidatos solventes",
+      "Tramitación documental con aseguradora de alquiler garantizado (recomendada)",
+      "Contrato LAU, temporada o habitación y coordinación de firma",
+      "Fianza legal, altas de suministros y entrega de llaves",
+      "Gestor dedicado hasta la puesta en marcha",
+      "Administración mensual contratable aparte",
+    ],
+    badge: "Propietarios · Puesta en marcha",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = {
@@ -382,7 +408,11 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
       if (i !== -1) return i;
     }
     if (category === "administracion_alquiler") {
-      const order: string[] = [ADMINISTRACION_ALQUILER_SLUG, ADMINISTRACION_ALQUILER_TEMPORADA_SLUG];
+      const order: string[] = [
+        SERVICIO_ALQUILER_INTEGRAL_SLUG,
+        ADMINISTRACION_ALQUILER_SLUG,
+        ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,
+      ];
       const i = order.indexOf(s.slug);
       if (i !== -1) return i;
     }
@@ -421,6 +451,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
 export const SERVICE_IMAGES: Record<string, string> = {
   "administracion-alquiler": "/images/gestoria.jpg",
   "administracion-alquiler-temporada": "/images/gestoria20.jpg",
+  "servicio-alquiler-integral": "/images/contratodealquiler.jpg",
   "acompanamiento-alquiler": "/images/tipo1.jpg",
   "contrato-alquiler-lau": "/images/contratos.jpg",
   "contrato-alquiler-temporada": "/images/contratos5.jpg",
@@ -477,6 +508,7 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "acompanamiento-alquiler": "Acompañamiento de alquiler",
   "administracion-alquiler": "Administración de alquiler",
   "administracion-alquiler-temporada": "Admin. temporada / habitaciones",
+  "servicio-alquiler-integral": "Alquiler integral",
 };
 
 export function getServiceCardTitle(service: Pick<PublicService, "slug" | "name">): string {

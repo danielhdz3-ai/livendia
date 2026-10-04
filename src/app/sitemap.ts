@@ -116,6 +116,7 @@ import {
 const SERVICIO_SLUGS = [
   "administracion-alquiler",
   "administracion-alquiler-temporada",
+  "servicio-alquiler-integral",
   "contrato-alquiler-habitacion",
   "contrato-alquiler-lau",
   "contrato-alquiler-temporada",

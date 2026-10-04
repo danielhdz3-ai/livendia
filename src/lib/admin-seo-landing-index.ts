@@ -202,6 +202,7 @@ const BARCELONA_DISTRICT_CITY_NAMES = new Set([
 ]);
 
 const SERVICE_HUB_LABELS: Record<string, string> = {
+  "servicio-alquiler-integral": "Servicio alquiler integral",
   "administracion-alquiler": "Administración de alquiler",
   "administracion-alquiler-temporada": "Administración alquiler temporada",
   "contrato-alquiler-habitacion": "Contrato alquiler habitación",
