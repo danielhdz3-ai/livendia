@@ -40,6 +40,7 @@ import {
   GESTORIA_INMOBILIARIA_LOCAL_BASE,
   getPublishedGestoriaInmobiliariaLocalCities,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
+import { getGestoriaCityVerticalStaticParams } from "@/lib/gestoria-city-vertical-hub";
 import { getSiteUrl } from "@/lib/site-url";
 import {
   REVISION_DOCUMENTAL_POST_ARRAS_LOCAL_BASE,
@@ -278,6 +279,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.88,
     }));
 
+  const gestoriaCityVerticalHubs: MetadataRoute.Sitemap = getGestoriaCityVerticalStaticParams().map(
+    ({ slug, vertical }) => ({
+      url: `${base}${GESTORIA_INMOBILIARIA_LOCAL_BASE}/${slug}/${vertical}`,
+      lastModified: gestoriaDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.87,
+    }),
+  );
+
   const blogArticles: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
     url: `${base}/blog/${p.slug}`,
     lastModified: new Date(p.modified + "T12:00:00Z"),
@@ -472,6 +482,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...packArrasGestionLocal,
     ...gestoriaHub,
     ...gestoriaInmobiliariaLocalCiudades,
+    ...gestoriaCityVerticalHubs,
     ...ciudadesHubPages,
     ...blogArticles,
   ];

@@ -27,6 +27,10 @@ import {
   isAdministracionAlquilerLocalSlugPublished,
   localAdministracionAlquilerHref,
 } from "@/lib/administracion-alquiler-local-cities";
+import {
+  getGestoriaCityVerticalHub,
+  localGestoriaCityVerticalHref,
+} from "@/lib/gestoria-city-vertical-hub";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -178,6 +182,8 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
     ADMINISTRACION_LOCAL_LINK_PHASE_SLUGS.includes(config.slug) &&
     isAdministracionAlquilerLocalSlugPublished(config.slug);
   const administracionLocalHref = localAdministracionAlquilerHref(config.slug);
+  const alquilerVerticalHub = getGestoriaCityVerticalHub(config.slug, "alquiler");
+  const compraventaVerticalHub = getGestoriaCityVerticalHub(config.slug, "compraventa");
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -234,6 +240,28 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                       WhatsApp
                     </a>
                   </div>
+                  {alquilerVerticalHub || compraventaVerticalHub ? (
+                    <p className="mt-8 text-sm text-blue-100">
+                      Índices por vertical:{" "}
+                      {alquilerVerticalHub ? (
+                        <Link
+                          href={localGestoriaCityVerticalHref(config.slug, "alquiler")}
+                          className="font-semibold text-white underline decoration-white/40 hover:decoration-white"
+                        >
+                          Alquiler en {config.city}
+                        </Link>
+                      ) : null}
+                      {alquilerVerticalHub && compraventaVerticalHub ? " · " : null}
+                      {compraventaVerticalHub ? (
+                        <Link
+                          href={localGestoriaCityVerticalHref(config.slug, "compraventa")}
+                          className="font-semibold text-white underline decoration-white/40 hover:decoration-white"
+                        >
+                          Compraventa en {config.city}
+                        </Link>
+                      ) : null}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="relative h-[280px] lg:h-auto">
                   <Image
