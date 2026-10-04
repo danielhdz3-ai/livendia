@@ -3,6 +3,12 @@
  * (mismo protocolo en panel, WhatsApp y gestor asignado).
  */
 
+import {
+  ADMINISTRACION_ALQUILER_RENT_MONITORING_DESCRIPTION,
+  ADMINISTRACION_ALQUILER_RENT_MONITORING_TITLE,
+  ADMINISTRACION_ALQUILER_RENT_NOT_GUARANTEED_NOTE,
+} from "@/lib/administracion-alquiler-rent-copy";
+
 export type AdministracionAlquilerOperationsScopeItem = {
   title: string;
   description: string;
@@ -11,9 +17,8 @@ export type AdministracionAlquilerOperationsScopeItem = {
 export const ADMINISTRACION_ALQUILER_OPERATIONS_SCOPE: readonly AdministracionAlquilerOperationsScopeItem[] =
   [
     {
-      title: "Cobro mensual de la renta",
-      description:
-        "Seguimiento y control de los pagos mensuales de la renta, con reclamación al inquilino en caso de impago.",
+      title: ADMINISTRACION_ALQUILER_RENT_MONITORING_TITLE,
+      description: ADMINISTRACION_ALQUILER_RENT_MONITORING_DESCRIPTION,
     },
     {
       title: "Incidencias y consultas del inquilino",
@@ -64,7 +69,7 @@ export function getAdministracionAlquilerOnlineScopeIntro(
       return {
         heading: `Alcance operativo en ${cityLabel ?? "tu ciudad"}`,
         lead:
-          `Mismo protocolo mensual en ${cityLabel ?? "tu municipio"}: cobro de renta, incidencias, siniestros, renovaciones y canal único con el inquilino. Livendia no desplaza gestores a tu provincia; la operativa es remota desde Barcelona.`,
+          `Mismo protocolo mensual en ${cityLabel ?? "tu municipio"}: seguimiento y control de la renta (sin garantía de cobro), incidencias, siniestros, renovaciones y canal único con el inquilino. Livendia no desplaza gestores a tu provincia; la operativa es remota desde Barcelona.`,
         note:
           "Pensado para propietarios que ya tienen inquilino y quieren delegar la administración sin hablar con el arrendatario.",
       };
@@ -81,9 +86,11 @@ export function getAdministracionAlquilerOnlineScopeIntro(
       return {
         heading: "Alcance operativo en toda España (online)",
         lead:
-          "Cobro de renta, incidencias, siniestros, renovaciones y relación con el inquilino con gestor asignado y panel del propietario. Fuera de Barcelona/AMB no hay visitas presenciales de Livendia al inmueble.",
+          "Seguimiento de la renta, incidencias, siniestros, renovaciones y relación con el inquilino con gestor asignado y panel del propietario. Fuera de Barcelona/AMB no hay visitas presenciales de Livendia al inmueble.",
         note:
           "Servicio orientado a propietarios con inquilino ya instalado que delegan el contacto diario en Livendia.",
       };
   }
 }
+
+export { ADMINISTRACION_ALQUILER_RENT_NOT_GUARANTEED_NOTE };

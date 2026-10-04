@@ -54,7 +54,7 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
             <p className="text-xs font-semibold uppercase tracking-wide text-[#1A4FBF]">Alquiler · Propietarios</p>
             <h3 className="mt-2 text-xl font-bold text-[#1E293B]">Contrato LAU + primer mes de administración</h3>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-[#64748b]">
-              Redacta el contrato conforme a la LAU y activa la gestión mensual desde el día uno: cobro de renta,
+              Redacta el contrato conforme a la LAU y activa la gestión mensual desde el día uno: seguimiento de renta,
               canal único con el inquilino e incidencias documentadas en panel.
             </p>
             <ul className="mt-4 space-y-0">

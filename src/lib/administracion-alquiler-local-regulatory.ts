@@ -177,12 +177,17 @@ export const ADMINISTRACION_ALQUILER_TEMPLATE_FAQ = [
   {
     question: "¿Qué pasa si el inquilino no paga?",
     answer:
-      "Livendia monitoriza vencimientos, reclama por los canales acordados y te avisa de forma temprana. Si persiste el impago, orientamos sobre requerimientos y, si hace falta, servicios legales adicionales (el pack mensual no incluye juicio de desahucio).",
+      "La renta debe ingresarse en tu cuenta bancaria; Livendia no recibe ese dinero ni lo garantiza. Nosotros controlamos cada mes que el pago llegue, te avisamos en el panel y reclamamos al inquilino si hay retraso o impago. Si persiste el problema, orientamos sobre requerimientos y servicios legales adicionales (la cuota mensual no incluye juicio de desahucio).",
+  },
+  {
+    question: "¿Livendia cobra la renta o la ingresa en mi nombre?",
+    answer:
+      "No. El inquilino paga directamente en la cuenta corriente del propietario. Livendia hace seguimiento, control mensual y reclamación ante incidencias de pago; no somos pasarela de cobro ni renta garantizada.",
   },
   {
     question: "¿Tenéis seguro de impago de alquiler?",
     answer:
-      `No incluimos póliza de impago en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Podemos orientarte sobre compañías especializadas si quieres contratar seguro aparte; nuestro servicio cubre gestión, comunicación e incidencias.`,
+      `No incluimos póliza de impago ni renta garantizada en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. El seguro antimpago es un producto externo que contratas aparte; podemos orientarte hacia nuestra aseguradora de confianza. La mensualidad cubre seguimiento de la renta, reclamación ante impago, comunicación e incidencias.`,
   },
   {
     question: "¿Puedo vender el piso con el inquilino dentro?",

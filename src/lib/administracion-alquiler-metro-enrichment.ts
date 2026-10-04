@@ -45,7 +45,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Retraso reiterado de transferencia",
-        body: "El inquilino lleva dos meses pagando entre el día 5 y el 8. Livendia aplica el protocolo de cobro: recordatorio automático el día 3, llamada de mediación el día 5 y aviso al propietario solo si no hay justificante antes del día 7. El propietario no persigue la renta por WhatsApp.",
+        body: "El inquilino lleva dos meses pagando entre el día 5 y el 8. Livendia aplica el protocolo de seguimiento ante impago: recordatorio automático el día 3, llamada de mediación el día 5 y aviso al propietario solo si no hay justificante antes del día 7. El propietario no persigue la renta por WhatsApp.",
       },
       {
         title: "Ejemplo ilustrativo — Conflicto por mascota en Zona Universitària",
@@ -131,7 +131,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "L'Hospitalet está incluido en la declaración de zona tensionada de Cataluña. Los nuevos contratos y renovaciones deben respetar el baremo estatal de referencia e IRAV cuando corresponda. El municipio registró caída de contratos nuevos (~−20 % interanual en 2025 según Idealista/news citando Incasòl), lo que no elimina la presión de precios en oferta.",
     marketContext:
-      "L'Hospitalet es el segundo municipio más poblado del área metropolitana (>300.000 hab.) y alternativa habitual a Barcelona capital: Idealista situaba el alquiler en 17,3 €/m² en febrero 2026 (Properfy), frente a ~23,9 €/m² en Barcelona ciudad en la misma época (El Periódico citando Idealista, junio 2025). Fotocasa (agosto 2026) eleva la media municipal a 20 €/m², con Collblanc–La Torrassa en 21 €/m² y Centre en 15 €/m². El parque es compacto y envejecido — mediana ~56 m² en contratos reales (AT 2024) —, lo que concentra incidencias de fontanería, ascensor y comunidad. Para propietarios fuera del municipio, el coste oculto no es la renta sino el tiempo en averías y cobros reiterados.",
+      "L'Hospitalet es el segundo municipio más poblado del área metropolitana (>300.000 hab.) y alternativa habitual a Barcelona capital: Idealista situaba el alquiler en 17,3 €/m² en febrero 2026 (Properfy), frente a ~23,9 €/m² en Barcelona ciudad en la misma época (El Periódico citando Idealista, junio 2025). Fotocasa (agosto 2026) eleva la media municipal a 20 €/m², con Collblanc–La Torrassa en 21 €/m² y Centre en 15 €/m². El parque es compacto y envejecido — mediana ~56 m² en contratos reales (AT 2024) —, lo que concentra incidencias de fontanería, ascensor y comunidad. Para propietarios fuera del municipio, el coste oculto no es la renta sino el tiempo en averías y reclamaciones de renta reiteradas.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Avería de ascensor en Bellvitge",
@@ -196,7 +196,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago en Almeda",
-        body: "Inquilino retrasa dos meses. Protocolo de cobro con mediación formal antes de informar al propietario de escalado legal.",
+        body: "Inquilino retrasa dos meses. Protocolo de seguimiento ante impago con mediación formal antes de informar al propietario de escalado legal.",
       },
       {
         title: "Ejemplo ilustrativo — Rotación en Centre tras fin de contrato",
@@ -229,7 +229,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sants-Montjuïc está en zona tensionada catalana (271 municipios, MIVAU 2024–2027). Renovaciones con IRAV y depósito Incasòl obligatorio; la brecha entre oferta en portales y contratos registrados condiciona cada subida legal.",
     marketContext:
-      "Sants-Montjuïc es uno de los distritos más conectados de Barcelona (L3, L5, L1, Rodalies en Sants) con parque envejecido y demanda estable de familias y profesionales. Brains Real Estate (Q2 2026) lo sitúa en 23,58 €/m² de publicación. La heterogeneidad entre Sants (más caro) y Poble-sec/Montjuïc (más asequible) obliga a contrastar referencia por barrio en cada renovación. Para el propietario fuera del distrito, el coste oculto son incidencias en calderas comunitarias, humedades en sótanos y mediación de cobros sin horario fijo.",
+      "Sants-Montjuïc es uno de los distritos más conectados de Barcelona (L3, L5, L1, Rodalies en Sants) con parque envejecido y demanda estable de familias y profesionales. Brains Real Estate (Q2 2026) lo sitúa en 23,58 €/m² de publicación. La heterogeneidad entre Sants (más caro) y Poble-sec/Montjuïc (más asequible) obliga a contrastar referencia por barrio en cada renovación. Para el propietario fuera del distrito, el coste oculto son incidencias en calderas comunitarias, humedades en sótanos y mediación en pagos de renta sin horario fijo.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Caldera comunitaria en La Bordeta",
@@ -278,7 +278,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sant Martí está en zona tensionada catalana. IRAV en renovaciones, Incasòl en nuevos contratos y especial atención a contratos de habitaciones mal documentados en Poblenou.",
     marketContext:
-      "Sant Martí combina la transformación del 22@ en Poblenou con barrios consolidados (Clot, Verneda) y nueva oferta en Diagonal Mar. Brains Real Estate (Q2 2026) cifra el distrito en 24,12 €/m² de publicación. La demanda de perfiles profesionales eleva expectativas de respuesta rápida a incidencias. Para propietarios que no viven en el distrito, Livendia desde Les Corts asume cobro, mediación comunitaria e industriales del Besòs-Maresme.",
+      "Sant Martí combina la transformación del 22@ en Poblenou con barrios consolidados (Clot, Verneda) y nueva oferta en Diagonal Mar. Brains Real Estate (Q2 2026) cifra el distrito en 24,12 €/m² de publicación. La demanda de perfiles profesionales eleva expectativas de respuesta rápida a incidencias. Para propietarios que no viven en el distrito, Livendia desde Les Corts asume seguimiento de renta, mediación comunitaria e industriales del Besòs-Maresme.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Queja de ruido en Poblenou",
@@ -294,7 +294,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago en La Verneda",
-        body: "Dos meses de retraso. Protocolo de cobro con cronología visible en panel del propietario.",
+        body: "Dos meses de retraso. Protocolo de seguimiento ante impago con cronología visible en panel del propietario.",
       },
       {
         title: "Ejemplo ilustrativo — Entrega de llaves tras salida en Poblenou",
@@ -327,7 +327,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Horta-Guinardó está en zona tensionada catalana. IRAV e Incasòl aplican en renovaciones; la heterogeneidad de €/m² entre La Clota y El Carmel obliga a contrastar referencia por barrio, no solo media de distrito.",
     marketContext:
-      "Horta-Guinardó es un distrito residencial con fuerte componente familiar en Horta centre y La Clota, y parque en pendiente en El Carmel/La Teixonera donde las incidencias de fontanería y fachada son más costosas en tiempo que en distritos planos. Brains Real Estate (Q2 2026) lo sitúa en 21,34 €/m² de publicación. Vall d'Hebron añade demanda de perfiles sanitarios con turnos rotativos — si el propietario no vive en el distrito, las urgencias a horas atípicas acaban en su móvil sin gestor. Livendia desde Les Corts canaliza cobro, IRAV e industriales habituados en ladera.",
+      "Horta-Guinardó es un distrito residencial con fuerte componente familiar en Horta centre y La Clota, y parque en pendiente en El Carmel/La Teixonera donde las incidencias de fontanería y fachada son más costosas en tiempo que en distritos planos. Brains Real Estate (Q2 2026) lo sitúa en 21,34 €/m² de publicación. Vall d'Hebron añade demanda de perfiles sanitarios con turnos rotativos — si el propietario no vive en el distrito, las urgencias a horas atípicas acaban en su móvil sin gestor. Livendia desde Les Corts canaliza seguimiento de renta, IRAV e industriales habituados en ladera.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Filtración en fachada en El Carmel",
@@ -376,7 +376,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sant Andreu está en zona tensionada. IRAV en renovaciones; especial atención a contratos tras reforma donde el propietario intenta recuperar inversión — la subida debe encajar en baremo legal.",
     marketContext:
-      "Sant Andreu combina tradición de barrio (mercado, tejido comercial) con transformación en La Sagrera y Navas por obra pública y nueva vivienda. Brains Real Estate (Q2 2026) cifra el distrito en 21,88 €/m². La demanda busca más metros por euro que en Eixample o Sarrià. Propietarios fuera del distrito enfrentan mezcla de peticiones administrativas (empadronamiento) e incidencias de convivencia en pisos compartidos. Livendia unifica canal, cobro e IRAV desde Les Corts.",
+      "Sant Andreu combina tradición de barrio (mercado, tejido comercial) con transformación en La Sagrera y Navas por obra pública y nueva vivienda. Brains Real Estate (Q2 2026) cifra el distrito en 21,88 €/m². La demanda busca más metros por euro que en Eixample o Sarrià. Propietarios fuera del distrito enfrentan mezcla de peticiones administrativas (empadronamiento) e incidencias de convivencia en pisos compartidos. Livendia unifica canal, seguimiento de renta e IRAV desde Les Corts.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Queja de convivencia en Sant Andreu centre",
@@ -396,7 +396,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Retraso de renta en Trinitat Vella (límite)",
-        body: "Transferencia día 8. Protocolo de cobro activado desde día 3; propietario ve estado en panel sin escribir al inquilino.",
+        body: "Transferencia día 8. Protocolo de seguimiento ante impago activado desde día 3; propietario ve estado en panel sin escribir al inquilino.",
       },
     ],
     nearbyLandmarks: [
@@ -425,7 +425,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sarrià-Sant Gervasi está en zona tensionada catalana. IRAV en renovaciones, Incasòl en altas y especial cuidado en contratos de larga duración con rentas >2.000 €/mes: un error de cálculo expone a reclamación del inquilino y costes de reversión.",
     marketContext:
-      "Sarrià-Sant Gervasi encabeza el ranking de €/m² de Barcelona capital junto al Eixample. Brains Real Estate (Q2 2026) lo sitúa en 28,76 €/m² de publicación (+5,2 % interanual), con esfuerzo de alquiler elevado pero demanda estable de perfiles de alto poder adquisitivo. La gestión no es encontrar inquilino — es sostener la relación contractual sin desgaste: ascensores de finca regia, derramas sorpresa, renovaciones con IRAV cuando el inquilino conoce la normativa, y expectativa de respuesta inmediata. Propietarios fuera del distrito o en el extranjero delegan en Livendia desde Les Corts el canal único, el cobro el día 1 y la mediación con portería y comunidad.",
+      "Sarrià-Sant Gervasi encabeza el ranking de €/m² de Barcelona capital junto al Eixample. Brains Real Estate (Q2 2026) lo sitúa en 28,76 €/m² de publicación (+5,2 % interanual), con esfuerzo de alquiler elevado pero demanda estable de perfiles de alto poder adquisitivo. La gestión no es encontrar inquilino — es sostener la relación contractual sin desgaste: ascensores de finca regia, derramas sorpresa, renovaciones con IRAV cuando el inquilino conoce la normativa, y expectativa de respuesta inmediata. Propietarios fuera del distrito o en el extranjero delegan en Livendia desde Les Corts el canal único, el control de que la renta entra en plazo y la mediación con portería y comunidad.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Derrama de ascensor en finca de Les Tres Torres",
@@ -474,7 +474,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Nou Barris está en zona tensionada aunque la oferta publicada sea más baja que en Eixample. IRAV e Incasòl aplican igual; la trampa es proponer subidas copiando precios de portal sin baremo — Livendia verifica referencia oficial antes de notificar al inquilino.",
     marketContext:
-      "Nou Barris es el distrito con menor €/m² de publicación entre los grandes de Barcelona capital (Brains Real Estate, Q2 2026: 18,42 €/m²), lo que atrae inversión de propietarios que buscan rentabilidad por volumen. El parque envejecido implica incidencias recurrentes: humedades, ascensores parados semanas, calderas comunitarias sin mantenimiento. Muchos propietarios no viven en el distrito — viven en otro municipio o heredaron el piso — y el inquilino acaba usando su WhatsApp personal como línea de mantenimiento. Livendia desde Les Corts establece canal único, protocolo de cobro idéntico al de distritos premium y red de industriales en Verdum/Roquetes con tiempos de respuesta acordados.",
+      "Nou Barris es el distrito con menor €/m² de publicación entre los grandes de Barcelona capital (Brains Real Estate, Q2 2026: 18,42 €/m²), lo que atrae inversión de propietarios que buscan rentabilidad por volumen. El parque envejecido implica incidencias recurrentes: humedades, ascensores parados semanas, calderas comunitarias sin mantenimiento. Muchos propietarios no viven en el distrito — viven en otro municipio o heredaron el piso — y el inquilino acaba usando su WhatsApp personal como línea de mantenimiento. Livendia desde Les Corts establece canal único, protocolo de seguimiento ante impago idéntico al de distritos premium y red de industriales en Verdum/Roquetes con tiempos de respuesta acordados.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Humedad capilar en planta baja de Roquetes",
@@ -486,7 +486,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago reiterado en Verdum",
-        body: "Dos meses de retraso. Protocolo día 3 → mediación → aviso formal. Propietario ve cronología en panel; Livendia no comparte teléfono del propietario con el inquilino en la fase de cobro.",
+        body: "Dos meses de retraso. Protocolo día 3 → mediación → aviso formal. Propietario ve cronología en panel; Livendia no comparte teléfono del propietario con el inquilino en la fase de reclamación de renta.",
       },
       {
         title: "Ejemplo ilustrativo — Queja de ruido entre vecinos en Porta",
@@ -523,7 +523,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Ciutat Vella está en zona tensionada y bajo escrutinio de uso de vivienda (LAU vs temporada vs turístico). Contratos mal encuadrados exponen a sanciones; Livendia revisa coherencia de uso declarado y canaliza incidencias sin mezclar usos incompatibles.",
     marketContext:
-      "Ciutat Vella concentra el centro histórico turístico y la mayor presión reputacional para propietarios: ruido, convivencia, comunidades pequeñas muy activas. Brains Real Estate (Q2 2026) sitúa el distrito en 22,18 €/m² — por debajo del Eixample pero con coste de gestión más alto en tiempo (accesos estrechos, fincas patrimoniales, mediación). La brecha entre precio de portal y contrato registrado sigue marcada por IRAV. Livendia filtra contacto diario, documenta mediaciones y aplica cobro profesional para que el propietario no sea el 'soporte técnico' del piso en calles de ocio.",
+      "Ciutat Vella concentra el centro histórico turístico y la mayor presión reputacional para propietarios: ruido, convivencia, comunidades pequeñas muy activas. Brains Real Estate (Q2 2026) sitúa el distrito en 22,18 €/m² — por debajo del Eixample pero con coste de gestión más alto en tiempo (accesos estrechos, fincas patrimoniales, mediación). La brecha entre precio de portal y contrato registrado sigue marcada por IRAV. Livendia filtra contacto diario, documenta mediaciones y aplica seguimiento profesional de la renta para que el propietario no sea el 'soporte técnico' del piso en calles de ocio.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Queja de terraza en El Born",
@@ -542,7 +542,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
         body: "Dos habitaciones, conflicto por limpieza y visitas. Livendia aplica protocolo de convivencia del contrato, separa comunicaciones y propone medidas; propietario recibe informe sin unirse al grupo de WhatsApp.",
       },
       {
-        title: "Ejemplo ilustrativo — Cobro retrasado con inquilino en efectivo informal",
+        title: "Ejemplo ilustrativo — Pago de renta retrasado con inquilino en efectivo informal",
         body: "Inquilino propone pago en mano. Livendia redirige a transferencia trazable, registra abono en panel y confirma al propietario — manteniendo trazabilidad fiscal y contractual.",
       },
     ],
@@ -670,7 +670,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Esplugues está en zona tensionada catalana (271 municipios, MIVAU 2024–2027). Renovaciones con IRAV e Incasòl obligatorio; contrastar baremo estatal antes de copiar €/m² de portales.",
     marketContext:
-      "Esplugues equilibra precio de alquiler más contenido que Barcelona capital y excelente acceso por metro L5 y Diagonal. La demanda es mayoritariamente residencial estable — familias y profesionales — con menos rotación turística que distritos céntricos. El parque envejecido implica incidencias recurrentes en ascensores en ladera, calderas y humedades en sótanos. Para propietarios fuera del municipio, Livendia desde Les Corts (~15–20 min) asume cobro, mediación e industriales del Baix Llobregat.",
+      "Esplugues equilibra precio de alquiler más contenido que Barcelona capital y excelente acceso por metro L5 y Diagonal. La demanda es mayoritariamente residencial estable — familias y profesionales — con menos rotación turística que distritos céntricos. El parque envejecido implica incidencias recurrentes en ascensores en ladera, calderas y humedades en sótanos. Para propietarios fuera del municipio, Livendia desde Les Corts (~15–20 min) asume seguimiento de renta, mediación e industriales del Baix Llobregat.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Ascensor en ladera en Finestrelles",
@@ -682,7 +682,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago reiterado en Centre",
-        body: "Dos meses de retraso en transferencia. Protocolo de cobro desde el día 3, mediación formal y aviso al propietario solo si no hay justificante antes del día 7.",
+        body: "Dos meses de retraso en transferencia. Protocolo de seguimiento ante impago desde el día 3, mediación formal y aviso al propietario solo si no hay justificante antes del día 7.",
       },
       {
         title: "Ejemplo ilustrativo — Filtración en fachada comunitaria",
@@ -719,7 +719,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sant Joan Despí está en zona tensionada catalana. IRAV en renovaciones; depósito Incasòl y comunicación formal antes de subida de renta.",
     marketContext:
-      "Sant Joan Despí crece como alternativa residencial al corredor TRAM con alquiler más asequible que Barcelona y buena conexión a polígonos y capital. La demanda familiar favorece contratos largos, pero el propietario ausente sufre fricción en cobros e incidencias comunitarias. Livendia opera desde Les Corts con panel remoto y desplazamiento puntual si hace falta firma.",
+      "Sant Joan Despí crece como alternativa residencial al corredor TRAM con alquiler más asequible que Barcelona y buena conexión a polígonos y capital. La demanda familiar favorece contratos largos, pero el propietario ausente sufre fricción en seguimiento de renta e incidencias comunitarias. Livendia opera desde Les Corts con panel remoto y desplazamiento puntual si hace falta firma.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Caldera comunitaria en Torreblanca",
@@ -739,7 +739,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago con mediación TRAM",
-        body: "Inquilino retrasa renta alegando desplazamiento laboral. Protocolo de cobro con plazos claros y aviso al propietario solo si persiste sin justificante.",
+        body: "Inquilino retrasa renta alegando desplazamiento laboral. Protocolo de seguimiento ante impago con plazos claros y aviso al propietario solo si persiste sin justificante.",
       },
     ],
     nearbyLandmarks: [
@@ -768,7 +768,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sant Adrià está en zona tensionada catalana. Misma lógica IRAV/Incasòl que Badalona y Barcelona; brecha oferta portal vs contrato registrado exige cálculo antes de renovar.",
     marketContext:
-      "Sant Adrià comparte dinámica con Badalona: alquiler asequible, metro directo a Barcelona y parque envejecido. Propietarios inversores fuera del municipio necesitan canal único para cobro e incidencias de humedad y ascensor. Livendia desde Les Corts (~20–25 min L2) documenta todo en panel.",
+      "Sant Adrià comparte dinámica con Badalona: alquiler asequible, metro directo a Barcelona y parque envejecido. Propietarios inversores fuera del municipio necesitan canal único para seguimiento de renta e incidencias de humedad y ascensor. Livendia desde Les Corts (~20–25 min L2) documenta todo en panel.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Humedad en La Mina",
@@ -776,7 +776,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago en Parc del Besòs",
-        body: "Retraso reiterado de transferencia. Protocolo de cobro desde el día 3 con mediación formal documentada.",
+        body: "Retraso reiterado de transferencia. Protocolo de seguimiento ante impago desde el día 3 con mediación formal documentada.",
       },
       {
         title: "Ejemplo ilustrativo — IRAV en renovación Centre",
@@ -817,7 +817,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Castelldefels está en zona tensionada catalana del Baix Llobregat. IRAV en renovaciones; distinguir contrato LAU largo de usos turísticos regulados por normativa aparte.",
     marketContext:
-      "Castelldefels combina litoral, Rodalies R2 y parque mixto (chalets + bloques). La gestión remota es crítica para propietarios que no están en temporada en la costa: averías de climatización, temporales y renovaciones con IRAV. Livendia desde Les Corts coordina técnicos del Garraf y centraliza cobro e incidencias.",
+      "Castelldefels combina litoral, Rodalies R2 y parque mixto (chalets + bloques). La gestión remota es crítica para propietarios que no están en temporada en la costa: averías de climatización, temporales y renovaciones con IRAV. Livendia desde Les Corts coordina técnicos del Garraf y centraliza seguimiento de renta e incidencias.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Avería de climatización en Bellamar",
@@ -865,9 +865,9 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Sant Boi está en zona tensionada catalana. IRAV e Incasòl en renovaciones; no copiar €/m² de portal sin baremo legal.",
     marketContext:
-      "Sant Boi es municipio del Baix Llobregat con demanda familiar estable y alquiler más contenido que Barcelona. Propietarios ausentes necesitan canal único para cobro e incidencias de ascensor y humedades. Livendia desde Les Corts (~20–25 min) documenta todo en panel.",
+      "Sant Boi es municipio del Baix Llobregat con demanda familiar estable y alquiler más contenido que Barcelona. Propietarios ausentes necesitan canal único para seguimiento de renta e incidencias de ascensor y humedades. Livendia desde Les Corts (~20–25 min) documenta todo en panel.",
     operationalCases: [
-      { title: "Ejemplo ilustrativo — Impago en Marianao", body: "Retraso reiterado. Protocolo de cobro desde el día 3 con mediación formal antes de escalar al propietario." },
+      { title: "Ejemplo ilustrativo — Impago en Marianao", body: "Retraso reiterado. Protocolo de seguimiento ante impago desde el día 3 con mediación formal antes de escalar al propietario." },
       { title: "Ejemplo ilustrativo — IRAV en Centre", body: "Propuesta de subida según portal. Livendia calcula tope legal y envía documentación al inquilino." },
       { title: "Ejemplo ilustrativo — Caldera comunitaria", body: "Falta de calefacción en invierno. Coordinación con comunidad y mantenedor; aviso al propietario solo si hay derrama individual." },
       { title: "Ejemplo ilustrativo — Humedad en sótano", body: "Perito, origen comunitario vs interior, presupuesto antes de obra." },
@@ -917,7 +917,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Mollet del Vallès está en zona tensionada catalana. IRAV e Incasòl obligatorios en renovaciones.",
     marketContext:
-      "Mollet es alternativa asequible al Vallès con buena RENFE. Demanda familiar favorece contratos largos; fricción en cobros e incidencias de ascensor sin gestor local. Livendia opera remoto con panel desde Les Corts.",
+      "Mollet es alternativa asequible al Vallès con buena RENFE. Demanda familiar favorece contratos largos; fricción en seguimiento de renta e incidencias de ascensor sin gestor local. Livendia opera remoto con panel desde Les Corts.",
     operationalCases: [
       { title: "Ejemplo ilustrativo — Ascensor en Centre", body: "Avería prolongada. Seguimiento diario con comunidad; autorización de gasto individual si procede." },
       { title: "Ejemplo ilustrativo — Renovación IRAV", body: "Propuesta documentada al inquilino tras cálculo legal." },
@@ -944,7 +944,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Badalona está en zona tensionada catalana. La brecha entre oferta Idealista (~19 €/m²) y contratos SERPAVI (~10,17 €/m² mediana 2024) muestra el efecto de topes legales e IRAV. Depósito en Incasòl obligatorio; renovaciones con cálculo de referencia antes de cualquier comunicación al inquilino.",
     marketContext:
-      "Badalona es el tercer municipio más poblado de Cataluña (>220.000 hab.) y alternativa habitual a Barcelona por precio y metro directo (L2, L10). Idealista (2025) sitúa la oferta en 19,22 €/m²; Engel & Völkers (julio 2026) en 14,16 €/m² para pisos; SERPAVI (2024) registra mediana real de 10,17 €/m² — la divergencia confirma presión regulatoria. El parque es compacto y envejecido; incidencias de fontanería, ascensor y humedades son frecuentes. Para propietarios fuera del municipio, Livendia desde Les Corts (~25 min) asume cobro, mediación e industriales del Maresme-Besòs.",
+      "Badalona es el tercer municipio más poblado de Cataluña (>220.000 hab.) y alternativa habitual a Barcelona por precio y metro directo (L2, L10). Idealista (2025) sitúa la oferta en 19,22 €/m²; Engel & Völkers (julio 2026) en 14,16 €/m² para pisos; SERPAVI (2024) registra mediana real de 10,17 €/m² — la divergencia confirma presión regulatoria. El parque es compacto y envejecido; incidencias de fontanería, ascensor y humedades son frecuentes. Para propietarios fuera del municipio, Livendia desde Les Corts (~25 min) asume seguimiento de renta, mediación e industriales del Maresme-Besòs.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Humedad por filtración en Gorg",
@@ -952,7 +952,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago reiterado en Sant Roc",
-        body: "El inquilino retrasa la transferencia dos meses consecutivos. Livendia aplica protocolo de cobro desde el día 3, registra justificantes y escala con mediación formal antes de informar al propietario de pasos legales adicionales.",
+        body: "El inquilino retrasa la transferencia dos meses consecutivos. Livendia aplica protocolo de seguimiento ante impago desde el día 3, registra justificantes y escala con mediación formal antes de informar al propietario de pasos legales adicionales.",
       },
       {
         title: "Ejemplo ilustrativo — Certificado de empadronamiento",
@@ -1013,7 +1013,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
       },
       {
         title: "Ejemplo ilustrativo — Impago día 5",
-        body: "Protocolo de cobro antes de escalar al propietario.",
+        body: "Protocolo de seguimiento ante impago antes de escalar al propietario.",
       },
     ],
     nearbyLandmarks: [
@@ -1090,7 +1090,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "El Raval (Ciutat Vella) en zona tensionada. IRAV en renovaciones; uso mixto vivienda/local exige revisar contrato antes de incidencias.",
     marketContext:
-      "El Raval tiene rotación elevada y edificios envejecidos: el coste oculto del alquiler es la mediación continua. Livendia documenta humedades preexistentes, filtra conflictos de convivencia y aplica protocolo de cobro desde el día 3.",
+      "El Raval tiene rotación elevada y edificios envejecidos: el coste oculto del alquiler es la mediación continua. Livendia documenta humedades preexistentes, filtra conflictos de convivencia y aplica protocolo de seguimiento ante impago desde el día 3.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Humedad patio interior",
@@ -1187,7 +1187,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "El Born (Ciutat Vella) en zona tensionada. IRAV e Incasòl; uso mixto vivienda–local exige contrato claro antes de incidencias.",
     marketContext:
-      "El Born combina demanda residencial premium y fricción por edificios antiguos: el coste oculto es la mediación continua entre inquilino, comunidad y locales. Livendia documenta humedades, filtra conflictos y aplica protocolo de cobro desde el día 3.",
+      "El Born combina demanda residencial premium y fricción por edificios antiguos: el coste oculto es la mediación continua entre inquilino, comunidad y locales. Livendia documenta humedades, filtra conflictos y aplica protocolo de seguimiento ante impago desde el día 3.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Humedad patio interior",
@@ -1307,7 +1307,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "La Barceloneta (Ciutat Vella) en zona tensionada. IRAV e Incasòl; escrutinio municipal sobre usos turísticos.",
     marketContext:
-      "La Barceloneta mezcla demanda residencial y presión turística residual. Propietarios delegan cobro e incidencias para evitar gestión estacional directa.",
+      "La Barceloneta mezcla demanda residencial y presión turística residual. Propietarios delegan seguimiento de renta e incidencias para evitar gestión estacional directa.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Climatización verano",
@@ -1387,7 +1387,7 @@ export const METRO_ENRICHMENT_BY_KEY: Record<string, MetroLandingEnrichment> = {
     localRegulatoryNote:
       "Vila de Gràcia (Gràcia) en zona tensionada. IRAV e Incasòl; Festa Major y terrazas generan consultas de convivencia.",
     marketContext:
-      "La Vila de Gràcia combina demanda estable y fricción por eventos locales y fincas con terrazas. Propietarios no residentes delegan mediación y cobro.",
+      "La Vila de Gràcia combina demanda estable y fricción por eventos locales y fincas con terrazas. Propietarios no residentes delegan mediación y seguimiento de renta.",
     operationalCases: [
       {
         title: "Ejemplo ilustrativo — Ruido Festa Major",

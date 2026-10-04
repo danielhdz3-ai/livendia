@@ -51,7 +51,7 @@ const LAU_EMPATHY_SHARED: readonly PackCommercialEmpathyCard[] = [
   },
   {
     title: "Vives lejos del piso o tienes poco tiempo",
-    body: "Segunda residencia, herencia o traslado al extranjero: el panel Livendia y el gestor dedicado centralizan cobros, incidencias y documentación sin desplazarte.",
+    body: "Segunda residencia, herencia o traslado al extranjero: el panel Livendia y el gestor dedicado centralizan el seguimiento de la renta e incidencias y documentación sin desplazarte.",
   },
 ];
 
@@ -63,11 +63,11 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     marketIntro:
       "Madrid concentra el mercado de alquiler más activo de España: rotación rápida, visitas en 48 h y propietarios particulares que evitan comisiones del 10 % anual de las inmobiliarias de gestión. El ticket medio ronda 1.200–1.400 €/mes según distrito (Idealista, 2026).",
     localProblemIntro:
-      "En Madrid el riesgo no suele ser encontrar inquilino, sino firmar un contrato genérico que no refleja gastos de comunidad en bloques grandes de Tetuán o Carabanchel, o asumir tú mismo el cobro y las averías cuando vives en otra provincia.",
+      "En Madrid el riesgo no suele ser encontrar inquilino, sino firmar un contrato genérico que no refleja gastos de comunidad en bloques grandes de Tetuán o Carabanchel, o asumir tú mismo el seguimiento de la renta y las averías cuando vives en otra provincia.",
     stepLocalNotes: [
       "El gestor recoge datos del piso en Madrid capital o cinturón (Móstoles, Getafe, Leganés) y del inquilino para redactar el LAU.",
       "Revisamos cláusulas de actualización de renta conforme a LAU general — Madrid no tiene zona tensionada declarada.",
-      "Tras la firma, Livendia pasa a ser interlocutor del inquilino: cobro por transferencia, incidencias documentadas en panel.",
+      "Tras la firma, Livendia pasa a ser interlocutor del inquilino: seguimiento del pago por transferencia, incidencias documentadas en panel.",
       "Renovaciones, IBI repercutido y comunicaciones con comunidad: tú decides sobre obras; el gestor filtra el contacto diario.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -128,14 +128,14 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Administración desde el primer mes en distritos con mucha rotación",
-        body: `En barrios universitarios o de alta demanda las incidencias son frecuentes. Por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} Livendia asume cobro, seguimiento de averías y comunicación con el inquilino sin permanencia.`,
+        body: `En barrios universitarios o de alta demanda las incidencias son frecuentes. Por ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} Livendia asume seguimiento de renta, seguimiento de averías y comunicación con el inquilino sin permanencia.`,
       },
     ],
   },
   barcelona: {
     precioMedioAlquiler: 1_556,
     heroSubtitle:
-      `Alquilas en Barcelona o área metropolitana con inquilino ya encontrado. Pack LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. estimados): contrato adaptado a zona tensionada, INCASÒL e IRAV, más gestor que gestiona cobros e incidencias desde el primer mes.`,
+      `Alquilas en Barcelona o área metropolitana con inquilino ya encontrado. Pack LAU + administración (${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} € IVA incl. estimados): contrato adaptado a zona tensionada, INCASÒL e IRAV, más gestor que gestiona el seguimiento de la renta e incidencias desde el primer mes.`,
     marketIntro:
       "Barcelona es uno de los mercados más regulados de España: 271 municipios catalanes declarados zona tensionada, IRAV como tope en nuevos contratos y depósito en Incasòl. El ticket medio supera 1.500 €/mes (Brains Real Estate, Q1 2026).",
     localProblemIntro:
@@ -143,7 +143,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     stepLocalNotes: [
       "Recogemos datos del piso (zona tensionada, INCASÒL, tipología) y del inquilino para redactar LAU conforme a normativa catalana.",
       "Borrador con cláusulas sobre actualización IRAV, fianza en Incasòl y causas de resolución — revisión antes de firma.",
-      "Administración activa: Livendia canal único con inquilino; cobro de renta e incidencias en panel 24/7.",
+      "Administración activa: Livendia canal único con inquilino; seguimiento de renta e incidencias en panel 24/7.",
       "Renovaciones y comunicaciones con comunidad en edificios con obras o derramas: gestor filtra, tú decides.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -218,7 +218,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     stepLocalNotes: [
       "Datos del piso en Valencia capital, Mislata, Torrent o Paterna; contrato LAU adaptado a Comunitat Valenciana.",
       "Cláusulas sobre IBI, basura, ascensor y actualización de renta — LAU general sin IRAV en Valencia.",
-      "Alta de administración: canal Livendia-inquilino, cobro y registro de incidencias en panel.",
+      "Alta de administración: canal Livendia-inquilino, seguimiento de renta y registro de incidencias en panel.",
       "Seguimiento de comunidades sin gestor profesional: el gestor contacta presidente y documenta comunicaciones.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -233,7 +233,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Propietario en Madrid que alquila en Valencia",
-        body: "Segunda residencia o herencia: panel Livendia y gestor dedicado evitan desplazamientos para cobros, averías o renovación de contrato.",
+        body: "Segunda residencia o herencia: panel Livendia y gestor dedicado evitan desplazamientos para seguimiento de renta, averías o renovación de contrato.",
       },
       {
         title: "Rotación rápida en Ciutat Vella",
@@ -260,7 +260,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     barriosIntro: "Valencia capital y municipios del área metropolitana con gestoría online y mismos precios nacionales.",
     regulatory: ALQUILER_REGULATORY_BY_SLUG.valencia,
     platformParagraph:
-      "Centraliza contrato, cobros e incidencias en el panel Livendia. Ideal si alquilas en Valencia y resides en otra ciudad: el gestor es tu interlocutor operativo con el inquilino.",
+      "Centraliza contrato, seguimiento de renta e incidencias en el panel Livendia. Ideal si alquilas en Valencia y resides en otra ciudad: el gestor es tu interlocutor operativo con el inquilino.",
     localBanners: [
       {
         title: "Valencia: reserva rápida, contrato a medida",
@@ -268,7 +268,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       },
       {
         title: "Administración sin comisión del 10 % anual",
-        body: `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. para cobro, incidencias y comunicación con inquilino. Cancelación con 30 días de preaviso, sin permanencia.`,
+        body: `${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. para seguimiento de renta, incidencias y comunicación con inquilino. Cancelación con 30 días de preaviso, sin permanencia.`,
       },
     ],
   },
@@ -283,7 +283,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     stepLocalNotes: [
       "Recogemos datos del piso en Teatinos, Centro, El Limonar o Soho y del inquilino; redactamos LAU o contrato de temporada según tipología real.",
       "Orientación sobre depósito de fianza legal en AVRA: plazos, documentación y registro obligatorio conforme a normativa de la Junta de Andalucía.",
-      `Tras la firma, administración Livendia (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}): canal único con inquilino, cobro de renta e incidencias en panel — útil si resides fuera de Málaga.`,
+      `Tras la firma, administración Livendia (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}): canal único con inquilino, seguimiento de renta e incidencias en panel — útil si resides fuera de Málaga.`,
       "Inventario detallado y comunicaciones con comunidad en urbanizaciones de la costa: el gestor filtra contacto diario.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -314,7 +314,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       {
         question: "¿Cómo gestionáis el alquiler a inquilinos internacionales en Málaga?",
         answer:
-          "Redactamos cláusulas claras sobre duración, renta, suministros e inventario. Livendia actúa como interlocutor operativo (cobros, incidencias) para que no dependas de WhatsApp en varios idiomas. No somos agencia de búsqueda de inquilino.",
+          "Redactamos cláusulas claras sobre duración, renta, suministros e inventario. Livendia actúa como interlocutor operativo (seguimiento de renta, incidencias) para que no dependas de WhatsApp en varios idiomas. No somos agencia de búsqueda de inquilino.",
       },
       {
         question: "¿Cuánto tarda el depósito en AVRA una vez firmado el contrato?",
@@ -353,7 +353,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     stepLocalNotes: [
       "Datos del piso en Nervión, Triana, Macarena, Los Remedios o Sevilla Este; contrato LAU o temporada académica/médica según duración pactada.",
       "Anexo de inventario fotográfico detallado y orientación depósito fianza en AVRA — trámite integral conforme a normativa andaluza.",
-      "Administración Livendia desde mes 1: cobro de renta, incidencias documentadas, comunicación con comunidad en edificios históricos.",
+      "Administración Livendia desde mes 1: seguimiento de renta, incidencias documentadas, comunicación con comunidad en edificios históricos.",
       "Renovaciones y causas de resolución conforme a LAU: gestor filtra contacto; tú decides sobre obras y renta.",
     ],
     empathyCards: LAU_EMPATHY_SHARED,
@@ -384,7 +384,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
       {
         question: "¿Qué derechos tiene el propietario al alquilar en Sevilla?",
         answer:
-          "Los de LAU: cobro de renta, fianza legal (máx. un mes) y posible garantía adicional pactada, resolución por incumplimiento, recuperación por uso propio en supuestos legales. Livendia redacta cláusulas equilibradas y la administración gestiona incidencias e impagos con aviso temprano.",
+          "Los de LAU: seguimiento de renta, fianza legal (máx. un mes) y posible garantía adicional pactada, resolución por incumplimiento, recuperación por uso propio en supuestos legales. Livendia redacta cláusulas equilibradas y la administración gestiona incidencias e impagos con aviso temprano.",
       },
       {
         question: "¿Dónde deposito la fianza en Sevilla?",
@@ -400,7 +400,7 @@ export const PACK_LAU_ADMIN_LOCAL_SEO: Record<string, PackCommercialLocalSeoCont
     barriosIntro: "Contrato LAU, AVRA e inventario en Sevilla capital y municipios del área metropolitana.",
     regulatory: ALQUILER_REGULATORY_BY_SLUG.sevilla,
     platformParagraph:
-      "Centraliza contrato, inventario, cobros e incidencias en panel Livendia. Útil si alquilas en Sevilla y resides en otra provincia: gestor dedicado canaliza comunicación con inquilino y comunidad.",
+      "Centraliza contrato, inventario, seguimiento de renta e incidencias en panel Livendia. Útil si alquilas en Sevilla y resides en otra provincia: gestor dedicado canaliza comunicación con inquilino y comunidad.",
     localBanners: [
       {
         title: "Inventario detallado: prevención de conflictos en Sevilla",

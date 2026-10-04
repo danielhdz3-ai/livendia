@@ -13,7 +13,7 @@ export const ADMINISTRACION_ALQUILER_PRESENCIAL_CONTENT = {
   sectionIntro:
     "El día a día es digital — panel, WhatsApp y gestor asignado —, pero la administración no se queda solo en pantalla: cuando hace falta un gestor Livendia en el inmueble o en la zona, esas actuaciones entran en el mismo servicio mensual.",
   onlineBullets: [
-    "Cobro de renta, incidencias y consultas del inquilino desde panel y WhatsApp",
+    "Control de que la renta entra en tu cuenta (pago directo inquilino → propietario), incidencias y consultas del inquilino desde panel y WhatsApp",
     "Coordinación con aseguradora, comunidad e industriales con trazabilidad",
     "Renovaciones, IRAV/Incasòl y altas o bajas documentadas sin desplazarte",
     "Oficina en Les Corts (Mejía Lequerica 44) si prefieres reunión presencial con tu gestor",

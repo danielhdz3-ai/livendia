@@ -53,7 +53,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
   path: PACK_LAU_ADMIN_LANDING_PATH,
   serviceSlugs: PACK_LAU_ADMIN_SLUGS,
   metaTitle: `Pack contrato LAU + administración de alquiler — ${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL} IVA incl.`,
-  metaDescription: `Pack para propietarios particulares: contrato de alquiler LAU (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}) + primer mes de administración (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}). Gestor legal, cobro de renta e incidencias desde el día uno. Sin permanencia.`,
+  metaDescription: `Pack para propietarios particulares: contrato de alquiler LAU (${CONTRATO_ALQUILER_LAU_PRICE_LABEL}) + primer mes de administración (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}). Gestor legal, seguimiento de renta e incidencias desde el día uno. Sin permanencia.`,
   keywords: [
     "pack contrato alquiler LAU administración",
     "contrato alquiler y gestión inquilino",
@@ -83,7 +83,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     "Contrato LAU adaptado a tu vivienda: duración, renta, fianza, actualización IPC/IRAV si procede, gastos y suministros",
     "Revisión de cláusulas conforme a la Ley de Arrendamientos Urbanos y normativa autonómica",
     "Depósito en INCASÒL cuando corresponda y orientación sobre zona tensionada",
-    "Administración mensual: canal único Livendia-inquilino, cobro de renta e incidencias documentadas",
+    "Administración mensual: canal único Livendia-inquilino, seguimiento de renta e incidencias documentadas",
     "Panel del propietario 24/7: contratos, justificantes, historial de incidencias",
     "Gestor dedicado por WhatsApp — sin call center ni comisión de agencia inmobiliaria",
     "Sin permanencia en administración: cancelación con 30 días de preaviso",
@@ -106,7 +106,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     {
       title: "Día a día delegado",
       description:
-        "Cobro de renta, incidencias, renovaciones e IRAV: tú decides sobre la renta y obras; el gestor filtra el contacto diario.",
+        "Seguimiento de renta, incidencias, renovaciones e IRAV: tú decides sobre la renta y obras; el gestor filtra el contacto diario.",
     },
   ],
   infoBanners: [
@@ -172,7 +172,7 @@ export const PACK_LAU_ADMIN_LANDING: PackCommercialLandingConfig = {
     {
       question: "¿Incluye el pack la defensa en juicio de desahucio?",
       answer:
-        `La administración mensual cubre gestión ordinaria, cobro y mediación. Procedimientos judiciales de desahucio son servicios legales adicionales no incluidos en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+        `La administración mensual cubre gestión ordinaria, control de que la renta se ingresa en la cuenta del propietario y mediación con el inquilino (sin renta garantizada). Procedimientos judiciales de desahucio son servicios legales adicionales no incluidos en la cuota de ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     },
     {
       question: "¿Atendéis alquileres en Barcelona, Madrid y otras ciudades?",

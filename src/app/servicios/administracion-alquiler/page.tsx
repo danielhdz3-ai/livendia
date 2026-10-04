@@ -7,7 +7,19 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, Phone, FileText, Wrench } from "lucide-react";
+import {
+  Shield,
+  Users,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+  MessageCircle,
+  Phone,
+  FileText,
+  Wrench,
+  Landmark,
+} from "lucide-react";
+import { ADMINISTRACION_ALQUILER_RENT_PAYMENT_EXPLAINER } from "@/lib/administracion-alquiler-rent-copy";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import {
@@ -65,7 +77,7 @@ export default async function AdministracionAlquilerPage() {
       step: "4",
       title: "Te mantenemos informado",
       description:
-        "Solo te contactamos para lo importante: pagos recibidos, decisiones que requieren tu aprobación o novedades relevantes del contrato.",
+        "Solo te contactamos para lo importante: confirmación de que la renta ha entrado en tu cuenta, decisiones que requieren tu aprobación o novedades relevantes del contrato.",
     },
   ];
 
@@ -97,7 +109,8 @@ export default async function AdministracionAlquilerPage() {
     {
       icon: AlertCircle,
       title: "Alertas inteligentes",
-      description: "Te informamos solo de lo crítico: pagos, decisiones importantes o novedades que requieran acción.",
+      description:
+        "Te informamos solo de lo crítico: retrasos o confirmación de renta, decisiones importantes o novedades que requieran acción.",
       color: "from-violet-500 to-violet-600",
     },
     {
@@ -105,6 +118,13 @@ export default async function AdministracionAlquilerPage() {
       title: "Atención continua al inquilino",
       description: "Respondemos dudas, tramitamos peticiones y gestionamos la relación día a día de forma profesional.",
       color: "from-purple-500 to-purple-600",
+    },
+    {
+      icon: Landmark,
+      title: "Renta a tu cuenta, control Livendia",
+      description:
+        "El inquilino transfiere a tu banco. Nosotros verificamos el pago cada mes y actuamos ante retrasos — sin cobrar por ti ni garantizar el importe.",
+      color: "from-sky-500 to-sky-600",
     },
   ];
 
@@ -168,7 +188,15 @@ export default async function AdministracionAlquilerPage() {
                     <CheckCircle className="h-6 w-6 text-cyan-300 flex-shrink-0" />
                     <span className="text-lg">Seguimiento de renovaciones y mediación</span>
                   </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-6 w-6 text-cyan-300 flex-shrink-0" />
+                    <span className="text-lg">Control mensual: el inquilino paga en tu cuenta</span>
+                  </div>
                 </div>
+
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-blue-100/95">
+                  {ADMINISTRACION_ALQUILER_RENT_PAYMENT_EXPLAINER}
+                </p>
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <ContratarServicioButton className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50">

@@ -29,7 +29,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     ],
     whyTitle: "Alquilar en Madrid con contrato LAU y gestor desde el día uno",
     whySubtitle:
-      "Mercado líquido, rotación rápida y propietarios que evitan el 10 % anual de las inmobiliarias de gestión. Livendia blinda el contrato y asume cobros e incidencias.",
+      "Mercado líquido, rotación rápida y propietarios que evitan el 10 % anual de las inmobiliarias de gestión. Livendia blinda el contrato y asume el seguimiento de la renta e incidencias.",
     localZonesHeading: "Zonas del pack LAU + administración en Madrid",
     localZones:
       "Distrito Centro, Salamanca, Chamberí, Tetuán, Carabanchel, Vallecas, Fuencarral y municipios del cinturón (Móstoles, Getafe, Leganés, Alcorcón). Misma gestoría online con gestor dedicado.",
@@ -56,7 +56,7 @@ export const PACK_LAU_ADMIN_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandi
     ],
     whyTitle: "Barcelona: LAU conforme a normativa catalana + administración",
     whySubtitle:
-      "IRAV, Incasòl y edificios con obras en comunidad exigen contrato preciso. Livendia redacta el LAU y gestiona cobros e incidencias desde el primer mes.",
+      "IRAV, Incasòl y edificios con obras en comunidad exigen contrato preciso. Livendia redacta el LAU y gestiona el seguimiento de la renta e incidencias desde el primer mes.",
     localZonesHeading: "Barrios y municipios del pack en Barcelona",
     localZones:
       "Eixample, Gràcia, Sant Martí, Sants, Les Corts, L'Hospitalet, Badalona, Cornellà y área metropolitana. Revisión LAU con IRAV, Incasòl e inventario integrado.",

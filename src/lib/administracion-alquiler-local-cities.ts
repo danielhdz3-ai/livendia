@@ -254,7 +254,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     heroLead:
       "¿Buscas gestión de alquileres en Valencia sin hablar con el inquilino? Valencia capital y l'Horta tienen una de las rotaciones más altas de España: un piso en Ruzafa, Campanar o Malvarrosa puede alquilarse en 8–12 días (Idealista, junio de 2026, ~14,3 €/m²). Eso multiplica incidencias, entregas de llaves y dudas de comunidad. Livendia es tu gestoría de administración de propiedades para propietarios: canal único con el arrendatario, incidencias coordinadas y avisos solo cuando hace falta tu firma — 59 €/mes IVA incl., sin permanencia.",
     whyIntro:
-      "La gestión de inmuebles para propietarios en Valencia no se reduce a cobrar la renta: con rotación alta, el 80 % de las llamadas llegan en las dos primeras semanas tras un cambio de inquilino — cerrajero, electrodomésticos, suministros, ascensor o vecinos en edificios del Eixample valenciano o Gran Vía. Valencia no está declarada zona tensionada (LAU general, sin IRAV), pero eso no simplifica el día a día. Si tienes piso en Benimaclet, Ciutat Vella, Extramurs, Mislata, Torrent o Paiporta y vives fuera de la ciudad, centralizar la gestión de alquiler evita que el WhatsApp personal se convierta en línea de averías 24/7.",
+      "La gestión de inmuebles para propietarios en Valencia no se reduce a hacer seguimiento de la renta: con rotación alta, el 80 % de las llamadas llegan en las dos primeras semanas tras un cambio de inquilino — cerrajero, electrodomésticos, suministros, ascensor o vecinos en edificios del Eixample valenciano o Gran Vía. Valencia no está declarada zona tensionada (LAU general, sin IRAV), pero eso no simplifica el día a día. Si tienes piso en Benimaclet, Ciutat Vella, Extramurs, Mislata, Torrent o Paiporta y vives fuera de la ciudad, centralizar la gestión de alquiler evita que el WhatsApp personal se convierta en línea de averías 24/7.",
     howIntro:
       "Alta del arrendamiento en panel, canal único con el inquilino (tú no recibes llamadas), resolución de averías con proveedores de confianza, seguimiento de renovaciones y resumen periódico de lo relevante — el protocolo Livendia de administración de alquileres adaptado al ritmo valenciano, con refuerzo en las primeras dos semanas tras cada entrada.",
     barriosIntro:
@@ -279,7 +279,7 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       {
         question: "¿Cuánto cuesta la gestión de alquileres en Valencia?",
         answer:
-          "Livendia cobra 59 €/mes IVA incluido, sin permanencia ni comisión sobre la renta. Incluye intermediación con el inquilino, gestión de incidencias, coordinación de reparaciones y seguimiento de fechas contratuales. No incluye seguro de impago ni juicio de desahucio.",
+          "Livendia cobra 59 €/mes IVA incluido, sin permanencia ni comisión sobre la renta del piso. El inquilino paga en tu cuenta bancaria; nosotros controlamos que llegue cada mes y reclamamos si hay problemas. Incluye intermediación con el inquilino, incidencias, reparaciones y fechas contractuales. No incluye renta garantizada, seguro de impago ni juicio de desahucio.",
       },
       {
         question: "¿Qué incluye la administración de propiedades para propietarios en Valencia?",

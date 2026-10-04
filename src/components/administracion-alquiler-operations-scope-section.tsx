@@ -1,8 +1,10 @@
 import {
   ADMINISTRACION_ALQUILER_OPERATIONS_SCOPE,
+  ADMINISTRACION_ALQUILER_RENT_NOT_GUARANTEED_NOTE,
   getAdministracionAlquilerOnlineScopeIntro,
   type AdministracionAlquilerOnlineScopeVariant,
 } from "@/lib/administracion-alquiler-operations-scope";
+import { ADMINISTRACION_ALQUILER_RENT_PAYMENT_EXPLAINER } from "@/lib/administracion-alquiler-rent-copy";
 import { ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL } from "@/lib/catalog.public";
 import { CheckCircle, Globe } from "lucide-react";
 
@@ -41,13 +43,20 @@ export function AdministracionAlquilerOperationsScopeSection({
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:p-8">
+        <div className="mt-10 rounded-2xl border border-[#1A4FBF]/15 bg-[#EFF6FF]/40 p-4 sm:p-5">
+          <p className="text-sm leading-relaxed text-[#1E293B] sm:text-base">
+            {ADMINISTRACION_ALQUILER_RENT_PAYMENT_EXPLAINER}
+          </p>
+        </div>
+
+        <div className="mt-6 rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200 sm:p-8">
           <h3 className="text-lg font-bold text-[#1E293B] sm:text-xl">
             Acciones que Livendia asume en el mismo servicio ({ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}{" "}
             IVA incl.)
           </h3>
           <p className="mt-2 text-sm text-[#64748b]">
-            Un único módulo de administración: mismo panel, mismo gestor y mismo protocolo en toda España.
+            Un único módulo de administración: mismo panel, mismo gestor y mismo protocolo en toda España.{" "}
+            {ADMINISTRACION_ALQUILER_RENT_NOT_GUARANTEED_NOTE}
           </p>
           <ul className="mt-6 space-y-4">
             {ADMINISTRACION_ALQUILER_OPERATIONS_SCOPE.map((item) => (

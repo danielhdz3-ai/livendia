@@ -160,7 +160,7 @@ export function AdministracionAlquilerMetroSeoLanding({
     },
     {
       icon: Clock,
-      title: "Cobro y renovaciones con IRAV",
+      title: "Seguimiento de renta y renovaciones con IRAV",
       description: enrichment
         ? `Seguimiento de la renta el día 1 y renovaciones con baremo legal en zona tensionada. Referencia de mercado: ${enrichment.rentPricePerSqm.split(".")[0]}.`
         : "Seguimiento de la renta el día 1, renovaciones, plazos legales e IRAV en Cataluña con aviso previo.",
@@ -209,13 +209,13 @@ export function AdministracionAlquilerMetroSeoLanding({
       step: "3",
       title: "Coordinamos reparaciones e impagos",
       description:
-        "Industriales de confianza, protocolo de cobro desde el día 3 y mediación antes de escalar.",
+        "Industriales de confianza, protocolo de seguimiento ante impago desde el día 3 y mediación antes de escalar.",
     },
     {
       icon: FileText,
       step: "4",
       title: "Te informamos solo de lo crítico",
-      description: `Rentas cobradas, decisiones que requieren tu firma o novedades legales en ${config.zoneLabel}.`,
+      description: `Rentas con seguimiento al día, decisiones que requieren tu firma o novedades legales en ${config.zoneLabel}.`,
     },
   ];
 
@@ -278,7 +278,7 @@ export function AdministracionAlquilerMetroSeoLanding({
                   <ul className="mt-6 space-y-2">
                     {[
                       "Livendia habla con el inquilino — tú no",
-                      "Cobro de renta e incidencias coordinadas",
+                      "Seguimiento de renta e incidencias coordinadas",
                       "Oficina física en Les Corts (Barcelona)",
                     ].map((line) => (
                       <li key={line} className="flex items-center gap-3 text-base sm:text-lg">

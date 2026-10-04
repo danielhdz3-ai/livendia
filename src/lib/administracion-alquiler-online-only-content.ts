@@ -26,10 +26,10 @@ export const ADMINISTRACION_ALQUILER_ONLINE_ONLY_CONTENT = {
     {
       title: "Contacto con el inquilino solo vía Livendia",
       description:
-        "Incidencias, consultas, reclamaciones de pago y avisos contractuales: el inquilino habla con tu gestor, no contigo.",
+        "Incidencias, consultas y reclamaciones si la renta no llega a tu cuenta: el inquilino habla con tu gestor, no contigo. El pago mensual lo hace el inquilino a tu banco; nosotros lo controlamos.",
     },
     {
-      title: "Cobro, renovaciones y documentación en panel",
+      title: "Seguimiento de renta, renovaciones y documentación en panel",
       description:
         "Seguimiento de renta, actualización según índice legal, prórrogas y mediación documentada — sin acudir a un despacho.",
     },
