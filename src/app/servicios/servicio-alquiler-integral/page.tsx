@@ -28,6 +28,10 @@ import {
   buildServicioAlquilerIntegralSteps,
 } from "@/lib/servicio-alquiler-integral-modules";
 import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import {
+  SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES,
+  landingSocialMetadata,
+} from "@/lib/landing-open-graph-images";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -39,19 +43,21 @@ const canonical = `${getSiteUrl()}${SERVICIO_ALQUILER_INTEGRAL_PATH}`;
 
 export const revalidate = 300;
 
+const ogSocial = landingSocialMetadata("servicio-alquiler-integral", {
+  title: "Servicio de alquiler integral",
+  description:
+    "Del anuncio al inquilino en tu vivienda: captación, solvencia, contrato y trámites. Sin comisión de agencia por porcentaje.",
+  url: canonical,
+  locale: "es_ES",
+  type: "website",
+});
+
 export const metadata: Metadata = {
   title: `Servicio de alquiler integral para propietarios — desde ${SERVICIO_ALQUILER_INTEGRAL_PRICE_LABEL} IVA incl.`,
   description:
     "Búsqueda de inquilinos, filtrado con seguro de impago recomendado, contrato, fianza, suministros y entrega de llaves. Administración mensual opcional. Livendia.",
   alternates: { canonical },
-  openGraph: {
-    title: "Servicio de alquiler integral",
-    description:
-      "Del anuncio al inquilino en tu vivienda: captación, solvencia, contrato y trámites. Sin comisión de agencia por porcentaje.",
-    url: canonical,
-    locale: "es_ES",
-    type: "website",
-  },
+  ...ogSocial,
 };
 
 export default async function ServicioAlquilerIntegralPage() {
@@ -169,8 +175,8 @@ export default async function ServicioAlquilerIntegralPage() {
               <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
                   <Image
-                    src="/images/gestora2.jpg"
-                    alt="Revisión de nóminas y documentación de inquilino para alquiler garantizado"
+                    src={SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.documentacionInquilino}
+                    alt="Revisión de nóminas, vida laboral y solvencia del inquilino"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 560px"

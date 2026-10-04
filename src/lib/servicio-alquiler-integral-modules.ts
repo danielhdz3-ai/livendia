@@ -1,5 +1,6 @@
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
 import { SERVICIO_ALQUILER_INTEGRAL_PRICE_LABEL } from "@/lib/catalog.public";
+import { SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES } from "@/lib/landing-open-graph-images";
 
 export const SERVICIO_ALQUILER_INTEGRAL_PROCESS_META = {
   eyebrow: "Qué incluye el servicio de alquiler integral",
@@ -81,8 +82,8 @@ export function buildServicioAlquilerIntegralSteps(
         "Sin compromiso en la primera conversación",
         "Presupuesto cerrado del servicio Livendia",
       ],
-      imageSrc: "/images/gestoria.jpg",
-      imageAlt: "Gestor Livendia valorando un piso para alquiler integral",
+      imageSrc: SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.valoracion,
+      imageAlt: "Asesoramiento sobre valoración de vivienda y normativa de alquiler",
     },
     {
       step: 2,
@@ -100,8 +101,8 @@ export function buildServicioAlquilerIntegralSteps(
         "Seguro de impago: póliza del propietario",
         "Solo candidatos solventes llegan a visita",
       ],
-      imageSrc: "/images/servicio-alquiler-integral-hero.jpg",
-      imageAlt: "Gestora Livendia analizando documentación de inquilinos para alquiler integral",
+      imageSrc: SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.cualificacion,
+      imageAlt: "Gestora Livendia analizando nóminas y documentación de inquilinos",
     },
     {
       step: 3,
@@ -120,8 +121,8 @@ export function buildServicioAlquilerIntegralSteps(
         "Protocolo de seguridad en la visita",
         "Gestor Livendia en la operativa",
       ],
-      imageSrc: "/images/familia1.jpg",
-      imageAlt: "Visita a vivienda en alquiler con gestor Livendia",
+      imageSrc: SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.visitas,
+      imageAlt: "Visita discreta a piso en alquiler con gestor Livendia",
     },
     {
       step: 4,
@@ -140,8 +141,8 @@ export function buildServicioAlquilerIntegralSteps(
         "Inventario y anexos cuando proceda",
         "Registro de contrato orientado",
       ],
-      imageSrc: "/images/contratodealquiler.jpg",
-      imageAlt: "Redacción de contrato de alquiler LAU Livendia",
+      imageSrc: SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.contrato,
+      imageAlt: "Revisión de contrato de alquiler LAU y documentación",
     },
     {
       step: 5,
@@ -160,8 +161,8 @@ export function buildServicioAlquilerIntegralSteps(
         "Altas de suministros acordadas",
         "Opcional: administración mensual después",
       ],
-      imageSrc: "/images/gestora5.jpg",
-      imageAlt: "Entrega de llaves y cierre de alquiler integral Livendia",
+      imageSrc: SERVICIO_ALQUILER_INTEGRAL_STEP_IMAGES.firma,
+      imageAlt: "Firma de contrato de alquiler y entrega de llaves",
     },
   ];
 }

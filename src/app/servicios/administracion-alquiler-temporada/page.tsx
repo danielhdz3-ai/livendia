@@ -15,6 +15,7 @@ import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
+import { landingSocialMetadata } from "@/lib/landing-open-graph-images";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -46,19 +47,21 @@ const canonical = `${getSiteUrl()}/servicios/administracion-alquiler-temporada`;
 
 export const revalidate = 300;
 
+const temporadaOg = landingSocialMetadata("administracion-alquiler-temporada", {
+  title: "Administración de alquiler por temporada o habitaciones",
+  description:
+    "79 €/mes IVA incl. Control de inquilinos, check-in/check-out y servicio técnico. Contratos 100 €. Rescisiones gratis.",
+  url: canonical,
+  locale: "es_ES",
+  type: "website",
+});
+
 export const metadata: Metadata = {
   title: `Administración de alquiler por temporada o habitaciones — ${ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}`,
   description:
     "Para propietarios con temporada o habitaciones: Livendia gestiona inquilinos, entradas, salidas y servicio técnico. 79 €/mes IVA incl. Contratos nuevos 100 €. Rescisiones gratis.",
   alternates: { canonical },
-  openGraph: {
-    title: "Administración de alquiler por temporada o habitaciones",
-    description:
-      "79 €/mes IVA incl. Control de inquilinos, check-in/check-out y servicio técnico. Contratos 100 €. Rescisiones gratis.",
-    url: canonical,
-    locale: "es_ES",
-    type: "website",
-  },
+  ...temporadaOg,
 };
 
 export default async function AdministracionAlquilerTemporadaPage() {
