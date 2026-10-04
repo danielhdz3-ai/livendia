@@ -35,6 +35,10 @@ import {
   localRedactarContratoAlquilerHref,
 } from "@/lib/redactar-contrato-alquiler-local-cities";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
+import {
+  getGestoriaCityVerticalHub,
+  localGestoriaCityVerticalHref,
+} from "@/lib/gestoria-city-vertical-hub";
 
 type CityHubServicesProps = {
   city: HomeCoverageCity;
@@ -45,8 +49,47 @@ export function CityHubServices({ city }: CityHubServicesProps) {
   const pillarHref = CITY_PILLAR_PATHS[city.slug];
   const discoverabilityLinks = getHubCityDiscoverabilityLinks(city.slug, city.name);
 
+  const showAdminPriority =
+    (city.slug === "valencia" || city.slug === "madrid" || city.slug === "barcelona") &&
+    getGestoriaCityVerticalHub(city.slug, "alquiler");
+
   return (
     <div className="space-y-8">
+      {showAdminPriority ? (
+        <section className="rounded-2xl border-2 border-[#1A4FBF]/25 bg-gradient-to-br from-blue-50 to-white p-6 shadow-sm">
+          <h2 className="text-lg font-bold text-[#1E293B]">Gestión de alquileres en {city.name}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
+            Incidencias, inquilino y renovaciones desde {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl. — sin
+            permanencia. Livendia es el único canal con el arrendatario.
+          </p>
+          <ul className="mt-4 flex flex-col gap-2 text-sm">
+            <li>
+              <Link href={city.administracionHref} className="font-semibold text-[#1A4FBF] hover:underline">
+                Administración de alquiler en {city.name} (landing principal)
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={localGestoriaCityVerticalHref(city.slug, "alquiler")}
+                className="font-semibold text-[#1A4FBF] hover:underline"
+              >
+                Hub alquiler: LAU, temporada y contratos en {city.name}
+              </Link>
+            </li>
+            {city.slug === "valencia" ? (
+              <li>
+                <Link
+                  href="/blog/gestion-alquileres-valencia-propietarios-2026"
+                  className="font-semibold text-[#1A4FBF] hover:underline"
+                >
+                  Guía: gestión de alquileres en Valencia (2026)
+                </Link>
+              </li>
+            ) : null}
+          </ul>
+        </section>
+      ) : null}
+
       <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100">
         <h2 className="text-lg font-bold text-[#1E293B]">Servicios en {city.name}</h2>
         <ul className="mt-4 flex flex-col gap-2 text-sm">

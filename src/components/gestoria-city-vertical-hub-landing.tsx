@@ -104,6 +104,34 @@ export function GestoriaCityVerticalHubLanding({ config }: { config: GestoriaCit
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <p className="max-w-3xl text-lg leading-relaxed text-[#64748b]">{config.intro}</p>
 
+          {config.vertical === "alquiler" && config.citySlug === "valencia" ? (
+            <p className="mt-4 max-w-3xl text-sm text-[#64748b]">
+              <Link
+                href="/blog/gestion-alquileres-valencia-propietarios-2026"
+                className="font-semibold text-[#1A4FBF] hover:underline"
+              >
+                Leer la guía: gestión de alquileres en Valencia (2026)
+              </Link>
+              {" · "}
+              <Link
+                href="/servicios/administracion-alquiler-local/valencia"
+                className="font-semibold text-[#1A4FBF] hover:underline"
+              >
+                Landing principal de administración en Valencia
+              </Link>
+            </p>
+          ) : null}
+          {config.vertical === "alquiler" && config.citySlug === "madrid" ? (
+            <p className="mt-4 max-w-3xl text-sm text-[#64748b]">
+              <Link
+                href="/servicios/administracion-alquiler-local/madrid"
+                className="font-semibold text-[#1A4FBF] hover:underline"
+              >
+                Gestión de alquileres en Madrid — landing principal
+              </Link>
+            </p>
+          ) : null}
+
           <h2 className="mt-12 text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
             Servicios de {config.verticalLabel.toLowerCase()} en {config.city}
           </h2>

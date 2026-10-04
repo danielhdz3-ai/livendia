@@ -131,6 +131,17 @@ function buildAlquilerLinks(gestoriaSlug: string, cityLabel: string): GestoriaVe
   const candidates = serviceSlugCandidates(gestoriaSlug);
   const links: GestoriaVerticalServiceLink[] = [];
 
+  const adminSlug = firstPublishedSlug(candidates, isAdministracionAlquilerLocalSlugPublished);
+  if (adminSlug) {
+    links.push({
+      title: `Gestión de alquileres en ${cityLabel}`,
+      description:
+        "Administración profesional: incidencias, averías y renovaciones. Tú no hablas con el inquilino. Tarifa mensual sin permanencia.",
+      href: localAdministracionAlquilerHref(adminSlug),
+      price: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+    });
+  }
+
   const lauSlug = firstPublishedSlug(candidates, isContratoAlquilerLocalSlugPublished);
   if (lauSlug) {
     links.push({
@@ -169,17 +180,6 @@ function buildAlquilerLinks(gestoriaSlug: string, cityLabel: string): GestoriaVe
       description: "Piso compartido: convivencia, zonas comunes e inventario antes de entregar la fianza.",
       href: localContratoAlquilerHabitacionHref(habSlug),
       price: CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
-    });
-  }
-
-  const adminSlug = firstPublishedSlug(candidates, isAdministracionAlquilerLocalSlugPublished);
-  if (adminSlug) {
-    links.push({
-      title: `Administración de alquiler en ${cityLabel}`,
-      description:
-        "Incidencias, averías y renovaciones sin que atiendas al inquilino. Tarifa mensual sin permanencia.",
-      href: localAdministracionAlquilerHref(adminSlug),
-      price: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
     });
   }
 

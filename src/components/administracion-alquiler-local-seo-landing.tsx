@@ -27,6 +27,10 @@ import {
   mergeAdministracionFaq,
 } from "@/lib/administracion-alquiler-local-regulatory";
 import { AdministracionAlquilerLocalRelatedServices } from "@/components/administracion-alquiler-local-related-services";
+import {
+  getGestoriaCityVerticalHub,
+  localGestoriaCityVerticalHref,
+} from "@/lib/gestoria-city-vertical-hub";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
@@ -275,6 +279,28 @@ export async function AdministracionAlquilerLocalSeoLanding({
                   </div>
 
                   <LandingTrustBar className="mt-6 text-blue-100" />
+
+                  {getGestoriaCityVerticalHub(slug, "alquiler") ? (
+                    <p className="mt-6 text-sm text-blue-100">
+                      <Link
+                        href={localGestoriaCityVerticalHref(slug, "alquiler")}
+                        className="font-semibold text-white underline decoration-white/40 hover:decoration-white"
+                      >
+                        Ver hub de alquiler en {config.city}
+                      </Link>
+                      {slug === "valencia" ? (
+                        <>
+                          {" · "}
+                          <Link
+                            href="/blog/gestion-alquileres-valencia-propietarios-2026"
+                            className="font-semibold text-white underline decoration-white/40 hover:decoration-white"
+                          >
+                            Guía gestión de alquileres Valencia
+                          </Link>
+                        </>
+                      ) : null}
+                    </p>
+                  ) : null}
 
                   <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-blue-100">
                     <a

@@ -31,6 +31,10 @@ import {
   isContratoAlquilerHabitacionLocalSlugPublished,
   localContratoAlquilerHabitacionHref,
 } from "@/lib/contrato-alquiler-habitacion-local-cities";
+import {
+  getGestoriaCityVerticalHub,
+  localGestoriaCityVerticalHref,
+} from "@/lib/gestoria-city-vertical-hub";
 
 type RelatedItem = { href: string; label: string; description: string };
 
@@ -46,6 +50,14 @@ type Props = {
  */
 export function AdministracionAlquilerLocalRelatedServices({ slug, city }: Props) {
   const candidates: RelatedItem[] = [];
+
+  if (getGestoriaCityVerticalHub(slug, "alquiler")) {
+    candidates.push({
+      href: localGestoriaCityVerticalHref(slug, "alquiler"),
+      label: `Hub alquiler en ${city}`,
+      description: "Índice de LAU, temporada, habitación y administración en un solo URL.",
+    });
+  }
 
   if (isContratoAlquilerLocalSlugPublished(slug)) {
     candidates.push({
@@ -104,7 +116,7 @@ export function AdministracionAlquilerLocalRelatedServices({ slug, city }: Props
     });
   }
 
-  const items = candidates.slice(0, 4);
+  const items = candidates.slice(0, 5);
   if (items.length === 0) return null;
 
   return (
