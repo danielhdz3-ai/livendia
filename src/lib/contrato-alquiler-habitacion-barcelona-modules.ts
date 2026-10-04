@@ -1,4 +1,5 @@
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
+import { HABITACION_BARCELONA_STEP_IMAGES } from "@/lib/contrato-alquiler-habitacion-images";
 
 export const HABITACION_BARCELONA_PROCESS = {
   eyebrow: "Qué incluye tu contrato de alquiler de habitación",
@@ -64,7 +65,7 @@ export function buildHabitacionBarcelonaSteps(
         "Sin comisión sobre la renta mensual",
         "Asesoramiento antes de contratar",
       ],
-      imageSrc: "/images/pexels-yankrukov-7693161.jpg",
+      imageSrc: HABITACION_BARCELONA_STEP_IMAGES.llamada,
       imageAlt: `Gestor Livendia en llamada sobre contrato de habitación en ${zone}`,
     },
     {
@@ -83,7 +84,7 @@ export function buildHabitacionBarcelonaSteps(
         "Precio legal garantizado en web",
         "Mismo gestor hasta la entrega del contrato",
       ],
-      imageSrc: "/images/chicasofaazul.png",
+      imageSrc: HABITACION_BARCELONA_STEP_IMAGES.contratar,
       imageAlt: "Contratar contrato de habitación Livendia online",
     },
     {
@@ -103,7 +104,7 @@ export function buildHabitacionBarcelonaSteps(
         "Renta, fianza y gastos incluidos definidos",
         "Sin desplazarte a gestoría física",
       ],
-      imageSrc: "/images/gestoria20.jpg",
+      imageSrc: HABITACION_BARCELONA_STEP_IMAGES.documentacion,
       imageAlt: "Documentación contrato habitación piso compartido Livendia",
     },
     {
@@ -123,7 +124,7 @@ export function buildHabitacionBarcelonaSteps(
         "Borrador en 48-72 h laborables (info completa)",
         "Comentarios del gestor en lenguaje claro",
       ],
-      imageSrc: "/images/contratos2.jpg",
+      imageSrc: HABITACION_BARCELONA_STEP_IMAGES.redaccion,
       imageAlt: "Redacción contrato alquiler habitación Livendia",
     },
     {
@@ -143,7 +144,7 @@ export function buildHabitacionBarcelonaSteps(
         "Cláusulas críticas explicadas",
         "Inventario y fotos vinculados al contrato",
       ],
-      imageSrc: "/images/firma5.jpg",
+      imageSrc: HABITACION_BARCELONA_STEP_IMAGES.firma,
       imageAlt: "Firma contrato habitación con asesoramiento gestor Livendia",
     },
   ];

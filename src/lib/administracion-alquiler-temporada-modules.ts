@@ -8,7 +8,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_STEP_IMAGES = {
   contratar: "/images/pexels-artempodrez-6779332.jpg",
   calendario: "/images/gestora4.jpg",
   renta: "/images/gestora2.jpg",
-  tecnico: "/images/gestoria20.jpg",
+  tecnico: "/images/pexels-pavel-danilyuk-5520284.jpg",
   contratos: "/images/modelo5.jpg",
 } as const;
 

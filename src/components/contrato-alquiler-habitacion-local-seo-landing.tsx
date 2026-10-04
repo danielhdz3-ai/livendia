@@ -22,6 +22,7 @@ import {
   habitacionBarcelonaProcessTitle,
   isHabitacionBarcelonaExtendedSlug,
 } from "@/lib/contrato-alquiler-habitacion-barcelona-modules";
+import { getContratoAlquilerHabitacionHeroImage } from "@/lib/contrato-alquiler-habitacion-images";
 import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import {
   CONTRATO_ALQUILER_HABITACION_PRICE_CENTS,
@@ -103,6 +104,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
   const lauLocalLabel = isContratoAlquilerLocalSlugPublished(config.slug)
     ? config.city
     : "Barcelona y área metropolitana";
+  const heroImage = config.heroImage ?? getContratoAlquilerHabitacionHeroImage(config.slug);
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -158,10 +160,10 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
                 </div>
                 <div className="relative h-[360px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20 lg:h-[400px]">
                   <Image
-                    src="/images/contratos2.jpg"
+                    src={heroImage}
                     alt={`Contrato de alquiler de habitación en ${config.city}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 556px"
                     priority
                   />
