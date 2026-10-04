@@ -28,32 +28,9 @@ export const SERVICIO_ALQUILER_INTEGRAL_NOT_INCLUDED = [
   "Representación procesal en juzgados ni litigio contencioso",
 ] as const;
 
-export const SERVICIO_ALQUILER_INTEGRAL_PROCESS_STEPS = [
-  {
-    title: "Briefing y estrategia",
-    description:
-      "Definimos renta, condiciones, tipo de contrato y calendario. Preparamos el mensaje del anuncio y los criterios de solvencia que exigirá el seguro de impago.",
-  },
-  {
-    title: "Búsqueda y visitas",
-    description:
-      "Activamos la captación, filtramos candidatos y organizamos visitas. Tú decides el inquilino final con criterio profesional, no solo intuición.",
-  },
-  {
-    title: "Seguro de impago y documentación",
-    description:
-      "El candidato elegido aporta documentación. La tramitamos con la aseguradora de alquiler garantizado que recomendamos; solo avanzamos cuando el estudio de solvencia es favorable.",
-  },
-  {
-    title: "Contrato, fianza y suministros",
-    description:
-      "Redactamos el contrato, coordinamos firma, fianza legal y altas de suministros. Te acompañamos hasta la entrega de llaves y el inicio del arrendamiento.",
-  },
-] as const;
-
 export const SERVICIO_ALQUILER_INTEGRAL_INSURANCE_NOTE = {
   title: "Seguro de impago y alquiler garantizado",
-  body: "Livendia no sustituye a la aseguradora: recomendamos una compañía de alquiler garantizado de confianza para que el estudio de solvencia filtre al inquilino antes de firmar. La prima y la cobertura las contratas tú como propietario; nosotros gestionamos la documentación y el encaje con el contrato. Tras el alta, la renta la ingresa el inquilino en tu cuenta bancaria (salvo condiciones específicas de la póliza, que revisamos contigo).",
+  body: "Livendia no sustituye a la aseguradora: recomendamos nuestra compañía de alquiler garantizado de confianza para el estudio de solvencia (nóminas, contrato, vida laboral y ratio de endeudamiento). La póliza la contratas tú como propietario con prima aparte; nosotros preparamos y remitimos el expediente. Solo proponemos firmar cuando el estudio es favorable o tú asumes el riesgo residual de forma informada. Tras el alta, salvo condiciones de la póliza, la renta la ingresa el inquilino en tu cuenta bancaria.",
 } as const;
 
 export const SERVICIO_ALQUILER_INTEGRAL_OPTIONAL_ADMIN = [
@@ -101,5 +78,15 @@ export const SERVICIO_ALQUILER_INTEGRAL_FAQ = [
     question: "¿Operáis en toda España?",
     answer:
       "Sí, con gestoría inmobiliaria online. La búsqueda de inquilino y los trámites se coordinan de forma remota; visitas y entrega de llaves según acordemos contigo en tu municipio.",
+  },
+  {
+    question: "¿Qué documentación pedís a los inquilinos?",
+    answer:
+      "DNI o NIE, nóminas recientes, contrato de trabajo indefinido o justificante de ingresos estables, informe de vida laboral y, si hace falta, otros documentos para contrastar solvencia. Analizamos si la renta encaja en un ratio de endeudamiento razonable antes de proponer visita o envío al seguro.",
+  },
+  {
+    question: "¿Qué es SERPAVI y me afecta?",
+    answer:
+      "En Cataluña, SERPAVI es el registro de alquiler donde deben inscribirse muchos contratos. En otras comunidades existen registros o obligaciones similares. En la fase de valoración te orientamos sobre registro, zonas tensionadas y documentación exigible en tu CCAA.",
   },
 ] as const;

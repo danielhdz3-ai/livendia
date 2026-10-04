@@ -19,24 +19,20 @@ import {
   SERVICIO_ALQUILER_INTEGRAL_INSURANCE_NOTE,
   SERVICIO_ALQUILER_INTEGRAL_NOT_INCLUDED,
   SERVICIO_ALQUILER_INTEGRAL_OPTIONAL_ADMIN,
-  SERVICIO_ALQUILER_INTEGRAL_PROCESS_STEPS,
   SERVICIO_ALQUILER_INTEGRAL_SCOPE,
 } from "@/lib/servicio-alquiler-integral-shared";
+import {
+  SERVICIO_ALQUILER_INTEGRAL_GUARANTEES,
+  SERVICIO_ALQUILER_INTEGRAL_PROCESS_META,
+  SERVICIO_ALQUILER_INTEGRAL_TENANT_DOCS,
+  buildServicioAlquilerIntegralSteps,
+} from "@/lib/servicio-alquiler-integral-modules";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle,
-  ClipboardCheck,
-  FileSignature,
-  Phone,
-  Search,
-  ShieldCheck,
-  UserCheck,
-  XCircle,
-} from "lucide-react";
+import { ArrowRight, CheckCircle, FileText, Phone, ShieldCheck, XCircle } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const canonical = `${getSiteUrl()}${SERVICIO_ALQUILER_INTEGRAL_PATH}`;
@@ -58,8 +54,6 @@ export const metadata: Metadata = {
   },
 };
 
-const processIcons = [Search, UserCheck, ShieldCheck, FileSignature] as const;
-
 export default async function ServicioAlquilerIntegralPage() {
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === SERVICIO_ALQUILER_INTEGRAL_SLUG) ?? null;
@@ -68,6 +62,9 @@ export default async function ServicioAlquilerIntegralPage() {
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
     "Hola, me interesa el servicio de alquiler integral (búsqueda de inquilino y puesta en marcha). ¿Me podéis enviar presupuesto?",
   )}`;
+
+  const integralSteps = buildServicioAlquilerIntegralSteps(priceLabel);
+  const processMeta = SERVICIO_ALQUILER_INTEGRAL_PROCESS_META;
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -154,29 +151,73 @@ export default async function ServicioAlquilerIntegralPage() {
             </div>
           </section>
 
+          <VentaSinAgenciaPasoAPasoSection
+            city="toda España"
+            priceLabel={priceLabel}
+            eyebrow={processMeta.eyebrow}
+            title={processMeta.title}
+            intro={processMeta.intro}
+            steps={integralSteps}
+            alwaysWithYouTitle={processMeta.alwaysWithYouTitle}
+            alwaysWithYouBody={processMeta.alwaysWithYouBody}
+            serviceLine={processMeta.serviceLine}
+            feeNote={processMeta.feeNote}
+          />
+
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-5xl">
-              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">Cómo funciona</h2>
+            <div className="mx-auto max-w-6xl">
+              <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+                  <Image
+                    src="/images/gestora2.jpg"
+                    alt="Revisión de nóminas y documentación de inquilino para alquiler garantizado"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                    {SERVICIO_ALQUILER_INTEGRAL_TENANT_DOCS.title}
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-[#475569]">
+                    {SERVICIO_ALQUILER_INTEGRAL_TENANT_DOCS.intro}
+                  </p>
+                  <ul className="mt-8 space-y-5">
+                    {SERVICIO_ALQUILER_INTEGRAL_TENANT_DOCS.items.map((item) => (
+                      <li key={item.title} className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
+                        <p className="flex items-center gap-2 font-bold text-[#1E293B]">
+                          <FileText className="h-5 w-5 text-[#1A4FBF]" aria-hidden />
+                          {item.title}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#475569]">{item.body}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                Garantías del servicio Livendia
+              </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-[#64748b]">
-                Cuatro fases hasta que el inquilino entra en la vivienda con contrato y trámites en orden.
+                Mismo criterio jurídico que en contratos y administración: normativa clara, documentación ordenada y
+                gestor humano.
               </p>
-              <div className="mt-12 grid gap-8 sm:grid-cols-2">
-                {SERVICIO_ALQUILER_INTEGRAL_PROCESS_STEPS.map((step, index) => {
-                  const Icon = processIcons[index] ?? ClipboardCheck;
-                  return (
-                    <div
-                      key={step.title}
-                      className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 ring-1 ring-slate-100"
-                    >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EFF6FF]">
-                        <Icon className="h-6 w-6 text-[#1A4FBF]" aria-hidden />
-                      </div>
-                      <p className="mt-4 text-sm font-bold text-[#1A4FBF]">Paso {index + 1}</p>
-                      <h3 className="mt-1 text-lg font-bold text-[#1E293B]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[#475569]">{step.description}</p>
-                    </div>
-                  );
-                })}
+              <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                {SERVICIO_ALQUILER_INTEGRAL_GUARANTEES.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm ring-1 ring-slate-100"
+                  >
+                    <h3 className="text-lg font-bold text-[#1E293B]">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#475569]">{item.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
