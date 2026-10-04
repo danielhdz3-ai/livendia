@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { AdministracionAlquilerTemporadaLocalCityLinks } from "@/components/administracion-alquiler-temporada-local-city-links";
+import { AdministracionAlquilerTemporadaRentSection } from "@/components/administracion-alquiler-temporada-rent-section";
 import { getPublicServices } from "@/lib/catalog";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
@@ -195,6 +196,10 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <AdministracionAlquilerTemporadaRentSection
+            heading={`Cómo se paga la renta en ${config.placeLabel}`}
+          />
 
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">

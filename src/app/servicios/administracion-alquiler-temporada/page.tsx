@@ -19,6 +19,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { AdministracionAlquilerTemporadaRentSection } from "@/components/administracion-alquiler-temporada-rent-section";
 import {
   ADMINISTRACION_ALQUILER_TEMPORADA_FAQ,
   ADMINISTRACION_ALQUILER_TEMPORADA_INCLUDED,
@@ -93,7 +94,8 @@ export default async function AdministracionAlquilerTemporadaPage() {
                   </h1>
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">
                     Si tienes el piso alquilado por temporada o por habitaciones, Livendia lleva el control de
-                    inquilinos, entradas, salidas y servicio técnico. Tú cobras; nosotros filtramos el día a día.
+                    inquilinos, entradas, salidas y servicio técnico. El inquilino paga la renta en tu cuenta; nosotros
+                    comprobamos que llegue y gestionamos incidencias — sin renta garantizada.
                   </p>
                   <p className="mt-4 rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm leading-relaxed text-blue-50">
                     {ADMINISTRACION_ALQUILER_TEMPORADA_SCOPE}
@@ -113,6 +115,7 @@ export default async function AdministracionAlquilerTemporadaPage() {
                   <div className="mt-8 space-y-3">
                     {[
                       "Control de inquilinos, entradas y salidas",
+                      "Seguimiento de la renta en tu cuenta (sin cobrar por ti)",
                       "Servicio técnico e incidencias",
                       "Sin permanencia",
                     ].map((line) => (
@@ -161,6 +164,8 @@ export default async function AdministracionAlquilerTemporadaPage() {
               </div>
             </div>
           </section>
+
+          <AdministracionAlquilerTemporadaRentSection />
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-5xl">

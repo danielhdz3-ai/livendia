@@ -5,6 +5,7 @@ import {
 } from "@/lib/catalog.public";
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_INCLUDED = [
+  "Seguimiento y control de la renta en tu cuenta bancaria (el inquilino paga a ti; Livendia no cobra ni garantiza el importe)",
   "Punto de contacto único con inquilinos de temporada o por habitaciones",
   "Control de entradas y salidas (check-in / check-out) y estado de la vivienda",
   "Gestión de servicio técnico, averías e incidencias con proveedores",
@@ -16,6 +17,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_INCLUDED = [
 ] as const;
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_NOT_INCLUDED = [
+  "Renta garantizada, cobro de la renta en nombre del propietario o seguro de impago incluido en la cuota (seguimos tu cuenta; el seguro se contrata aparte)",
   `Redacción de cada contrato nuevo de alquiler (temporada o habitación): ${ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL} IVA incl. por contrato, cobro aparte`,
   "Administración de alquileres de larga duración / vivienda habitual LAU (ver servicio de administración estándar)",
   "Honorarios de agencia inmobiliaria ni comercialización del anuncio",
@@ -131,6 +133,16 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_FAQ = [
   {
     question: "¿Hay permanencia?",
     answer: "No. Puedes cancelar cuando quieras; mantienes el acceso hasta el final del periodo ya pagado.",
+  },
+  {
+    question: "¿Livendia cobra la renta o la ingresa en mi cuenta?",
+    answer:
+      "No. Cada inquilino transfiere la renta a la cuenta corriente del propietario. Livendia controla que el pago llegue en plazo, te avisa en el panel y reclama al inquilino si hay problemas. No garantizamos el importe ni adelantamos rentas.",
+  },
+  {
+    question: "¿Incluye seguro de impago o renta garantizada?",
+    answer:
+      "No. Es un producto externo que puedes contratar aparte; podemos orientarte hacia nuestra aseguradora de confianza. La cuota de administración cubre seguimiento de la renta, incidencias y gestión del inquilino.",
   },
   {
     question: `¿En qué se diferencia de la administración a ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}?`,
