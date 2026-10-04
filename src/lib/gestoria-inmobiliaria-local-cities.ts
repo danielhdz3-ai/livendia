@@ -358,9 +358,9 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: "Valencia: gestoría 890 € sin comisiones",
+    metaTitle: "Gestoría inmobiliaria Valencia — venta y alquiler",
     metaDescription:
-      `Gestoría Valencia para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones de agencia. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Ruzafa, Benimaclet.`,
+      `Gestoría en Valencia para particulares: venta 890 €, arras 145 €, LAU y gestión de alquileres ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Sin comisión del 3-5 %. Ruzafa, Benimaclet, Mislata. Gestor online.`,
     keywords: [
       "gestoría inmobiliaria valencia particulares",
       "venta entre particulares valencia gestoría",

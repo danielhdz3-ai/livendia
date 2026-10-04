@@ -93,6 +93,9 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "madrid",
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
+    heroBadge: "Gestión de alquileres · Madrid",
+    heroH1: "Gestión de alquileres en Madrid para propietarios — desde 59 €/mes",
+    jsonLdServiceName: "Gestión de alquileres en Madrid para propietarios",
     // Precio medio: Fotocasa, febrero 2026 (21,59 €/m²). Verificar vigencia antes de campañas nuevas.
     heroLead:
       "Madrid capital combina algunos de los precios más altos de España —21,59 €/m² de media según Fotocasa (febrero 2026)— con una fuerte dispersión interna: de los 26-28 €/m² de Salamanca a los 13-16 €/m² de Villaverde o Usera. Propietarios con varios pisos y pequeños inversores comparten el mismo problema: llamadas fuera de horario, incidencias en comunidad y dudas sobre quién coordina cada reparación. Livendia es el único intermediario ante el inquilino para que decidáis solo lo que merece vuestra firma.",

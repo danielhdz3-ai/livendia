@@ -17,9 +17,9 @@ import type {
 export const PILLAR_MADRID_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/madrid`;
 
 export const PILLAR_MADRID_META = {
-  title: "Vender piso sin comisiones en Madrid | Entre particulares con gestor legal",
+  title: "Vender piso sin comisiones Madrid 2026 — guía | 890 €",
   description:
-    "Guía completa para vender tu piso en Madrid sin inmobiliaria ni comisiones del 3-5 %. Proceso entre particulares, documentación, riesgos, ahorro real y acompañamiento jurídico Livendia por 890 € IVA incl.",
+    "Vender piso en Madrid sin comisiones del 3-5 %: guía entre particulares 2026. Arras, documentación, riesgos y gestoría Livendia 890 € IVA incl. Salamanca, Vallecas, cinturón sur.",
   keywords: [
     "vender piso sin inmobiliaria madrid",
     "vender piso sin comisiones madrid",

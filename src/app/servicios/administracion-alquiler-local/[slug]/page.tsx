@@ -39,22 +39,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_LOCAL_BASE}/${slug}`;
   const price = ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL;
-  const title =
-    slug === "valencia"
-      ? `Gestión de alquileres en Valencia — ${price} | Admin. para propietarios`
-      : slug === "mallorca"
-        ? `Administración de alquileres Mallorca — ${price}`
-        : `Administración del alquiler en ${city.city} — ${price}`;
+
+  const metaBySlug: Record<string, { title: string; description: string }> = {
+    valencia: {
+      title: `Gestión de alquileres Valencia — ${price}/mes 2026`,
+      description: `Gestión de alquileres en Valencia desde ${price} IVA incl. Propietarios: incidencias, averías e inquilino — tú no atiendes llamadas. Ruzafa, Benimaclet, Campanar. Sin permanencia. Contrata online.`,
+    },
+    madrid: {
+      title: `Gestión de alquileres Madrid — ${price}/mes | Propietarios`,
+      description: `Administración de alquileres en Madrid desde ${price} IVA incl. Canal único con el inquilino, averías y renovaciones. Salamanca, Vallecas, Getafe. Sin permanencia ni comisión sobre la renta.`,
+    },
+    barcelona: {
+      title: `Administración alquiler Barcelona — ${price}/mes`,
+      description: `Gestión de alquileres en Barcelona desde ${price} IVA incl. Zona tensionada, INCASÒL y comunidad: Livendia habla con el inquilino por ti. Eixample, Gràcia, AMB. Sin permanencia.`,
+    },
+    mallorca: {
+      title: `Administración alquileres Mallorca — ${price}`,
+      description: `Administración de alquileres en Mallorca y Palma desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino. Gestión para propietarios en Baleares.`,
+    },
+    oviedo: {
+      title: `Administración alquileres Oviedo — ${price}`,
+      description: `Administración de alquileres en Oviedo desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino. Gestión profesional para propietarios en Asturias.`,
+    },
+    gijon: {
+      title: `Administración alquileres Gijón — ${price}`,
+      description: `Administración de alquileres en Gijón desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino. Gestión profesional para propietarios en Asturias.`,
+    },
+  };
+
+  const custom = metaBySlug[slug];
+  const title = custom?.title ?? `Administración del alquiler en ${city.city} — ${price}`;
   const description =
-    slug === "valencia"
-      ? `Gestión de alquileres en Valencia desde ${price} IVA incl. Gestión de alquiler para propietarios: incidencias, averías e inquilino — tú no hablas con el arrendatario. Ruzafa, Campanar, Benimaclet, Mislata. Sin permanencia.`
-      : slug === "mallorca"
-        ? `Administración de alquileres en Mallorca y Palma desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Baleares. Livendia.`
-        : slug === "oviedo"
-          ? `Administración de alquileres en Oviedo desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Asturias. Livendia.`
-          : slug === "gijon"
-            ? `Administración de alquileres en Gijón desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino: gestión profesional para propietarios en Asturias. Livendia.`
-            : `Administración de alquileres en ${city.city} desde ${price} sin permanencia. Gestión integral de incidencias, averías y mediación con el inquilino. Livendia.`;
+    custom?.description ??
+    `Administración de alquileres en ${city.city} desde ${price} sin permanencia. Gestión integral de incidencias, averías y mediación con el inquilino. Livendia.`;
   const ogImage = city.heroImage ?? "/images/modelo3.jpg";
 
   return {

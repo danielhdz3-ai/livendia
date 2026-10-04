@@ -97,9 +97,9 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Piso compartido · Barcelona",
     heroH1: "Contrato de alquiler de habitación en Barcelona",
-    metaTitle: `Habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026`,
+    metaTitle: `Contrato alquiler habitación Barcelona — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
-      `Contrato alquiler habitación Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: convivencia, fianza e inventario. Gestor humano por teléfono. Eixample, Gràcia. 48-72 h.`,
+      `Contrato de alquiler de habitación en Barcelona ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Piso compartido LAU 2026: Eixample, Gràcia. Convivencia, fianza e inventario. Entrega 48-72 h.`,
     keywords: [
       "contrato alquiler habitacion barcelona",
       "alquilar habitacion barcelona contrato",
@@ -311,9 +311,9 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroBadge: "Piso compartido · Madrid",
     heroH1: "Contrato de alquiler de habitación en Madrid",
-    metaTitle: `Habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}, LAU 2026`,
+    metaTitle: `Contrato alquiler habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
-      `Contrato alquiler habitación Madrid ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Modelo LAU 2026 para piso compartido: Chamberí, Moncloa, Tetuán. Convivencia, gastos y fianza. Gestor humano por teléfono. 48-72 h.`,
+      `Contrato de alquiler de habitación en Madrid ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Piso compartido LAU 2026: Chamberí, Moncloa, Tetuán. Convivencia, gastos y fianza. Entrega 48-72 h. Gestor por teléfono.`,
     keywords: [
       "contrato alquiler habitacion madrid",
       "alquilar habitacion madrid contrato",

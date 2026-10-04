@@ -26,9 +26,9 @@ const BCN_LAU_PLATFORM_NOTES: LocalCityLandingFields["localServiceNotes"] = [
 /** Copy único por ciudad — contrato de alquiler local. */
 const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFields> = {
   madrid: {
-    metaTitle: `LAU piso completo Madrid — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}, sin agencia`,
+    metaTitle: `Contrato de alquiler Madrid 2026 — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL} LAU`,
     metaDescription:
-      "Contrato LAU piso entero Madrid 145 € IVA incl. Revisión profesional, inventario y cláusulas adaptadas a la Comunidad de Madrid — depósito AVS, IPC y pisos compartidos. No es contrato de habitación. Gestor humano por teléfono. Entrega 48-72 h.",
+      "Contrato de alquiler en Madrid entre particulares: LAU 145 € IVA incl., inventario y depósito AVS. Entrega 48-72 h. Salamanca, Vallecas, cinturón. Gestor por teléfono — sin comisión de agencia.",
     keywords: [
       "contrato alquiler madrid",
       "contrato alquiler entre particulares madrid",
@@ -83,9 +83,9 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
     ],
   },
   barcelona: {
-    metaTitle: `LAU piso completo Barcelona — 145 €, sin agencia`,
+    metaTitle: `Contrato alquiler Barcelona 2026 — ${CONTRATO_ALQUILER_LAU_PRICE_LABEL}`,
     metaDescription:
-      "Contrato LAU piso entero Barcelona 145 € IVA incl. Revisión profesional, inventario y cláusulas zona tensionada. No es contrato de habitación. Gestor humano por teléfono. Entrega 48-72 h.",
+      "Contrato de alquiler Barcelona entre particulares: LAU 145 € IVA incl., INCASÒL e inventario. Zona tensionada explicada. Eixample, Gràcia, AMB. Entrega 48-72 h. Gestor humano.",
     keywords: [
       "contrato alquiler barcelona",
       "contrato alquiler entre particulares barcelona",
