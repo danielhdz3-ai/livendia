@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  BARCELONA_DISTRICT_VENTA_PARTICULAR_CITIES,
   BARCELONA_METRO_VENTA_PARTICULAR_CITIES,
   barcelonaMetroVentaParticularHref,
 } from "@/lib/venta-piso-particular-barcelona-metro";
@@ -40,16 +41,42 @@ export function VentaPisoParticularSinAgenciaLocalCityLinks({
             .
           </p>
         ) : null}
-        <nav
-          aria-label="Venta piso particular sin agencia por ciudad"
-          className="mt-4 flex flex-wrap gap-2"
-        >
+        <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+          Barcelona ciudad (distritos)
+        </p>
+        <nav aria-label="Venta entre particulares por distrito de Barcelona" className="mt-2 flex flex-wrap gap-2">
+          {BARCELONA_DISTRICT_VENTA_PARTICULAR_CITIES.map((d) => {
+            const href = barcelonaMetroVentaParticularHref(d.slug);
+            const active = currentSlug === d.slug;
+            return (
+              <Link
+                key={d.slug}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={
+                  active
+                    ? "rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#1E293B]"
+                    : "rounded-full bg-[#EFF6FF] px-4 py-2 text-sm font-semibold text-[#1A4FBF] ring-1 ring-[#1A4FBF]/20 hover:bg-blue-50"
+                }
+              >
+                {d.shortName}
+              </Link>
+            );
+          })}
           <Link
             href={localVenderPisoSinAgenciaHref("barcelona")}
-            className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A4FBF]"
+            className="rounded-full bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white hover:bg-[#153d8f]"
           >
-            Barcelona
+            Barcelona (captación)
           </Link>
+        </nav>
+        <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-[#64748b]">
+          Área metropolitana (AMB)
+        </p>
+        <nav
+          aria-label="Venta piso particular sin agencia por municipio AMB"
+          className="mt-2 flex flex-wrap gap-2"
+        >
           {BARCELONA_METRO_VENTA_PARTICULAR_CITIES.map((metro) => {
             const href = barcelonaMetroVentaParticularHref(metro.slug);
             const active = currentSlug === metro.slug;

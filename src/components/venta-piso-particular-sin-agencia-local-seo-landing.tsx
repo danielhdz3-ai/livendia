@@ -38,7 +38,6 @@ import {
   VENTA_PARTICULAR_GESTOR_HUMAN,
   VENTA_PARTICULAR_INTERNAL_LINKS,
   VENTA_PARTICULAR_NOT_AGENCY,
-  VENTA_PARTICULAR_PROCESS_STEPS,
   VENTA_PARTICULAR_TIMELINE,
   VENTA_PARTICULAR_WHAT_LIVENDIA_DOES,
   LIVENDIA_DIFFERENTIATOR,
@@ -49,6 +48,13 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import { PILLAR_BARCELONA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
+import {
+  buildVentaPisoParticularSteps,
+  VENTA_PISO_PARTICULAR_PROCESS_META,
+  ventaPisoParticularProcessTitle,
+} from "@/lib/venta-piso-particular-modules";
+import { getVentaPisoParticularHeroImage } from "@/lib/venta-piso-particular-images";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -56,9 +62,7 @@ import {
   ArrowRight,
   Calendar,
   CheckCircle,
-  ClipboardList,
   FileSearch,
-  Handshake,
   MessageCircle,
   Shield,
   UserCheck,
@@ -68,9 +72,6 @@ import {
 } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const HERO_IMAGE = "/images/contratodealquiler.jpg";
-
-const STEP_ICONS = [ClipboardList, FileSearch, Shield, UserCheck, Handshake, Shield, CheckCircle] as const;
 
 function GestorStrip({ city }: { city: string }) {
   return (
@@ -183,6 +184,8 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
     `Hola, ya tengo comprador particular para mi piso en ${config.city} y quiero vender sin agencia con gestor Livendia (${priceLabel} IVA incl.).`,
   )}`;
+  const heroImage = getVentaPisoParticularHeroImage(config.slug);
+  const processSteps = buildVentaPisoParticularSteps(config.city, priceLabel);
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -233,7 +236,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                 </div>
                 <div className="relative order-2 h-64 sm:h-80 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src={HERO_IMAGE}
+                    src={heroImage}
                     alt={`Venta de piso entre particulares en ${config.city} — gestor Livendia`}
                     fill
                     className="object-cover object-center"
@@ -331,6 +334,19 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
             </div>
           </section>
 
+          <VentaSinAgenciaPasoAPasoSection
+            city={config.city}
+            priceLabel={priceLabel}
+            eyebrow={VENTA_PISO_PARTICULAR_PROCESS_META.eyebrow}
+            title={ventaPisoParticularProcessTitle(config.city)}
+            intro={VENTA_PISO_PARTICULAR_PROCESS_META.intro}
+            steps={processSteps}
+            alwaysWithYouTitle={VENTA_PISO_PARTICULAR_PROCESS_META.alwaysWithYouTitle}
+            alwaysWithYouBody={VENTA_PISO_PARTICULAR_PROCESS_META.alwaysWithYouBody}
+            serviceLine={VENTA_PISO_PARTICULAR_PROCESS_META.serviceLine}
+            feeNote={`${priceLabel} IVA incl. · sin comisión · gestor dedicado hasta notaría.`}
+          />
+
           {/* Línea temporal */}
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-5xl">
@@ -353,40 +369,6 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
                     <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{item.body}</p>
                   </li>
                 ))}
-              </ol>
-            </div>
-          </section>
-
-          {/* Proceso 7 pasos */}
-          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                Proceso paso a paso con tu gestor en {config.city}
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[#64748b]">
-                El mismo gestor inmobiliario especializado te acompaña en cada fase — no cambia de interlocutor.
-              </p>
-              <ol className="mt-12 space-y-6">
-                {VENTA_PARTICULAR_PROCESS_STEPS.map((step, i) => {
-                  const Icon = STEP_ICONS[i] ?? ClipboardList;
-                  return (
-                    <li
-                      key={step.step}
-                      className="flex gap-5 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
-                    >
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-lg font-bold text-white">
-                        {step.step}
-                      </span>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <Icon className="h-5 w-5 text-[#1A4FBF]" aria-hidden />
-                          <h3 className="text-lg font-bold text-[#1E293B]">{step.title}</h3>
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{step.body}</p>
-                      </div>
-                    </li>
-                  );
-                })}
               </ol>
             </div>
           </section>

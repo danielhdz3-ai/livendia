@@ -115,6 +115,137 @@ function faqCore(city: string): VentaPisoParticularSeoContent["faqLocal"] {
 }
 
 export const VENTA_PISO_PARTICULAR_SEO_CONTENT: Record<string, Omit<VentaPisoParticularSeoContent, never>> = {
+  "barcelona-eixample": {
+    precioMedio: 450_000,
+    heroProblemLine:
+      "En l'Eixample el comprador suele estar elegido — Idealista, recomendación de vecino o comprador que ya vive en el distrito. El precio por metro cuadrado es alto; una comisión del 3 % puede superar los 13.000 € por algo que tú ya hiciste: encontrar comprador.",
+    heroSubtitle:
+      "Livendia no publica tu anuncio. Entramos cuando hay acuerdo entre particulares y hace falta un gestor inmobiliario que domine arras CCCat, fincas reglamentarias y plazos de comunidad en edificios señoriales.",
+    introParagraphs: [
+      "Vender en l'Eixample entre particulares es habitual en pisos de 70–90 m² en finca reglamentaria: compradores con hipoteca, herencias con varios titulares y operaciones donde el parking o el trastero no están bien descritos en el Registro. El error típico no es el precio — es firmar arras copiadas de otra venta con plazos imposibles para conseguir certificado de deuda en una comunidad grande.",
+      "Por 890 € IVA incluido un gestor Livendia se asigna a tu expediente: revisa viabilidad del calendario, redacta o corrige arras, persigue cédula d'habitabilitat y energético, y actúa como filtro profesional con el comprador y su banco. Sin comisión sobre los 400.000 € o más que vale tu piso.",
+      "En Sant Antoni, la Dreta o la Sagrada Família muchos vendedores evitan agencia pero subestiman la cláusula 621-49 CCCat cuando el comprador financia. Sin ella, un retraso bancario se convierte en disputa sobre la señal. Livendia la incorpora cuando procede, con lenguaje claro para ambas partes.",
+      "Mantienes la venta directa; nosotros la parte que un notario no hace por ti: checklist, seguimiento y coherencia entre lo pactado en arras y lo que exigirá la escritura.",
+    ],
+    localHeading: "Eixample: por qué la venta directa exige gestor aunque ya tengas comprador",
+    localParagraphs: [
+      "La densidad de fincas reglamentarias implica comunidades con administradores saturados: el certificado de deuda cero puede tardar más que en un municipio del Vallès. Fijar notaría en 30 días sin haber pedido papeles es el conflicto más frecuente en operaciones entre particulares en el Eixample.",
+      "Segundo riesgo: discrepancias entre catastro, registro y metros útiles en pisos señoriales reformados. La nota simple debe cruzarse con lo que enseñaste al comprador en la visita.",
+      "Livendia acompaña ventas en todo el distrito — Esquerra y Dreta, Sant Antoni, Sagrada Família — con panel digital y el mismo gestor desde la llamada inicial hasta la firma.",
+    ],
+    barriosIntro: "Zonas del Eixample donde más vemos ventas entre particulares con gestor Livendia:",
+    barrios: [
+      { name: "Sant Antoni", description: "Alta rotación y compradores jóvenes. Arras con 621-49 y plazos realistas de comunidad." },
+      { name: "Dreta de l'Eixample", description: "Ticket alto; compradores exigen documentación impecable. Revisión de anejos y derramas." },
+      { name: "Esquerra de l'Eixample", description: "Mezcla de herencias y ventas por portal. Coordinación de titularidades múltiples." },
+      { name: "Sagrada Família", description: "Edificios con obras de fachada. Detección temprana de derramas aprobadas." },
+    ],
+    casuistica: [
+      { title: "Parking no inscrito", body: "Comprador asume plaza incluida; en Registro no figura. Se corrige en arras o se excluye antes de señal." },
+      { title: "Comprador extranjero con hipoteca española", body: "Plazos bancarios largos. Cláusula 621-49 y calendario negociado con el gestor." },
+    ],
+    commonMistakesLocal: [
+      { title: "Arras de Madrid en piso barcelonés", body: "CCCat y cédula catalana no son opcionales. Plantillas de otra CCAA generan nulos y tensiones." },
+      { title: "Prometer entrega con inquilino sin cláusula", body: "En Eixample hay pisos alquilados. Debe quedar en contrato quién negocia salida y cuándo." },
+    ],
+    faqLocal: [
+      ...faqCore("l'Eixample"),
+      {
+        question: "¿Atendéis solo Eixample o todo Barcelona?",
+        answer:
+          "Esta landing es para vender en l'Eixample con comprador ya encontrado. Mismo servicio y gestor en otros distritos con landings propias (Gràcia, Sants, etc.).",
+      },
+      ...faqExtended("Barcelona — Eixample"),
+    ],
+  },
+
+  "barcelona-gracia": {
+    precioMedio: 400_000,
+    heroProblemLine:
+      "En Gràcia el comprador a menudo es vecino, conocido del barrio o alguien que vio el piso en un portal — no una agencia. El acuerdo se cierra en un café; los papeles se dejan para después y ahí aparecen cédulas caducadas, fincas sin ascensor con ITE pendiente o herencias sin alinear.",
+    heroSubtitle:
+      "Livendia protege tu venta directa en Gràcia: gestor asignado, arras CCCat y seguimiento de comunidad en edificios de planta baja y áticos compartidos.",
+    introParagraphs: [
+      "Gràcia mezcla pisos familiares en Vila de Gràcia, estudios en La Salut y operaciones entre particulares con mucha confianza personal — precisamente donde un contrato mal redactado duele más si la relación se rompe.",
+      "No somos inmobiliaria: no captamos comprador ni cobramos porcentaje. Somos gestoría inmobiliaria digital con tarifa plana. Tú mantienes el trato directo; nosotros traducimos el acuerdo a documentación defendible ante notaría.",
+      "En edificios sin ascensor y con reformas recientes, el certificado energético y la descripción de anejos en arras evitan rebajas de última hora. El gestor Livendia pide certificados con antelación, no a la semana de firma.",
+      "Operamos en todo el distrito con el mismo protocolo: diagnóstico en llamada, panel para subir documentos y teléfono directo con tu gestor.",
+    ],
+    localHeading: "Gràcia: venta entre particulares con confianza — y contrato por escrito",
+    localParagraphs: [
+      "La rotación de inquilinos y propietarios que venden para comprar en otra zona genera ventas rápidas en precio y lentas en papeles. En Gràcia el comprador suele ser exigente con el estado de la finca común.",
+      "Camp d'en Grassot y El Coll tienen edificios en terraza con elementos comunes poco claros en escrituras antiguas. Revisamos nota simple antes de arras.",
+      "Livendia conoce el ritmo del distrito: plazos negociados con administradores locales y calendario realista hasta notaría en Barcelona o área metropolitana.",
+    ],
+    barriosIntro: "Barrios de Gràcia con ventas entre particulares acompañadas por Livendia:",
+    barrios: [
+      { name: "Vila de Gràcia", description: "Pisos señoriales y convivencia densa. Cláusulas claras de estado y fianzas de obra." },
+      { name: "Camp d'en Grassot", description: "Ventas familiares frecuentes. Herencias y comparecientes en arras." },
+      { name: "La Salut", description: "Compradores teletrabajadores. Hipoteca y 621-49 en contrato." },
+      { name: "El Coll", description: "Fincas en pendiente. Revisión de cargas y accesos." },
+    ],
+    casuistica: [
+      { title: "Venta entre hermanos en el mismo edificio", body: "Precio simbólico o por debajo de mercado: implicaciones fiscales orientadas; contrato coherente con valor declarado." },
+      { title: "Obra en patio de manzana", body: "Derrama no reflejada en arras. Solicitud a comunidad en semana 1." },
+    ],
+    commonMistakesLocal: [
+      { title: "Confiar en 'ya nos conocemos'", body: "Sin arras profesional, un cambio de pareja del comprador o fallo bancario deja al vendedor sin herramientas legales." },
+      { title: "Cédula olvidada en finca antigua", body: "En Catalunya bloquea la transmisión. Renovación con margen antes de fijar notaría." },
+    ],
+    faqLocal: [
+      ...faqCore("Gràcia"),
+      {
+        question: "¿Intervenís si el comprador es de otro distrito de Barcelona?",
+        answer: "Sí. Lo relevante es la ubicación del inmueble en Gràcia y la normativa catalana aplicable a la compraventa.",
+      },
+      ...faqExtended("Barcelona — Gràcia"),
+    ],
+  },
+
+  "barcelona-sants-montjuic": {
+    precioMedio: 300_000,
+    heroProblemLine:
+      "En Sants, Poble-sec o Hostafrancs has encontrado comprador — a menudo por precio más asequible que en el Eixample — y quieres evitar comisión. Pero edificios de los 30–60, ITE con deficiencias y compradores con hipoteca lenta son el cóctel que rompe ventas verbales.",
+    heroSubtitle:
+      "Gestor Livendia para venta directa en Sants-Montjuïc: arras, comunidad, cancelación de hipoteca y camino a notaría por tarifa plana.",
+    introParagraphs: [
+      "Sants-Montjuïc concentra ventas entre particulares cerca de Estació Sants: compradores profesionales, familias que bajan presupuesto desde Barcelona norte y operaciones con parking incluido en precio pero mal descrito en contrato.",
+      "Livendia entra cuando el acuerdo existe. Un gestor revisa si el plazo hasta escritura es creíble, redacta arras conforme al CCCat y persigue certificados mientras tú sigues con tu día a día.",
+      "Poble-sec y la Bordeta tienen comunidades con obras de fachada recurrentes. Detectar derrama aprobada antes de recibir señal evita que el comprador exija descuento o desista.",
+      "890 € IVA incluido, sin exclusiva, sin comisión. Mismo estándar Livendia que en municipios del Vallès, adaptado al parque de Sants-Montjuïc.",
+    ],
+    localHeading: "Sants-Montjuïc: venta directa con edificios envejecidos y compradores financiados",
+    localParagraphs: [
+      "El ticket medio es menor que en Sarrià o Eixample, pero el ahorro frente a agencia sigue siendo muy relevante: 9.000–12.000 € que no pagas por captación que ya hiciste tú.",
+      "Hostafrancs y La Bordeta mezclan operaciones con varios propietarios y herencias. Ordenamos comparecientes antes de transferir señal.",
+      "Coordinamos notaría en Barcelona ciudad o área metropolitana según acordéis; la preparación documental no depende del notario elegido.",
+    ],
+    barriosIntro: "Núcleos de Sants-Montjuïc donde acompañamos vendedores particulares:",
+    barrios: [
+      { name: "Sants", description: "Alta demanda cerca de la estación. Hipoteca del comprador y plazos bancarios en arras." },
+      { name: "Poble-sec", description: "Edificios con reformas internas. Energético e inventario de estado." },
+      { name: "Hostafrancs", description: "Ventas familiares. Titularidades y poderes si algún vendedor no puede firmar arras presencialmente." },
+      { name: "Montjuïc / Marina", description: "Operaciones con vistas y parking. Verificación registral de anejos." },
+    ],
+    casuistica: [
+      { title: "Comprador pierde financiación", body: "621-49 CCCat mal redactada = conflicto. Gestor equilibra protección vendedor y comprador." },
+      { title: "ITE desfavorable", body: "Notario puede exigir subsanación. Detectado en revisión documental inicial, no 48 h antes de firma." },
+    ],
+    commonMistakesLocal: [
+      { title: "Fijar notaría antes de comunidad", body: "En bloques de Sants el certificado de deuda tarda. Calendario negociado con comprador desde el gestor." },
+      { title: "Señal en mano sin contrato", body: "Riesgo legal y fiscal. Arras redactadas antes de entregar importe significativo." },
+    ],
+    faqLocal: [
+      ...faqCore("Sants-Montjuïc"),
+      {
+        question: "¿Es lo mismo que contratar vender sin agencia en Barcelona capital?",
+        answer:
+          "El servicio es el mismo servicio completo Livendia. Esta página está orientada a vendedores con inmueble en Sants-Montjuïc y comprador ya encontrado; el copy y ejemplos son del distrito.",
+      },
+      ...faqExtended("Barcelona — Sants-Montjuïc"),
+    ],
+  },
+
   "hospitalet-de-llobregat": {
     precioMedio: 240_000,
     heroProblemLine:

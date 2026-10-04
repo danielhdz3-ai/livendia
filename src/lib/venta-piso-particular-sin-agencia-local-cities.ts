@@ -10,6 +10,9 @@ export const VENTA_PISO_PARTICULAR_SIN_AGENCIA_LOCAL_BASE =
   "/servicios/venta-piso-particular-sin-agencia";
 
 export const VENTA_PISO_PARTICULAR_PUBLISHED_SLUGS: readonly string[] = [
+  "barcelona-eixample",
+  "barcelona-gracia",
+  "barcelona-sants-montjuic",
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "esplugues-de-llobregat",
@@ -80,13 +83,127 @@ export function getPublishedVentaPisoParticularCities(): VentaPisoParticularCity
 
 export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] = [
   {
+    slug: "barcelona-eixample",
+    city: "l'Eixample (Barcelona)",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Venta entre particulares · Eixample",
+    heroH1: "Comprador en el Eixample: convierte el precio acordado en escritura segura",
+    heroH2: "Gestor Livendia para arras, cédula y notaría — sin comisión del 3 %.",
+    metaTitle: `Vender piso entre particulares en Eixample — gestor Livendia`,
+    metaDescription: `Ya tienes comprador en l'Eixample. Arras CCCat, comunidad y notaría por ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin agencia. Sant Antoni, Dreta, Sagrada Família.`,
+    keywords: [
+      "vender piso particular eixample barcelona",
+      "venta entre particulares eixample",
+      "gestor venta vivienda eixample",
+      "vender sin agencia eixample barcelona",
+      "arras eixample comprador particular",
+    ],
+    savingsSalePrices: [320_000, 380_000, 450_000, 520_000, 600_000, 720_000],
+    highlightSalePrice: 450_000,
+    arrasLocalSlug: "barcelona",
+    gestoriaSlug: "barcelona",
+    testimonialsTitle: "Vendedores del Eixample que cerraron con comprador particular y Livendia",
+    testimonials: [
+      {
+        quote:
+          "Comprador del Sant Antoni por recomendación. Livendia redactó arras con 621-49 y consiguió certificado de comunidad en un edificio de finca reglamentaria.",
+        author: "Núria P.",
+        role: "Vendedora — Sant Antoni",
+      },
+      {
+        quote:
+          "Piso en Dreta de l'Eixample: tres titulares y comprador con hipoteca. El gestor alineó plazos bancarios y notaría en ocho semanas.",
+        author: "Marc & Irene",
+        role: "Vendedores — Eixample",
+      },
+    ],
+    finalCtaLead:
+      "Eixample: tu comprador ya está — Livendia gestiona la venta documental hasta la escritura.",
+  },
+  {
+    slug: "barcelona-gracia",
+    city: "Gràcia (Barcelona)",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Venta entre particulares · Gràcia",
+    heroH1: "Vendes en Gràcia a un particular: ordena arras antes de la señal",
+    heroH2: "Un gestor Livendia coordina CCCat, inventario de finca y notaría.",
+    metaTitle: `Venta piso particular Gràcia Barcelona — sin comisión agencia`,
+    metaDescription: `Comprador encontrado en Gràcia. Gestor Livendia: arras, documentación y firma. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Vila de Gràcia, Camp d'en Grassot, La Salut.`,
+    keywords: [
+      "vender piso particular gracia barcelona",
+      "venta entre particulares gracia",
+      "gestor venta vivienda gracia",
+      "vender sin inmobiliaria gracia",
+      "contrato arras gracia comprador particular",
+    ],
+    savingsSalePrices: [280_000, 340_000, 400_000, 460_000, 520_000, 580_000],
+    highlightSalePrice: 400_000,
+    arrasLocalSlug: "barcelona",
+    gestoriaSlug: "barcelona",
+    testimonialsTitle: "Propietarios en Gràcia que vendieron entre particulares con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Venta en Vila de Gràcia sin ascensor. El gestor detectó cédula caducada tres semanas antes de notaría — tiempo de renovar sin perder al comprador.",
+        author: "Jordi L.",
+        role: "Vendedor — Gràcia",
+      },
+      {
+        quote:
+          "Compradora conocida del barrio. Livendia explicó arras penitenciales y reparto de IBI antes de que firmáramos la señal en un bar.",
+        author: "Marta S.",
+        role: "Vendedora — Camp d'en Grassot",
+      },
+    ],
+    finalCtaLead:
+      "Gràcia: cierra con tu comprador particular con gestor dedicado Livendia — tarifa plana.",
+  },
+  {
+    slug: "barcelona-sants-montjuic",
+    city: "Sants-Montjuïc (Barcelona)",
+    schemaAdministrativeArea: "Cataluña",
+    heroBadge: "Venta entre particulares · Sants-Montjuïc",
+    heroH1: "Comprador en Sants o Poble-sec: cierra la venta sin pagar captación",
+    heroH2: "Livendia lleva arras, comunidad y banco del comprador hasta notaría.",
+    metaTitle: `Vender piso particular Sants Poble-sec — gestor Livendia`,
+    metaDescription: `Venta entre particulares en Sants-Montjuïc. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Arras, cédula, ITE y notaría. Sants, Hostafrancs, Poble-sec.`,
+    keywords: [
+      "vender piso particular sants barcelona",
+      "venta entre particulares poble sec",
+      "gestor venta vivienda sants montjuic",
+      "vender sin agencia sants",
+      "arras sants comprador particular",
+    ],
+    savingsSalePrices: [220_000, 260_000, 300_000, 340_000, 380_000, 420_000],
+    highlightSalePrice: 300_000,
+    arrasLocalSlug: "barcelona",
+    gestoriaSlug: "barcelona",
+    testimonialsTitle: "Vendedores en Sants-Montjuïc con comprador ya encontrado",
+    testimonials: [
+      {
+        quote:
+          "Comprador en Poble-sec con hipoteca. Cláusula 621-49 bien redactada evitó conflicto cuando el banco tardó diez días más.",
+        author: "Sergi R.",
+        role: "Vendedor — Poble-sec",
+      },
+      {
+        quote:
+          "Piso en Sants Estació vendido a compañero de trabajo. Livendia ordenó derrama en comunidad que no estaba en el borrador de arras.",
+        author: "Aina V.",
+        role: "Vendedora — Sants",
+      },
+    ],
+    finalCtaLead:
+      "Sants-Montjuïc: tu comprador te espera — Livendia es tu gestor inmobiliario hasta la firma.",
+  },
+  {
     slug: "hospitalet-de-llobregat",
     city: "L'Hospitalet de Llobregat",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Venta entre particulares · L'Hospitalet",
-    heroH1: "¿Ya has encontrado comprador para tu piso?",
-    heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en L'Hospitalet`,
+    heroH1: "Comprador en L'Hospitalet: ¿arras, comunidad y notaría sin improvisar?",
+    heroH2: "Tu gestor Livendia cierra la venta documental — tarifa plana, cero comisión.",
+    metaTitle: `Venta piso particular L'Hospitalet — gestor sin comisión`,
     metaDescription: `Ya tienes comprador en L'Hospitalet. Gestor inmobiliario Livendia: arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin comisión. Centre, Bellvitge, Collblanc.`,
     keywords: [
       "vender piso de particular sin agencia hospitalet",
@@ -124,9 +241,9 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     city: "Cornellà de Llobregat",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Venta entre particulares · Cornellà",
-    heroH1: "¿Ya has encontrado comprador para tu piso?",
-    heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Cornellà`,
+    heroH1: "Vendes en Cornellà a un particular: blinda el acuerdo antes de la señal",
+    heroH2: "Gestor Livendia, CCCat y checklist hasta escritura — sin captar comprador.",
+    metaTitle: `Venta entre particulares Cornellà — gestor Livendia ${SERVICIO_COMPLETO_CV_PRICE_LABEL}`,
     metaDescription: `Comprador particular en Cornellà: gestor Livendia coordina arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sin comisión. Sant Ildefons, Centre, Can Mercader.`,
     keywords: [
       "vender piso de particular sin agencia cornella",
@@ -163,9 +280,9 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     city: "Esplugues de Llobregat",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Venta entre particulares · Esplugues",
-    heroH1: "¿Ya has encontrado comprador para tu piso?",
-    heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Esplugues`,
+    heroH1: "Piso en Esplugues vendido entre conocidos — no dejes los papeles al azar",
+    heroH2: "Livendia coordina arras, hipoteca del comprador y día de notaría.",
+    metaTitle: `Vender piso particular Esplugues — acompañamiento Livendia`,
     metaDescription: `Vende en Esplugues a un particular con gestor Livendia: arras, documentación y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Can Clota, Finestrelles, Centre.`,
     keywords: [
       "vender piso de particular sin agencia esplugues",
@@ -202,9 +319,9 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     city: "Sabadell",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Venta entre particulares · Sabadell",
-    heroH1: "¿Ya has encontrado comprador para tu piso?",
-    heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Sabadell`,
+    heroH1: "Comprador en Sabadell (Creu Alta, centre, Can Rull): cierra sin regalar un 3 %",
+    heroH2: "Gestor inmobiliario Livendia hasta notaría — tú ya elegiste al comprador.",
+    metaTitle: `Venta piso particular Sabadell — gestor Livendia sin comisión`,
     metaDescription: `Ya tienes comprador en Sabadell. Gestor Livendia: arras, documentos y notaría. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Creu Alta, Gràcia, Can Rull. Sin comisión.`,
     keywords: [
       "vender piso de particular sin agencia sabadell",
@@ -241,9 +358,9 @@ export const VENTA_PISO_PARTICULAR_CITIES: VentaPisoParticularCityDefinition[] =
     city: "Terrassa",
     schemaAdministrativeArea: "Cataluña",
     heroBadge: "Venta entre particulares · Terrassa",
-    heroH1: "¿Ya has encontrado comprador para tu piso?",
-    heroH2: "Respira: tu gestor Livendia se encarga de todo hasta la firma.",
-    metaTitle: `Venta de piso de particular sin agencia en Terrassa`,
+    heroH1: "Acuerdo cerrado en Terrassa con tu comprador: conviértelo en escritura",
+    heroH2: "Arras, ITE, comunidad y banco bajo un gestor Livendia de tarifa plana.",
+    metaTitle: `Vender entre particulares Terrassa — servicio completo Livendia`,
     metaDescription: `Comprador particular en Terrassa: gestor Livendia coordina arras, documentos y firma. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. Sant Pere, Les Arenes. Sin comisión.`,
     keywords: [
       "vender piso de particular sin agencia terrassa",
