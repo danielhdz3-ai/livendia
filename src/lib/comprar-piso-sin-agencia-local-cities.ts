@@ -2,6 +2,8 @@ import { SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { COMPRAR_PISO_DIFFERENTIATION } from "@/lib/comprar-piso-sin-agencia-differentiation";
 import { COMPRAR_PISO_BCN_METRO_DIFFERENTIATION } from "@/lib/comprar-piso-sin-agencia-bcn-metro-differentiation";
+import { getComprarBcnZoneEnrichment } from "@/lib/comprar-piso-sin-agencia-bcn-zone-enrichment";
+import { isComprarPisoSinAgenciaBcnMetroSlug } from "@/lib/comprar-piso-sin-agencia-bcn-metro-cities";
 import {
   COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES,
   COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_PUBLISHED_SLUGS,
@@ -307,16 +309,29 @@ export function toComprarPisoSinAgenciaConfig(
       ? def.optionalLocalCompraHref
       : undefined;
 
+  const zoneEnrich = isComprarPisoSinAgenciaBcnMetroSlug(def.slug)
+    ? getComprarBcnZoneEnrichment(def.slug)
+    : undefined;
+
+  const baseFaq = diff?.faq ?? def.faq;
+  const mergedFaq = zoneEnrich?.faqExtra?.length
+    ? [...baseFaq, ...zoneEnrich.faqExtra]
+    : baseFaq;
+
   const base: ComprarPisoSinAgenciaLandingConfig = {
     ...def,
     ...(diff?.keywords ? { keywords: [...diff.keywords] } : {}),
-    ...(diff?.metaTitle ? { metaTitle: diff.metaTitle } : {}),
-    ...(diff?.metaDescription ? { metaDescription: diff.metaDescription } : {}),
+    metaTitle: zoneEnrich?.metaTitle ?? diff?.metaTitle ?? def.metaTitle,
+    metaDescription: zoneEnrich?.metaDescription ?? diff?.metaDescription ?? def.metaDescription,
     ...(diff?.tramitesAreaNote ? { tramitesAreaNote: diff.tramitesAreaNote } : {}),
     ...(diff?.benefitsAreaNote ? { benefitsAreaNote: diff.benefitsAreaNote } : {}),
-    ...(diff?.faq ? { faq: diff.faq } : {}),
+    faq: mergedFaq,
     ...(diff?.barcelonaZoneIntro ? { barcelonaZoneIntro: diff.barcelonaZoneIntro } : {}),
-    copy: { ...def.copy, ...diff?.copy },
+    copy: {
+      ...def.copy,
+      ...diff?.copy,
+      ...zoneEnrich?.copy,
+    },
     optionalLocalCompraHref: optionalHref,
     path: localComprarPisoSinAgenciaHref(def.slug),
   };

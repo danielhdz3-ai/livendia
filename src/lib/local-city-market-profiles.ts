@@ -1138,6 +1138,48 @@ export const LOCAL_CITY_MARKET_PROFILES: Record<string, LocalCityMarketProfile> 
     ],
   },
 
+  "barcelona-sant-marti": {
+    slug: "barcelona-sant-marti",
+    cityLabel: "Sant Martí, Barcelona",
+    prices: {
+      rentalAvgPerSqm: "23,85 €/m²",
+      rentalRangePerSqm: "20–28 €/m²",
+      saleAvgPerSqm: "4.720 €/m²",
+      saleRangePerSqm: "3.900–6.200 €/m²",
+      avgSalePrice: "395.000 €",
+      sourceNote:
+        "Alquiler: Brains Real Estate, informe Sant Martí Q2 2026; Idealista por barrio, 2025. Venta: Idealista, precio medio distrito Sant Martí, julio 2026.",
+    },
+    marketSummary:
+      "Sant Martí mezcla Poblenou en transformación, El Clot y La Verneda con bloques grandes, promociones en Diagonal Mar y la Vila Olímpica consolidada. Zona tensionada catalana: IRAV en renovaciones e INCASÒL en altas. Comprar entre particulares suele ir con prisa; comunidades multi-portal y certificados lentos son la fricción habitual antes de notaría.",
+    neighborhoods: [
+      {
+        name: "Poblenou",
+        rentalPerSqm: "24–27 €/m²",
+        salePerSqm: "4.800–6.000 €/m²",
+        note: "Lofts, fincas post-olímpicas y reconversiones. Compradores revisan ITE, terrazas y derramas antes de arras; el vendedor a menudo solo tiene agencia propia.",
+      },
+      {
+        name: "El Clot",
+        rentalPerSqm: "22–24 €/m²",
+        salePerSqm: "4.200–5.000 €/m²",
+        note: "Bloques grandes de los 70–80 con comunidades que tardan en emitir certificados. Operaciones directas frecuentes; conviene plazo realista en arras para hipoteca y deuda cero.",
+      },
+      {
+        name: "Diagonal Mar",
+        rentalPerSqm: "25–28 €/m²",
+        salePerSqm: "5.200–6.200 €/m²",
+        note: "Obra nueva y segunda mano con parking anexo. Revisar anexos de calidades, trastero y plazos de entrega frente a arras confirmatorias.",
+      },
+      {
+        name: "La Verneda i la Pau",
+        rentalPerSqm: "20–22 €/m²",
+        salePerSqm: "3.900–4.800 €/m²",
+        note: "Parque denso y familias consolidadas. Precio más accesible dentro del distrito; derramas en fachadas y ascensores como tema recurrente en compras entre particulares.",
+      },
+    ],
+  },
+
   "barcelona-poblenou": {
     slug: "barcelona-poblenou",
     cityLabel: "Poblenou, Barcelona",
@@ -1148,16 +1190,16 @@ export const LOCAL_CITY_MARKET_PROFILES: Record<string, LocalCityMarketProfile> 
       saleRangePerSqm: "4.200–6.200 €/m²",
       avgSalePrice: "410.000 €",
       sourceNote:
-        "Alquiler: Brains Real Estate, informe Sant Martí Q2 2026; Idealista Poblenou/22@, 2025. Venta: Idealista, precio medio Sant Martí, julio 2026.",
+        "Alquiler: Brains Real Estate, informe Sant Martí Q2 2026; Idealista Poblenou, 2025. Venta: Idealista, precio medio Sant Martí, julio 2026.",
     },
     marketSummary:
-      "Poblenou combina transformación del 22@ con familias en la Rambla del Poblenou y demanda tech. Zona tensionada: IRAV en renovaciones e INCASÒL en altas; lofts y reconversiones exigen cláusulas a medida.",
+      "Poblenou combina lofts y oficinas reconvertidas con familias en la Rambla del Poblenou y demanda de profesionales. Zona tensionada: IRAV en renovaciones e INCASÒL en altas; reconversiones y terrazas comunitarias exigen revisión documental antes de la señal.",
     neighborhoods: [
       {
-        name: "22@",
+        name: "Poblenou norte — lofts y reconversiones",
         rentalPerSqm: "26–28 €/m²",
         salePerSqm: "5.400–6.200 €/m²",
-        note: "Lofts y pisos en naves reconvertidas. Alquileres entre particulares con prisa; contratos deben reflejar instalaciones y terrazas.",
+        note: "Lofts y pisos en naves reconvertidas. Compras entre particulares con prisa; conviene alinear instalaciones, terrazas y uso registral con lo visto en visita.",
       },
       {
         name: "Rambla del Poblenou",

@@ -41,6 +41,9 @@ import {
   COMPRAR_SIN_AGENCIA_BARCELONA_INTRO,
   COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS,
 } from "@/lib/comprar-piso-sin-agencia-barcelona-modules";
+import { getComprarPisoSinAgenciaHeroImage } from "@/lib/comprar-piso-sin-agencia-images";
+import { comprarProcessTitle } from "@/lib/comprar-piso-sin-agencia-bcn-zone-enrichment";
+import { isComprarPisoSinAgenciaBcnMetroSlug } from "@/lib/comprar-piso-sin-agencia-bcn-metro-cities";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -145,10 +148,20 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
     ...COMPRAR_SIN_AGENCIA_BARCELONA_INTRO,
     title: COMPRAR_SIN_AGENCIA_BARCELONA_INTRO.title.replace("Barcelona", config.city),
   };
+  const useMetroEnrichment = isComprarPisoSinAgenciaBcnMetroSlug(config.slug);
   const barcelonaProcessSteps = isBarcelonaExtended
-    ? buildComprarSinAgenciaBarcelonaSteps(priceLabel)
+    ? buildComprarSinAgenciaBarcelonaSteps(
+        priceLabel,
+        useMetroEnrichment ? config.slug : undefined,
+        config.city,
+      )
     : null;
-  const processTitle = COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS.title.replace("Barcelona", config.city);
+  const processTitle = useMetroEnrichment
+    ? comprarProcessTitle(config.city)
+    : COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS.title.replace("Barcelona", config.city);
+  const heroImage = useMetroEnrichment
+    ? getComprarPisoSinAgenciaHeroImage(config.slug)
+    : "/images/gestoria3.jpg";
   const gestorPlatformWorkflow = buildGestorWorkflowContent({
     city: config.city,
     service: "servicio-completo-compra",
@@ -229,7 +242,7 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/gestoria3.jpg"
+                    src={heroImage}
                     alt={pageCopy.imageAlt}
                     fill
                     className="object-cover"

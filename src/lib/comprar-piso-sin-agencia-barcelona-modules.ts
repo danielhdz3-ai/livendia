@@ -1,6 +1,8 @@
 /** Contenido extendido — landing comprar sin agencia Barcelona y AMB. */
 
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
+import { getComprarPisoSinAgenciaStepImages } from "@/lib/comprar-piso-sin-agencia-images";
+import { getComprarBcnZoneEnrichment } from "@/lib/comprar-piso-sin-agencia-bcn-zone-enrichment";
 
 export const COMPRAR_SIN_AGENCIA_BARCELONA_INTRO = {
   eyebrow: "Comprar en Barcelona sin agencia",
@@ -24,13 +26,19 @@ export const COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS = {
 
 export function buildComprarSinAgenciaBarcelonaSteps(
   priceLabel: string,
+  slug?: string,
+  city?: string,
 ): readonly VenderSinAgenciaProcessStep[] {
+  const zone = slug ? getComprarBcnZoneEnrichment(slug) : undefined;
+  const imgs = slug ? getComprarPisoSinAgenciaStepImages(slug) : null;
+  const zoneLabel = city ?? "Barcelona";
   return [
     {
       step: 1,
       title: "Llamada con tu gestor: le cuentas la operación",
       description:
-        "Precio pactado, barrio, si hay parking o trastero, hipoteca en marcha y qué te ha pasado el vendedor (reserva, borrador de arras). En Barcelona conviene alinear cèdula, ITE y comunidad antes de ingresar señal: el gestor te dice qué pedir y qué no firmar aún.",
+        zone?.process.step1Description ??
+        `Precio pactado, barrio, si hay parking o trastero, hipoteca en marcha y qué te ha pasado el vendedor (reserva, borrador de arras). En ${zoneLabel} conviene alinear cèdula, ITE y comunidad antes de ingresar señal: el gestor te dice qué pedir y qué no firmar aún.`,
       howWeDoIt: [
         "Primera toma de contacto por teléfono o WhatsApp — sin compromiso.",
         "Repaso de zona (Eixample, Gràcia, L'Hospitalet, Badalona…), tipo de finca y calendario realista.",
@@ -43,8 +51,8 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Sin comisión sobre el precio del piso",
         "Misma persona hasta la escritura",
       ],
-      imageSrc: "/images/pexels-yankrukov-7693161.jpg",
-      imageAlt: "Gestor Livendia en llamada con comprador en Barcelona",
+      imageSrc: imgs?.[0] ?? "/images/pexels-yankrukov-7693161.jpg",
+      imageAlt: `Gestor Livendia en llamada con comprador en ${zoneLabel}`,
     },
     {
       step: 2,
@@ -62,13 +70,14 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Sin honorarios sobre el precio de compra",
         "Mismo gestor hasta la firma en notaría",
       ],
-      imageSrc: "/images/chicasofaazul.png",
+      imageSrc: imgs?.[1] ?? "/images/chicasofaazul.png",
       imageAlt: "Contratar servicio completo de compra Livendia online",
     },
     {
       step: 3,
       title: "Due diligence: documentación del inmueble bajo control",
       description:
+        zone?.process.step3Description ??
         "Analizamos nota simple, certificados de comunidad, cèdula d'habitabilitat, certificado energético e ITE si el edificio lo exige. Cruzamos lo que viste en la visita con lo que declara el vendedor antes de que transfieras la señal.",
       howWeDoIt: [
         "Solicitud y revisión de nota simple registral y cargas.",
@@ -82,8 +91,8 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Riesgos explicados en lenguaje claro",
         "Sin desplazamientos a gestoría física",
       ],
-      imageSrc: "/images/gestoria20.jpg",
-      imageAlt: "Revisión documental compra vivienda Barcelona Livendia",
+      imageSrc: imgs?.[2] ?? "/images/gestoria20.jpg",
+      imageAlt: `Revisión documental compra vivienda ${zoneLabel} Livendia`,
     },
     {
       step: 4,
@@ -102,13 +111,14 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Protección frente a plantillas solo a favor del vendedor",
         "Orientación sobre ingreso de arras y medios de pago seguros",
       ],
-      imageSrc: "/images/contratodearras.jpg",
-      imageAlt: "Revisión contrato de arras comprador Barcelona",
+      imageSrc: imgs?.[3] ?? "/images/contratodearras.jpg",
+      imageAlt: `Revisión contrato de arras comprador ${zoneLabel}`,
     },
     {
       step: 5,
       title: "Coordinamos banco, vendedor y escritura pública",
       description:
+        zone?.process.step5Description ??
         "Seguimos condiciones suspensivas de hipoteca, pedimos certificado de deuda cero de comunidad, alineamos calendario con notaría y verificamos que lo pactado en arras coincide con el borrador notarial. Informe semáforo pre-escritura para evitar sorpresas el día de la firma.",
       howWeDoIt: [
         "Comunicación ordenada con vendedor y entidad financiera.",
@@ -122,8 +132,8 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Coordinación en Barcelona o área metropolitana",
         "Gestor como filtro profesional — no sustituto del notario",
       ],
-      imageSrc: "/images/firma10.jpg",
-      imageAlt: "Coordinación hasta escritura pública compra piso Barcelona",
+      imageSrc: imgs?.[4] ?? "/images/firma10.jpg",
+      imageAlt: `Coordinación hasta escritura pública compra piso ${zoneLabel}`,
     },
   ];
 }
