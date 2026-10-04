@@ -13,9 +13,7 @@ import {
   Clock,
   CheckCircle,
   AlertCircle,
-  MessageCircle,
   Phone,
-  FileText,
   Wrench,
   Landmark,
 } from "lucide-react";
@@ -28,6 +26,13 @@ import {
 } from "@/lib/catalog.public";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
+import { AdministracionAlquilerRelatedServices } from "@/components/administracion-alquiler-related-services";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import {
+  ADMINISTRACION_ALQUILER_LAU_PROCESS_META,
+  buildAdministracionAlquilerLauSteps,
+} from "@/lib/administracion-alquiler-lau-modules";
+import { landingSocialMetadata } from "@/lib/landing-open-graph-images";
 
 /**
  * ISR: revalida cada 5 min para que los precios/estado del catalogo
@@ -37,11 +42,22 @@ import { AdministracionAlquilerOnlineOnlySection } from "@/components/administra
  */
 export const revalidate = 300;
 
+const lauCanonical = `${getSiteUrl()}/servicios/administracion-alquiler`;
+const lauOg = landingSocialMetadata("administracion-alquiler", {
+  title: "Administración de alquiler LAU para propietarios",
+  description:
+    "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y seguimiento de renta en tu cuenta. Sin permanencia.",
+  url: lauCanonical,
+  locale: "es_ES",
+  type: "website",
+});
+
 export const metadata: Metadata = {
   title: `Administración de alquileres para propietarios desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
   description:
     "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y mediación. Sin permanencia. Gestoría inmobiliaria Livendia.",
-  alternates: { canonical: `${getSiteUrl()}/servicios/administracion-alquiler` },
+  alternates: { canonical: lauCanonical },
+  ...lauOg,
 };
 
 export default async function AdministracionAlquilerPage() {
@@ -50,36 +66,11 @@ export default async function AdministracionAlquilerPage() {
   const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
-  const howItWorks = [
-    {
-      icon: Users,
-      step: "1",
-      title: "Nos convertimos en tu intermediario",
-      description:
-        "Desde el primer día, Livendia es el único punto de contacto entre tú y tu inquilino. No recibirás llamadas, emails ni mensajes directos.",
-    },
-    {
-      icon: MessageCircle,
-      step: "2",
-      title: "Gestionamos todas las comunicaciones",
-      description:
-        "El inquilino se comunica exclusivamente con nosotros para cualquier consulta, petición o incidencia. Filtros profesionales garantizan tu tranquilidad.",
-    },
-    {
-      icon: Wrench,
-      step: "3",
-      title: "Resolvemos y coordinamos",
-      description:
-        "Cuando surge un problema, contactamos empresas, coordinamos reparaciones y hacemos seguimiento hasta que todo esté resuelto.",
-    },
-    {
-      icon: FileText,
-      step: "4",
-      title: "Te mantenemos informado",
-      description:
-        "Solo te contactamos para lo importante: confirmación de que la renta ha entrado en tu cuenta, decisiones que requieren tu aprobación o novedades relevantes del contrato.",
-    },
-  ];
+  const priceLabel = rentalService
+    ? `${(rentalService.price_cents / 100).toFixed(0)} €/mes`
+    : ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL;
+  const lauSteps = buildAdministracionAlquilerLauSteps(priceLabel);
+  const lauProcessMeta = ADMINISTRACION_ALQUILER_LAU_PROCESS_META;
 
   const benefits = [
     {
@@ -289,68 +280,20 @@ export default async function AdministracionAlquilerPage() {
 
         <AdministracionAlquilerOnlineOnlySection />
 
-        {/* Cómo funciona */}
-        <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
-          <div className="mx-auto max-w-7xl">
-            <div className="text-center">
-              <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-4xl lg:text-5xl">
-                ¿Cómo funciona?
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-[#64748b]">
-                Cuatro pasos simples para delegar toda la gestión de tu alquiler
-              </p>
-            </div>
+        <VentaSinAgenciaPasoAPasoSection
+          city="toda España"
+          priceLabel={priceLabel}
+          eyebrow={lauProcessMeta.eyebrow}
+          title={lauProcessMeta.title}
+          intro={lauProcessMeta.intro}
+          steps={lauSteps}
+          alwaysWithYouTitle={lauProcessMeta.alwaysWithYouTitle}
+          alwaysWithYouBody={lauProcessMeta.alwaysWithYouBody}
+          serviceLine={lauProcessMeta.serviceLine}
+          feeNote={lauProcessMeta.feeNote}
+        />
 
-            <div className="mt-16 space-y-12">
-              {howItWorks.map((item, idx) => {
-                const Icon = item.icon;
-                const isEven = idx % 2 === 0;
-                
-                return (
-                  <div
-                    key={item.step}
-                    className={`grid items-center gap-8 lg:grid-cols-2 ${!isEven ? "lg:flex-row-reverse" : ""}`}
-                  >
-                    <div className={isEven ? "" : "lg:order-2"}>
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] text-2xl font-extrabold text-white shadow-lg">
-                          {item.step}
-                        </div>
-                        <h3 className="text-2xl font-bold text-[#1E293B] lg:text-3xl">{item.title}</h3>
-                      </div>
-                      <p className="mt-4 text-lg leading-relaxed text-[#475569]">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    <div className={`relative ${isEven ? "" : "lg:order-1"}`}>
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200">
-                        <Image
-                          src={[
-                            "/images/gestoria.jpg",
-                            "/images/familia2.jpg",
-                            "/images/equipo1.jpg",
-                            "/images/gestoria5.jpg"
-                          ][idx]}
-                          alt={item.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
-                        />
-                      </div>
-                      {/* Icon badge */}
-                      <div className="absolute -right-4 -top-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200">
-                        <Icon className="h-8 w-8 text-[#06B6D4]" strokeWidth={2} />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Plataforma cliente */}
+        <AdministracionAlquilerRelatedServices variant="lau" />
 
         {/* Testimonios */}
         <section className="border-b border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-20 sm:px-6">

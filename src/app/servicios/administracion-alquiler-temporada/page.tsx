@@ -21,6 +21,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { AdministracionAlquilerTemporadaRentSection } from "@/components/administracion-alquiler-temporada-rent-section";
+import { AdministracionAlquilerRelatedServices } from "@/components/administracion-alquiler-related-services";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import {
+  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META,
+  buildAdministracionAlquilerTemporadaSteps,
+} from "@/lib/administracion-alquiler-temporada-modules";
 import {
   ADMINISTRACION_ALQUILER_TEMPORADA_FAQ,
   ADMINISTRACION_ALQUILER_TEMPORADA_INCLUDED,
@@ -28,7 +34,6 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_PILLARS,
   ADMINISTRACION_ALQUILER_TEMPORADA_PRICING,
   ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO,
-  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS,
   ADMINISTRACION_ALQUILER_TEMPORADA_SCOPE,
   ADMINISTRACION_ALQUILER_TEMPORADA_TESTIMONIALS,
 } from "@/lib/administracion-alquiler-temporada-shared";
@@ -36,7 +41,6 @@ import {
   CheckCircle,
   ClipboardList,
   DoorOpen,
-  Handshake,
   Phone,
   UserRound,
   Wrench,
@@ -76,8 +80,9 @@ export default async function AdministracionAlquilerTemporadaPage() {
     "Hola, me interesa la administración de alquiler por temporada o habitaciones (79 €/mes).",
   )}`;
 
-  const processIcons = [ClipboardList, DoorOpen, Wrench, Handshake] as const;
   const pillarIcons = [DoorOpen, UserRound, Wrench, ClipboardList] as const;
+  const tempoSteps = buildAdministracionAlquilerTemporadaSteps(priceLabel);
+  const tempoProcessMeta = ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META;
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -170,6 +175,19 @@ export default async function AdministracionAlquilerTemporadaPage() {
 
           <AdministracionAlquilerTemporadaRentSection />
 
+          <VentaSinAgenciaPasoAPasoSection
+            city="toda España"
+            priceLabel={priceLabel}
+            eyebrow={tempoProcessMeta.eyebrow}
+            title={tempoProcessMeta.title}
+            intro={tempoProcessMeta.intro}
+            steps={tempoSteps}
+            alwaysWithYouTitle={tempoProcessMeta.alwaysWithYouTitle}
+            alwaysWithYouBody={tempoProcessMeta.alwaysWithYouBody}
+            serviceLine={tempoProcessMeta.serviceLine}
+            feeNote={tempoProcessMeta.feeNote}
+          />
+
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-5xl">
               <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">Precios claros</h2>
@@ -216,26 +234,7 @@ export default async function AdministracionAlquilerTemporadaPage() {
             </div>
           </section>
 
-          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-7xl">
-              <h2 className="text-center text-2xl font-extrabold text-[#1E293B] sm:text-4xl">Cómo funciona</h2>
-              <div className="mt-12 grid gap-8 sm:grid-cols-2">
-                {ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS.map((step, idx) => {
-                  const Icon = processIcons[idx] ?? ClipboardList;
-                  return (
-                    <div key={step.title} className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-sm">
-                      <div className="mb-4 inline-flex rounded-2xl bg-[#1A4FBF] p-3 text-white">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <p className="text-sm font-semibold text-[#1A4FBF]">Paso {idx + 1}</p>
-                      <h3 className="mt-1 text-xl font-bold text-[#1E293B]">{step.title}</h3>
-                      <p className="mt-2 leading-relaxed text-[#475569]">{step.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
+          <AdministracionAlquilerRelatedServices variant="temporada" />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
