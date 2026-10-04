@@ -163,7 +163,7 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     tramitesAreaNote:
       "En Sant Martí (Poblenou, El Clot, La Verneda, Diagonal Mar), gestoría para compra entre particulares con comunidades multi-bloque y vendedores exigentes.",
     benefitsAreaNote:
-      "Arras CCCat, cèdula, certificado de comunidad y calendario realista hasta escritura en el 22@ y barrios del distrito.",
+      "Arras CCCat, cèdula, certificado de comunidad y calendario realista hasta escritura en Poblenou, El Clot y resto del distrito.",
     faq: faqZone("Sant Martí"),
     analyticsPlacement: "comprar_piso_sant_marti",
     gestorCtaPlacement: "comprar_piso_sant_marti",
@@ -681,9 +681,9 @@ export const COMPRAR_PISO_SIN_AGENCIA_BCN_METRO_CITIES: ComprarPisoSinAgenciaCit
     savingsSalePrices: [300_000, 340_000, 380_000, 410_000, 440_000, 480_000, 530_000],
     highlightSalePrice: 410_000,
     tramitesAreaNote:
-      "En Poblenou (22@, Diagonal Mar, La Verneda), compra entre particulares con arras CCCat, comunidades multi-bloque y vendedores exigentes del distrito de Sant Martí.",
+      "En Poblenou (Rambla del Poblenou, Diagonal Mar, La Verneda), compra entre particulares con arras CCCat, comunidades multi-bloque y vendedores exigentes del distrito de Sant Martí.",
     benefitsAreaNote:
-      "Gestor que conoce el mercado del 22@ y operaciones rápidas con documentación al día.",
+      "Gestor que conoce el mercado del Poblenou y operaciones rápidas con documentación al día.",
     faq: faqZone("Poblenou"),
     analyticsPlacement: "comprar_piso_poblenou",
     gestorCtaPlacement: "comprar_piso_poblenou",

@@ -78,18 +78,18 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES = [
     city: "Poblenou (Barcelona)",
     schemaAdministrativeArea: "Barcelona · Cataluña",
     heroLead:
-      "¿Compras en Poblenou o 22@ entre particulares? Un gestor revisa reserva y arras bajo CCCat en lofts reconvertidos, promociones recientes y fincas post-olímpicas — servidumbres, terrazas y anexos mal descritos en el anuncio.",
+      "¿Compras en el Poblenou entre particulares? Un gestor revisa reserva y arras bajo CCCat en lofts reconvertidos, promociones recientes y fincas post-olímpicas — servidumbres, terrazas y anexos mal descritos en el anuncio.",
     whyIntro:
       "Poblenou mezcla reconversiones industriales, familias en la Rambla del Poblenou y compradores tech con prisa. Lo verbal sobre calidades, parking o terraza suele no aparecer en arras copiadas. Livendia alinea contrato y documentación registral antes de la señal.",
     howIntro:
-      "Cuatro hitos hasta escritura: due diligence en edificios del 22@ y eixample del Poblenou, cláusula 621-49 si pides hipoteca, panel con expediente digital.",
+      "Cuatro hitos hasta escritura: due diligence en lofts reconvertidos y fincas de la Rambla del Poblenou, cláusula 621-49 si pides hipoteca, panel con expediente digital.",
     testimonialsTitle: "Compradores en Poblenou que ya compraron con acompañamiento Livendia",
     testimonials: [
       {
         quote:
-          "Comprábamos un loft en 22@ a un particular. Livendia revisó servidumbre en nota simple y cláusulas de instalaciones que el borrador del vendedor omitía.",
+          "Comprábamos un loft en el Poblenou a un particular. Livendia revisó servidumbre en nota simple y cláusulas de instalaciones que el borrador del vendedor omitía.",
         author: "Laura & Pau",
-        role: "Compradores, 22@",
+        role: "Compradores, Poblenou",
       },
       {
         quote:
@@ -294,7 +294,7 @@ export const SERVICIO_COMPLETO_COMPRA_LOCAL_BCN_ZONE_CITIES = [
     city: "Sant Martí (Barcelona)",
     schemaAdministrativeArea: "Barcelona · Cataluña",
     heroLead:
-      "¿Compras en Sant Martí entre particulares? Un gestor revisa reserva y arras en El Clot, La Verneda, Diagonal Mar o el 22@ — además de Poblenou: promociones recientes, comunidades multi-bloque y anexos mal descritos en el anuncio.",
+      "¿Compras en Sant Martí entre particulares? Un gestor revisa reserva y arras en Poblenou, El Clot, La Verneda y Diagonal Mar: promociones recientes, comunidades multi-bloque y anexos mal descritos en el anuncio.",
     whyIntro:
       "Sant Martí concentra reconversiones, familias en La Verneda y compradores exigentes en Diagonal Mar. Livendia complementa la landing de Poblenou con foco en todo el distrito: mismo protocolo CCCat y tarifa plana de gestoría del comprador.",
     howIntro:
@@ -415,16 +415,16 @@ export const COMPRA_LOCAL_BCN_ZONE_DIFFERENTIATION: Record<string, LocalCityLand
   "barcelona-poblenou": zoneDiff({
     slug: "barcelona-poblenou",
     zoneShort: "Poblenou",
-    heroH1: "Comprar en Poblenou y 22@ — lofts, servidumbres y expediente digital hasta escritura",
+    heroH1: "Comprar en Poblenou — lofts, servidumbres y expediente digital hasta escritura",
     metaTitle: "Servicio completo de compra en Poblenou Barcelona | Gestor Livendia",
-    metaDescription: `¿Compras en Poblenou o 22@? Gestor comprador: arras, ITE, anexos. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
+    metaDescription: `¿Compras en el Poblenou (Rambla, Bogatell)? Gestor comprador: arras, ITE, anexos. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.`,
     whySubtitle:
       "Reconversiones, lofts y promociones recientes exigen contratos que reflejen terrazas, instalaciones y plazos reales — no plantillas de otra operación.",
     localZones:
-      "22@, Rambla del Poblenou, Parc del Centre del Poblenou, Diagonal Mar (límite) — due diligence adaptada al tipo de inmueble.",
+      "Rambla del Poblenou, Parc del Centre del Poblenou, Bogatell, Diagonal Mar (límite) — due diligence adaptada al tipo de inmueble.",
     keywords: [
       "servicio completo compra poblenou",
-      "comprar piso 22 barcelona gestoria",
+      "comprar piso poblenou barcelona gestoria",
       "comprar loft poblenou particular",
       "revisar arras poblenou",
     ],
@@ -555,7 +555,7 @@ export const COMPRA_LOCAL_BCN_ZONE_DIFFERENTIATION: Record<string, LocalCityLand
     metaTitle: "Servicio completo de compra Sant Martí Barcelona | Gestor comprador Livendia",
     metaDescription: `¿Compras en Sant Martí (El Clot, Verneda, Diagonal Mar)? Arras CCCat e ITE. ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl. También Poblenou.`,
     whySubtitle:
-      "Distrito completo más allá del 22@: comunidades multi-bloque, promociones nuevas y arras copiadas que no describen parking ni trastero.",
+      "Todo el distrito: Poblenou, El Clot, La Verneda y Diagonal Mar — comunidades multi-bloque, promociones nuevas y arras copiadas que no describen parking ni trastero.",
     localZones:
       "El Clot, La Verneda, Diagonal Mar, Provençals, Besòs i Maresme — complementa la landing de Poblenou con foco en todo Sant Martí.",
     keywords: [
@@ -618,7 +618,7 @@ export const COMPRA_LOCAL_BCN_ZONE_SEO: Record<string, CompraLocalSeoContent> = 
 export const COMPRA_LOCAL_BARCELONA_DISTRICTS = [
   { slug: "barcelona-eixample", shortName: "Eixample", name: "Eixample (Barcelona)" },
   { slug: "barcelona-gracia", shortName: "Gràcia", name: "Gràcia (Barcelona)" },
-  { slug: "barcelona-poblenou", shortName: "Poblenou", name: "Poblenou / 22@" },
+  { slug: "barcelona-poblenou", shortName: "Poblenou", name: "Poblenou (Barcelona)" },
   { slug: "barcelona-les-corts", shortName: "Les Corts", name: "Les Corts (Barcelona)" },
   {
     slug: "barcelona-sarria-sant-gervasi",

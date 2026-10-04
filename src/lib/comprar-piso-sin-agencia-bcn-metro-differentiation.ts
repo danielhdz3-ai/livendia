@@ -126,7 +126,7 @@ export const COMPRAR_PISO_BCN_METRO_DIFFERENTIATION: Record<string, ComprarMetro
   "barcelona-sant-marti": {
     metaTitle: "Comprar piso sin agencia en Sant Martí — gestoría comprador 890 €",
     metaDescription:
-      "¿Compras en Sant Martí entre particulares sin agencia? Operaciones rápidas en el 22@ con documentación de comunidad multi-bloque incompleta. Livendia revisa reserva, arras e ITE. 890 € IVA incl.",
+      "¿Compras en Sant Martí entre particulares sin agencia? Mucha prisa por cerrar en Poblenou o El Clot y documentación de comunidad multi-bloque incompleta. Livendia revisa reserva, arras e ITE. 890 € IVA incl.",
     tramitesAreaNote:
       "En Sant Martí (Poblenou, El Clot, Diagonal Mar…), el gestor Livendia del comprador revisa reserva, arras CCCat, comunidad e ITE antes de ingresar señal — compra entre particulares sin comisión sobre el precio.",
     benefitsAreaNote:
@@ -135,7 +135,7 @@ export const COMPRAR_PISO_BCN_METRO_DIFFERENTIATION: Record<string, ComprarMetro
       heroBadge: "Compra sin agencia · Sant Martí",
       heroH1: "¿Compras piso en Sant Martí sin agencia? — no firmes arras a ciegas",
       heroLead:
-        "¿Has encontrado piso en Poblenou, El Clot, Diagonal Mar o La Verneda? Operaciones rápidas en el 22@ con documentación de comunidad multi-bloque incompleta. Por {{price}} (IVA incl.) un gestor Livendia revisa reserva, arras y documentación antes de que transfieras la señal — gestoría del comprador, no agencia inmobiliaria.",
+        "¿Has encontrado piso en Poblenou, El Clot, Diagonal Mar o La Verneda? Suele haber prisa por cerrar y el certificado de comunidad tarda en edificios de varios portales. Por {{price}} (IVA incl.) un gestor Livendia revisa reserva, arras y documentación antes de que transfieras la señal — gestoría del comprador, no agencia inmobiliaria.",
       heroBullets: [
         "Compra entre particulares o con agencia solo del vendedor",
         "Revisión ITE, cèdula y comunidad en Sant Martí",
@@ -154,7 +154,7 @@ export const COMPRAR_PISO_BCN_METRO_DIFFERENTIATION: Record<string, ComprarMetro
       eyebrow: "Sant Martí · comprador particular",
       title: "Comprar en Sant Martí sin agencia compradora, con gestoría Livendia",
       paragraphs: [
-        "En Sant Martí (Poblenou, El Clot, Diagonal Mar o La Verneda) muchas operaciones se cierran sin agencia del comprador: ahorras comisión, pero el borrador de arras suele venir redactado solo a favor del vendedor. Operaciones rápidas en el 22@ con documentación de comunidad multi-bloque incompleta.",
+        "En Sant Martí (Poblenou, El Clot, Diagonal Mar o La Verneda) muchas operaciones se cierran sin agencia del comprador: ahorras comisión, pero el borrador de arras suele venir redactado solo a favor del vendedor. En Poblenou y El Clot es habitual cerrar en días y descubrir después que falta documentación de la comunidad.",
         "Ideal si compras entre particulares o con agencia solo del vendedor: un gestor fijo hasta notaría.",
       ],
     },
@@ -848,14 +848,14 @@ export const COMPRAR_PISO_BCN_METRO_DIFFERENTIATION: Record<string, ComprarMetro
     metaDescription:
       "¿Compras en Poblenou entre particulares sin agencia? Locales convertidos a vivienda y comunidades con obras aprobadas no declaradas al comprador. Livendia revisa reserva, arras e ITE. 890 € IVA incl.",
     tramitesAreaNote:
-      "En Poblenou (22@, Diagonal Mar…), el gestor Livendia del comprador revisa reserva, arras CCCat, comunidad e ITE antes de ingresar señal — compra entre particulares sin comisión sobre el precio.",
+      "En Poblenou (Rambla del Poblenou, Diagonal Mar…), el gestor Livendia del comprador revisa reserva, arras CCCat, comunidad e ITE antes de ingresar señal — compra entre particulares sin comisión sobre el precio.",
     benefitsAreaNote:
       "Due diligence en Poblenou: registral, derramas, plazos de hipoteca y calendario con vendedor hasta notaría.",
     copy: {
       heroBadge: "Compra sin agencia · Poblenou",
       heroH1: "¿Compras piso en Poblenou sin agencia? — no firmes arras a ciegas",
       heroLead:
-        "¿Has encontrado piso en 22@, Diagonal Mar o La Verneda al Poblenou? Locales convertidos a vivienda y comunidades con obras aprobadas no declaradas al comprador. Por {{price}} (IVA incl.) un gestor Livendia revisa reserva, arras y documentación antes de que transfieras la señal — gestoría del comprador, no agencia inmobiliaria.",
+        "¿Has encontrado piso en la Rambla del Poblenou, cerca del Bogatell o en Diagonal Mar? Locales convertidos a vivienda y comunidades con obras aprobadas no declaradas al comprador. Por {{price}} (IVA incl.) un gestor Livendia revisa reserva, arras y documentación antes de que transfieras la señal — gestoría del comprador, no agencia inmobiliaria.",
       heroBullets: [
         "Compra entre particulares o con agencia solo del vendedor",
         "Revisión ITE, cèdula y comunidad en Poblenou",
@@ -874,7 +874,7 @@ export const COMPRAR_PISO_BCN_METRO_DIFFERENTIATION: Record<string, ComprarMetro
       eyebrow: "Poblenou · comprador particular",
       title: "Comprar en Poblenou sin agencia compradora, con gestoría Livendia",
       paragraphs: [
-        "En Poblenou (22@, Diagonal Mar o La Verneda al Poblenou) muchas operaciones se cierran sin agencia del comprador: ahorras comisión, pero el borrador de arras suele venir redactado solo a favor del vendedor. Locales convertidos a vivienda y comunidades con obras aprobadas no declaradas al comprador.",
+        "En Poblenou (Rambla del Poblenou, Diagonal Mar o La Verneda) muchas operaciones se cierran sin agencia del comprador: ahorras comisión, pero el borrador de arras suele venir redactado solo a favor del vendedor. Locales convertidos a vivienda y comunidades con obras aprobadas no declaradas al comprador.",
         "Poblenou va rápido: conviene gestor antes de señal, no después de una cláusula irreversible.",
       ],
     },

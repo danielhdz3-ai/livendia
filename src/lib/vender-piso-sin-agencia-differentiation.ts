@@ -537,7 +537,7 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       heroLead:
         "Poblenou, El Clot, Diagonal Mar o La Verneda: venta de particular a particular con Livendia por {{price}} (IVA incl.) — reserva, arras CCCat, comunidad multi-bloque y notaría sin pagar comisión de agencia.",
       heroBullets: [
-        "Vender piso de particular a particular en el 22@ y Poblenou",
+        "Vender piso de particular a particular en Poblenou y El Clot",
         "Tarifa plana vs miles de euros de inmobiliaria",
         "Gestor legal fijo por WhatsApp",
       ],
@@ -1115,7 +1115,7 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       heroBadge: "Sin comisiones · Poblenou",
       heroH1: "¿Vendes sin comisiones en Poblenou?",
       heroLead:
-        "22@, Diagonal Mar o La Verneda: venta entre particulares con Livendia por {{price}} (IVA incl.) — reserva, arras CCCat y notaría sin el 3–5 % de agencia sobre el precio.",
+        "Rambla del Poblenou, Diagonal Mar o La Verneda: venta entre particulares con Livendia por {{price}} (IVA incl.) — reserva, arras CCCat y notaría sin el 3–5 % de agencia sobre el precio.",
       heroBullets: [
         "Vender sin comisiones en uno de los barrios más dinámicos",
         "Operaciones rápidas con documentación al día",
@@ -1128,10 +1128,10 @@ export const VENDER_PISO_DIFFERENTIATION: Record<string, VenderPisoDiff> = {
       waPrefill:
         "Hola, vendo en Poblenou sin comisiones (entre particulares). Quiero Livendia.",
       jsonLdServiceName: "Vender sin comisiones en Poblenou con gestoría Livendia",
-      imageAlt: "Venta sin comisiones Poblenou 22@",
+      imageAlt: "Venta sin comisiones Poblenou",
     },
     barcelonaZoneIntro: {
-      eyebrow: "Poblenou · 22@",
+      eyebrow: "Poblenou · Sant Martí",
       title: "Vender sin comisiones en Poblenou cuando ya tienes comprador",
       paragraphs: [
         "Poblenou concentra operaciones de tech y familias con plazos ajustados. Livendia acompaña la venta entre particulares con contratos a medida y seguimiento post-arras.",
