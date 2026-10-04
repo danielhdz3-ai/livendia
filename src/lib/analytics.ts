@@ -1,5 +1,6 @@
 "use client";
 
+import { hasAnalyticsConsent, hasMarketingConsent } from "@/lib/cookie-consent";
 import {
   GOOGLE_ADS_CONVERSION_LEAD,
   GOOGLE_ADS_CONVERSION_PHONE,
@@ -29,6 +30,7 @@ export function pushDataLayer(event: string, params?: Record<string, unknown>): 
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({ event, ...params });
+  if (!hasAnalyticsConsent()) return;
   if (typeof window.gtag === "function") {
     window.gtag("event", event, params);
   }
@@ -44,6 +46,7 @@ type AdsConversionParams = {
 function trackGoogleAdsConversion(sendTo: string, params?: AdsConversionParams): void {
   if (typeof window === "undefined") return;
   if (!getGoogleAdsId()) return;
+  if (!hasMarketingConsent()) return;
   if (typeof window.gtag !== "function") return;
   window.gtag("event", "conversion", {
     send_to: sendTo,

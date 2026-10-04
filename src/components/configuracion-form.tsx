@@ -149,6 +149,20 @@ export function ConfiguracionForm({ initial }: { initial: ConfiguracionInitial }
             Política de cookies
             <span className="text-[#1A4FBF]">→</span>
           </Link>
+          <Link
+            href="/legal/condiciones"
+            className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 font-semibold text-[#1E293B] transition hover:border-[#1A4FBF]/20 hover:bg-[#EFF6FF]/30"
+          >
+            Condiciones generales
+            <span className="text-[#1A4FBF]">→</span>
+          </Link>
+          <Link
+            href="/legal/reembolsos"
+            className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 font-semibold text-[#1E293B] transition hover:border-[#1A4FBF]/20 hover:bg-[#EFF6FF]/30"
+          >
+            Reembolsos y desistimiento
+            <span className="text-[#1A4FBF]">→</span>
+          </Link>
         </div>
       </section>
 

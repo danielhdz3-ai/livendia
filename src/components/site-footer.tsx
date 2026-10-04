@@ -12,6 +12,7 @@ import {
   getBusinessMapsExternalUrl,
   getWhatsAppHref,
 } from "@/lib/business-nap";
+import { CookieSettingsLink } from "@/components/cookie-settings-link";
 import { getBusinessLegalIdentity } from "@/lib/business-legal";
 
 const waHref = getWhatsAppHref();
@@ -257,16 +258,46 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
 
             {/* Legal y copyright */}
             <div className="mt-4 border-t border-white/20 pt-3">
-              <div className="flex flex-wrap gap-2 text-xs text-blue-200 mb-1">
+              <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs text-blue-200 mb-1">
                 <Link href="/legal/aviso-legal" className="hover:text-white transition-colors">
                   Aviso legal
                 </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
                 <Link href="/legal/privacidad" className="hover:text-white transition-colors">
                   Privacidad
                 </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
                 <Link href="/legal/cookies" className="hover:text-white transition-colors">
                   Cookies
                 </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
+                <Link href="/legal/condiciones" className="hover:text-white transition-colors">
+                  Condiciones
+                </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
+                <Link href="/legal/reembolsos" className="hover:text-white transition-colors">
+                  Reembolsos
+                </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
+                <Link href="/legal/accesibilidad" className="hover:text-white transition-colors">
+                  Accesibilidad
+                </Link>
+                <span className="text-blue-300/60" aria-hidden>
+                  ·
+                </span>
+                <CookieSettingsLink className="hover:text-white transition-colors text-left">
+                  Configurar cookies
+                </CookieSettingsLink>
               </div>
               <p className="text-xs text-blue-100">
                 © {currentYear} {legal.legalName}. Todos los derechos reservados.

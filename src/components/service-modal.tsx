@@ -203,6 +203,22 @@ export function ServiceModal({ service, onClose, onCheckout }: ServiceModalProps
                   />
                 </div>
 
+                <p className="text-xs leading-relaxed text-[#64748b]">
+                  Al continuar aceptas las{" "}
+                  <a href="/legal/condiciones" className="font-medium text-[#1A4FBF] underline">
+                    condiciones generales
+                  </a>
+                  , la{" "}
+                  <a href="/legal/privacidad" className="font-medium text-[#1A4FBF] underline">
+                    política de privacidad
+                  </a>{" "}
+                  y la{" "}
+                  <a href="/legal/reembolsos" className="font-medium text-[#1A4FBF] underline">
+                    política de reembolsos
+                  </a>
+                  .
+                </p>
+
                 <button
                   type="submit"
                   disabled={isSubmitting}

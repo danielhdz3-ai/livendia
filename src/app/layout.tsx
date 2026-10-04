@@ -5,6 +5,7 @@ import { AnalyticsBootstrap } from "@/components/analytics-bootstrap";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { GtmScripts } from "@/components/gtm-scripts";
 import { WebsiteStructuredData } from "@/components/website-structured-data";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button";
 import { WhatsAppLeadProvider } from "@/components/whatsapp-lead-provider";
 import { PublicMobileChrome } from "@/components/public-mobile-chrome";
@@ -86,6 +87,7 @@ export default function RootLayout({
               {children}
             </ClientPanelShellRoot>
             <FloatingWhatsAppButton />
+            <CookieConsentBanner />
           </WhatsAppLeadProvider>
         </ToastProvider>
         <PwaRegister />

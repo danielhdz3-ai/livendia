@@ -6,8 +6,10 @@ import {
   BUSINESS_CATEGORY,
   BUSINESS_EMAIL,
   BUSINESS_NAME,
+  BUSINESS_TAX_ID_DEFAULT,
   getBusinessMapsExternalUrl,
 } from "@/lib/business-nap";
+import { getBusinessLegalIdentity } from "@/lib/business-legal";
 import { getContactPhoneE164Plus } from "@/lib/contact";
 
 /** Nodo único de negocio para el @graph global (sin valoración ni @context). */
@@ -15,11 +17,14 @@ export function buildLocalBusinessSchema() {
   const url = businessNap.url();
   const hours = businessNap.openingHours;
   const address = buildBusinessPostalAddress();
+  const taxId = getBusinessLegalIdentity().taxId || BUSINESS_TAX_ID_DEFAULT;
 
   return {
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": `${url}/#localbusiness`,
     name: BUSINESS_NAME,
+    taxID: taxId,
+    vatID: taxId,
     description: BUSINESS_CATEGORY,
     url,
     telephone: getContactPhoneE164Plus(),

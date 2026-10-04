@@ -163,6 +163,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const ventaSeoDate = toSitemapDate(SITEMAP_LAST_MODIFIED.ventaSeo);
   const venderSinInmobiliariaDate = toSitemapDate(SITEMAP_LAST_MODIFIED.venderSinInmobiliaria);
   const ciudadesDate = toSitemapDate(SITEMAP_LAST_MODIFIED.ciudades);
+  const legalDate = toSitemapDate(SITEMAP_LAST_MODIFIED.legal);
 
   const core: MetadataRoute.Sitemap = [
     { url: base, lastModified: coreDate, changeFrequency: "weekly", priority: 1 },
@@ -174,6 +175,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.82 },
     // /mapa-del-sitio es noindex (página utilitaria) y no debe listarse en el sitemap.
     { url: `${base}${CIUDADES_HUB_BASE}`, lastModified: ciudadesDate, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/legal/aviso-legal`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/legal/privacidad`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/legal/cookies`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/legal/condiciones`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/legal/reembolsos`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
+    { url: `${base}/legal/accesibilidad`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },
   ];
 
   const servicios: MetadataRoute.Sitemap = SERVICIO_SLUGS.map((slug) => ({
