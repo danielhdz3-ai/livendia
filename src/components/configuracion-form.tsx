@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Bell, Eye, Lock, Save, Shield } from "lucide-react";
 import { useToast } from "@/components/toast-provider";
 import { ChangePasswordForm } from "@/components/change-password-form";
+import { CompanyFiscalDetails } from "@/components/company-fiscal-details";
+import { CookieSettingsLink } from "@/components/cookie-settings-link";
 import { PANEL_CARD, PANEL_CTA } from "@/lib/client-panel-ui";
 
 export type ConfiguracionInitial = {
@@ -14,7 +16,19 @@ export type ConfiguracionInitial = {
   notifyNewsletter: boolean;
 };
 
-export function ConfiguracionForm({ initial }: { initial: ConfiguracionInitial }) {
+export type ConfiguracionCompanyLegal = {
+  legalName: string;
+  taxId?: string;
+  addressLine?: string;
+};
+
+export function ConfiguracionForm({
+  initial,
+  companyLegal,
+}: {
+  initial: ConfiguracionInitial;
+  companyLegal: ConfiguracionCompanyLegal;
+}) {
   const router = useRouter();
   const { toast } = useToast();
   const [notifyEmailOrders, setNotifyEmailOrders] = useState(initial.notifyEmailOrders);
@@ -130,10 +144,21 @@ export function ConfiguracionForm({ initial }: { initial: ConfiguracionInitial }
             <Eye className="h-5 w-5" aria-hidden />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-[#1E293B]">Privacidad</h2>
-            <p className="text-sm text-[#64748B]">Tus derechos y nuestras políticas</p>
+            <h2 className="text-lg font-bold text-[#1E293B]">Privacidad y datos de la empresa</h2>
+            <p className="text-sm text-[#64748B]">Titular del servicio, políticas y cookies</p>
           </div>
         </div>
+        <CompanyFiscalDetails
+          legalName={companyLegal.legalName}
+          taxId={companyLegal.taxId}
+          addressLine={companyLegal.addressLine}
+          showCookieSettings={false}
+          className="mb-4"
+        />
+        <CookieSettingsLink className="mb-4 flex w-full items-center justify-between rounded-xl border border-[#1A4FBF]/25 bg-[#EFF6FF]/40 px-4 py-3 font-semibold text-[#1E293B] transition hover:border-[#1A4FBF]/40 hover:bg-[#EFF6FF]/70">
+          Configurar cookies
+          <span className="text-[#1A4FBF]">→</span>
+        </CookieSettingsLink>
         <div className="space-y-2">
           <Link
             href="/legal/privacidad"

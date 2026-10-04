@@ -1,6 +1,7 @@
 import { ClientPanelShell } from "@/components/client-panel-shell";
 import { ConfiguracionForm } from "@/components/configuracion-form";
 import { LivendiaGestorCard } from "@/components/livendia-gestor-card";
+import { getBusinessLegalIdentity } from "@/lib/business-legal";
 import { getCachedAuthUser, getCachedUserProfile } from "@/lib/supabase/auth-cache";
 import { redirect } from "next/navigation";
 export const metadata = { title: "Configuración" };
@@ -10,6 +11,7 @@ export default async function ConfiguracionPage() {
   if (!user) redirect("/login");
 
   const profile = await getCachedUserProfile(user.id);
+  const company = getBusinessLegalIdentity();
 
   return (
     <ClientPanelShell
@@ -22,6 +24,11 @@ export default async function ConfiguracionPage() {
           notifyEmailOrders: profile?.notify_email_orders ?? true,
           notifyEmailDocs: profile?.notify_email_docs ?? true,
           notifyNewsletter: profile?.notify_newsletter ?? false,
+        }}
+        companyLegal={{
+          legalName: company.legalName,
+          taxId: company.taxId,
+          addressLine: company.addressLine,
         }}
       />
       <LivendiaGestorCard compact />

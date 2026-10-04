@@ -48,18 +48,7 @@ export function LivendiaTrustPanel({ variant = "default" }: LivendiaTrustPanelPr
           <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[#1A4FBF]" aria-hidden />
           <span>
             <strong className="text-[#1E293B]">{legal.legalName}</strong>
-            {legal.taxId ? (
-              <>
-                {" "}
-                · <span className="font-medium">{legal.taxId}</span>
-              </>
-            ) : null}
-            {legal.addressLine ? (
-              <>
-                <br />
-                {legal.addressLine}
-              </>
-            ) : null}
+            <span className="text-[#64748B]"> · Gestoría inmobiliaria online</span>
           </span>
         </li>
         <li className="flex items-center gap-2">
