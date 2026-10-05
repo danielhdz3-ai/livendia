@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog-content";
+import { getAllPublishedRespuestas } from "@/lib/paa-content";
 import {
   CONTRATO_ALQUILER_LOCAL_BASE,
   getPublishedContratoAlquilerLocalCities,
@@ -295,6 +296,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  const paaRespuestas: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/respuestas`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...getAllPublishedRespuestas().map((p) => ({
+      url: `${base}/respuestas/${p.slug}`,
+      lastModified: new Date(p.modified + "T12:00:00Z"),
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+    })),
+  ];
+
   const ventaSeoLocal: MetadataRoute.Sitemap = getPublishedVenderPisoSinAgenciaCities().map((c) => ({
     url: `${base}${localVenderPisoSinAgenciaHref(c.slug)}`,
     lastModified: ventaSeoDate,
@@ -485,5 +501,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...gestoriaCityVerticalHubs,
     ...ciudadesHubPages,
     ...blogArticles,
+    ...paaRespuestas,
   ];
 }

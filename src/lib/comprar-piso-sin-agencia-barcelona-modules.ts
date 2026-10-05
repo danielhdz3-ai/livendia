@@ -30,7 +30,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
   city?: string,
 ): readonly VenderSinAgenciaProcessStep[] {
   const zone = slug ? getComprarBcnZoneEnrichment(slug) : undefined;
-  const imgs = slug ? getComprarPisoSinAgenciaStepImages(slug) : null;
+  const imgs = getComprarPisoSinAgenciaStepImages(slug ?? "barcelona-capital");
   const zoneLabel = city ?? "Barcelona";
   return [
     {
@@ -51,7 +51,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Sin comisión sobre el precio del piso",
         "Misma persona hasta la escritura",
       ],
-      imageSrc: imgs?.[0] ?? "/images/pexels-yankrukov-7693161.jpg",
+      imageSrc: imgs[0],
       imageAlt: `Gestor Livendia en llamada con comprador en ${zoneLabel}`,
     },
     {
@@ -70,7 +70,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Sin honorarios sobre el precio de compra",
         "Mismo gestor hasta la firma en notaría",
       ],
-      imageSrc: imgs?.[1] ?? "/images/chicasofaazul.png",
+      imageSrc: imgs[1],
       imageAlt: "Contratar servicio completo de compra Livendia online",
     },
     {
@@ -91,7 +91,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Riesgos explicados en lenguaje claro",
         "Sin desplazamientos a gestoría física",
       ],
-      imageSrc: imgs?.[2] ?? "/images/gestoria20.jpg",
+      imageSrc: imgs[2],
       imageAlt: `Revisión documental compra vivienda ${zoneLabel} Livendia`,
     },
     {
@@ -111,7 +111,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Protección frente a plantillas solo a favor del vendedor",
         "Orientación sobre ingreso de arras y medios de pago seguros",
       ],
-      imageSrc: imgs?.[3] ?? "/images/contratodearras.jpg",
+      imageSrc: imgs[3],
       imageAlt: `Revisión contrato de arras comprador ${zoneLabel}`,
     },
     {
@@ -132,7 +132,7 @@ export function buildComprarSinAgenciaBarcelonaSteps(
         "Coordinación en Barcelona o área metropolitana",
         "Gestor como filtro profesional — no sustituto del notario",
       ],
-      imageSrc: imgs?.[4] ?? "/images/firma10.jpg",
+      imageSrc: imgs[4],
       imageAlt: `Coordinación hasta escritura pública compra piso ${zoneLabel}`,
     },
   ];

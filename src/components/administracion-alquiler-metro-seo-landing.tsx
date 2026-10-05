@@ -17,6 +17,7 @@ import {
   mergeMetroFaq,
   type AdministracionAlquilerMetroLanding,
 } from "@/lib/administracion-alquiler-metro-landings";
+import { resolveAdministracionAlquilerHowImages } from "@/lib/administracion-alquiler-how-images";
 import { getMetroEnrichment } from "@/lib/administracion-alquiler-metro-enrichment";
 import { ALQUILER_REGULATORY_BY_SLUG } from "@/lib/administracion-alquiler-local-regulatory";
 import { ADMINISTRACION_ALQUILER_LOCAL_BASE } from "@/lib/administracion-alquiler-local-cities";
@@ -142,6 +143,8 @@ export function AdministracionAlquilerMetroSeoLanding({
   const faqItems = mergeMetroFaq(config.localFaq);
   const regulatory = config.regulatorySlug ? ALQUILER_REGULATORY_BY_SLUG[config.regulatorySlug] : undefined;
   const placement = `metro_admin_${config.segments.join("_")}`;
+  const zoneHowImage = config.howImages.find((u) => u.includes("/zonas barcelona/"));
+  const howImages = resolveAdministracionAlquilerHowImages(config.path, zoneHowImage);
 
   const benefits = [
     {
@@ -482,7 +485,7 @@ export function AdministracionAlquilerMetroSeoLanding({
                       <div className={`relative ${isEven ? "" : "lg:order-1"}`}>
                         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200">
                           <Image
-                            src={config.howImages[idx] ?? "/images/gestoria.jpg"}
+                            src={howImages[idx] ?? "/images/gestoria.jpg"}
                             alt={item.title}
                             fill
                             className="object-cover"

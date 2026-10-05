@@ -198,7 +198,7 @@ export const COMPRA_LOCAL_EXTRA_DIFFERENTIATION: Record<string, CompraLocalDiff>
     localZonesHeading: "Zonas de Granada donde acompañamos compradores",
     localZones:
       "Zaidín, Realejo, Albaicín, Chana, Ronda, Genil y municipios del área metropolitana — gestoría online con panel Livendia.",
-    heroImage: "/images/santander2.jpg",
+    heroImage: "/images/santander.jpg",
     localBenefits: [
       {
         title: "Compra sin comisión de comprador",

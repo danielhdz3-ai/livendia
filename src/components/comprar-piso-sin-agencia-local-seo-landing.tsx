@@ -152,15 +152,15 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
   const barcelonaProcessSteps = isBarcelonaExtended
     ? buildComprarSinAgenciaBarcelonaSteps(
         priceLabel,
-        useMetroEnrichment ? config.slug : undefined,
+        useMetroEnrichment ? config.slug : "barcelona-capital",
         config.city,
       )
     : null;
   const processTitle = useMetroEnrichment
     ? comprarProcessTitle(config.city)
     : COMPRAR_SIN_AGENCIA_BARCELONA_PROCESS.title.replace("Barcelona", config.city);
-  const heroImage = useMetroEnrichment
-    ? getComprarPisoSinAgenciaHeroImage(config.slug)
+  const heroImage = isBarcelonaExtended
+    ? getComprarPisoSinAgenciaHeroImage(useMetroEnrichment ? config.slug : "barcelona-capital")
     : "/images/gestoria3.jpg";
   const gestorPlatformWorkflow = buildGestorWorkflowContent({
     city: config.city,

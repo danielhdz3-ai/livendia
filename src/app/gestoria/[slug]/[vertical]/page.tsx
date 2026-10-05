@@ -1,4 +1,6 @@
 import { GestoriaCityVerticalHubLanding } from "@/components/gestoria-city-vertical-hub-landing";
+import { getPublicServices } from "@/lib/catalog";
+import type { PublicService } from "@/lib/catalog.public";
 import {
   getGestoriaCityVerticalHub,
   getGestoriaCityVerticalStaticParams,
@@ -46,5 +48,14 @@ export default async function GestoriaCityVerticalPage({ params }: Props) {
   const config = getGestoriaCityVerticalHub(slug, vertical);
   if (!config) notFound();
 
-  return <GestoriaCityVerticalHubLanding config={config} />;
+  const catalog = await getPublicServices();
+  const neededSlugs = new Set(
+    config.serviceShowcases.map((s) => s.contratarSlug).filter(Boolean) as string[],
+  );
+  const servicesBySlug: Partial<Record<string, PublicService>> = {};
+  for (const s of catalog) {
+    if (neededSlugs.has(s.slug)) servicesBySlug[s.slug] = s;
+  }
+
+  return <GestoriaCityVerticalHubLanding config={config} servicesBySlug={servicesBySlug} />;
 }

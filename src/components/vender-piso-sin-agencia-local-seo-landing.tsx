@@ -41,6 +41,10 @@ import {
   VENDER_SIN_AGENCIA_BARCELONA_INTRO,
   VENDER_SIN_AGENCIA_BARCELONA_PROCESS,
 } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
+import {
+  getVenderPisoSinAgenciaHeroImage,
+  isVenderBcnMetroSlugForImages,
+} from "@/lib/vender-piso-sin-agencia-images";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -142,7 +146,13 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(pageCopy.waPrefill)}`;
   const isBarcelonaExtended = config.slug === "barcelona" || config.showBarcelonaVentaModules === true;
   const barcelonaIntro = config.barcelonaZoneIntro ?? VENDER_SIN_AGENCIA_BARCELONA_INTRO;
-  const barcelonaProcessSteps = isBarcelonaExtended ? buildVenderSinAgenciaBarcelonaSteps(priceLabel) : null;
+  const imageSlug = isVenderBcnMetroSlugForImages(config.slug) ? config.slug : "barcelona-capital";
+  const barcelonaProcessSteps = isBarcelonaExtended
+    ? buildVenderSinAgenciaBarcelonaSteps(priceLabel, imageSlug)
+    : null;
+  const heroImage = isBarcelonaExtended
+    ? getVenderPisoSinAgenciaHeroImage(imageSlug)
+    : "/images/servicio-completo-venta-hero.jpg";
   const gestorPlatformWorkflow = buildGestorWorkflowContent({
     city: config.city,
     service: "servicio-completo-venta",
@@ -223,7 +233,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
 
                 <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src="/images/servicio-completo-venta-hero.jpg"
+                    src={heroImage}
                     alt={pageCopy.imageAlt}
                     fill
                     className="object-cover"

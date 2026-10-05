@@ -22,6 +22,8 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
 } from "@/lib/catalog.public";
+import { gestoriaLandingImagePoolFiltered } from "@/lib/gestoria-landing-image-pool";
+import { pickUniqueLandingImages } from "@/lib/pick-unique-landing-images";
 import Image from "next/image";
 import {
   Shield,
@@ -198,10 +200,11 @@ export async function ServicioCompletoCompraLocalSeoLanding({
   ];
 
   const stepImages = [
-    "/images/gestoria3.jpg",
-    "/images/contratodearras.jpg",
-    "/images/familia2.jpg",
-    "/images/contratos7.jpg",
+    ...pickUniqueLandingImages(
+      `servicio-completo-compra-local:steps:${config.slug}`,
+      4,
+      gestoriaLandingImagePoolFiltered(),
+    ),
   ];
 
   return (

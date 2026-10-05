@@ -1,6 +1,26 @@
 /**
  * Rutas de imágenes validadas en public/images/ (git) para bloques «Cómo funciona».
  */
+
+import { gestoriaLandingImagePoolFiltered } from "@/lib/gestoria-landing-image-pool";
+import { pickUniqueLandingImages } from "@/lib/pick-unique-landing-images";
+
+/** Cuatro imágenes distintas por landing de administración metro (opcional foto de zona en paso 1). */
+export function resolveAdministracionAlquilerHowImages(
+  landingKey: string,
+  zoneImage?: string,
+): readonly string[] {
+  const pool = gestoriaLandingImagePoolFiltered();
+  const picked = pickUniqueLandingImages(`admin-alquiler-metro:how:${landingKey}`, 4, pool);
+  if (zoneImage && zoneImage.startsWith("/images/")) {
+    const rest = pickUniqueLandingImages(`admin-alquiler-metro:how:${landingKey}:rest`, 3, pool, [
+      zoneImage,
+    ]);
+    return [zoneImage, ...rest];
+  }
+  return picked;
+}
+
 export const ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT = [
   "/images/gestoria.jpg",
   "/images/familia2.jpg",

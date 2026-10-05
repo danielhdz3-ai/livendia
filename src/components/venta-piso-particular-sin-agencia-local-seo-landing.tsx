@@ -185,7 +185,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
     `Hola, ya tengo comprador particular para mi piso en ${config.city} y quiero vender sin agencia con gestor Livendia (${priceLabel} IVA incl.).`,
   )}`;
   const heroImage = getVentaPisoParticularHeroImage(config.slug);
-  const processSteps = buildVentaPisoParticularSteps(config.city, priceLabel);
+  const processSteps = buildVentaPisoParticularSteps(config.city, priceLabel, config.slug);
 
   return (
     <ServicePurchaseProvider service={service}>

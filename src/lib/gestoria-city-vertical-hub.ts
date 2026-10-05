@@ -71,6 +71,15 @@ import {
   localAcompanamientoReservaArrasHref,
 } from "@/lib/acompanamiento-reserva-arras-local-cities";
 import { cityHubHref, isCityHubSlug } from "@/lib/ciudades-hub";
+import {
+  buildGestoriaVerticalServiceShowcases,
+  gestoriaVerticalBenefits,
+  gestoriaVerticalCatalogCopy,
+  gestoriaVerticalComparison,
+  gestoriaVerticalExtendedFaq,
+  type GestoriaVerticalBenefit,
+  type GestoriaVerticalServiceShowcase,
+} from "@/lib/gestoria-city-vertical-hub-enrichment";
 
 export const GESTORIA_CITY_VERTICALS = ["alquiler", "compraventa"] as const;
 export type GestoriaCityVertical = (typeof GESTORIA_CITY_VERTICALS)[number];
@@ -100,6 +109,10 @@ export type GestoriaCityVerticalHubConfig = {
   heroLead: string;
   intro: string;
   services: readonly GestoriaVerticalServiceLink[];
+  serviceShowcases: readonly GestoriaVerticalServiceShowcase[];
+  catalogCopy: { eyebrow: string; title: string; subtitle: string };
+  benefits: readonly GestoriaVerticalBenefit[];
+  comparison: { title: string; body: string };
   faq: readonly { question: string; answer: string }[];
   gestoriaHubHref: string;
   ciudadesHubHref?: string;
@@ -363,6 +376,12 @@ export function getGestoriaCityVerticalHub(
       ? `${def.contratos.intro} ${def.administracion.intro}`
       : def.compraventa.intro;
 
+  const catalogCopy = gestoriaVerticalCatalogCopy(vertical, def.city);
+  const serviceShowcases = buildGestoriaVerticalServiceShowcases(services, def.city);
+  const benefits = gestoriaVerticalBenefits(vertical);
+  const comparison = gestoriaVerticalComparison(vertical, def.city);
+  const faq = [...copy.faq, ...gestoriaVerticalExtendedFaq(vertical, def.city)];
+
   return {
     path,
     citySlug,
@@ -374,6 +393,11 @@ export function getGestoriaCityVerticalHub(
     ...copy,
     intro: `${copy.intro} ${introFromCity}`.replace(/\s{2,}/g, " ").trim(),
     services,
+    serviceShowcases,
+    catalogCopy,
+    benefits,
+    comparison,
+    faq,
   };
 }
 

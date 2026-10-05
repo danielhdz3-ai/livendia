@@ -20,14 +20,14 @@ const TUTORIAL_STEPS = [
     step: 3,
     title: "Tu gestor trabaja el trámite",
     body: "Revisión documental, redacción de contratos y actividad registrada en el historial del expediente (quién hizo qué y cuándo).",
-    imageSrc: "/images/gestor6.jpg",
+    imageSrc: "/images/gestora2.jpg",
     imageAlt: "Gestor Livendia revisando expediente",
   },
   {
     step: 4,
     title: "Seguimiento hasta cerrar el servicio",
     body: "Ves próximos pasos, documentos validados y avances hasta escritura o entrega del contrato final.",
-    imageSrc: "/images/firma10.jpg",
+    imageSrc: "/images/firma11.jpg",
     imageAlt: "Cierre de operación inmobiliaria con Livendia",
   },
 ] as const;

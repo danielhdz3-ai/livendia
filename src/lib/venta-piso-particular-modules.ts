@@ -1,5 +1,5 @@
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
-import { VENTA_PISO_PARTICULAR_STEP_IMAGES } from "@/lib/venta-piso-particular-images";
+import { getVentaPisoParticularStepImages } from "@/lib/venta-piso-particular-images";
 
 export const VENTA_PISO_PARTICULAR_PROCESS_META = {
   eyebrow: "Qué incluye el servicio completo de venta",
@@ -19,8 +19,10 @@ export function ventaPisoParticularProcessTitle(city: string): string {
 export function buildVentaPisoParticularSteps(
   city: string,
   priceLabel: string,
+  slug: string,
 ): readonly VenderSinAgenciaProcessStep[] {
   const zone = city;
+  const imgs = getVentaPisoParticularStepImages(slug);
   return [
     {
       step: 1,
@@ -38,7 +40,7 @@ export function buildVentaPisoParticularSteps(
         "No sustituimos a una inmobiliaria de captación",
         "Misma persona hasta la firma",
       ],
-      imageSrc: VENTA_PISO_PARTICULAR_STEP_IMAGES.llamada,
+      imageSrc: imgs.llamada,
       imageAlt: `Gestor Livendia con vendedor que ya tiene comprador en ${zone}`,
     },
     {
@@ -57,7 +59,7 @@ export function buildVentaPisoParticularSteps(
         "Sin exclusiva de venta",
         "Gestor dedicado hasta escritura",
       ],
-      imageSrc: VENTA_PISO_PARTICULAR_STEP_IMAGES.contratar,
+      imageSrc: imgs.contratar,
       imageAlt: "Contratar servicio venta entre particulares Livendia",
     },
     {
@@ -77,7 +79,7 @@ export function buildVentaPisoParticularSteps(
         "Sin desplazarte a gestoría física",
         "Informe de estado documental",
       ],
-      imageSrc: VENTA_PISO_PARTICULAR_STEP_IMAGES.documentacion,
+      imageSrc: imgs.documentacion,
       imageAlt: "Documentación venta piso entre particulares Livendia",
     },
     {
@@ -97,7 +99,7 @@ export function buildVentaPisoParticularSteps(
         "Coherencia con precio y plazos acordados",
         "Gestor explica consecuencias en lenguaje claro",
       ],
-      imageSrc: VENTA_PISO_PARTICULAR_STEP_IMAGES.arras,
+      imageSrc: imgs.arras,
       imageAlt: "Contrato de arras venta entre particulares Catalunya",
     },
     {
@@ -116,7 +118,7 @@ export function buildVentaPisoParticularSteps(
         "Expediente ordenado para el notario",
         "Mismo gestor post-arras hasta cierre",
       ],
-      imageSrc: VENTA_PISO_PARTICULAR_STEP_IMAGES.notaria,
+      imageSrc: imgs.notaria,
       imageAlt: `Coordinación hasta escritura pública venta particular ${zone}`,
     },
   ];

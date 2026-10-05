@@ -1,5 +1,7 @@
 /** Contenido extendido — landing vender sin agencia Barcelona. */
 
+import { getVenderPisoSinAgenciaStepImages } from "@/lib/vender-piso-sin-agencia-images";
+
 export type VenderSinAgenciaProcessStep = {
   step: number;
   title: string;
@@ -30,7 +32,11 @@ export const VENDER_SIN_AGENCIA_BARCELONA_PROCESS = {
     "Cada documento, revisión y avance queda en tu área de cliente Livendia: referencia de expediente, barra de progreso e historial de actividad. Consulta en qué punto está tu venta sin depender de correos sueltos.",
 } as const;
 
-export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonly VenderSinAgenciaProcessStep[] {
+export function buildVenderSinAgenciaBarcelonaSteps(
+  priceLabel: string,
+  slug?: string,
+): readonly VenderSinAgenciaProcessStep[] {
+  const imgs = getVenderPisoSinAgenciaStepImages(slug ?? "barcelona");
   return [
     {
       step: 1,
@@ -49,7 +55,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Sin exclusiva ni comisión sobre el precio",
         "Misma persona hasta la escritura",
       ],
-      imageSrc: "/images/pexels-yankrukov-7693161.jpg",
+      imageSrc: imgs[0],
       imageAlt: "Gestor Livendia en llamada con propietario que vende en Barcelona",
     },
     {
@@ -68,7 +74,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Sin porcentaje sobre el precio de venta",
         "Mismo gestor hasta la firma en notaría",
       ],
-      imageSrc: "/images/chicasofaazul.png",
+      imageSrc: imgs[1],
       imageAlt: "Contratar servicio completo de venta Livendia online",
     },
     {
@@ -88,7 +94,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Recordatorios hasta completar el 100 %",
         "Sin desplazamientos a gestoría física",
       ],
-      imageSrc: "/images/gestoria20.jpg",
+      imageSrc: imgs[2],
       imageAlt: "Subir documentación de venta al panel Livendia",
     },
     {
@@ -108,7 +114,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Coherencia con precio y plazos acordados",
         "Orientación antes de entregar la señal",
       ],
-      imageSrc: "/images/contratodearras.jpg",
+      imageSrc: imgs[3],
       imageAlt: "Redacción de contrato de arras para venta entre particulares en Barcelona",
     },
     {
@@ -128,7 +134,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Coordinación con comprador particular o banco",
         "Gestor como filtro profesional — no sustituto del notario",
       ],
-      imageSrc: "/images/gestor6.jpg",
+      imageSrc: imgs[4],
       imageAlt: "Gestor Livendia analizando viabilidad de la venta entre particulares",
     },
     {
@@ -148,7 +154,7 @@ export function buildVenderSinAgenciaBarcelonaSteps(priceLabel: string): readonl
         "Misma gestoría desde la reserva hasta la escritura",
         "Soporte breve post-entrega para dudas de ejecución",
       ],
-      imageSrc: "/images/firma10.jpg",
+      imageSrc: imgs[5],
       imageAlt: "Coordinación hasta escritura pública venta piso Barcelona",
     },
   ];
