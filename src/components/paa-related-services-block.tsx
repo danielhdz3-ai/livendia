@@ -28,11 +28,11 @@ function PaaRelatedServicesInner({
 
   return (
     <section
-      className="border-t border-[#D4AF37]/30 bg-[#FAF7F2] px-4 py-14 sm:px-6"
+      className="border-t border-slate-200 bg-[#EFF3F9] px-4 py-14 sm:px-6"
       aria-labelledby="paa-servicios-title"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#B8860B]">
+        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-[#1A4FBF]">
           {copy.eyebrow}
         </p>
         <h2
@@ -48,7 +48,7 @@ function PaaRelatedServicesInner({
             <a
               key={svc.key}
               href={`#servicio-${svc.key}`}
-              className="rounded-full border-2 border-[#D4AF37]/60 bg-white px-4 py-2 text-sm font-semibold text-[#1E293B] shadow-sm transition hover:bg-[#FFFBEB]"
+              className="rounded-full border-2 border-[#1A4FBF]/40 bg-white px-4 py-2 text-sm font-semibold text-[#1A4FBF] shadow-sm transition hover:bg-blue-50"
             >
               {svc.cardTitle}
             </a>

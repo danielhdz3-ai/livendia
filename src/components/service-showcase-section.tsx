@@ -16,12 +16,9 @@ export function ServicePriceCardVisual({
   locationLabel: string;
   variant?: ServiceShowcaseVariant;
 }) {
-  const priceBadgeClass =
-    variant === "paa"
-      ? "bg-gradient-to-br from-[#D4AF37] to-[#C9A227] text-[#1E293B]"
-      : "bg-[#1A4FBF] text-white";
-  const priceLabelClass = variant === "paa" ? "text-[#1E293B]/70" : "text-blue-100";
-  const brandClass = variant === "paa" ? "text-[#B8860B]" : "text-[#1A4FBF]";
+  const priceBadgeClass = "bg-[#1A4FBF] text-white";
+  const priceLabelClass = "text-blue-100";
+  const brandClass = "text-[#1A4FBF]";
 
   return (
     <div className="relative overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-slate-200">
@@ -35,9 +32,7 @@ export function ServicePriceCardVisual({
         />
         <div className={`absolute right-4 top-4 rounded-xl px-4 py-2 text-center shadow-lg ${priceBadgeClass}`}>
           <p className={`text-[10px] font-bold uppercase tracking-wider ${priceLabelClass}`}>Precio</p>
-          <p className={`text-lg font-extrabold leading-tight ${variant === "paa" ? "text-[#1E293B]" : ""}`}>
-            {showcase.price}
-          </p>
+          <p className="text-lg font-extrabold leading-tight">{showcase.price}</p>
         </div>
       </div>
       <div className="border-t border-slate-100 bg-white p-5">
@@ -79,28 +74,22 @@ export function ServiceShowcaseSection({
   const sectionId = `servicio-${showcase.key}`;
   const isPaa = variant === "paa";
 
-  const badgeClass = isPaa
-    ? "rounded-full bg-[#FFFBEB] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#B8860B] ring-1 ring-[#D4AF37]/40"
-    : "inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#1A4FBF]";
+  const badgeClass =
+    "inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#1A4FBF]";
 
-  const stepsBoxClass = isPaa
-    ? "mt-8 rounded-2xl bg-[#FFFBEB]/80 p-6 ring-1 ring-[#D4AF37]/25"
-    : "mt-8 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100";
+  const stepsBoxClass = "mt-8 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100";
 
-  const stepsTitleClass = isPaa
-    ? "text-xs font-bold uppercase tracking-wide text-[#B8860B]"
-    : "text-xs font-bold uppercase tracking-wide text-[#1A4FBF]";
+  const stepsTitleClass = "text-xs font-bold uppercase tracking-wide text-[#1A4FBF]";
 
-  const stepNumClass = isPaa
-    ? "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D4AF37] text-xs font-bold text-[#1E293B]"
-    : "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-xs font-bold text-white";
+  const stepNumClass =
+    "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1A4FBF] text-xs font-bold text-white";
 
-  const checkClass = isPaa ? "text-[#B8860B]" : "text-[#1A4FBF]";
+  const checkClass = "text-[#1A4FBF]";
 
   return (
     <article
       id={sectionId}
-      className="scroll-mt-24 border-t border-[#D4AF37]/20 py-16 first:border-t-0 first:pt-0"
+      className="scroll-mt-24 border-t border-slate-200 py-16 first:border-t-0 first:pt-0"
     >
       <div
         className={`grid gap-10 lg:grid-cols-2 lg:items-start ${reverse ? "lg:[direction:rtl]" : ""}`}
@@ -141,7 +130,7 @@ export function ServiceShowcaseSection({
             {isPaa && contratarEnabled && showcase.contratarSlug ? (
               <ContratarSlugButton
                 slug={showcase.contratarSlug}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-6 py-3 text-sm font-bold text-[#1E293B] shadow-md transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#1E40AF]"
               >
                 {contratarCtaLabel(showcase.cardTitle)}
               </ContratarSlugButton>
@@ -149,7 +138,7 @@ export function ServiceShowcaseSection({
             {isPaa && !showcase.contratarSlug ? (
               <Link
                 href={showcase.href}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4A6] px-6 py-3 text-sm font-bold text-[#1E293B] shadow-md transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1A4FBF] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-[#1E40AF]"
               >
                 {contratarCtaLabel(showcase.cardTitle)}
               </Link>
@@ -158,7 +147,7 @@ export function ServiceShowcaseSection({
               href={showcase.href}
               className={
                 isPaa
-                  ? "inline-flex items-center gap-2 rounded-full border-2 border-[#1E293B]/20 bg-white px-5 py-2.5 text-sm font-bold text-[#1E293B] transition hover:border-[#D4AF37]"
+                  ? "inline-flex items-center gap-2 rounded-full border-2 border-[#1A4FBF] bg-white px-5 py-2.5 text-sm font-bold text-[#1A4FBF] transition hover:bg-blue-50"
                   : "inline-flex items-center gap-2 rounded-full bg-[#1A4FBF] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#1E40AF]"
               }
             >
