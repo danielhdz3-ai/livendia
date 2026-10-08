@@ -5,7 +5,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { BlogMarkdown } from "@/components/blog-markdown";
 import { BlogCategoryCta } from "@/components/blog-category-cta";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { PaaRelatedServicesBlock } from "@/components/paa-related-services-block";
 import { PaaStructuredData } from "@/components/paa-structured-data";
+import { getPublicServices } from "@/lib/catalog";
+import type { PublicService } from "@/lib/catalog.public";
+import { GESTORIA_VERTICAL_CONTRATAR_SLUG } from "@/lib/gestoria-city-vertical-hub-enrichment";
+import { getPaaRelatedServiceKeys } from "@/lib/paa-related-services";
 import { BLOG_CATEGORY_IMAGES, BLOG_CATEGORY_LABEL } from "@/lib/blog-types";
 import { getPaaRegistryBySlug } from "@/lib/paa-registry";
 import { getAllRespuestaSlugs, getRespuestaBySlug } from "@/lib/paa-content";
@@ -70,6 +75,18 @@ export default async function RespuestaPaaPage({ params }: Props) {
 
   const cover = article.ogImage ?? BLOG_CATEGORY_IMAGES[article.category];
 
+  const relatedKeys = getPaaRelatedServiceKeys(slug, article.category);
+  const catalog = await getPublicServices();
+  const neededSlugs = new Set(
+    relatedKeys
+      .map((key) => GESTORIA_VERTICAL_CONTRATAR_SLUG[key])
+      .filter((s): s is string => Boolean(s)),
+  );
+  const servicesBySlug: Partial<Record<string, PublicService>> = {};
+  for (const s of catalog) {
+    if (neededSlugs.has(s.slug)) servicesBySlug[s.slug] = s;
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <PaaStructuredData article={article} />
@@ -111,7 +128,15 @@ export default async function RespuestaPaaPage({ params }: Props) {
           <div className="prose prose-slate mt-10 max-w-none">
             <BlogMarkdown content={article.content} />
           </div>
+        </article>
 
+        <PaaRelatedServicesBlock
+          slug={article.slug}
+          category={article.category}
+          servicesBySlug={servicesBySlug}
+        />
+
+        <article className="mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:pb-14">
           <GestorContactCta placement="blog_post" className="mt-12 rounded-2xl" />
           <BlogCategoryCta category={article.category} />
         </article>

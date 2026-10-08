@@ -14,6 +14,9 @@ import {
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
   SERVICE_IMAGES,
+  servicePublicLandingPath,
+  LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
+  PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
 } from "@/lib/catalog.public";
 
 export type GestoriaVerticalServiceKey =
@@ -31,7 +34,8 @@ export type GestoriaVerticalServiceKey =
   | "arras"
   | "revision-post-arras"
   | "reserva-arras"
-  | "reserva-nacional";
+  | "reserva-nacional"
+  | "pack-arras-gestion";
 
 export type GestoriaVerticalServiceShowcase = {
   key: GestoriaVerticalServiceKey;
@@ -70,10 +74,11 @@ export function inferGestoriaVerticalServiceKey(href: string): GestoriaVerticalS
   if (href.includes("revision-documental-post-arras")) return "revision-post-arras";
   if (href.includes("acompanamiento-reserva-arras")) return "reserva-arras";
   if (href.includes("reserva-de-compra")) return "reserva-nacional";
+  if (href.includes("pack-arras-gestion")) return "pack-arras-gestion";
   return undefined;
 }
 
-const CONTRATAR_SLUG: Partial<Record<GestoriaVerticalServiceKey, string>> = {
+export const GESTORIA_VERTICAL_CONTRATAR_SLUG: Partial<Record<GestoriaVerticalServiceKey, string>> = {
   admin: "administracion-alquiler",
   lau: "contrato-alquiler-lau",
   "redactar-lau": "contrato-alquiler-lau",
@@ -382,6 +387,26 @@ const SHOWCASE_TEMPLATES: Record<GestoriaVerticalServiceKey, ShowcaseTemplate> =
       "Upgrade posible a servicio completo de compra o venta",
     ],
   },
+  "pack-arras-gestion": {
+    sectionShort: "PACK ARRAS PLUS · VENDEDORES",
+    headline: (city) => `Pack arras + gestión documental para vendedores en ${city}`,
+    body: (city) =>
+      `Vendes entre particulares en ${city} y quieres arras bien redactadas más el checklist registral y de comunidad antes de notaría: contrato de arras penitenciales y gestión documental del vendedor en un solo flujo. ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl. (145 € arras + 350 € gestión documental).`,
+    image: SERVICE_IMAGES["gestion-documental-vendedor"],
+    imageAlt: "Pack arras y gestión documental para vendedor de vivienda",
+    cardMeta: "Vendedor · arras + documentación",
+    steps: [
+      "Recogemos datos del inmueble, comprador y calendario de escritura.",
+      "Redactamos arras penitenciales o confirmatorias con plazos de hipoteca claros.",
+      "Solicitamos y revisamos nota simple, actas de comunidad (2 años), ITE y certificado energético.",
+      "Informe de pendientes y coordinación hacia notaría sin comisión sobre el precio de venta.",
+    ],
+    checklist: [
+      `${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl. — pack publicado`,
+      "Pensado para vendedores que ya tienen comprador",
+      "Upgrade posible a servicio completo de venta si lo necesitas",
+    ],
+  },
   "reserva-nacional": {
     sectionShort: "RESERVA DE COMPRA",
     headline: (city) => `Reserva de compra en ${city} — catálogo nacional Livendia`,
@@ -428,11 +453,110 @@ export function buildGestoriaVerticalServiceShowcases(
       cardMeta: tpl.cardMeta.replace("{city}", city),
       steps: tpl.steps,
       checklist: tpl.checklist,
-      contratarSlug: CONTRATAR_SLUG[key],
+      contratarSlug: GESTORIA_VERTICAL_CONTRATAR_SLUG[key],
     });
   });
 
   return showcases;
+}
+
+type NationalServiceCatalogEntry = {
+  price: string;
+  cardTitle: string;
+  /** Si no se indica, se usa la ficha pública del slug de contratar. */
+  href?: string;
+};
+
+const NATIONAL_SERVICE_CATALOG: Partial<Record<GestoriaVerticalServiceKey, NationalServiceCatalogEntry>> = {
+  admin: {
+    price: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
+    cardTitle: "Administración de alquiler",
+  },
+  lau: {
+    price: CONTRATO_ALQUILER_LAU_PRICE_LABEL,
+    cardTitle: "Contrato de alquiler LAU",
+  },
+  temporada: {
+    price: CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+    cardTitle: "Contrato de alquiler por temporada",
+  },
+  habitacion: {
+    price: CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
+    cardTitle: "Contrato de alquiler de habitación",
+  },
+  "revision-alquiler": {
+    price: "145 €",
+    cardTitle: "Revisión de contrato de alquiler",
+  },
+  "venta-completa": {
+    price: SERVICIO_COMPLETO_CV_PRICE_LABEL,
+    cardTitle: "Acompañamiento de venta",
+  },
+  "compra-completa": {
+    price: SERVICIO_COMPLETO_CV_PRICE_LABEL,
+    cardTitle: "Acompañamiento de compra",
+  },
+  arras: {
+    price: "145 €",
+    cardTitle: "Contrato de arras",
+  },
+  "revision-post-arras": {
+    price: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
+    cardTitle: "Revisión documental post-arras",
+  },
+  "reserva-arras": {
+    price: "424 €",
+    cardTitle: "Acompañamiento reserva hasta arras",
+  },
+  "reserva-nacional": {
+    price: "424 €",
+    cardTitle: "Reserva de compra",
+    href: servicePublicLandingPath("reserva-de-compra"),
+  },
+  "pack-arras-gestion": {
+    price: LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
+    cardTitle: "Pack Arras Plus · vendedores",
+    href: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
+  },
+};
+
+export function buildNationalGestoriaServiceShowcase(
+  key: GestoriaVerticalServiceKey,
+  index: number,
+  locationLabel = "España",
+): GestoriaVerticalServiceShowcase | undefined {
+  const meta = NATIONAL_SERVICE_CATALOG[key];
+  const tpl = SHOWCASE_TEMPLATES[key];
+  if (!meta || !tpl) return undefined;
+
+  const contratarSlug = GESTORIA_VERTICAL_CONTRATAR_SLUG[key];
+  const href = meta.href ?? (contratarSlug ? servicePublicLandingPath(contratarSlug) : undefined);
+  if (!href) return undefined;
+
+  return {
+    key,
+    href,
+    price: meta.price,
+    sectionLabel: `APARTADO ${index + 1} · ${tpl.sectionShort}`,
+    headline: tpl.headline(locationLabel),
+    body: tpl.body(locationLabel),
+    image: tpl.image,
+    imageAlt: tpl.imageAlt,
+    cardTitle: meta.cardTitle,
+    cardMeta: tpl.cardMeta.replace("{city}", locationLabel),
+    steps: tpl.steps,
+    checklist: tpl.checklist,
+    contratarSlug,
+  };
+}
+
+export function buildNationalGestoriaServiceShowcases(
+  keys: readonly GestoriaVerticalServiceKey[],
+  locationLabel = "España",
+): GestoriaVerticalServiceShowcase[] {
+  return keys
+    .map((key, index) => buildNationalGestoriaServiceShowcase(key, index, locationLabel))
+    .filter((s): s is GestoriaVerticalServiceShowcase => Boolean(s));
 }
 
 export function gestoriaVerticalBenefits(vertical: GestoriaCityVertical): GestoriaVerticalBenefit[] {
