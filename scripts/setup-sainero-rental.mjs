@@ -205,7 +205,7 @@ while (cursor <= limit) {
 }
 
 const orders = await rest(
-  `orders?client_id=eq.${CLIENT_ID}&service_id=eq.${SERVICE_ID}&select=id,paid_at,total_cents&not.paid_at=is.null`,
+  `orders?client_id=eq.${CLIENT_ID}&service_id=eq.${SERVICE_ID}&paid_at=not.is.null&select=id,paid_at,total_cents`,
 );
 for (const o of orders ?? []) {
   const paid = new Date(o.paid_at);
