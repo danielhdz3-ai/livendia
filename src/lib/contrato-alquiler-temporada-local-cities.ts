@@ -5,6 +5,11 @@
 
 import { CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
+import {
+  TEMPORADA_BCN_BARRIO_CITIES,
+  TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
+  getTemporadaBcnBarrioSeoContent,
+} from "@/lib/contrato-alquiler-temporada-bcn-barrios";
 import { TEMPORADA_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-temporada-local-differentiation";
 import {
   getTemporadaLocalSeoContent,
@@ -23,6 +28,7 @@ export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_PUBLISHED_SLUGS: readonly string[
   "zaragoza",
   "asturias",
   "mallorca",
+  ...TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
 ];
 
 export function isContratoAlquilerTemporadaLocalSlugPublished(slug: string): boolean {
@@ -66,7 +72,7 @@ export function toContratoAlquilerTemporadaLandingConfig(
   def: ContratoAlquilerTemporadaLocalCityDefinition,
 ): ContratoAlquilerTemporadaLocalLandingConfig {
   const diff = TEMPORADA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
-  const seoContent = getTemporadaLocalSeoContent(def.slug);
+  const seoContent = getTemporadaLocalSeoContent(def.slug) ?? getTemporadaBcnBarrioSeoContent(def.slug);
   const faq = seoContent?.faq ?? diff.faq ?? def.faq;
   const merged: ContratoAlquilerTemporadaLocalLandingConfig = {
     ...def,
@@ -286,4 +292,5 @@ export const CONTRATO_ALQUILER_TEMPORADA_LOCAL_CITIES: ContratoAlquilerTemporada
     finalCtaLead:
       `Contrata tu contrato de alquiler por temporada en Asturias entre particulares — ${CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL} IVA incluido. Ideal para propietarios fuera del Principado.`,
   },
+  ...(TEMPORADA_BCN_BARRIO_CITIES as ContratoAlquilerTemporadaLocalCityDefinition[]),
 ];

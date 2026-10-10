@@ -19,6 +19,15 @@ import {
 } from "@/lib/catalog.public";
 import type { ContratoAlquilerTemporadaLocalLandingConfig } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { temporadaSavingsDerived } from "@/lib/contrato-alquiler-temporada-local-seo-content";
+import {
+  buildTemporadaBarcelonaSteps,
+  isTemporadaBarcelonaExtendedSlug,
+  temporadaBarcelonaProcessIntro,
+  temporadaBarcelonaProcessTitle,
+  TEMPORADA_BARCELONA_PROCESS,
+} from "@/lib/contrato-alquiler-temporada-barcelona-modules";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
+import { getContratoAlquilerTemporadaLocalHeroImage } from "@/lib/contrato-alquiler-temporada-images";
 import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-local-cities";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
@@ -94,6 +103,11 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (temporada) servicesBySlug["contrato-alquiler-temporada"] = temporada;
   const priceLabel = resolveServicePriceLabel(temporada, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL);
+  const isBarcelonaExtended = isTemporadaBarcelonaExtendedSlug(config.slug);
+  const barcelonaProcessSteps = isBarcelonaExtended
+    ? buildTemporadaBarcelonaSteps(config.slug, config.city, priceLabel)
+    : null;
+  const heroImage = getContratoAlquilerTemporadaLocalHeroImage(config.slug, config.heroImage);
   const seo = config.seoContent;
   const adminSlug = config.adminSlug ?? config.slug;
   const gestoriaSlug = config.gestoriaSlug ?? config.slug;
@@ -269,12 +283,12 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative h-44 sm:h-56 lg:h-auto">
+                <div className="relative order-2 h-52 sm:h-64 lg:order-none lg:h-auto lg:min-h-[520px]">
                   <Image
-                    src={config.heroImage ?? "/images/contratos5.jpg"}
+                    src={heroImage}
                     alt={`Contrato de alquiler por temporada en ${config.city}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
@@ -355,6 +369,21 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                 </p>
               </div>
             </section>
+          ) : null}
+
+          {isBarcelonaExtended && barcelonaProcessSteps ? (
+            <VentaSinAgenciaPasoAPasoSection
+              city={config.city}
+              priceLabel={priceLabel}
+              eyebrow={TEMPORADA_BARCELONA_PROCESS.eyebrow}
+              title={temporadaBarcelonaProcessTitle(config.city)}
+              intro={temporadaBarcelonaProcessIntro(config.slug)}
+              steps={barcelonaProcessSteps}
+              alwaysWithYouTitle={TEMPORADA_BARCELONA_PROCESS.alwaysWithYouTitle}
+              alwaysWithYouBody={TEMPORADA_BARCELONA_PROCESS.alwaysWithYouBody}
+              serviceLine="Contrato alquiler temporada · Livendia"
+              feeNote={`Tarifa plana ${priceLabel} IVA incl. Trámite 100 % online con gestor real en ${config.city}. Sin comisión sobre la renta.`}
+            />
           ) : null}
 
           {seo ? (
@@ -466,6 +495,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             serviceNotesHeading={`Contrato de temporada en ${config.city}`}
           />
 
+          {!isBarcelonaExtended ? (
           <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="text-center">
@@ -513,6 +543,7 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
               </div>
             </div>
           </section>
+          ) : null}
 
           <LandingLocalTestimonialsSection
             title={config.testimonialsTitle}
