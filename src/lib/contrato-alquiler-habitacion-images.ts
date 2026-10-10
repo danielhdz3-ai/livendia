@@ -25,7 +25,7 @@ const HABITACION_HERO_BY_SLUG: Record<string, string> = {
   sevilla: "/images/gestora8.jpg",
   bilbao: "/images/pexels-yankrukov-7698744.jpg",
   "barcelona-eixample": "/images/pexels-mikhail-nilov-8297043.jpg",
-  "barcelona-gracia": "/images/pexels-artempodrez-6779344.jpg",
+  "barcelona-gracia": "/images/chicavertical.png",
   "barcelona-poblenou": "/images/pexels-anna-belousova-130658517-10325487.jpg",
   "barcelona-les-corts": "/images/pexels-yankrukov-7693740.jpg",
   "barcelona-sarria-sant-gervasi": "/images/pexels-yankrukov-7693740.jpg",

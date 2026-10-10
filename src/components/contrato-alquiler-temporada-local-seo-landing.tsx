@@ -283,15 +283,27 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="relative order-2 h-52 sm:h-64 lg:order-none lg:h-auto lg:min-h-[520px]">
-                  <Image
-                    src={heroImage}
-                    alt={`Contrato de alquiler por temporada en ${config.city}`}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
-                    priority
-                  />
+                <div className="order-2 flex items-center justify-center px-4 py-8 sm:px-6 lg:order-none lg:px-10 lg:py-12">
+                  <div
+                    className={
+                      isBarcelonaExtended
+                        ? "relative h-[340px] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/25 sm:h-[400px] sm:max-w-[320px] lg:h-[520px] lg:max-w-[360px]"
+                        : "relative h-52 w-full sm:h-64 lg:h-auto lg:min-h-[520px] lg:max-w-none lg:rounded-none lg:shadow-none lg:ring-0"
+                    }
+                  >
+                    <Image
+                      src={heroImage}
+                      alt={`Contrato de alquiler por temporada en ${config.city}`}
+                      fill
+                      className="object-cover object-center"
+                      sizes={
+                        isBarcelonaExtended
+                          ? "(max-width: 640px) 280px, 360px"
+                          : "(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
+                      }
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
             </div>
