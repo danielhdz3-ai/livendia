@@ -283,18 +283,16 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   </div>
                 </div>
 
-                <div className="order-2 flex items-center justify-center px-4 py-8 sm:px-6 lg:order-none lg:px-10 lg:py-14">
-                  {/* Encabezado: slot vertical 3:4 — la foto debe ser retrato, no apaisada */}
-                  <div className="relative aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/30 sm:max-w-[300px] lg:max-h-[min(560px,78vh)] lg:max-w-[340px] lg:shadow-[0_24px_48px_rgba(0,0,0,0.25)]">
-                    <Image
-                      src={heroImage}
-                      alt={`Contrato de alquiler por temporada en ${config.city}`}
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 640px) 280px, 340px"
-                      priority
-                    />
-                  </div>
+                {/* Encabezado: retrato vertical a ancho completo de la columna (mismo patrón que comprar sin agencia) */}
+                <div className="relative order-2 h-56 sm:h-72 lg:order-none lg:h-auto lg:min-h-[650px]">
+                  <Image
+                    src={heroImage}
+                    alt={`Contrato de alquiler por temporada en ${config.city}`}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
               </div>
             </div>
