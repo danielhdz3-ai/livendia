@@ -228,8 +228,8 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
           <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
-                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
-                  <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
+                <div className="order-1 flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:order-none lg:px-12 lg:py-24">
+                  <div className="mb-4 inline-block self-start rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold backdrop-blur-sm sm:mb-8 sm:px-5 sm:py-2 sm:text-sm">
                     {config.heroBadge ?? `Entre particulares · Temporada · ${config.city}`}
                   </div>
 
@@ -237,28 +237,30 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                     {config.heroH1 ?? `Contrato de alquiler por temporada en ${config.city}`}
                   </h1>
 
-                  <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
+                  <p className="mt-4 text-base leading-relaxed text-blue-50 sm:mt-6 sm:text-lg lg:text-xl">
+                    {config.heroLead}
+                  </p>
 
-                  <div className="mt-10 flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
-                    <div className="text-lg text-blue-100">
+                  <div className="mt-6 flex items-baseline gap-3 sm:mt-10">
+                    <span className="text-3xl font-extrabold sm:text-5xl lg:text-6xl">{priceLabel}</span>
+                    <div className="text-sm text-blue-100 sm:text-lg">
                       <div>IVA incluido</div>
                     </div>
                   </div>
 
-                  <ul className="mt-8 space-y-3">
+                  <ul className="mt-6 space-y-2.5 sm:mt-8 sm:space-y-3">
                     {heroBullets.map((line) => (
-                      <li key={line} className="flex items-center gap-3">
-                        <CheckCircle className="h-6 w-6 shrink-0 text-cyan-300" aria-hidden />
-                        <span className="text-lg">{line}</span>
+                      <li key={line} className="flex items-start gap-2.5 sm:items-center sm:gap-3">
+                        <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300 sm:mt-0 sm:h-6 sm:w-6" aria-hidden />
+                        <span className="text-sm leading-snug sm:text-base lg:text-lg">{line}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-10 flex flex-wrap gap-4">
+                  <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
                     <ContratarSlugButton
                       slug="contrato-alquiler-temporada"
-                      className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:scale-105 hover:bg-blue-50"
+                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#1A4FBF] shadow-xl transition hover:bg-blue-50 sm:w-auto sm:px-8 sm:py-4 sm:hover:scale-105"
                     >
                       Contratar por {priceLabel}
                     </ContratarSlugButton>
@@ -266,13 +268,13 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                       href={waHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white px-8 py-4 text-base font-semibold transition hover:bg-white/10"
+                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3.5 text-base font-semibold transition hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4"
                     >
                       Consultar por WhatsApp
                     </a>
                   </div>
 
-                  <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-blue-100">
+                  <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-blue-100 sm:mt-6">
                     <a
                       href={getContactPhoneTelHref()}
                       className="inline-flex items-center gap-2 font-semibold text-white hover:text-cyan-200"
@@ -284,12 +286,13 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                 </div>
 
                 {/* Encabezado: retrato vertical a ancho completo de la columna (mismo patrón que admin. temporada) */}
-                <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto">
+                <div className="relative order-2 min-h-[min(72vw,420px)] sm:min-h-[360px] lg:order-none lg:min-h-0 lg:h-auto">
                   <Image
                     src={heroImage}
                     alt={`Contrato de alquiler por temporada en ${config.city}`}
                     fill
-                    className="object-cover"
+                    quality={90}
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />

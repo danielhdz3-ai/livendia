@@ -8,12 +8,15 @@
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
-/** Apaisadas reales (contratos / gestión) — nunca retratos verticales en el marco 4:3. */
+/**
+ * Pasos: mezcla contratos · gestoría · gestor · parejas (apaisadas preferible).
+ * Se muestran con object-contain — no recortar cabezas.
+ */
 export const TEMPORADA_BCN_STEP_IMAGES = {
   llamada: "/images/pexels-silverkblack-36766677.jpg",
-  contratar: "/images/contratos5.jpg",
-  documentacion: "/images/pexels-silverkblack-23496882.jpg",
-  redaccion: "/images/contratos6.jpg",
+  contratar: "/images/comercial1.jpg",
+  documentacion: "/images/amigas.jpg",
+  redaccion: "/images/gestoria20.jpg",
   firma: "/images/contratos7.jpg",
 } as const;
 
