@@ -225,10 +225,10 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
         <PublicHeader />
 
         <main className="flex-1">
-          <section className="relative overflow-hidden bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
+          <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1E40AF] to-[#2563EB] text-white">
             <div className="mx-auto max-w-7xl">
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
-                <div className="flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-12 lg:py-24">
+                <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
                     {config.heroBadge ?? `Entre particulares · Temporada · ${config.city}`}
                   </div>
@@ -283,14 +283,14 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
                   </div>
                 </div>
 
-                {/* Encabezado: retrato vertical a ancho completo de la columna (mismo patrón que comprar sin agencia) */}
-                <div className="relative order-2 h-56 sm:h-72 lg:order-none lg:h-auto lg:min-h-[650px]">
+                {/* Encabezado: retrato vertical a ancho completo de la columna (mismo patrón que admin. temporada) */}
+                <div className="relative order-2 h-44 sm:h-56 lg:order-none lg:h-auto">
                   <Image
                     src={heroImage}
                     alt={`Contrato de alquiler por temporada en ${config.city}`}
                     fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 640px"
                     priority
                   />
                 </div>
