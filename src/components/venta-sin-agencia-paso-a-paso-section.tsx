@@ -16,6 +16,10 @@ type Props = {
   serviceLine?: string;
   /** Texto junto a la tarifa plana. */
   feeNote?: string;
+  /**
+   * Pasos: imágenes apaisadas sin recorte (contain). Cover solo si todas las fotos son 4:3 nativo.
+   */
+  stepImageObjectFit?: "contain" | "cover";
 };
 
 function StepImageCard({
@@ -24,24 +28,26 @@ function StepImageCard({
   priceLabel,
   imageOnLeft,
   serviceLine,
+  stepImageObjectFit,
 }: {
   step: VenderSinAgenciaProcessStep;
   city: string;
   priceLabel: string;
   imageOnLeft: boolean;
   serviceLine: string;
+  stepImageObjectFit: "contain" | "cover";
 }) {
   return (
     <div
       className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-14 ${imageOnLeft ? "" : "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1"}`}
     >
       <div className="overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-[#1A4FBF]/15">
-        <div className="relative aspect-[4/3]">
+        <div className="relative aspect-[4/3] bg-[#E2E8F0]">
           <Image
             src={step.imageSrc}
             alt={step.imageAlt}
             fill
-            className="object-cover"
+            className={stepImageObjectFit === "contain" ? "object-contain object-center" : "object-cover object-center"}
             sizes="(max-width: 1024px) 100vw, 480px"
           />
           <div className="absolute right-4 top-4 rounded-xl bg-[#1A4FBF]/90 px-3 py-2 text-center text-white shadow-md backdrop-blur-sm">
@@ -103,6 +109,7 @@ export function VentaSinAgenciaPasoAPasoSection({
   alwaysWithYouBody,
   serviceLine = "Servicio completo venta · Livendia",
   feeNote,
+  stepImageObjectFit = "contain",
 }: Props) {
   const resolvedFeeNote =
     feeNote ??
@@ -157,6 +164,7 @@ export function VentaSinAgenciaPasoAPasoSection({
               priceLabel={priceLabel}
               imageOnLeft={index % 2 === 0}
               serviceLine={serviceLine}
+              stepImageObjectFit={stepImageObjectFit}
             />
           ))}
         </div>

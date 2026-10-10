@@ -8,13 +8,13 @@
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
-/** Apaisadas — solo módulos paso a paso. */
+/** Apaisadas reales (contratos / gestión) — nunca retratos verticales en el marco 4:3. */
 export const TEMPORADA_BCN_STEP_IMAGES = {
-  llamada: "/images/pexels-tima-miroshnichenko-5439472.jpg",
-  contratar: "/images/pexels-silverkblack-23496450.jpg",
-  documentacion: "/images/pexels-silverkblack-36729677.jpg",
-  redaccion: "/images/pexels-tima-miroshnichenko-5439443.jpg",
-  firma: "/images/pexels-tima-miroshnichenko-5439380.jpg",
+  llamada: "/images/pexels-silverkblack-36766677.jpg",
+  contratar: "/images/contratos5.jpg",
+  documentacion: "/images/pexels-silverkblack-23496882.jpg",
+  redaccion: "/images/contratos6.jpg",
+  firma: "/images/contratos7.jpg",
 } as const;
 
 export const TEMPORADA_HERO_VERTICAL_FALLBACK = metroBarcelonaZoneImage("barcelona2.jpg");
