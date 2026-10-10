@@ -16,7 +16,7 @@ export const TEMPORADA_BCN_STEP_IMAGES = {
 
 /** Verticales verificadas — columna derecha del encabezado. */
 const HERO_BY_SLUG: Record<string, string> = {
-  "barcelona-gracia": "/images/chicavertical.png",
+  "barcelona-gracia": "/images/pexels-rdne-9034770.jpg",
   "barcelona-eixample": "/images/gestora8.jpg",
   "barcelona-poblenou": "/images/pexels-rdne-9034770.jpg",
   "barcelona-sants-montjuic": "/images/pexels-yankrukov-7693740.jpg",
