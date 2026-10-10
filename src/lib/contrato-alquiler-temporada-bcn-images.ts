@@ -1,11 +1,8 @@
 /**
  * Contrato temporada · distritos Barcelona
  *
- * Regla Livendia (landings con hero en 2 columnas):
- * - Hero / encabezado → imagen **vertical** (retrato, object-cover en columna alta).
- * - Pasos (`VentaSinAgenciaPasoAPasoSection`) → imagen **apaisada** (aspect 4:3).
- *
- * No usar fotos de ciudad apaisadas (p. ej. `/images/zonas barcelona/*.jpg`) ni gestora6–10 en hero.
+ * ENCABEZADO (hero): solo imágenes **verticales / retrato** — nunca apaisadas ni planos cenital.
+ * PASOS: apaisadas 4:3 en `VentaSinAgenciaPasoAPasoSection` (otro archivo).
  */
 
 /** Apaisadas — solo módulos paso a paso. */
@@ -17,16 +14,16 @@ export const TEMPORADA_BCN_STEP_IMAGES = {
   firma: "/images/pexels-tima-miroshnichenko-5439380.jpg",
 } as const;
 
-/** Retratos / verticales — hero encabezado por distrito. */
+/** Verticales verificadas — columna derecha del encabezado. */
 const HERO_BY_SLUG: Record<string, string> = {
-  "barcelona-eixample": "/images/pexels-mikhail-nilov-8297043.jpg",
-  "barcelona-gracia": "/images/pexels-artempodrez-6779344.jpg",
-  "barcelona-poblenou": "/images/pexels-anna-belousova-130658517-10325487.jpg",
-  "barcelona-sants-montjuic": "/images/pexels-kampus-8463139.jpg",
-  "barcelona-sarria-sant-gervasi": "/images/pexels-yankrukov-7693740.jpg",
+  "barcelona-gracia": "/images/chicavertical.png",
+  "barcelona-eixample": "/images/gestora8.jpg",
+  "barcelona-poblenou": "/images/pexels-rdne-9034770.jpg",
+  "barcelona-sants-montjuic": "/images/pexels-yankrukov-7693740.jpg",
+  "barcelona-sarria-sant-gervasi": "/images/pexels-yankrukov-7693717.jpg",
 };
 
-export const TEMPORADA_HERO_VERTICAL_FALLBACK = "/images/pexels-yankrukov-7693717.jpg";
+export const TEMPORADA_HERO_VERTICAL_FALLBACK = "/images/chicavertical.png";
 
 export function getTemporadaBcnBarrioHeroImage(slug: string): string {
   return HERO_BY_SLUG[slug] ?? TEMPORADA_HERO_VERTICAL_FALLBACK;
