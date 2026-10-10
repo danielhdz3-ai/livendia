@@ -24,7 +24,7 @@ export const SIN_AGENCIA_STEP_IMAGE_POOL: readonly string[] = [
   "/images/contratos2.jpg",
   "/images/contrato9.jpg",
   "/images/contratos5.jpg",
-  "/images/comercial5.jpg",
+  "/images/comercial1.jpg",
   "/images/gestoria3.jpg",
   "/images/gestoria4.jpg",
   "/images/firma11.jpg",
@@ -49,7 +49,6 @@ export const SIN_AGENCIA_HERO_VERTICAL_POOL: readonly string[] = [
   "/images/pexels-dantemunozphoto-16346704.jpg",
   "/images/pexels-cristian-rojas-10041249.jpg",
   "/images/pexels-anna-belousova-130658517-10325487.jpg",
-  "/images/comercial 9.jpg",
   "/images/chicavertical.png",
   "/images/modelo3.jpg",
 ];
