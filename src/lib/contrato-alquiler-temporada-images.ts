@@ -11,7 +11,7 @@ import { TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS } from "@/lib/contrato-alquiler-te
 
 /** Sustitutos verticales para slugs que tenían foto de ciudad apaisada en differentiation. */
 const TEMPORADA_LOCAL_HERO_VERTICAL: Record<string, string> = {
-  barcelona: "/images/pexels-yankrukov-7693717.jpg",
+  barcelona: "/images/zonas barcelona/barcelona.jpg",
   madrid: "/images/pexels-mikhail-nilov-8297355.jpg",
   valencia: "/images/pexels-yankrukov-7693743.jpg",
   sevilla: "/images/pexels-mikhail-nilov-8296981.jpg",

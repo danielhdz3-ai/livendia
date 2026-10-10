@@ -600,6 +600,414 @@ const BARRIO_SPECS: BarrioTemporadaSpec[] = [
       },
     ],
   },
+  {
+    slug: "barcelona-ciutat-vella",
+    city: "Ciutat Vella (Barcelona)",
+    zoneShort: "Ciutat Vella",
+    heroH1: "Contrato de alquiler temporal en Ciutat Vella — Gòtic, Born y Raval entre particulares",
+    metaTitle: `Contrato temporada Ciutat Vella — ${PRICE} · sin agencia`,
+    metaDescription: `Alquiler temporal Gòtic, Born, Raval y Barceloneta. Causa de temporalidad e inventario. ${PRICE} IVA incl. Gestor Livendia 24-48 h.`,
+    keywords: [
+      "contrato alquiler temporada ciutat vella",
+      "alquiler temporal gothic quarter barcelona",
+      "contrato temporada raval particulares",
+      "alquiler por meses born barcelona contrato",
+    ],
+    heroLead: `Ciutat Vella concentra estancias cortas por prácticas, Erasmus en UB, residencias artísticas y teletrabajo en pisos históricos. Livendia redacta contrato de temporada entre particulares — ${PRICE} IVA incluido, sin comisión, con causa explícita e inventario cuando hace falta.`,
+    whyTitle: "Ciutat Vella: estancia acotada, no LAU encubierto en finca antigua",
+    whySubtitle:
+      "En el Gòtic y el Raval mezclar verbal, turismo mal encuadrado y plantillas LAU genera sanciones y litigios sobre fianza.",
+    whyIntro: "Escaleras estrechas, locales en planta baja y rotación alta exigen plazos y salida por escrito.",
+    howIntro:
+      "Cinco pasos Livendia con gestor único: llamada, contratación online, documentación, redacción e inventario, firma asesorada.",
+    localZonesHeading: "Zonas de Ciutat Vella para contrato temporal",
+    localZones:
+      "El Gòtic, El Born, El Raval, La Barceloneta y Sant Pere, Santa Caterina i la Ribera. Trámite 100 % online para propietarios en Cataluña o fuera.",
+    localBenefits: [
+      {
+        title: "Prácticas y Erasmus",
+        description: "Duración al calendario académico con salida clara al terminar el curso.",
+      },
+      {
+        title: "Estancia artística o cultural",
+        description: "Motivo de temporalidad documentado para residencias de meses en el Born.",
+      },
+      {
+        title: "Piso histórico amueblado",
+        description: "Inventario de mobiliario y estado antes de entregar llaves en finca antigua.",
+      },
+      {
+        title: "Suministros y comunidad",
+        description: "Reparto de gastos y normas de convivencia en edificios señoriales.",
+      },
+      {
+        title: "Sin comisión",
+        description: "Particulares que negocian directo; Livendia redacta el contrato civil.",
+      },
+      {
+        title: "Tarifa plana",
+        description: `${PRICE} IVA incl. — precio publicado, sin % sobre la renta.`,
+      },
+    ],
+    introParagraph:
+      "En Ciutat Vella es frecuente alquilar entre particulares por un semestre, una práctica hospitalaria o un proyecto creativo en el Raval o el Born. Las plantillas LAU de vivienda habitual no encajan con estancias de meses en fincas del Gòtic. Livendia prepara contrato de temporada con causa documentada, fianza acorde al uso distinto de vivienda e inventario — 200 € IVA incluido, gestor hasta la firma.",
+    whenToUseCases: [
+      "Estudiante Erasmus en piso compartido cerca de la UB por un curso.",
+      "Profesional en Barceloneta por proyecto de verano con fecha de salida.",
+      "Propietario que alquila invierno en El Born sin intermediarios.",
+      "Inquilino que exige contrato antes de ingresar fianza en el Raval.",
+      "Estancia temporal mientras dura obra en la finca del edificio.",
+    ],
+    risksParagraph:
+      "Confundir temporada con uso turístico regulado o con LAU habitual expone a multas y prórrogas no deseadas. En Ciutat Vella las disputas sobre fianza y limpieza al salir son habituales si no hay inventario.",
+    savingsTitle: "Coste del contrato de temporada en Ciutat Vella",
+    savingsIntro: "Comparativa orientativa frente a despacho o comisión de agencia:",
+    highlightRent: 1300,
+    savingsRows: [
+      { monthlyRent: 950, lawyerWithVat: 420, agencyEstimate: 522 },
+      { monthlyRent: 1300, lawyerWithVat: 480, agencyEstimate: 715 },
+      { monthlyRent: 1600, lawyerWithVat: 540, agencyEstimate: 880 },
+      { monthlyRent: 1900, lawyerWithVat: 600, agencyEstimate: 1045 },
+    ],
+    savingsFootnote: "Ciutat Vella: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en el Gòtic o el Born?",
+        answer: "Sí, para la dirección concreta con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Qué diferencia hay con alquiler turístico?",
+        answer:
+          "El contrato de temporada civil no sustituye licencias VUT; el gestor orienta según el uso real pactado.",
+      },
+      {
+        question: "¿Puedo contratar si soy inquilino?",
+        answer: `Sí. ${PRICE} IVA incl. — muchos inquilinos encargan el servicio antes de transferir fianza.`,
+      },
+    ],
+    finalCtaLead: `Contrato temporada Ciutat Vella — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Ciutat Vella con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Seis meses en el Born: contrato con causa académica, inventario del piso amueblado y salida en junio sin prórroga LAU.",
+        author: "Laia M.",
+        role: "Inquilina temporal — El Born",
+      },
+      {
+        quote:
+          "Propietario en el Gòtic: Livendia dejó suministros y fianza claros antes de la entrada del inquilino.",
+        author: "Oriol T.",
+        role: "Propietario — Gòtic",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-sant-marti",
+    city: "Sant Martí (Barcelona)",
+    zoneShort: "Sant Martí",
+    heroH1: "Alquiler temporal en Sant Martí — Diagonal Mar, Clot y Poblenou (distrito)",
+    metaTitle: `Contrato temporada Sant Martí Barcelona — ${PRICE}`,
+    metaDescription: `Contrato alquiler temporal Sant Martí: Clot, Diagonal Mar, La Verneda. ${PRICE} IVA incl. Particulares, gestor Livendia.`,
+    keywords: [
+      "contrato alquiler temporada sant marti",
+      "alquiler temporal diagonal mar contrato",
+      "contrato temporada clot barcelona",
+      "alquiler por meses sant marti particulares",
+    ],
+    heroLead: `Sant Martí reúne Diagonal Mar, el Clot, La Verneda y el eje del 22@ más allá del Poblenou clásico. Livendia redacta contrato de temporada entre particulares con duración del proyecto e inventario — ${PRICE} IVA incluido, sin comisión inmobiliaria.`,
+    whyTitle: "Sant Martí: rotación laboral y familias en traslado temporal",
+    whySubtitle:
+      "Promociones nuevas y pisos amueblados cerca del mar exigen contrato civil con plazo cerrado, no LAU genérico.",
+    whyIntro: "Congresos, equipos desplazados y estancias familiares de un curso necesitan salida documentada.",
+    howIntro:
+      "Cinco fases con gestor Livendia: consulta, pago online, expediente, redacción con causa de temporalidad, firma.",
+    localZonesHeading: "Barrios de Sant Martí para alquiler temporal",
+    localZones:
+      "Diagonal Mar i el Front Marítim del Poblenou, El Clot, La Verneda i la Pau, Provençals del Poblenou, el Camp de l'Arpa del Clot. Online para propietarios en cualquier punto de España.",
+    localBenefits: [
+      {
+        title: "Proyectos y congresos",
+        description: "Duración ligada a evento o contrato laboral temporal en Diagonal Mar.",
+      },
+      {
+        title: "Familia un curso escolar",
+        description: "Estancia acotada con cláusulas de conservación en piso amueblado.",
+      },
+      {
+        title: "Lofts y promociones recientes",
+        description: "Inventario de electrodomésticos y parking cuando forma parte del pacto.",
+      },
+      {
+        title: "Equipos internacionales",
+        description: "Contrato claro antes de transferir fianza en desplazamientos corporativos.",
+      },
+      {
+        title: "Sin agencia",
+        description: "Particulares; Livendia redacta y asesora hasta la firma.",
+      },
+      {
+        title: "Tarifa plana",
+        description: `${PRICE} IVA incl. — 24-48 h laborables con documentación completa.`,
+      },
+    ],
+    introParagraph:
+      "En Sant Martí proliferan alquileres temporales vinculados a proyectos en Diagonal Mar, familias en traslado un curso o profesionales en el Clot. Un LAU de vivienda habitual mal aplicado activa prórrogas que ninguna parte quería. Livendia redacta contrato de temporada con causa explícita, fianza de dos mensualidades cuando procede e inventario — 200 € IVA incluido.",
+    whenToUseCases: [
+      "Equipo corporativo seis meses en piso amueblado cerca de la Diagonal.",
+      "Familia en La Verneda por un curso escolar completo.",
+      "Inquilino temporal en El Clot durante reforma del edificio.",
+      "Propietario que alquila verano en front marítim sin comisión.",
+      "Estancia por congreso o feria con fecha de salida acordada.",
+    ],
+    risksParagraph:
+      "En promociones nuevas las disputas sobre parking, trastero y estado del piso al salir son frecuentes sin inventario. Mezclar temporada con uso turístico regulado genera sanciones autonómicas.",
+    savingsTitle: "Precio contrato temporada Sant Martí",
+    savingsIntro: "Livendia frente a honorarios de despacho o comisión sobre renta:",
+    highlightRent: 1500,
+    savingsRows: [
+      { monthlyRent: 1100, lawyerWithVat: 440, agencyEstimate: 605 },
+      { monthlyRent: 1500, lawyerWithVat: 500, agencyEstimate: 825 },
+      { monthlyRent: 1800, lawyerWithVat: 560, agencyEstimate: 990 },
+      { monthlyRent: 2200, lawyerWithVat: 630, agencyEstimate: 1210 },
+    ],
+    savingsFootnote: "Sant Martí: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Atendéis Diagonal Mar y el Clot?",
+        answer: "Sí, con la misma tarifa plana y gestor hasta la entrega del contrato.",
+      },
+      {
+        question: "¿Es lo mismo que la landing de Poblenou?",
+        answer:
+          "Poblenou/22@ tiene landing propia; esta cubre el resto del distrito de Sant Martí (Clot, Verneda, Diagonal Mar).",
+      },
+      {
+        question: "¿Incluye inventario?",
+        answer: "Sí cuando el estado del inmueble debe quedar documentado; se sube al panel Livendia.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada Sant Martí — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Sant Martí con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Estancia laboral en Diagonal Mar: contrato con fin de proyecto, parking en anexo e inventario del piso nuevo.",
+        author: "Nuria S.",
+        role: "Inquilina temporal — Diagonal Mar",
+      },
+      {
+        quote:
+          "Alquiler temporal en el Clot entre particulares. Livendia explicó fianza y salida antes de la firma.",
+        author: "Albert C.",
+        role: "Propietario — El Clot",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-horta-guinardo",
+    city: "Horta-Guinardó (Barcelona)",
+    zoneShort: "Horta-Guinardó",
+    heroH1: "Contrato alquiler temporal Horta-Guinardó — estancias por curso u obra",
+    metaTitle: `Contrato temporada Horta-Guinardó — ${PRICE} · particulares`,
+    metaDescription: `Alquiler temporal Horta, El Carmel, Guinardó. Contrato temporada sin agencia. ${PRICE} IVA incl. Gestor Livendia.`,
+    keywords: [
+      "contrato alquiler temporada horta guinardo",
+      "alquiler temporal el carmel contrato",
+      "contrato temporada horta barcelona",
+      "alquiler por meses guinardo particulares",
+    ],
+    heroLead: `Horta-Guinardó mezcla familias, estudiantes en acceso a la UB y estancias temporales durante obras en el Carmel. Livendia redacta contrato de temporada entre particulares — ${PRICE} IVA incluido, causa de temporalidad e inventario cuando procede.`,
+    whyTitle: "Horta-Guinardó: meses concretos en barrio residencial",
+    whySubtitle:
+      "Pisos con terraza y edificios en rehabilitación necesitan plazo y motivo por escrito, no LAU de larga duración.",
+    whyIntro: "Teletrabajo estacional y cuidadores temporales son perfiles habituales en el distrito.",
+    howIntro:
+      "Recogemos datos en panel, redactamos cláusulas de temporada y acompañamos hasta firmar — cinco pasos con el mismo gestor.",
+    localZonesHeading: "Zonas de Horta-Guinardó para contrato temporal",
+    localZones:
+      "Horta, El Carmel, La Clota, La Teixonera, El Guinardó, Vall d'Hebron (límite). Gestión online para propietarios en Barcelona o fuera de la ciudad.",
+    localBenefits: [
+      {
+        title: "Curso o máster",
+        description: "Entrada y salida al calendario académico con preaviso claro.",
+      },
+      {
+        title: "Obra en edificio",
+        description: "Estancia temporal del inquilino mientras dura la reforma comunitaria.",
+      },
+      {
+        title: "Teletrabajo por trimestres",
+        description: "Tres a nueve meses con suministros e internet detallados.",
+      },
+      {
+        title: "Terrazas y vistas",
+        description: "Inventario de exterior y mobiliario en pisos en altura.",
+      },
+      {
+        title: "Particulares",
+        description: "Sin comisión sobre la renta; tarifa plana Livendia.",
+      },
+      {
+        title: "Entrega 24-48 h",
+        description: "Plazo laborable habitual con documentación completa.",
+      },
+    ],
+    introParagraph:
+      "En Horta-Guinardó muchos propietarios alquilan entre particulares por un curso, una obra en la finca o un teletrabajo de invierno en El Carmel. Copiar un LAU de vivienda habitual deja prórrogas automáticas que no encajan con estancias de meses. Livendia prepara contrato de temporada con causa documentada e inventario — 200 € IVA incluido.",
+    whenToUseCases: [
+      "Estudiante en Horta por duración del grado o máster.",
+      "Inquilino temporal durante ITE o obra en el edificio.",
+      "Profesional en Guinardó tres trimestres con pareja.",
+      "Propietario que alquila verano sin agencia.",
+      "Estancia de cuidador o familiar por meses acotados.",
+    ],
+    risksParagraph:
+      "En el Carmel las fianzas y las normas de comunidad mal explicadas generan conflictos al salir. Un contrato LAU mal elegido puede obligar a prórrogas no deseadas.",
+    savingsTitle: "Cuánto cuesta redactar temporada en Horta-Guinardó",
+    savingsIntro: "Comparativa orientativa:",
+    highlightRent: 1200,
+    savingsRows: [
+      { monthlyRent: 900, lawyerWithVat: 410, agencyEstimate: 495 },
+      { monthlyRent: 1200, lawyerWithVat: 470, agencyEstimate: 660 },
+      { monthlyRent: 1500, lawyerWithVat: 530, agencyEstimate: 825 },
+      { monthlyRent: 1800, lawyerWithVat: 590, agencyEstimate: 990 },
+    ],
+    savingsFootnote: "Horta-Guinardó: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en El Carmel o Horta?",
+        answer: "Sí, para la dirección concreta con gestor Livendia y trámite online.",
+      },
+      {
+        question: "¿Qué causa de temporalidad encaja en obras?",
+        answer:
+          "Reforma en el inmueble o en la finca que impide uso como vivienda habitual durante un plazo acotado — debe quedar documentada.",
+      },
+      {
+        question: "¿Incluye asesoramiento antes de firmar?",
+        answer: "Sí, el gestor explica fianza, salida e inventario hasta la firma.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada Horta-Guinardó — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Horta-Guinardó con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Alquiler temporal en Horta por un curso: contrato con fechas cerradas e inventario de terraza.",
+        author: "Marta G.",
+        role: "Inquilina temporal — Horta",
+      },
+      {
+        quote:
+          "Obra en el edificio en El Carmel: Livendia redactó temporada con duración de la reforma y salida clara.",
+        author: "Pere V.",
+        role: "Propietario — El Carmel",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-sant-andreu",
+    city: "Sant Andreu (Barcelona)",
+    zoneShort: "Sant Andreu",
+    heroH1: "Alquiler temporal en Sant Andreu — contrato Livendia entre particulares",
+    metaTitle: `Contrato temporada Sant Andreu — ${PRICE} · sin agencia`,
+    metaDescription: `Contrato alquiler temporal Sant Andreu, La Sagrera, Navas. ${PRICE} IVA incl. Causa temporalidad e inventario. Gestor Livendia.`,
+    keywords: [
+      "contrato alquiler temporada sant andreu",
+      "alquiler temporal la sagrera contrato",
+      "contrato temporada sant andreu barcelona",
+      "alquiler por meses navas particulares",
+    ],
+    heroLead: `Sant Andreu combina barrio consolidado, La Sagrera bien comunicada y familias que alquilan por un curso o traslado laboral. Livendia redacta contrato de temporada civil — ${PRICE} IVA incluido, sin comisión, entrega 24-48 h con gestor dedicado.`,
+    whyTitle: "Sant Andreu: estancias acotadas en distrito en transformación",
+    whySubtitle:
+      "La Sagrera y Navas mueven rotación moderada; conviene fijar plazo y motivo antes de ingresar fianza.",
+    whyIntro: "Pisos amueblados cerca de Rodalies y metro L1/L5 son habituales en temporadas de meses.",
+    howIntro:
+      "Cinco pasos: llamada con gestor, contratación online, documentación, redacción e inventario, implementación para firmar.",
+    localZonesHeading: "Barrios de Sant Andreu para contrato temporal",
+    localZones:
+      "Sant Andreu de Palomar, La Sagrera, Navas, Bon Pastor (límite), Trinitat Vella (límite). Online para propietarios en Cataluña o fuera.",
+    localBenefits: [
+      {
+        title: "Traslado laboral",
+        description: "Estancia por proyecto o prácticas con fecha de salida pactada.",
+      },
+      {
+        title: "Curso escolar",
+        description: "Duración al calendario académico en piso amueblado.",
+      },
+      {
+        title: "Familia temporal",
+        description: "Meses en Barcelona por trabajo con cláusulas de conservación.",
+      },
+      {
+        title: "Inventario",
+        description: "Estado del piso documentado antes de llaves.",
+      },
+      {
+        title: "Sin comisión",
+        description: `${PRICE} IVA incl. — tarifa plana Livendia.`,
+      },
+      {
+        title: "Gestor humano",
+        description: "Mismo interlocutor desde la llamada hasta la firma.",
+      },
+    ],
+    introParagraph:
+      "En Sant Andreu es habitual alquilar entre particulares por un curso, un traslado a La Sagrera o un teletrabajo de varios meses. Un LAU estándar activa prórrogas que no encajan con estancias acotadas. Livendia redacta contrato de temporada con causa explícita, fianza cuando corresponde e inventario — 200 € IVA incluido.",
+    whenToUseCases: [
+      "Profesional en La Sagrera por contrato temporal de seis meses.",
+      "Familia en Sant Andreu de Palomar por un curso escolar.",
+      "Inquilino durante obra en la finca del edificio.",
+      "Propietario que alquila invierno sin agencia.",
+      "Estudiante en piso amueblado cerca de Rodalies.",
+    ],
+    risksParagraph:
+      "Acuerdos verbales sobre suministros y devolución de fianza generan fricción al salir. Redactar temporada desde el inicio cuesta menos que mediación posterior.",
+    savingsTitle: "Coste contrato temporada Sant Andreu",
+    savingsIntro: "Orientativo frente a despacho o agencia:",
+    highlightRent: 1150,
+    savingsRows: [
+      { monthlyRent: 850, lawyerWithVat: 400, agencyEstimate: 467 },
+      { monthlyRent: 1150, lawyerWithVat: 460, agencyEstimate: 632 },
+      { monthlyRent: 1400, lawyerWithVat: 520, agencyEstimate: 770 },
+      { monthlyRent: 1700, lawyerWithVat: 580, agencyEstimate: 935 },
+    ],
+    savingsFootnote: "Sant Andreu: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en La Sagrera o Navas?",
+        answer: "Sí, con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Puedo contratar desde fuera de Barcelona?",
+        answer: "Sí, el servicio es 100 % online; subes documentación al panel.",
+      },
+      {
+        question: "¿Qué incluye el precio?",
+        answer:
+          "Redacción del contrato de temporada, inventario cuando procede y asesoramiento hasta la firma — 200 € IVA incl.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada Sant Andreu — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Sant Andreu con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Traslado laboral a La Sagrera: contrato con duración del proyecto y fianza explicada antes del ingreso.",
+        author: "Clara B.",
+        role: "Inquilina temporal — La Sagrera",
+      },
+      {
+        quote:
+          "Propietario en Sant Andreu: Livendia inventarió el piso amueblado y fijó salida en junio sin prórroga LAU.",
+        author: "Joan F.",
+        role: "Propietario — Sant Andreu",
+      },
+    ],
+  },
 ];
 
 export const TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS: readonly string[] = BARRIO_SPECS.map((s) => s.slug);

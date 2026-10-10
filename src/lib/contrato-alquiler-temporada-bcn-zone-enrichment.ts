@@ -113,6 +113,42 @@ export const TEMPORADA_BCN_ZONE_ENRICHMENT: Record<string, TemporadaBcnZoneEnric
         "Repaso de cláusulas críticas, opción de firma electrónica y archivo en expediente para propietario e inquilino — especialmente cuando una de las partes reside fuera de Barcelona.",
     },
   },
+  "barcelona-ciutat-vella": {
+    processIntro:
+      "En Ciutat Vella (Gòtic, Born, Raval, Barceloneta) propietarios e inquilinos cierran temporadas por Erasmus, prácticas o proyectos creativos. Cinco fases Livendia con causa de temporalidad explícita e inventario en fincas antiguas — sin comisión sobre la renta.",
+    step1: {
+      title: "Primera llamada: alquiler temporal en Ciutat Vella",
+      description:
+        "Repasamos calle, duración, motivo académico o laboral y riesgo de confundir temporada con LAU habitual o con uso turístico regulado antes de transferir fianza.",
+    },
+  },
+  "barcelona-sant-marti": {
+    processIntro:
+      "Sant Martí (Clot, Diagonal Mar, La Verneda) mueve temporadas por proyectos, familias en traslado y congresos. Mismo gestor Livendia en cinco pasos online — 200 € IVA incl.",
+    step1: {
+      title: "Llamada con gestor: estancia temporal en Sant Martí",
+      description:
+        "Definimos plazo del proyecto, parking, equipamiento del piso amueblado y calendario de salida en Diagonal Mar, el Clot o La Verneda.",
+    },
+  },
+  "barcelona-horta-guinardo": {
+    processIntro:
+      "Horta-Guinardó concentra estancias por curso, obra en edificio o teletrabajo en El Carmel. Livendia guía el proceso en cinco pasos con inventario cuando el piso lo requiere.",
+    step1: {
+      title: "Consulta: temporada en Horta, El Carmel o Guinardó",
+      description:
+        "Orientación sobre causa de temporalidad ligada a curso, reforma o traslado laboral acotado, y fianza antes de entregar llaves.",
+    },
+  },
+  "barcelona-sant-andreu": {
+    processIntro:
+      "Sant Andreu y La Sagrera mueven alquileres temporales por traslado laboral o curso escolar. Cinco fases Livendia con gestor único y panel online.",
+    step1: {
+      title: "Llamada: alquiler por temporada en Sant Andreu o La Sagrera",
+      description:
+        "Repaso de duración, suministros, estado del piso amueblado y salida al terminar el plazo pactado entre particulares.",
+    },
+  },
 };
 
 export function getTemporadaBcnZoneEnrichment(slug: string): TemporadaBcnZoneEnrichment | undefined {

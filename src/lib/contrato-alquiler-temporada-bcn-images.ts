@@ -1,9 +1,12 @@
 /**
  * Contrato temporada · distritos Barcelona
  *
- * ENCABEZADO (hero): solo imágenes **verticales / retrato** — nunca apaisadas ni planos cenital.
+ * ENCABEZADO (hero): fotos verticales locales en `public/images/zonas barcelona/`.
  * PASOS: apaisadas 4:3 en `VentaSinAgenciaPasoAPasoSection` (otro archivo).
  */
+
+import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
+import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
 /** Apaisadas — solo módulos paso a paso. */
 export const TEMPORADA_BCN_STEP_IMAGES = {
@@ -14,17 +17,13 @@ export const TEMPORADA_BCN_STEP_IMAGES = {
   firma: "/images/pexels-tima-miroshnichenko-5439380.jpg",
 } as const;
 
-/** Verticales verificadas — columna derecha del encabezado. */
-const HERO_BY_SLUG: Record<string, string> = {
-  "barcelona-gracia": "/images/pexels-rdne-9034770.jpg",
-  "barcelona-eixample": "/images/gestora8.jpg",
-  "barcelona-poblenou": "/images/pexels-rdne-9034770.jpg",
-  "barcelona-sants-montjuic": "/images/pexels-yankrukov-7693740.jpg",
-  "barcelona-sarria-sant-gervasi": "/images/pexels-yankrukov-7693717.jpg",
-};
+export const TEMPORADA_HERO_VERTICAL_FALLBACK = metroBarcelonaZoneImage("barcelona2.jpg");
 
-export const TEMPORADA_HERO_VERTICAL_FALLBACK = "/images/chicavertical.png";
-
+/** Hero encabezado — misma foto vertical de zona que tarjetas locales cuando existe. */
 export function getTemporadaBcnBarrioHeroImage(slug: string): string {
-  return HERO_BY_SLUG[slug] ?? TEMPORADA_HERO_VERTICAL_FALLBACK;
+  const card = getLocalCityCardImage(slug);
+  if (card.includes("/zonas barcelona/")) {
+    return card;
+  }
+  return TEMPORADA_HERO_VERTICAL_FALLBACK;
 }
