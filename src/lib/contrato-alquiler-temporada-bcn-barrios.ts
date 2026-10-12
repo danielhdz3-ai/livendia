@@ -1008,6 +1008,514 @@ const BARRIO_SPECS: BarrioTemporadaSpec[] = [
       },
     ],
   },
+  {
+    slug: "barcelona-les-corts",
+    city: "Les Corts (Barcelona)",
+    zoneShort: "Les Corts",
+    heroH1: "Les Corts: contrato de alquiler por temporada cerca del campus — sin agencia",
+    metaTitle: `Contrato temporada Les Corts — ${PRICE} · Zona Universitària`,
+    metaDescription: `Alquiler temporal Les Corts, Pedralbes, Maternitat. Causa de temporalidad e inventario. ${PRICE} IVA incl. Particulares, gestor Livendia 24-48 h.`,
+    keywords: [
+      "contrato alquiler temporada les corts",
+      "alquiler temporal zona universitaria barcelona contrato",
+      "contrato temporada pedralbes particulares",
+      "alquiler por meses les corts barcelona",
+    ],
+    heroLead: `Les Corts une la Zona Universitària, hospitales y vivienda familiar en Pedralbes con rotación por cursos y prácticas. Livendia redacta contrato de temporada entre particulares — ${PRICE} IVA incluido, sin comisión, gestor dedicado y entrega 24-48 h.`,
+    whyTitle: "Les Corts: curso o práctica clínica, no LAU de larga duración por defecto",
+    whySubtitle:
+      "Cerca del campus y del eje Diagonal es frecuente pactar nueve meses en verbal; un LAU estándar activa prórrogas que no encajan con el calendario académico.",
+    whyIntro: "Pisos amueblados para estudiantes de posgrado y familias en traslado temporal exigen plazo y motivo por escrito.",
+    howIntro:
+      "Cinco pasos Livendia: llamada, contratación online, documentación en panel, redacción con causa de temporalidad e inventario, firma asesorada.",
+    localZonesHeading: "Zonas de Les Corts para contrato temporal",
+    localZones:
+      "Zona Universitària, Pedralbes, La Maternitat i Sant Ramon, Les Corts (barrio), límite con Sarrià. Trámite online para propietarios en Cataluña o fuera.",
+    localBenefits: [
+      {
+        title: "Curso y posgrado",
+        description: "Duración al calendario UB/UPC con salida clara en verano o al terminar el máster.",
+      },
+      {
+        title: "Prácticas hospitalarias",
+        description: "Estancia acotada ligada a rotación clínica con fianza e inventario documentados.",
+      },
+      {
+        title: "Familia en traslado",
+        description: "Meses en Pedralbes o Maternitat por proyecto laboral con cláusulas de conservación.",
+      },
+      {
+        title: "Piso amueblado",
+        description: "Inventario de electrodomésticos y mobiliario antes de entregar llaves.",
+      },
+      {
+        title: "Sin comisión",
+        description: `${PRICE} IVA incl. — tarifa plana Livendia, trato directo entre particulares.`,
+      },
+      {
+        title: "Gestor hasta la firma",
+        description: "Mismo interlocutor desde la primera llamada hasta el PDF firmable.",
+      },
+    ],
+    introParagraph:
+      "En Les Corts es habitual alquilar entre particulares por un curso en la Zona Universitària, una práctica en entorno hospitalario o un traslado familiar de meses en Pedralbes. Firmar un LAU de vivienda habitual cuando ambas partes quieren solo el año académico genera litigios sobre fianza y prórrogas. Livendia redacta contrato de temporada con causa explícita, fianza cuando corresponde e inventario — 200 € IVA incluido, gestor dedicado, 24-48 h laborables.",
+    whenToUseCases: [
+      "Estudiante de posgrado en piso amueblado cerca del campus por un curso.",
+      "Residente en prácticas clínicas con estancia de seis a doce meses.",
+      "Familia en Maternitat por proyecto laboral acotado.",
+      "Propietario que alquila invierno sin intermediarios.",
+      "Inquilino que exige contrato antes de transferir fianza en Les Corts.",
+    ],
+    risksParagraph:
+      "Acuerdos verbales sobre parking comunitario, suministros y devolución de fianza son frecuentes al salir del distrito universitario. Redactar temporada desde el inicio cuesta menos que mediación posterior.",
+    savingsTitle: "Coste contrato temporada Les Corts",
+    savingsIntro: "Orientativo frente a despacho o comisión de agencia:",
+    highlightRent: 1250,
+    savingsRows: [
+      { monthlyRent: 950, lawyerWithVat: 420, agencyEstimate: 522 },
+      { monthlyRent: 1250, lawyerWithVat: 480, agencyEstimate: 688 },
+      { monthlyRent: 1500, lawyerWithVat: 540, agencyEstimate: 825 },
+      { monthlyRent: 1800, lawyerWithVat: 600, agencyEstimate: 990 },
+    ],
+    savingsFootnote: "Les Corts: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en la Zona Universitària o Pedralbes?",
+        answer: "Sí, para la dirección concreta con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Puedo contratar si soy inquilino?",
+        answer: `Sí. ${PRICE} IVA incl. — muchos inquilinos encargan el servicio antes de ingresar fianza.`,
+      },
+      {
+        question: "¿Qué incluye el precio?",
+        answer:
+          "Redacción del contrato de temporada, inventario cuando procede y asesoramiento hasta la firma — 200 € IVA incl.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada Les Corts — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Les Corts con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Máster en la Zona Universitària: contrato con duración del curso, inventario del piso amueblado y salida en julio sin prórroga LAU.",
+        author: "Núria C.",
+        role: "Inquilina temporal — Zona Universitària",
+      },
+      {
+        quote:
+          "Propietario en Pedralbes: Livendia dejó fianza y suministros claros antes de la entrada del inquilino por prácticas.",
+        author: "Marc A.",
+        role: "Propietario — Pedralbes",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-nou-barris",
+    city: "Nou Barris (Barcelona)",
+    zoneShort: "Nou Barris",
+    heroH1: "Nou Barris y Torre Baró — alquiler temporal con contrato Livendia (200 € IVA)",
+    metaTitle: `Contrato alquiler temporada Nou Barris — ${PRICE}`,
+    metaDescription: `Contrato temporal Verdum, Roquetes, Torre Baró, Trinitat Vella. ${PRICE} IVA incl. Causa temporalidad, inventario. Gestor Livendia sin agencia.`,
+    keywords: [
+      "contrato alquiler temporada nou barris",
+      "alquiler temporal torre baro contrato",
+      "contrato temporada verdum barcelona",
+      "alquiler por meses nou barris particulares",
+    ],
+    heroLead: `Nou Barris concentra familias, traslados laborales y pisos amueblados por curso en Verdum, Roquetes o Torre Baró. Livendia redacta contrato civil de temporada — ${PRICE} IVA incluido, sin comisión inmobiliaria, entrega 24-48 h con gestor dedicado.`,
+    whyTitle: "Nou Barris: estancia acotada con salida clara, no plantilla LAU genérica",
+    whySubtitle:
+      "En barrios en transformación conviene fijar plazo, motivo e inventario antes de ingresar fianza entre particulares.",
+    whyIntro: "Rotación moderada por curso escolar o obra en edificio exige cláusulas de temporada explícitas.",
+    howIntro:
+      "Cinco pasos: llamada con gestor, contratación online, documentación, redacción e inventario, implementación para firmar.",
+    localZonesHeading: "Barrios de Nou Barris para contrato temporal",
+    localZones:
+      "Verdum, Roquetes, Torre Baró, Trinitat Vella, Vilapicina i la Torre Llobeta, Ciutat Meridiana (límite). Online para propietarios en Cataluña o fuera.",
+    localBenefits: [
+      {
+        title: "Curso escolar",
+        description: "Duración al calendario académico con preaviso de salida.",
+      },
+      {
+        title: "Obra en finca",
+        description: "Estancia temporal mientras dura reforma en el edificio.",
+      },
+      {
+        title: "Traslado laboral",
+        description: "Meses en Barcelona por contrato temporal con fecha de fin pactada.",
+      },
+      {
+        title: "Inventario",
+        description: "Estado del piso documentado antes de llaves.",
+      },
+      {
+        title: "Tarifa plana",
+        description: `${PRICE} IVA incl. — sin porcentaje sobre la renta.`,
+      },
+      {
+        title: "Panel y gestor",
+        description: "Expediente online y mismo interlocutor hasta firmar.",
+      },
+    ],
+    introParagraph:
+      "En Nou Barris es habitual alquilar entre particulares por un curso, un traslado a Verdum o un teletrabajo de varios meses. Un LAU estándar activa prórrogas que no encajan con estancias acotadas. Livendia redacta contrato de temporada con causa explícita, fianza cuando corresponde e inventario — 200 € IVA incluido.",
+    whenToUseCases: [
+      "Familia en Roquetes por un curso escolar completo.",
+      "Inquilino durante obra en la finca del edificio en Torre Baró.",
+      "Profesional en Trinitat Vella por proyecto de ocho meses.",
+      "Propietario que alquila invierno sin agencia.",
+      "Estudiante en piso amueblado cerca de metro L3/L4.",
+    ],
+    risksParagraph:
+      "Acuerdos verbales sobre suministros y devolución de fianza generan fricción al salir. Redactar temporada desde el inicio evita mediación costosa.",
+    savingsTitle: "Coste contrato temporada Nou Barris",
+    savingsIntro: "Comparativa orientativa:",
+    highlightRent: 1050,
+    savingsRows: [
+      { monthlyRent: 750, lawyerWithVat: 380, agencyEstimate: 413 },
+      { monthlyRent: 1050, lawyerWithVat: 440, agencyEstimate: 578 },
+      { monthlyRent: 1300, lawyerWithVat: 500, agencyEstimate: 715 },
+      { monthlyRent: 1550, lawyerWithVat: 560, agencyEstimate: 853 },
+    ],
+    savingsFootnote: "Nou Barris: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en Verdum o Torre Baró?",
+        answer: "Sí, con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Puedo contratar desde fuera de Barcelona?",
+        answer: "Sí, el servicio es 100 % online; subes documentación al panel.",
+      },
+      {
+        question: "¿Incluye inventario?",
+        answer: "Sí, cuando el estado del inmueble debe quedar documentado antes de la entrada.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada Nou Barris — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en Nou Barris con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Curso en Verdum: contrato con duración escolar y fianza explicada antes del ingreso, sin comisión de agencia.",
+        author: "Aina S.",
+        role: "Inquilina temporal — Verdum",
+      },
+      {
+        quote:
+          "Propietario en Roquetes: Livendia inventarió el piso amueblado y fijó salida en junio.",
+        author: "Ramon D.",
+        role: "Propietario — Roquetes",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-el-raval",
+    city: "El Raval (Barcelona)",
+    zoneShort: "El Raval",
+    heroH1: "El Raval Barcelona — contrato de temporada para estancias de meses entre particulares",
+    metaTitle: `Contrato temporada El Raval — ${PRICE} · sin comisión`,
+    metaDescription: `Alquiler temporal El Raval, MACBA, Hospital Clínic. Causa temporalidad e inventario. ${PRICE} IVA incl. Gestor Livendia 24-48 h.`,
+    keywords: [
+      "contrato alquiler temporada raval",
+      "alquiler temporal raval barcelona particulares",
+      "contrato temporada hospital clinic estancia",
+      "alquiler por meses raval contrato",
+    ],
+    heroLead: `El Raval mueve Erasmus, prácticas en el Clínic, residencias artísticas y teletrabajo en pisos del centro histórico. Livendia redacta contrato de temporada civil — ${PRICE} IVA incluido, causa explícita, inventario y gestor hasta la firma.`,
+    whyTitle: "El Raval: temporalidad documentada en finca antigua y rotación alta",
+    whySubtitle:
+      "Mezclar verbal, LAU habitual y otros regímenes genera litigios sobre fianza y salida en edificios con escaleras estrechas.",
+    whyIntro: "Estancias de meses exigen motivo, plazo e inventario antes de transferir depósitos.",
+    howIntro:
+      "Cinco fases con gestor único: llamada, contratación online, documentación, redacción e inventario, firma asesorada.",
+    localZonesHeading: "Zonas del Raval para contrato temporal",
+    localZones:
+      "El Raval sud (MACBA, CCCB), Raval norte, Sant Antoni límite, Rambla del Raval, entorno Hospital Clínic. Trámite online para propietarios fuera de Barcelona.",
+    localBenefits: [
+      {
+        title: "Erasmus y UB",
+        description: "Duración al calendario académico con salida clara.",
+      },
+      {
+        title: "Prácticas sanitarias",
+        description: "Estancia ligada a rotación clínica con plazo cerrado.",
+      },
+      {
+        title: "Proyecto cultural",
+        description: "Motivo de temporalidad para residencia de meses cerca del MACBA.",
+      },
+      {
+        title: "Inventario en finca antigua",
+        description: "Estado de instalaciones y mobiliario antes de llaves.",
+      },
+      {
+        title: "Sin comisión",
+        description: "Particulares que negocian directo; Livendia redacta el contrato.",
+      },
+      {
+        title: "Tarifa publicada",
+        description: `${PRICE} IVA incl. — precio fijo, no % sobre renta.`,
+      },
+    ],
+    introParagraph:
+      "En el Raval es frecuente alquilar entre particulares por un semestre Erasmus, una práctica hospitalaria o un proyecto creativo. Las plantillas LAU de vivienda habitual no encajan con estancias de meses en fincas centenarias. Livendia prepara contrato de temporada con causa documentada, fianza acorde al uso distinto de vivienda e inventario — 200 € IVA incluido.",
+    whenToUseCases: [
+      "Estudiante Erasmus en piso compartido cerca de la UB por un curso.",
+      "Residente en prácticas con estancia acotada en el entorno Clínic.",
+      "Artista en residencia temporal en el Raval sud.",
+      "Propietario que alquila invierno sin intermediarios.",
+      "Inquilino que exige contrato antes de ingresar fianza.",
+    ],
+    risksParagraph:
+      "Confundir temporada con uso turístico regulado o con LAU habitual expone a sanciones y prórrogas no deseadas. Las disputas sobre limpieza y fianza al salir son habituales sin inventario.",
+    savingsTitle: "Coste del contrato de temporada en El Raval",
+    savingsIntro: "Orientativo frente a despacho o agencia:",
+    highlightRent: 1200,
+    savingsRows: [
+      { monthlyRent: 900, lawyerWithVat: 400, agencyEstimate: 495 },
+      { monthlyRent: 1200, lawyerWithVat: 460, agencyEstimate: 660 },
+      { monthlyRent: 1450, lawyerWithVat: 520, agencyEstimate: 797 },
+      { monthlyRent: 1750, lawyerWithVat: 580, agencyEstimate: 963 },
+    ],
+    savingsFootnote: "El Raval: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en todo el Raval?",
+        answer: "Sí, para la dirección concreta con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Qué diferencia hay con alquiler turístico?",
+        answer:
+          "El contrato de temporada civil no sustituye licencias VUT; el gestor orienta según el uso real pactado.",
+      },
+      {
+        question: "¿Puedo contratar si soy inquilino?",
+        answer: `Sí. ${PRICE} IVA incl. — recomendable antes de transferir fianza.`,
+      },
+    ],
+    finalCtaLead: `Contrato temporada El Raval — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en El Raval con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Prácticas en el Clínic: contrato con duración de la rotación, inventario y salida sin prórroga LAU.",
+        author: "Elena V.",
+        role: "Inquilina temporal — Raval",
+      },
+      {
+        quote:
+          "Propietario cerca del MACBA: Livendia dejó suministros y fianza claros antes de la entrada.",
+        author: "Pau M.",
+        role: "Propietario — El Raval",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-born",
+    city: "El Born (Barcelona)",
+    zoneShort: "El Born",
+    heroH1: "Alquiler temporal en El Born — redacción de contrato con causa de temporada",
+    metaTitle: `Contrato temporada El Born — ${PRICE} · particulares`,
+    metaDescription: `Contrato alquiler temporal El Born, Santa Caterina, Ribera. ${PRICE} IVA incl. Estancias artísticas y académicas. Gestor Livendia.`,
+    keywords: [
+      "contrato alquiler temporada born barcelona",
+      "alquiler temporal el born particulares",
+      "contrato temporada santa caterina barcelona",
+      "alquiler por meses born contrato",
+    ],
+    heroLead: `El Born concentra residencias artísticas, prácticas y teletrabajo en fincas del siglo XIX entre Santa Caterina y la Ribera. Livendia redacta contrato de temporada entre particulares — ${PRICE} IVA incluido, sin comisión, inventario y entrega 24-48 h.`,
+    whyTitle: "El Born: estancia creativa o académica, no LAU encubierto en finca señorial",
+    whySubtitle:
+      "Pisos amueblados de alto valor y normas estrictas de comunidad exigen plazo, motivo e inventario detallado.",
+    whyIntro: "Rotación por proyectos culturales y estancias de meses requiere salida clara por escrito.",
+    howIntro:
+      "Recogemos motivo y plazos, redactamos fuera del LAU habitual, integramos inventario y acompañamos hasta firmar.",
+    localZonesHeading: "Zonas del Born para contrato temporal",
+    localZones:
+      "El Born (Passeig del Born), Santa Caterina, La Ribera, Sant Pere, Santa Caterina i la Ribera. Online para propietarios en Cataluña o fuera.",
+    localBenefits: [
+      {
+        title: "Residencia artística",
+        description: "Motivo de temporalidad documentado para estancia de meses.",
+      },
+      {
+        title: "Prácticas y másteres",
+        description: "Duración al calendario académico con salida en verano.",
+      },
+      {
+        title: "Piso señorial amueblado",
+        description: "Inventario exhaustivo de mobiliario y acabados.",
+      },
+      {
+        title: "Comunidad y ruido",
+        description: "Cláusulas de convivencia en edificios históricos.",
+      },
+      {
+        title: "Sin comisión",
+        description: `${PRICE} IVA incl. — trato directo entre particulares.`,
+      },
+      {
+        title: "Gestor dedicado",
+        description: "Mismo interlocutor desde la llamada hasta la firma.",
+      },
+    ],
+    introParagraph:
+      "En El Born es habitual alquilar entre particulares por un proyecto creativo, un semestre académico o un teletrabajo de invierno en piso amueblado de la Ribera. Las plantillas LAU no recogen mobiliario de calidad ni calendarios de salida en junio. Livendia prepara contrato de temporada con causa documentada e inventario — 200 € IVA incluido, gestor hasta la firma.",
+    whenToUseCases: [
+      "Residencia artística de seis meses en el Born.",
+      "Estudiante en piso compartido amueblado por un curso.",
+      "Profesional en teletrabajo estacional en Santa Caterina.",
+      "Propietario que alquila sin agencia con inquilino temporal.",
+      "Estancia mientras dura obra en la finca del edificio.",
+    ],
+    risksParagraph:
+      "En El Born los acuerdos verbales sobre mobiliario de valor y devolución de fianza explotan al final de la estancia. Un LAU mal aplicado puede activar prórrogas no deseadas.",
+    savingsTitle: "Coste contrato temporada El Born",
+    savingsIntro: "Comparativa orientativa:",
+    highlightRent: 1350,
+    savingsRows: [
+      { monthlyRent: 1000, lawyerWithVat: 430, agencyEstimate: 550 },
+      { monthlyRent: 1350, lawyerWithVat: 490, agencyEstimate: 743 },
+      { monthlyRent: 1650, lawyerWithVat: 550, agencyEstimate: 908 },
+      { monthlyRent: 2000, lawyerWithVat: 620, agencyEstimate: 1100 },
+    ],
+    savingsFootnote: "El Born: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en El Born o Santa Caterina?",
+        answer: "Sí, para la dirección concreta con gestor dedicado.",
+      },
+      {
+        question: "¿Incluye inventario detallado?",
+        answer: "Sí, especialmente recomendable en pisos amueblados de calidad.",
+      },
+      {
+        question: "¿Qué incluye el precio?",
+        answer: `Redacción, inventario cuando procede y asesoramiento hasta firmar — ${PRICE} IVA incl.`,
+      },
+    ],
+    finalCtaLead: `Contrato temporada El Born — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en El Born con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Residencia artística de ocho meses: contrato con causa cultural, inventario del piso y salida pactada.",
+        author: "Marta L.",
+        role: "Inquilina temporal — El Born",
+      },
+      {
+        quote:
+          "Propietario en la Ribera: Livendia fijó fianza y mobiliario antes de entregar llaves.",
+        author: "Enric B.",
+        role: "Propietario — El Born",
+      },
+    ],
+  },
+  {
+    slug: "barcelona-barceloneta",
+    city: "La Barceloneta (Barcelona)",
+    zoneShort: "La Barceloneta",
+    heroH1: "Temporada en La Barceloneta — contrato entre particulares junto al mar",
+    metaTitle: `Contrato alquiler temporal Barceloneta — ${PRICE}`,
+    metaDescription: `Alquiler por temporada La Barceloneta, verano y estancias laborales. ${PRICE} IVA incl. Causa temporalidad, inventario. Gestor Livendia.`,
+    keywords: [
+      "contrato alquiler temporada barceloneta",
+      "alquiler temporal barceloneta verano contrato",
+      "contrato temporada barceloneta particulares",
+      "alquiler por meses barceloneta barcelona",
+    ],
+    heroLead: `La Barceloneta concentra estancias de verano, prácticas portuarias y teletrabajo estacional en pisos a pocos minutos de la playa. Livendia redacta contrato de temporada civil — ${PRICE} IVA incluido, sin comisión, causa explícita e inventario cuando hace falta.`,
+    whyTitle: "La Barceloneta: estación o proyecto acotado, no LAU de larga duración por defecto",
+    whySubtitle:
+      "Humedad, mobiliario de playa y rotación estacional exigen plazos, suministros e inventario por escrito.",
+    whyIntro: "Verano, congresos marítimos y estancias laborales de meses son habituales entre particulares.",
+    howIntro:
+      "Cinco pasos Livendia con gestor único: llamada, contratación online, documentación, redacción e inventario, firma asesorada.",
+    localZonesHeading: "La Barceloneta y entorno para contrato temporal",
+    localZones:
+      "La Barceloneta (carrer de la Maó, Passeig Joan de Borbó), Port Vell límite, Barri Gòtic límite playa. Trámite 100 % online.",
+    localBenefits: [
+      {
+        title: "Verano estacional",
+        description: "Fechas de entrada y salida alineadas con temporada de playa.",
+      },
+      {
+        title: "Estancia laboral portuaria",
+        description: "Duración del proyecto o práctica con plazo cerrado.",
+      },
+      {
+        title: "Piso amueblado costero",
+        description: "Inventario de equipamiento, ventilación y estado general.",
+      },
+      {
+        title: "Suministros",
+        description: "Luz, agua y limpieza de salida detallados según pacto.",
+      },
+      {
+        title: "Sin comisión",
+        description: `${PRICE} IVA incl. — tarifa plana Livendia.`,
+      },
+      {
+        title: "Entrega 24-48 h",
+        description: "Borrador tras documentación completa en panel.",
+      },
+    ],
+    introParagraph:
+      "En La Barceloneta es frecuente alquilar entre particulares por un verano, un proyecto en el entorno portuario o un teletrabajo de invierno con vistas al mar. Confundir temporada contractual con otros regímenes deja lagunas sobre humedad, mobiliario y fianza. Livendia redacta contrato de temporada con causa explícita e inventario — 200 € IVA incluido, gestor dedicado.",
+    whenToUseCases: [
+      "Profesional en estancia de verano junto a la playa.",
+      "Prácticas o proyecto laboral acotado en Port Vell.",
+      "Propietario que alquila temporada alta sin agencia.",
+      "Inquilino que exige contrato antes de ingresar fianza.",
+      "Estancia de meses con equipamiento de playa incluido en renta.",
+    ],
+    risksParagraph:
+      "Acuerdos verbales sobre humedad, limpieza y devolución de fianza son frecuentes al salir de temporada estival. Redactar desde el inicio evita litigios.",
+    savingsTitle: "Coste contrato temporada La Barceloneta",
+    savingsIntro: "Orientativo frente a despacho o agencia:",
+    highlightRent: 1400,
+    savingsRows: [
+      { monthlyRent: 1100, lawyerWithVat: 440, agencyEstimate: 605 },
+      { monthlyRent: 1400, lawyerWithVat: 500, agencyEstimate: 770 },
+      { monthlyRent: 1700, lawyerWithVat: 560, agencyEstimate: 935 },
+      { monthlyRent: 2100, lawyerWithVat: 630, agencyEstimate: 1155 },
+    ],
+    savingsFootnote: "La Barceloneta: orientativo. Livendia 200 € IVA incl.",
+    faqLocal: [
+      {
+        question: "¿Redactáis temporadas en La Barceloneta?",
+        answer: "Sí, para la dirección concreta con gestor dedicado y panel Livendia.",
+      },
+      {
+        question: "¿Sirve para alquiler de verano entre particulares?",
+        answer:
+          "Sí, si el uso es arrendamiento temporal civil con causa documentada; no sustituye licencias turísticas si el uso real es otro.",
+      },
+      {
+        question: "¿Puedo contratar desde fuera de España?",
+        answer: "Sí, el trámite es online; subes documentación al panel.",
+      },
+    ],
+    finalCtaLead: `Contrato temporada La Barceloneta — ${PRICE} IVA incl.`,
+    testimonialsTitle: "Temporadas en La Barceloneta con Livendia",
+    testimonials: [
+      {
+        quote:
+          "Verano en La Barceloneta: contrato con fechas exactas, inventario y cláusulas de limpieza de salida entre particulares.",
+        author: "Chris H.",
+        role: "Inquilino temporal — Barceloneta",
+      },
+      {
+        quote:
+          "Propietario: Livendia dejó fianza y suministros claros antes de la temporada estival.",
+        author: "Imma G.",
+        role: "Propietaria — La Barceloneta",
+      },
+    ],
+  },
 ];
 
 export const TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS: readonly string[] = BARRIO_SPECS.map((s) => s.slug);

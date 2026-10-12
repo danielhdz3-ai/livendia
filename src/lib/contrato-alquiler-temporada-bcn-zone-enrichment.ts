@@ -149,6 +149,51 @@ export const TEMPORADA_BCN_ZONE_ENRICHMENT: Record<string, TemporadaBcnZoneEnric
         "Repaso de duración, suministros, estado del piso amueblado y salida al terminar el plazo pactado entre particulares.",
     },
   },
+  "barcelona-les-corts": {
+    processIntro:
+      "Les Corts concentra temporadas ligadas a la Zona Universitària, hospitales y familias en traslado cerca de Pedralbes. Cinco pasos Livendia con inventario en pisos amueblados — 200 € IVA incl., sin comisión.",
+    step1: {
+      title: "Consulta con gestor: alquiler temporal en Les Corts o Pedralbes",
+      description:
+        "Repasamos motivo (curso, prácticas clínicas, proyecto laboral), duración, parking y fianza antes de confundir temporada con LAU habitual en fincas de la Diagonal.",
+    },
+  },
+  "barcelona-nou-barris": {
+    processIntro:
+      "Nou Barris mueve estancias por curso, obra en edificio o teletrabajo en Verdum, Roquetes o Torre Baró. Mismo gestor Livendia en cinco fases online.",
+    step1: {
+      title: "Llamada: contrato de temporada en Nou Barris",
+      description:
+        "Definimos plazo acotado, suministros, estado del piso y salida clara — habitual cuando el trato es entre particulares sin agencia.",
+    },
+  },
+  "barcelona-el-raval": {
+    processIntro:
+      "El Raval combina Erasmus, prácticas en el Hospital Clínic y proyectos culturales en pisos históricos. Livendia redacta temporada civil con causa explícita e inventario — trámite 100 % online.",
+    step1: {
+      title: "Primera llamada: estancia temporal en el Raval",
+      description:
+        "Orientación sobre temporalidad frente a LAU habitual y uso turístico regulado, fianza e inventario en edificios con escaleras estrechas y rotación alta.",
+    },
+  },
+  "barcelona-born": {
+    processIntro:
+      "El Born concentra residencias artísticas, prácticas y teletrabajo en fincas del siglo XIX. Cinco fases Livendia con gestor hasta la firma — tarifa plana, sin % sobre la renta.",
+    step1: {
+      title: "Llamada con gestor: alquiler por meses en El Born",
+      description:
+        "Repaso de duración del proyecto creativo o académico, mobiliario, normas de comunidad y calendario de salida en Sant Pere o la Ribera.",
+    },
+  },
+  "barcelona-barceloneta": {
+    processIntro:
+      "La Barceloneta mueve temporadas de verano, prácticas portuarias y estancias laborales junto al mar. Contrato de temporada entre particulares con Livendia en cinco pasos — 24-48 h laborables.",
+    step1: {
+      title: "Consulta: temporada en La Barceloneta",
+      description:
+        "Cuéntanos fechas de entrada y salida, humedad o equipamiento incluido, y si la estancia es estacional o ligada a un contrato laboral acotado.",
+    },
+  },
 };
 
 export function getTemporadaBcnZoneEnrichment(slug: string): TemporadaBcnZoneEnrichment | undefined {
