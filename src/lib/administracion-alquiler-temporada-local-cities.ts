@@ -9,6 +9,11 @@ import {
 import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-local-cities";
 import { localContratoAlquilerTemporadaHref } from "@/lib/contrato-alquiler-temporada-local-cities";
 import { localContratoAlquilerHabitacionHref } from "@/lib/contrato-alquiler-habitacion-local-cities";
+import {
+  ADMIN_TEMPORADA_BCN_BARRIO_CITIES,
+  ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
+} from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE =
   "/servicios/administracion-alquiler-temporada-local";
@@ -20,6 +25,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_PUBLISHED_SLUGS: readonly s
   "mallorca",
   "malaga",
   "sevilla",
+  ...ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
 ] as const;
 
 export function isAdministracionAlquilerTemporadaLocalSlugPublished(slug: string): boolean {
@@ -49,6 +55,9 @@ export type AdministracionAlquilerTemporadaLocalLandingConfig = {
   faqLocal: readonly { question: string; answer: string }[];
   heroImage: string;
   heroImageAlt: string;
+  /** H1 diferenciado; si falta, título genérico con placeLabel. */
+  heroH1?: string;
+  heroBadge?: string;
   contratoTemporadaHref?: string;
   contratoHabitacionHref?: string;
   adminLauHref?: string;
@@ -176,7 +185,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
       contratoTemporadaHref: localContratoAlquilerTemporadaHref("barcelona"),
       contratoHabitacionHref: localContratoAlquilerHabitacionHref("barcelona"),
       adminLauHref: localAdministracionAlquilerHref("barcelona"),
-      heroImage: "/images/gestoria20.jpg",
+      heroImage: metroBarcelonaZoneImage("barcelona.jpg"),
       heroImageAlt: "Administración alquiler temporada y habitaciones en Barcelona — Livendia",
       testimonialsTitle: "Propietarios en Barcelona con habitaciones y temporadas",
       testimonials: [
@@ -457,4 +466,5 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
         },
       ],
     },
+  ...ADMIN_TEMPORADA_BCN_BARRIO_CITIES,
   ];

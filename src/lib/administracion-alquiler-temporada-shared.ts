@@ -53,6 +53,18 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS = [
   },
 ] as const;
 
+/** Paso 5 — Barcelona/AMB: check-in e intervención presencial incluida en la cuota. */
+export const ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEP_PRESENCIAL_BARCELONA = {
+  title: "Gestor presencial en entregas e incidencias graves",
+  description:
+    "En Barcelona y área metropolitana, cuando hace falta check-in, inventario, visita con industrial o mediación in situ, un gestor Livendia acude al piso — incluido en la misma cuota mensual, sin suplemento por desplazamiento.",
+} as const;
+
+export const ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS_BARCELONA = [
+  ...ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS,
+  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEP_PRESENCIAL_BARCELONA,
+] as const;
+
 export const ADMINISTRACION_ALQUILER_TEMPORADA_PILLARS = [
   {
     title: "Temporada y habitaciones",

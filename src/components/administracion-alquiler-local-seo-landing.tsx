@@ -37,6 +37,7 @@ import { AdministracionAlquilerOnlineOnlySection } from "@/components/administra
 import { AdministracionAlquilerPresencialSection } from "@/components/administracion-alquiler-presencial-section";
 import { ADMINISTRACION_ALQUILER_BARCELONA_CITY_HUB } from "@/lib/administracion-alquiler-barcelona-metro";
 import { ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT } from "@/lib/administracion-alquiler-how-images";
+import { buildAdministracionAlquilerHowItWorksSteps } from "@/lib/administracion-alquiler-how-it-works-steps";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import Image from "next/image";
 import Link from "next/link";
@@ -134,36 +135,39 @@ export async function AdministracionAlquilerLocalSeoLanding({
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (rental) servicesBySlug["administracion-alquiler"] = rental;
 
-  // Paso 1 y 4 mencionan la ciudad para que el bloque no sea idéntico letra por letra
-  // entre landings (estructura de 4 pasos sin cambios, ver SEO_ROADMAP.md).
-  const howItWorks = [
-    {
-      icon: Users,
-      step: "1",
-      title: "Nos convertimos en tu intermediario",
-      description: `Desde el primer día, Livendia es tu único punto de contacto en ${config.city} entre tú y tu inquilino. No recibirás llamadas, emails ni mensajes directos.`,
-    },
-    {
-      icon: MessageCircle,
-      step: "2",
-      title: "Gestionamos todas las comunicaciones",
-      description:
-        "El inquilino se comunica exclusivamente con nosotros para cualquier consulta, petición o incidencia. Filtros profesionales garantizan tu tranquilidad.",
-    },
-    {
-      icon: Wrench,
-      step: "3",
-      title: "Resolvemos y coordinamos",
-      description:
-        "Cuando surge un problema, contactamos empresas, coordinamos reparaciones y hacemos seguimiento hasta que todo esté resuelto.",
-    },
-    {
-      icon: FileText,
-      step: "4",
-      title: "Te mantenemos informado",
-      description: `Solo te contactamos para lo importante: pagos recibidos, decisiones que requieren tu aprobación o novedades relevantes de tu contrato en ${config.city}.`,
-    },
-  ];
+  const slug = config.path.split("/").pop() ?? "";
+
+  const howItWorks =
+    slug === "barcelona"
+      ? buildAdministracionAlquilerHowItWorksSteps(config.city)
+      : [
+          {
+            icon: Users,
+            step: "1",
+            title: "Nos convertimos en tu intermediario",
+            description: `Desde el primer día, Livendia es tu único punto de contacto en ${config.city} entre tú y tu inquilino. No recibirás llamadas, emails ni mensajes directos.`,
+          },
+          {
+            icon: MessageCircle,
+            step: "2",
+            title: "Gestionamos todas las comunicaciones",
+            description:
+              "El inquilino se comunica exclusivamente con nosotros para cualquier consulta, petición o incidencia. Filtros profesionales garantizan tu tranquilidad.",
+          },
+          {
+            icon: Wrench,
+            step: "3",
+            title: "Resolvemos y coordinamos",
+            description:
+              "Cuando surge un problema, contactamos empresas, coordinamos reparaciones y hacemos seguimiento hasta que todo esté resuelto.",
+          },
+          {
+            icon: FileText,
+            step: "4",
+            title: "Te mantenemos informado",
+            description: `Solo te contactamos para lo importante: pagos recibidos, decisiones que requieren tu aprobación o novedades relevantes de tu contrato en ${config.city}.`,
+          },
+        ];
 
   const benefits = [
     {
@@ -207,7 +211,6 @@ export async function AdministracionAlquilerLocalSeoLanding({
   const howImages = ADMINISTRACION_ALQUILER_HOW_IMAGES_DEFAULT;
 
   const heroImage = config.heroImage ?? "/images/modelo3.jpg";
-  const slug = config.path.split("/").pop() ?? "";
   const regulatory = ALQUILER_REGULATORY_BY_SLUG[slug];
   const faqItems = mergeAdministracionFaq(config.faq);
 

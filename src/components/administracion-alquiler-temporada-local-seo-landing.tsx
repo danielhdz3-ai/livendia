@@ -1,3 +1,5 @@
+import { AdministracionAlquilerPresencialSection } from "@/components/administracion-alquiler-presencial-section";
+import { AdministracionAlquilerTemporadaBcnBarrioLinks } from "@/components/administracion-alquiler-temporada-bcn-barrio-links";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
@@ -11,6 +13,7 @@ import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR,
+  ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,
   resolveServicePriceLabel,
 } from "@/lib/catalog.public";
@@ -22,7 +25,10 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_PRICING,
   ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO,
   ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS,
+  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS_BARCELONA,
 } from "@/lib/administracion-alquiler-temporada-shared";
+import { isAdminTemporadaBcnBarrioSlug } from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import { ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE } from "@/lib/administracion-alquiler-temporada-local-cities";
 import { BUSINESS_EMAIL, buildBusinessPostalAddress } from "@/lib/business-nap";
 import { getContactPhoneE164Plus } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
@@ -37,6 +43,7 @@ import {
   MapPin,
   MessageCircle,
   Scale,
+  UserCheck,
   Wrench,
 } from "lucide-react";
 
@@ -108,9 +115,15 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
   const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
     `Hola, me interesa la administración de alquiler por temporada o habitaciones en ${config.placeLabel}.`,
   )}`;
-  const processIcons = [ClipboardList, DoorOpen, Wrench, Handshake] as const;
+  const slug = config.path.split("/").pop() ?? "";
+  const isBcnBarrio = isAdminTemporadaBcnBarrioSlug(slug);
+  const processSteps = isBcnBarrio
+    ? ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS_BARCELONA
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS;
+  const processIcons = [ClipboardList, DoorOpen, Wrench, Handshake, UserCheck] as const;
   const faqItems = [...config.faqLocal, ...ADMINISTRACION_ALQUILER_TEMPORADA_FAQ];
-  const slug = config.path.split("/").pop();
+  const heroTitle =
+    config.heroH1 ?? `Administración de alquiler por temporada o habitaciones en ${config.placeLabel}`;
 
   return (
     <ServicePurchaseProvider service={service}>
@@ -151,11 +164,9 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
               <div className="grid min-h-0 lg:grid-cols-2 lg:min-h-[650px]">
                 <div className="flex flex-col justify-center px-6 py-16 lg:px-12 lg:py-24">
                   <div className="mb-8 inline-block self-start rounded-full bg-white/20 px-5 py-2 text-sm font-semibold backdrop-blur-sm">
-                    Para propietarios · {config.placeLabel}
+                    {config.heroBadge ?? `Para propietarios · ${config.placeLabel}`}
                   </div>
-                  <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-6xl">
-                    Administración de alquiler por temporada o habitaciones en {config.placeLabel}
-                  </h1>
+                  <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-6xl">{heroTitle}</h1>
                   <p className="mt-6 text-xl leading-relaxed text-blue-50">{config.heroLead}</p>
                   <p className="mt-4 text-sm text-blue-100">
                     {priceLabel}/mes IVA incl. · Contratos nuevos {ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL} ·
@@ -200,6 +211,27 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
           <AdministracionAlquilerTemporadaRentSection
             heading={`Cómo se paga la renta en ${config.placeLabel}`}
           />
+
+          {slug === "barcelona" ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-xl font-bold text-[#1E293B]">Administración por distrito en Barcelona</h2>
+                <p className="mt-2 text-sm text-[#64748b]">
+                  Diez landings con mercado local, cinco pasos del proceso y gestor presencial en el AMB.
+                </p>
+                <AdministracionAlquilerTemporadaBcnBarrioLinks className="mt-6" />
+              </div>
+            </section>
+          ) : null}
+
+          {isBcnBarrio ? (
+            <AdministracionAlquilerPresencialSection
+              zoneLabel={config.placeLabel}
+              monthlyPriceLabel={ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}
+              parentCityHubPath={`${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/barcelona`}
+              parentCityHubLabel="Administración temporada — Barcelona (ciudad)"
+            />
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-4xl">
@@ -283,7 +315,7 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
                 {ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO}
               </p>
               <ol className="mt-12 grid gap-6 md:grid-cols-2">
-                {ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS.map((step, index) => {
+                {processSteps.map((step, index) => {
                   const Icon = processIcons[index] ?? CheckCircle;
                   return (
                     <li key={step.title} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
@@ -342,9 +374,14 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
 
           <section className="border-t border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-6xl">
-              <h2 className="text-center text-xl font-bold text-[#1E293B]">También en otras ciudades</h2>
+              <h2 className="text-center text-xl font-bold text-[#1E293B]">
+                {isBcnBarrio ? "Otros distritos de Barcelona" : "También en otras ciudades"}
+              </h2>
               <div className="mt-6">
-                <AdministracionAlquilerTemporadaLocalCityLinks currentSlug={slug} />
+                {isBcnBarrio || slug === "barcelona" ? (
+                  <AdministracionAlquilerTemporadaBcnBarrioLinks currentSlug={slug} className="justify-center" />
+                ) : null}
+                <AdministracionAlquilerTemporadaLocalCityLinks currentSlug={slug} className="mt-4 justify-center" />
               </div>
               <p className="mt-6 text-center text-sm text-[#64748b]">
                 <Link

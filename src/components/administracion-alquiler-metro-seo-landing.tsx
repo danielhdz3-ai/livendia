@@ -38,6 +38,7 @@ import type { GestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
 import Link from "next/link";
+import { buildAdministracionAlquilerHowItWorksSteps } from "@/lib/administracion-alquiler-how-it-works-steps";
 import {
   AlertCircle,
   CheckCircle,
@@ -122,6 +123,10 @@ function buildMetroWorkflow(config: AdministracionAlquilerMetroLanding): GestorW
         title: "Solo te avisamos de lo que importa",
         body: `Pagos recibidos, impagos, renovaciones con IRAV en zona tensionada u obras que requieran tu firma en ${config.zoneLabel}. El resto no interrumpe tu día.`,
       },
+      {
+        title: "Gestor presencial cuando hace falta",
+        body: `Entrega, inventario, visita con industrial o mediación in situ en ${config.zoneLabel}: incluido en la cuota mensual en Barcelona/AMB, sin extra por desplazamiento.`,
+      },
     ],
     primaryCtaLabel: config.primaryCtaLabel,
     secondaryCtaLabel: `Llamar: ${getContactPhoneDisplay()}`,
@@ -193,34 +198,7 @@ export function AdministracionAlquilerMetroSeoLanding({
     },
   ];
 
-  const howItWorks = [
-    {
-      icon: Users,
-      step: "1",
-      title: "Nos convertimos en tu intermediario",
-      description: `Desde el primer día en ${config.zoneLabel}, Livendia es el punto de contacto entre tú y tu inquilino. Cero mensajes directos a tu móvil.`,
-    },
-    {
-      icon: MessageCircle,
-      step: "2",
-      title: "Gestionamos todas las comunicaciones",
-      description:
-        "Consultas, averías y reclamaciones las atiende tu gestor con tiempos de respuesta publicados.",
-    },
-    {
-      icon: Wrench,
-      step: "3",
-      title: "Coordinamos reparaciones e impagos",
-      description:
-        "Industriales de confianza, protocolo de seguimiento ante impago desde el día 3 y mediación antes de escalar.",
-    },
-    {
-      icon: FileText,
-      step: "4",
-      title: "Te informamos solo de lo crítico",
-      description: `Rentas con seguimiento al día, decisiones que requieren tu firma o novedades legales en ${config.zoneLabel}.`,
-    },
-  ];
+  const howItWorks = buildAdministracionAlquilerHowItWorksSteps(config.zoneLabel);
 
   const workflow = buildMetroWorkflow(config);
 

@@ -9,6 +9,8 @@ import { CheckCircle, Laptop, MapPin, User } from "lucide-react";
 
 type Props = {
   zoneLabel: string;
+  /** Etiqueta de precio mensual (p. ej. 59 €/mes o 79 €/mes). */
+  monthlyPriceLabel?: string;
   /** Enlace opcional a la landing madre Barcelona */
   parentCityHubPath?: string;
   parentCityHubLabel?: string;
@@ -17,6 +19,7 @@ type Props = {
 /** Módulo Barcelona/AMB: operativa online + gestor presencial en inmueble cuando hace falta. */
 export function AdministracionAlquilerPresencialSection({
   zoneLabel,
+  monthlyPriceLabel = ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   parentCityHubPath,
   parentCityHubLabel,
 }: Props) {
@@ -71,7 +74,7 @@ export function AdministracionAlquilerPresencialSection({
               <div>
                 <h3 className="text-lg font-bold">{copy.presencialTitle}</h3>
                 <p className="mt-1 text-sm text-blue-100">
-                  {zoneLabel} · {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} IVA incl.
+                  {zoneLabel} · {monthlyPriceLabel} IVA incl.
                 </p>
               </div>
             </div>
