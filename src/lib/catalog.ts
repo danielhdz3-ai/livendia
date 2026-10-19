@@ -125,30 +125,34 @@ function toUpsertRow(seed: CatalogServiceSeed) {
   };
 }
 
+function applyFixedCatalogPrices(services: PublicService[]): PublicService[] {
+  return services.map((s) =>
+    s.slug in FIXED_CATALOG_PRICE_CENTS
+      ? { ...s, price_cents: FIXED_CATALOG_PRICE_CENTS[s.slug]! }
+      : s,
+  );
+}
+
 /** Mantiene precios comerciales fijos en BD (compra/venta, revisión, LAU, temporada). */
 async function syncFixedCatalogPrices(services: PublicService[]): Promise<PublicService[]> {
   const stale = services.filter(
     (s) => s.slug in FIXED_CATALOG_PRICE_CENTS && s.price_cents !== FIXED_CATALOG_PRICE_CENTS[s.slug],
   );
-  if (stale.length === 0) return services;
 
-  try {
-    const admin = createServiceRoleClient();
-    for (const s of stale) {
-      const price_cents = FIXED_CATALOG_PRICE_CENTS[s.slug];
-      const { error } = await admin.from("services").update({ price_cents }).eq("slug", s.slug);
-      if (error) console.error("[catalog] sync fixed price failed", s.slug, error.message);
+  if (stale.length > 0) {
+    try {
+      const admin = createServiceRoleClient();
+      for (const s of stale) {
+        const price_cents = FIXED_CATALOG_PRICE_CENTS[s.slug];
+        const { error } = await admin.from("services").update({ price_cents }).eq("slug", s.slug);
+        if (error) console.error("[catalog] sync fixed price failed", s.slug, error.message);
+      }
+    } catch (error) {
+      console.error("[catalog] syncFixedCatalogPrices", error);
     }
-  } catch (error) {
-    console.error("[catalog] syncFixedCatalogPrices", error);
-    return services;
   }
 
-  return services.map((s) =>
-    s.slug in FIXED_CATALOG_PRICE_CENTS
-      ? { ...s, price_cents: FIXED_CATALOG_PRICE_CENTS[s.slug] }
-      : s,
-  );
+  return applyFixedCatalogPrices(services);
 }
 
 /** Servicio activo por slug. */
@@ -162,7 +166,8 @@ export async function getServiceBySlug(slug: string): Promise<PublicService | nu
     .maybeSingle();
 
   if (!data) return null;
-  return normalizeServiceCategory(data as PublicService);
+  const service = normalizeServiceCategory(data as PublicService);
+  return applyFixedCatalogPrices([service])[0] ?? null;
 }
 
 export async function getPublicServices(): Promise<PublicService[]> {

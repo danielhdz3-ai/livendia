@@ -91,7 +91,7 @@ const sharedComponentTexts = [
 
 const commonFaq = [
   "¿Dónde están ubicadas las oficinas de Livendia?",
-  "¿Qué incluye exactamente la cuota de 49 €/mes?",
+  "¿Qué incluye exactamente la cuota de 59 €/mes?",
   "¿Existe compromiso de permanencia?",
 ];
 

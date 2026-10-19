@@ -7,7 +7,7 @@ values
     'Administración de Alquileres',
     'Gestión completa de tu alquiler. Nosotros somos el punto de contacto con el inquilino, gestionamos incidencias, renovaciones y mediación. Tú solo cobras. Sin permanencia.',
     'administracion_alquiler',
-    4900,
+    5900,
     true,
     true
   )

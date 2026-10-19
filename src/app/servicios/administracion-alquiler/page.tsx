@@ -66,9 +66,7 @@ export default async function AdministracionAlquilerPage() {
   const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
-  const priceLabel = rentalService
-    ? `${(rentalService.price_cents / 100).toFixed(0)} €/mes`
-    : ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL;
+  const priceLabel = ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL;
   const lauSteps = buildAdministracionAlquilerLauSteps(priceLabel);
   const lauProcessMeta = ADMINISTRACION_ALQUILER_LAU_PROCESS_META;
 

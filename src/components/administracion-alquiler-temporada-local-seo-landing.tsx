@@ -1,5 +1,6 @@
 import { AdministracionAlquilerPresencialSection } from "@/components/administracion-alquiler-presencial-section";
 import { AdministracionAlquilerTemporadaBcnBarrioLinks } from "@/components/administracion-alquiler-temporada-bcn-barrio-links";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { PublicHeader } from "@/components/public-header";
@@ -23,11 +24,19 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_INCLUDED,
   ADMINISTRACION_ALQUILER_TEMPORADA_NOT_INCLUDED,
   ADMINISTRACION_ALQUILER_TEMPORADA_PRICING,
-  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO,
-  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS,
-  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS_BARCELONA,
 } from "@/lib/administracion-alquiler-temporada-shared";
 import { isAdminTemporadaBcnBarrioSlug } from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import {
+  ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META,
+  buildAdministracionAlquilerTemporadaSteps,
+} from "@/lib/administracion-alquiler-temporada-modules";
+import {
+  ADMINISTRACION_ALQUILER_TEMPORADA_BARCELONA_PROCESS_META,
+  administracionTemporadaBarcelonaProcessIntro,
+  administracionTemporadaBarcelonaProcessTitle,
+  buildAdministracionAlquilerTemporadaBarcelonaSteps,
+  isAdministracionTemporadaBarcelonaLocalSlug,
+} from "@/lib/administracion-alquiler-temporada-barcelona-modules";
 import { ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE } from "@/lib/administracion-alquiler-temporada-local-cities";
 import { BUSINESS_EMAIL, buildBusinessPostalAddress } from "@/lib/business-nap";
 import { getContactPhoneE164Plus } from "@/lib/contact";
@@ -37,14 +46,9 @@ import Link from "next/link";
 import {
   AlertCircle,
   CheckCircle,
-  ClipboardList,
-  DoorOpen,
-  Handshake,
   MapPin,
   MessageCircle,
   Scale,
-  UserCheck,
-  Wrench,
 } from "lucide-react";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
@@ -117,10 +121,35 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
   )}`;
   const slug = config.path.split("/").pop() ?? "";
   const isBcnBarrio = isAdminTemporadaBcnBarrioSlug(slug);
-  const processSteps = isBcnBarrio
-    ? ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS_BARCELONA
-    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_STEPS;
-  const processIcons = [ClipboardList, DoorOpen, Wrench, Handshake, UserCheck] as const;
+  const isBarcelonaTemporada = isAdministracionTemporadaBarcelonaLocalSlug(slug);
+  const pasoAPasoSteps = isBarcelonaTemporada
+    ? buildAdministracionAlquilerTemporadaBarcelonaSteps(
+        config.placeLabel,
+        priceLabel,
+        config.heroImage,
+      )
+    : buildAdministracionAlquilerTemporadaSteps(priceLabel);
+  const pasoAPasoEyebrow = isBarcelonaTemporada
+    ? ADMINISTRACION_ALQUILER_TEMPORADA_BARCELONA_PROCESS_META.eyebrow
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.eyebrow;
+  const pasoAPasoTitle = isBarcelonaTemporada
+    ? administracionTemporadaBarcelonaProcessTitle(config.placeLabel)
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.title;
+  const pasoAPasoIntro = isBarcelonaTemporada
+    ? administracionTemporadaBarcelonaProcessIntro(config.placeLabel)
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.intro;
+  const pasoAPasoFeeNote = isBarcelonaTemporada
+    ? `${priceLabel}/mes IVA incl. · Contratos nuevos ${ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL} · Rescisiones gratis. Gestor online y presencial en ${config.placeLabel}.`
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.feeNote;
+  const pasoAPasoAlwaysTitle = isBarcelonaTemporada
+    ? ADMINISTRACION_ALQUILER_TEMPORADA_BARCELONA_PROCESS_META.alwaysWithYouTitle
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.alwaysWithYouTitle;
+  const pasoAPasoAlwaysBody = isBarcelonaTemporada
+    ? ADMINISTRACION_ALQUILER_TEMPORADA_BARCELONA_PROCESS_META.alwaysWithYouBody
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.alwaysWithYouBody;
+  const pasoAPasoServiceLine = isBarcelonaTemporada
+    ? ADMINISTRACION_ALQUILER_TEMPORADA_BARCELONA_PROCESS_META.serviceLine
+    : ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META.serviceLine;
   const faqItems = [...config.faqLocal, ...ADMINISTRACION_ALQUILER_TEMPORADA_FAQ];
   const heroTitle =
     config.heroH1 ?? `Administración de alquiler por temporada o habitaciones en ${config.placeLabel}`;
@@ -212,6 +241,19 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
             heading={`Cómo se paga la renta en ${config.placeLabel}`}
           />
 
+          <VentaSinAgenciaPasoAPasoSection
+            city={config.placeLabel}
+            priceLabel={priceLabel}
+            eyebrow={pasoAPasoEyebrow}
+            title={pasoAPasoTitle}
+            intro={pasoAPasoIntro}
+            steps={pasoAPasoSteps}
+            alwaysWithYouTitle={pasoAPasoAlwaysTitle}
+            alwaysWithYouBody={pasoAPasoAlwaysBody}
+            serviceLine={pasoAPasoServiceLine}
+            feeNote={pasoAPasoFeeNote}
+          />
+
           {slug === "barcelona" ? (
             <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
               <div className="mx-auto max-w-6xl">
@@ -224,12 +266,16 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
             </section>
           ) : null}
 
-          {isBcnBarrio ? (
+          {isBarcelonaTemporada ? (
             <AdministracionAlquilerPresencialSection
               zoneLabel={config.placeLabel}
               monthlyPriceLabel={ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}
-              parentCityHubPath={`${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/barcelona`}
-              parentCityHubLabel="Administración temporada — Barcelona (ciudad)"
+              parentCityHubPath={
+                isBcnBarrio ? `${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/barcelona` : undefined
+              }
+              parentCityHubLabel={
+                isBcnBarrio ? "Administración temporada — Barcelona (ciudad)" : undefined
+              }
             />
           ) : null}
 
@@ -305,32 +351,6 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
                   ))}
                 </ul>
               </div>
-            </div>
-          </section>
-
-          <section className="border-t border-slate-200 bg-[#F1F5F9] px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-center text-3xl font-bold text-[#1E293B]">Cómo funciona</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-[#64748b]">
-                {ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_INTRO}
-              </p>
-              <ol className="mt-12 grid gap-6 md:grid-cols-2">
-                {processSteps.map((step, index) => {
-                  const Icon = processIcons[index] ?? CheckCircle;
-                  return (
-                    <li key={step.title} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1A4FBF] text-sm font-bold text-white">
-                          {index + 1}
-                        </span>
-                        <Icon className="h-5 w-5 text-[#1A4FBF]" aria-hidden />
-                        <h3 className="text-lg font-bold text-[#1E293B]">{step.title}</h3>
-                      </div>
-                      <p className="mt-4 text-sm leading-relaxed text-[#475569]">{step.description}</p>
-                    </li>
-                  );
-                })}
-              </ol>
             </div>
           </section>
 

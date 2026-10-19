@@ -167,13 +167,24 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
 };
 
+/** Céntimos efectivos: prioriza FIXED_CATALOG_PRICE_CENTS sobre la fila en BD. */
+export function resolveServicePriceCents(
+  service: Pick<PublicService, "slug" | "price_cents"> | null | undefined,
+): number | null {
+  if (!service) return null;
+  const fixed = FIXED_CATALOG_PRICE_CENTS[service.slug];
+  if (fixed != null) return fixed;
+  return service.price_cents;
+}
+
 /** Etiqueta de precio desde catálogo o constante de respaldo. */
 export function resolveServicePriceLabel(
-  service: Pick<PublicService, "price_cents"> | null | undefined,
+  service: Pick<PublicService, "slug" | "price_cents"> | null | undefined,
   fallbackLabel: string,
 ): string {
-  if (!service) return fallbackLabel;
-  return `${(service.price_cents / 100).toFixed(0)} €`;
+  const cents = resolveServicePriceCents(service);
+  if (cents == null) return fallbackLabel;
+  return `${(cents / 100).toFixed(0)} €`;
 }
 
 export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
@@ -306,6 +317,24 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "El servicio finaliza cuando tú lo decides",
     ],
     badge: "Para inquilinos",
+  },
+  {
+    slug: ADMINISTRACION_ALQUILER_SLUG,
+    name: "Administración de Alquileres",
+    description:
+      "Gestión completa de tu alquiler LAU. Livendia es el punto de contacto con el inquilino: incidencias, renovaciones y mediación. Tú solo cobras en tu cuenta. Sin permanencia.",
+    category: "administracion_alquiler",
+    price_cents: ADMINISTRACION_ALQUILER_MONTHLY_PRICE_CENTS,
+    is_recurring: true,
+    features: [
+      "Cero contacto directo con el inquilino",
+      "Gestión de incidencias y reparaciones",
+      "Seguimiento de renovaciones y mediación",
+      "Control mensual de que la renta entra en tu cuenta",
+      "Panel Livendia y gestor dedicado",
+      "Sin permanencia",
+    ],
+    badge: "LAU · Propietarios",
   },
   {
     slug: ADMINISTRACION_ALQUILER_TEMPORADA_SLUG,

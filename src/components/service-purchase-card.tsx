@@ -4,7 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { PublicService } from "@/lib/catalog.public";
-import { CATEGORY_LABEL, getServiceCardTitle, SERVICE_IMAGES } from "@/lib/catalog.public";
+import {
+  CATEGORY_LABEL,
+  getServiceCardTitle,
+  resolveServicePriceCents,
+  SERVICE_IMAGES,
+} from "@/lib/catalog.public";
 
 /** Máximo de bullets en tarjeta — mantiene altura uniforme en grillas. */
 const MAX_CARD_FEATURES = 4;
@@ -47,6 +52,7 @@ export function ServicePurchaseCard({
   const extraFeatures = features.length - visibleFeatures.length;
 
   const cardTitle = getServiceCardTitle(service);
+  const priceCents = resolveServicePriceCents(service) ?? service.price_cents;
 
   const cardClassName = `group flex ${CARD_HEIGHT_CLASS} cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:ring-[#1A4FBF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A4FBF] motion-reduce:transform-none ${className}`;
 
@@ -72,7 +78,7 @@ export function ServicePurchaseCard({
         </div>
         <div className="absolute bottom-4 right-4">
           <div className="rounded-full bg-white/95 px-4 py-2 shadow-lg backdrop-blur-sm ring-1 ring-slate-200/80">
-            <span className="text-xl font-bold text-[#1A4FBF]">{(service.price_cents / 100).toFixed(0)} €</span>
+            <span className="text-xl font-bold text-[#1A4FBF]">{(priceCents / 100).toFixed(0)} €</span>
             {service.is_recurring ? <span className="ml-1 text-xs text-[#64748b]">/mes</span> : null}
             <p className="text-xs text-[#64748b]">IVA incluido</p>
           </div>
