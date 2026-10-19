@@ -11,6 +11,10 @@ import { ALQUILER_LOCAL_DIFFERENTIATION } from "@/lib/contrato-alquiler-local-di
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
+import {
+  CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_CITIES,
+  CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_SLUGS,
+} from "@/lib/contrato-alquiler-local-bcn-districts-batch";
 
 export const CONTRATO_ALQUILER_LOCAL_BASE = "/servicios/contrato-alquiler-local";
 
@@ -31,6 +35,7 @@ export const CONTRATO_ALQUILER_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "barcelona-barceloneta",
   "barcelona-vila-olimpica",
   "barcelona-el-raval",
+  ...CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_SLUGS,
   "hospitalet-de-llobregat",
   "cornella-de-llobregat",
   "valencia",
@@ -470,6 +475,7 @@ export const CONTRATO_ALQUILER_LOCAL_CITIES: ContratoAlquilerLocalCityDefinition
     finalCtaLead:
       "Redacta tu LAU en El Raval entre particulares — gestoría Livendia, plataforma y sin comisión de agencia.",
   },
+  ...CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_CITIES,
   {
     slug: "hospitalet-de-llobregat",
     city: "L'Hospitalet",

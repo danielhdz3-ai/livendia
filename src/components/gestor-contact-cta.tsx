@@ -11,6 +11,8 @@ type GestorContactCtaProps = {
   className?: string;
   serviceLabel?: string;
   city?: string;
+  /** Título del banner (p. ej. en artículos del blog). */
+  headline?: string;
 };
 
 export function GestorContactCta({
@@ -18,6 +20,7 @@ export function GestorContactCta({
   className = "",
   serviceLabel,
   city,
+  headline = "Habla con tu gestor o llámanos",
 }: GestorContactCtaProps) {
   const telHref = businessNap.telephoneTel();
   const phoneDisplay = businessNap.telephoneDisplay();
@@ -41,7 +44,7 @@ export function GestorContactCta({
           <UserRound className="h-8 w-8 text-cyan-200" aria-hidden />
         </div>
         <h2 id={`${placement}-gestor-heading`} className="text-2xl font-extrabold tracking-tight sm:text-4xl">
-          Habla con tu gestor o llámanos
+          {headline}
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg">
           Resolvemos dudas sobre alquiler, compra, venta entre particulares o arras. Sin compromiso antes de

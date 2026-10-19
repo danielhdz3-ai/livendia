@@ -1,3 +1,5 @@
+import { CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_MARKET_INSIGHTS } from "@/lib/contrato-alquiler-local-bcn-districts-batch";
+
 /** Párrafos únicos — contrato LAU (ciudades del bloque principal, no extended). */
 export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
   madrid:
@@ -30,6 +32,7 @@ export const ALQUILER_LOCAL_CORE_MARKET_INSIGHTS: Record<string, string> = {
     "La Vila Olímpica mezcla bloques de los 90, terrazas, parking comunitario y alquileres LAU entre particulares con ticket superior a la media de Sant Martí (~25–28 €/m²). Un contrato genérico no recoge anexos de garaje ni IRAV en renovación. Livendia redacta LAU con inventario y gestoría online.",
   "barcelona-el-raval":
     "El Raval tiene rotación elevada, pisos compartidos y edificios del s. XIX sin ascensor (22–26 €/m² según calle). Entre particulares, un LAU genérico no regula convivencia ni documenta humedades preexistentes. Livendia redacta contrato e inventario antes de la fianza en Ciutat Vella.",
+  ...CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_MARKET_INSIGHTS,
   "hospitalet-de-llobregat":
     "L'Hospitalet recibe inquilinos que trabajan en Barcelona y buscan renta más asequible en Collblanc o Bellvitge. Los alquileres entre particulares suelen usar contratos de Barcelona capital sin adaptar INCASÒL ni plazos de comunidad en bloques densos. Livendia revisa depósito, renta anterior e inventario antes de la fianza.",
   "cornella-de-llobregat":

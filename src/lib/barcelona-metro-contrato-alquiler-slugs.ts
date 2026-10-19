@@ -14,6 +14,12 @@ export const BARCELONA_METRO_CONTRATO_ALQUILER_ENTRIES = [
   { slug: "barcelona-barceloneta", shortName: "La Barceloneta" },
   { slug: "barcelona-vila-olimpica", shortName: "Vila Olímpica" },
   { slug: "barcelona-el-raval", shortName: "El Raval" },
+  { slug: "barcelona-sant-marti", shortName: "Sant Martí" },
+  { slug: "barcelona-sarria-sant-gervasi", shortName: "Sarrià-Sant Gervasi" },
+  { slug: "barcelona-nou-barris", shortName: "Nou Barris" },
+  { slug: "barcelona-ciutat-vella", shortName: "Ciutat Vella" },
+  { slug: "barcelona-horta-guinardo", shortName: "Horta-Guinardó" },
+  { slug: "barcelona-sant-andreu", shortName: "Sant Andreu" },
   { slug: "hospitalet-de-llobregat", shortName: "L'Hospitalet" },
   { slug: "cornella-de-llobregat", shortName: "Cornellà" },
 ] as const;

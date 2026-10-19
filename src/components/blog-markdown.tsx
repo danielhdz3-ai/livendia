@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import type { Components } from "react-markdown";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
 
 const components: Components = {
   h2: ({ children, id }) => (
@@ -29,16 +30,48 @@ const components: Components = {
       {children}
     </blockquote>
   ),
+  table: ({ children }) => (
+    <div className="my-6 overflow-x-auto rounded-xl ring-1 ring-slate-200">
+      <table className="min-w-full border-collapse text-sm text-[#334155]">{children}</table>
+    </div>
+  ),
+  thead: ({ children }) => <thead className="bg-[#EFF3F9] text-left text-[#1E293B]">{children}</thead>,
+  th: ({ children }) => (
+    <th className="border-b border-slate-200 px-4 py-3 font-semibold">{children}</th>
+  ),
+  td: ({ children }) => <td className="border-b border-slate-100 px-4 py-3 align-top">{children}</td>,
 };
+
+/** Inserta banner de gestor experto con teléfono dentro del artículo. */
+export const BLOG_GESTOR_BANNER_MARKER = "[[GESTOR_BANNER]]";
 
 type BlogMarkdownProps = {
   content: string;
+  city?: string;
+  serviceLabel?: string;
 };
 
-export function BlogMarkdown({ content }: BlogMarkdownProps) {
+export function BlogMarkdown({ content, city, serviceLabel }: BlogMarkdownProps) {
+  const parts = content.split(BLOG_GESTOR_BANNER_MARKER);
+
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={components}>
-      {content}
-    </ReactMarkdown>
+    <>
+      {parts.map((part, index) => (
+        <div key={index}>
+          {index > 0 ? (
+            <GestorContactCta
+              placement={`blog_inline_${index}`}
+              className="my-10 rounded-2xl"
+              city={city}
+              serviceLabel={serviceLabel}
+              headline="Llama a tu gestor experto"
+            />
+          ) : null}
+          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={components}>
+            {part.trimStart()}
+          </ReactMarkdown>
+        </div>
+      ))}
+    </>
   );
 }

@@ -20,6 +20,15 @@ import {
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { BlogCategory } from "@/lib/blog";
+
+const BLOG_GESTOR_SERVICE_LABEL: Record<BlogCategory, string> = {
+  alquiler: "contrato de alquiler LAU",
+  compraventa: "venta o compra entre particulares",
+  administracion: "administración de alquiler",
+  legal: "contratos inmobiliarios",
+  actualidad: "alquiler y normativa 2026",
+};
 
 export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
@@ -68,6 +77,8 @@ export default async function BlogArticlePage({ params }: Props) {
   const toc = extractTocHeadings(post.content);
   const { prev, next } = getAdjacentPosts(slug);
   const cover = post.ogImage ?? BLOG_CATEGORY_IMAGES[post.category];
+  const gestorServiceLabel = BLOG_GESTOR_SERVICE_LABEL[post.category];
+  const gestorCity = post.city?.trim() || undefined;
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
@@ -122,8 +133,18 @@ export default async function BlogArticlePage({ params }: Props) {
                   </ul>
                 </nav>
               ) : null}
-              <BlogMarkdown content={post.content} />
-              <GestorContactCta placement="blog_post" className="mt-12 rounded-2xl" />
+              <BlogMarkdown
+                content={post.content}
+                city={gestorCity}
+                serviceLabel={gestorServiceLabel}
+              />
+              <GestorContactCta
+                placement="blog_post"
+                className="mt-12 rounded-2xl"
+                city={gestorCity}
+                serviceLabel={gestorServiceLabel}
+                headline="Llama a tu gestor experto"
+              />
               <BlogCategoryCta category={post.category} />
               <BlogPostNav prev={prev} next={next} />
             </div>

@@ -3,6 +3,7 @@ import { ALQUILER_LOCAL_DIFFERENTIATION_EXTENDED } from "@/lib/contrato-alquiler
 import { ALQUILER_LOCAL_CORE_MARKET_INSIGHTS } from "@/lib/contrato-alquiler-local-core-market-insights";
 import { attachLocalMarketInsights, type LocalDifferentiationFields } from "@/lib/merge-local-differentiation";
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL } from "@/lib/catalog.public";
+import { CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_DIFFERENTIATION } from "@/lib/contrato-alquiler-local-bcn-districts-batch";
 
 const BCN_LAU_PLATFORM_NOTES: LocalCityLandingFields["localServiceNotes"] = [
   {
@@ -1184,6 +1185,7 @@ const ALQUILER_LOCAL_DIFFERENTIATION_CORE: Record<string, LocalDifferentiationFi
       },
     ],
   },
+  ...CONTRATO_ALQUILER_LOCAL_BCN_DISTRICT_DIFFERENTIATION,
   "hospitalet-de-llobregat": {
     metaTitle: "Contrato alquiler L'Hospitalet entre particulares — 145 € IVA incl.",
     metaDescription:
