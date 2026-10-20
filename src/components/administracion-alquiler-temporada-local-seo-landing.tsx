@@ -1,5 +1,7 @@
 import { AdministracionAlquilerPresencialSection } from "@/components/administracion-alquiler-presencial-section";
+import { AdministracionAlquilerTemporadaAmbLinks } from "@/components/administracion-alquiler-temporada-amb-links";
 import { AdministracionAlquilerTemporadaBcnBarrioLinks } from "@/components/administracion-alquiler-temporada-bcn-barrio-links";
+import { isAdminTemporadaAmbSlug } from "@/lib/administracion-alquiler-temporada-amb-batch";
 import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import { FaqSection } from "@/components/faq-section";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
@@ -25,7 +27,10 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_NOT_INCLUDED,
   ADMINISTRACION_ALQUILER_TEMPORADA_PRICING,
 } from "@/lib/administracion-alquiler-temporada-shared";
-import { isAdminTemporadaBcnBarrioSlug } from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import {
+  ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
+  isAdminTemporadaBcnBarrioSlug,
+} from "@/lib/administracion-alquiler-temporada-bcn-barrios";
 import {
   ADMINISTRACION_ALQUILER_TEMPORADA_PROCESS_META,
   buildAdministracionAlquilerTemporadaSteps,
@@ -120,8 +125,10 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
     `Hola, me interesa la administración de alquiler por temporada o habitaciones en ${config.placeLabel}.`,
   )}`;
   const slug = config.path.split("/").pop() ?? "";
+  const isAmbMunicipio = isAdminTemporadaAmbSlug(slug);
+  const isBcnDistrito = ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS.includes(slug);
   const isBcnBarrio = isAdminTemporadaBcnBarrioSlug(slug);
-  const isBarcelonaTemporada = isAdministracionTemporadaBarcelonaLocalSlug(slug);
+  const isBarcelonaTemporada = isAdministracionTemporadaBarcelonaLocalSlug(slug) || isAmbMunicipio;
   const pasoAPasoSteps = isBarcelonaTemporada
     ? buildAdministracionAlquilerTemporadaBarcelonaSteps(
         config.placeLabel,
@@ -256,12 +263,23 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
 
           {slug === "barcelona" ? (
             <section className="border-b border-slate-200 bg-white px-4 py-10 sm:px-6">
-              <div className="mx-auto max-w-6xl">
-                <h2 className="text-xl font-bold text-[#1E293B]">Administración por distrito en Barcelona</h2>
-                <p className="mt-2 text-sm text-[#64748b]">
-                  Diez landings con mercado local, cinco pasos del proceso y gestor presencial en el AMB.
-                </p>
-                <AdministracionAlquilerTemporadaBcnBarrioLinks className="mt-6" />
+              <div className="mx-auto max-w-6xl space-y-10">
+                <div>
+                  <h2 className="text-xl font-bold text-[#1E293B]">Administración por distrito en Barcelona</h2>
+                  <p className="mt-2 text-sm text-[#64748b]">
+                    Diez landings con H1 y mercado local distintos, cinco pasos del proceso y gestor presencial en el
+                    AMB.
+                  </p>
+                  <AdministracionAlquilerTemporadaBcnBarrioLinks className="mt-6" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-[#1E293B]">Tramitar administración en municipios AMB</h2>
+                  <p className="mt-2 text-sm text-[#64748b]">
+                    Nueve landings para propietarios en el cinturón metropolitano que alquilan habitación o temporada
+                    sin ser el teléfono del inquilino.
+                  </p>
+                  <AdministracionAlquilerTemporadaAmbLinks className="mt-6" />
+                </div>
               </div>
             </section>
           ) : null}
@@ -271,10 +289,12 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
               zoneLabel={config.placeLabel}
               monthlyPriceLabel={ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}
               parentCityHubPath={
-                isBcnBarrio ? `${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/barcelona` : undefined
+                isBcnBarrio || isAmbMunicipio
+                  ? `${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}/barcelona`
+                  : undefined
               }
               parentCityHubLabel={
-                isBcnBarrio ? "Administración temporada — Barcelona (ciudad)" : undefined
+                isBcnBarrio || isAmbMunicipio ? "Administración temporada — Barcelona (ciudad)" : undefined
               }
             />
           ) : null}
@@ -395,13 +415,24 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
           <section className="border-t border-slate-200 bg-white px-4 py-12 sm:px-6">
             <div className="mx-auto max-w-6xl">
               <h2 className="text-center text-xl font-bold text-[#1E293B]">
-                {isBcnBarrio ? "Otros distritos de Barcelona" : "También en otras ciudades"}
+                {isBcnBarrio || slug === "barcelona"
+                  ? "Otros distritos y municipios AMB"
+                  : "También en otras ciudades"}
               </h2>
-              <div className="mt-6">
-                {isBcnBarrio || slug === "barcelona" ? (
-                  <AdministracionAlquilerTemporadaBcnBarrioLinks currentSlug={slug} className="justify-center" />
+              <div className="mt-6 space-y-4">
+                {isBcnDistrito || slug === "barcelona" || isAmbMunicipio ? (
+                  <AdministracionAlquilerTemporadaBcnBarrioLinks
+                    currentSlug={isBcnDistrito ? slug : undefined}
+                    className="justify-center"
+                  />
                 ) : null}
-                <AdministracionAlquilerTemporadaLocalCityLinks currentSlug={slug} className="mt-4 justify-center" />
+                {isAmbMunicipio || slug === "barcelona" || isBcnDistrito ? (
+                  <AdministracionAlquilerTemporadaAmbLinks
+                    currentSlug={isAmbMunicipio ? slug : undefined}
+                    className="justify-center"
+                  />
+                ) : null}
+                <AdministracionAlquilerTemporadaLocalCityLinks currentSlug={slug} className="justify-center" />
               </div>
               <p className="mt-6 text-center text-sm text-[#64748b]">
                 <Link

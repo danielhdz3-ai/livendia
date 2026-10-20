@@ -17,6 +17,10 @@ import {
   getAdminTemporadaBcnBarrioHeroAlt,
   getAdminTemporadaBcnBarrioHeroImage,
 } from "@/lib/administracion-alquiler-temporada-bcn-images";
+import {
+  ADMIN_TEMPORADA_AMB_PUBLISHED_SLUGS,
+  isAdminTemporadaAmbSlug,
+} from "@/lib/administracion-alquiler-temporada-amb-batch";
 
 const MONTHLY = ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL;
 const CONTRATO = ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL;
@@ -520,5 +524,7 @@ export const ADMIN_TEMPORADA_BCN_BARRIO_HUB = ZONES.map((z) => ({
 }));
 
 export function isAdminTemporadaBcnBarrioSlug(slug: string): boolean {
-  return ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS.includes(slug);
+  return ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS.includes(slug) || isAdminTemporadaAmbSlug(slug);
 }
+
+export { ADMIN_TEMPORADA_AMB_PUBLISHED_SLUGS };

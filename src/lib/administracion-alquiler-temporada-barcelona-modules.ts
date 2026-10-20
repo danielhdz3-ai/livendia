@@ -8,10 +8,11 @@ import {
   ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { isAdminTemporadaBcnBarrioSlug } from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import { isAdminTemporadaAmbSlug } from "@/lib/administracion-alquiler-temporada-amb-batch";
 import { TEMPORADA_BCN_STEP_IMAGES } from "@/lib/contrato-alquiler-temporada-bcn-images";
 
 export function isAdministracionTemporadaBarcelonaLocalSlug(slug: string): boolean {
-  return slug === "barcelona" || isAdminTemporadaBcnBarrioSlug(slug);
+  return slug === "barcelona" || isAdminTemporadaBcnBarrioSlug(slug) || isAdminTemporadaAmbSlug(slug);
 }
 
 export function administracionTemporadaBarcelonaProcessTitle(zoneLabel: string): string {

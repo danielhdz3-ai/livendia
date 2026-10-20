@@ -13,6 +13,10 @@ import {
   ADMIN_TEMPORADA_BCN_BARRIO_CITIES,
   ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
 } from "@/lib/administracion-alquiler-temporada-bcn-barrios";
+import {
+  ADMIN_TEMPORADA_AMB_CITIES,
+  ADMIN_TEMPORADA_AMB_PUBLISHED_SLUGS,
+} from "@/lib/administracion-alquiler-temporada-amb-batch";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 
 export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE =
@@ -26,6 +30,7 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_PUBLISHED_SLUGS: readonly s
   "malaga",
   "sevilla",
   ...ADMIN_TEMPORADA_BCN_BARRIO_PUBLISHED_SLUGS,
+  ...ADMIN_TEMPORADA_AMB_PUBLISHED_SLUGS,
 ] as const;
 
 export function isAdministracionAlquilerTemporadaLocalSlugPublished(slug: string): boolean {
@@ -161,8 +166,11 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
       city: "Barcelona",
       placeLabel: "Barcelona",
       schemaAdministrativeArea: "Cataluña",
-      metaTitle: `Admin. temporada y habitaciones Barcelona — ${MONTHLY}`,
-      metaDescription: `Administración de alquiler por temporada o habitaciones en Barcelona: check-in, incidencias y servicio técnico. ${MONTHLY} IVA incl. Contratos ${CONTRATO}. Rescisiones gratis.`,
+      metaTitle: `Tramitar admin. alquiler temporada Barcelona — habitaciones y gestor AMB · ${MONTHLY}`,
+      metaDescription: `Tramita administración de alquiler por habitación o temporada en Barcelona y AMB: entradas, incidencias, técnico, gestor presencial. ${MONTHLY} IVA incl. Contratos ${CONTRATO}. Rescisiones gratis.`,
+      heroH1:
+        "Tramitar administración de alquiler en Barcelona — habitaciones, temporadas y gestor desde Les Corts",
+      heroBadge: "Barcelona · AMB",
       heroLead:
         "Barcelona mezcla pisos compartidos, estancias por estudios o prácticas y viviendas con licencia turística en barrios como Eixample o Poblenou. Livendia lleva el contacto con inquilinos, entradas, salidas y averías por 79 €/mes — tú no recibes llamadas del día a día.",
       whyIntro:
@@ -467,4 +475,5 @@ export const ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_CITIES: AdministracionAlqui
       ],
     },
   ...ADMIN_TEMPORADA_BCN_BARRIO_CITIES,
+  ...ADMIN_TEMPORADA_AMB_CITIES,
   ];
