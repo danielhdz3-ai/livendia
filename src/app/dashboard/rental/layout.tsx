@@ -1,5 +1,6 @@
 import { BillingPortalButton } from "@/components/billing-portal-button";
 import { RentalPanelShell } from "@/components/rental-panel-shell";
+import { RentalMobileNav } from "@/components/rental-mobile-nav";
 import { RentalSidebarNav } from "@/components/rental-sidebar-nav";
 import {
   isRentalAdminServiceSlug,
@@ -80,7 +81,7 @@ export default async function RentalDashboardLayout({
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
-      <aside className="w-64 border-r border-[#1547a8]/80 bg-[#1A4FBF] shadow-xl shadow-slate-900/15">
+      <aside className="hidden w-64 shrink-0 border-r border-[#1547a8]/80 bg-[#1A4FBF] shadow-xl shadow-slate-900/15 lg:flex lg:flex-col">
         <div className="flex h-full flex-col">
           <div className="border-b border-white/15 p-6">
             <Link href="/dashboard/rental" className="block outline-none ring-white/40 focus-visible:ring-2">
@@ -118,7 +119,22 @@ export default async function RentalDashboardLayout({
         </div>
       </aside>
 
-      <main className="flex-1 overflow-auto">
+      <main className="flex min-w-0 flex-1 flex-col overflow-auto">
+        <div className="flex items-center justify-between border-b border-[#1547a8]/80 bg-[#1A4FBF] px-4 py-3 lg:hidden">
+          <Link href="/dashboard/rental" className="text-xl font-extrabold text-white">
+            Livendia
+          </Link>
+          <Link
+            href="/dashboard/configuracion"
+            className="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20"
+          >
+            Cuenta
+          </Link>
+        </div>
+        <RentalMobileNav
+          activePropertyId={activeProperty?.id}
+          chatUnreadCount={chatUnreadCount}
+        />
         <RentalPanelShell
           properties={propertyOptions}
           activePropertyId={activeProperty?.id}

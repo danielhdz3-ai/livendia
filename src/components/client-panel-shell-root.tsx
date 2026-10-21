@@ -8,6 +8,7 @@ import { ClientMobileTopBar } from "@/components/client-mobile-top-bar";
 import { ClientPanelProvider } from "@/components/client-panel-provider";
 
 function isClientAreaPath(pathname: string): boolean {
+  if (pathname.startsWith("/dashboard/rental")) return false;
   return pathname.startsWith("/dashboard") || pathname.startsWith("/mis-pedidos");
 }
 

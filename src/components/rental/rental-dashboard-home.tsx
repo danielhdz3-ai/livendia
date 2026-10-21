@@ -100,7 +100,20 @@ export function RentalDashboardHome({ data, paths, variant = "client", adminBann
     );
   }
 
-  if (!property || !tenant) return null;
+  if (!property || !tenant) {
+    return (
+      <div className={variant === "client" ? "p-8" : ""}>
+        {adminBanner}
+        <div className="rounded-2xl bg-amber-50 p-6 text-sm text-amber-900 ring-1 ring-amber-200">
+          No se pudieron cargar los datos del inmueble o del inquilino. Prueba a recargar la página o entra en{" "}
+          <Link href={paths.inmueble} className="font-semibold text-[#1A4FBF] underline">
+            Datos del inmueble
+          </Link>
+          .
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={variant === "client" ? "p-8" : ""}>
@@ -210,7 +223,9 @@ export function RentalDashboardHome({ data, paths, variant = "client", adminBann
             </div>
             <div>
               <div className="text-xs font-semibold text-[#64748B]">RENTA MENSUAL</div>
-              <div className="text-2xl font-bold text-emerald-600">{tenant.monthly_rent?.toFixed(2)} €</div>
+              <div className="text-2xl font-bold text-emerald-600">
+                {Number(tenant.monthly_rent ?? 0).toFixed(2)} €
+              </div>
             </div>
           </div>
         </div>

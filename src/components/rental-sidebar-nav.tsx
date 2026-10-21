@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { RentalChatNavBadge } from "@/components/rental-chat-nav-badge";
+import { rentalClientDashboardPaths } from "@/lib/rental-admin-paths";
 import {
   Home,
   Building2,
@@ -28,39 +30,46 @@ export function RentalSidebarNav({
   activePropertyId?: string;
   chatUnreadCount: number;
 }) {
+  const pathname = usePathname() ?? "";
+  const p = rentalClientDashboardPaths();
+  const linkClass = (href: string, exact?: boolean) =>
+    (exact ? pathname === href : pathname === href || pathname.startsWith(`${href}/`))
+      ? navActive
+      : navBase;
+
   return (
     <nav className="flex-1 space-y-1 p-4">
-      <Link href="/dashboard/rental" className={navActive}>
+      <Link href={p.panel} className={linkClass(p.panel, true)}>
         <Home className="h-5 w-5 shrink-0 text-white" />
         <span>Panel principal</span>
       </Link>
 
-      <Link href="/dashboard/rental/inmueble" className={navBase}>
+      <Link href={p.inmueble} className={linkClass(p.inmueble)}>
         <Building2 className="h-5 w-5 shrink-0 opacity-95" />
         <span>Datos del inmueble</span>
       </Link>
 
-      <Link href="/dashboard/rental/inquilino" className={navBase}>
+      <Link href={p.inquilino} className={linkClass(p.inquilino)}>
         <Users className="h-5 w-5 shrink-0 opacity-95" />
         <span>Datos del inquilino</span>
       </Link>
 
-      <Link href="/dashboard/rental/incidencias" className={navBase}>
+      <Link href={p.incidencias} className={linkClass(p.incidencias)}>
         <AlertCircle className="h-5 w-5 shrink-0 opacity-95" />
         <span>Portal de incidencias</span>
       </Link>
 
-      <Link href="/dashboard/rental/pagos" className={navBase}>
+      <Link href={p.pagos} className={linkClass(p.pagos)}>
         <Wallet className="h-5 w-5 shrink-0 opacity-95" />
         <span>Pagos y gastos</span>
       </Link>
 
-      <Link href="/dashboard/rental/documentos" className={navBase}>
+      <Link href={p.documentos} className={linkClass(p.documentos)}>
         <FileText className="h-5 w-5 shrink-0 opacity-95" />
         <span>Documentación</span>
       </Link>
 
-      <Link href="/dashboard/rental/chat" className={`${navBase} relative`}>
+      <Link href={p.chat} className={`${linkClass(p.chat)} relative`}>
         <MessageSquare className="h-5 w-5 shrink-0 opacity-95" />
         <span>Chat unificado</span>
         <RentalChatNavBadge propertyId={activePropertyId} initialUnread={chatUnreadCount} />

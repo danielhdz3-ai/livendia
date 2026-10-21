@@ -24,10 +24,6 @@ export default async function RentalDashboardPage() {
   const ctx = await getActivePropertyForUser(supabase, user.id);
   const data = await loadRentalDashboardHomeData(supabase, user.id, name, ctx);
 
-  if (data.isSetupComplete && (!ctx.activeProperty || !ctx.activeTenant)) {
-    redirect("/dashboard/rental/inmueble");
-  }
-
   return (
     <RentalDashboardHome data={data} paths={rentalClientDashboardPaths()} variant="client" />
   );
