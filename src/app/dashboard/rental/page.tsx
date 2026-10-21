@@ -157,11 +157,6 @@ export default async function RentalDashboardPage() {
     );
   }
 
-  // Dashboard completo cuando está configurado
-  if (!activeProperty || !activeTenant) {
-    redirect("/dashboard/rental");
-  }
-
   return (
     <div className="p-8">
       {/* Header */}

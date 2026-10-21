@@ -3,7 +3,13 @@ import { inferStoragePathFromPublicFileUrl } from "@/lib/rental-doc-storage-path
 import { assertAllowedUpload } from "@/lib/uploads";
 import { NextRequest, NextResponse } from "next/server";
 
-const ALLOWED_TYPES = new Set(["nota_simple", "ibi", "cedula_habitabilidad", "otros"]);
+const ALLOWED_TYPES = new Set([
+  "nota_simple",
+  "ibi",
+  "cedula_habitabilidad",
+  "contrato_arrendamiento",
+  "otros",
+]);
 
 function typeLabel(dt: string) {
   switch (dt) {
@@ -13,6 +19,8 @@ function typeLabel(dt: string) {
       return "IBI";
     case "cedula_habitabilidad":
       return "Cédula de habitabilidad";
+    case "contrato_arrendamiento":
+      return "Contrato de arrendamiento";
     case "otros":
       return "Otros";
     default:

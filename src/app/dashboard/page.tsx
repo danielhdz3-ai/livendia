@@ -75,11 +75,6 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
   // Check if user has active rental management subscription
   const hasRentalSubscription = hasActiveRentalSub || hasRentalViaOrder;
 
-  // If user has rental subscription, redirect to rental dashboard
-  if (hasRentalSubscription) {
-    redirect("/dashboard/rental");
-  }
-
   const name = profile?.full_name?.trim() || user.email || "Cliente";
   const firstName = name.split(" ")[0];
 
@@ -176,6 +171,24 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
             focus={heroFocus}
             stats={{ total: totalOrders, active: pendingOrders, completed: completedOrders }}
           />
+
+          {hasRentalSubscription ? (
+            <Link
+              href="/dashboard/rental"
+              className="mb-6 flex flex-col gap-3 rounded-2xl border border-[#1A4FBF]/25 bg-gradient-to-r from-[#EFF3F9] to-white p-5 shadow-sm ring-1 ring-[#1A4FBF]/10 transition hover:ring-[#1A4FBF]/30 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <p className="text-sm font-bold text-[#1A4FBF]">Administración de alquileres</p>
+                <p className="mt-1 text-sm text-[#475569]">
+                  Inmueble, inquilino, documentos e incidencias en tu panel de alquiler.
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1A4FBF]">
+                Ir al panel de alquiler
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </span>
+            </Link>
+          ) : null}
 
           <div className="mb-6 hidden sm:grid">
             <ClientPanelKpiStrip
