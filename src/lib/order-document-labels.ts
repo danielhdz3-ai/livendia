@@ -6,6 +6,6 @@ export const ORDER_DOCUMENT_LABEL_ES: Record<string, string> = {
   nota_simple: "Nota simple",
   contrato_actual: "Contrato actual",
   recibos: "Recibos",
-  poder_notarial: "Poder notarial",
+  poder_notarial: "Nota de encargo / mandato",
   otro: "Otro",
 };

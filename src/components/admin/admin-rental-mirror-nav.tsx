@@ -10,7 +10,6 @@ import {
   AlertCircle,
   Wallet,
   FileText,
-  Wrench,
 } from "lucide-react";
 import { rentalAdminClientMirrorPaths } from "@/lib/rental-admin-paths";
 
@@ -35,9 +34,13 @@ export function AdminRentalMirrorNav({
     { href: p.inquilino, label: "Inquilino", icon: Users, match: (path: string) => path.startsWith(p.inquilino) },
     { href: p.incidencias, label: "Incidencias", icon: AlertCircle, match: (path: string) => path.startsWith(p.incidencias) },
     { href: p.pagos, label: "Pagos y gastos", icon: Wallet, match: (path: string) => path.startsWith(p.pagos) },
-    { href: p.documentos, label: "Documentación", icon: FileText, match: (path: string) => path.startsWith(p.documentos) },
+    {
+      href: p.documentos,
+      label: "Docs y facturas",
+      icon: FileText,
+      match: (path: string) => path.startsWith(p.documentos),
+    },
     { href: p.chat, label: "Chat", icon: MessageSquare, match: (path: string) => path.startsWith(p.chat) },
-    { href: p.gestion, label: "Gestión interna", icon: Wrench, match: (path: string) => path.startsWith(p.gestion) },
   ];
 
   return (

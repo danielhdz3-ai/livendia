@@ -278,6 +278,12 @@ export function RentalDashboardHome({ data, paths, variant = "client", adminBann
                 </p>
               </div>
             </div>
+            <Link
+              href={paths.documentos}
+              className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]"
+            >
+              Ver todo (facturas Livendia) →
+            </Link>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">

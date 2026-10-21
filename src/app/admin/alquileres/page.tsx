@@ -48,11 +48,6 @@ export default async function AdminAlquileresPage() {
     (a, b) => new Date(b.since).getTime() - new Date(a.since).getTime(),
   );
 
-  const adminAlquilerServiceId =
-    (
-      await supabase.from("services").select("id").eq("slug", "administracion-alquiler").maybeSingle()
-    ).data?.id ?? null;
-
   const clientIds = rentalClients.map((c) => c.clientId);
   const billingStatusByClient = new Map<string, "active" | "suspended">();
   if (clientIds.length > 0) {
@@ -64,33 +59,6 @@ export default async function AdminAlquileresPage() {
       for (const row of billingRows ?? []) {
         billingStatusByClient.set(row.client_id as string, row.status as "active" | "suspended");
       }
-    }
-  }
-
-  const todayIso = new Date().toISOString().slice(0, 10);
-  type UpcomingDueRow = { id: string; client_id: string; due_date: string; amount_cents: number };
-  let upcomingDues: UpcomingDueRow[] = [];
-  if (adminAlquilerServiceId) {
-    const duesRes = await supabase
-      .from("rental_admin_fee_dues")
-      .select("id, client_id, due_date, amount_cents, status")
-      .eq("service_id", adminAlquilerServiceId)
-      .eq("status", "pending")
-      .gte("due_date", todayIso)
-      .order("due_date", { ascending: true })
-      .limit(12);
-    if (!duesRes.error && duesRes.data) upcomingDues = duesRes.data as UpcomingDueRow[];
-  }
-
-  const dueClientIds = [...new Set((upcomingDues ?? []).map((d) => d.client_id as string))];
-  const dueNameByClient = new Map<string, string>();
-  if (dueClientIds.length > 0) {
-    const { data: dueProfiles } = await supabase
-      .from("profiles")
-      .select("id, full_name")
-      .in("id", dueClientIds);
-    for (const p of dueProfiles ?? []) {
-      dueNameByClient.set(p.id as string, (p.full_name as string) || "Cliente");
     }
   }
 
@@ -304,13 +272,13 @@ export default async function AdminAlquileresPage() {
                     href={`/admin/alquileres/${client.clientId}`}
                     className="rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
                   >
-                    Ver panel del cliente →
+                    Panel del cliente →
                   </Link>
                   <Link
-                    href={`/admin/alquileres/${client.clientId}/gestion`}
-                    className="rounded-lg border border-slate-200 px-4 py-2 text-center text-sm font-semibold text-[#475569] transition hover:border-[#1A4FBF]/30"
+                    href={`/admin/alquileres/${client.clientId}/documentos`}
+                    className="rounded-lg border border-[#1A4FBF]/30 bg-[#EFF6FF] px-4 py-2 text-center text-sm font-semibold text-[#1A4FBF] transition hover:bg-[#DBEAFE]"
                   >
-                    Gestión interna
+                    Documentación y facturas
                   </Link>
                 </div>
               </div>
@@ -319,45 +287,6 @@ export default async function AdminAlquileresPage() {
           })}
         </div>
       )}
-
-      {upcomingDues.length > 0 ? (
-        <section className="mb-8 rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
-          <h2 className="text-lg font-bold text-[#1E293B]">Operaciones — cuotas administración (día 1)</h2>
-          <p className="mt-1 text-sm text-[#64748B]">
-            Próximas cuotas previstas en calendario (transferencia). Ámbar = pendiente de cobro.
-          </p>
-          <ul className="mt-4 divide-y divide-slate-100">
-            {upcomingDues.map((due) => (
-              <li key={due.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
-                <div>
-                  <span className="font-semibold text-[#1E293B]">
-                    {dueNameByClient.get(due.client_id as string) ?? "Cliente"}
-                  </span>
-                  <span className="text-[#64748B]">
-                    {" "}
-                    · {new Date(due.due_date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-[#1A4FBF]">
-                    {(due.amount_cents / 100).toLocaleString("es-ES", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}{" "}
-                    €
-                  </span>
-                  <Link
-                    href={`/admin/alquileres/${due.client_id}`}
-                    className="text-xs font-semibold text-[#1A4FBF] hover:underline"
-                  >
-                    Panel del cliente →
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
 
     </main>
   );
