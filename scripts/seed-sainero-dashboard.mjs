@@ -18,13 +18,32 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const CLIENT_ID = "cb67014d-dbd8-46ff-b849-e84393515f60";
 const PROPERTY_ID = "61e06713-1184-481c-8601-fd92822d0159";
+const TENANT_ID = "93cd879e-e208-46d5-b61b-c5d0be624f6c";
 const SERVICE_ID = "47ff0d38-5797-43fb-aa8d-88344ad6f38c";
+
+/** Datos extraídos del contrato de arrendamiento (Teverga 11, 3º E, Oviedo). */
+const CONTRACT = {
+  tenantName: "Marta Martínez Bastián",
+  tenantDni: "52617323-Q",
+  tenantPhone: "+34686340498",
+  tenantAddress: "Calle Teverga 11, 3º E, Oviedo (33012)",
+  startDate: "2026-01-09",
+  endDate: "2027-01-08",
+  monthlyRent: 720,
+  depositAmount: 720,
+  cadastralRef: "6356903TP6065N0017FZ",
+  propertyNotes:
+    "Vivienda habitual amueblada. Anexos: plaza de garaje n.º 76 (sótano -2) y trastero n.º 26 (sótano -1). Ref. catastral 6356903TP6065N0017FZ. Contrato firmado en Oviedo el 9/01/2026.",
+  tenantNotes:
+    "Contrato LAU vivienda habitual (9 ene 2026 – 8 ene 2027, prórroga anual hasta 5 años). Renta 720 €/mes (Unicaja ES02 2103 7843 3100 3011 1731). Fianza 720 €. Email no consta en contrato.",
+};
 const ORDER_AUG = "a945846c-5769-470b-b7fc-cf18e5c3189e";
 const ORDER_SEP = "eda2e049-f3d1-48e1-ae5b-47f1341a6328";
 
 const DESKTOP = "C:\\Users\\Daniel HDZ\\Desktop";
 
 const FILES = {
+  notaEncargo: `${DESKTOP}\\Administracion_Alquiler_firmado.pdf`,
   contrato: `${DESKTOP}\\Contrato_arrendamiento_Teverga_11_3E.pdf`,
   dni: `${DESKTOP}\\DOC-20261003-WA0003.pdf`,
   dniAlt: `${DESKTOP}\\Doc1.pdf`,
@@ -66,26 +85,74 @@ function publicUrl(objectPath) {
 
 async function ensureTenant() {
   const existing = await rest(`tenants?property_id=eq.${PROPERTY_ID}&select=id&limit=1`);
-  if (existing?.length) return existing[0].id;
+  const tenantId = existing?.[0]?.id ?? TENANT_ID;
 
-  const row = await rest("tenants", {
-    method: "POST",
+  if (!existing?.length) {
+    const row = await rest("tenants", {
+      method: "POST",
+      body: JSON.stringify({
+        property_id: PROPERTY_ID,
+        full_name: CONTRACT.tenantName,
+        email: null,
+        phone: CONTRACT.tenantPhone,
+        dni: CONTRACT.tenantDni,
+        address: CONTRACT.tenantAddress,
+        start_date: CONTRACT.startDate,
+        end_date: CONTRACT.endDate,
+        monthly_rent: CONTRACT.monthlyRent,
+        deposit_amount: CONTRACT.depositAmount,
+        is_active: true,
+        notes: CONTRACT.tenantNotes,
+      }),
+    });
+    console.log("tenant created", row[0].id);
+    return row[0].id;
+  }
+
+  await rest(`tenants?id=eq.${tenantId}`, {
+    method: "PATCH",
     body: JSON.stringify({
-      property_id: PROPERTY_ID,
-      full_name: "Inquilino — Teverga 11 3º E",
-      email: null,
-      phone: null,
-      dni: null,
-      start_date: "2026-08-25",
-      end_date: null,
-      monthly_rent: 0,
-      deposit_amount: 0,
+      full_name: CONTRACT.tenantName,
+      phone: CONTRACT.tenantPhone,
+      dni: CONTRACT.tenantDni,
+      address: CONTRACT.tenantAddress,
+      start_date: CONTRACT.startDate,
+      end_date: CONTRACT.endDate,
+      monthly_rent: CONTRACT.monthlyRent,
+      deposit_amount: CONTRACT.depositAmount,
       is_active: true,
-      notes: "Alta automática desde contrato de arrendamiento (gestor Livendia). Actualizar datos si procede.",
+      notes: CONTRACT.tenantNotes,
     }),
   });
-  console.log("tenant created", row[0].id);
-  return row[0].id;
+  console.log("tenant synced", tenantId);
+  return tenantId;
+}
+
+async function syncPropertyFromContract() {
+  await rest(`properties?id=eq.${PROPERTY_ID}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      address: "Calle Teverga 11, 3º E",
+      zone: "Oviedo",
+      postal_code: "33012",
+      property_type: "piso",
+      cadastral_reference: CONTRACT.cadastralRef,
+      notes: CONTRACT.propertyNotes,
+    }),
+  });
+  console.log("property synced", PROPERTY_ID);
+}
+
+async function fixMislabeledTenantDni(tenantId) {
+  const rows = await rest(
+    `tenant_documents?tenant_id=eq.${tenantId}&document_type=eq.dni&select=id,file_name`,
+  );
+  for (const row of rows ?? []) {
+    if (/DOC-20261003|WA0003/i.test(row.file_name ?? "")) {
+      await rest(`tenant_documents?id=eq.${row.id}`, { method: "DELETE" });
+      console.log("removed mislabeled tenant dni doc", row.id);
+    }
+  }
 }
 
 async function upsertPropertyDoc(documentType, filePath, fileName) {
@@ -213,21 +280,56 @@ async function syncBillingDues() {
   }
 }
 
+async function upsertOrderDocAllOrders(documentType, filePath, description) {
+  const orders = await rest(
+    `orders?client_id=eq.${CLIENT_ID}&service_id=eq.${SERVICE_ID}&select=id&order=created_at.asc`,
+  );
+  for (const o of orders ?? []) {
+    await upsertOrderDoc(o.id, documentType, filePath, description);
+  }
+}
+
 async function main() {
   console.log("Seeding Sainero dashboard…");
+  await syncPropertyFromContract();
   const tenantId = await ensureTenant();
+  await fixMislabeledTenantDni(tenantId);
 
   await upsertPropertyDoc("contrato_arrendamiento", FILES.contrato, "Contrato_arrendamiento_Teverga_11_3E.pdf");
+  if (existsSync(FILES.notaEncargo)) {
+    await upsertPropertyDoc(
+      "nota_encargo",
+      FILES.notaEncargo,
+      "Administracion_Alquiler_firmado.pdf",
+    );
+    await upsertOrderDoc(
+      ORDER_SEP,
+      "poder_notarial",
+      FILES.notaEncargo,
+      "Nota de encargo — Administración de alquiler (firmado)",
+    );
+    console.log("nota de encargo subida (inmueble + expediente septiembre)");
+  } else {
+    console.warn("Missing nota encargo:", FILES.notaEncargo);
+  }
+  await upsertTenantDoc(tenantId, "contrato_arrendamiento", FILES.contrato, "Contrato_arrendamiento_Teverga_11_3E.pdf");
 
-  const dniPath = existsSync(FILES.dni) ? FILES.dni : FILES.dniAlt;
-  await upsertTenantDoc(tenantId, "dni", dniPath, basename(dniPath));
+  const dniPath = existsSync(FILES.dniAlt) ? FILES.dniAlt : null;
+  if (dniPath && existsSync(dniPath)) {
+    await upsertTenantDoc(tenantId, "dni", dniPath, basename(dniPath));
+  }
 
   await upsertOrderDoc(ORDER_AUG, "otro", FILES.factura002, "Factura 002/2026 — Agosto 2026");
   await upsertOrderDoc(ORDER_SEP, "otro", FILES.factura003, "Factura 003/2026 — Septiembre 2026");
   await upsertOrderDoc(ORDER_SEP, "recibos", FILES.factura004, "Factura 004/2026 — Septiembre 2026");
 
-  await upsertOrderDoc(ORDER_SEP, "dni_propietario", dniPath, "DNI propietario");
+  const ownerDocPath = existsSync(FILES.dni) ? FILES.dni : FILES.dniAlt;
+  if (existsSync(ownerDocPath)) {
+    await upsertOrderDoc(ORDER_SEP, "dni_propietario", ownerDocPath, "Documentación propietario / justificante");
+  }
   await upsertOrderDoc(ORDER_SEP, "contrato_actual", FILES.contrato, "Contrato de arrendamiento");
+  await upsertOrderDocAllOrders("contrato_actual", FILES.contrato, "Contrato arrendamiento Teverga 11 3º E");
+  await upsertOrderDocAllOrders("dni_inquilino", FILES.contrato, "DNI inquilino (consignado en contrato firmado)");
 
   const octOrderId = await ensureOctoberOrder();
   if (existsSync(FILES.factura004)) {

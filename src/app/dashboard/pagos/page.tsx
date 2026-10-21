@@ -47,7 +47,7 @@ export default async function PagosPage() {
   return (
     <ClientPanelShell
       title="Pagos y facturación"
-      subtitle="Consulta tu historial de cobros y gestiona métodos de pago de forma segura con Stripe."
+      subtitle="Historial de cobros, transferencia bancaria (IBAN en facturas) y portal Stripe si lo tienes activo."
       eyebrow="Facturación"
     >
       <PaymentsBillingCard hasStripeCustomer={hasStripeCustomer} />

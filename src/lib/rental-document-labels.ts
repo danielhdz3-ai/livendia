@@ -4,6 +4,7 @@ export const PROPERTY_DOCUMENT_LABEL_ES: Record<string, string> = {
   ibi: "IBI",
   cedula_habitabilidad: "Cédula de habitabilidad",
   contrato_arrendamiento: "Contrato de arrendamiento",
+  nota_encargo: "Nota de encargo (administración)",
   otros: "Otros",
 };
 

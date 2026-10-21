@@ -8,6 +8,7 @@ const ALLOWED_TYPES = new Set([
   "ibi",
   "cedula_habitabilidad",
   "contrato_arrendamiento",
+  "nota_encargo",
   "otros",
 ]);
 
@@ -21,6 +22,8 @@ function typeLabel(dt: string) {
       return "Cédula de habitabilidad";
     case "contrato_arrendamiento":
       return "Contrato de arrendamiento";
+    case "nota_encargo":
+      return "Nota de encargo (administración)";
     case "otros":
       return "Otros";
     default:

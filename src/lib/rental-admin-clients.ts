@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { fetchClientEmails } from "@/lib/admin-data";
 import { isRentalAdminServiceSlug, subscriptionGrantsRentalAccess } from "@/lib/rental-access";
 
 export type RentalAdminClientRow = {
@@ -21,7 +22,7 @@ export async function fetchRentalAdminClients(
 
   const { data: orders } = await supabase
     .from("orders")
-    .select("client_id, created_at, profiles ( id, full_name, email, phone )")
+    .select("client_id, created_at, profiles ( id, full_name, phone )")
     .eq("service_id", serviceId)
     .in("status", ["paid", "pending_docs", "in_review", "in_progress", "completed"]);
 
@@ -36,7 +37,7 @@ export async function fetchRentalAdminClients(
         ? {
             id: profile.id as string,
             full_name: (profile.full_name as string | null) ?? null,
-            email: (profile.email as string | null) ?? null,
+            email: null,
             phone: (profile.phone as string | null) ?? null,
           }
         : null,
@@ -47,8 +48,24 @@ export async function fetchRentalAdminClients(
 
   const { data: subs } = await supabase
     .from("client_subscriptions")
-    .select("client_id, current_period_end, status, services ( slug ), profiles ( id, full_name, email, phone )")
+    .select("client_id, current_period_end, status, services ( slug ), profiles ( id, full_name, phone )")
     .eq("service_id", serviceId);
+
+  const { data: billingRows } = await supabase
+    .from("rental_admin_billing")
+    .select("client_id, started_on")
+    .not("client_id", "is", null);
+
+  for (const row of billingRows ?? []) {
+    const clientId = row.client_id as string;
+    if (!clientId || byClient.has(clientId)) continue;
+    byClient.set(clientId, {
+      clientId,
+      profile: null,
+      since: (row.started_on as string) ?? new Date().toISOString(),
+      source: "order",
+    });
+  }
 
   for (const sub of subs ?? []) {
     const svc = sub.services;
@@ -67,7 +84,7 @@ export async function fetchRentalAdminClients(
         ? {
             id: profile.id as string,
             full_name: (profile.full_name as string | null) ?? null,
-            email: (profile.email as string | null) ?? null,
+            email: null,
             phone: (profile.phone as string | null) ?? null,
           }
         : null,
@@ -76,9 +93,43 @@ export async function fetchRentalAdminClients(
     });
   }
 
-  return [...byClient.values()].sort(
+  let result = [...byClient.values()].sort(
     (a, b) => new Date(b.since).getTime() - new Date(a.since).getTime(),
   );
+
+  const missingProfileIds = result.filter((r) => !r.profile?.full_name).map((r) => r.clientId);
+  if (missingProfileIds.length > 0) {
+    const { data: profiles } = await supabase
+      .from("profiles")
+      .select("id, full_name, phone")
+      .in("id", missingProfileIds);
+    const profileById = new Map((profiles ?? []).map((p) => [p.id as string, p]));
+    result = result.map((row) => {
+      if (row.profile?.full_name) return row;
+      const p = profileById.get(row.clientId);
+      if (!p) return row;
+      return {
+        ...row,
+        profile: {
+          id: row.clientId,
+          full_name: (p.full_name as string | null) ?? null,
+          email: null,
+          phone: (p.phone as string | null) ?? null,
+        },
+      };
+    });
+  }
+
+  const emails = await fetchClientEmails(result.map((r) => r.clientId));
+  result = result.map((row) => {
+    const email = emails.get(row.clientId) ?? null;
+    if (!row.profile) {
+      return { ...row, profile: { id: row.clientId, full_name: null, email, phone: null } };
+    }
+    return { ...row, profile: { ...row.profile, email } };
+  });
+
+  return result;
 }
 
 /** Heurística: falta nota simple en inmueble o DNI en inquilino. */

@@ -42,6 +42,42 @@ export type ActiveRentalContext = {
   tenantsForActive: RentalTenantRow[];
 };
 
+/** Propiedad activa de un cliente (panel admin: misma lógica que el dashboard del propietario). */
+export async function getActivePropertyForClientUser(
+  supabase: SupabaseClient,
+  clientUserId: string,
+  preferredPropertyId?: string | null,
+): Promise<ActiveRentalContext> {
+  const { data: propertiesRaw } = await supabase
+    .from("properties")
+    .select("*")
+    .eq("user_id", clientUserId)
+    .order("created_at", { ascending: true });
+
+  const properties = (propertiesRaw ?? []) as RentalPropertyRow[];
+
+  if (properties.length === 0) {
+    return { properties: [], activeProperty: null, activeTenant: null, tenantsForActive: [] };
+  }
+
+  const activeProperty =
+    (preferredPropertyId ? properties.find((p) => p.id === preferredPropertyId) : null) ??
+    properties[0];
+
+  const { data: tenantsRaw } = await supabase
+    .from("tenants")
+    .select("*")
+    .eq("property_id", activeProperty.id)
+    .order("is_active", { ascending: false })
+    .order("start_date", { ascending: false });
+
+  const tenantsForActive = (tenantsRaw ?? []) as RentalTenantRow[];
+  const activeTenant =
+    tenantsForActive.find((t) => t.is_active !== false) ?? tenantsForActive[0] ?? null;
+
+  return { properties, activeProperty, activeTenant, tenantsForActive };
+}
+
 export async function getActivePropertyForUser(
   supabase: SupabaseClient,
   userId: string,

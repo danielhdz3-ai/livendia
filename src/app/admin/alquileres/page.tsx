@@ -194,55 +194,17 @@ export default async function AdminAlquileresPage() {
         </div>
       </div>
 
-      {upcomingDues.length > 0 ? (
-        <section className="mb-8 rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
-          <h2 className="text-lg font-bold text-[#1E293B]">Operaciones — cuotas administración (día 1)</h2>
-          <p className="mt-1 text-sm text-[#64748B]">
-            Próximas cuotas previstas en calendario (transferencia). Ámbar = pendiente de cobro.
-          </p>
-          <ul className="mt-4 divide-y divide-slate-100">
-            {upcomingDues.map((due) => (
-              <li key={due.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
-                <div>
-                  <span className="font-semibold text-[#1E293B]">
-                    {dueNameByClient.get(due.client_id as string) ?? "Cliente"}
-                  </span>
-                  <span className="text-[#64748B]">
-                    {" "}
-                    · {new Date(due.due_date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-[#1A4FBF]">
-                    {(due.amount_cents / 100).toLocaleString("es-ES", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}{" "}
-                    €
-                  </span>
-                  <Link
-                    href={`/admin/alquileres/${due.client_id}`}
-                    className="text-xs font-semibold text-[#1A4FBF] hover:underline"
-                  >
-                    Ficha →
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-
       {!clientsWithData.length ? (
         <div className="rounded-xl bg-white p-12 text-center shadow ring-1 ring-slate-200">
           <Building2 className="mx-auto h-16 w-16 text-[#64748B]" />
           <h3 className="mt-4 text-lg font-semibold text-[#1E293B]">No hay clientes todavía</h3>
           <p className="mt-2 text-sm text-[#64748B]">
-            Los clientes con suscripción de administración de alquiler aparecerán aquí
+            Los clientes con pedido o cuota de administración de alquiler aparecerán aquí
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="mb-8 space-y-4">
+          <h2 className="text-lg font-bold text-[#1E293B]">Clientes de administración de alquiler</h2>
           {clientsWithData.map(({ client, properties, tenants, pendingDocs, openIncidents }) => {
             const billingStatus = billingStatusByClient.get(client.clientId) ?? "active";
             return (
@@ -342,7 +304,13 @@ export default async function AdminAlquileresPage() {
                     href={`/admin/alquileres/${client.clientId}`}
                     className="rounded-lg bg-[#1A4FBF] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#2563EB]"
                   >
-                    Ver detalles →
+                    Ver panel del cliente →
+                  </Link>
+                  <Link
+                    href={`/admin/alquileres/${client.clientId}/gestion`}
+                    className="rounded-lg border border-slate-200 px-4 py-2 text-center text-sm font-semibold text-[#475569] transition hover:border-[#1A4FBF]/30"
+                  >
+                    Gestión interna
                   </Link>
                 </div>
               </div>
@@ -351,6 +319,46 @@ export default async function AdminAlquileresPage() {
           })}
         </div>
       )}
+
+      {upcomingDues.length > 0 ? (
+        <section className="mb-8 rounded-xl bg-white p-6 shadow ring-1 ring-slate-200">
+          <h2 className="text-lg font-bold text-[#1E293B]">Operaciones — cuotas administración (día 1)</h2>
+          <p className="mt-1 text-sm text-[#64748B]">
+            Próximas cuotas previstas en calendario (transferencia). Ámbar = pendiente de cobro.
+          </p>
+          <ul className="mt-4 divide-y divide-slate-100">
+            {upcomingDues.map((due) => (
+              <li key={due.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
+                <div>
+                  <span className="font-semibold text-[#1E293B]">
+                    {dueNameByClient.get(due.client_id as string) ?? "Cliente"}
+                  </span>
+                  <span className="text-[#64748B]">
+                    {" "}
+                    · {new Date(due.due_date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-bold text-[#1A4FBF]">
+                    {(due.amount_cents / 100).toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
+                    €
+                  </span>
+                  <Link
+                    href={`/admin/alquileres/${due.client_id}`}
+                    className="text-xs font-semibold text-[#1A4FBF] hover:underline"
+                  >
+                    Panel del cliente →
+                  </Link>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
     </main>
   );
 }
