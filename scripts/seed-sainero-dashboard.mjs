@@ -24,6 +24,7 @@ const SERVICE_ID = "47ff0d38-5797-43fb-aa8d-88344ad6f38c";
 /** Datos extraídos del contrato de arrendamiento (Teverga 11, 3º E, Oviedo). */
 const CONTRACT = {
   tenantName: "Marta Martínez Bastián",
+  tenantEmail: "martbastian@hotmail.com",
   tenantDni: "52617323-Q",
   tenantPhone: "+34686340498",
   tenantAddress: "Calle Teverga 11, 3º E, Oviedo (33012)",
@@ -35,7 +36,7 @@ const CONTRACT = {
   propertyNotes:
     "Vivienda habitual amueblada. Anexos: plaza de garaje n.º 76 (sótano -2) y trastero n.º 26 (sótano -1). Ref. catastral 6356903TP6065N0017FZ. Contrato firmado en Oviedo el 9/01/2026.",
   tenantNotes:
-    "Contrato LAU vivienda habitual (9 ene 2026 – 8 ene 2027, prórroga anual hasta 5 años). Renta 720 €/mes (Unicaja ES02 2103 7843 3100 3011 1731). Fianza 720 €. Email no consta en contrato.",
+    "Contrato LAU vivienda habitual (9 ene 2026 – 8 ene 2027, prórroga anual hasta 5 años). Renta 720 €/mes (Unicaja ES02 2103 7843 3100 3011 1731). Fianza 720 €.",
 };
 const ORDER_AUG = "a945846c-5769-470b-b7fc-cf18e5c3189e";
 const ORDER_SEP = "eda2e049-f3d1-48e1-ae5b-47f1341a6328";
@@ -93,7 +94,7 @@ async function ensureTenant() {
       body: JSON.stringify({
         property_id: PROPERTY_ID,
         full_name: CONTRACT.tenantName,
-        email: null,
+        email: CONTRACT.tenantEmail,
         phone: CONTRACT.tenantPhone,
         dni: CONTRACT.tenantDni,
         address: CONTRACT.tenantAddress,
@@ -113,6 +114,7 @@ async function ensureTenant() {
     method: "PATCH",
     body: JSON.stringify({
       full_name: CONTRACT.tenantName,
+      email: CONTRACT.tenantEmail,
       phone: CONTRACT.tenantPhone,
       dni: CONTRACT.tenantDni,
       address: CONTRACT.tenantAddress,
