@@ -14,6 +14,7 @@ import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-l
 import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
 import { localContratoArrasHref } from "@/lib/contrato-arras-local-cities";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
+import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
 export const CONTRATOS_INMOBILIARIOS_BARCELONA_PATH = "/contratos-inmobiliarios-barcelona" as const;
 
@@ -256,49 +257,51 @@ export const LIVENDIA_PROCESS_STEPS = [
   },
 ] as const;
 
+const zone = (slug: string, name: string, blurb: string, href: string) => ({
+  name,
+  slug,
+  blurb,
+  image: getLocalCityCardImage(slug),
+  href,
+});
+
 export const BARCELONA_ZONE_LINKS = [
-  {
-    name: "Eixample",
-    slug: "barcelona-eixample",
-    blurb: "Contratos LAU, arras y administración en el corazón de Barcelona.",
-    image: "/images/zonas barcelona/eixample4.jpg",
-    href: localContratoAlquilerHref("barcelona-eixample"),
-  },
-  {
-    name: "Gràcia",
-    slug: "barcelona-gracia",
-    blurb: "Alquiler de habitación y contratos de larga duración en vivienda de barrio.",
-    image: "/images/zonas barcelona/pexels-gabicostae-20318695.jpg",
-    href: localContratoAlquilerHref("barcelona-gracia"),
-  },
-  {
-    name: "L'Hospitalet de Llobregat",
-    slug: "hospitalet-de-llobregat",
-    blurb: "Gestoría para particulares en la segunda ciudad del área metropolitana.",
-    image: "/images/zonas barcelona/hospitalet (2).jpg",
-    href: localContratoArrasHref("hospitalet-de-llobregat"),
-  },
-  {
-    name: "Poblenou",
-    slug: "barcelona-poblenou",
-    blurb: "Temporada, LAU y compraventa en zona 22@ y frente marítim.",
-    image: "/images/zonas barcelona/pexels-marc-barcelona-2573466-40149832.jpg",
-    href: localContratoAlquilerHref("barcelona-poblenou"),
-  },
-  {
-    name: "Sants – Montjuïc",
-    slug: "barcelona-sants-montjuic",
-    blurb: "Contratos inmobiliarios cerca de Sants Estació y entorno Montjuïc.",
-    image: "/images/zonas barcelona/sants1.jpg",
-    href: localContratoAlquilerHref("barcelona-sants-montjuic"),
-  },
-  {
-    name: "Les Corts",
-    slug: "barcelona-les-corts",
-    blurb: "Arras y alquiler entre particulares en Les Corts y entorno.",
-    image: "/images/zonas barcelona/diagonal.jpg",
-    href: localContratoAlquilerHref("barcelona-les-corts"),
-  },
+  zone(
+    "barcelona-eixample",
+    "Eixample",
+    "Contratos LAU, arras y administración en el corazón de Barcelona.",
+    localContratoAlquilerHref("barcelona-eixample"),
+  ),
+  zone(
+    "barcelona-gracia",
+    "Gràcia",
+    "Alquiler de habitación y contratos de larga duración en vivienda de barrio.",
+    localContratoAlquilerHref("barcelona-gracia"),
+  ),
+  zone(
+    "hospitalet-de-llobregat",
+    "L'Hospitalet de Llobregat",
+    "Gestoría para particulares en la segunda ciudad del área metropolitana.",
+    localContratoArrasHref("hospitalet-de-llobregat"),
+  ),
+  zone(
+    "barcelona-poblenou",
+    "Poblenou",
+    "Temporada, LAU y compraventa en zona 22@ y frente marítim.",
+    localContratoAlquilerHref("barcelona-poblenou"),
+  ),
+  zone(
+    "barcelona-sants-montjuic",
+    "Sants – Montjuïc",
+    "Contratos inmobiliarios cerca de Sants Estació y entorno Montjuïc.",
+    localContratoAlquilerHref("barcelona-sants-montjuic"),
+  ),
+  zone(
+    "barcelona-les-corts",
+    "Les Corts",
+    "Arras y alquiler entre particulares en Les Corts y entorno.",
+    localContratoAlquilerHref("barcelona-les-corts"),
+  ),
 ] as const;
 
 export const CONTRATOS_BCN_FAQ = [
