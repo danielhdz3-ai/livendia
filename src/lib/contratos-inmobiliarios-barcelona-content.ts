@@ -275,6 +275,24 @@ export const LIVENDIA_PROCESS_STEPS = [
 export type { BarcelonaZoneLink } from "@/lib/contratos-inmobiliarios-barcelona-zones";
 export { CONTRATOS_BCN_CATALUNYA_ZONE_LINKS as BARCELONA_ZONE_LINKS } from "@/lib/contratos-inmobiliarios-barcelona-zones";
 
+/** Despacho físico Les Corts — cita presencial para contratos inmobiliarios. */
+export const CONTRATOS_BCN_OFFICE_SECTION = {
+  eyebrow: "Despacho en Les Corts · Barcelona",
+  title: "Ven a vernos: reserva cita para tu contrato inmobiliario",
+  lead:
+    "Livendia es gestoría inmobiliaria online con sede real en el distrito de Les Corts (Carrer de Mejía Lequerica, 44). Tramitas por panel y WhatsApp, y si lo prefieres revisamos contigo en persona arras, LAU, habitación, temporada o compraventa entre particulares.",
+  body:
+    "Atendemos a propietarios e inquilinos de Barcelona, el área metropolitana y Cataluña. Pide cita por formulario o WhatsApp: te asignamos gestor, recogemos documentación y, el día acordado, cerramos el borrador o resolvemos dudas antes de firmar.",
+  transport:
+    "Les Corts · metro L3 (Plaça del Centre / Zona Universitària) · FGC · aparcamiento en calle Mejía Lequerica.",
+  bullets: [
+    "Cita con gestor inmobiliario — sin comisión de agencia sobre el precio del piso.",
+    "Revisión de borradores, cláusulas CCCat y checklist documental en el despacho.",
+    "Mismo expediente online: lo que subes al panel lo ve tu gestor al instante.",
+    "Horario L–V 9:00–19:30; cita previa para atención presencial.",
+  ],
+} as const;
+
 /** Encabezado de la sección barrios con foto apaisada de la ciudad (solo JPG en git). */
 export const BARCELONA_ZONES_SECTION = {
   eyebrow: "Barcelona, área metropolitana y Cataluña",

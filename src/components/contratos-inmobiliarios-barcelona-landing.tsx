@@ -1,5 +1,6 @@
 import { ContratosBcnHeroVisual } from "@/components/contratos-bcn-hero-visual";
 import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band";
+import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
 import { ContratosBcnProcessAnimated } from "@/components/contratos-bcn-process-animated";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
 import { ContratosBcnZonesCarousel } from "@/components/contratos-bcn-zones-carousel";
@@ -215,6 +216,12 @@ export function ContratosInmobiliariosBarcelonaLanding({
               </a>
             ))}
             <a
+              href="#despacho"
+              className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
+            >
+              Despacho Les Corts
+            </a>
+            <a
               href="#proceso"
               className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
             >
@@ -317,6 +324,8 @@ export function ContratosInmobiliariosBarcelonaLanding({
             propertyLine="Piso 3 hab. · Eixample, Barcelona"
           />
         </div>
+
+        <ContratosBcnOfficeSection />
 
         <section id="proceso" className="scroll-mt-28 border-b border-slate-200 bg-[#EFF6FF] px-4 py-16 sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">
