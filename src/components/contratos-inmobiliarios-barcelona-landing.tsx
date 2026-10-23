@@ -142,8 +142,8 @@ export function ContratosInmobiliariosBarcelonaLanding({
           <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-cyan-400/25 blur-3xl livendia-float-slow" />
           <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-white/15 blur-3xl livendia-float-slow livendia-float-delay" />
           <div className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-[#2563EB]/20 blur-[100px]" />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="livendia-hero-stagger">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8 xl:gap-10">
+            <div className="livendia-hero-stagger min-w-0">
               <p className="text-sm font-semibold uppercase tracking-widest text-cyan-200">
                 Barcelona · Cataluña · Particulares
               </p>
@@ -195,7 +195,9 @@ export function ContratosInmobiliariosBarcelonaLanding({
                 ))}
               </ul>
             </div>
-            <ContratosBcnHeroVisual sections={CONTRATOS_BCN_SERVICE_SECTIONS} />
+            <div className="flex min-w-0 justify-center lg:justify-start">
+              <ContratosBcnHeroVisual sections={CONTRATOS_BCN_SERVICE_SECTIONS} />
+            </div>
           </div>
         </section>
 

@@ -21,14 +21,15 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
   if (!current) return null;
 
   return (
-    <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-      <div className="livendia-float-slow pointer-events-none absolute -right-4 top-8 z-20 rounded-2xl bg-white/95 px-4 py-3 shadow-xl ring-1 ring-white/50 backdrop-blur">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#06B6D4]">Entrega media</p>
-        <p className="text-xl font-extrabold text-[#1A4FBF]">~48 h</p>
-        <p className="text-xs text-[#64748B]">con documentación completa</p>
-      </div>
+    <div className="relative w-full max-w-[min(100%,22rem)] sm:max-w-sm lg:max-w-md xl:max-w-lg">
       <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-[#0B2D7A]/40 ring-2 ring-white/20">
-        <div className="relative aspect-[3/4] w-full max-w-[340px] sm:max-w-[380px] lg:ml-auto lg:max-w-[420px]">
+        <div className="pointer-events-none absolute right-3 top-3 z-30 rounded-2xl bg-white/95 px-3 py-2 shadow-lg ring-1 ring-white/50 backdrop-blur sm:right-4 sm:top-4 sm:px-4 sm:py-3">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-[#06B6D4]">Entrega media</p>
+          <p className="text-lg font-extrabold text-[#1A4FBF] sm:text-xl">~48 h</p>
+          <p className="text-[11px] text-[#64748B]">con documentación completa</p>
+        </div>
+
+        <div className="relative aspect-[3/4] w-full">
           {sections.map((s, i) => (
             <div
               key={s.id}
@@ -40,15 +41,15 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
                 src={s.heroImage}
                 alt={s.heroImageAlt}
                 fill
-                className="object-cover object-top"
-                sizes="(max-width:1024px) 90vw, 480px"
+                className="object-cover object-[center_20%]"
+                sizes="(max-width:1024px) 85vw, 512px"
                 quality={90}
                 priority={i === 0}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#1A4FBF]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#1A4FBF]/20 to-transparent" />
             </div>
           ))}
-          <div className="absolute inset-x-0 bottom-0 z-20 p-6">
+          <div className="absolute inset-x-0 bottom-0 z-20 p-5 sm:p-6">
             <p className="text-xs font-bold uppercase tracking-wider text-cyan-200">{current.eyebrow}</p>
             <p className="mt-2 text-lg font-extrabold leading-snug text-white sm:text-xl">{current.navLabel}</p>
             <p className="mt-2 inline-flex rounded-lg bg-white/15 px-3 py-1 text-sm font-bold text-white backdrop-blur">
