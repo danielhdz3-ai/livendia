@@ -86,7 +86,7 @@ export function ContratosBcnServicesCarousel({ sections }: { sections: readonly 
                 className="grid w-full shrink-0 grid-cols-1 lg:grid-cols-2"
                 aria-hidden={i !== active}
               >
-                <div className="relative aspect-[16/10] w-full lg:aspect-auto lg:min-h-[320px]">
+                <div className="relative aspect-[16/9] w-full lg:aspect-auto lg:min-h-[300px]">
                   <Image
                     src={s.image}
                     alt={s.imageAlt}

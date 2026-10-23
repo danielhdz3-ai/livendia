@@ -14,7 +14,6 @@ import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-l
 import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
 import { localContratoArrasHref } from "@/lib/contrato-arras-local-cities";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
-import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
 export const CONTRATOS_INMOBILIARIOS_BARCELONA_PATH = "/contratos-inmobiliarios-barcelona" as const;
 
@@ -52,8 +51,12 @@ export type ContratosBcnServiceSection = {
   serviceSlug: string;
   serviceHref: string;
   localHref?: string;
+  /** Foto apaisada — carrusel y apartados (contratos / mesa de trabajo). */
   image: string;
   imageAlt: string;
+  /** Foto vertical — solo encabezado hero. */
+  heroImage: string;
+  heroImageAlt: string;
   reverse?: boolean;
 };
 
@@ -84,7 +87,9 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceHref: "/servicios/contrato-arras-penitenciales",
     localHref: localContratoArrasHref("barcelona"),
     image: "/images/contratodearras.jpg",
-    imageAlt: "Gestor Livendia redactando contrato de arras en Barcelona",
+    imageAlt: "Firma de contrato de arras entre particulares — gestoría Livendia Barcelona",
+    heroImage: "/images/contratos-hero-arras.jpg",
+    heroImageAlt: "Gestor revisando contrato de arras con cliente en Barcelona",
   },
   {
     id: "lau",
@@ -112,8 +117,10 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: CONTRATO_ALQUILER_LAU_SLUG,
     serviceHref: `/servicios/${CONTRATO_ALQUILER_LAU_SLUG}`,
     localHref: localContratoAlquilerHref("barcelona"),
-    image: "/images/contratodealquiler.jpg",
-    imageAlt: "Contrato de alquiler LAU redactado por gestoría Livendia Barcelona",
+    image: "/images/contratos6.jpg",
+    imageAlt: "Redacción de contrato de alquiler LAU en mesa de trabajo",
+    heroImage: "/images/contratos-hero-lau.jpg",
+    heroImageAlt: "Profesional revisando contrato de alquiler LAU — Livendia Barcelona",
     reverse: true,
   },
   {
@@ -142,8 +149,10 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: CONTRATO_ALQUILER_TEMPORADA_SLUG,
     serviceHref: `/servicios/${CONTRATO_ALQUILER_TEMPORADA_SLUG}`,
     localHref: localContratoAlquilerHref("barcelona"),
-    image: "/images/pexels-pavel-danilyuk-5520299.jpg",
-    imageAlt: "Contrato alquiler temporada Barcelona gestoría Livendia",
+    image: "/images/contratos7.jpg",
+    imageAlt: "Contrato de alquiler de temporada — documentación en mesa",
+    heroImage: "/images/gestora3.jpg",
+    heroImageAlt: "Gestora Livendia con contrato de alquiler de temporada en Barcelona",
   },
   {
     id: "habitacion",
@@ -172,7 +181,9 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceHref: `/servicios/${CONTRATO_ALQUILER_HABITACION_SLUG}`,
     localHref: localContratoAlquilerHref("barcelona-gracia"),
     image: "/images/contratos1.jpg",
-    imageAlt: "Contrato alquiler habitación Barcelona Livendia",
+    imageAlt: "Contrato de alquiler de habitación — revisión de cláusulas en documento",
+    heroImage: "/images/chicavertical.jpg",
+    heroImageAlt: "Inquilina en piso compartido — alquiler de habitación en Barcelona",
     reverse: true,
   },
   {
@@ -200,8 +211,10 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: "servicio-completo-compra",
     serviceHref: "/servicios/servicio-completo-compra",
     localHref: `${GESTORIA_INMOBILIARIA_LOCAL_BASE}/barcelona`,
-    image: "/images/pexels-pavel-danilyuk-5520284.jpg",
-    imageAlt: "Acompañamiento compraventa particulares Barcelona Livendia",
+    image: "/images/colynary-media-ZKkuYgbTRl8-unsplash.jpg",
+    imageAlt: "Reunión de compraventa entre particulares con contratos sobre la mesa",
+    heroImage: "/images/contratos-hero-compraventa.jpg",
+    heroImageAlt: "Equipo revisando contratos de compraventa — gestoría Livendia Barcelona",
   },
   {
     id: "admin",
@@ -228,8 +241,10 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: ADMINISTRACION_ALQUILER_SLUG,
     serviceHref: `/servicios/${ADMINISTRACION_ALQUILER_SLUG}`,
     localHref: localAdministracionAlquilerHref("barcelona"),
-    image: "/images/gestoria4.jpg",
-    imageAlt: "Administración alquiler viviendas Barcelona Livendia",
+    image: "/images/contratos5.jpg",
+    imageAlt: "Administración de alquiler — contratos y documentación del inmueble",
+    heroImage: "/images/gestora2.jpg",
+    heroImageAlt: "Gestora Livendia — administración de alquiler en Barcelona",
     reverse: true,
   },
 ];
@@ -257,94 +272,18 @@ export const LIVENDIA_PROCESS_STEPS = [
   },
 ] as const;
 
-export type BarcelonaZoneLink = {
-  name: string;
-  slug: string;
-  /** Encabezado SEO del barrio o municipio */
-  heading: string;
-  areaLabel: "Barrio de Barcelona" | "Municipio área metropolitana";
-  blurb: string;
-  image: string;
-  href: string;
-};
-
-const zone = (
-  slug: string,
-  name: string,
-  heading: string,
-  areaLabel: BarcelonaZoneLink["areaLabel"],
-  blurb: string,
-  href: string,
-): BarcelonaZoneLink => ({
-  name,
-  slug,
-  heading,
-  areaLabel,
-  blurb,
-  image: getLocalCityCardImage(slug),
-  href,
-});
+export type { BarcelonaZoneLink } from "@/lib/contratos-inmobiliarios-barcelona-zones";
+export { CONTRATOS_BCN_CATALUNYA_ZONE_LINKS as BARCELONA_ZONE_LINKS } from "@/lib/contratos-inmobiliarios-barcelona-zones";
 
 /** Encabezado de la sección barrios con foto apaisada de la ciudad (solo JPG en git). */
 export const BARCELONA_ZONES_SECTION = {
-  eyebrow: "Barcelona y área metropolitana",
-  title: "Contratos inmobiliarios por barrio en Barcelona",
+  eyebrow: "Barcelona, área metropolitana y Cataluña",
+  title: "Contratos inmobiliarios por barrio y municipio",
   lead:
-    "Cada zona tiene su contexto urbanístico, de mercado y documental. Enlazamos landings locales con contratos LAU, habitación, temporada, arras y gestión de alquiler adaptados a particulares.",
+    "Más de treinta enlaces locales: distritos y barrios de Barcelona capital, municipios del AMB (L'Hospitalet, Badalona, Cornellà, Sant Cugat, Gavà…) y corredores del Vallès y Baix Llobregat. Cada landing enlaza contratos LAU, arras, habitación, temporada o administración de alquiler con gestor Livendia.",
   heroImage: "/images/barcelona.jpg",
-  heroImageAlt: "Panorámica de Barcelona — gestoría inmobiliaria Livendia por barrios",
+  heroImageAlt: "Panorámica de Barcelona — gestoría inmobiliaria Livendia por barrios y Cataluña",
 } as const;
-
-export const BARCELONA_ZONE_LINKS: readonly BarcelonaZoneLink[] = [
-  zone(
-    "barcelona-eixample",
-    "Eixample",
-    "Contratos inmobiliarios en el Eixample",
-    "Barrio de Barcelona",
-    "Contratos LAU, arras y administración en el corazón de Barcelona.",
-    localContratoAlquilerHref("barcelona-eixample"),
-  ),
-  zone(
-    "barcelona-gracia",
-    "Gràcia",
-    "Contratos inmobiliarios en Gràcia",
-    "Barrio de Barcelona",
-    "Alquiler de habitación y contratos de larga duración en vivienda de barrio.",
-    localContratoAlquilerHref("barcelona-gracia"),
-  ),
-  zone(
-    "hospitalet-de-llobregat",
-    "L'Hospitalet de Llobregat",
-    "Contratos inmobiliarios en L'Hospitalet",
-    "Municipio área metropolitana",
-    "Gestoría para particulares en la segunda ciudad del área metropolitana.",
-    localContratoArrasHref("hospitalet-de-llobregat"),
-  ),
-  zone(
-    "barcelona-poblenou",
-    "Poblenou",
-    "Contratos inmobiliarios en Poblenou",
-    "Barrio de Barcelona",
-    "Temporada, LAU y compraventa en zona 22@ y frente marítim.",
-    localContratoAlquilerHref("barcelona-poblenou"),
-  ),
-  zone(
-    "barcelona-sants-montjuic",
-    "Sants – Montjuïc",
-    "Contratos inmobiliarios en Sants y Montjuïc",
-    "Barrio de Barcelona",
-    "Contratos inmobiliarios cerca de Sants Estació y entorno Montjuïc.",
-    localContratoAlquilerHref("barcelona-sants-montjuic"),
-  ),
-  zone(
-    "barcelona-les-corts",
-    "Les Corts",
-    "Contratos inmobiliarios en Les Corts",
-    "Barrio de Barcelona",
-    "Arras y alquiler entre particulares en Les Corts y entorno.",
-    localContratoAlquilerHref("barcelona-les-corts"),
-  ),
-];
 
 export const CONTRATOS_BCN_FAQ = [
   {

@@ -33,7 +33,7 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
       </div>
 
       <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-[#0B2D7A]/40 ring-2 ring-white/20">
-        <div className="relative aspect-[4/5] w-full sm:aspect-[5/6] lg:aspect-[4/5]">
+        <div className="relative aspect-[3/4] w-full max-w-[340px] sm:max-w-[380px] lg:ml-auto lg:max-w-[420px]">
           {sections.map((s, i) => (
             <div
               key={s.id}
@@ -42,10 +42,10 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
               }`}
             >
               <Image
-                src={s.image}
-                alt={s.imageAlt}
+                src={s.heroImage}
+                alt={s.heroImageAlt}
                 fill
-                className="object-cover object-center"
+                className="object-cover object-top"
                 sizes="(max-width:1024px) 90vw, 480px"
                 quality={90}
                 priority={i === 0}

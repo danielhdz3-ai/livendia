@@ -3,6 +3,7 @@ import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band
 import { ContratosBcnProcessAnimated } from "@/components/contratos-bcn-process-animated";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
 import { ContratosBcnZonesCarousel } from "@/components/contratos-bcn-zones-carousel";
+import { ContratosBcnZonesLinkCloud } from "@/components/contratos-bcn-zones-link-cloud";
 import { FaqSection } from "@/components/faq-section";
 import { LivendiaReveal } from "@/components/livendia-reveal";
 import { PublicHeader } from "@/components/public-header";
@@ -355,23 +356,36 @@ export function ContratosInmobiliariosBarcelonaLanding({
                 <div className="absolute inset-0 flex flex-col justify-center px-6 py-8 sm:px-10 lg:max-w-2xl">
                   <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">Ciudad condal</p>
                   <p className="mt-2 text-2xl font-extrabold leading-tight text-white sm:text-3xl">
-                    Gestoría de contratos inmobiliarios en Barcelona capital
+                    Barcelona, AMB y Cataluña — contratos por barrio
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-blue-100 sm:text-base">
-                    LAU, habitación, temporada, arras y administración de alquiler — particulares, panel online y gestor
-                    asignado en cada barrio.
+                    Distritos, barrios finos (Born, Raval, Poblenou, Pedralbes…) y municipios del área metropolitana con
+                    landings locales enlazadas desde esta página.
                   </p>
                 </div>
               </div>
             </div>
 
             <ContratosBcnZonesCarousel zones={BARCELONA_ZONE_LINKS} />
-            <p className="mt-8 text-sm text-[#64748B]">
-              También te puede interesar la{" "}
+            <ContratosBcnZonesLinkCloud zones={BARCELONA_ZONE_LINKS} />
+            <p className="mt-8 text-sm leading-relaxed text-[#64748B]">
+              Hubs relacionados:{" "}
               <Link href="/gestoria/barcelona" className="font-semibold text-[#1A4FBF] hover:underline">
-                gestoría inmobiliaria completa en Barcelona
+                gestoría inmobiliaria Barcelona
+              </Link>
+              ,{" "}
+              <Link href="/servicios/redactar-contrato-alquiler/barcelona" className="font-semibold text-[#1A4FBF] hover:underline">
+                redactar contrato alquiler Barcelona
+              </Link>
+              ,{" "}
+              <Link href="/servicios/contrato-de-arras" className="font-semibold text-[#1A4FBF] hover:underline">
+                contrato de arras
+              </Link>
+              ,{" "}
+              <Link href="/administracion-alquiler/barcelona/eixample" className="font-semibold text-[#1A4FBF] hover:underline">
+                administración alquiler Eixample
               </Link>{" "}
-              y el índice{" "}
+              e{" "}
               <Link href="/gestoria" className="font-semibold text-[#1A4FBF] hover:underline">
                 gestoría por ciudades
               </Link>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import type { BarcelonaZoneLink } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import type { BarcelonaZoneLink } from "@/lib/contratos-inmobiliarios-barcelona-zones";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const AUTO_MS = 7000;
