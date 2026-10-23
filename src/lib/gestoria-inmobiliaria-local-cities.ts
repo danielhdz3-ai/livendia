@@ -213,6 +213,8 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       "contrato arras barcelona particular",
       "administración alquiler barcelona particulares",
       "vender piso sin agencia barcelona gestoría",
+      "contratos inmobiliarios barcelona",
+      "gestoría contratos inmobiliarios barcelona",
     ],
     h1: "Gestoría inmobiliaria para particulares en Barcelona",
     heroLead:

@@ -97,6 +97,7 @@ import { PILLAR_BILBAO_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobilia
 import { PILLAR_MALAGA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-malaga";
 import { PILLAR_GRANADA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-granada";
 import { PILLAR_ZARAGOZA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-zaragoza";
+import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
@@ -269,6 +270,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: gestoriaDate,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+    },
+    {
+      url: `${base}${CONTRATOS_INMOBILIARIOS_BARCELONA_PATH}`,
+      lastModified: gestoriaDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.91,
     },
   ];
 

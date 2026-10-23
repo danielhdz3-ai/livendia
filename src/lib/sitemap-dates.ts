@@ -6,7 +6,7 @@ export const SITEMAP_LAST_MODIFIED = {
   core: "2026-06-30",
   servicios: "2026-06-01",
   localLandings: "2026-08-23",
-  gestoria: "2026-08-23",
+  gestoria: "2026-10-23",
   ventaSeo: "2026-06-30",
   venderSinInmobiliaria: "2026-08-23",
   ciudades: "2026-08-23",
