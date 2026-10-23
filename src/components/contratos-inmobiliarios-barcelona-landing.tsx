@@ -1,5 +1,12 @@
+import { ContratosBcnHeroVisual } from "@/components/contratos-bcn-hero-visual";
+import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band";
+import { ContratosBcnProcessAnimated } from "@/components/contratos-bcn-process-animated";
+import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
+import { ContratosBcnZonesCarousel } from "@/components/contratos-bcn-zones-carousel";
 import { FaqSection } from "@/components/faq-section";
+import { LivendiaReveal } from "@/components/livendia-reveal";
 import { PublicHeader } from "@/components/public-header";
+import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { ContratarSlugButton, MultiServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -11,7 +18,6 @@ import {
   CONTRATOS_BCN_FAQ,
   CONTRATOS_BCN_SERVICE_SECTIONS,
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
-  LIVENDIA_PROCESS_STEPS,
 } from "@/lib/contratos-inmobiliarios-barcelona-content";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import {
@@ -25,7 +31,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
-  FileUp,
   LayoutDashboard,
   MessageCircle,
   Phone,
@@ -93,14 +98,14 @@ function ServiceVisualCard({
   subtitle: string;
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-2xl">
-      <div className="overflow-hidden rounded-3xl bg-white shadow-2xl shadow-[#1A4FBF]/15 ring-1 ring-slate-200/80">
-        <div className="relative aspect-[16/9] w-full">
+    <div className="relative mx-auto w-full max-w-2xl transition duration-500 hover:-translate-y-1">
+      <div className="overflow-hidden rounded-3xl bg-white shadow-2xl shadow-[#1A4FBF]/15 ring-1 ring-slate-200/80 transition hover:shadow-[#1A4FBF]/25">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
             src={image}
             alt={imageAlt}
             fill
-            className="object-cover object-center"
+            className="object-cover object-center transition duration-700 hover:scale-105"
             sizes="(max-width:1024px) 100vw, 672px"
             quality={92}
           />
@@ -129,63 +134,70 @@ export function ContratosInmobiliariosBarcelonaLanding({
         <JsonLd />
         <PublicHeader />
 
-        <section className={`relative overflow-hidden ${LANDING_HERO_GRADIENT} px-4 pb-16 pt-10 sm:px-6 lg:pb-24 lg:pt-14`}>
-          <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
-          <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-          <div className="relative mx-auto max-w-6xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-cyan-200">
-              Barcelona · Cataluña · Particulares
-            </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-              Contratos inmobiliarios en Barcelona con gestoría Livendia
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-blue-100">
-              Somos una gestoría inmobiliaria online especializada en todo tipo de trámites contractuales para clientes
-              particulares: alquiler LAU, temporada, habitación, arras, compraventa y administración de alquiler — con
-              panel online y gestor dedicado.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="#proceso"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] shadow-lg transition hover:bg-blue-50"
-              >
-                Cómo funciona Livendia
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href={waHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
-              >
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp gestor
-              </a>
-              <a
-                href={getContactPhoneTelHref()}
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white/95 hover:bg-white/10"
-              >
-                <Phone className="h-4 w-4" />
-                {getContactPhoneDisplay()}
-              </a>
-            </div>
-            <ul className="mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                { icon: Shield, text: "Precios fijos IVA incl. — sin comisión inmobiliaria" },
-                { icon: LayoutDashboard, text: "Panel online para documentación y expedientes" },
-                { icon: Sparkles, text: "Gestor humano en Barcelona y Cataluña" },
-              ].map(({ icon: Icon, text }) => (
-                <li
-                  key={text}
-                  className="flex items-start gap-3 rounded-2xl bg-white/10 px-4 py-3 text-sm font-medium text-blue-50 ring-1 ring-white/15"
+        <section
+          className={`livendia-hero-shimmer relative overflow-hidden ${LANDING_HERO_GRADIENT} px-4 pb-12 pt-10 sm:px-6 lg:pb-20 lg:pt-14`}
+        >
+          <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-cyan-400/25 blur-3xl livendia-float-slow" />
+          <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-white/15 blur-3xl livendia-float-slow livendia-float-delay" />
+          <div className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-[#2563EB]/20 blur-[100px]" />
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="livendia-hero-stagger">
+              <p className="text-sm font-semibold uppercase tracking-widest text-cyan-200">
+                Barcelona · Cataluña · Particulares
+              </p>
+              <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.1rem]">
+                Contratos inmobiliarios en Barcelona con gestoría Livendia
+              </h1>
+              <p className="mt-6 text-lg leading-relaxed text-blue-100">
+                Gestoría online para particulares: LAU, temporada, habitación, arras, compraventa y administración de
+                alquiler — con carrusel de servicios, panel interactivo y gestor dedicado.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="#servicios-carrusel"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#1A4FBF] shadow-lg transition hover:scale-[1.02] hover:bg-blue-50"
                 >
-                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
-                  {text}
-                </li>
-              ))}
-            </ul>
+                  Ver carrusel de contratos
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp gestor
+                </a>
+                <a
+                  href={getContactPhoneTelHref()}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white/95 hover:bg-white/10"
+                >
+                  <Phone className="h-4 w-4" />
+                  {getContactPhoneDisplay()}
+                </a>
+              </div>
+              <ul className="mt-10 grid gap-3 sm:grid-cols-3">
+                {[
+                  { icon: Shield, text: "Precios fijos IVA incl." },
+                  { icon: LayoutDashboard, text: "Panel online en vivo" },
+                  { icon: Sparkles, text: "Gestor en Barcelona" },
+                ].map(({ icon: Icon, text }) => (
+                  <li
+                    key={text}
+                    className="flex items-start gap-3 rounded-2xl bg-white/10 px-4 py-3 text-sm font-medium text-blue-50 ring-1 ring-white/15 backdrop-blur-sm"
+                  >
+                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ContratosBcnHeroVisual sections={CONTRATOS_BCN_SERVICE_SECTIONS} />
           </div>
         </section>
+
+        <ContratosBcnMarqueeBand />
 
         <nav
           className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90"
@@ -216,12 +228,19 @@ export function ContratosInmobiliariosBarcelonaLanding({
           </div>
         </nav>
 
-        {CONTRATOS_BCN_SERVICE_SECTIONS.map((section) => (
+        <div id="servicios-carrusel">
+          <ContratosBcnServicesCarousel sections={CONTRATOS_BCN_SERVICE_SECTIONS} />
+        </div>
+
+        {CONTRATOS_BCN_SERVICE_SECTIONS.map((section, sectionIndex) => (
           <section
             key={section.id}
             id={section.id}
-            className="scroll-mt-28 border-b border-slate-200 px-4 py-16 sm:px-6 lg:py-24"
+            className={`scroll-mt-28 border-b border-slate-200 px-4 py-16 sm:px-6 lg:py-24 ${
+              sectionIndex % 2 === 1 ? "bg-[#F8FAFC]" : "bg-white"
+            }`}
           >
+            <LivendiaReveal>
             <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className={section.reverse ? "lg:order-2" : ""}>
                 <ServiceVisualCard
@@ -287,59 +306,16 @@ export function ContratosInmobiliariosBarcelonaLanding({
                 </div>
               </div>
             </div>
+            </LivendiaReveal>
           </section>
         ))}
 
-        <section id="panel" className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6 lg:py-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Plataforma Livendia</p>
-              <h2 className="mt-3 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
-                Cada cliente tiene un panel para su documentación
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#475569]">
-                Tras contratar, accedes a tu área privada: subes DNI, notas simples, borradores, fotos del inmueble e
-                inventarios. El gestor trabaja sobre el mismo expediente y tú descargas contratos y facturas cuando
-                estén listos. Si contratas administración de alquiler, el panel incluye inmueble, inquilino, incidencias,
-                chat y pagos.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm text-[#334155]">
-                {[
-                  "Expedientes por servicio con progreso visible",
-                  "Descarga de PDFs y facturas Livendia",
-                  "Panel de alquiler para propietarios con inquilino y documentos",
-                  "Comunicación con tu gestor (WhatsApp y chat)",
-                ].map((t) => (
-                  <li key={t} className="flex gap-2">
-                    <FileUp className="h-5 w-5 shrink-0 text-[#1A4FBF]" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/login?next=/dashboard"
-                className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#1A4FBF] hover:underline"
-              >
-                Acceder al área de cliente
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200">
-              <Image
-                src="/images/contratos2.jpg"
-                alt="Panel online Livendia para documentación inmobiliaria"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width:1024px) 100vw, 560px"
-                quality={90}
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A4FBF]/95 to-transparent p-6 pt-16 text-white">
-                <p className="text-sm font-semibold">Gestoría digital premium</p>
-                <p className="text-xs text-blue-100">Documentación centralizada · Barcelona y toda Cataluña</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div id="panel">
+          <RentalContractPlatformShowcase
+            city="Barcelona"
+            propertyLine="Piso 3 hab. · Eixample, Barcelona"
+          />
+        </div>
 
         <section id="proceso" className="scroll-mt-28 border-b border-slate-200 bg-[#EFF6FF] px-4 py-16 sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">
@@ -348,23 +324,9 @@ export function ContratosInmobiliariosBarcelonaLanding({
               Cinco pasos para formalizar tu contrato inmobiliario
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-[#64748B]">
-              Desde la primera conversación con el gestor hasta la entrega del PDF firmado — transparente, online y con
-              soporte humano.
+              Línea de tiempo animada: cada paso se ilumina en secuencia. Toca un número en escritorio para fijar el paso.
             </p>
-            <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-              {LIVENDIA_PROCESS_STEPS.map((step, i) => (
-                <li
-                  key={step.title}
-                  className="relative flex flex-col rounded-2xl bg-white p-6 shadow-lg shadow-[#1A4FBF]/5 ring-1 ring-slate-200/80"
-                >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1A4FBF] text-lg font-extrabold text-white">
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-4 text-base font-bold text-[#1E293B]">{step.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-[#64748B]">{step.body}</p>
-                </li>
-              ))}
-            </ol>
+            <ContratosBcnProcessAnimated />
           </div>
         </section>
 
@@ -403,38 +365,7 @@ export function ContratosInmobiliariosBarcelonaLanding({
               </div>
             </div>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {BARCELONA_ZONE_LINKS.map((z) => (
-                <Link
-                  key={z.slug}
-                  href={z.href}
-                  className="group overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-xl hover:ring-[#1A4FBF]/25"
-                >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <Image
-                      src={z.image}
-                      alt={`${z.heading} — Livendia`}
-                      fill
-                      className="object-cover object-center transition duration-500 group-hover:scale-105"
-                      sizes="(max-width:768px) 100vw, 33vw"
-                      quality={90}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/85 via-[#1A4FBF]/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-cyan-200">{z.areaLabel}</p>
-                      <p className="mt-1 text-lg font-bold leading-snug text-white">{z.name}</p>
-                    </div>
-                  </div>
-                  <div className="border-t border-slate-100 p-4">
-                    <h3 className="text-base font-bold text-[#1E293B] group-hover:text-[#1A4FBF]">{z.heading}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#64748B]">{z.blurb}</p>
-                    <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">
-                      Ver landing local →
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <ContratosBcnZonesCarousel zones={BARCELONA_ZONE_LINKS} />
             <p className="mt-8 text-sm text-[#64748B]">
               También te puede interesar la{" "}
               <Link href="/gestoria/barcelona" className="font-semibold text-[#1A4FBF] hover:underline">

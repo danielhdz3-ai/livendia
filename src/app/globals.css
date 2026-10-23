@@ -143,6 +143,54 @@ body {
   }
 }
 
+@keyframes livendia-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(4px);
+  }
+}
+
+@keyframes livendia-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes livendia-hero-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.livendia-float-slow {
+  animation: livendia-float 5.5s ease-in-out infinite;
+}
+
+.livendia-float-delay {
+  animation-delay: -2.75s;
+}
+
+.livendia-marquee-track {
+  animation: livendia-marquee 38s linear infinite;
+}
+
+.livendia-hero-shimmer {
+  background-size: 200% 200%;
+  animation: livendia-hero-shimmer 12s ease infinite;
+}
+
 .livendia-panel-enter {
   animation: livendia-fade-up 0.22s ease-out both;
 }
@@ -166,7 +214,10 @@ body {
   .livendia-check-pop,
   .livendia-progress-bar-shine,
   .livendia-reveal,
-  .livendia-hero-stagger > * {
+  .livendia-hero-stagger > *,
+  .livendia-float-slow,
+  .livendia-marquee-track,
+  .livendia-hero-shimmer {
     animation: none;
     opacity: 1;
     transform: none;
