@@ -257,52 +257,94 @@ export const LIVENDIA_PROCESS_STEPS = [
   },
 ] as const;
 
-const zone = (slug: string, name: string, blurb: string, href: string) => ({
+export type BarcelonaZoneLink = {
+  name: string;
+  slug: string;
+  /** Encabezado SEO del barrio o municipio */
+  heading: string;
+  areaLabel: "Barrio de Barcelona" | "Municipio área metropolitana";
+  blurb: string;
+  image: string;
+  href: string;
+};
+
+const zone = (
+  slug: string,
+  name: string,
+  heading: string,
+  areaLabel: BarcelonaZoneLink["areaLabel"],
+  blurb: string,
+  href: string,
+): BarcelonaZoneLink => ({
   name,
   slug,
+  heading,
+  areaLabel,
   blurb,
   image: getLocalCityCardImage(slug),
   href,
 });
 
-export const BARCELONA_ZONE_LINKS = [
+/** Encabezado de la sección barrios con foto apaisada de la ciudad (solo JPG en git). */
+export const BARCELONA_ZONES_SECTION = {
+  eyebrow: "Barcelona y área metropolitana",
+  title: "Contratos inmobiliarios por barrio en Barcelona",
+  lead:
+    "Cada zona tiene su contexto urbanístico, de mercado y documental. Enlazamos landings locales con contratos LAU, habitación, temporada, arras y gestión de alquiler adaptados a particulares.",
+  heroImage: "/images/barcelona.jpg",
+  heroImageAlt: "Panorámica de Barcelona — gestoría inmobiliaria Livendia por barrios",
+} as const;
+
+export const BARCELONA_ZONE_LINKS: readonly BarcelonaZoneLink[] = [
   zone(
     "barcelona-eixample",
     "Eixample",
+    "Contratos inmobiliarios en el Eixample",
+    "Barrio de Barcelona",
     "Contratos LAU, arras y administración en el corazón de Barcelona.",
     localContratoAlquilerHref("barcelona-eixample"),
   ),
   zone(
     "barcelona-gracia",
     "Gràcia",
+    "Contratos inmobiliarios en Gràcia",
+    "Barrio de Barcelona",
     "Alquiler de habitación y contratos de larga duración en vivienda de barrio.",
     localContratoAlquilerHref("barcelona-gracia"),
   ),
   zone(
     "hospitalet-de-llobregat",
     "L'Hospitalet de Llobregat",
+    "Contratos inmobiliarios en L'Hospitalet",
+    "Municipio área metropolitana",
     "Gestoría para particulares en la segunda ciudad del área metropolitana.",
     localContratoArrasHref("hospitalet-de-llobregat"),
   ),
   zone(
     "barcelona-poblenou",
     "Poblenou",
+    "Contratos inmobiliarios en Poblenou",
+    "Barrio de Barcelona",
     "Temporada, LAU y compraventa en zona 22@ y frente marítim.",
     localContratoAlquilerHref("barcelona-poblenou"),
   ),
   zone(
     "barcelona-sants-montjuic",
     "Sants – Montjuïc",
+    "Contratos inmobiliarios en Sants y Montjuïc",
+    "Barrio de Barcelona",
     "Contratos inmobiliarios cerca de Sants Estació y entorno Montjuïc.",
     localContratoAlquilerHref("barcelona-sants-montjuic"),
   ),
   zone(
     "barcelona-les-corts",
     "Les Corts",
+    "Contratos inmobiliarios en Les Corts",
+    "Barrio de Barcelona",
     "Arras y alquiler entre particulares en Les Corts y entorno.",
     localContratoAlquilerHref("barcelona-les-corts"),
   ),
-] as const;
+];
 
 export const CONTRATOS_BCN_FAQ = [
   {

@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   BARCELONA_ZONE_LINKS,
+  BARCELONA_ZONES_SECTION,
   CONTRATOS_BCN_FAQ,
   CONTRATOS_BCN_SERVICE_SECTIONS,
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
@@ -369,14 +370,39 @@ export function ContratosInmobiliariosBarcelonaLanding({
 
         <section id="zonas" className="scroll-mt-28 border-b border-slate-200 px-4 py-16 sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
-              Contratos inmobiliarios por barrios y municipios
-            </h2>
-            <p className="mt-4 max-w-3xl text-[#64748B]">
-              Tramitamos contratos para particulares en Barcelona ciudad, Eixample, Gràcia, Poblenou, Sants, Les Corts,
-              L&apos;Hospitalet de Llobregat y el resto del área metropolitana y Cataluña. Cada enlace lleva a contenido
-              local detallado de Livendia.
+            <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
+              {BARCELONA_ZONES_SECTION.eyebrow}
             </p>
+            <h2 className="mt-3 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
+              {BARCELONA_ZONES_SECTION.title}
+            </h2>
+            <p className="mt-4 max-w-3xl text-[#64748B]">{BARCELONA_ZONES_SECTION.lead}</p>
+
+            <div className="relative mt-10 overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200">
+              <div className="relative aspect-[21/9] w-full min-h-[180px] sm:min-h-[220px]">
+                <Image
+                  src={BARCELONA_ZONES_SECTION.heroImage}
+                  alt={BARCELONA_ZONES_SECTION.heroImageAlt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width:1024px) 100vw, 1152px"
+                  quality={90}
+                  priority={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1A4FBF]/92 via-[#1A4FBF]/55 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-center px-6 py-8 sm:px-10 lg:max-w-2xl">
+                  <p className="text-xs font-bold uppercase tracking-widest text-cyan-200">Ciudad condal</p>
+                  <p className="mt-2 text-2xl font-extrabold leading-tight text-white sm:text-3xl">
+                    Gestoría de contratos inmobiliarios en Barcelona capital
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-blue-100 sm:text-base">
+                    LAU, habitación, temporada, arras y administración de alquiler — particulares, panel online y gestor
+                    asignado en cada barrio.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {BARCELONA_ZONE_LINKS.map((z) => (
                 <Link
@@ -387,15 +413,25 @@ export function ContratosInmobiliariosBarcelonaLanding({
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <Image
                       src={z.image}
-                      alt={`Contratos inmobiliarios ${z.name} Livendia`}
+                      alt={`${z.heading} — Livendia`}
                       fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
+                      className="object-cover object-center transition duration-500 group-hover:scale-105"
                       sizes="(max-width:768px) 100vw, 33vw"
+                      quality={90}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A4FBF]/80 via-transparent to-transparent" />
-                    <p className="absolute bottom-3 left-4 text-lg font-bold text-white">{z.name}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/85 via-[#1A4FBF]/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-cyan-200">{z.areaLabel}</p>
+                      <p className="mt-1 text-lg font-bold leading-snug text-white">{z.name}</p>
+                    </div>
                   </div>
-                  <p className="p-4 text-sm text-[#64748B] group-hover:text-[#1E293B]">{z.blurb}</p>
+                  <div className="border-t border-slate-100 p-4">
+                    <h3 className="text-base font-bold text-[#1E293B] group-hover:text-[#1A4FBF]">{z.heading}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#64748B]">{z.blurb}</p>
+                    <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">
+                      Ver landing local →
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
