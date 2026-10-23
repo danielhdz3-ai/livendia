@@ -171,7 +171,7 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: CONTRATO_ALQUILER_HABITACION_SLUG,
     serviceHref: `/servicios/${CONTRATO_ALQUILER_HABITACION_SLUG}`,
     localHref: localContratoAlquilerHref("barcelona-gracia"),
-    image: "/images/familia2.jpg",
+    image: "/images/contratos1.jpg",
     imageAlt: "Contrato alquiler habitación Barcelona Livendia",
     reverse: true,
   },

@@ -95,14 +95,14 @@ function ServiceVisualCard({
   return (
     <div className="relative mx-auto w-full max-w-2xl">
       <div className="overflow-hidden rounded-3xl bg-white shadow-2xl shadow-[#1A4FBF]/15 ring-1 ring-slate-200/80">
-        <div className="relative aspect-[16/10] w-full">
+        <div className="relative aspect-[16/9] w-full">
           <Image
             src={image}
             alt={imageAlt}
             fill
             className="object-cover object-center"
             sizes="(max-width:1024px) 100vw, 672px"
-            quality={90}
+            quality={92}
           />
           <div className="absolute right-4 top-4 rounded-xl bg-[#1A4FBF] px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">
             {priceLabel}
