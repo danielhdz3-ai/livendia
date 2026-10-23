@@ -1,3 +1,4 @@
+import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { BlogLocalCitiesSection } from "@/components/blog-local-cities-section";
@@ -39,6 +40,7 @@ export default async function BlogPage({ searchParams }: Props) {
     <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
       <BlogIndexStructuredData posts={items} />
       <PublicHeader />
+      <HomeDecretosBannerCarousel />
       <main className="flex-1">
         <section className="border-b border-slate-200 bg-[#1A4FBF] px-4 py-14 text-white sm:px-6">
           <div className="mx-auto max-w-6xl">

@@ -1,3 +1,4 @@
+import type { BlogCategory } from "@/lib/blog-types";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
@@ -111,6 +112,19 @@ export const BLOG_CONTRACT_PROMOS: Record<BlogContractPromoId, BlogContractPromo
 export function getBlogContractPromo(id: string): BlogContractPromo | undefined {
   if (id in BLOG_CONTRACT_PROMOS) return BLOG_CONTRACT_PROMOS[id as BlogContractPromoId];
   return undefined;
+}
+
+/** Banner de contrato por defecto según categoría del artículo (cuando el MDX no incluye [[CONTRATO_BANNER]]). */
+export const BLOG_CATEGORY_CONTRACT_PROMO: Record<BlogCategory, BlogContractPromoId> = {
+  alquiler: "lau",
+  compraventa: "arras",
+  administracion: "admin",
+  legal: "revision",
+  actualidad: "barcelona",
+};
+
+export function getBlogCategoryContractPromoId(category: BlogCategory): BlogContractPromoId {
+  return BLOG_CATEGORY_CONTRACT_PROMO[category];
 }
 
 export const BLOG_INLINE_MARKER_RE =

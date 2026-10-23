@@ -1,4 +1,8 @@
+import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
+import { BLOG_CONTRACT_PROMOS } from "@/lib/blog-contract-promos";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
 import { ContratarSlugButton, MultiServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -32,6 +36,8 @@ export function ContratosInmobiliariosBarrioLanding({
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <div className={`min-h-screen ${LANDING_PAGE_BG}`}>
         <PublicHeader />
+
+        <HomeDecretosBannerCarousel />
 
         <section className={`${LANDING_HERO_GRADIENT} px-4 pb-14 pt-10 sm:px-6 lg:pb-20 lg:pt-14`}>
           <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-10">
@@ -90,6 +96,19 @@ export function ContratosInmobiliariosBarrioLanding({
             </div>
           </div>
         </section>
+
+        <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6">
+          <BlogContractPromoBanner promo={BLOG_CONTRACT_PROMOS.lau} placement={`contratos_bcn_${barrio.slug}_lau`} />
+          <BlogContractPromoBanner promo={BLOG_CONTRACT_PROMOS.arras} placement={`contratos_bcn_${barrio.slug}_arras`} />
+        </div>
+
+        <GestorContactCta
+          placement={`contratos_bcn_barrio_${barrio.slug}`}
+          className="mx-4 mb-10 rounded-2xl sm:mx-6 lg:mx-auto lg:max-w-6xl"
+          city="Barcelona"
+          serviceLabel={`contratos inmobiliarios ${barrio.name}`}
+          headline="Gestor experto en contratos — normativa 2026"
+        />
 
         <section className="border-b border-slate-200 px-4 py-14 sm:px-6">
           <div className="mx-auto max-w-6xl">

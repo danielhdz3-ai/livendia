@@ -1,6 +1,10 @@
 import { ContratosBcnHeroVisual } from "@/components/contratos-bcn-hero-visual";
 import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band";
+import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
 import { ContratosBcnFeaturedBarrios } from "@/components/contratos-bcn-featured-barrios";
+import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
+import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { BLOG_CONTRACT_PROMOS } from "@/lib/blog-contract-promos";
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
 import { ContratosBcnProcessAnimated } from "@/components/contratos-bcn-process-animated";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
@@ -136,6 +140,8 @@ export function ContratosInmobiliariosBarcelonaLanding({
       <div className={`min-h-screen ${LANDING_PAGE_BG}`}>
         <JsonLd />
         <PublicHeader />
+
+        <HomeDecretosBannerCarousel />
 
         <section
           className={`livendia-hero-shimmer relative overflow-hidden ${LANDING_HERO_GRADIENT} px-4 pb-12 pt-10 sm:px-6 lg:pb-20 lg:pt-14`}
@@ -337,6 +343,19 @@ export function ContratosInmobiliariosBarcelonaLanding({
         <ContratosBcnOfficeSection />
 
         <ContratosBcnFeaturedBarrios />
+
+        <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6">
+          <BlogContractPromoBanner promo={BLOG_CONTRACT_PROMOS.lau} placement="contratos_bcn_hub_lau" />
+          <BlogContractPromoBanner promo={BLOG_CONTRACT_PROMOS.barcelona} placement="contratos_bcn_hub_barcelona" />
+        </div>
+
+        <GestorContactCta
+          placement="contratos_bcn_hub"
+          className="mx-4 mb-12 rounded-2xl sm:mx-6 lg:mx-auto lg:max-w-6xl"
+          city="Barcelona"
+          serviceLabel="contratos inmobiliarios en Barcelona"
+          headline="Llama a tu gestor — contratos adaptados a RDL 28/29/2026"
+        />
 
         <section id="proceso" className="scroll-mt-28 border-b border-slate-200 bg-[#EFF6FF] px-4 py-16 sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">

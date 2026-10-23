@@ -6,7 +6,10 @@ import { BlogStructuredData } from "@/components/blog-structured-data";
 import { BlogMarkdown } from "@/components/blog-markdown";
 import { BlogToc } from "@/components/blog-toc";
 import { BlogCategoryCta } from "@/components/blog-category-cta";
+import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
+import { getBlogCategoryContractPromoId, getBlogContractPromo } from "@/lib/blog-contract-promos";
 import { BlogPostNav } from "@/components/blog-post-nav";
 import {
   BLOG_CATEGORY_IMAGES,
@@ -79,11 +82,14 @@ export default async function BlogArticlePage({ params }: Props) {
   const cover = post.ogImage ?? BLOG_CATEGORY_IMAGES[post.category];
   const gestorServiceLabel = BLOG_GESTOR_SERVICE_LABEL[post.category];
   const gestorCity = post.city?.trim() || undefined;
+  const hasInlineContractBanner = post.content.includes("[[CONTRATO_BANNER:");
+  const categoryContractPromo = getBlogContractPromo(getBlogCategoryContractPromoId(post.category));
 
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <BlogStructuredData post={post} />
       <PublicHeader />
+      <HomeDecretosBannerCarousel />
       <main className="flex-1">
         <article className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
           <Link href="/blog" className="text-sm font-semibold text-[#1A4FBF] hover:text-[#06B6D4]">
@@ -113,6 +119,10 @@ export default async function BlogArticlePage({ params }: Props) {
               <Image src={cover} alt="" fill className="object-cover" priority sizes="(max-width: 896px) 100vw, 896px" />
             </div>
           </header>
+
+          {!hasInlineContractBanner && categoryContractPromo ? (
+            <BlogContractPromoBanner promo={categoryContractPromo} placement={`blog_${post.slug}_category`} />
+          ) : null}
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_240px]">
             <div className="min-w-0 max-w-none">
