@@ -2,7 +2,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import type { Components } from "react-markdown";
+import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
+import { BLOG_INLINE_MARKER_RE, getBlogContractPromo } from "@/lib/blog-contract-promos";
 
 const components: Components = {
   h2: ({ children, id }) => (
@@ -51,27 +53,82 @@ type BlogMarkdownProps = {
   serviceLabel?: string;
 };
 
+type Segment =
+  | { type: "markdown"; text: string }
+  | { type: "gestor" }
+  | { type: "contrato"; variant: string };
+
+function parseBlogSegments(content: string): Segment[] {
+  const segments: Segment[] = [];
+  let lastIndex = 0;
+  const re = new RegExp(BLOG_INLINE_MARKER_RE.source, "g");
+  let match: RegExpExecArray | null;
+
+  while ((match = re.exec(content)) !== null) {
+    const before = content.slice(lastIndex, match.index);
+    if (before.trim()) segments.push({ type: "markdown", text: before });
+
+    const full = match[1];
+    if (full === "GESTOR_BANNER") {
+      segments.push({ type: "gestor" });
+    } else {
+      segments.push({ type: "contrato", variant: match[2] });
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  const tail = content.slice(lastIndex);
+  if (tail.trim()) segments.push({ type: "markdown", text: tail });
+
+  return segments.length > 0 ? segments : [{ type: "markdown", text: content }];
+}
+
 export function BlogMarkdown({ content, city, serviceLabel }: BlogMarkdownProps) {
-  const parts = content.split(BLOG_GESTOR_BANNER_MARKER);
+  const segments = parseBlogSegments(content);
+  let gestorIndex = 0;
+  let contratoIndex = 0;
 
   return (
     <>
-      {parts.map((part, index) => (
-        <div key={index}>
-          {index > 0 ? (
+      {segments.map((segment, index) => {
+        if (segment.type === "gestor") {
+          gestorIndex += 1;
+          return (
             <GestorContactCta
-              placement={`blog_inline_${index}`}
+              key={`gestor-${index}`}
+              placement={`blog_inline_${gestorIndex}`}
               className="my-10 rounded-2xl"
               city={city}
               serviceLabel={serviceLabel}
               headline="Llama a tu gestor experto"
             />
-          ) : null}
-          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={components}>
-            {part.trimStart()}
+          );
+        }
+
+        if (segment.type === "contrato") {
+          contratoIndex += 1;
+          const promo = getBlogContractPromo(segment.variant);
+          if (!promo) return null;
+          return (
+            <BlogContractPromoBanner
+              key={`contrato-${index}-${segment.variant}`}
+              promo={promo}
+              placement={`blog_inline_${contratoIndex}`}
+            />
+          );
+        }
+
+        return (
+          <ReactMarkdown
+            key={`md-${index}`}
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeSlug]}
+            components={components}
+          >
+            {segment.text.trimStart()}
           </ReactMarkdown>
-        </div>
-      ))}
+        );
+      })}
     </>
   );
 }

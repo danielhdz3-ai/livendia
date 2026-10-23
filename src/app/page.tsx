@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/faq-section";
+import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeHowItWorks } from "@/components/home-how-it-works";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
@@ -75,6 +76,8 @@ export default async function Home() {
     <MultiServicePurchaseProvider servicesBySlug={homeCheckoutBySlug}>
     <div className="flex flex-col">
       <PublicHeader />
+
+      <HomeDecretosBannerCarousel />
 
       <main>
         {/* Hero — móvil: imagen protagonista + tarjeta flotante; desktop: grid clásico */}
