@@ -92,10 +92,17 @@ function ServiceVisualCard({
   subtitle: string;
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-md">
+    <div className="relative mx-auto w-full max-w-2xl">
       <div className="overflow-hidden rounded-3xl bg-white shadow-2xl shadow-[#1A4FBF]/15 ring-1 ring-slate-200/80">
-        <div className="relative aspect-[4/5] w-full">
-          <Image src={image} alt={imageAlt} fill className="object-cover" sizes="(max-width:768px) 100vw, 420px" />
+        <div className="relative aspect-[16/10] w-full">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width:1024px) 100vw, 672px"
+            quality={90}
+          />
           <div className="absolute right-4 top-4 rounded-xl bg-[#1A4FBF] px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">
             {priceLabel}
           </div>
@@ -316,13 +323,14 @@ export function ContratosInmobiliariosBarcelonaLanding({
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200">
               <Image
-                src="/images/modelo3.jpg"
+                src="/images/contratos2.jpg"
                 alt="Panel online Livendia para documentación inmobiliaria"
-                width={800}
-                height={600}
-                className="h-auto w-full object-cover"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width:1024px) 100vw, 560px"
+                quality={90}
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A4FBF]/95 to-transparent p-6 pt-16 text-white">
                 <p className="text-sm font-semibold">Gestoría digital premium</p>
