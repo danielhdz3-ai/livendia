@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { ContratosBcnServiceSection } from "@/lib/contratos-inmobiliarios-barcelona-content";
-import { CheckCircle2, Sparkles } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const ROTATE_MS = 5200;
 
@@ -27,11 +27,6 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
         <p className="text-xl font-extrabold text-[#1A4FBF]">~48 h</p>
         <p className="text-xs text-[#64748B]">con documentación completa</p>
       </div>
-      <div className="livendia-float-slow livendia-float-delay pointer-events-none absolute -left-2 bottom-16 z-20 flex items-center gap-2 rounded-2xl bg-[#1A4FBF] px-4 py-2.5 text-white shadow-lg">
-        <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden />
-        <span className="text-sm font-bold">Gestor humano + panel</span>
-      </div>
-
       <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-[#0B2D7A]/40 ring-2 ring-white/20">
         <div className="relative aspect-[3/4] w-full max-w-[340px] sm:max-w-[380px] lg:ml-auto lg:max-w-[420px]">
           {sections.map((s, i) => (
