@@ -3,6 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import Link from "next/link";
 import {
   GESTORIA_INMOBILIARIA_LOCAL_BASE,
   getPublishedGestoriaInmobiliariaLocalCities,
@@ -61,7 +62,11 @@ export default function GestoriaIndexPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
               Compraventa entre particulares sin comisiones abusivas, contratos LAU y arras ({CONTRATO_ALQUILER_LAU_PRICE_LABEL},
-              temporada {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y administración {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.
+              temporada {CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL}) y{" "}
+              <Link href="/servicios/administracion-alquiler" className="font-semibold underline underline-offset-2 hover:text-white">
+                gestión y administración de alquileres
+              </Link>{" "}
+              desde {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.
               Madrid, Barcelona, Valencia y más ciudades — mismo servicio online.
             </p>          </div>
         </section>

@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `Administración de alquileres en Oviedo desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino. Gestión profesional para propietarios en Asturias.`,
     },
     gijon: {
-      title: `Administración alquileres Gijón — ${price}`,
+      title: `Gestión de alquiler en Gijón — ${price}`,
       description: `Administración de alquileres en Gijón desde ${price} IVA incl. sin permanencia. Incidencias, mediación e inquilino. Gestión profesional para propietarios en Asturias.`,
     },
   };

@@ -44,7 +44,7 @@ export const revalidate = 300;
 
 const lauCanonical = `${getSiteUrl()}/servicios/administracion-alquiler`;
 const lauOg = landingSocialMetadata("administracion-alquiler", {
-  title: "Administración de alquiler LAU para propietarios",
+  title: "Gestión de alquileres para propietarios | Administración LAU",
   description:
     "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y seguimiento de renta en tu cuenta. Sin permanencia.",
   url: lauCanonical,
@@ -53,9 +53,9 @@ const lauOg = landingSocialMetadata("administracion-alquiler", {
 });
 
 export const metadata: Metadata = {
-  title: `Administración de alquileres para propietarios desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
+  title: `Gestión de alquileres para propietarios desde ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}`,
   description:
-    "Delega el contacto con el inquilino: incidencias, reparaciones, renovaciones y mediación. Sin permanencia. Gestoría inmobiliaria Livendia.",
+    "Gestión y administración de alquileres para propietarios: delegamos el contacto con el inquilino, incidencias, reparaciones, renovaciones y mediación. Sin permanencia ni comisión sobre la renta. Gestoría Livendia.",
   alternates: { canonical: lauCanonical },
   ...lauOg,
 };
@@ -148,7 +148,7 @@ export default async function AdministracionAlquilerPage() {
                 </div>
                 
                 <h1 className="text-2xl font-bold leading-snug sm:text-4xl lg:text-7xl">
-                  Administración de Alquileres
+                  Gestión y Administración de Alquileres
                 </h1>
                 
                 <p className="mt-6 text-xl leading-relaxed text-blue-50">
