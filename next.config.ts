@@ -57,6 +57,19 @@ const nextConfig: NextConfig = {
         destination: "/servicios/contrato-de-arras",
         statusCode: 301,
       },
+      {
+        // Auditoría oct. 2026 (GSC 6 meses): las 24 ciudades de este clúster
+        // tienen 0 impresiones combinadas en 6 meses — ninguna demanda real
+        // detectada. Se consolida en la landing única /servicios/contrato-
+        // alquiler-opcion-compra (mismo producto, 145 €) para concentrar
+        // autoridad/crawl budget en una sola URL en vez de diluirlo en 24
+        // páginas casi idénticas sin tráfico. Ver scripts/audit-zero-
+        // impression-pages.py. Páginas y rutas en código se mantienen
+        // intactas (no se borra nada); solo se retira del sitemap.
+        source: "/servicios/contrato-alquiler-opcion-compra-local/:slug",
+        destination: "/servicios/contrato-alquiler-opcion-compra",
+        statusCode: 301,
+      },
       // Legacy: /vender-piso-sin-inmobiliaria-barcelona (404) → pilar con barra
       {
         source: "/vender-piso-sin-inmobiliaria-:city",

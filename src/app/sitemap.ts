@@ -26,10 +26,6 @@ import {
   getPublishedContratoAlquilerTemporadaLocalCities,
 } from "@/lib/contrato-alquiler-temporada-local-cities";
 import {
-  CONTRATO_ALQUILER_OPCION_COMPRA_LOCAL_BASE,
-  getPublishedContratoAlquilerOpcionCompraLocalCities,
-} from "@/lib/contrato-alquiler-opcion-compra-local-cities";
-import {
   SERVICIO_COMPLETO_COMPRA_LOCAL_BASE,
   getPublishedServicioCompletoCompraLocalCities,
 } from "@/lib/servicio-completo-compra-local-cities";
@@ -244,13 +240,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     }));
 
-  const contratoAlquilerOpcionCompraLocalCiudades: MetadataRoute.Sitemap =
-    getPublishedContratoAlquilerOpcionCompraLocalCities().map((c) => ({
-      url: `${base}${CONTRATO_ALQUILER_OPCION_COMPRA_LOCAL_BASE}/${c.slug}`,
-      lastModified: localDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.83,
-    }));
+  // contrato-alquiler-opcion-compra-local: retirado del sitemap (oct. 2026).
+  // 24 ciudades, 0 impresiones combinadas en 6 meses de GSC. Consolidado con
+  // 301 (ver next.config.ts) en /servicios/contrato-alquiler-opcion-compra.
 
   const compraCompletaLocalCiudades: MetadataRoute.Sitemap =
     getPublishedServicioCompletoCompraLocalCities().map((c) => ({
@@ -493,7 +485,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...administracionAlquilerTemporadaLocalCiudades,
     ...redactarContratoAlquilerLocalCiudades,
     ...contratoAlquilerTemporadaLocalCiudades,
-    ...contratoAlquilerOpcionCompraLocalCiudades,
     ...compraCompletaLocalCiudades,
     ...ventaCompletaLocalCiudades,
     ...ventaSeoLocal,
