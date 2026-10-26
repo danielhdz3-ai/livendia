@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     `¿Necesitas comprar con todas las garantías en ${city.city}? Gestor inmobiliario experto: reserva, arras y escritura revisadas. Servicio completo 890 €.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },

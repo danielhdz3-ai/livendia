@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${getSiteUrl()}${config.path}`;
 
   return {
-    title: config.metaTitle,
+    title: { absolute: config.metaTitle },
     description: config.metaDescription,
     alternates: { canonical },
     openGraph: {

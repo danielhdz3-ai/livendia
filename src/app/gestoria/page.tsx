@@ -25,7 +25,7 @@ const GESTORIA_INDEX_DESCRIPTION =
   "Gestoría inmobiliaria para particulares en España: venta y compra entre particulares, contratos LAU y arras, revisión documental y administración de alquiler. Madrid, Barcelona, Valencia y más — tarifa plana, gestor dedicado, 100 % online.";
 
 export const metadata: Metadata = {
-  title: "Gestoría inmobiliaria para particulares | Livendia",
+  title: "Gestoría inmobiliaria para particulares",
   description: GESTORIA_INDEX_DESCRIPTION,
   alternates: { canonical },
   openGraph: {

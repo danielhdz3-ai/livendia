@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE}/${slug}`;
   return {
-    title: city.metaTitle,
+    title: { absolute: city.metaTitle },
     description: city.metaDescription,
     alternates: { canonical },
     openGraph: {

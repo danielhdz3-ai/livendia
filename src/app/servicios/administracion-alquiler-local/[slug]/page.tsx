@@ -42,11 +42,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const metaBySlug: Record<string, { title: string; description: string }> = {
     valencia: {
-      title: `Gestión de alquileres Valencia — ${price}/mes 2026`,
+      title: `Gestión de alquileres Valencia — ${price} 2026`,
       description: `Gestión de alquileres en Valencia desde ${price} IVA incl. Propietarios: incidencias, averías e inquilino — tú no atiendes llamadas. Ruzafa, Benimaclet, Campanar. Sin permanencia. Contrata online.`,
     },
     madrid: {
-      title: `Gestión de alquileres Madrid — ${price}/mes | Propietarios`,
+      title: `Gestión de alquileres Madrid — ${price} | Propietarios`,
       description: `Administración de alquileres en Madrid desde ${price} IVA incl. Canal único con el inquilino, averías y renovaciones. Salamanca, Vallecas, Getafe. Sin permanencia ni comisión sobre la renta.`,
     },
     barcelona: {

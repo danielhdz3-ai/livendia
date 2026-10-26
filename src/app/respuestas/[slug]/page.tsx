@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const imageUrl = `${base}${imagePath.startsWith("/") ? imagePath : `/${imagePath}`}`;
 
   return {
-    title: `${article.title} | Livendia`,
+    title: article.title,
     description: article.description,
     alternates: { canonical: `${base}/respuestas/${article.slug}` },
     openGraph: {

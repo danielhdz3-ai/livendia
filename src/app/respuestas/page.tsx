@@ -8,7 +8,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Respuestas a preguntas frecuentes (PAA) | Livendia",
+  title: "Respuestas a preguntas frecuentes (PAA)",
   description:
     "Micro-guías sobre alquiler, arras, compraventa entre particulares y administración de alquileres. Enlaces desde las FAQs de cada landing.",
   alternates: { canonical: `${getSiteUrl()}/respuestas` },

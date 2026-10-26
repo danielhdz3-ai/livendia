@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     `Vende en ${city.city} entre particulares con gestor especializado en la venta: reserva, arras, documentación y escritura. 890 € IVA incl. Sin comisiones del 3–5 %.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     ...(config.keywords?.length ? { keywords: [...config.keywords] } : {}),
     alternates: { canonical },
