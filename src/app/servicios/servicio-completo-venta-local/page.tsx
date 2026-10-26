@@ -15,7 +15,7 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${SERVICIO_COMPLETO_VENTA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Vender piso sin agencia por ciudad | Acompañamiento de venta Livendia",
+  title: { absolute: "Vender piso sin agencia por ciudad | Acompañamiento de venta Livendia" },
   description:
     "Vende entre particulares con gestor inmobiliario especializado: Madrid, Barcelona y Valencia. Reserva, arras y escritura. 890 € IVA incl. Sin comisiones del 3–5 %.",
   alternates: { canonical },

@@ -4,6 +4,7 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import { dedupeBrandTitle } from "@/lib/seo-title";
 import type { Metadata } from "next";
 
 const slug = "sevilla";
@@ -19,7 +20,7 @@ const canonical = `${getSiteUrl()}${localVenderPisoSinAgenciaHref(slug)}`;
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: config.metaTitle,
+  title: dedupeBrandTitle(config.metaTitle),
   description: config.metaDescription,
   alternates: { canonical },
   keywords: [...config.keywords],

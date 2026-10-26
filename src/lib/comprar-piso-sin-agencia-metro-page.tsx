@@ -5,6 +5,7 @@ import {
   localComprarPisoSinAgenciaHref,
 } from "@/lib/comprar-piso-sin-agencia-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import { dedupeBrandTitle } from "@/lib/seo-title";
 import type { Metadata } from "next";
 
 export function comprarPisoMetroPageMetadata(slug: ComprarPisoSinAgenciaBcnMetroSlug): Metadata {
@@ -12,7 +13,7 @@ export function comprarPisoMetroPageMetadata(slug: ComprarPisoSinAgenciaBcnMetro
   const canonical = `${getSiteUrl()}${localComprarPisoSinAgenciaHref(slug)}`;
 
   return {
-    title: config.metaTitle,
+    title: dedupeBrandTitle(config.metaTitle),
     description: config.metaDescription,
     alternates: { canonical },
     keywords: [...config.keywords],

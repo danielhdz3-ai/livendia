@@ -7,6 +7,7 @@ import {
   toVentaPisoParticularLandingConfig,
 } from "@/lib/venta-piso-particular-sin-agencia-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import { dedupeBrandTitle } from "@/lib/seo-title";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `${getSiteUrl()}${localVentaPisoParticularSinAgenciaHref(slug)}`;
 
   return {
-    title: city.metaTitle,
+    title: dedupeBrandTitle(city.metaTitle),
     description: city.metaDescription,
     keywords: [...city.keywords],
     alternates: { canonical },

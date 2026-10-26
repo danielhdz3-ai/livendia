@@ -7,6 +7,7 @@ import {
   toParkingTrasteroLandingConfig,
 } from "@/lib/acompanamiento-compra-parking-trastero-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import { dedupeBrandTitle } from "@/lib/seo-title";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     `Gestor integral para comprar plaza o trastero en ${city.city}. 298 € IVA incl. Notaría, ITP y registro.`;
 
   return {
-    title,
+    title: dedupeBrandTitle(title),
     description,
     keywords: config.keywords ? [...config.keywords] : undefined,
     alternates: { canonical },

@@ -20,7 +20,7 @@ import type { Metadata } from "next";
 const canonical = `${getSiteUrl()}${SERVICIO_COMPLETO_COMPRA_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Servicio completo de compra por ciudad | Gestor experto Livendia",
+  title: { absolute: "Servicio completo de compra por ciudad | Gestor experto Livendia" },
   description:
     "¿Necesitas comprar con todas las garantías? Acompañamiento desde reserva a escritura en Madrid, Barcelona, Cataluña (L'Hospitalet, Sabadell, Terrassa…), Valencia, Bilbao, Málaga, Sevilla y más. Gestor inmobiliario experto para compradores particulares.",
   alternates: { canonical },

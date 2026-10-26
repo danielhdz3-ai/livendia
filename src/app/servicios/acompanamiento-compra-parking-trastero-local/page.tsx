@@ -16,7 +16,7 @@ import Link from "next/link";
 const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE}`;
 
 export const metadata: Metadata = {
-  title: "Compra parking o trastero por ciudad | Gestor Livendia 298 €",
+  title: { absolute: "Compra parking o trastero por ciudad | Gestor Livendia 298 €" },
   description:
     "Landings locales para comprar plaza de garaje o trastero en Madrid, Barcelona y barrios (Eixample, Gràcia, Poblenou…). Gestor integral, comparativa de ahorro vs agencia y testimonios.",
   alternates: { canonical },

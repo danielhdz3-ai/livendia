@@ -7,6 +7,7 @@ import {
   toPackLauAdminLocalConfig,
 } from "@/lib/pack-comercial-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
+import { dedupeBrandTitle } from "@/lib/seo-title";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${getSiteUrl()}${config.path}`;
   return {
-    title: config.metaTitle,
+    title: dedupeBrandTitle(config.metaTitle),
     description: config.metaDescription,
     keywords: [...config.keywords],
     alternates: { canonical },
