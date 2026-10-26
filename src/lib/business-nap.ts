@@ -135,7 +135,7 @@ export const businessNap = {
   /** Valoración visible en Google (actualizar cuando cambie) */
   aggregateRating: {
     ratingValue: 5,
-    reviewCount: 3,
+    reviewCount: 15,
     bestRating: 5,
   },
 } as const;
