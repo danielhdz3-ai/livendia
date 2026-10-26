@@ -11,7 +11,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const CHECKOUT_SLUGS = [
   "contrato-arras-penitenciales",

@@ -41,7 +41,7 @@ import { ArrowRight, CheckCircle, FileText, Phone, ShieldCheck, XCircle } from "
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const canonical = `${getSiteUrl()}${SERVICIO_ALQUILER_INTEGRAL_PATH}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const ogSocial = landingSocialMetadata("servicio-alquiler-integral", {
   title: "Servicio de alquiler integral",

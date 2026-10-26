@@ -17,7 +17,7 @@ import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Reserva de compra — ${RESERVA_DE_COMPRA_PRICE_LABEL} IVA incl.`,

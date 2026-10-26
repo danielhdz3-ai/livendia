@@ -48,7 +48,7 @@ import {
   XCircle,
 } from "lucide-react";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const canonical = `${getSiteUrl()}/servicios/redactar-contrato-alquiler`;
 const SERVICE_LABEL = "Redactar contrato de alquiler profesional (LAU)";

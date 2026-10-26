@@ -2,7 +2,7 @@ import { VenderPisoMetroPage, venderPisoMetroPageMetadata } from "@/lib/vender-p
 
 const slug = "sant-cugat-del-valles" as const;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export const metadata = venderPisoMetroPageMetadata(slug);
 
 export default function Page() {

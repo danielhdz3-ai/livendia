@@ -8,7 +8,7 @@ import type { PublicService } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const canonical = `${getSiteUrl()}${CONTRATOS_INMOBILIARIOS_BARCELONA_PATH}`;
 

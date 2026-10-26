@@ -40,7 +40,7 @@ import { landingSocialMetadata } from "@/lib/landing-open-graph-images";
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const lauCanonical = `${getSiteUrl()}/servicios/administracion-alquiler`;
 const lauOg = landingSocialMetadata("administracion-alquiler", {

@@ -50,7 +50,7 @@ const PHASE_ICONS = [ClipboardList, Landmark, FileText, Building2] as const;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Acompañamiento compra parking o trastero — ${ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL}`,

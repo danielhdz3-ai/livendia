@@ -10,7 +10,7 @@ const slug = "granada";
 const config = getVenderPisoSinAgenciaLandingConfig(slug)!;
 const canonical = `${getSiteUrl()}${localVenderPisoSinAgenciaHref(slug)}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: config.metaTitle,

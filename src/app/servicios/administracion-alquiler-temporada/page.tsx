@@ -49,7 +49,7 @@ import {
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const canonical = `${getSiteUrl()}/servicios/administracion-alquiler-temporada`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const temporadaOg = landingSocialMetadata("administracion-alquiler-temporada", {
   title: "Administración de alquiler por temporada o habitaciones",

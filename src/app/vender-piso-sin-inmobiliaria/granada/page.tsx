@@ -15,7 +15,7 @@ const canonical = `${getSiteUrl()}${PILLAR_GRANADA_PATH}`;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: PILLAR_GRANADA_META.title,

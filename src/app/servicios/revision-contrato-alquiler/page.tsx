@@ -51,7 +51,7 @@ const canonical = `${getSiteUrl()}/servicios/revision-contrato-alquiler`;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Revisión de contrato de alquiler — ${REVISION_CONTRATO_ALQUILER_PRICE_LABEL} IVA incl.`,

@@ -49,7 +49,7 @@ const STEP_ICONS = [ClipboardList, FileSearch, Shield, Phone] as const;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Gestión documental vendedor post-arras — ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL}`,

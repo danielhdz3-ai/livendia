@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 type Props = { params: Promise<{ segments?: string[] }> };
 
 export const dynamicParams = false;
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return getMetroLandingSegments();

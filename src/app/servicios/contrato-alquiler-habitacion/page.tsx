@@ -43,7 +43,7 @@ const canonical = `${getSiteUrl()}/servicios/contrato-alquiler-habitacion`;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Contrato de alquiler de habitación — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl.`,

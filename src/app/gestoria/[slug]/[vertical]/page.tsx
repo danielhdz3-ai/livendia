@@ -13,7 +13,7 @@ import { notFound } from "next/navigation";
 type Props = { params: Promise<{ slug: string; vertical: string }> };
 
 export const dynamicParams = false;
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return getGestoriaCityVerticalStaticParams();

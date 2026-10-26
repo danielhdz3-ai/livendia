@@ -31,7 +31,7 @@ import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Gestoría inmobiliaria para particulares — contratos y venta sin agencia",

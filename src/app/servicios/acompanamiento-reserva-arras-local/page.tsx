@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Acompañamiento reserva hasta arras por ciudad — ${ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_LABEL}`,

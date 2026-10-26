@@ -5,7 +5,7 @@ import {
 
 const slug = "malaga";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 export const metadata = comprarPisoSinAgenciaLocalPageMetadata(slug);
 
 export default function Page() {

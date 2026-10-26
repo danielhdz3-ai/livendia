@@ -22,7 +22,7 @@ const canonical = `${getSiteUrl()}/servicios/acompanamiento-reserva-arras`;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Acompañamiento reserva hasta arras — 424 € IVA incl.",

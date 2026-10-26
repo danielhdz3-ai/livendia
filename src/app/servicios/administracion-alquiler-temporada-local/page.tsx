@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Admin. temporada y habitaciones por ciudad — ${ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}`,

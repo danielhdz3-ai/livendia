@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${REVISION_CONTRATO_ALQUILER_LOCAL_BASE}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Revisión de contrato de alquiler por ciudad — ${REVISION_CONTRATO_ALQUILER_PRICE_LABEL}`,

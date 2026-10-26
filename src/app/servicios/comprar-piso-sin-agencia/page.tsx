@@ -23,7 +23,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AlertCircle, CheckCircle, Handshake, Shield, Users } from "lucide-react";
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 const canonical = `${getSiteUrl()}/servicios/comprar-piso-sin-agencia`;
 

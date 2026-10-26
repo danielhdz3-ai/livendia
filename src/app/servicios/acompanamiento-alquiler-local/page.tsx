@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_ALQUILER_LOCAL_BASE}`;
 
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Acompañamiento de alquiler por ciudad — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL}`,

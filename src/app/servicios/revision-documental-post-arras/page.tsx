@@ -32,7 +32,7 @@ const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: `Revisión documental post-arras — ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}`,

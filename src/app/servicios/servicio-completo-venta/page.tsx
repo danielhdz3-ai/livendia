@@ -34,7 +34,7 @@ import {
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Acompañamiento de venta sin agencia: gestor inmobiliario hasta escritura",

@@ -18,7 +18,7 @@ import { Shield, FileText, Clock, AlertCircle } from "lucide-react";
  * el proximo despliegue. Cambiar este numero (segundos) si se necesita
  * otra frecuencia -- ver SEO_ROADMAP.md.
  */
-export const revalidate = 300;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Contrato de arras penitenciales entre particulares — 145 € IVA incl.",
