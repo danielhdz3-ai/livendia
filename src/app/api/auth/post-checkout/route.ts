@@ -1,3 +1,4 @@
+import { fulfillCheckoutSession } from "@/lib/stripe/fulfill-checkout-session";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceRoleClient } from "@/lib/supabase/service";
 import { getStripe } from "@/lib/stripe/server";
@@ -85,13 +86,27 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 
-  if (session.mode === "subscription") {
-    return NextResponse.json({ redirectUrl: "/dashboard/rental" });
+  let orderId = await waitForOrderId(sessionId, 5);
+  if (!orderId) {
+    const fulfilled = await fulfillCheckoutSession(stripe, session, admin);
+    if (fulfilled.ok) {
+      orderId = fulfilled.orderId;
+    } else if (fulfilled.reason !== "missing_metadata") {
+      console.error("[post-checkout] fulfillCheckoutSession:", fulfilled.reason, sessionId);
+    }
+    if (!orderId) {
+      orderId = await waitForOrderId(sessionId, 10);
+    }
   }
 
-  const orderId = await waitForOrderId(sessionId);
   if (orderId) {
-    return NextResponse.json({ redirectUrl: `/mis-pedidos/${orderId}` });
+    const redirectUrl =
+      session.mode === "subscription" ? "/dashboard/rental" : `/mis-pedidos/${orderId}`;
+    return NextResponse.json({ redirectUrl });
+  }
+
+  if (session.mode === "subscription") {
+    return NextResponse.json({ redirectUrl: "/dashboard/rental" });
   }
 
   return NextResponse.json({ redirectUrl: "/dashboard" });
