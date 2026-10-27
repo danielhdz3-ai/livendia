@@ -60,6 +60,11 @@ export const CONTRATO_ARRAS_LOCAL_PRICE_EUR = 145;
 export const CONTRATO_ARRAS_LOCAL_PRICE_LABEL = `${CONTRATO_ARRAS_LOCAL_PRICE_EUR} €`;
 export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR =
   CONTRATO_ARRAS_LOCAL_PRICE_EUR + GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR;
+export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_PRICE_CENTS =
+  LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR * 100;
+
+/** Servicio único de checkout del pack arras + gestión documental vendedor. */
+export const PACK_ARRAS_GESTION_VENDEDOR_SLUG = "pack-arras-gestion-documental-vendedor" as const;
 
 /** Administración de alquiler — cuota mensual IVA incl. */
 export const ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR = 59;
@@ -97,11 +102,8 @@ export const LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR =
 export const LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL = `${LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR} €`;
 export const LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL = `${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR} €`;
 
-/** Slugs del pack arras + gestión documental vendedor. */
-export const PACK_ARRAS_GESTION_VENDEDOR_SLUGS = [
-  "contrato-arras-penitenciales",
-  "gestion-documental-vendedor",
-] as const;
+/** Slug de contratación del pack arras + gestión documental vendedor (495 € IVA incl.). */
+export const PACK_ARRAS_GESTION_VENDEDOR_SLUGS = [PACK_ARRAS_GESTION_VENDEDOR_SLUG] as const;
 
 /** Slugs del pack LAU + primer mes administración. */
 export const PACK_LAU_ADMIN_SLUGS = [CONTRATO_ALQUILER_LAU_SLUG, ADMINISTRACION_ALQUILER_SLUG] as const;
@@ -162,6 +164,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [ADMINISTRACION_ALQUILER_TEMPORADA_SLUG]: ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_CENTS,
   [SERVICIO_ALQUILER_INTEGRAL_SLUG]: SERVICIO_ALQUILER_INTEGRAL_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
+  [PACK_ARRAS_GESTION_VENDEDOR_SLUG]: LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -229,6 +232,28 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "Entrega en 3-5 días · Análisis en 48h",
     ],
     badge: "Pre-escritura",
+  },
+  {
+    slug: PACK_ARRAS_GESTION_VENDEDOR_SLUG,
+    name: "Pack arras + gestión documental vendedor",
+    description:
+      "Pack para vender entre particulares con comprador ya encontrado: contrato de arras penitenciales o confirmatorias redactado a medida y gestión documental completa hasta notaría (comunidad, nota simple, ITE, energético, informe semáforo). Un solo pago, un gestor dedicado.",
+    category: "compraventa",
+    price_cents: LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Contrato de arras redactado a medida (penitenciales o confirmatorias)",
+      "Revisión de coherencia entre precio pactado, reserva previa y borrador de arras",
+      "Gestor dedicado: nota simple registral actualizada",
+      "Certificado de deuda cero de comunidad",
+      "Verificación ITE vigente si aplica",
+      "Certificado de eficiencia energético",
+      "Estado de suministros, IBI y cargas hipotecarias",
+      "Informe semáforo verde/ámbar/rojo antes de notaría",
+      "Coordinación de hitos con comprador hasta escritura",
+      "Área de cliente Livendia",
+    ],
+    badge: "Pack venta · 495 €",
   },
   {
     slug: "gestion-documental-vendedor",
@@ -426,6 +451,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
     if (category === "compraventa" && s.slug === "servicio-completo-compra") return -100;
     if (category === "compraventa") {
       const order = [
+        PACK_ARRAS_GESTION_VENDEDOR_SLUG,
         "contrato-arras-penitenciales",
         "contrato-arras-confirmatorias",
         "revision-documental-post-arras",
@@ -495,6 +521,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "revision-documental-post-arras": "/images/gestoria20.jpg",
   "revision-contrato-alquiler": "/images/gestora2.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
+  "pack-arras-gestion-documental-vendedor": "/images/servicio-completo-venta-hero.jpg",
   "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
@@ -508,6 +535,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
  */
 const SERVICE_LANDING_PATH_OVERRIDES: Record<string, string> = {
   "contrato-arras-confirmatorias": "/servicios/contrato-de-arras",
+  [PACK_ARRAS_GESTION_VENDEDOR_SLUG]: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
 };
 
 /**
@@ -524,6 +552,7 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "servicio-completo-venta": "Servicio completo de venta",
   "revision-documental-post-arras": "Revisión documental post-arras",
   "gestion-documental-vendedor": "Gestión documental vendedor",
+  "pack-arras-gestion-documental-vendedor": "Pack arras + gestión vendedor",
   "acompanamiento-compra-parking-trastero": "Compra parking o trastero",
   "contrato-arras-penitenciales": "Arras penitenciales",
   "contrato-arras-confirmatorias": "Arras confirmatorias",

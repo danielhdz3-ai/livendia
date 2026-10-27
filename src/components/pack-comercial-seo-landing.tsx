@@ -176,7 +176,11 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                       <span className="text-2xl font-extrabold">{config.totalPriceLabel}</span>
                     </li>
                   </ul>
-                  <p className="mt-2 text-sm text-blue-200">IVA incluido · Contrata cada partida por separado</p>
+                  <p className="mt-2 text-sm text-blue-200">
+                    {isVentaPack
+                      ? "IVA incluido · Un solo pago por tarjeta (495 €)"
+                      : "IVA incluido · Contrata cada partida por separado"}
+                  </p>
                   {heroBullets && heroBullets.length > 0 ? (
                     <ul className="mt-4 space-y-1.5 text-sm text-blue-100">
                       {heroBullets.map((bullet) => (
@@ -194,12 +198,14 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                     >
                       {config.primaryCtaLabel}
                     </ContratarSlugButton>
-                    <ContratarSlugButton
-                      slug={config.secondaryCtaSlug}
-                      className="rounded-full border-2 border-white px-6 py-3.5 text-sm font-semibold hover:bg-white/10 sm:px-8 sm:text-base"
-                    >
-                      {config.secondaryCtaLabel}
-                    </ContratarSlugButton>
+                    {config.secondaryCtaSlug ? (
+                      <ContratarSlugButton
+                        slug={config.secondaryCtaSlug}
+                        className="rounded-full border-2 border-white px-6 py-3.5 text-sm font-semibold hover:bg-white/10 sm:px-8 sm:text-base"
+                      >
+                        {config.secondaryCtaLabel}
+                      </ContratarSlugButton>
+                    ) : null}
                     <PackCommercialWhatsAppLink
                       variant={packWaVariant ?? "lau-admin"}
                       city={local?.city}
@@ -542,7 +548,9 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
                   slug={config.primaryCtaSlug}
                   className="rounded-full bg-white px-8 py-4 text-base font-bold text-[#1A4FBF] shadow-lg hover:bg-slate-50"
                 >
-                  {config.primaryCtaLabel} · {config.priceBreakdown[0]?.price}
+                  {isVentaPack
+                    ? config.primaryCtaLabel
+                    : `${config.primaryCtaLabel} · ${config.priceBreakdown[0]?.price}`}
                 </ContratarSlugButton>
                 <Link
                   href="/precios"

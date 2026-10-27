@@ -14,7 +14,7 @@ import {
   LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
-  PACK_ARRAS_GESTION_VENDEDOR_SLUGS,
+  PACK_ARRAS_GESTION_VENDEDOR_SLUG,
   PACK_LAU_ADMIN_LANDING_PATH,
   PACK_LAU_ADMIN_SLUGS,
 } from "@/lib/catalog.public";
@@ -35,8 +35,7 @@ function PackLine({ label, price }: { label: string; price: string }) {
 export function PreciosPackOffers({ servicesBySlug }: Props) {
   const lauAvailable = Boolean(servicesBySlug[PACK_LAU_ADMIN_SLUGS[0]]);
   const adminAvailable = Boolean(servicesBySlug[PACK_LAU_ADMIN_SLUGS[1]]);
-  const arrasAvailable = Boolean(servicesBySlug[PACK_ARRAS_GESTION_VENDEDOR_SLUGS[0]]);
-  const gestionAvailable = Boolean(servicesBySlug[PACK_ARRAS_GESTION_VENDEDOR_SLUGS[1]]);
+  const packArrasGestionAvailable = Boolean(servicesBySlug[PACK_ARRAS_GESTION_VENDEDOR_SLUG]);
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -45,8 +44,9 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
           Packs recomendados
         </h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#64748b] sm:text-base">
-          Combinaciones habituales para arrancar un alquiler o cerrar una venta entre particulares. Cada partida
-          se contrata por separado con pago seguro; el total del pack es la suma de tarifas publicadas (IVA incl.).
+          Combinaciones habituales para arrancar un alquiler o cerrar una venta entre particulares. El pack de venta
+          (arras + gestión) se contrata en un solo pago de {LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.; el
+          pack LAU se contrata en dos partidas (IVA incl.).
         </p>
 
         <ul className="mt-6 grid list-none gap-6 p-0 lg:grid-cols-2">
@@ -111,20 +111,12 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
               <span className="text-sm font-normal text-[#64748b]">total estimado</span>
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              {arrasAvailable ? (
+              {packArrasGestionAvailable ? (
                 <ContratarSlugButton
-                  slug={PACK_ARRAS_GESTION_VENDEDOR_SLUGS[0]}
+                  slug={PACK_ARRAS_GESTION_VENDEDOR_SLUG}
                   className="inline-flex min-h-11 items-center rounded-full bg-[#1A4FBF] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#2563EB]"
                 >
-                  Contratar arras
-                </ContratarSlugButton>
-              ) : null}
-              {gestionAvailable ? (
-                <ContratarSlugButton
-                  slug={PACK_ARRAS_GESTION_VENDEDOR_SLUGS[1]}
-                  className="inline-flex min-h-11 items-center rounded-full border border-[#1A4FBF] px-5 py-2.5 text-sm font-semibold text-[#1A4FBF] hover:bg-[#1A4FBF]/5"
-                >
-                  Contratar gestión documental
+                  Contratar pack · {LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.
                 </ContratarSlugButton>
               ) : null}
               <Link
@@ -141,7 +133,7 @@ export function PreciosPackOffers({ servicesBySlug }: Props) {
               </Link>
             </div>
             <p className="mt-3 text-xs text-[#94a3b8]">
-              Orden habitual: arras primero; la gestión documental arranca tras la firma de arras.
+              Un solo pago: el gestor encadena arras y gestión documental hasta notaría.
             </p>
           </li>
         </ul>

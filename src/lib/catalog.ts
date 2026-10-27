@@ -18,7 +18,8 @@ const INTERNAL_ONLY_SERVICE_SLUGS = new Set(["pago-prueba-livendia"]);
 function normalizeServiceCategory(service: PublicService): PublicService {
   if (
     service.slug === "revision-documental-post-arras" ||
-    service.slug === "gestion-documental-vendedor"
+    service.slug === "gestion-documental-vendedor" ||
+    service.slug === "pack-arras-gestion-documental-vendedor"
   ) {
     return { ...service, category: "compraventa" };
   }

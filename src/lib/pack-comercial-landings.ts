@@ -7,6 +7,7 @@ import {
   LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_LABEL,
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
+  PACK_ARRAS_GESTION_VENDEDOR_SLUG,
   PACK_ARRAS_GESTION_VENDEDOR_SLUGS,
   PACK_LAU_ADMIN_LANDING_PATH,
   PACK_LAU_ADMIN_SLUGS,
@@ -222,10 +223,10 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
     { label: "Contrato de arras (penitenciales)", price: CONTRATO_ARRAS_LOCAL_PRICE_LABEL },
     { label: "Gestión documental vendedor post-arras", price: GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL },
   ],
-  primaryCtaSlug: PACK_ARRAS_GESTION_VENDEDOR_SLUGS[0],
-  primaryCtaLabel: "Contratar arras",
-  secondaryCtaSlug: PACK_ARRAS_GESTION_VENDEDOR_SLUGS[1],
-  secondaryCtaLabel: "Contratar gestión documental",
+  primaryCtaSlug: PACK_ARRAS_GESTION_VENDEDOR_SLUG,
+  primaryCtaLabel: "Contratar pack · 495 € IVA incl.",
+  secondaryCtaSlug: "",
+  secondaryCtaLabel: "",
   includedTitle: "Qué incluye el pack para vendedores particulares",
   includedIntro:
     "Pensado para propietarios que llevan la venta sin agencia: tú encuentras al comprador; Livendia blinda contratos y ordena la documentación hasta la escritura.",
@@ -240,14 +241,14 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
   ],
   steps: [
     {
-      title: "Contratas y firmas arras",
+      title: "Contratas el pack (495 € IVA incl.)",
       description:
-        "Con comprador confirmado, contratas arras por 145 € IVA incl. El gestor redacta cláusulas equilibradas y coordina la firma.",
+        "Un solo pago con tarjeta. Se te asigna un gestor dedicado que coordina arras y documentación hasta notaría.",
     },
     {
-      title: "Activas gestión documental",
+      title: "Redacción y firma de arras",
       description:
-        "Tras arras, contratas gestión documental vendedor (350 € IVA incl.). El gestor solicita y verifica toda la documentación.",
+        "El gestor redacta cláusulas equilibradas (penitenciales o confirmatorias) y coordina la firma con el comprador.",
     },
     {
       title: "Checklist pre-escritura",
@@ -303,7 +304,7 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
   faq: [
     {
       question: "¿Cuánto cuesta el pack arras + gestión documental vendedor?",
-      answer: `El total estimado es ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} por arras más ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} por gestión documental post-arras. Se contrata en ese orden habitual.`,
+      answer: `El pack cuesta ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl. en un único pago (incluye arras redactadas y gestión documental post-arras). Desglose orientativo: ${CONTRATO_ARRAS_LOCAL_PRICE_LABEL} arras + ${GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL} gestión documental.`,
     },
     {
       question: "¿Puedo usar este pack si el comprador viene de Idealista?",
