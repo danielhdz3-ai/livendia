@@ -251,24 +251,24 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
 
 export const LIVENDIA_PROCESS_STEPS = [
   {
-    title: "Hablas con tu gestor",
-    body: "Cuéntanos la operación (compra, venta, alquiler LAU, habitación o temporada). Respondemos en horario laboral y agendamos la primera llamada en menos de 24 h.",
+    title: "Primera llamada con tu gestor",
+    body: "Cuéntanos la operación (LAU, habitación, temporada, arras o compraventa). Te asignamos gestor inmobiliario y agendamos la primera llamada en menos de 24 h en horario laboral.",
   },
   {
-    title: "Contratas y pagas online",
-    body: "Eliges el servicio con precio fijo IVA incluido, pagas de forma segura y recibes confirmación al instante en tu email.",
+    title: "Contratas el servicio",
+    body: "Eliges el contrato con precio fijo IVA incluido en livendia.com, pagas online de forma segura y recibes confirmación al instante con acceso al panel del expediente.",
   },
   {
-    title: "Subes la documentación al panel",
-    body: "Cada cliente dispone de un área privada para cargar DNI, notas simples, borradores, fotos del piso e inventarios. Todo queda archivado por expediente.",
+    title: "Envías la documentación",
+    body: "Subes DNI, notas simples, borradores, fotos del piso, inventarios y certificados al área privada. Todo queda archivado y visible para tu gestor al momento.",
   },
   {
-    title: "Redacción y formalización",
-    body: "El gestor redacta o revisa contratos, coordina ajustes contigo y prepara la versión definitiva para firma (presencial o según acordéis).",
+    title: "El gestor tramita y redacta",
+    body: "Revisamos cargas, SERPAVI, INCASÒL, cláusulas CCCat o LAU y redactamos el borrador. Te proponemos ajustes por WhatsApp o llamada hasta cerrar el texto.",
   },
   {
-    title: "Entrega y seguimiento",
-    body: "Recibes PDFs finales, checklist cumplido y, si contrataste administración de alquiler, acceso al panel de gestión del inmueble.",
+    title: "Te entregamos el contrato final",
+    body: "Recibes el PDF definitivo listo para firmar, checklist cumplido y, si contrataste administración de alquiler, seguimiento en el panel de gestión del inmueble.",
   },
 ] as const;
 
