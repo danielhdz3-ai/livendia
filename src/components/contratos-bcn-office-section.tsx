@@ -1,6 +1,8 @@
 import { LivendiaReveal } from "@/components/livendia-reveal";
+import { ContratosBcnDespachoBarrioNav } from "@/components/contratos-bcn-despacho-barrio-nav";
 import { OfficeMap } from "@/components/office-map";
-import { CONTRATOS_BCN_OFFICE_SECTION } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import { getContratosBcnOfficeContent } from "@/lib/contratos-bcn-office-barrio";
+import type { ContratosInmobiliariosBarrioPage } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import {
   BUSINESS_EMAIL,
   BUSINESS_OPENING_HOURS,
@@ -13,15 +15,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
-const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Hola Livendia, quiero reservar cita en el despacho de Les Corts para tramitar un contrato inmobiliario.",
-)}`;
 
-export function ContratosBcnOfficeSection() {
+type Props = {
+  /** Si se pasa, el copy del despacho se adapta al barrio (misma sede Les Corts). */
+  barrio?: ContratosInmobiliariosBarrioPage | null;
+  /** Hub Barcelona: muestra enlaces a #despacho de cada barrio. */
+  showBarrioDespachoNav?: boolean;
+};
+
+export function ContratosBcnOfficeSection({ barrio = null, showBarrioDespachoNav = false }: Props) {
+  const content = getContratosBcnOfficeContent(barrio);
   const address = getBusinessAddressDisplayLine();
   const mapsUrl = getBusinessMapsExternalUrl();
   const phoneDisplay = getContactPhoneDisplay();
   const phoneTel = getContactPhoneTelHref();
+  const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(content.whatsAppPrefill)}`;
 
   return (
     <section
@@ -33,17 +41,15 @@ export function ContratosBcnOfficeSection() {
         <LivendiaReveal>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
-                {CONTRATOS_BCN_OFFICE_SECTION.eyebrow}
-              </p>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">{content.eyebrow}</p>
               <h2 id="contratos-bcn-despacho-title" className="mt-3 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
-                {CONTRATOS_BCN_OFFICE_SECTION.title}
+                {content.title}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#475569]">{CONTRATOS_BCN_OFFICE_SECTION.lead}</p>
-              <p className="mt-4 text-sm leading-relaxed text-[#64748B]">{CONTRATOS_BCN_OFFICE_SECTION.body}</p>
+              <p className="mt-4 text-base leading-relaxed text-[#475569]">{content.lead}</p>
+              <p className="mt-4 text-sm leading-relaxed text-[#64748B]">{content.body}</p>
 
               <ul className="mt-8 space-y-4">
-                {CONTRATOS_BCN_OFFICE_SECTION.bullets.map((item) => (
+                {content.bullets.map((item) => (
                   <li key={item} className="flex gap-3 text-sm text-[#334155]">
                     <CalendarCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#1A4FBF]" aria-hidden />
                     {item}
@@ -60,7 +66,7 @@ export function ContratosBcnOfficeSection() {
                 </p>
                 <p className="mt-2 flex items-center gap-2 text-sm text-[#64748B]">
                   <Train className="h-4 w-4 shrink-0 text-[#06B6D4]" aria-hidden />
-                  {CONTRATOS_BCN_OFFICE_SECTION.transport}
+                  {content.transport}
                 </p>
                 <p className="mt-3 text-xs text-[#64748B]">
                   Horario despacho: L–V {BUSINESS_OPENING_HOURS.opens}–{BUSINESS_OPENING_HOURS.closes} ·{" "}
@@ -97,6 +103,8 @@ export function ContratosBcnOfficeSection() {
                   Gestoría en Les Corts →
                 </Link>
               </div>
+
+              {showBarrioDespachoNav ? <ContratosBcnDespachoBarrioNav /> : null}
             </div>
 
             <div className="space-y-4">
@@ -105,12 +113,12 @@ export function ContratosBcnOfficeSection() {
               </div>
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
                 <Image
-                  src="/images/livendia-fachada-azul.jpg"
-                  alt="Fachada del despacho Livendia en Les Corts, Barcelona"
+                  src={content.sideImage}
+                  alt={content.sideImageAlt}
                   fill
                   className="object-cover object-center"
                   sizes="(max-width:1024px) 100vw, 560px"
-                  quality={90}
+                  quality={85}
                 />
               </div>
             </div>

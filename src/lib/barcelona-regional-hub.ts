@@ -1,4 +1,5 @@
 import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import { contratosInmobiliariosBarrioPath } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import { ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH } from "@/lib/administracion-alquiler-barcelona-hub-content";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
 import { PACK_COMPRADOR_BARCELONA_LANDING_PATH } from "@/lib/catalog.public";
@@ -45,8 +46,8 @@ export const BARCELONA_REGIONAL_HUB_DOORS: readonly BarcelonaRegionalHubDoor[] =
     id: "despacho",
     title: "Despacho Les Corts",
     description: "Carrer de Mejía Lequerica, 44 — cita presencial con tu gestor (metro Les Corts / Zona Universitària).",
-    href: `${CONTRATOS_INMOBILIARIOS_BARCELONA_PATH}#despacho`,
-    cta: "Reservar cita",
+    href: `${contratosInmobiliariosBarrioPath("les-corts")}#despacho`,
+    cta: "Despacho Les Corts",
     highlight: true,
   },
 ] as const;

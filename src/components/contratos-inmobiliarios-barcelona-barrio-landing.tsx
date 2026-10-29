@@ -1,16 +1,26 @@
 import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
+import { ContratosBcnFeaturedBarrios } from "@/components/contratos-bcn-featured-barrios";
+import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band";
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
+import { ContratosBcnProcessAnimated } from "@/components/contratos-bcn-process-animated";
+import { ContratosBcnServiceBlocks } from "@/components/contratos-bcn-service-blocks";
+import { ContratosBcnZonesCarousel } from "@/components/contratos-bcn-zones-carousel";
+import { ContratosBcnZonesLinkCloud } from "@/components/contratos-bcn-zones-link-cloud";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { BLOG_CONTRACT_PROMOS } from "@/lib/blog-contract-promos";
 import { FaqSection } from "@/components/faq-section";
+import { LivendiaReveal } from "@/components/livendia-reveal";
 import { PublicHeader } from "@/components/public-header";
+import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { ContratarSlugButton, MultiServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { SiteFooter } from "@/components/site-footer";
 import type { ContratosInmobiliariosBarrioPage } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
-import { contratosInmobiliariosBarrioPath } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
+import { getContratosBcnServiceSectionsForBarrio } from "@/lib/contratos-inmobiliarios-barcelona-barrio-sections";
 import {
+  BARCELONA_ZONE_LINKS,
+  BARCELONA_ZONES_SECTION,
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
   CONTRATOS_INMOBILIARIOS_BARCELONA_META,
 } from "@/lib/contratos-inmobiliarios-barcelona-content";
@@ -19,18 +29,25 @@ import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-sys
 import { getSiteUrl } from "@/lib/site-url";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, MapPin, Newspaper } from "lucide-react";
+
+const EDITORIAL_IMAGES = [
+  "/images/contratos5.jpg",
+  "/images/gestora2.jpg",
+  "/images/firma6.jpg",
+] as const;
 
 export function ContratosInmobiliariosBarrioLanding({
   barrio,
   servicesBySlug,
-  allBarrios,
 }: {
   barrio: ContratosInmobiliariosBarrioPage;
   servicesBySlug: Partial<Record<string, PublicService>>;
   allBarrios: readonly ContratosInmobiliariosBarrioPage[];
 }) {
   const hubUrl = `${getSiteUrl().replace(/\/$/, "")}${CONTRATOS_INMOBILIARIOS_BARCELONA_PATH}`;
+  const serviceSections = getContratosBcnServiceSectionsForBarrio(barrio);
+  const cardSubtitle = `${barrio.name} · panel online · gestor asignado`;
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -57,6 +74,16 @@ export function ContratosInmobiliariosBarrioLanding({
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-blue-100">{barrio.lead}</p>
               <p className="mt-4 text-sm leading-relaxed text-blue-200/95">{barrio.localContext}</p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {barrio.servicesFocus.map((label) => (
+                  <li
+                    key={label}
+                    className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/25"
+                  >
+                    {label}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <ContratarSlugButton
                   slug="contrato-alquiler-lau"
@@ -84,7 +111,7 @@ export function ContratosInmobiliariosBarrioLanding({
                 src={barrio.image}
                 alt={barrio.imageAlt}
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center transition duration-700 hover:scale-[1.02]"
                 sizes="(max-width:1024px) 100vw, 560px"
                 quality={92}
                 priority
@@ -94,6 +121,181 @@ export function ContratosInmobiliariosBarrioLanding({
                 Gestoría Livendia · {barrio.name}
               </p>
             </div>
+          </div>
+        </section>
+
+        <ContratosBcnMarqueeBand />
+
+        <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
+          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+            <LivendiaReveal>
+              <div>
+                <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
+                  <MapPin className="h-4 w-4" aria-hidden />
+                  Zonas dentro de {barrio.name}
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold text-[#1E293B]">
+                  Microzonas y calles donde más tramitamos contratos
+                </h2>
+                <ul className="mt-6 space-y-3">
+                  {barrio.zoneHighlights.map((z) => (
+                    <li
+                      key={z}
+                      className="flex gap-3 rounded-xl bg-[#F8FAFC] px-4 py-3 text-sm leading-relaxed text-[#475569] ring-1 ring-slate-200"
+                    >
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#1A4FBF]" aria-hidden />
+                      {z}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </LivendiaReveal>
+            <LivendiaReveal>
+              <div className="rounded-2xl bg-gradient-to-br from-[#EFF6FF] to-[#F8FAFC] p-6 ring-1 ring-[#1A4FBF]/15 sm:p-8">
+                <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1A4FBF]">
+                  <Newspaper className="h-4 w-4" aria-hidden />
+                  Actualidad 2026
+                </p>
+                <h2 className="mt-2 text-xl font-extrabold text-[#1E293B]">Normativa vigente en {barrio.districtLabel}</h2>
+                <p className="mt-4 text-sm leading-relaxed text-[#475569] sm:text-base">{barrio.actualidad2026}</p>
+                <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+                  <Link
+                    href="/blog/real-decreto-ley-28-2026-alquiler-estabilidad-prorroga-indemnizacion-guia"
+                    className="text-[#1A4FBF] underline decoration-[#1A4FBF]/30 underline-offset-2 hover:text-[#2563EB]"
+                  >
+                    RDL 28/2026 (LAU)
+                  </Link>
+                  <Link
+                    href="/blog/real-decreto-ley-29-2026-vivienda-funcion-social-guia-particulares"
+                    className="text-[#1A4FBF] underline decoration-[#1A4FBF]/30 underline-offset-2 hover:text-[#2563EB]"
+                  >
+                    RDL 29/2026 (vivienda)
+                  </Link>
+                  <Link
+                    href="/blog/serpavi-2026-decreto-3-informe-anexo-contrato-incasol-guia-ampliada"
+                    className="text-[#1A4FBF] underline decoration-[#1A4FBF]/30 underline-offset-2 hover:text-[#2563EB]"
+                  >
+                    SERPAVI Cataluña
+                  </Link>
+                </div>
+              </div>
+            </LivendiaReveal>
+          </div>
+        </section>
+
+        {barrio.editorialSections?.length ? (
+          <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-14 sm:px-6 lg:py-20">
+            <div className="mx-auto max-w-6xl">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Guía local Livendia</p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
+                Contratos inmobiliarios en {barrio.name}: contexto y buenas prácticas
+              </h2>
+              <div className="mt-12 space-y-16">
+                {barrio.editorialSections.map((block, i) => {
+                  const imageSrc = EDITORIAL_IMAGES[i % EDITORIAL_IMAGES.length] ?? barrio.image;
+                  const reverse = i % 2 === 1;
+                  return (
+                    <LivendiaReveal key={block.title}>
+                      <div className={`grid items-center gap-10 lg:grid-cols-2 ${reverse ? "lg:[direction:rtl]" : ""}`}>
+                        <div className={`relative aspect-[16/10] overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200 ${reverse ? "lg:[direction:ltr]" : ""}`}>
+                          <Image
+                            src={imageSrc}
+                            alt=""
+                            fill
+                            className="object-cover transition duration-700 hover:scale-105"
+                            sizes="(max-width:1024px) 100vw, 560px"
+                            quality={88}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-tr from-[#1A4FBF]/25 to-transparent" />
+                        </div>
+                        <div className={reverse ? "lg:[direction:ltr]" : ""}>
+                          <h3 className="text-2xl font-extrabold text-[#1E293B]">{block.title}</h3>
+                          <p className="mt-4 text-base leading-relaxed text-[#475569]">{block.body}</p>
+                          <ul className="mt-6 space-y-2">
+                            {["Gestor dedicado", "Panel online", "Precio fijo IVA incl."].map((item) => (
+                              <li key={item} className="flex gap-2 text-sm font-medium text-[#1E293B]">
+                                <CheckCircle2 className="h-5 w-5 shrink-0 text-[#06B6D4]" aria-hidden />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </LivendiaReveal>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        <ContratosBcnServiceBlocks
+          sections={serviceSections}
+          cardSubtitle={cardSubtitle}
+          navExtras={[
+            { href: "#panel", label: "Panel Livendia" },
+            { href: "#proceso", label: "Cómo funciona" },
+            { href: "#barrios-destacados", label: "Todos los barrios" },
+            { href: "#zonas", label: "Municipios" },
+          ]}
+        />
+
+        <div id="panel">
+          <RentalContractPlatformShowcase
+            city="Barcelona"
+            propertyLine={`Contrato en ${barrio.name} · Barcelona`}
+          />
+        </div>
+
+        <section id="proceso" className="scroll-mt-28 border-b border-slate-200 bg-[#EFF6FF] px-4 py-16 sm:px-6 lg:py-24">
+          <div className="mx-auto max-w-6xl">
+            <LivendiaReveal>
+              <p className="text-center text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Cómo funciona Livendia</p>
+              <h2 className="mt-3 text-center text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
+                Cinco pasos para tu contrato inmobiliario en {barrio.name}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-[#64748B]">
+                Primera llamada con el gestor, contratas online, envías documentación, tramitamos el expediente y te
+                entregamos el contrato listo para firmar.
+              </p>
+            </LivendiaReveal>
+            <ContratosBcnProcessAnimated />
+          </div>
+        </section>
+
+        <ContratosBcnOfficeSection barrio={barrio} />
+
+        <ContratosBcnFeaturedBarrios currentSlug={barrio.slug} />
+
+        <section id="zonas" className="scroll-mt-28 border-b border-slate-200 px-4 py-16 sm:px-6 lg:py-24">
+          <div className="mx-auto max-w-6xl">
+            <LivendiaReveal>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
+                {BARCELONA_ZONES_SECTION.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
+                {BARCELONA_ZONES_SECTION.title}
+              </h2>
+              <p className="mt-4 max-w-3xl text-[#64748B]">{BARCELONA_ZONES_SECTION.lead}</p>
+              <div className="relative mt-8 aspect-[21/9] overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-200">
+                <Image
+                  src={BARCELONA_ZONES_SECTION.heroImage}
+                  alt={BARCELONA_ZONES_SECTION.heroImageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 1152px"
+                  quality={90}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2D7A]/70 to-transparent" />
+                <p className="absolute bottom-6 left-6 max-w-md text-lg font-bold text-white sm:text-xl">
+                  Más de 30 landings locales · mismo gestor Livendia
+                </p>
+              </div>
+            </LivendiaReveal>
+            <div className="mt-10">
+              <ContratosBcnZonesCarousel zones={BARCELONA_ZONE_LINKS} />
+            </div>
+            <ContratosBcnZonesLinkCloud zones={BARCELONA_ZONE_LINKS} />
           </div>
         </section>
 
@@ -110,86 +312,10 @@ export function ContratosInmobiliariosBarrioLanding({
           headline="Gestor experto en contratos — normativa 2026"
         />
 
-        <section className="border-b border-slate-200 px-4 py-14 sm:px-6">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-              Servicios de contratos inmobiliarios en {barrio.name}
-            </h2>
-            <p className="mt-3 max-w-2xl text-[#64748B]">
-              Precios fijos IVA incluido, panel online y gestor dedicado — los mismos servicios que en{" "}
-              <Link href={CONTRATOS_INMOBILIARIOS_BARCELONA_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
-                toda Barcelona
-              </Link>
-              , con foco en el contexto de {barrio.districtLabel}.
-            </p>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {barrio.servicesFocus.map((label) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-3 rounded-2xl bg-[#EFF6FF] px-5 py-4 text-sm font-semibold text-[#1E293B] ring-1 ring-[#1A4FBF]/10"
-                >
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[#06B6D4]" aria-hidden />
-                  {label}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {(
-                [
-                  { slug: "contrato-alquiler-lau", label: "Contrato LAU" },
-                  { slug: "contrato-arras-penitenciales", label: "Contrato arras" },
-                  { slug: "contrato-alquiler-habitacion", label: "Habitación" },
-                  { slug: "administracion-alquiler", label: "Admin. alquiler" },
-                ] as const
-              ).map(({ slug, label }) => (
-                <div
-                  key={slug}
-                  className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
-                >
-                  <FileText className="h-6 w-6 text-[#1A4FBF]" aria-hidden />
-                  <p className="mt-3 font-bold text-[#1E293B]">{label}</p>
-                  <ContratarSlugButton
-                    slug={slug}
-                    className="mt-4 inline-flex min-h-10 items-center justify-center rounded-xl bg-[#1A4FBF] px-4 py-2 text-sm font-bold text-white hover:bg-[#2563EB]"
-                  >
-                    Contratar
-                  </ContratarSlugButton>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-xl font-extrabold text-[#1E293B]">Otros barrios de Barcelona</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {allBarrios.map((b) => (
-                <Link
-                  key={b.slug}
-                  href={contratosInmobiliariosBarrioPath(b.slug)}
-                  className={`overflow-hidden rounded-2xl bg-white shadow-md ring-1 transition hover:-translate-y-0.5 hover:shadow-lg ${
-                    b.slug === barrio.slug ? "ring-2 ring-[#1A4FBF]" : "ring-slate-200"
-                  }`}
-                  aria-current={b.slug === barrio.slug ? "page" : undefined}
-                >
-                  <div className="relative aspect-[16/10] w-full">
-                    <Image src={b.image} alt="" fill className="object-cover" sizes="240px" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/80 to-transparent" />
-                    <p className="absolute bottom-2 left-3 text-sm font-bold text-white">{b.name}</p>
-                  </div>
-                  <p className="p-3 text-xs font-semibold text-[#1A4FBF]">Contratos inmobiliarios →</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ContratosBcnOfficeSection />
-
         <FaqSection
           title={`Preguntas frecuentes — contratos inmobiliarios ${barrio.name}`}
           items={[
+            ...(barrio.barrioFaq ?? []),
             {
               question: `¿Tramitáis contratos inmobiliarios solo en ${barrio.name}?`,
               answer: `Atendemos ${barrio.name} y todo Barcelona y Cataluña. Esta página resume el contexto del barrio; el servicio es el mismo gestoría Livendia con panel online y precios publicados en livendia.com/precios.`,
@@ -228,3 +354,4 @@ export function ContratosInmobiliariosBarrioLanding({
     </MultiServicePurchaseProvider>
   );
 }
+

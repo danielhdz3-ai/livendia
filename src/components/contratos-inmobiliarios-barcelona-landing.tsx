@@ -240,7 +240,7 @@ export function ContratosInmobiliariosBarcelonaLanding({
               href="#barrios-destacados"
               className="shrink-0 rounded-full border border-[#1A4FBF]/25 px-4 py-2 text-xs font-semibold text-[#1A4FBF] hover:bg-[#EFF6FF] sm:text-sm"
             >
-              5 barrios
+              10 barrios
             </a>
             <a
               href="#zonas"
@@ -340,7 +340,7 @@ export function ContratosInmobiliariosBarcelonaLanding({
           />
         </div>
 
-        <ContratosBcnOfficeSection />
+        <ContratosBcnOfficeSection showBarrioDespachoNav />
 
         <ContratosBcnFeaturedBarrios />
 
