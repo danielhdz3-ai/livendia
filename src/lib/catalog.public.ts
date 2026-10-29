@@ -113,6 +113,18 @@ export const PACK_LAU_ADMIN_LANDING_PATH = "/servicios/pack-contrato-lau-adminis
 export const PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH =
   "/servicios/pack-arras-gestion-documental-vendedor" as const;
 
+/** Cita presencial en despacho Les Corts (incluida en pack comprador Barcelona). */
+export const PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR = 45;
+
+/** Pack comprador Barcelona: revisión post-arras + cita en despacho Les Corts — IVA incl. */
+export const PACK_COMPRADOR_BARCELONA_EUR =
+  REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR + PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR;
+export const PACK_COMPRADOR_BARCELONA_PRICE_CENTS = PACK_COMPRADOR_BARCELONA_EUR * 100;
+export const PACK_COMPRADOR_BARCELONA_PRICE_LABEL = `${PACK_COMPRADOR_BARCELONA_EUR} €`;
+export const PACK_COMPRADOR_BARCELONA_SLUG = "pack-comprador-barcelona" as const;
+export const PACK_COMPRADOR_BARCELONA_LANDING_PATH = "/servicios/pack-comprador-barcelona" as const;
+export const PACK_COMPRADOR_BARCELONA_SLUGS = [PACK_COMPRADOR_BARCELONA_SLUG] as const;
+
 /** Contrato de alquiler por temporada — precio comercial IVA incl. */
 export const CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR = 200;
 export const CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS = CONTRATO_ALQUILER_TEMPORADA_PRICE_EUR * 100;
@@ -165,6 +177,7 @@ export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [SERVICIO_ALQUILER_INTEGRAL_SLUG]: SERVICIO_ALQUILER_INTEGRAL_PRICE_CENTS,
   [GESTION_DOCUMENTAL_VENDEDOR_SLUG]: GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS,
   [PACK_ARRAS_GESTION_VENDEDOR_SLUG]: LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_PRICE_CENTS,
+  [PACK_COMPRADOR_BARCELONA_SLUG]: PACK_COMPRADOR_BARCELONA_PRICE_CENTS,
   [ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG]: ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   "servicio-completo-compra": SERVICIO_COMPLETO_CV_PRICE_CENTS,
   "servicio-completo-venta": SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -254,6 +267,25 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "Área de cliente Livendia",
     ],
     badge: "Pack venta · 495 €",
+  },
+  {
+    slug: PACK_COMPRADOR_BARCELONA_SLUG,
+    name: "Pack comprador Barcelona (post-arras + cita despacho)",
+    description:
+      "Para compradores que ya firmaron arras en Barcelona o área metropolitana: revisión documental integral (comunidad, ITE, nota registral, urbanismo) más cita presencial de 45–60 min en nuestro despacho de Les Corts (Mejía Lequerica 44) para veredicto y dudas antes de escriturar.",
+    category: "compraventa",
+    price_cents: PACK_COMPRADOR_BARCELONA_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Revisión completa de contrato de arras y coherencia con documentación",
+      "Actas de comunidad, derramas, ITE y nota registral actualizada",
+      "Consulta urbanística y cargas relevantes en edificios barceloneses",
+      "Informe ejecutivo PDF + llamada de veredicto con gestor",
+      "Cita presencial en despacho Les Corts (Mejía Lequerica 44) incluida",
+      "Análisis en 48 h · informe en 3–5 días laborables",
+      "Área de cliente Livendia para subir documentación",
+    ],
+    badge: "Comprador · Barcelona",
   },
   {
     slug: "gestion-documental-vendedor",
@@ -452,6 +484,7 @@ function sortServicesWithinCategory(category: string, items: PublicService[]): P
     if (category === "compraventa") {
       const order = [
         PACK_ARRAS_GESTION_VENDEDOR_SLUG,
+        PACK_COMPRADOR_BARCELONA_SLUG,
         "contrato-arras-penitenciales",
         "contrato-arras-confirmatorias",
         "revision-documental-post-arras",
@@ -522,6 +555,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "revision-contrato-alquiler": "/images/gestora2.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
   "pack-arras-gestion-documental-vendedor": "/images/servicio-completo-venta-hero.jpg",
+  [PACK_COMPRADOR_BARCELONA_SLUG]: "/images/fundadores-oficina.png",
   "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",
   /** Landing informativa (no catálogo DB) — imagen principal de la página dedicada */
   "contrato-de-arras": "/images/contratodearras.jpg",
@@ -536,6 +570,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
 const SERVICE_LANDING_PATH_OVERRIDES: Record<string, string> = {
   "contrato-arras-confirmatorias": "/servicios/contrato-de-arras",
   [PACK_ARRAS_GESTION_VENDEDOR_SLUG]: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
+  [PACK_COMPRADOR_BARCELONA_SLUG]: PACK_COMPRADOR_BARCELONA_LANDING_PATH,
 };
 
 /**
@@ -553,6 +588,7 @@ export const SERVICE_CARD_TITLE: Record<string, string> = {
   "revision-documental-post-arras": "Revisión documental post-arras",
   "gestion-documental-vendedor": "Gestión documental vendedor",
   "pack-arras-gestion-documental-vendedor": "Pack arras + gestión vendedor",
+  [PACK_COMPRADOR_BARCELONA_SLUG]: "Pack comprador Barcelona",
   "acompanamiento-compra-parking-trastero": "Compra parking o trastero",
   "contrato-arras-penitenciales": "Arras penitenciales",
   "contrato-arras-confirmatorias": "Arras confirmatorias",

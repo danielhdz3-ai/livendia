@@ -1,5 +1,6 @@
 import { FaqSection } from "@/components/faq-section";
 import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
+import { BarcelonaRegionalHubCards } from "@/components/barcelona-regional-hub-cards";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeHowItWorks } from "@/components/home-how-it-works";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
@@ -130,6 +131,15 @@ export default async function Home() {
         <HomeMobileQuickActions />
 
         <HomeCoverageCities />
+
+        <section className="border-b border-slate-200 bg-[#F8FAFC] py-12 sm:py-14">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <BarcelonaRegionalHubCards
+              title="Barcelona: despacho en Les Corts"
+              lead="Además de gestoría online en toda España, en Barcelona tienes sede física, contratos por barrio y administración de alquiler con gestor presencial cuando hace falta."
+            />
+          </div>
+        </section>
 
         <HomeParticularesServicios />
 

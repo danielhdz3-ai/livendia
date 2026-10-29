@@ -30,6 +30,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona", label: "Pack arras + gestión Barcelona" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-eixample", label: "Pack arras Eixample" },
       { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-les-corts", label: "Pack arras Les Corts" },
+      { href: "/servicios/pack-comprador-barcelona", label: "Pack comprador Barcelona (395 €)" },
       {
         href: "/servicios/pack-arras-gestion-documental-vendedor/hospitalet-de-llobregat",
         label: "Pack arras L'Hospitalet",
@@ -82,6 +83,9 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/comprar-piso-sin-agencia", label: "Comprar sin agencia" },
       { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
+      { href: "/servicios/pack-comprador-barcelona", label: "Pack comprador Barcelona (395 €)" },
+      { href: "/contratos-inmobiliarios-barcelona", label: "Hub contratos Barcelona" },
+      { href: "/administracion-alquiler-barcelona", label: "Admin alquiler Barcelona" },
     ],
   },
   {

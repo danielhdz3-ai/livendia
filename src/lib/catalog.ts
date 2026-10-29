@@ -19,7 +19,8 @@ function normalizeServiceCategory(service: PublicService): PublicService {
   if (
     service.slug === "revision-documental-post-arras" ||
     service.slug === "gestion-documental-vendedor" ||
-    service.slug === "pack-arras-gestion-documental-vendedor"
+    service.slug === "pack-arras-gestion-documental-vendedor" ||
+    service.slug === "pack-comprador-barcelona"
   ) {
     return { ...service, category: "compraventa" };
   }

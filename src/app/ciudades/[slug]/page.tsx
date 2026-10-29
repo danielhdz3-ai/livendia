@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { BarcelonaRegionalHubCards } from "@/components/barcelona-regional-hub-cards";
 import { CityHubServices } from "@/components/city-hub-services";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -129,6 +130,11 @@ export default async function CiudadHubPage({ params }: Props) {
 
 
         <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+          {city.slug === "barcelona" ? (
+            <div className="mb-10">
+              <BarcelonaRegionalHubCards />
+            </div>
+          ) : null}
           <CityHubServices city={city} />
 
           {posts.length > 0 ? (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
+import { NavBarcelonaDropdown } from "@/components/nav-barcelona-dropdown";
 import { NavServicesDropdown } from "@/components/nav-services-dropdown";
 import { PublicHeaderMobileMenu } from "@/components/public-header-mobile-menu";
 
@@ -29,6 +30,7 @@ export function PublicHeader() {
             Contratos
           </Link>
           <NavServicesDropdown />
+          <NavBarcelonaDropdown />
           <Link
             href="/ciudades"
             className="text-sm font-medium hover:text-cyan-300"

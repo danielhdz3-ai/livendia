@@ -43,7 +43,7 @@ export function isCityHubSlug(slug: string): slug is HomeCoverageCitySlug {
 export const CITY_HUB_TAGLINES: Record<HomeCoverageCitySlug, string> = {
   madrid: "Capital y corredor del Henares: alquiler, arras y venta entre particulares.",
   valencia: "Ciudad y litoral: contratos LAU, habitación y gestión de alquileres.",
-  barcelona: "Área metropolitana y CCCat: arras, habitación y venta sin agencia.",
+  barcelona: "Despacho Les Corts (Mejía Lequerica 44), contratos por barrio, compraventa y admin de alquiler en el AMB.",
   malaga: "Costa y provincia: gestoría online con precios cerrados.",
   sevilla: "Capital andaluza: compraventa, contratos y administración de alquiler.",
   bilbao: "Gran Bilbao y Bizkaia: contratos, arras y venta entre particulares.",

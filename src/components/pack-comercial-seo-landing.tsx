@@ -31,6 +31,8 @@ import {
   LIVENDIA_LAU_MAS_ADMIN_PRIMER_MES_EUR,
   GESTION_DOCUMENTAL_VENDEDOR_SLUG,
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
+  PACK_COMPRADOR_BARCELONA_EUR,
+  PACK_COMPRADOR_BARCELONA_LANDING_PATH,
   PACK_LAU_ADMIN_LANDING_PATH,
 } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
@@ -73,6 +75,9 @@ function PackFaqJsonLd({ config }: { config: PackCommercialLandingConfig }) {
 function getPackPriceEur(
   config: PackCommercialLandingConfig | PackCommercialLocalLandingConfig,
 ): number {
+  if (config.path === PACK_COMPRADOR_BARCELONA_LANDING_PATH) {
+    return PACK_COMPRADOR_BARCELONA_EUR;
+  }
   if (config.contactNeedType === "venta") {
     return LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_EUR;
   }

@@ -1,3 +1,4 @@
+import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
 import { PublicHeader } from "@/components/public-header";
 import { FaqSection } from "@/components/faq-section";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
@@ -321,14 +322,21 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
               {config.slug === "barcelona" ? (
                 <p className="mt-6 text-center text-sm text-[#64748b]">
-                  ¿Vendes en Barcelona? Consulta la{" "}
+                  ¿Vendes en Barcelona?{" "}
                   <Link
                     href="/servicios/servicio-completo-venta-local/barcelona"
                     className="font-semibold text-[#1A4FBF] hover:underline"
                   >
-                    landing de venta completa local (890 € IVA incl.)
+                    Venta local 890 €
                   </Link>
-                  .
+                  {" · "}
+                  <Link href="/contratos-inmobiliarios-barcelona" className="font-semibold text-[#1A4FBF] hover:underline">
+                    Hub contratos
+                  </Link>
+                  {" · "}
+                  <Link href="/servicios/pack-comprador-barcelona" className="font-semibold text-[#1A4FBF] hover:underline">
+                    Pack comprador 395 €
+                  </Link>
                 </p>
               ) : null}
             </div>
@@ -484,6 +492,10 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               />
             </div>
           </section>
+
+          {config.slug === "barcelona" || config.slug === "les-corts" ? (
+            <ContratosBcnOfficeSection />
+          ) : null}
 
           <ServiceMidPageContactSection
             serviceLabel={`Gestoría inmobiliaria en ${config.city}`}

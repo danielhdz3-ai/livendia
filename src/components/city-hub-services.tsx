@@ -35,6 +35,9 @@ import {
   localRedactarContratoAlquilerHref,
 } from "@/lib/redactar-contrato-alquiler-local-cities";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
+import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import { ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH } from "@/lib/administracion-alquiler-barcelona-hub-content";
+import { PACK_COMPRADOR_BARCELONA_LANDING_PATH } from "@/lib/catalog.public";
 import {
   getGestoriaCityVerticalHub,
   localGestoriaCityVerticalHref,
@@ -55,6 +58,36 @@ export function CityHubServices({ city }: CityHubServicesProps) {
 
   return (
     <div className="space-y-8">
+      {city.slug === "barcelona" ? (
+        <section className="rounded-2xl border-2 border-[#06B6D4]/30 bg-gradient-to-br from-cyan-50/80 to-white p-6 shadow-sm">
+          <h2 className="text-lg font-bold text-[#1E293B]">Flagships Barcelona</h2>
+          <p className="mt-2 text-sm text-[#64748b]">
+            Despacho en Les Corts · landings por barrio · administración con gestor en campo.
+          </p>
+          <ul className="mt-4 flex flex-col gap-2 text-sm">
+            <li>
+              <Link href={CONTRATOS_INMOBILIARIOS_BARCELONA_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
+                Contratos inmobiliarios Barcelona (hub principal)
+              </Link>
+            </li>
+            <li>
+              <Link href={ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
+                Administración de alquiler Barcelona (online + presencial)
+              </Link>
+            </li>
+            <li>
+              <Link href={PACK_COMPRADOR_BARCELONA_LANDING_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
+                Pack comprador Barcelona (post-arras + cita despacho)
+              </Link>
+            </li>
+            <li>
+              <Link href="/gestoria/les-corts" className="font-semibold text-[#1A4FBF] hover:underline">
+                Gestoría Les Corts — Mejía Lequerica 44
+              </Link>
+            </li>
+          </ul>
+        </section>
+      ) : null}
       {showAdminPriority ? (
         <section className="rounded-2xl border-2 border-[#1A4FBF]/25 bg-gradient-to-br from-blue-50 to-white p-6 shadow-sm">
           <h2 className="text-lg font-bold text-[#1E293B]">Gestión de alquileres en {city.name}</h2>

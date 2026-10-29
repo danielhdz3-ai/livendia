@@ -97,6 +97,7 @@ import {
   CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS,
   contratosInmobiliariosBarrioPath,
 } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
+import { ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH } from "@/lib/administracion-alquiler-barcelona-hub-content";
 import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
@@ -156,6 +157,7 @@ const SERVICIO_SLUGS = [
   "venta-piso-particular-sin-agencia",
   "pack-contrato-lau-administracion-alquiler",
   "pack-arras-gestion-documental-vendedor",
+  "pack-comprador-barcelona",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -177,6 +179,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contacto`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/equipo`, lastModified: coreDate, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/blog`, lastModified: coreDate, changeFrequency: "weekly", priority: 0.82 },
+    { url: `${base}${ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH}`, lastModified: gestoriaDate, changeFrequency: "weekly", priority: 0.9 },
     // /mapa-del-sitio es noindex (página utilitaria) y no debe listarse en el sitemap.
     { url: `${base}${CIUDADES_HUB_BASE}`, lastModified: ciudadesDate, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/legal/aviso-legal`, lastModified: legalDate, changeFrequency: "yearly", priority: 0.35 },

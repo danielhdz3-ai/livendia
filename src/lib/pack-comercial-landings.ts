@@ -9,8 +9,14 @@ import {
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
   PACK_ARRAS_GESTION_VENDEDOR_SLUG,
   PACK_ARRAS_GESTION_VENDEDOR_SLUGS,
+  PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR,
+  PACK_COMPRADOR_BARCELONA_LANDING_PATH,
+  PACK_COMPRADOR_BARCELONA_PRICE_LABEL,
+  PACK_COMPRADOR_BARCELONA_SLUG,
+  PACK_COMPRADOR_BARCELONA_SLUGS,
   PACK_LAU_ADMIN_LANDING_PATH,
   PACK_LAU_ADMIN_SLUGS,
+  REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
 } from "@/lib/catalog.public";
 
@@ -348,4 +354,139 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
   contactNeedType: "venta",
 };
 
-export const PACK_COMMERCIAL_LANDINGS = [PACK_LAU_ADMIN_LANDING, PACK_ARRAS_GESTION_LANDING] as const;
+export const PACK_COMPRADOR_BARCELONA_LANDING: PackCommercialLandingConfig = {
+  path: PACK_COMPRADOR_BARCELONA_LANDING_PATH,
+  serviceSlugs: PACK_COMPRADOR_BARCELONA_SLUGS,
+  metaTitle: `Pack comprador Barcelona — post-arras + cita despacho Les Corts · ${PACK_COMPRADOR_BARCELONA_PRICE_LABEL}`,
+  metaDescription:
+    "¿Firmaste arras en Barcelona? Revisión documental (ITE, comunidad, registro) + cita presencial en despacho Mejía Lequerica 44 (Les Corts). 395 € IVA incl. Informe en 48 h.",
+  keywords: [
+    "pack comprador barcelona",
+    "revisión post arras barcelona despacho",
+    "comprar piso barcelona revisión documental",
+    "gestoría comprador les corts",
+    "due diligence compraventa barcelona",
+    "ITE derramas barcelona comprador",
+  ],
+  heroBadge: "Comprador · Barcelona · Despacho Les Corts",
+  heroH1: "Pack comprador Barcelona: post-arras + cita en nuestro despacho",
+  heroLead: `Ya firmaste arras y quieres due diligence antes de notaría — con alguien que conoce edificios del Eixample, Gràcia o el AMB. Incluye el pack revisión documental (${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}) y una cita presencial de 45–60 min en Carrer de Mejía Lequerica, 44 (Les Corts). Total ${PACK_COMPRADOR_BARCELONA_PRICE_LABEL} IVA incl.`,
+  heroImage: "/images/fundadores-oficina.png",
+  heroImageAlt: "Gestor Livendia con comprador en despacho Les Corts, Barcelona",
+  totalPriceLabel: PACK_COMPRADOR_BARCELONA_PRICE_LABEL,
+  priceBreakdown: [
+    { label: "Revisión documental post-arras", price: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL },
+    { label: "Cita presencial en despacho Les Corts", price: `${PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR} €` },
+  ],
+  primaryCtaSlug: PACK_COMPRADOR_BARCELONA_SLUG,
+  primaryCtaLabel: `Contratar pack · ${PACK_COMPRADOR_BARCELONA_PRICE_LABEL} IVA incl.`,
+  secondaryCtaSlug: "",
+  secondaryCtaLabel: "",
+  includedTitle: "Qué incluye el pack comprador Barcelona",
+  includedIntro:
+    "Pensado para compradores entre particulares en Barcelona capital o área metropolitana que ya entregaron señal y quieren un veredicto profesional antes de escriturar — online y con cara en Les Corts.",
+  includedItems: [
+    "Revisión de contrato de arras y coherencia con precio, plazos y condición de hipoteca",
+    "Actas de comunidad (2 años), derramas pendientes e ITE cuando el edificio lo exige",
+    "Nota registral, cargas y consulta urbanística relevante",
+    "Informe ejecutivo PDF + llamada de veredicto con gestor especializado",
+    "Cita presencial en despacho Livendia (Mejía Lequerica 44) para resolver dudas con el informe encima de la mesa",
+    "Panel Livendia para centralizar documentación del inmueble",
+    "Análisis en 48 h · entrega informe en 3–5 días laborables",
+  ],
+  steps: [
+    {
+      title: "Contratas el pack (395 € IVA incl.)",
+      description: "Pago seguro por tarjeta. Te asignamos gestor y abrimos expediente en panel.",
+    },
+    {
+      title: "Subes arras y documentación",
+      description: "Contrato de arras, actas que tengas, dirección del inmueble y datos de contacto.",
+    },
+    {
+      title: "Informe y llamada de veredicto",
+      description: "Hallazgos en PDF (verde/ámbar/rojo) y llamada para priorizar riesgos antes de escritura.",
+    },
+    {
+      title: "Cita en Les Corts",
+      description:
+        "Reservas franja en despacho (L–V). Repasamos informe, ITE, derramas y escenarios de negociación con el vendedor si hace falta.",
+    },
+  ],
+  infoBanners: [
+    {
+      title: "Por qué Barcelona no es igual que otras ciudades",
+      body: "Zona tensionada, INCASÒL en alquileres, ITE exigente y CCCat en arras: el comprador barcelonés suele descubrir derramas o deficiencias de edificio tarde. Este pack combina revisión remota y cita en sede.",
+    },
+    {
+      title: "¿Solo quieres la revisión online?",
+      body: `Puedes contratar la revisión documental post-arras estándar por ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl. sin cita presencial — válida en toda España.`,
+    },
+    {
+      title: "¿Aún no has firmado arras?",
+      body: `Mira acompañamiento reserva-arras (424 €) o servicio completo de compra (${SERVICIO_COMPLETO_CV_PRICE_LABEL}) si quieres gestor desde antes de la señal.`,
+    },
+  ],
+  audienceTitle: "¿Para quién es?",
+  audienceParagraph:
+    "Compradores particulares en Barcelona, L'Hospitalet, Badalona, Cornellà o municipios del AMB que ya firmaron arras (Idealista, agencia sin exclusiva, recomendación) y quieren due diligence real antes de transferir el resto del precio en notaría.",
+  comparisonTitle: "Pack 395 € vs revisión suelta vs ir solo a notaría",
+  comparisonRows: [
+    {
+      label: "Revisión documental",
+      pack: `${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} incluida`,
+      alternative: "Notario no audita comunidad ni ITE en detalle",
+    },
+    {
+      label: "Cita presencial Les Corts",
+      pack: `${PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR} € incluidos en pack`,
+      alternative: "Solo telefónico o sin gestor",
+    },
+    {
+      label: "Precio total",
+      pack: PACK_COMPRADOR_BARCELONA_PRICE_LABEL,
+      alternative: `Revisión suelta ${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} sin despacho`,
+    },
+  ],
+  faq: [
+    {
+      question: "¿Cuánto cuesta el pack comprador Barcelona?",
+      answer: `${PACK_COMPRADOR_BARCELONA_PRICE_LABEL} IVA incl.: revisión post-arras (${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL}) + cita en despacho Les Corts (${PACK_COMPRADOR_BARCELONA_CITA_DESPACHO_EUR} € de valor incluido en el pack). Un solo pago con tarjeta.`,
+    },
+    {
+      question: "¿Dónde está el despacho?",
+      answer:
+        "Carrer de Mejía Lequerica, 44, 08028 Barcelona (Les Corts). Metro Les Corts / Zona Universitària. Tras el informe, coordinamos la cita por email o WhatsApp.",
+    },
+    {
+      question: "¿Sirve si compro en L'Hospitalet o Badalona?",
+      answer:
+        "Sí. El pack es para compradores en el área metropolitana de Barcelona; la revisión documental no depende del distrito y la cita presencial es opcional pero recomendada si puedes desplazarte a Les Corts.",
+    },
+    {
+      question: "¿Qué pasa si el informe es desfavorable?",
+      answer:
+        "El gestor te indica si conviene renegociar precio, exigir subsanación al vendedor o valorar desistir según tus arras. No somos abogados procesales en juicio; sí due diligence pre-escritura.",
+    },
+  ],
+  relatedLinks: [
+    { href: "/servicios/revision-documental-post-arras", label: "Revisión post-arras (España)" },
+    { href: "/servicios/revision-documental-post-arras/les-corts", label: "Post-arras Les Corts" },
+    { href: "/contratos-inmobiliarios-barcelona", label: "Hub contratos Barcelona" },
+    { href: "/gestoria/les-corts", label: "Gestoría Les Corts" },
+    { href: "/ciudades/barcelona", label: "Hub Barcelona" },
+  ],
+  finalCtaTitle: "Comprueba antes de escriturar — con informe y despacho en Les Corts",
+  finalCtaLead: `${PACK_COMPRADOR_BARCELONA_PRICE_LABEL} IVA incl. · Gestor asignado · Cita presencial incluida`,
+  jsonLdName: "Pack comprador Barcelona Livendia",
+  jsonLdDescription:
+    "Revisión documental post-arras para compradores en Barcelona más cita presencial en despacho Les Corts.",
+  contactServiceLabel: "Pack comprador Barcelona",
+  contactNeedType: "arras",
+};
+
+export const PACK_COMMERCIAL_LANDINGS = [
+  PACK_LAU_ADMIN_LANDING,
+  PACK_ARRAS_GESTION_LANDING,
+  PACK_COMPRADOR_BARCELONA_LANDING,
+] as const;

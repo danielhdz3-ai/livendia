@@ -3,6 +3,8 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { HOME_COVERAGE_CITIES, HOME_CITY_CARD_IMAGES } from "@/lib/home-coverage-cities";
 import { CIUDADES_HUB_BASE, CITY_HUB_TAGLINES, cityHubHref } from "@/lib/ciudades-hub";
+import { BARCELONA_REGIONAL_HUB_SECTION_ID } from "@/lib/barcelona-regional-hub";
+import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
 
 type HomeCoverageCitiesProps = {
   /** teaser = home (5 tarjetas); compact = páginas internas (pills). */
@@ -53,10 +55,15 @@ export function HomeCoverageCities({ variant = "teaser" }: HomeCoverageCitiesPro
           </nav>
         ) : (
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {HOME_COVERAGE_CITIES.map((city) => (
+            {HOME_COVERAGE_CITIES.map((city) => {
+              const hubHref =
+                city.slug === "barcelona"
+                  ? `${cityHubHref("barcelona")}#${BARCELONA_REGIONAL_HUB_SECTION_ID}`
+                  : cityHubHref(city.slug);
+              return (
               <li key={city.slug}>
                 <Link
-                  href={cityHubHref(city.slug)}
+                  href={hubHref}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:border-[#1A4FBF] hover:shadow-md"
                 >
                   <div className="relative h-32 overflow-hidden bg-slate-100 sm:h-36">
@@ -74,20 +81,24 @@ export function HomeCoverageCities({ variant = "teaser" }: HomeCoverageCitiesPro
                   </div>
                   <div className="flex flex-1 flex-col p-4 sm:p-5">
                     <p className="flex-1 text-sm leading-relaxed text-[#64748b]">{CITY_HUB_TAGLINES[city.slug]}</p>
+                    {city.slug === "barcelona" ? (
+                      <p className="mt-2 text-xs font-medium text-[#06B6D4]">Despacho Les Corts · hub regional</p>
+                    ) : null}
                     <span className="mt-4 text-sm font-semibold text-[#1A4FBF]">Ver servicios →</span>
                   </div>
                 </Link>
               </li>
-            ))}
+            );
+            })}
           </ul>
         )}
 
-        <p className="mt-8 text-center">
-          <Link
-            href={CIUDADES_HUB_BASE}
-            className="text-sm font-semibold text-[#1A4FBF] hover:underline"
-          >
+        <p className="mt-8 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:gap-4">
+          <Link href={CIUDADES_HUB_BASE} className="text-sm font-semibold text-[#1A4FBF] hover:underline">
             Ver todas las ciudades y área metropolitana →
+          </Link>
+          <Link href={CONTRATOS_INMOBILIARIOS_BARCELONA_PATH} className="text-sm font-semibold text-[#64748b] hover:text-[#1A4FBF] hover:underline">
+            Barcelona: contratos por barrio →
           </Link>
         </p>
       </div>

@@ -50,6 +50,7 @@ const RECOMMENDED_BY_SLUG: Record<string, string[]> = {
   "contrato-arras-confirmatorias": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple"],
   "reserva-de-compra": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple"],
   "revision-documental-post-arras": ["escrituras", "nota_simple", "recibos", "contrato_actual"],
+  "pack-comprador-barcelona": ["escrituras", "nota_simple", "recibos", "contrato_actual"],
   "gestion-documental-vendedor": ["escrituras", "nota_simple", "recibos", "poder_notarial"],
   "servicio-completo-compra": ["dni_propietario", "dni_inquilino", "escrituras", "nota_simple", "recibos"],
   "servicio-completo-venta": ["dni_propietario", "escrituras", "nota_simple", "recibos"],

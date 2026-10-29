@@ -5,6 +5,8 @@ import { ChevronRight, MessageCircle, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { getWhatsAppHref } from "@/lib/business-nap";
 import { ServicesNavMobileSections } from "@/components/nav-services-mobile-sections";
+import { BARCELONA_REGIONAL_HUB_DOORS, BARCELONA_PACK_COMPRADOR_HUB_LINK } from "@/lib/barcelona-regional-hub";
+import { cityHubHref } from "@/lib/ciudades-hub";
 
 const INFO_LINKS = [
   { href: "/servicios", label: "Todos los contratos" },
@@ -151,6 +153,18 @@ export function PublicHeaderMobileMenu() {
                 </h2>
                 <ServicesNavMobileSections onNavigate={close} layout="accordion" />
               </section>
+
+              <MenuCard title="Barcelona · Les Corts">
+                {BARCELONA_REGIONAL_HUB_DOORS.map((door) => (
+                  <MenuLink key={door.id} href={door.href} label={door.title} onNavigate={close} />
+                ))}
+                <MenuLink href={cityHubHref("barcelona")} label="Hub Barcelona" onNavigate={close} />
+                <MenuLink
+                  href={BARCELONA_PACK_COMPRADOR_HUB_LINK.href}
+                  label={BARCELONA_PACK_COMPRADOR_HUB_LINK.label}
+                  onNavigate={close}
+                />
+              </MenuCard>
 
               <MenuCard title="Información">
                 {INFO_LINKS.map((item) => (
