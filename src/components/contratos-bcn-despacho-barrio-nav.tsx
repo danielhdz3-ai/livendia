@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CONTRATOS_BCN_DESPACHO_BARRIO_LINKS } from "@/lib/contratos-bcn-office-barrio";
 import { MapPin } from "lucide-react";
 
-/** Enlaces a #despacho personalizado por barrio (hub Barcelona). */
+/** Enlaces a landings de cita en despacho por barrio. */
 export function ContratosBcnDespachoBarrioNav() {
   return (
     <div className="mt-10 rounded-2xl border border-[#BFDBFE] bg-[#EFF6FF]/80 p-5 sm:p-6">

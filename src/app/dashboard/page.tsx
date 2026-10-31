@@ -7,6 +7,7 @@ import { OrderStatusBadge } from "@/components/order-status-badge";
 import { PANEL_ACTION_CARD, PANEL_ACTION_ICON } from "@/lib/client-panel-ui";
 import { calculateOrderProgress } from "@/lib/order-progress";
 import {
+  applyRentalDashboardLanding,
   isRentalAdminServiceSlug,
   orderGrantsRentalAccess,
   subscriptionGrantsRentalAccess,
@@ -74,6 +75,15 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
 
   // Check if user has active rental management subscription
   const hasRentalSubscription = hasActiveRentalSub || hasRentalViaOrder;
+
+  const rentalLanding = applyRentalDashboardLanding(
+    "/dashboard",
+    orders ?? [],
+    hasActiveRentalSub,
+  );
+  if (rentalLanding === "/dashboard/rental") {
+    redirect("/dashboard/rental");
+  }
 
   const name = profile?.full_name?.trim() || user.email || "Cliente";
   const firstName = name.split(" ")[0];

@@ -2,6 +2,7 @@ import { ContratosBcnHeroVisual } from "@/components/contratos-bcn-hero-visual";
 import { ContratosBcnMarqueeBand } from "@/components/contratos-bcn-marquee-band";
 import { BlogContractPromoBanner } from "@/components/blog-contract-promo-banner";
 import { ContratosBcnFeaturedBarrios } from "@/components/contratos-bcn-featured-barrios";
+import { ContratosBcnPackArrasSection } from "@/components/contratos-bcn-pack-arras-section";
 import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { BLOG_CONTRACT_PROMOS } from "@/lib/blog-contract-promos";
@@ -26,6 +27,7 @@ import {
   CONTRATOS_BCN_SERVICE_SECTIONS,
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
 } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import { CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import {
   LANDING_CTA_GRADIENT,
@@ -224,12 +226,12 @@ export function ContratosInmobiliariosBarcelonaLanding({
                 {s.navLabel}
               </a>
             ))}
-            <a
-              href="#despacho"
+            <Link
+              href={CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH}
               className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
             >
-              Despacho Les Corts
-            </a>
+              Despacho Barcelona
+            </Link>
             <a
               href="#proceso"
               className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
@@ -237,10 +239,16 @@ export function ContratosInmobiliariosBarcelonaLanding({
               5 pasos
             </a>
             <a
+              href="#pack-arras-gestion"
+              className="shrink-0 rounded-full border border-[#1A4FBF]/25 px-4 py-2 text-xs font-semibold text-[#1A4FBF] hover:bg-[#EFF6FF] sm:text-sm"
+            >
+              Pack arras 495 €
+            </a>
+            <a
               href="#barrios-destacados"
               className="shrink-0 rounded-full border border-[#1A4FBF]/25 px-4 py-2 text-xs font-semibold text-[#1A4FBF] hover:bg-[#EFF6FF] sm:text-sm"
             >
-              10 barrios
+              15 barrios
             </a>
             <a
               href="#zonas"
@@ -326,6 +334,14 @@ export function ContratosInmobiliariosBarcelonaLanding({
                       Landing Barcelona →
                     </Link>
                   ) : null}
+                  {section.packLocalHref ? (
+                    <Link
+                      href={section.packLocalHref}
+                      className="inline-flex min-h-11 items-center text-sm font-semibold text-[#64748B] underline-offset-2 hover:text-[#1A4FBF] hover:underline"
+                    >
+                      Pack arras + gestión 495 € →
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -343,6 +359,8 @@ export function ContratosInmobiliariosBarcelonaLanding({
         <ContratosBcnOfficeSection showBarrioDespachoNav />
 
         <ContratosBcnFeaturedBarrios />
+
+        <ContratosBcnPackArrasSection />
 
         <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6">
           <BlogContractPromoBanner promo={BLOG_CONTRACT_PROMOS.lau} placement="contratos_bcn_hub_lau" />

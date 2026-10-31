@@ -14,7 +14,7 @@ export function ContratosBcnFeaturedBarrios({ currentSlug }: { currentSlug?: str
       aria-labelledby="contratos-bcn-barrios-destacados-title"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Diez barrios</p>
+        <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Quince barrios</p>
         <h2 id="contratos-bcn-barrios-destacados-title" className="mt-2 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
           Contratos inmobiliarios por barrio y zona en Barcelona
         </h2>

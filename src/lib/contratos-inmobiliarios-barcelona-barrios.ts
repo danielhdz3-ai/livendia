@@ -1,5 +1,6 @@
 import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
 import { localContratoArrasHref } from "@/lib/contrato-arras-local-cities";
+import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
 
@@ -16,7 +17,12 @@ export type ContratosInmobiliariosBarrioSlug =
   | "sarria-sant-gervasi"
   | "el-raval"
   | "barceloneta"
-  | "vila-olimpica";
+  | "vila-olimpica"
+  | "pedralbes"
+  | "sant-antoni"
+  | "fort-pienc"
+  | "mataro"
+  | "rubi";
 
 export type ContratosInmobiliariosBarrioFaq = {
   question: string;
@@ -451,6 +457,150 @@ export const CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS: readonly ContratosInmobi
     imageAlt: "Contratos inmobiliarios Vila Olímpica Barcelona — Livendia",
     contratoAlquilerHref: localContratoAlquilerHref("barcelona-vila-olimpica"),
     contratoArrasHref: localContratoArrasHref("barcelona-vila-olimpica"),
+  },
+  {
+    slug: "pedralbes",
+    localSlug: "barcelona-les-corts",
+    name: "Pedralbes",
+    districtLabel: "Les Corts · Pedralbes",
+    metaTitle: "Contratos inmobiliarios Pedralbes | Cita despacho Livendia Barcelona",
+    metaDescription:
+      "LAU, arras y habitación en Pedralbes: gestoría Livendia con despacho en Les Corts (Mejía Lequerica 44). Reina Elisenda, Diagonal alta. Cita presencial o panel online.",
+    keywords: [
+      "contratos inmobiliarios pedralbes",
+      "gestoría despacho pedralbes barcelona",
+      "contrato arras pedralbes",
+      "cita gestor les corts pedralbes",
+    ],
+    h1: "Contratos inmobiliarios en Pedralbes — cita en despacho Les Corts",
+    lead:
+      "Operaciones de alto ticket en Pedralbes suelen exigir revisión presencial de arras CCCat o LAU antes de firmar. Livendia tiene despacho en el propio distrito (Les Corts) y gestor online para Reina Elisenda, Monestir y Diagonal alta.",
+    localContext:
+      "Parking anexo, terrazas y comunidades con conserje son habituales. En cita repasamos coherencia registral, ITE y plazos de escritura tras la señal.",
+    zoneHighlights: [
+      "Reina Elisenda — arras entre particulares",
+      "Monestir de Pedralbes — LAU familiar",
+      "Diagonal alta — compraventa sin agencia",
+      "Zona Universitària limítrofe — habitación",
+    ],
+    actualidad2026:
+      "ZMRT Barcelona y SERPAVI anexo en LAU habitual; arras con cláusula 621-49 si el comprador financia. Cita en Mejía Lequerica 44 con cita previa.",
+    servicesFocus: ["Arras alto ticket", "LAU Pedralbes", "Cita despacho Les Corts", "Revisión documental"],
+    barrioFaq: [
+      {
+        question: "¿El despacho está cerca de Pedralbes?",
+        answer:
+          "Sí: Carrer de Mejía Lequerica 44 está en Les Corts, a pocos minutos en metro o coche de Reina Elisenda y Pedralbes.",
+      },
+    ],
+    image: metroBarcelonaZoneImage("lescorts4.jpg"),
+    imageAlt: "Contratos inmobiliarios Pedralbes — despacho Livendia Les Corts",
+    contratoAlquilerHref: localContratoAlquilerHref("barcelona-les-corts"),
+    contratoArrasHref: localContratoArrasHref("barcelona-les-corts"),
+  },
+  {
+    slug: "sant-antoni",
+    localSlug: "barcelona-eixample",
+    name: "Sant Antoni",
+    districtLabel: "Eixample · Sant Antoni",
+    metaTitle: "Contratos inmobiliarios Sant Antoni | Despacho Livendia Barcelona",
+    metaDescription:
+      "Contratos LAU, habitación y arras en Sant Antoni (Mercat, Ronda). Reserva cita en despacho Les Corts o tramita online con gestor Livendia.",
+    keywords: [
+      "contratos inmobiliarios sant antoni",
+      "gestoría despacho sant antoni barcelona",
+      "contrato alquiler ronda sant antoni",
+    ],
+    h1: "Contratos inmobiliarios en Sant Antoni — despacho Livendia en Les Corts",
+    lead:
+      "En Sant Antoni conviven familias, locales en planta baja y pisos reformados del Ensanche sur. Revisamos LAU, habitación y arras en panel online o en cita presencial en nuestro despacho de Les Corts.",
+    localContext:
+      "Mercat de Sant Antoni y Ronda de Sant Antoni concentran operaciones entre particulares. En cita aclaramos SERPAVI, INCASÒL y cláusulas de obra reciente.",
+    zoneHighlights: ["Mercat Sant Antoni", "Ronda de Sant Antoni", "Comte Borrell", "Urgell"],
+    actualidad2026: "Barcelona en ZMRT: anexo SERPAVI y topes de renta en habitual y habitación desde 2026.",
+    servicesFocus: ["LAU Ensanche sur", "Habitación", "Arras", "Cita despacho"],
+    image: getLocalCityCardImage("barcelona-eixample"),
+    imageAlt: "Contratos Sant Antoni — cita despacho Livendia",
+    contratoAlquilerHref: localContratoAlquilerHref("barcelona-eixample"),
+    contratoArrasHref: localContratoArrasHref("barcelona-eixample"),
+  },
+  {
+    slug: "fort-pienc",
+    localSlug: "barcelona-eixample",
+    name: "Fort Pienc",
+    districtLabel: "Eixample · Fort Pienc",
+    metaTitle: "Contratos inmobiliarios Fort Pienc | Cita gestor Les Corts",
+    metaDescription:
+      "LAU, arras y habitación en Fort Pienc (Arc de Triomf, Estació del Nord). Despacho Livendia Mejía Lequerica 44 — cita previa L–V.",
+    keywords: [
+      "contratos inmobiliarios fort pienc",
+      "gestoría despacho fort pienc",
+      "contrato arras arc triomf",
+    ],
+    h1: "Contratos inmobiliarios en Fort Pienc — gestoría con despacho en Barcelona",
+    lead:
+      "Fort Pienc enlaza Eixample y Ciutat Vella: terrazas, locales reconvertidos y compraventas rápidas. Livendia redacta contratos y ofrece cita en Les Corts para revisar borradores antes de firmar.",
+    localContext:
+      "Arc de Triomf y Marina son ejes con alta rotación de inquilinos. El despacho Les Corts queda a ~15–20 min en metro (L1/L3).",
+    zoneHighlights: ["Arc de Triomf", "Estació del Nord", "Marina", "Fort Pienc centre"],
+    actualidad2026: "RDL 28/2026 en prórrogas LAU; CCCat en arras entre particulares.",
+    servicesFocus: ["LAU", "Arras CCCat", "Habitación", "Cita presencial"],
+    image: metroBarcelonaZoneImage("eixample.jpg"),
+    imageAlt: "Contratos Fort Pienc — Livendia despacho Barcelona",
+    contratoAlquilerHref: localContratoAlquilerHref("barcelona-eixample"),
+    contratoArrasHref: localContratoArrasHref("barcelona-eixample"),
+  },
+  {
+    slug: "mataro",
+    localSlug: "mataro",
+    name: "Mataró",
+    districtLabel: "Maresme · Mataró",
+    metaTitle: "Contratos inmobiliarios Mataró | Despacho Livendia Barcelona",
+    metaDescription:
+      "Gestoría de contratos para propietarios en Mataró: LAU, arras y habitación. Cita en despacho Les Corts (Barcelona) o 100 % online. RENFE y Maresme.",
+    keywords: [
+      "contratos inmobiliarios mataro",
+      "gestoría despacho mataro barcelona",
+      "contrato arras mataro maresme",
+    ],
+    h1: "Contratos inmobiliarios en Mataró — cita en despacho Livendia (Barcelona)",
+    lead:
+      "Vives o tienes piso en Mataró y quieres un gestor inmobiliario con sede real en Barcelona capital: reserva cita en Les Corts (Mejía Lequerica 44) o tramita todo online con el mismo expediente.",
+    localContext:
+      "Muchos clientes del Maresme combinan RENFE Mataró con revisión presencial en despacho antes de firmar arras o LAU.",
+    zoneHighlights: ["Centre Mataró", "Pla d'en Boet", "Port Corredor", "RENFE Mataró"],
+    actualidad2026: "CCCat en arras; LAU estatal con adaptación documental catalana (cèdula, INCASÒL si aplica en Barcelona capital para inversores).",
+    servicesFocus: ["Arras", "LAU", "Online + cita BCN", "Gestor dedicado"],
+    image: "/images/barcelona.jpg",
+    imageAlt: "Contratos Mataró — despacho Livendia Barcelona",
+    contratoAlquilerHref: localContratoAlquilerHref("barcelona"),
+    contratoArrasHref: localContratoArrasHref("barcelona"),
+  },
+  {
+    slug: "rubi",
+    localSlug: "rubi",
+    name: "Rubí",
+    districtLabel: "Vallès Occidental · Rubí",
+    metaTitle: "Contratos inmobiliarios Rubí | Cita despacho Livendia Barcelona",
+    metaDescription:
+      "Contratos LAU y arras en Rubí: gestor Livendia con despacho en Les Corts (Barcelona). Panel online y cita presencial L–V.",
+    keywords: [
+      "contratos inmobiliarios rubi",
+      "gestoría despacho rubi barcelona",
+      "contrato arras rubi valles",
+    ],
+    h1: "Contratos inmobiliarios en Rubí — despacho gestoría en Les Corts",
+    lead:
+      "Propietarios en Rubí (Centre, Can Jardí, FGC) usan Livendia para LAU, arras y administración: gestor asignado, panel 24/7 y opción de cita en Barcelona (Les Corts).",
+    localContext:
+      "Desde Rubí: FGC + L3 hasta Zona Universitària — ~25–35 min hasta el despacho. También puedes hacer la revisión por videollamada y solo acudir a firmar borradores.",
+    zoneHighlights: ["Centre Rubí", "Can Jardí", "FGC Rubí", "Ca n'Oriac"],
+    actualidad2026: "Misma calidad de borrador LAU/arras que en Barcelona ciudad; cèdula catalana cuando el inmueble está en Catalunya.",
+    servicesFocus: ["LAU", "Arras", "Cita Les Corts", "Administración alquiler"],
+    image: getLocalCityCardImage("sant-cugat-del-valles"),
+    imageAlt: "Contratos Rubí — despacho Livendia Barcelona",
+    contratoAlquilerHref: localContratoAlquilerHref("barcelona"),
+    contratoArrasHref: localContratoArrasHref("barcelona"),
   },
 ] as const;
 

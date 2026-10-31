@@ -1,4 +1,4 @@
-import { resolvePostLoginPath } from "@/lib/admin-access";
+import { resolveClientLandingPath } from "@/lib/client-landing-path";
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
@@ -54,7 +54,13 @@ export async function GET(request: NextRequest) {
     .eq("id", data.session.user.id)
     .maybeSingle();
 
-  const resolvedNext = resolvePostLoginPath(data.session.user.email, profile?.role, next);
+  const resolvedNext = await resolveClientLandingPath(
+    supabase,
+    data.session.user.id,
+    data.session.user.email,
+    profile?.role,
+    next,
+  );
 
   const forwardedHost = request.headers.get("x-forwarded-host");
   const isDev = process.env.NODE_ENV === "development";

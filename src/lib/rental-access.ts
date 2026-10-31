@@ -48,3 +48,39 @@ export function subscriptionGrantsRentalAccess(
   }
   return false;
 }
+
+type RentalLandingOrder = Parameters<typeof orderGrantsRentalAccess>[0];
+
+/** Clientes solo de administración de alquiler entran directo en /dashboard/rental. */
+export function applyRentalDashboardLanding(
+  basePath: string,
+  orders: RentalLandingOrder[] | null | undefined,
+  hasActiveRentalSubscription: boolean,
+): string {
+  if (basePath !== "/dashboard") return basePath;
+  const list = orders ?? [];
+  if (list.some((o) => !orderGrantsRentalAccess(o))) return basePath;
+  if (hasActiveRentalSubscription) return "/dashboard/rental";
+  if (list.length > 0 && list.every((o) => orderGrantsRentalAccess(o))) return "/dashboard/rental";
+  return basePath;
+}
+
+export function hasActiveRentalSubscriptionFromRows(
+  subs:
+    | Array<{
+        status?: string | null;
+        current_period_end?: string | null;
+        services?: { slug?: string | null } | { slug?: string | null }[] | null;
+      }>
+    | null
+    | undefined,
+): boolean {
+  return (subs ?? []).some((row) => {
+    const svc = row.services;
+    const slug = Array.isArray(svc) ? svc[0]?.slug : svc?.slug;
+    return (
+      isRentalAdminServiceSlug(slug) &&
+      subscriptionGrantsRentalAccess(row.status, row.current_period_end ?? null)
+    );
+  });
+}

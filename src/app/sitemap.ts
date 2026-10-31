@@ -99,6 +99,10 @@ import {
 } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import { ADMINISTRACION_ALQUILER_BARCELONA_HUB_PATH } from "@/lib/administracion-alquiler-barcelona-hub-content";
 import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import {
+  CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH,
+  contratosInmobiliariosDespachoBarrioPath,
+} from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
 import { SITEMAP_LAST_MODIFIED, toSitemapDate } from "@/lib/sitemap-dates";
 import { CIUDADES_HUB_BASE, cityHubHref } from "@/lib/ciudades-hub";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
@@ -281,6 +285,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: gestoriaDate,
       changeFrequency: "weekly" as const,
       priority: 0.9,
+    })),
+    {
+      url: `${base}${CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH}`,
+      lastModified: gestoriaDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    ...CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS.map((b) => ({
+      url: `${base}${contratosInmobiliariosDespachoBarrioPath(b.slug)}`,
+      lastModified: gestoriaDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.88,
     })),
   ];
 

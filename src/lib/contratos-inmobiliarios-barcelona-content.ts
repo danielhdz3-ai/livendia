@@ -13,6 +13,8 @@ import {
 import { localAdministracionAlquilerHref } from "@/lib/administracion-alquiler-local-cities";
 import { localContratoAlquilerHref } from "@/lib/contrato-alquiler-local-cities";
 import { localContratoArrasHref } from "@/lib/contrato-arras-local-cities";
+import { localPackArrasGestionHref } from "@/lib/pack-comercial-local-cities";
+import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
 
 export const CONTRATOS_INMOBILIARIOS_BARCELONA_PATH = "/contratos-inmobiliarios-barcelona" as const;
@@ -51,6 +53,7 @@ export type ContratosBcnServiceSection = {
   serviceSlug: string;
   serviceHref: string;
   localHref?: string;
+  packLocalHref?: string;
   /** Foto apaisada — carrusel y apartados (contratos / mesa de trabajo). */
   image: string;
   imageAlt: string;
@@ -86,6 +89,7 @@ export const CONTRATOS_BCN_SERVICE_SECTIONS: ContratosBcnServiceSection[] = [
     serviceSlug: "contrato-arras-penitenciales",
     serviceHref: "/servicios/contrato-arras-penitenciales",
     localHref: localContratoArrasHref("barcelona"),
+    packLocalHref: localPackArrasGestionHref("barcelona"),
     image: "/images/contratodearras.jpg",
     imageAlt: "Firma de contrato de arras entre particulares — gestoría Livendia Barcelona",
     heroImage: "/images/contratos-hero-arras.jpg",
@@ -294,6 +298,26 @@ export const CONTRATOS_BCN_OFFICE_SECTION = {
 } as const;
 
 /** Encabezado de la sección barrios con foto apaisada de la ciudad (solo JPG en git). */
+/** Pack arras + gestión documental vendedor — enlaces desde hub contratos BCN. */
+export const CONTRATOS_BCN_PACK_ARRAS_SECTION = {
+  eyebrow: "Venta entre particulares",
+  title: `Pack arras + gestión documental vendedor (${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.)`,
+  lead:
+    "Si ya tienes comprador y vendes sin agencia: un solo cobro cubre contrato de arras CCCat y gestor documental hasta notaría (cèdula, ITE, comunidad). Landings por barrio y municipio del área metropolitana.",
+  hubHref: localPackArrasGestionHref("barcelona"),
+  links: [
+    { href: localPackArrasGestionHref("barcelona"), label: "Pack Barcelona ciudad" },
+    { href: localPackArrasGestionHref("barcelona-les-corts"), label: "Les Corts · despacho Livendia" },
+    { href: localPackArrasGestionHref("barcelona-eixample"), label: "Eixample" },
+    { href: localPackArrasGestionHref("hospitalet-de-llobregat"), label: "L'Hospitalet" },
+    { href: localPackArrasGestionHref("barcelona-pedralbes"), label: "Pedralbes" },
+    { href: localPackArrasGestionHref("barcelona-sant-antoni"), label: "Sant Antoni" },
+    { href: localPackArrasGestionHref("barcelona-fort-pienc"), label: "Fort Pienc" },
+    { href: localPackArrasGestionHref("mataro"), label: "Mataró" },
+    { href: localPackArrasGestionHref("rubi"), label: "Rubí" },
+  ],
+} as const;
+
 export const BARCELONA_ZONES_SECTION = {
   eyebrow: "Barcelona, área metropolitana y Cataluña",
   title: "Contratos inmobiliarios por barrio y municipio",

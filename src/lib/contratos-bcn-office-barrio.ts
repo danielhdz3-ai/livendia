@@ -4,8 +4,8 @@ import {
 import type { ContratosInmobiliariosBarrioPage } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import {
   CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS,
-  contratosInmobiliariosBarrioPath,
 } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
+import { contratosInmobiliariosDespachoBarrioPath } from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
 
 export type ContratosBcnOfficeContent = {
   eyebrow: string;
@@ -44,6 +44,16 @@ const TRAVEL_HINT: Partial<Record<ContratosInmobiliariosBarrioPage["slug"], stri
     "Desde La Barceloneta: L4 Barceloneta → L3 transfer · ~25 min; ideal combinar cita presencial tras revisión online.",
   "vila-olimpica":
     "Desde Vila Olímpica: L4 Ciutadella → L3 Les Corts · ~25 min; contratos temporada/LAU revisables en despacho.",
+  pedralbes:
+    "Desde Pedralbes: metro L3 Zona Universitària o bus · ~5–10 min a Mejía Lequerica 44 — despacho en tu distrito.",
+  "sant-antoni":
+    "Desde Sant Antoni: L2/L3 → Les Corts o Plaça del Centre · ~15–20 min hasta el despacho Livendia.",
+  "fort-pienc":
+    "Desde Fort Pienc: L1 Arc de Triomf + L3 · ~15–20 min; ideal cita tras revisión online del borrador.",
+  mataro:
+    "Desde Mataró: RENFE a Sants o Clot + L3 · ~45–55 min; muchos clientes prefieren primera revisión online y cita solo para firmar.",
+  rubi:
+    "Desde Rubí: FGC Rubí → Barcelona + L3 Zona Universitària · ~30–40 min; videollamada + cita puntual si lo necesitas.",
 };
 
 function focusLine(barrio: ContratosInmobiliariosBarrioPage): string {
@@ -102,6 +112,6 @@ export function getContratosBcnOfficeContent(
 export const CONTRATOS_BCN_DESPACHO_BARRIO_LINKS = CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS.map((b) => ({
   slug: b.slug,
   name: b.name,
-  href: `${contratosInmobiliariosBarrioPath(b.slug)}#despacho`,
+  href: contratosInmobiliariosDespachoBarrioPath(b.slug),
   shortLead: b.servicesFocus[0] ?? "Contratos inmobiliarios",
 }));

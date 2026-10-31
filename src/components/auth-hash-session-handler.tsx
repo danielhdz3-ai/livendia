@@ -1,6 +1,6 @@
 "use client";
 
-import { resolvePostLoginPath } from "@/lib/admin-access";
+import { resolveClientLandingPath } from "@/lib/client-landing-path";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -39,7 +39,13 @@ export function AuthHashSessionHandler() {
         .eq("id", data.user.id)
         .maybeSingle();
 
-      const dest = resolvePostLoginPath(data.user.email, profile?.role, next);
+      const dest = await resolveClientLandingPath(
+        supabase,
+        data.user.id,
+        data.user.email,
+        profile?.role,
+        next,
+      );
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
       window.location.replace(dest);
     })();

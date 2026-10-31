@@ -1,6 +1,6 @@
 "use client";
 
-import { resolvePostLoginPath } from "@/lib/admin-access";
+import { resolveClientLandingPath } from "@/lib/client-landing-path";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 import { performClientLogout } from "@/lib/auth-logout";
 import { GoogleAuthButton } from "@/components/google-auth-button";
@@ -52,7 +52,14 @@ export function LoginForm() {
       .select("role")
       .eq("id", data.user!.id)
       .maybeSingle();
-    window.location.href = resolvePostLoginPath(data.user?.email, profile?.role, next);
+    const dest = await resolveClientLandingPath(
+      supabase,
+      data.user!.id,
+      data.user?.email,
+      profile?.role,
+      next,
+    );
+    window.location.href = dest;
   }
 
   return (
