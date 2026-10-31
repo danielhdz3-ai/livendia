@@ -11,7 +11,9 @@ import {
   Users,
 } from "lucide-react";
 import { CalculadoraAhorroVendedor } from "@/components/calculadora-ahorro-vendedor";
+import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { LivendiaExpertGestorsSection } from "@/components/livendia-expert-gestors-section";
+import { VentaSinAgenciaPasoAPasoSection } from "@/components/venta-sin-agencia-paso-a-paso-section";
 import { PackComercialLocalCityLinks } from "@/components/pack-comercial-local-city-links";
 import { PackCommercialWhatsAppLink } from "@/components/pack-comercial-whatsapp-link";
 import { PublicHeader } from "@/components/public-header";
@@ -40,6 +42,12 @@ import {
   resolvePackVariantFromPath,
   type PackCommercialWhatsAppVariant,
 } from "@/lib/pack-comercial-whatsapp";
+import {
+  buildPackArrasGestionSteps,
+  defaultPackArrasGestionTestimonials,
+  PACK_ARRAS_GESTION_PROCESS,
+} from "@/lib/pack-arras-gestion-process-modules";
+import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 
 const STEP_ICONS = [ClipboardList, FileText, Users, Shield] as const;
 
@@ -143,6 +151,21 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
         : null);
   const heroBullets = "heroBullets" in config ? config.heroBullets : undefined;
   const isVentaPack = config.contactNeedType === "venta";
+  const packArrasCity = local?.city ?? "España";
+  const packArrasSlug = local?.slug ?? "nacional";
+  const packArrasProcessSteps = isVentaPack
+    ? buildPackArrasGestionSteps(
+        packArrasCity,
+        packArrasSlug,
+        config.totalPriceLabel,
+        localSeo?.stepLocalNotes ?? [],
+      )
+    : null;
+  const packTestimonials = isVentaPack
+    ? localSeo?.testimonials?.length
+      ? localSeo.testimonials
+      : defaultPackArrasGestionTestimonials(packArrasCity)
+    : null;
   const localCityLinksVariant = !local
     ? config.path === PACK_LAU_ADMIN_LANDING_PATH
       ? ("lau-admin" as const)
@@ -291,30 +314,45 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
             </div>
           </section>
 
-          <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-6xl">
-              <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
-                {local ? `Cómo funciona el pack en ${local.city}` : "Cómo funciona el pack"}
-              </h2>
-              <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {config.steps.map((step, i) => {
-                  const Icon = STEP_ICONS[i] ?? ClipboardList;
-                  return (
-                    <div key={step.title} className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
-                        Paso {i + 1}
-                      </span>
-                      <div className="mt-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1A4FBF]/10">
-                        <Icon className="h-6 w-6 text-[#1A4FBF]" aria-hidden />
+          {packArrasProcessSteps ? (
+            <VentaSinAgenciaPasoAPasoSection
+              city={packArrasCity}
+              priceLabel={config.totalPriceLabel}
+              eyebrow={PACK_ARRAS_GESTION_PROCESS.eyebrow}
+              title={PACK_ARRAS_GESTION_PROCESS.titleTemplate(packArrasCity)}
+              intro={PACK_ARRAS_GESTION_PROCESS.introTemplate(packArrasCity)}
+              steps={packArrasProcessSteps}
+              alwaysWithYouTitle={PACK_ARRAS_GESTION_PROCESS.alwaysWithYouTitle}
+              alwaysWithYouBody={PACK_ARRAS_GESTION_PROCESS.alwaysWithYouBody}
+              serviceLine={PACK_ARRAS_GESTION_PROCESS.serviceLine}
+              feeNote={`Sin comisión sobre el precio de venta. Trámite online con gestor real — pack ${LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL} IVA incl.`}
+            />
+          ) : (
+            <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-center text-2xl font-bold text-[#1E293B] sm:text-3xl">
+                  {local ? `Cómo funciona el pack en ${local.city}` : "Cómo funciona el pack"}
+                </h2>
+                <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {config.steps.map((step, i) => {
+                    const Icon = STEP_ICONS[i] ?? ClipboardList;
+                    return (
+                      <div key={step.title} className="rounded-2xl bg-[#F8FAFC] p-6 ring-1 ring-slate-200">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
+                          Paso {i + 1}
+                        </span>
+                        <div className="mt-3 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1A4FBF]/10">
+                          <Icon className="h-6 w-6 text-[#1A4FBF]" aria-hidden />
+                        </div>
+                        <h3 className="mt-4 font-bold text-[#1E293B]">{step.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{step.description}</p>
                       </div>
-                      <h3 className="mt-4 font-bold text-[#1E293B]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{step.description}</p>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           {localSeo && localSeo.regulatory ? (
             <section className="border-t border-slate-200 bg-amber-50 px-4 py-12 sm:px-6">
@@ -418,8 +456,19 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
             </section>
           ) : null}
 
+          {packTestimonials && packTestimonials.length > 0 ? (
+            <LandingLocalTestimonialsSection
+              title={`Propietarios en ${packArrasCity} que vendieron con el pack arras + gestión`}
+              subtitle="Testimonios de clientes Livendia — venta entre particulares sin comisión de agencia."
+              testimonials={packTestimonials}
+            />
+          ) : null}
+
           {localSeo ? (
-            <section className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6">
+            <section
+              id="plataforma-cliente"
+              className="border-t border-slate-200 bg-white px-4 py-16 sm:px-6 scroll-mt-24"
+            >
               <div className="mx-auto max-w-4xl">
                 <div className="flex flex-col items-center text-center">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1A4FBF]/10">

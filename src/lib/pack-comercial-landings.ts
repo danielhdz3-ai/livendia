@@ -247,9 +247,19 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
   ],
   steps: [
     {
+      title: "Llamada con tu gestor",
+      description:
+        "Cuéntanos precio, plazos, hipoteca del comprador y anejos (parking, trastero). El gestor te indica qué firmar primero.",
+    },
+    {
       title: "Contratas el pack (495 € IVA incl.)",
       description:
-        "Un solo pago con tarjeta. Se te asigna un gestor dedicado que coordina arras y documentación hasta notaría.",
+        "Un solo pago con tarjeta. Se te asigna un gestor dedicado y se abre expediente en el panel Livendia.",
+    },
+    {
+      title: "Documentación al panel",
+      description:
+        "Nota simple, comunidad, cèdula/ITE y energético: checklist vendedor con seguimiento del gestor.",
     },
     {
       title: "Redacción y firma de arras",
@@ -257,14 +267,9 @@ export const PACK_ARRAS_GESTION_LANDING: PackCommercialLandingConfig = {
         "El gestor redacta cláusulas equilibradas (penitenciales o confirmatorias) y coordina la firma con el comprador.",
     },
     {
-      title: "Checklist pre-escritura",
+      title: "Informe semáforo y escritura",
       description:
-        "Comunidad al corriente, nota simple sin sorpresas, ITE y energético: informe semáforo con lo que falta o está en orden.",
-    },
-    {
-      title: "Firma en notaría con tranquilidad",
-      description:
-        "Llegas a escritura con expediente ordenado. El notario no sustituye la revisión previa: este pack reduce rebajas tardías y retrasos.",
+        "Comunidad al corriente, cargas revisadas e informe verde/ámbar/rojo antes de notaría — menos rebajas tardías.",
     },
   ],
   infoBanners: [

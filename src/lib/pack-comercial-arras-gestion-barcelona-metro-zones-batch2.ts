@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
+import { packArrasMetroStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 
 export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2_SLUGS = [
@@ -26,15 +27,6 @@ type ZoneBatch = {
   diff: LocalCityLandingFields;
   seo: PackCommercialLocalSeoContent;
 };
-
-function packStepNotes(zoneDetail: string): readonly string[] {
-  return [
-    `Arras 145 €: CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca — ${zoneDetail}.`,
-    "Gestión 350 €: cèdula d'habitabilitat, ITE si procede, certificado de deuda de comunidad y nota simple.",
-    "Informe semáforo pre-notaría: energético, derramas en junta, cargas hipotecarias del vendedor.",
-    "Escritura con expediente ordenado: reduces rebajas tardías del comprador por documentación incompleta.",
-  ] as const;
-}
 
 export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
   {
@@ -75,7 +67,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Gràcia mezcla pisos señoriales sin ascensor, reformas recientes y compradores jóvenes. Precio medio de venta ~380.000 €. Las operaciones entre particulares van rápido — la documentación no.",
       localProblemIntro:
         "En Vila de Gràcia el certificado de comunidad en edificios del s. XIX puede tardar semanas. Sin gestor post-arras, la fecha de escritura se cae cuando el comprador ya presiona.",
-      stepLocalNotes: packStepNotes("adaptado a herencias y ventas con inquilino LAU vigente"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("adaptado a herencias y ventas con inquilino LAU vigente"),
       empathyCards: [
         {
           title: "Comprador por recomendación — falta el contrato",
@@ -177,7 +169,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "El Born concentra pisos señoriales reformados y ticket alto en Ciutat Vella (~420.000 € de media en venta). Compradores exigen documentación impecable pese a vender entre particulares.",
       localProblemIntro:
         "Humedades en patio interior, locales en planta baja y terrazas no inscritas son la tríada de sorpresas entre arras y escritura en fincas históricas del Born.",
-      stepLocalNotes: packStepNotes("con mención de humedades conocidas y uso mixto vivienda–local si aplica"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con mención de humedades conocidas y uso mixto vivienda–local si aplica"),
       empathyCards: [
         {
           title: "Comprador internacional exige due diligence",
@@ -281,7 +273,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Sants-Montjuïc combina familias consolidadas, pisos compartidos y edificios mid-century. Precio medio ~320.000 €. Muchas ventas cierran por Idealista sin agencia.",
       localProblemIntro:
         "En Poble-sec y Hostafrancs las derramas de rehabilitación de fachada sorprenden al comprador si no constan en arras ni en certificado de comunidad.",
-      stepLocalNotes: packStepNotes("con plazos ajustados a comunidades de edificios de los 60–80"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con plazos ajustados a comunidades de edificios de los 60–80"),
       empathyCards: [
         {
           title: "Precio cerrado en Idealista — empieza el papeleo",
@@ -382,7 +374,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Poblenou mezcla industria reconvertida, lofts en 22@ y familias en Rambla. Precio medio ~400.000 €. Compradores tech y profesionales exigen documentación ordenada.",
       localProblemIntro:
         "Terrazas no inscritas y parking anexo mal descrito en arras son la causa habitual de rebaja tardía en compraventas del 22@.",
-      stepLocalNotes: packStepNotes("con anexo de parking y terraza cuando formen parte del precio"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con anexo de parking y terraza cuando formen parte del precio"),
       empathyCards: [
         {
           title: "Loft en 22@ — comprador exigente",
@@ -484,7 +476,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "El Gòtic concentra fincas históricas y demanda turística residual en planta baja. Precio medio ~390.000 €. Compradores exigen transparencia documental.",
       localProblemIntro:
         "Ascensores inexistentes, humedades en patio y obras en finca protegida retrasan certificados — sin gestor, la operación se enfría.",
-      stepLocalNotes: packStepNotes("con atención a fincas protegidas y patios interiores"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con atención a fincas protegidas y patios interiores"),
       empathyCards: [
         {
           title: "Venta entre particulares en finca histórica",
@@ -585,7 +577,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Sarrià concentra unifamiliares, pisos señoriales y ticket alto (~520.000 €). Ventas entre particulares frecuentes con compradores consolidados.",
       localProblemIntro:
         "En operaciones premium la señal es elevada: arras desequilibradas o plazos irreales de hipoteca generan conflictos costosos antes de notaría.",
-      stepLocalNotes: packStepNotes("con calibración de señal en operaciones de importe alto"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con calibración de señal en operaciones de importe alto"),
       empathyCards: [
         {
           title: "Señal elevada — necesitas arras precisas",
@@ -686,7 +678,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "La Barceloneta combina demanda por ubicación y fincas antiguas con humedades frecuentes. Precio medio ~350.000 €. Muchas ventas entre particulares por segunda residencia.",
       localProblemIntro:
         "Compradores detectan humedades en visita — si no están en arras, piden rebaja días antes de escritura. Gestión documental ordena el expediente.",
-      stepLocalNotes: packStepNotes("con mención de humedades conocidas y estado de fachada marítima"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con mención de humedades conocidas y estado de fachada marítima"),
       empathyCards: [
         {
           title: "Comprador negocia por humedades",
@@ -787,7 +779,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Vila Olímpica concentra edificios post-1992, perfiles internacionales y ticket ~410.000 €. Ventas entre particulares frecuentes en operaciones de segunda residencia.",
       localProblemIntro:
         "Terrazas y trasteros no inscritos en registro generan sorpresas en notaría si no se verifican en gestión documental post-arras.",
-      stepLocalNotes: packStepNotes("con verificación de terrazas, trasteros y parking comunitario"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con verificación de terrazas, trasteros y parking comunitario"),
       empathyCards: [
         {
           title: "Comprador internacional",
@@ -888,7 +880,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "El Raval mezcla edificios del s. XIX, rotación alta y ticket ~280.000 €. Ventas entre particulares frecuentes con plazos ajustados.",
       localProblemIntro:
         "Humedades, uso mixto vivienda–local y inquilinos en LAU no reflejados en arras son la principal causa de conflicto pre-escritura en el Raval.",
-      stepLocalNotes: packStepNotes("con atención a LAU vigente y uso mixto en planta baja"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con atención a LAU vigente y uso mixto en planta baja"),
       empathyCards: [
         {
           title: "Piso con habitaciones o LAU vigente",
@@ -989,7 +981,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
         "Badalona ofrece precio competitivo (~260.000 € de media) frente a Barcelona capital. Ventas entre particulares activas con compradores del área metropolitana.",
       localProblemIntro:
         "Arras copiadas de Barcelona con plazos irreales para comunidades badalonesas — el gestor recalibra CCCat y persigue certificados desde la firma de arras.",
-      stepLocalNotes: packStepNotes("adaptado a edificios densos del centre y Montigalà"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("adaptado a edificios densos del centre y Montigalà"),
       empathyCards: [
         {
           title: "Comprador de Barcelona capital",

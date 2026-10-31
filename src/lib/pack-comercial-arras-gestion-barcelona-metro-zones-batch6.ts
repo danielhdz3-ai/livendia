@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
+import { packArrasMetroStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
@@ -23,15 +24,6 @@ type ZoneBatch = {
   seo: PackCommercialLocalSeoContent;
 };
 
-function packStepNotes(zoneDetail: string): readonly string[] {
-  return [
-    `Arras 145 €: CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca — ${zoneDetail}.`,
-    "Gestión 350 €: cèdula d'habitabilitat, ITE si procede, certificado de deuda de comunidad y nota simple.",
-    "Informe semáforo pre-notaría: energético, derramas en junta, cargas hipotecarias del vendedor.",
-    "Escritura con expediente ordenado: reduces rebajas tardías del comprador por documentación incompleta.",
-  ] as const;
-}
-
 function zoneSeo(
   precioMedioVenta: number,
   heroSubtitle: string,
@@ -45,13 +37,14 @@ function zoneSeo(
   barriosIntro: string,
   platformParagraph: string,
   localBanners: PackCommercialLocalSeoContent["localBanners"],
+  testimonials?: PackCommercialLocalSeoContent["testimonials"],
 ): PackCommercialLocalSeoContent {
   return {
     precioMedioVenta,
     heroSubtitle,
     marketIntro,
     localProblemIntro,
-    stepLocalNotes: packStepNotes(stepDetail),
+    stepLocalNotes: packArrasMetroStepLocalNotes(stepDetail),
     empathyCards,
     casuistica,
     faqLocal,
@@ -59,6 +52,7 @@ function zoneSeo(
     barriosIntro,
     platformParagraph,
     localBanners,
+    ...(testimonials?.length ? { testimonials } : {}),
   };
 }
 
@@ -127,6 +121,26 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH6: readonly ZoneBatch[] = [
       "Pack arras + gestión documental en Pedralbes para vendedores particulares.",
       "Gestor Livendia con sede en Les Corts — mismo expediente online.",
       [{ title: "Pedralbes sin agencia", body: "Pack 495 € IVA incl." }],
+      [
+        {
+          quote:
+            "Vendí en Reina Elisenda con comprador de Idealista. El pack cubrió arras y el papeleo de comunidad e ITE — a 10 min del despacho en Les Corts si quería revisar algo en persona.",
+          author: "Marta L.",
+          role: "Vendedora · Pedralbes",
+        },
+        {
+          quote:
+            "La señal era alta y el comprador financiaba: el gestor equilibró las arras CCCat y detectó una derrama en junta antes de que firmáramos.",
+          author: "Enric V.",
+          role: "Vendedor entre particulares · Diagonal alta",
+        },
+        {
+          quote:
+            "Vivo en Madrid y el piso está en Pedralbes. Subí certificados al panel y la escritura fue en fecha sin pagar comisión de agencia.",
+          author: "Silvia R.",
+          role: "Propietaria no residente · Pedralbes",
+        },
+      ],
     ),
   },
   {

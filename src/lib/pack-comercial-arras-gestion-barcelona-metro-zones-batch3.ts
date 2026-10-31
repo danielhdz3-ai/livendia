@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
+import { packArrasMetroStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
@@ -21,15 +22,6 @@ type ZoneBatch = {
   diff: LocalCityLandingFields;
   seo: PackCommercialLocalSeoContent;
 };
-
-function packStepNotes(zoneDetail: string): readonly string[] {
-  return [
-    `Arras 145 €: CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca — ${zoneDetail}.`,
-    "Gestión 350 €: cèdula d'habitabilitat, ITE si procede, certificado de deuda de comunidad y nota simple.",
-    "Informe semáforo pre-notaría: energético, derramas en junta, cargas hipotecarias del vendedor.",
-    "Escritura con expediente ordenado: reduces rebajas tardías del comprador por documentación incompleta.",
-  ] as const;
-}
 
 export const PACK_ARRAS_GESTION_BCN_METRO_BATCH3: readonly ZoneBatch[] = [
   {
@@ -71,7 +63,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH3: readonly ZoneBatch[] = [
         "Cornellà ofrece precio competitivo (~250.000 €) frente a Barcelona capital. Ventas entre particulares frecuentes con compradores del Baix Llobregat.",
       localProblemIntro:
         "Operaciones rápidas con borradores copiados del ensanche: plazos irreales para certificado de comunidad en edificios de Sant Ildefons.",
-      stepLocalNotes: packStepNotes("adaptado a operaciones rápidas del Baix Llobregat"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("adaptado a operaciones rápidas del Baix Llobregat"),
       empathyCards: [
         {
           title: "Comprador cerrado en Idealista",
@@ -173,7 +165,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH3: readonly ZoneBatch[] = [
         "Sant Cugat concentra familias consolidadas, fincas unifamiliares y ticket alto (~480.000 €). Ventas entre particulares con compradores exigentes en documentación.",
       localProblemIntro:
         "Señal elevada y plazos de financiación cortos: arras genéricas generan conflictos costosos antes de notaría en Valldoreix o Mira-sol.",
-      stepLocalNotes: packStepNotes("con calibración de señal en operaciones de importe alto del Vallès"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con calibración de señal en operaciones de importe alto del Vallès"),
       empathyCards: [
         {
           title: "Comprador con hipoteca en Mira-sol",
@@ -275,7 +267,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH3: readonly ZoneBatch[] = [
         "Sabadell combina operaciones familiares, herencias compartidas y compradores del Vallès Occidental. Precio medio ~270.000 €.",
       localProblemIntro:
         "En Creu Alta o Can Feu las arras con penalidades opacas o plazos irreales generan pérdida de señal o rebaja tardía del comprador.",
-      stepLocalNotes: packStepNotes("con hitos claros en herencias y operaciones con varios vendedores"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("con hitos claros en herencias y operaciones con varios vendedores"),
       empathyCards: [
         {
           title: "Herencia de varios hermanos",
@@ -377,7 +369,7 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH3: readonly ZoneBatch[] = [
         "Terrassa ofrece precio accesible (~260.000 €) con ventas entre particulares activas en Sant Pere y La Maurina.",
       localProblemIntro:
         "Cláusula de financiación mal redactada o plazos irreales en arras copiadas — el comprador usa fallos para pedir rebaja días antes de notaría.",
-      stepLocalNotes: packStepNotes("adaptado a ventas familiares y piso heredado en el Vallès"),
+      stepLocalNotes: packArrasMetroStepLocalNotes("adaptado a ventas familiares y piso heredado en el Vallès"),
       empathyCards: [
         {
           title: "Precio cerrado — empieza el papeleo",

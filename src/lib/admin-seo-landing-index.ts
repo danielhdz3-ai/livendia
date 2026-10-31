@@ -116,6 +116,15 @@ import {
   PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH,
   PACK_LAU_ADMIN_LANDING_PATH,
 } from "@/lib/catalog.public";
+import {
+  CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS,
+  contratosInmobiliariosBarrioPath,
+} from "@/lib/contratos-inmobiliarios-barcelona-barrios";
+import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import {
+  CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH,
+  contratosInmobiliariosDespachoBarrioPath,
+} from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
 
 type LocalCityRow = {
   slug: string;
@@ -470,6 +479,87 @@ export function buildAdminSeoLandingIndex(): AdminSeoLandingIndex {
 
   for (const source of LOCAL_CITY_SOURCES) {
     pushLocalCityEntries(entries, source);
+  }
+
+  entries.push({
+    id: "contratos-inmobiliarios-barcelona:hub",
+    serviceId: "contratos-inmobiliarios-barcelona",
+    serviceLabel: "Contratos inmobiliarios Barcelona",
+    serviceOrder: 25,
+    city: "Barcelona (distritos y barrios)",
+    citySortKey: normalizeCitySort("Barcelona"),
+    barrioAmb: null,
+    kind: "hub-servicio",
+    name: "Hub contratos inmobiliarios Barcelona",
+    slug: "hub",
+    path: CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
+  });
+
+  for (const barrio of CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS) {
+    const barrioAmb =
+      barrio.slug === "mataro" || barrio.slug === "rubi"
+        ? barrio.name
+        : BARCELONA_DISTRICT_CITY_NAMES.has(barrio.name)
+          ? barrio.name
+          : barrio.name;
+    entries.push({
+      id: `contratos-inmobiliarios-barcelona:${barrio.slug}`,
+      serviceId: "contratos-inmobiliarios-barcelona",
+      serviceLabel: "Contratos inmobiliarios Barcelona",
+      serviceOrder: 25,
+      city:
+        barrio.slug === "mataro" || barrio.slug === "rubi"
+          ? barrio.name
+          : "Barcelona (distritos y barrios)",
+      citySortKey: normalizeCitySort(
+        barrio.slug === "mataro" || barrio.slug === "rubi" ? barrio.name : "Barcelona",
+      ),
+      barrioAmb: barrio.slug === "mataro" || barrio.slug === "rubi" ? null : barrioAmb,
+      kind: barrio.slug === "mataro" || barrio.slug === "rubi" ? "local-ciudad" : "barrio-amb",
+      name: barrio.metaTitle.split("|")[0]?.trim() ?? barrio.h1,
+      slug: barrio.slug,
+      path: contratosInmobiliariosBarrioPath(barrio.slug),
+    });
+  }
+
+  entries.push({
+    id: "contratos-despacho-barcelona:hub",
+    serviceId: "contratos-despacho-barcelona",
+    serviceLabel: "Contratos inmobiliarios — despacho Barcelona",
+    serviceOrder: 25.2,
+    city: "Barcelona (distritos y barrios)",
+    citySortKey: normalizeCitySort("Barcelona"),
+    barrioAmb: null,
+    kind: "hub-servicio",
+    name: "Hub cita despacho Les Corts (contratos)",
+    slug: "hub",
+    path: CONTRATOS_INMOBILIARIOS_DESPACHO_BARCELONA_PATH,
+  });
+
+  for (const barrio of CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS) {
+    entries.push({
+      id: `contratos-despacho-barcelona:${barrio.slug}`,
+      serviceId: "contratos-despacho-barcelona",
+      serviceLabel: "Contratos inmobiliarios — despacho Barcelona",
+      serviceOrder: 25.2,
+      city:
+        barrio.slug === "mataro" || barrio.slug === "rubi"
+          ? barrio.name
+          : "Barcelona (distritos y barrios)",
+      citySortKey: normalizeCitySort(
+        barrio.slug === "mataro" || barrio.slug === "rubi" ? barrio.name : "Barcelona",
+      ),
+      barrioAmb:
+        barrio.slug === "mataro" || barrio.slug === "rubi"
+          ? null
+          : BARCELONA_DISTRICT_CITY_NAMES.has(barrio.name)
+            ? barrio.name
+            : barrio.name,
+      kind: barrio.slug === "mataro" || barrio.slug === "rubi" ? "local-ciudad" : "barrio-amb",
+      name: `Cita despacho — ${barrio.name}`,
+      slug: barrio.slug,
+      path: contratosInmobiliariosDespachoBarrioPath(barrio.slug),
+    });
   }
 
   for (const landing of getPublishedAdministracionAlquilerMetroLandings()) {

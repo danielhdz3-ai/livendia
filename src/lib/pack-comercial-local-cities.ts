@@ -20,6 +20,7 @@ import {
   getPackArrasGestionBcnMetroSeo,
   isPackArrasGestionBcnMetroSlug,
 } from "@/lib/pack-comercial-arras-gestion-barcelona-metro";
+import { normalizePackArrasStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import {
   getPackArrasGestionLocalSeo,
   getPackLauAdminLocalSeo,
@@ -244,12 +245,17 @@ export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocal
     { href: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH, label: "Pack nacional arras + gestión" },
   ] as const;
 
+  const seoWithSteps = {
+    ...localSeo,
+    stepLocalNotes: normalizePackArrasStepLocalNotes(localSeo.stepLocalNotes, cityBase.city),
+  };
+
   return applyLocalFields(
     PACK_ARRAS_GESTION_LANDING,
     localPackArrasGestionHref(slug),
     cityBase,
     diff,
-    localSeo,
+    seoWithSteps,
     relatedLinksExtra,
   );
 }

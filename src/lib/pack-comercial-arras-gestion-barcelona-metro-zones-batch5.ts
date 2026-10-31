@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
+import { packArrasMetroStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import { getLocalCityCardImage } from "@/lib/local-city-card-images";
 
@@ -23,15 +24,6 @@ type ZoneBatch = {
   seo: PackCommercialLocalSeoContent;
 };
 
-function packStepNotes(zoneDetail: string): readonly string[] {
-  return [
-    `Arras 145 €: CCCat (621-4 a 621-9), cláusula 621-49 si hay hipoteca — ${zoneDetail}.`,
-    "Gestión 350 €: cèdula d'habitabilitat, ITE si procede, certificado de deuda de comunidad y nota simple.",
-    "Informe semáforo pre-notaría: energético, derramas en junta, cargas hipotecarias del vendedor.",
-    "Escritura con expediente ordenado: reduces rebajas tardías del comprador por documentación incompleta.",
-  ] as const;
-}
-
 function zoneSeo(
   precioMedioVenta: number,
   heroSubtitle: string,
@@ -51,7 +43,7 @@ function zoneSeo(
     heroSubtitle,
     marketIntro,
     localProblemIntro,
-    stepLocalNotes: packStepNotes(stepDetail),
+    stepLocalNotes: packArrasMetroStepLocalNotes(stepDetail),
     empathyCards,
     casuistica,
     faqLocal,

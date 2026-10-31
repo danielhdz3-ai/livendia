@@ -12,6 +12,12 @@ import {
 export type PackCommercialEmpathyCard = { title: string; body: string };
 export type PackCommercialCasuistica = { title: string; body: string };
 
+export type PackCommercialLocalTestimonial = {
+  quote: string;
+  author: string;
+  role: string;
+};
+
 export type PackCommercialLocalSeoContent = {
   /** Párrafo bajo el hero — sustituye heroLead en landings locales. */
   heroSubtitle: string;
@@ -38,6 +44,8 @@ export type PackCommercialLocalSeoContent = {
   platformParagraph: string;
   /** Banners informativos extra locales. */
   localBanners: readonly { title: string; body: string }[];
+  /** Testimonios locales. Si falta, la landing usa defaults por ciudad. */
+  testimonials?: readonly PackCommercialLocalTestimonial[];
 };
 
 const LAU_EMPATHY_SHARED: readonly PackCommercialEmpathyCard[] = [
