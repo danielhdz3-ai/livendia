@@ -1,4 +1,12 @@
 import { getHubCityDiscoverabilityLinks } from "@/lib/local-discoverability-links";
+import {
+  isComprarPisoSinAgenciaSlugPublished,
+  localComprarPisoSinAgenciaHref,
+} from "@/lib/comprar-piso-sin-agencia-local-cities";
+import {
+  isPackArrasGestionLocalSlugPublished,
+  localPackArrasGestionHref,
+} from "@/lib/pack-comercial-local-cities";
 
 /** Ciudades prioritarias en home y footer. */
 export const HOME_COVERAGE_CITY_SLUGS = [
@@ -149,7 +157,13 @@ export function getHomeCoverageCityFlatLinks(): { href: string; label: string }[
   return HOME_COVERAGE_CITIES.flatMap((c) => [
     { href: c.gestoriaHref, label: `Gestoría inmobiliaria ${c.name}` },
     { href: c.venderSinAgenciaHref, label: `Vender piso sin agencia ${c.name}` },
+    ...(isPackArrasGestionLocalSlugPublished(c.slug)
+      ? [{ href: localPackArrasGestionHref(c.slug), label: `Pack arras vendedor ${c.name}` }]
+      : []),
     { href: c.compraHref, label: `Comprar con garantías ${c.name}` },
+    ...(isComprarPisoSinAgenciaSlugPublished(c.slug)
+      ? [{ href: localComprarPisoSinAgenciaHref(c.slug), label: `Comprar piso sin agencia ${c.name}` }]
+      : []),
     { href: c.ventaLocalHref, label: `Vender piso ${c.name}` },
     { href: c.administracionHref, label: `Administración alquiler ${c.name}` },
     ...(c.temporadaHref

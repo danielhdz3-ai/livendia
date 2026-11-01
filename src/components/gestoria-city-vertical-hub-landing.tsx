@@ -12,6 +12,7 @@ import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-sys
 import { getSiteUrl } from "@/lib/site-url";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
 import { GestoriaLocalServiceLinksSection } from "@/components/gestoria-local-service-links-section";
+import { GestoriaCompraventaClusterNav } from "@/components/gestoria-compraventa-cluster-nav";
 import { GestoriaOnlineDigitalSection } from "@/components/gestoria-online-digital-section";
 import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
 import {
@@ -155,6 +156,10 @@ function GestoriaVerticalHubMain({
                 Gestión de alquileres en Madrid — landing principal
               </Link>
             </p>
+          ) : null}
+
+          {config.vertical === "compraventa" ? (
+            <GestoriaCompraventaClusterNav citySlug={config.citySlug} cityLabel={config.city} />
           ) : null}
         </section>
 

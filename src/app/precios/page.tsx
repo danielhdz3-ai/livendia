@@ -1,6 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PreciosPackOffers } from "@/components/precios-pack-offers";
+import { SeoCityPrimaryLandingsSection } from "@/components/seo-city-primary-landings-section";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { ServiceCardsClient } from "@/app/servicios/service-cards-client";
 import {
@@ -57,6 +58,10 @@ export default async function PreciosPage() {
 
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <PreciosPackOffers servicesBySlug={servicesBySlug} />
+
+          <div className="mt-12">
+            <SeoCityPrimaryLandingsSection variant="compact" id="precios-compraventa-ciudad" />
+          </div>
 
           {groups.length === 0 ? (
             <p className="rounded-xl bg-white p-8 text-center text-[#64748b] shadow ring-1 ring-slate-200">

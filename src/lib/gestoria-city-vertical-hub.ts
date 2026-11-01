@@ -16,9 +16,14 @@ import {
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
   CONTRATO_ALQUILER_LAU_PRICE_LABEL,
   CONTRATO_ALQUILER_TEMPORADA_PRICE_LABEL,
+  LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
 } from "@/lib/catalog.public";
+import {
+  isPackArrasGestionLocalSlugPublished,
+  localPackArrasGestionHref,
+} from "@/lib/pack-comercial-local-cities";
 import {
   isAdministracionAlquilerLocalSlugPublished,
   localAdministracionAlquilerHref,
@@ -253,6 +258,16 @@ function buildCompraventaLinks(gestoriaSlug: string, cityLabel: string): Gestori
       description: "Landing orientada a SEO de venta entre particulares con mismos 890 € de tarifa plana.",
       href: localVenderPisoSinAgenciaHref(venderSlug),
       price: SERVICIO_COMPLETO_CV_PRICE_LABEL,
+    });
+  }
+
+  const packArrasSlug = firstPublishedSlug(candidates, isPackArrasGestionLocalSlugPublished);
+  if (packArrasSlug) {
+    links.push({
+      title: `Pack arras + gestión documental vendedor en ${cityLabel}`,
+      description: "Tramo arras CCCat y documentación post-arras hasta notaría — sin comisión del 3 %.",
+      href: localPackArrasGestionHref(packArrasSlug),
+      price: LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL,
     });
   }
 
