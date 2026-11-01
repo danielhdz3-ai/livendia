@@ -15,6 +15,7 @@ import { PublicHeader } from "@/components/public-header";
 import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { ContratarSlugButton, MultiServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import type { ContratosInmobiliariosBarrioPage } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import { getContratosBcnServiceSectionsForBarrio } from "@/lib/contratos-inmobiliarios-barcelona-barrio-sections";
@@ -348,6 +349,15 @@ export function ContratosInmobiliariosBarrioLanding({
             livendia.com{CONTRATOS_INMOBILIARIOS_BARCELONA_PATH}
           </a>
         </section>
+
+        <ServiceLandingSharedSections
+          city="Barcelona"
+          serviceLabel="Contratos inmobiliarios"
+          primarySlug="contrato-alquiler-lau"
+          localLandingSlug={barrio.slug}
+          skipGestorPlatform
+          skipCoverage
+        />
 
         <SiteFooter />
       </div>

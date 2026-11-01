@@ -498,6 +498,7 @@ export async function ContratoAlquilerLocalSeoLanding({
           city={config.city}
           serviceLabel="Contrato alquiler LAU"
           primarySlug="contrato-alquiler-lau"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
           skipTestimonials
         />
 

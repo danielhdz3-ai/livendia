@@ -529,7 +529,9 @@ export async function ServicioCompletoVentaLocalSeoLanding({
           city={config.city}
           serviceLabel="Servicio completo de venta"
           primarySlug="servicio-completo-venta"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
           skipTestimonials
+          skipCommissionCompare
         />
 
 

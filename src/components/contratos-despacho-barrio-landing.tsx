@@ -2,6 +2,7 @@ import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-sec
 import { FaqSection } from "@/components/faq-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import type { ContratosInmobiliariosBarrioPage } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import { contratosInmobiliariosBarrioPath } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
@@ -99,6 +100,15 @@ export function ContratosDespachoBarrioLanding({ barrio }: { barrio: ContratosIn
           </Link>
         </div>
       </section>
+
+      <ServiceLandingSharedSections
+        city="Barcelona"
+        serviceLabel="Contratos inmobiliarios"
+        primarySlug="contrato-arras-penitenciales"
+        skipGestorPlatform
+        skipCoverage
+        skipCommissionCompare
+      />
 
       <SiteFooter />
     </div>

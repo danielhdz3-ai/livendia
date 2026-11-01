@@ -521,6 +521,7 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
           city={config.city}
           serviceLabel="Servicio completo de compra"
           primarySlug="servicio-completo-compra"
+          localLandingSlug={config.slug}
           platformServiceKind="compra"
           skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}

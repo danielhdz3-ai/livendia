@@ -1,6 +1,7 @@
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
 import { FaqSection } from "@/components/faq-section";
 import { PublicHeader } from "@/components/public-header";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import {
   CONTRATOS_DESPACHO_BCN_FAQ,
@@ -92,6 +93,15 @@ export function ContratosDespachoBarcelonaLanding() {
       <FaqSection
         title="Despacho Livendia Barcelona"
         items={CONTRATOS_DESPACHO_BCN_FAQ.map((f) => ({ question: f.q, answer: f.a }))}
+      />
+
+      <ServiceLandingSharedSections
+        city="Barcelona"
+        serviceLabel="Contratos inmobiliarios"
+        primarySlug="contrato-arras-penitenciales"
+        skipGestorPlatform
+        skipCoverage
+        skipCommissionCompare
       />
 
       <SiteFooter />

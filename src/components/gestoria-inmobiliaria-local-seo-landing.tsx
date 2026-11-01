@@ -1,6 +1,7 @@
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
 import { GestoriaLocalServiceLinksSection } from "@/components/gestoria-local-service-links-section";
 import { GestoriaResourceLinksSection } from "@/components/gestoria-resource-links-section";
+import { ServiceCommissionCompareSection } from "@/components/service-commission-compare-section";
 import { GestoriaOnlineDigitalSection } from "@/components/gestoria-online-digital-section";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
 import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
@@ -407,6 +408,8 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               ) : null}
             </div>
           </section>
+
+          <ServiceCommissionCompareSection city={config.city} primarySlug="servicio-completo-venta" />
 
           <section id="contratos" className="border-b border-slate-200 px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

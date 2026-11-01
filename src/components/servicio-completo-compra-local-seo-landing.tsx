@@ -469,6 +469,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
           city={config.city}
           serviceLabel="Servicio completo de compra"
           primarySlug="servicio-completo-compra"
+          localLandingSlug={config.slug}
           platformServiceKind="compra"
           skipTestimonials
         />

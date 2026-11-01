@@ -9,6 +9,7 @@ import { OfficeMap } from "@/components/office-map";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
+import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { MetroLocalMarketSection } from "@/components/metro-local-market-section";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
@@ -619,6 +620,16 @@ export function AdministracionAlquilerMetroSeoLanding({
             </div>
           </section>
         </main>
+
+        <ServiceLandingSharedSections
+          city={config.zoneLabel}
+          serviceLabel="Administración de alquiler"
+          primarySlug="administracion-alquiler"
+          skipGestorPlatform
+          skipTestimonials
+          skipCoverage
+          skipCommissionCompare
+        />
 
         <SiteFooter variant="landing" />
       </div>

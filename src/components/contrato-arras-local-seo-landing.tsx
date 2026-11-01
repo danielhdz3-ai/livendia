@@ -614,6 +614,7 @@ export async function ContratoArrasLocalSeoLanding({
         </main>
         <ServiceLandingSharedSections
           city={config.city}
+          localLandingSlug={config.slug}
           skipGestorPlatform={Boolean(seo)}
           serviceLabel="Contrato de arras penitenciales"
           primarySlug="contrato-arras-penitenciales"

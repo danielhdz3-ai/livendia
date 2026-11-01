@@ -514,9 +514,11 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
           city={config.city}
           serviceLabel="Servicio completo de venta"
           primarySlug="servicio-completo-venta"
+          localLandingSlug={config.slug}
           platformServiceKind="venta"
           skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}
+          skipCommissionCompare
         />
 
 
