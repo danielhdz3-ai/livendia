@@ -10,6 +10,7 @@ import {
   getPublishedGestoriaInmobiliariaLocalCities,
   localGestoriaInmobiliariaHref,
 } from "@/lib/gestoria-inmobiliaria-local-cities";
+import { appendGestoriaStandardFaq } from "@/lib/gestoria-online-digital-content";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   CONTRATO_ALQUILER_HABITACION_PRICE_LABEL,
@@ -85,7 +86,7 @@ export const GESTORIA_CITY_VERTICALS = ["alquiler", "compraventa"] as const;
 export type GestoriaCityVertical = (typeof GESTORIA_CITY_VERTICALS)[number];
 
 /** Slugs de servicio local que no coinciden con el slug de gestoría. */
-const GESTORIA_SERVICE_SLUG_CANDIDATES: Record<string, readonly string[]> = {
+export const GESTORIA_SERVICE_SLUG_CANDIDATES: Record<string, readonly string[]> = {
   "les-corts": ["les-corts", "barcelona-les-corts"],
   "hospitalet-de-llobregat": ["hospitalet-de-llobregat", "barcelona-hospitalet-de-llobregat"],
   badalona: ["badalona", "barcelona-badalona"],
@@ -305,6 +306,42 @@ function buildCompraventaLinks(gestoriaSlug: string, cityLabel: string): Gestori
   return links;
 }
 
+export type GestoriaLocalServiceLinkScope = "all" | "alquiler" | "compraventa";
+
+function isGestoriaDeepLocalLandingHref(href: string): boolean {
+  if (href.startsWith("/gestoria")) return false;
+  if (href === "/servicios/pack-contrato-lau-administracion-alquiler") return false;
+  if (href === "/servicios/reserva-de-compra") return false;
+  return true;
+}
+
+/** Landings locales publicadas enlazables desde hubs /gestoria (SEO interno). */
+export function getGestoriaLocalServiceLinks(
+  gestoriaSlug: string,
+  cityLabel: string,
+  scope: GestoriaLocalServiceLinkScope = "all",
+): GestoriaVerticalServiceLink[] {
+  const alquiler = buildAlquilerLinks(gestoriaSlug, cityLabel);
+  const compraventa = buildCompraventaLinks(gestoriaSlug, cityLabel);
+
+  let merged: GestoriaVerticalServiceLink[];
+  if (scope === "alquiler") {
+    merged = alquiler;
+  } else if (scope === "compraventa") {
+    merged = compraventa;
+  } else {
+    const seen = new Set<string>();
+    merged = [];
+    for (const link of [...compraventa, ...alquiler]) {
+      if (seen.has(link.href)) continue;
+      seen.add(link.href);
+      merged.push(link);
+    }
+  }
+
+  return merged.filter((link) => isGestoriaDeepLocalLandingHref(link.href));
+}
+
 function verticalCopy(
   vertical: GestoriaCityVertical,
   city: string,
@@ -385,7 +422,11 @@ export function getGestoriaCityVerticalHub(
   const serviceShowcases = buildGestoriaVerticalServiceShowcases(services, def.city);
   const benefits = gestoriaVerticalBenefits(vertical);
   const comparison = gestoriaVerticalComparison(vertical, def.city);
-  const faq = [...copy.faq, ...gestoriaVerticalExtendedFaq(vertical, def.city)];
+  const faq = appendGestoriaStandardFaq(
+    [...copy.faq, ...gestoriaVerticalExtendedFaq(vertical, def.city)],
+    def.city,
+    def.schemaAdministrativeArea,
+  );
 
   return {
     path,

@@ -9,6 +9,7 @@ import {
   GESTORIA_CATALUNYA_METRO_PUBLISHED_SLUGS,
 } from "@/lib/gestoria-catalunya-metro-cities";
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
+import { appendGestoriaStandardFaq } from "@/lib/gestoria-online-digital-content";
 import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
 
 import {
@@ -108,7 +109,11 @@ export function toGestoriaInmobiliariaLandingConfig(
 ): GestoriaInmobiliariaLocalLandingConfig {
   const diff = GESTORIA_INMOBILIARIA_LOCAL_DIFFERENTIATION[def.slug] ?? {};
   const merged = mergeLocalDifferentiation({ ...def, path: localGestoriaInmobiliariaHref(def.slug) }, diff);
-  return enrichWithCityMarketProfile(def.slug, "gestoria", merged) as GestoriaInmobiliariaLocalLandingConfig;
+  const enriched = enrichWithCityMarketProfile(def.slug, "gestoria", merged) as GestoriaInmobiliariaLocalLandingConfig;
+  return {
+    ...enriched,
+    faq: appendGestoriaStandardFaq(enriched.faq, enriched.city, enriched.schemaAdministrativeArea),
+  };
 }
 
 export function getGestoriaInmobiliariaLocalCity(

@@ -11,6 +11,8 @@ import type { PublicService } from "@/lib/catalog.public";
 import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
+import { GestoriaLocalServiceLinksSection } from "@/components/gestoria-local-service-links-section";
+import { GestoriaOnlineDigitalSection } from "@/components/gestoria-online-digital-section";
 import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
 import {
   buildGestoriaServicesCarouselSections,
@@ -173,6 +175,12 @@ function GestoriaVerticalHubMain({
           </>
         ) : null}
 
+        <GestoriaLocalServiceLinksSection
+          citySlug={config.citySlug}
+          city={config.city}
+          scope={config.vertical === "alquiler" ? "alquiler" : "compraventa"}
+        />
+
         <section className="border-t border-slate-200 bg-white px-4 py-14 sm:px-6">
           <div className="mx-auto max-w-6xl">
             <p className="text-xs font-bold uppercase tracking-wide text-[#1A4FBF]">
@@ -239,6 +247,13 @@ function GestoriaVerticalHubMain({
           </div>
         </section>
 
+        <GestoriaOnlineDigitalSection
+          city={config.city}
+          schemaAdministrativeArea={config.schemaAdministrativeArea}
+          focus={config.vertical === "alquiler" ? "alquiler" : "compraventa"}
+          primarySlug={config.vertical === "alquiler" ? "contrato-alquiler-lau" : "servicio-completo-compra"}
+        />
+
         <section className="border-t border-slate-200 bg-white px-4 py-14 sm:px-6">
           <div className="mx-auto max-w-3xl">
             <FaqSection
@@ -250,7 +265,7 @@ function GestoriaVerticalHubMain({
         </section>
       </main>
 
-      <ServiceLandingSharedSections skipCoverage />
+      <ServiceLandingSharedSections skipCoverage skipGestorPlatform city={config.city} serviceLabel="Gestoría inmobiliaria" />
       <SiteFooter />
     </div>
   );

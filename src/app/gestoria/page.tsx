@@ -3,6 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import { GestoriaOnlineDigitalSection } from "@/components/gestoria-online-digital-section";
 import Link from "next/link";
 import {
   GESTORIA_INMOBILIARIA_LOCAL_BASE,
@@ -100,9 +101,11 @@ export default function GestoriaIndexPage() {
           ) : null}
         </section>
 
+        <GestoriaOnlineDigitalSection city="España" schemaAdministrativeArea="España" />
+
         <HomeCoverageCities variant="compact" />
       </main>
-      <ServiceLandingSharedSections skipCoverage />
+      <ServiceLandingSharedSections skipCoverage skipGestorPlatform />
       <SiteFooter />
     </div>
   );

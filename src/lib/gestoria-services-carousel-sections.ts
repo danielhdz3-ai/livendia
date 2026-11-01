@@ -37,17 +37,13 @@ import {
   localServicioCompletoCompraHref,
 } from "@/lib/servicio-completo-compra-local-cities";
 import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-local-cities";
+import { GESTORIA_SERVICE_SLUG_CANDIDATES } from "@/lib/gestoria-city-vertical-hub";
 import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobiliarios-barcelona-content";
 
 export type GestoriaCarouselScope = "all" | "alquiler" | "compraventa";
 
-const SERVICE_SLUG_CANDIDATES: Record<string, readonly string[]> = {
-  "les-corts": ["les-corts", "barcelona-les-corts"],
-  "hospitalet-de-llobregat": ["hospitalet-de-llobregat", "barcelona-hospitalet-de-llobregat"],
-};
-
 function candidates(citySlug: string): readonly string[] {
-  return SERVICE_SLUG_CANDIDATES[citySlug] ?? [citySlug];
+  return GESTORIA_SERVICE_SLUG_CANDIDATES[citySlug] ?? [citySlug];
 }
 
 function firstPublished(

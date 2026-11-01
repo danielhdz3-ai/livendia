@@ -1,4 +1,7 @@
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
+import { GestoriaLocalServiceLinksSection } from "@/components/gestoria-local-service-links-section";
+import { GestoriaResourceLinksSection } from "@/components/gestoria-resource-links-section";
+import { GestoriaOnlineDigitalSection } from "@/components/gestoria-online-digital-section";
 import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
 import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
 import { PublicHeader } from "@/components/public-header";
@@ -237,6 +240,10 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                       <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
                       <span>Administración alquiler: {ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL} sin permanencia</span>
                     </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden />
+                      <span>100 % online: panel cliente, pago seguro y gestor asignado en {config.schemaAdministrativeArea}</span>
+                    </li>
                   </ul>
                   <div className="mt-10 flex flex-wrap gap-4">
                     <a
@@ -324,6 +331,18 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
                   Hub contratos Barcelona
                 </Link>
               ) : null}
+              <a
+                href="#gestoria-online-digital"
+                className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
+              >
+                Trámite online
+              </a>
+              <a
+                href="#landings-locales"
+                className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
+              >
+                Guías locales
+              </a>
             </div>
           </nav>
 
@@ -332,6 +351,8 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
           </div>
 
           <GestoriaServiceModuleSections sections={carouselSections} cityLabel={config.city} />
+
+          <GestoriaLocalServiceLinksSection citySlug={config.slug} city={config.city} />
 
           <section id="compraventa" className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
@@ -528,6 +549,9 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             </div>
           </section>
 
+          <GestoriaOnlineDigitalSection city={config.city} schemaAdministrativeArea={config.schemaAdministrativeArea} />
+
+          <GestoriaResourceLinksSection />
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-3xl">
@@ -571,7 +595,11 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} serviceLabel="Gestoría inmobiliaria" />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Gestoría inmobiliaria"
+          skipGestorPlatform
+        />
 
 
         <SiteFooter />

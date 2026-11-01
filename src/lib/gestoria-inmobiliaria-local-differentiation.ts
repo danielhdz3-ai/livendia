@@ -46,4 +46,24 @@ export const GESTORIA_INMOBILIARIA_LOCAL_DIFFERENTIATION: Record<string, LocalDi
     localMarketInsight:
       "Granada mezcla turismo residencial, UGR y ventas en Albaicín o Zaidín. El hub local articula venta entre particulares, LAU por habitación y revisión documental con barrios granadinos — copy distinto al de Sevilla o Málaga pese a compartir Andalucía.",
   },
+  "hospitalet-de-llobregat": {
+    localMarketInsight:
+      "L'Hospitalet concentra alquiler LAU y compraventa entre particulares en barrios como Collblanc o la Florida, con muchos propietarios que no quieren desplazarse a Barcelona centro. El trámite 100 % online encaja con operaciones en el Baix Llobregat.",
+  },
+  badalona: {
+    localMarketInsight:
+      "Badalona mezcla primera línea de mar, familias en Montgat y alquileres en el casco antiguo. El hub digital enlaza arras, LAU y administración con normativa catalana cuando aplica — sin confundir con el hub genérico de Barcelona capital.",
+  },
+  sabadell: {
+    localMarketInsight:
+      "Sabadell y Vallès Oriental mueven ventas entre particulares en el Eixample sabadelenc y alquileres cerca del campus. Livendia tramita online con gestor asignado, igual que en Barcelona pero con copy y barrios del Vallès.",
+  },
+  terrassa: {
+    localMarketInsight:
+      "Terrassa combina industria, universidad y compradores de otras provincias. El expediente digital facilita subir documentación de herencias o ventas en Sant Pere o el centre cuando el propietario no puede acudir a un despacho físico.",
+  },
+  girona: {
+    localMarketInsight:
+      "Girona capital y área metropolitana (Salt, Sarrià) registran alquiler LAU, temporada turística y compraventa residencial. El hub gestoría online articula servicios con referencia al mercado gerundense — distinto al de Barcelona o la Costa Brava genérica.",
+  },
 };
