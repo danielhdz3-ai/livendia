@@ -208,7 +208,7 @@ export const VENDER_PISO_SIN_AGENCIA_CITIES: VenderPisoSinAgenciaCityDefinition[
     slug: "sevilla",
     city: "Sevilla",
     schemaAdministrativeArea: "Andalucía",
-    metaTitle: "Vender piso sin agencia en Sevilla | Ya tienes comprador particular",
+    metaTitle: "Vender piso sin agencia Sevilla — servicio completo 890 € · ya tienes comprador",
     metaDescription:
       "¿Ya tienes comprador particular para tu piso en Sevilla? Gestor legal Livendia: reserva, arras, trámites de venta y coordinación con notaría. Tarifa plana 890 € IVA incl. Ahorra comisiones abusivas.",
     keywords: [

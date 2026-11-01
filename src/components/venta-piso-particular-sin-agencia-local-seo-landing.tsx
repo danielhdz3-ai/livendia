@@ -48,6 +48,7 @@ import {
   localVenderPisoSinAgenciaHref,
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import { PILLAR_BARCELONA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
+import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
 import {
   buildVentaPisoParticularSteps,
   VENTA_PISO_PARTICULAR_PROCESS_META,
@@ -250,6 +251,12 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           </section>
 
           <GestorStrip city={config.city} />
+
+          <VentaClusterProductPicker
+            localSlug={config.slug}
+            cityLabel={config.city}
+            current="venta-particular"
+          />
 
           {/* Cuándo entra Livendia */}
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">

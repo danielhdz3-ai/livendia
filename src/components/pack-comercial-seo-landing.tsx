@@ -48,6 +48,7 @@ import {
   PACK_ARRAS_GESTION_PROCESS,
 } from "@/lib/pack-arras-gestion-process-modules";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
+import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
 
 const STEP_ICONS = [ClipboardList, FileText, Users, Shield] as const;
 
@@ -258,6 +259,14 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
               </div>
             </div>
           </section>
+
+          {isVentaPack && local ? (
+            <VentaClusterProductPicker
+              localSlug={local.slug}
+              cityLabel={local.city}
+              current="pack-arras"
+            />
+          ) : null}
 
           {localSeo ? (
             <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">

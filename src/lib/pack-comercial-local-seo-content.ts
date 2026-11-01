@@ -718,10 +718,25 @@ export const PACK_ARRAS_GESTION_LOCAL_SEO: Record<string, PackCommercialLocalSeo
     localProblemIntro:
       "En Triana, Macarena o Nervión las sorpresas habituales son derramas en edificios históricos, herencias no inscritas y certificado de deuda de comunidad lento. Sin gestor, el comprador pide rebaja días antes de notaría.",
     stepLocalNotes: [
-      "Arras 145 €: contrato penitencial con plazos, señal y condición suspensiva de hipoteca del comprador en mercado sevillano.",
-      "Gestión 350 €: nota simple, certificado energético, certificado de deuda de comunidad e IBI en edificios del Casco y Triana.",
-      "Revisión cancelación de cargas hipotecarias y coherencia titular tras herencia — frecuente en ventas sevillanas.",
-      "Escritura con informe semáforo: 495 € precio cerrado vs miles en comisión si ya tienes comprador.",
+      "Llamada inicial: comprador en Nervión, Triana o Macarena, señal y plazos a notaría sevillana.",
+      "Contratas el pack 495 € IVA incl. y abres expediente en panel Livendia.",
+      "Recogida documental: nota simple, comunidad en edificios del Casco, energético e IBI al corriente.",
+      "Arras 145 € con condición suspensiva de hipoteca del comprador — habitual en operaciones en Sevilla capital.",
+      "Informe semáforo pre-notaría y coordinación con notaría de Sevilla o área metropolitana.",
+    ],
+    testimonials: [
+      {
+        quote:
+          "Vendí en Los Remedios con comprador de Idealista. El pack de 495 € cubrió arras y comunidad en un edificio con derrama — sin pagar comisión de agencia.",
+        author: "Carmen R.",
+        role: "Vendedora particular · Sevilla",
+      },
+      {
+        quote:
+          "Herencia entre tres hermanos en Triana: el gestor detectó titularidad registral antes de firmar arras. Todo por WhatsApp hasta la notaría en Nervión.",
+        author: "Antonio M.",
+        role: "Vendedor entre particulares · Sevilla",
+      },
     ],
     empathyCards: ARRAS_EMPATHY_SHARED,
     casuistica: [

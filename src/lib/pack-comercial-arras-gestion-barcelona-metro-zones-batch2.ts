@@ -129,6 +129,20 @@ export const PACK_ARRAS_GESTION_BCN_METRO_BATCH2: readonly ZoneBatch[] = [
           body: "Si tú encontraste al comprador, no pagues miles por un trámite que ya no necesita marketing.",
         },
       ],
+      testimonials: [
+        {
+          quote:
+            "Vendí en Vila de Gràcia a un vecino. Las arras reflejaron la reforma del baño y el inquilino en LAU — 495 € y cero comisión.",
+          author: "Marta S.",
+          role: "Vendedora particular · Gràcia",
+        },
+        {
+          quote:
+            "El certificado de comunidad tardó casi tres semanas en Camp d'en Grassot. El gestor lo persiguió desde el día 1 post-arras.",
+          author: "Pau L.",
+          role: "Vendedor entre particulares · Gràcia",
+        },
+      ],
     },
   },
   {

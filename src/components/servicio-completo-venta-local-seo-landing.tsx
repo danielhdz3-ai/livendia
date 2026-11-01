@@ -33,8 +33,14 @@ import {
   Scale,
   Handshake,
 } from "lucide-react";
+import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
+
+function ventaLocalSlugFromPath(path: string): string {
+  const parts = path.split("/").filter(Boolean);
+  return parts[parts.length - 1] ?? "";
+}
 
 function formatEur(n: number): string {
   return `${n.toLocaleString("es-ES")} €`;
@@ -282,6 +288,12 @@ export async function ServicioCompletoVentaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <VentaClusterProductPicker
+            localSlug={ventaLocalSlugFromPath(config.path)}
+            cityLabel={config.city}
+            current="servicio-completo-venta"
+          />
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl">

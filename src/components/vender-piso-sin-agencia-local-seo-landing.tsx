@@ -45,6 +45,7 @@ import {
   getVenderPisoSinAgenciaHeroImage,
   isVenderBcnMetroSlugForImages,
 } from "@/lib/vender-piso-sin-agencia-images";
+import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -244,6 +245,12 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <VentaClusterProductPicker
+            localSlug={config.slug}
+            cityLabel={config.city}
+            current="vender-sin-agencia"
+          />
 
           {isBarcelonaExtended ? (
             <>

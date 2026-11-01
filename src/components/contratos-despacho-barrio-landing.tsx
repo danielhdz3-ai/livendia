@@ -14,11 +14,13 @@ import { CONTRATOS_INMOBILIARIOS_BARCELONA_PATH } from "@/lib/contratos-inmobili
 import { localPackArrasGestionHref } from "@/lib/pack-comercial-local-cities";
 import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getContratosBcnOfficeContent } from "@/lib/contratos-bcn-office-barrio";
+import { getContratosDespachoBarrioSeo } from "@/lib/contratos-inmobiliarios-despacho-barrio-seo";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function ContratosDespachoBarrioLanding({ barrio }: { barrio: ContratosInmobiliariosBarrioPage }) {
   const office = getContratosBcnOfficeContent(barrio);
+  const despachoSeo = getContratosDespachoBarrioSeo(barrio.slug);
   const packSlug =
     barrio.slug === "pedralbes"
       ? "barcelona-pedralbes"
@@ -33,13 +35,10 @@ export function ContratosDespachoBarrioLanding({ barrio }: { barrio: ContratosIn
               : barrio.localSlug;
 
   const faqItems = [
-    ...(barrio.barrioFaq?.map((f) => ({ question: f.question, answer: f.answer })) ?? []),
+    ...despachoSeo.faq.map((f) => ({ question: f.q, answer: f.a })),
     {
-      question: "¿Cómo reservo cita en el despacho desde " + barrio.name + "?",
-      answer:
-        "WhatsApp, formulario de contacto o teléfono. Indica que vienes por un contrato inmobiliario en " +
-        barrio.name +
-        ". Dirección: Mejía Lequerica 44, Les Corts.",
+      question: `¿En qué se diferencia esta página del hub de contratos online en ${barrio.name}?`,
+      answer: `Aquí reservas cita presencial o videollamada en Les Corts. En ${contratosInmobiliariosBarrioPath(barrio.slug)} contratas y tramitas online con el mismo gestor.`,
     },
   ];
 
@@ -57,8 +56,8 @@ export function ContratosDespachoBarrioLanding({ barrio }: { barrio: ContratosIn
             Despacho contratos Barcelona
           </Link>
           <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-cyan-200">{office.eyebrow}</p>
-          <h1 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">{office.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-blue-100">{office.lead}</p>
+          <h1 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">{despachoSeo.h1}</h1>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-blue-100">{despachoSeo.heroLead}</p>
           <p className="mt-4 text-sm text-blue-200/95">{office.transport}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -75,6 +74,23 @@ export function ContratosDespachoBarrioLanding({ barrio }: { barrio: ContratosIn
               Pack arras + gestión 495 €
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white px-4 py-12 sm:px-6">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-xl font-bold text-[#1E293B] sm:text-2xl">Qué revisamos en cita desde {barrio.name}</h2>
+          <p className="mt-4 text-base leading-relaxed text-[#475569]">{despachoSeo.citaFocus}</p>
+          <ul className="mt-6 space-y-2">
+            {despachoSeo.checklist.map((item) => (
+              <li key={item} className="flex gap-2 text-sm text-[#475569]">
+                <span className="font-bold text-[#1A4FBF]" aria-hidden>
+                  ·
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

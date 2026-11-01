@@ -5,7 +5,7 @@ import {
   isContratosInmobiliariosBarrioSlug,
 } from "@/lib/contratos-inmobiliarios-barcelona-barrios";
 import { contratosInmobiliariosDespachoBarrioPath } from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
-import { getContratosBcnOfficeContent } from "@/lib/contratos-bcn-office-barrio";
+import { getContratosDespachoBarrioSeo } from "@/lib/contratos-inmobiliarios-despacho-barrio-seo";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { barrio: slug } = await params;
   const barrio = getContratosInmobiliariosBarrio(slug);
   if (!barrio) return {};
-  const office = getContratosBcnOfficeContent(barrio);
-  const title = `${office.title} | Livendia`;
-  const description = `${office.lead} ${office.transport}`;
+  const seo = getContratosDespachoBarrioSeo(barrio.slug);
+  const title = seo.metaTitle;
+  const description = seo.metaDescription;
   const canonical = `${getSiteUrl()}${contratosInmobiliariosDespachoBarrioPath(barrio.slug)}`;
   return {
     title: { absolute: title },
