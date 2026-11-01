@@ -62,6 +62,34 @@ const MALAGA: CompraLocalCityEnrichment = {
   ],
 };
 
+const BILBAO: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Bilbao — zonas que revisamos",
+  marketNote:
+    "En Bilbao y Gran Bilbao el ticket medio es alto: compradores suelen firmar reserva con prisa y arras copiadas del vendedor o su agencia. Fondos de reserva en comunidad, plazos de hipoteca vasca y coherencia reserva–arras son críticos antes de transferir señal. Livendia defiende al comprador con tarifa plana.",
+  zones: [
+    { name: "Abando e Indautxu", context: "Ticket alto; penalizaciones y condición de financiación." },
+    { name: "Deusto y Uribarri", context: "Familias; revisión documental pre-arras." },
+    { name: "Getxo y Algorta", context: "Costa vizcaína: mismo protocolo Livendia online." },
+    { name: "Barakaldo y Santurtzi", context: "Área metropolitana; arras equilibradas." },
+    { name: "Basurto y Rekalde", context: "Rehabilitación; ITE y actas de comunidad." },
+    { name: "Durango y provincia", context: "Operaciones intermunicipales con plazos amplios." },
+  ],
+};
+
+const ZARAGOZA: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Zaragoza — zonas que revisamos",
+  marketNote:
+    "En Zaragoza capital muchas compras son entre particulares con borrador de arras heredado de otra operación. Actur, Delicias y Casco Histórico mezclan promociones recientes y edificios con obras en comunidad. El gestor revisa cargas y plazos de hipoteca antes de la señal.",
+  zones: [
+    { name: "Actur y Parque Goya", context: "Obra nueva y segunda mano; anexos de garaje en contrato." },
+    { name: "Centro y Casco Histórico", context: "Licencias y estado registral pre-arras." },
+    { name: "Delicias y Universidad", context: "Compradores jóvenes; condición suspensiva de hipoteca." },
+    { name: "Las Fuentes y Torrero", context: "Operaciones por Idealista sin agencia compradora." },
+    { name: "Valdespartera y Movera", context: "Familias; calendario de escritura realista." },
+    { name: "Utebo y Cuarte", context: "Área metropolitana con expediente online." },
+  ],
+};
+
 const SEVILLA: CompraLocalCityEnrichment = {
   sectionTitle: "Mercado de compra en Sevilla — zonas que revisamos",
   marketNote:
@@ -82,6 +110,8 @@ const BY_SLUG: Record<string, CompraLocalCityEnrichment> = {
   valencia: VALENCIA,
   malaga: MALAGA,
   sevilla: SEVILLA,
+  bilbao: BILBAO,
+  zaragoza: ZARAGOZA,
 };
 
 export function getCompraLocalCityEnrichment(citySlug: string): CompraLocalCityEnrichment | null {

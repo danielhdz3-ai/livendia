@@ -38,6 +38,8 @@ import {
   isPackArrasGestionLocalSlugPublished,
   localPackArrasGestionHref,
 } from "@/lib/pack-comercial-local-cities";
+import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
+import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -188,6 +190,8 @@ export async function ServicioCompletoVentaLocalSeoLanding({
       return { ...b, icon: style.icon, color: style.color };
     }) ?? defaultBenefits;
 
+  const localSlug = ventaLocalSlugFromPath(config.path);
+
   const heroBullets = config.heroBullets ?? [
     "Gestor personal para tu venta",
     "Reserva y arras redactadas por expertos",
@@ -293,11 +297,15 @@ export async function ServicioCompletoVentaLocalSeoLanding({
             </div>
           </section>
 
-          <VentaClusterProductPicker
-            localSlug={ventaLocalSlugFromPath(config.path)}
-            cityLabel={config.city}
-            current="servicio-completo-venta"
-          />
+          <VentaClusterProductPicker localSlug={localSlug} cityLabel={config.city} current="servicio-completo-venta" />
+
+          {isSeoPrimaryLandingCitySlug(localSlug) ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <SeoCityPrimaryLandingsForCity citySlug={localSlug} cityName={config.city} />
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-4xl">

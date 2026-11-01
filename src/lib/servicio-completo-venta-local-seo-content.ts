@@ -243,6 +243,47 @@ export const VENTA_LOCAL_SEO_CONTENT: Record<string, VentaLocalSeoContent> = {
       },
     ],
   },
+  bilbao: {
+    highlightSalePrice: 380_000,
+    savingVs3: 11_400,
+    savingVs5: 19_000,
+    introParagraph:
+      `En Bilbao y Gran Bilbao el precio medio de un piso ronda los 380.000 € (Idealista, 2025: ~4.200 €/m² en capital). Una comisión del 3 % son 11.400 € + IVA (~13.794 €); al 5 %, 19.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana sin comisión sobre la venta. En Bizkaia es habitual vender entre particulares en Abando, Deusto o Getxo cuando el comprador ya viene de Idealista o del entorno profesional. Redactamos reserva y arras, revisamos comunidad y registral, y coordinamos hasta notaría.`,
+    marketParagraph:
+      `El mercado vizcaíno combina ticket alto, compradores financiados en entidades locales y operaciones en Getxo, Barakaldo o Portugalete. Idealista (2025) sitúa la vivienda en venta en ~4.200 €/m² en Bilbao capital. Casuísticas: derramas en edificios señoria, arras copiadas sin plazos realistas de hipoteca vasca, ventas en cadena entre municipios del Gran Bilbao y operaciones sin exclusiva cuando ya hay comprador. Livendia no captura ni publica el piso.`,
+    gestorLocalNote:
+      `En Bilbao el gestor revisa fondos de reserva y actas de comunidad en bloques recientes, coherencia reserva–arras con plazos de financiación habituales en Bizkaia, y checklist pre-escritura cuando el comprador es de otra CCAA.`,
+    zones: [
+      { name: "Abando e Indautxu", context: "Ticket alto; ventas entre particulares sin cartel de agencia." },
+      { name: "Deusto y Uribarri", context: "Familias; arras con condición suspensiva de hipoteca." },
+      { name: "Getxo y Algorta", context: "Costa vizcaína: mismo servicio 890 € online." },
+      { name: "Barakaldo y Santurtzi", context: "Área metropolitana izquierda; expediente Livendia remoto." },
+      { name: "Basurto y Rekalde", context: "Rehabilitación urbana; ITE y cargas antes de señal." },
+      { name: "Durango y Durangaldea", context: "Provincia: herencias vendidas a comprador conocido." },
+    ],
+    faq: [
+      {
+        question: "¿Vendo en Bilbao sin pagar comisión del 3 %?",
+        answer:
+          `Si ya tienes comprador, Livendia sustituye la agencia en el tramo legal por ${SERVICIO_COMPLETO_CV_PRICE_LABEL}, no por un porcentaje del precio.`,
+      },
+      {
+        question: "¿Atendéis ventas en Getxo o municipios del Gran Bilbao?",
+        answer:
+          "Sí. Misma gestoría online para capital y área metropolitana hasta notaría en Bizkaia.",
+      },
+      {
+        question: "¿Cuál es la landing principal de venta en Bilbao?",
+        answer:
+          "/servicios/vender-piso-sin-agencia-bilbao es la URL SEO principal; esta página es servicio completo 890 €.",
+      },
+      {
+        question: "¿Pack 495 € o servicio completo 890 € en Bizkaia?",
+        answer:
+          "Pack si solo necesitas arras y documentación post-arras; servicio completo si quieres cobertura desde reserva.",
+      },
+    ],
+  },
   valladolid: {
     highlightSalePrice: 150_000,
     savingVs3: 4_500,

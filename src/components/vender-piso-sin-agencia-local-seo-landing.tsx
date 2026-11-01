@@ -51,6 +51,8 @@ import {
   isPackArrasGestionLocalSlugPublished,
   localPackArrasGestionHref,
 } from "@/lib/pack-comercial-local-cities";
+import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
+import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -258,6 +260,14 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
           />
 
           <VenderSinAgenciaBarrioDiscoverySection venderCitySlug={config.slug} cityLabel={config.city} />
+
+          {isSeoPrimaryLandingCitySlug(config.slug) ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <SeoCityPrimaryLandingsForCity citySlug={config.slug} cityName={config.city} />
+              </div>
+            </section>
+          ) : null}
 
           {isBarcelonaExtended ? (
             <>

@@ -8,7 +8,9 @@ import { LandingLocalTestimonialsSection } from "@/components/landing-local-sect
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
+import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
 import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
+import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -292,6 +294,14 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             cityLabel={config.city}
             current="servicio-completo-compra"
           />
+
+          {isSeoPrimaryLandingCitySlug(config.slug) ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <SeoCityPrimaryLandingsForCity citySlug={config.slug} cityName={config.city} />
+              </div>
+            </section>
+          ) : null}
 
           {cityEnrichment ? (
             <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">

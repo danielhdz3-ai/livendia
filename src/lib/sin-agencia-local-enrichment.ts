@@ -54,11 +54,11 @@ const HERO_BY_SLUG: Record<string, string> = {
   "sant-joan-despi": `${ZONAS}/santjoandespi.jpg`,
   badalona: `${ZONAS}/barcelona2.jpg`,
   castelldefels: `${ZONAS}/barcelona.jpg`,
-  madrid: "/images/gestoria3.jpg",
+  madrid: "/images/madrid15.jpg",
   valencia: "/images/gestoria3.jpg",
-  malaga: "/images/gestoria3.jpg",
-  sevilla: "/images/gestoria3.jpg",
-  bilbao: "/images/gestoria3.jpg",
+  malaga: "/images/malaga.jpg",
+  sevilla: "/images/sevilla.jpg",
+  bilbao: "/images/bilbao1.jpg",
 };
 
 const SLUG_OVERRIDES: Record<
@@ -71,6 +71,38 @@ const SLUG_OVERRIDES: Record<
       "Firmar arras en Castelldefels sin comprobar si el vendedor tiene la vivienda al día con la comunidad.",
       "Confiar en el anuncio sobre el estado del edificio sin pedir ITE o acta de inspección reciente.",
       "Aceptar plazo de hipoteca de 15 días cuando el banco suele necesitar 5–8 semanas.",
+    ],
+  },
+  madrid: {
+    typicalRiskEur: 12_000,
+    commonMistakes: [
+      "Firmar arras en Madrid con plazo de hipoteca de 15 días cuando el banco pide 6–8 semanas.",
+      "Vender con herencia o usufructo pendiente de inscribir sin aclararlo en reserva.",
+      "No revisar derramas en actas de comunidad en edificios de Chamberí o Salamanca.",
+    ],
+  },
+  malaga: {
+    typicalRiskEur: 10_000,
+    commonMistakes: [
+      "Firmar arras en Málaga o en la costa sin certificado de deuda de comunidad en edificios con locales turísticos.",
+      "Aceptar reserva post-verano con señal alta y penalización desequilibrada contra el vendedor.",
+      "No alinear plazos cuando el comprador viene de otra CCAA o del extranjero.",
+    ],
+  },
+  sevilla: {
+    typicalRiskEur: 9_000,
+    commonMistakes: [
+      "Copiar arras de otra operación sin revisar plusvalía municipal y plazos en Casco Antiguo.",
+      "Firmar reserva en Triana o Nervión sin verificar cargas en edificios históricos.",
+      "Llegar a notaría con mobiliario o anejos pactados en visita pero no reflejados en contrato.",
+    ],
+  },
+  bilbao: {
+    typicalRiskEur: 14_000,
+    commonMistakes: [
+      "Vender en Bilbao con arras que no contemplan plazos realistas de financiación en entidades vascas.",
+      "No revisar fondos de reserva y derramas en comunidades de Abando o Getxo.",
+      "Firmar señal elevada en ticket alto (~380.000 €) sin condiciones claras de desistimiento.",
     ],
   },
   "barcelona-eixample": {
@@ -95,14 +127,6 @@ const SLUG_OVERRIDES: Record<
       "Reserva firmada en L'Hospitalet sin cláusula de devolución si la hipoteca cae.",
       "No pedir certificado de deuda cero en bloques con derrama reciente.",
       "Aceptar arras redactadas por la agencia del vendedor sin revisión del comprador.",
-    ],
-  },
-  madrid: {
-    typicalRiskEur: 10_000,
-    commonMistakes: [
-      "Firmar reserva en Madrid con honorarios de agencia encadenados no negociados.",
-      "Arras sin condición suspensiva de financiación clara.",
-      "No revisar cargas antes de transferir señal en operaciones entre particulares.",
     ],
   },
 };

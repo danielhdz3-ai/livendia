@@ -14,6 +14,8 @@ import {
   HOME_COVERAGE_CITIES,
   type HomeCoverageCitySlug,
 } from "@/lib/home-coverage-cities";
+
+export type { HomeCoverageCitySlug };
 import { localGestoriaCityVerticalHref } from "@/lib/gestoria-city-vertical-hub";
 import { isGestoriaInmobiliariaLocalSlugPublished } from "@/lib/gestoria-inmobiliaria-local-cities";
 
@@ -104,4 +106,8 @@ export function getSeoPrimaryLandingCityBlocks() {
   return SEO_PRIMARY_LANDING_CITY_SLUGS.map((slug) => getSeoCityPrimaryLandings(slug)).filter(
     (block): block is NonNullable<ReturnType<typeof getSeoCityPrimaryLandings>> => block != null,
   );
+}
+
+export function isSeoPrimaryLandingCitySlug(slug: string): slug is (typeof SEO_PRIMARY_LANDING_CITY_SLUGS)[number] {
+  return (SEO_PRIMARY_LANDING_CITY_SLUGS as readonly string[]).includes(slug);
 }
