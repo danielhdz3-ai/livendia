@@ -21,6 +21,15 @@ import {
   isPackArrasGestionBcnMetroSlug,
 } from "@/lib/pack-comercial-arras-gestion-barcelona-metro";
 import { normalizePackArrasStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
+import { withPackArrasGestionTestimonials } from "@/lib/pack-arras-gestion-local-testimonials";
+import {
+  isVentaPisoParticularSlugPublished,
+  localVentaPisoParticularSinAgenciaHref,
+} from "@/lib/venta-piso-particular-sin-agencia-local-cities";
+import {
+  isVenderPisoSinAgenciaSlugPublished,
+  localVenderPisoSinAgenciaHref,
+} from "@/lib/vender-piso-sin-agencia-local-cities";
 import {
   getPackArrasGestionLocalSeo,
   getPackLauAdminLocalSeo,
@@ -208,8 +217,9 @@ export function toPackLauAdminLocalConfig(slug: string): PackCommercialLocalLand
 export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocalLandingConfig | null {
   const cityBase = resolvePackArrasGestionCityBase(slug);
   const diff = resolvePackArrasGestionDifferentiation(slug);
-  const localSeo = getPackArrasGestionBcnMetroSeo(slug) ?? getPackArrasGestionLocalSeo(slug);
-  if (!cityBase || !diff || !localSeo) return null;
+  const localSeoRaw = getPackArrasGestionBcnMetroSeo(slug) ?? getPackArrasGestionLocalSeo(slug);
+  if (!cityBase || !diff || !localSeoRaw) return null;
+  const localSeo = withPackArrasGestionTestimonials(slug, localSeoRaw);
 
   const gestionDocSlug = isPackArrasGestionBcnMetroSlug(slug) ? "barcelona" : slug;
   const ventaLocalSlug =
@@ -231,7 +241,7 @@ export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocal
         ? [{ href: localPackArrasGestionHref("barcelona"), label: "Pack Barcelona ciudad" }]
         : [];
 
-  const relatedLinksExtra = [
+  const relatedLinksExtra: { href: string; label: string }[] = [
     ...metroSiblingLinks,
     { href: `/servicios/contrato-arras-local/${slug}`, label: `Contrato arras ${cityBase.city}` },
     {
@@ -240,10 +250,22 @@ export function toPackArrasGestionLocalConfig(slug: string): PackCommercialLocal
     },
     {
       href: `/servicios/servicio-completo-venta-local/${ventaLocalSlug}`,
-      label: `Venta completa ${getPackLocalCityLabel(ventaLocalSlug)}`,
+      label: `Venta completa 890 € · ${getPackLocalCityLabel(ventaLocalSlug)}`,
     },
     { href: PACK_ARRAS_GESTION_VENDEDOR_LANDING_PATH, label: "Pack nacional arras + gestión" },
-  ] as const;
+  ];
+  if (isVenderPisoSinAgenciaSlugPublished(slug)) {
+    relatedLinksExtra.push({
+      href: localVenderPisoSinAgenciaHref(slug),
+      label: `Vender sin agencia · ${cityBase.city}`,
+    });
+  }
+  if (isVentaPisoParticularSlugPublished(slug)) {
+    relatedLinksExtra.push({
+      href: localVentaPisoParticularSinAgenciaHref(slug),
+      label: `Venta particular barrio · ${cityBase.city}`,
+    });
+  }
 
   const seoWithSteps = {
     ...localSeo,

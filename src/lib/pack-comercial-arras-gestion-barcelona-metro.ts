@@ -1,6 +1,7 @@
 import type { LocalCityLandingFields } from "@/lib/local-city-landing-fields";
 import { LIVENDIA_ARRAS_MAS_GESTION_VENDEDOR_LABEL } from "@/lib/catalog.public";
 import type { PackCommercialLocalSeoContent } from "@/lib/pack-comercial-local-seo-content";
+import { packArrasMetroStepLocalNotes } from "@/lib/pack-arras-gestion-process-modules";
 import { metroBarcelonaZoneImage } from "@/lib/administracion-alquiler-metro-zone-images";
 import {
   PACK_ARRAS_GESTION_BCN_METRO_BATCH2,
@@ -202,12 +203,9 @@ const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
       "Les Corts y Pedralbes concentran ventas entre particulares con ticket alto: pisos señoriales, plazas de parking anexas y compradores con hipoteca preconcedida. Precio medio ~480.000 € en el distrito (Idealista, 2026).",
     localProblemIntro:
       "En Pedralbes una señal mal calibrada cuesta miles de euros. Y en bloques de la Zona Universitària el certificado de deuda cero puede tardar semanas si la comunidad está saturada — sin gestor, la fecha de escritura se cae.",
-    stepLocalNotes: [
-      "Arras 145 €: penitenciales o confirmatorias CCCat (621-4 a 621-9), cláusula 621-49 si el comprador financia, parking anexo reflejado en precio.",
-      "Gestión 350 €: solicitud prioritaria de certificado de comunidad en bloques grandes y verificación cèdula d'habitabilitat.",
-      "Checklist: ITE en fincas +50 años, terrazas inscritas, energético vigente — informe semáforo pre-notaría.",
-      "Escritura con expediente ordenado en Les Corts o Pedralbes: reduces rebajas tardías del comprador.",
-    ],
+    stepLocalNotes: packArrasMetroStepLocalNotes(
+      "Pedralbes, Zona Universitària y parking anexo en arras",
+    ),
     empathyCards: [
       {
         title: "Comprador encontrado en Idealista — el papeleo te abruma",
@@ -279,12 +277,9 @@ const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
       "El Eixample concentra la mayoría de ventas entre particulares de Barcelona ciudad: Dreta y Esquerra con compradores de Idealista, herencias en fincas modernistas y plazos ajustados. Precio medio ~450.000 € (Brains Real Estate, 2026).",
     localProblemIntro:
       "En Dreta de l'Eixample las comunidades de edificios del ensanche tardan 10–20 días en emitir certificado de deuda cero. Sin gestor desde la semana del arras, la fecha de escritura se desmorona.",
-    stepLocalNotes: [
-      "Arras 145 €: derramas conocidas, terrazas y cláusula 621-49 si el comprador pide hipoteca — redacción CCCat.",
-      "Gestión 350 €: verificación ITE en fincas 1900–1970, cèdula d'habitabilitat vigente y certificado de comunidad.",
-      "Informe semáforo: elementos no inscritos en registro, energético caducado, actas de junta con derramas aprobadas.",
-      "Notaría con expediente coherente: el gestor no sustituye al notario, pero evita sorpresas el día de la firma.",
-    ],
+    stepLocalNotes: packArrasMetroStepLocalNotes(
+      "Dreta, Esquerra y terrazas no inscritas en el ensanche",
+    ),
     empathyCards: [
       {
         title: "Vendes sin agencias en el Eixample",
@@ -357,12 +352,9 @@ const PACK_ARRAS_GESTION_BCN_METRO_SEO_CORE = {
       "L'Hospitalet es uno de los municipios con más ventas entre particulares del área metropolitana: precio competitivo frente a Barcelona capital (~240.000 € de media) y compradores que cierran rápido por Idealista o recomendación.",
     localProblemIntro:
       "En Collblanc o Bellvitge las arras suelen ser copias barcelonesas con plazos irreales para comunidades numerosas. Y el certificado de deuda cero puede tardar 2–3 semanas — el gestor Livendia lo solicita en la primera semana post-arras.",
-    stepLocalNotes: [
-      "Arras 145 €: CCCat (621-4 a 621-9), cláusula 621-49, plazos realistas para comunidad en bloques grandes de L'Hospitalet.",
-      "Gestión 350 €: contacto con administrador de fincas, cèdula d'habitabilitat y nota simple sin cargas ocultas.",
-      "Checklist: energético, IBI, derramas en edificios rehabilitados del centre o Granvia.",
-      "Escritura en notaría de L'Hospitalet o Barcelona: expediente listo antes de que el banco del comprador pida más papeles.",
-    ],
+    stepLocalNotes: packArrasMetroStepLocalNotes(
+      "Collblanc, Bellvitge y plazos realistas de comunidad en L'Hospitalet",
+    ),
     empathyCards: [
       {
         title: "Has encontrado comprador — ahora empieza el papeleo",

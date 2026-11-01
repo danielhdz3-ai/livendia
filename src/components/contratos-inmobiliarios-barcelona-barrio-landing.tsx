@@ -25,6 +25,7 @@ import {
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
   CONTRATOS_INMOBILIARIOS_BARCELONA_META,
 } from "@/lib/contratos-inmobiliarios-barcelona-content";
+import { contratosInmobiliariosDespachoBarrioPath } from "@/lib/contratos-inmobiliarios-despacho-barcelona-content";
 import type { PublicService } from "@/lib/catalog.public";
 import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
@@ -93,6 +94,13 @@ export function ContratosInmobiliariosBarrioLanding({
                   Contratar LAU
                   <ArrowRight className="h-4 w-4" />
                 </ContratarSlugButton>
+                <Link
+                  href={contratosInmobiliariosDespachoBarrioPath(barrio.slug)}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-xl border-2 border-white/80 px-5 py-3 text-sm font-bold text-white hover:bg-white/10"
+                >
+                  Cita despacho Les Corts
+                  <MapPin className="h-4 w-4" aria-hidden />
+                </Link>
                 <Link
                   href={barrio.contratoAlquilerHref}
                   className="inline-flex min-h-12 items-center rounded-xl border border-white/40 px-5 py-3 text-sm font-bold text-white hover:bg-white/10"

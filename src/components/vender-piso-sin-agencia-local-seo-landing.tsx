@@ -46,6 +46,10 @@ import {
   isVenderBcnMetroSlugForImages,
 } from "@/lib/vender-piso-sin-agencia-images";
 import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
+import {
+  isPackArrasGestionLocalSlugPublished,
+  localPackArrasGestionHref,
+} from "@/lib/pack-comercial-local-cities";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -510,6 +514,17 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
                     {" · "}
                     <Link href={config.optionalLocalVentaHref} className="font-semibold underline hover:text-white">
                       Landing venta {config.city}
+                    </Link>
+                  </>
+                ) : null}
+                {isPackArrasGestionLocalSlugPublished(config.slug) ? (
+                  <>
+                    {" · "}
+                    <Link
+                      href={localPackArrasGestionHref(config.slug)}
+                      className="font-semibold underline hover:text-white"
+                    >
+                      Solo arras + gestión 495 €
                     </Link>
                   </>
                 ) : null}

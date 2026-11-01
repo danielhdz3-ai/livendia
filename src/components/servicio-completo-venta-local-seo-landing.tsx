@@ -34,6 +34,10 @@ import {
   Handshake,
 } from "lucide-react";
 import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
+import {
+  isPackArrasGestionLocalSlugPublished,
+  localPackArrasGestionHref,
+} from "@/lib/pack-comercial-local-cities";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -534,6 +538,23 @@ export async function ServicioCompletoVentaLocalSeoLanding({
                   WhatsApp
                 </a>
               </div>
+              {isPackArrasGestionLocalSlugPublished(ventaLocalSlugFromPath(config.path)) ? (
+                <p className="mt-8 text-sm text-blue-200">
+                  <Link
+                    href={localPackArrasGestionHref(ventaLocalSlugFromPath(config.path))}
+                    className="font-semibold underline hover:text-white"
+                  >
+                    ¿Solo necesitas arras y documentación? Pack 495 € en {config.city}
+                  </Link>
+                  {" · "}
+                  <Link
+                    href={localVenderPisoSinAgenciaHref(ventaLocalSlugFromPath(config.path))}
+                    className="font-semibold underline hover:text-white"
+                  >
+                    Landing vender sin agencia
+                  </Link>
+                </p>
+              ) : null}
             </div>
           </section>
         </main>
