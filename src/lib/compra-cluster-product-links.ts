@@ -22,14 +22,14 @@ const COMPRA_CITY_SLUGS = new Set<string>(SERVICIO_COMPLETO_COMPRA_LOCAL_PUBLISH
 
 export function resolveServicioCompletoCompraCitySlug(localSlug: string): string | null {
   if (COMPRA_CITY_SLUGS.has(localSlug)) return localSlug;
-  if (localSlug.startsWith("barcelona")) return "barcelona";
-  if (
-    localSlug === "hospitalet-de-llobregat" ||
-    localSlug === "cornella-de-llobregat" ||
-    localSlug === "badalona"
-  ) {
-    return "barcelona";
-  }
+  if (localSlug.startsWith("barcelona-")) return localSlug;
+  if (localSlug === "barcelona") return "barcelona";
+  const ambFallbackToBarcelona = new Set([
+    "sant-adria-de-besos",
+    "sant-joan-despi",
+    "mollet-del-valles",
+  ]);
+  if (ambFallbackToBarcelona.has(localSlug)) return "barcelona";
   return null;
 }
 

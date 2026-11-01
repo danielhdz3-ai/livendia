@@ -12,6 +12,7 @@ import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-lan
 import { CompraLocalCityZonesSection } from "@/components/compra-local-city-zones-section";
 import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
 import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
+import { ComprarSinAgenciaBarcelonaDiscoverySection } from "@/components/comprar-sin-agencia-barcelona-discovery-section";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -305,6 +306,8 @@ export async function ServicioCompletoCompraLocalSeoLanding({
           ) : null}
 
           {cityEnrichment ? <CompraLocalCityZonesSection enrichment={cityEnrichment} /> : null}
+
+          <ComprarSinAgenciaBarcelonaDiscoverySection hubSlug={config.slug} cityLabel={config.city} />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

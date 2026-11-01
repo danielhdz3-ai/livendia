@@ -49,6 +49,7 @@ import { CompraLocalCityZonesSection } from "@/components/compra-local-city-zone
 import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
 import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
 import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
+import { ComprarSinAgenciaBarcelonaDiscoverySection } from "@/components/comprar-sin-agencia-barcelona-discovery-section";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -275,6 +276,8 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
           ) : null}
 
           {cityEnrichment ? <CompraLocalCityZonesSection enrichment={cityEnrichment} /> : null}
+
+          <ComprarSinAgenciaBarcelonaDiscoverySection hubSlug={config.slug} cityLabel={config.city} />
 
           {isBarcelonaExtended ? (
             <>

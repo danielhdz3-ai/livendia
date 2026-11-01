@@ -191,6 +191,106 @@ export const COMPRA_LOCAL_BCN_ZONE_ENRICHMENT: Record<string, CompraLocalCityEnr
       { name: "Baixador i Can Roca", context: "Coherencia reserva–arras CCCat." },
     ],
   ),
+  "barcelona-born": block(
+    "Compra en el Born (Ciutat Vella) — microzonas que revisamos",
+    "El Born concentra patrimonio, locales turísticos y arras bilingües: revisión CCCat y licencias antes de señal.",
+    [
+      { name: "Passeig del Born", context: "Ticket alto; coherencia visita–registro." },
+      { name: "Santa Caterina i la Ribera", context: "Obras en fachada en actas de comunidad." },
+      { name: "Barri Gòtic (límit)", context: "Protección patrimonial; cargas registrales." },
+      { name: "Port Vell (entorn)", context: "Usos mixtos; locales en planta baja." },
+    ],
+  ),
+  "cornella-de-llobregat": block(
+    "Compra en Cornellà — zonas que revisamos",
+    "Baix Llobregat: arras copiadas de Barcelona, bloques densos y plazos de comunidad a negociar pre-señal.",
+    [
+      { name: "Centre i Can Mercader", context: "621-49 CCCat; certificado de deuda." },
+      { name: "Almeda i Sant Ildefons", context: "Familias; condición de hipoteca." },
+      { name: "Riera (entorn)", context: "Reservas rápidas; revisión documental." },
+      { name: "Fonts del Rei", context: "Operaciones entre particulares Idealista." },
+    ],
+  ),
+  "esplugues-de-llobregat": block(
+    "Compra en Esplugues — zonas que revisamos",
+    "Municipio colindante con Barcelona: mismos riesgos CCCat con administradores de fincas saturados en bloques grandes.",
+    [
+      { name: "Centre i Finestrelles", context: "Arras equilibradas; plazos realistas." },
+      { name: "Can Clota i Sant Jordi", context: "Obra nova y segunda mano." },
+      { name: "Les Planes (entorn)", context: "Coherencia reserva–arras." },
+      { name: "Zona metro Can Vidalet", context: "Compradores de Barcelona capital." },
+    ],
+  ),
+  gava: block(
+    "Compra en Gavà — zonas que revisamos",
+    "Costa y centro: segundas residencias, ITE y arras post-verano copiadas sin revisión.",
+    [
+      { name: "Centre i Gavà Mar", context: "ITE costera; humedades." },
+      { name: "Torreblanca i Santa Rosa", context: "Familias; financiación en contrato." },
+      { name: "Sant Pere (entorn)", context: "Idealista; señal desproporcionada." },
+      { name: "Canyelles (límit)", context: "Gestoría online Livendia." },
+    ],
+  ),
+  "sant-boi-de-llobregat": block(
+    "Compra en Sant Boi — zonas que revisamos",
+    "Baix Llobregat interior: herencias, bloques de los 70 y arras sin 621-49 CCCat.",
+    [
+      { name: "Centre i Marianao", context: "Ticket accesible; penalizaciones." },
+      { name: "St. Ramon i Camps Blancs", context: "Comunidad multi-portal." },
+      { name: "Casc Antic (entorn)", context: "Rehabilitación; derramas." },
+      { name: "Colonia Güell (entorn)", context: "Operaciones intermunicipales." },
+    ],
+  ),
+  "sant-cugat-del-valles": block(
+    "Compra en Sant Cugat — zonas que revisamos",
+    "Vallès con ticket alto: revisión rigurosa de reserva, arras y fondos de reserva en comunidad.",
+    [
+      { name: "Centre i estació", context: "Familias; plazos de hipoteca." },
+      { name: "Mira-sol i Valldoreix", context: "Chalets y pisos; registral detallado." },
+      { name: "Parc Central (entorn)", context: "Obra nueva; anexos en contrato." },
+      { name: "Can Trabal (entorn)", context: "Compra entre particulares." },
+    ],
+  ),
+  "sant-adria-de-besos": block(
+    "Compra en Sant Adrià — zonas que revisamos",
+    "Barcelonès Nord: proximidad a Barcelona con arras copiadas y bloques en regeneración urbana.",
+    [
+      { name: "Centre i Artigues", context: "621-49 CCCat pre-señal." },
+      { name: "La Catalana i Maresme", context: "Reserva con prisa post-visita." },
+      { name: "Besòs (entorn)", context: "Coherencia visita–contrato." },
+      { name: "Glòries (límit)", context: "Operaciones con compradores de BCN." },
+    ],
+  ),
+  "sant-joan-despi": block(
+    "Compra en Sant Joan Despí — zonas que revisamos",
+    "Baix Llobregat oeste: compradores de Barcelona y familias locales; mismo protocolo documental online.",
+    [
+      { name: "Centre i TV3 (entorn)", context: "Arras CCCat revisadas." },
+      { name: "Les Planes i Can Trabal", context: "Garaje y trastero en nota simple." },
+      { name: "La Torre (entorn)", context: "Condición suspensiva hipoteca." },
+      { name: "Esports (entorn)", context: "Idealista; gestor comprador." },
+    ],
+  ),
+  "mollet-del-valles": block(
+    "Compra en Mollet del Vallès — zonas que revisamos",
+    "Vallès Oriental: operaciones entre particulares con herencias y arras copiadas de Sabadell o Granollers.",
+    [
+      { name: "Centre i Gallecs (entorn)", context: "Ticket medio; penalizaciones." },
+      { name: "Can Pantiquet", context: "Familias; plazos de financiación." },
+      { name: "Estació de Mollet", context: "Reservas rápidas; revisión pre-ingreso." },
+      { name: "Pla de Bellavista", context: "Comunidad y ITE pre-arras." },
+    ],
+  ),
+  granada: block(
+    "Compra en Granada — zonas que revisamos",
+    "Capital y entorno UGR: patrimonio en Albaicín, arras rápidas y licencias antes de señal.",
+    [
+      { name: "Albaicín y Realejo", context: "Patrimonio; cargas y licencias." },
+      { name: "Zaidín y Campus", context: "Compradores jóvenes; hipoteca en arras." },
+      { name: "Ronda y Genil", context: "Operaciones entre vecinos." },
+      { name: "Chana y Norte", context: "Idealista; coherencia contrato." },
+    ],
+  ),
 };
 
 export function getCompraLocalBcnZoneEnrichment(slug: string): CompraLocalCityEnrichment | null {
