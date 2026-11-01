@@ -1,4 +1,5 @@
 import type { CompraValenciaZoneInsight } from "@/lib/servicio-completo-compra-local-valencia-enrichment";
+import { getCompraLocalBcnZoneEnrichment } from "@/lib/servicio-completo-compra-local-bcn-zone-enrichment";
 
 export type CompraLocalCityEnrichment = {
   marketNote: string;
@@ -160,5 +161,5 @@ const BY_SLUG: Record<string, CompraLocalCityEnrichment> = {
 };
 
 export function getCompraLocalCityEnrichment(citySlug: string): CompraLocalCityEnrichment | null {
-  return BY_SLUG[citySlug] ?? null;
+  return getCompraLocalBcnZoneEnrichment(citySlug) ?? BY_SLUG[citySlug] ?? null;
 }

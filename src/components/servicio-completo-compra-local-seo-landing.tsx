@@ -9,6 +9,7 @@ import { ServiceMidPageContactSection } from "@/components/service-mid-page-cont
 import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
 import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
+import { CompraLocalCityZonesSection } from "@/components/compra-local-city-zones-section";
 import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
 import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 import {
@@ -303,29 +304,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             </section>
           ) : null}
 
-          {cityEnrichment ? (
-            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
-              <div className="mx-auto max-w-6xl">
-                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                  {cityEnrichment.sectionTitle}
-                </h2>
-                <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#475569]">
-                  {cityEnrichment.marketNote}
-                </p>
-                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {cityEnrichment.zones.map((zone) => (
-                    <li
-                      key={zone.name}
-                      className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4"
-                    >
-                      <p className="font-bold text-[#1E293B]">{zone.name}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{zone.context}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          ) : null}
+          {cityEnrichment ? <CompraLocalCityZonesSection enrichment={cityEnrichment} /> : null}
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

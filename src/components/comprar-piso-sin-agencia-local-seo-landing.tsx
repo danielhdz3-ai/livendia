@@ -45,6 +45,10 @@ import { getComprarPisoSinAgenciaHeroImage } from "@/lib/comprar-piso-sin-agenci
 import { comprarProcessTitle } from "@/lib/comprar-piso-sin-agencia-bcn-zone-enrichment";
 import { isComprarPisoSinAgenciaBcnMetroSlug } from "@/lib/comprar-piso-sin-agencia-bcn-metro-cities";
 import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
+import { CompraLocalCityZonesSection } from "@/components/compra-local-city-zones-section";
+import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
+import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
+import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -127,6 +131,7 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
 }: {
   config: ComprarPisoSinAgenciaLandingConfig;
 }) {
+  const cityEnrichment = getCompraLocalCityEnrichment(config.slug);
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
   const priceEur = service ? service.price_cents / 100 : SERVICIO_COMPLETO_CV_PRICE_EUR;
@@ -260,6 +265,16 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
             cityLabel={config.city}
             current="comprar-sin-agencia"
           />
+
+          {isSeoPrimaryLandingCitySlug(config.slug) ? (
+            <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+              <div className="mx-auto max-w-4xl">
+                <SeoCityPrimaryLandingsForCity citySlug={config.slug} cityName={config.city} />
+              </div>
+            </section>
+          ) : null}
+
+          {cityEnrichment ? <CompraLocalCityZonesSection enrichment={cityEnrichment} /> : null}
 
           {isBarcelonaExtended ? (
             <>

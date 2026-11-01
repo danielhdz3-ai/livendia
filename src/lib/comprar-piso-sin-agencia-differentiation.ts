@@ -133,27 +133,158 @@ export const COMPRAR_PISO_DIFFERENTIATION: Record<string, ComprarPisoDiff> = {
     },
   },
   valencia: {
+    keywords: [
+      "comprar piso sin agencia valencia",
+      "comprar piso entre particulares valencia",
+      "gestor compra vivienda valencia",
+      "revisar arras ruzafa valencia",
+      "compraventa particulares cabanyal",
+    ],
+    metaTitle: "Comprar piso sin agencia en Valencia — gestor comprador · 890 €",
+    metaDescription:
+      "¿Compras en Valencia entre particulares? Ruzafa, Ciutat Vella, Benimaclet: reserva y arras revisadas. 890 € IVA incl. Sin comisión sobre el precio.",
+    tramitesAreaNote:
+      "En Valencia capital y área metropolitana, Livendia revisa arras copiadas, plazos de hipoteca y comunidad antes de que ingreses señal.",
+    faq: [
+      {
+        question: "¿Cómo comprar en Valencia sin agencia compradora?",
+        answer: `Encuentras piso (Idealista o particular) y contratas gestoría Livendia por ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incl.: revisión de reserva, arras y documentación hasta notaría.`,
+      },
+      {
+        question: "¿Qué revisáis en Ruzafa o el Carmen antes de arras?",
+        answer:
+          "Nota simple, cargas, actas de comunidad con obras de fachada, coherencia reserva–arras y condición suspensiva de financiación.",
+      },
+    ],
     copy: {
-      heroH1: "¿Compras piso en Valencia sin agencia? — reserva y arras revisadas",
       heroBadge: "Compra sin agencia · Valencia",
+      heroH1: "¿Compras piso en Valencia sin agencia? — reserva y arras revisadas",
+      heroLead:
+        "Ruzafa, Gran Vía o Cabanyal: antes de transferir señal, un gestor Livendia revisa contratos y documentación por {{price}} (IVA incl.) — tarifa plana del comprador.",
+      heroBullets: [
+        "Ciutat Vella, Campanar y área metropolitana",
+        "Arras copiadas y plazos de hipoteca irreales",
+        "Due diligence antes de la señal",
+      ],
+      waPrefill:
+        "Hola, compro piso entre particulares en Valencia y quiero gestor Livendia para comprar sin agencia.",
     },
   },
   malaga: {
+    keywords: [
+      "comprar piso sin agencia malaga",
+      "comprar piso entre particulares malaga",
+      "gestor compra costa del sol",
+      "revisar arras teatinos malaga",
+      "compraventa particulares torremolinos",
+    ],
+    metaTitle: "Comprar piso sin agencia en Málaga — gestor comprador · 890 €",
+    metaDescription:
+      "Compra entre particulares en Málaga, Teatinos o costa. Reserva y arras revisadas. 890 € IVA incl. Gestor del comprador, no comisión sobre precio.",
+    tramitesAreaNote:
+      "En Málaga y Costa del Sol, revisamos segundas residencias, compradores extranjeros y arras post-verano antes de ingresar señal.",
+    faq: [
+      {
+        question: "¿Compráis en la Costa del Sol sin agencia?",
+        answer:
+          "Sí. Mismo protocolo online para capital y municipios costeros hasta notaría en la provincia.",
+      },
+      {
+        question: "¿Qué riesgos hay al comprar en Teatinos o Centro?",
+        answer:
+          "Arras desequilibradas, locales turísticos mal delimitados y plazos de hipoteca imposibles en borradores del vendedor.",
+      },
+    ],
     copy: {
+      heroBadge: "Compra sin agencia · Málaga y Costa del Sol",
       heroH1: "¿Compras piso en Málaga sin agencia? — due diligence antes de la señal",
-      heroBadge: "Compra sin agencia · Málaga",
+      heroLead:
+        "Centro, Teatinos o costa: un gestor Livendia revisa reserva, arras y comunidad por {{price}} (IVA incl.) antes de que transfieras la señal.",
+      heroBullets: [
+        "Compradores locales y europeos",
+        "Obra nueva y segunda residencia",
+        "Tarifa plana frente a errores costosos",
+      ],
+      waPrefill:
+        "Hola, compro piso entre particulares en Málaga y quiero gestor Livendia para comprar sin agencia.",
     },
   },
   sevilla: {
+    keywords: [
+      "comprar piso sin agencia sevilla",
+      "comprar piso entre particulares sevilla",
+      "gestor compra triana nervion",
+      "revisar arras casco antiguo sevilla",
+      "compraventa particulares dos hermanas",
+    ],
+    metaTitle: "Comprar piso sin agencia en Sevilla — gestor comprador · 890 €",
+    metaDescription:
+      "Compra entre particulares en Triana, Nervión o Los Remedios. Reserva y arras revisadas. 890 € IVA incl. Sin comisión sobre el precio del piso.",
+    tramitesAreaNote:
+      "En Sevilla capital y área metropolitana, el gestor revisa edificios históricos, plusvalía y arras copiadas antes de la señal.",
+    faq: [
+      {
+        question: "¿Revisáis compras en el Casco Antiguo?",
+        answer:
+          "Sí. Licencias, cargas registrales y actas de comunidad antes de arras.",
+      },
+      {
+        question: "¿Atendéis compradores en Dos Hermanas o Alcalá?",
+        answer:
+          "Sí. Expediente online Livendia con notaría en la provincia.",
+      },
+    ],
     copy: {
-      heroH1: "¿Compras piso en Sevilla sin agencia? — gestor comprador hasta notaría",
       heroBadge: "Compra sin agencia · Sevilla",
+      heroH1: "¿Compras piso en Sevilla sin agencia? — gestor comprador hasta notaría",
+      heroLead:
+        "Triana, Nervión o Sevilla Este: revisión de reserva y arras por {{price}} (IVA incl.) con gestor fijo del comprador.",
+      heroBullets: [
+        "Patrimonio histórico y promociones nuevas",
+        "Plazos de hipoteca negociados en contrato",
+        "Sin comisión sobre el precio de compra",
+      ],
+      waPrefill:
+        "Hola, compro piso entre particulares en Sevilla y quiero gestor Livendia para comprar sin agencia.",
     },
   },
   bilbao: {
+    keywords: [
+      "comprar piso sin agencia bilbao",
+      "comprar piso entre particulares bilbao",
+      "gestor compra getxo abando",
+      "revisar arras bizkaia",
+      "compraventa particulares gran bilbao",
+    ],
+    metaTitle: "Comprar piso sin agencia en Bilbao — gestor comprador · 890 €",
+    metaDescription:
+      "Compra entre particulares en Abando, Deusto o Getxo. Reserva y arras revisadas. 890 € IVA incl. Ticket alto: documentación impecable pre-señal.",
+    tramitesAreaNote:
+      "En Bilbao y Gran Bilbao, revisamos fondos de reserva en comunidad y plazos de financiación vasca antes de transferir señal.",
+    faq: [
+      {
+        question: "¿Qué revisáis en operaciones de ticket alto en Bilbao?",
+        answer:
+          "Nota simple, derramas, coherencia reserva–arras y penalizaciones proporcionadas al precio (~380.000 € medio orientativo).",
+      },
+      {
+        question: "¿Atendéis compras en Getxo o Barakaldo?",
+        answer:
+          "Sí. Misma tarifa y gestor online hasta notaría en Bizkaia.",
+      },
+    ],
     copy: {
+      heroBadge: "Compra sin agencia · Gran Bilbao",
       heroH1: "¿Compras piso en Bilbao sin agencia? — trámites del comprador con gestor fijo",
-      heroBadge: "Compra sin agencia · Bilbao",
+      heroLead:
+        "Abando, Deusto o Getxo: un gestor Livendia revisa contratos y comunidad por {{price}} (IVA incl.) antes de la señal.",
+      heroBullets: [
+        "Precios elevados: revisión documental rigurosa",
+        "Plazos de hipoteca realistas en arras",
+        "Tarifa plana del comprador",
+      ],
+      waPrefill:
+        "Hola, compro piso entre particulares en Bilbao y quiero gestor Livendia para comprar sin agencia.",
     },
   },
 };
