@@ -7,6 +7,7 @@ import {
   BUSINESS_EMAIL,
   BUSINESS_NAME,
   getBusinessMapsExternalUrl,
+  getBusinessSameAsUrls,
 } from "@/lib/business-nap";
 import { getContactPhoneE164Plus } from "@/lib/contact";
 
@@ -38,7 +39,7 @@ export function buildLocalBusinessSchema() {
         closes: hours.closes,
       },
     ],
-    sameAs: [url],
+    sameAs: getBusinessSameAsUrls(),
   };
 }
 

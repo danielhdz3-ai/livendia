@@ -3,6 +3,7 @@
  */
 
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { buildPillarCompraventaRelatedLinks } from "@/lib/pillar-compraventa-canonical-links";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import type {
   PillarCaseStudy,
@@ -366,68 +367,7 @@ export const PILLAR_VALENCIA_FAQ: readonly PillarFaq[] = [
   },
 ];
 
-export const PILLAR_VALENCIA_RELATED: readonly PillarRelatedLink[] = [
-  {
-    href: "/servicios/servicio-completo-venta",
-    label: "Servicio completo de venta",
-    description: "Ficha nacional del servicio: alcance, precio y checkout.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/servicio-completo-venta-local/valencia",
-    label: "Servicio completo de venta en Valencia",
-    description: "Landing de conversión local enlazada desde esta guía.",
-    category: "local",
-  },
-  {
-    href: "/servicios/contrato-arras-local/valencia",
-    label: "Contrato de arras en Valencia",
-    description: "Si solo necesitas arras con revisión legal.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/gestion-documental-vendedor/valencia",
-    label: "Gestión documental vendedor Valencia",
-    description: "Después de arras: documentación hacia escritura.",
-    category: "servicio",
-  },
-  {
-    href: "/gestoria/valencia",
-    label: "Gestoría inmobiliaria Valencia",
-    description: "Todos los servicios Livendia en la capital.",
-    category: "local",
-  },
-  {
-    href: "/servicios/vender-piso-sin-agencia-valencia",
-    label: "Vender piso sin agencia Valencia",
-    description: "Ficha complementaria de venta sin agencia.",
-    category: "guia",
-  },
-  {
-    href: VENDER_PISO_SIN_INMOBILIARIA_BASE,
-    label: "Vender sin inmobiliaria (España)",
-    description: "Hub nacional de guías por ciudad.",
-    category: "guia",
-  },
-  {
-    href: "/vender-piso-sin-inmobiliaria/madrid",
-    label: "Vender sin comisiones en Madrid",
-    description: "Guía pilar equivalente en Madrid.",
-    category: "guia",
-  },
-  {
-    href: "/vender-piso-sin-inmobiliaria/barcelona",
-    label: "Vender sin comisiones en Barcelona",
-    description: "Guía pilar equivalente en Cataluña.",
-    category: "guia",
-  },
-  {
-    href: "/servicios/servicio-completo-compra-local/valencia",
-    label: "Comprar piso entre particulares en Valencia",
-    description: "Para propietarios que venden y compran en cadena.",
-    category: "local",
-  },
-];
+export const PILLAR_VALENCIA_RELATED = buildPillarCompraventaRelatedLinks("valencia");
 
 export const PILLAR_VALENCIA_NEIGHBORHOODS = [
   "Ciutat Vella",

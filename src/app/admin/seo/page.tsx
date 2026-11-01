@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
+import { AdminSeoCanonicalWinners } from "@/components/admin/admin-seo-canonical-winners";
 import { AdminSeoDashboard } from "@/components/admin/admin-seo-dashboard";
 import { ADMIN_BTN_GHOST } from "@/lib/admin-ui";
 import { requireAdmin } from "@/lib/admin-auth";
@@ -29,6 +30,7 @@ export default async function AdminSeoPage() {
           </>
         }
       />
+      <AdminSeoCanonicalWinners siteOrigin={siteOrigin} />
       <AdminSeoDashboard index={index} siteOrigin={siteOrigin} />
     </>
   );

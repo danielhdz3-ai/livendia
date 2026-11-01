@@ -16,6 +16,7 @@ import {
   getCityHubMeta,
   isCityHubSlug,
 } from "@/lib/ciudades-hub";
+import { SeoCityPrimaryLandingsForCity } from "@/components/seo-city-primary-landings-section";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -135,6 +136,10 @@ export default async function CiudadHubPage({ params }: Props) {
               <BarcelonaRegionalHubCards />
             </div>
           ) : null}
+          <div className="mb-10">
+            <SeoCityPrimaryLandingsForCity citySlug={city.slug} cityName={city.name} />
+          </div>
+
           <CityHubServices city={city} />
 
           {posts.length > 0 ? (

@@ -1,4 +1,4 @@
-import { BUSINESS_EMAIL, BUSINESS_NAME, businessNap } from "@/lib/business-nap";
+import { BUSINESS_EMAIL, BUSINESS_NAME, businessNap, getBusinessSameAsUrls } from "@/lib/business-nap";
 
 import { getContactPhoneE164Plus } from "@/lib/contact";
 
@@ -91,6 +91,8 @@ export function WebsiteStructuredData() {
           },
 
         },
+
+        sameAs: getBusinessSameAsUrls(),
 
       },
 

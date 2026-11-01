@@ -23,6 +23,7 @@ import {
   PILLAR_VALENCIA_SECTIONS,
   PILLAR_VALENCIA_TOC,
 } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-valencia";
+import { getSeoVentaHeadLandingHref } from "@/lib/pillar-compraventa-canonical-links";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import {
@@ -52,14 +53,9 @@ function formatEur(n: number): string {
   return `${n.toLocaleString("es-ES")} €`;
 }
 
-function PillarJsonLd({
-  pageUrl,
-  priceEur,
-  faq,
+function PillarJsonLd({ pageUrl, priceEur, offerLandingUrl, faq,
 }: {
-  pageUrl: string;
-  priceEur: number;
-  faq: readonly { question: string; answer: string }[];
+  pageUrl: string; priceEur: number; offerLandingUrl: string; faq: readonly { question: string; answer: string }[];
 }) {
   const base = getSiteUrl().replace(/\/$/, "");
   const graph = {
@@ -83,7 +79,7 @@ function PillarJsonLd({
           price: priceEur,
           priceCurrency: "EUR",
           description: "IVA incluido · Sin comisión sobre precio de venta",
-          url: `${base}/servicios/servicio-completo-venta`,
+          url: `${base}${offerLandingUrl.startsWith("/") ? offerLandingUrl : `/${offerLandingUrl}`}`,
         },
         url: pageUrl,
         inLanguage: "es-ES",
@@ -207,11 +203,12 @@ export async function VenderPisoSinInmobiliariaValenciaPillarPage() {
     ? `${(service.price_cents / 100).toFixed(0)}€`
     : SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT;
   const pageUrl = `${getSiteUrl()}${PILLAR_VALENCIA_PATH}`;
+  const ventaHeadHref = getSeoVentaHeadLandingHref("valencia");
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(WA_PREFILL)}`;
 
   return (
     <ServicePurchaseProvider service={service}>
-      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} faq={PILLAR_VALENCIA_FAQ} />
+      <PillarJsonLd pageUrl={pageUrl} priceEur={priceEur} offerLandingUrl={ventaHeadHref} faq={PILLAR_VALENCIA_FAQ} />
       <div className="flex min-h-screen flex-col bg-[#fafaf9]">
         <PublicHeader />
 
@@ -659,10 +656,10 @@ export async function VenderPisoSinInmobiliariaValenciaPillarPage() {
                           Hablar con un gestor
                         </a>
                         <Link
-                          href="/servicios/servicio-completo-venta"
+                          href={ventaHeadHref}
                           className="inline-flex min-h-11 items-center rounded-full border border-white/40 px-6 py-3 text-sm text-blue-100 hover:bg-white/5"
                         >
-                          Ver ficha del servicio
+                          Vender sin agencia — landing principal
                         </Link>
                       </div>
                     </div>

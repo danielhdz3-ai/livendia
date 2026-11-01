@@ -2,6 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import { SeoCityPrimaryLandingsSection } from "@/components/seo-city-primary-landings-section";
 import { getPublicServices, groupByCategory } from "@/lib/catalog";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import { getSiteUrl } from "@/lib/site-url";
@@ -72,6 +73,8 @@ export default async function ServiciosPage() {
             </div>
           )}
         </div>
+
+        <SeoCityPrimaryLandingsSection variant="compact" id="servicios-compraventa-ciudad" />
 
         <HomeCoverageCities variant="compact" />
       </main>

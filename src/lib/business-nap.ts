@@ -110,6 +110,16 @@ export function getBusinessUrl(): string {
   return getSiteUrl().replace(/\/$/, "");
 }
 
+/** Perfiles públicos para schema.org sameAs (GBP, LinkedIn, etc.). */
+export function getBusinessSameAsUrls(): string[] {
+  const urls = [getBusinessUrl(), getBusinessMapsExternalUrl()];
+  const linkedIn = process.env.NEXT_PUBLIC_BUSINESS_LINKEDIN_URL?.trim();
+  const instagram = process.env.NEXT_PUBLIC_BUSINESS_INSTAGRAM_URL?.trim();
+  if (linkedIn) urls.push(linkedIn);
+  if (instagram) urls.push(instagram);
+  return [...new Set(urls)];
+}
+
 export function getWhatsAppNumberDigits(): string {
   const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
   return raw.replace(/\D/g, "") || "34600367742";

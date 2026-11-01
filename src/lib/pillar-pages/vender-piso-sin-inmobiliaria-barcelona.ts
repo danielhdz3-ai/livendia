@@ -4,6 +4,7 @@
  */
 
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { buildPillarCompraventaRelatedLinks } from "@/lib/pillar-compraventa-canonical-links";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 
 export const PILLAR_BARCELONA_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/barcelona`;
@@ -438,56 +439,7 @@ export const PILLAR_BARCELONA_FAQ: readonly PillarFaq[] = [
   },
 ];
 
-export const PILLAR_BARCELONA_RELATED: readonly PillarRelatedLink[] = [
-  {
-    href: "/servicios/servicio-completo-venta",
-    label: "Servicio completo de venta",
-    description: "Ficha nacional del servicio que contratas: alcance, precio y checkout.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/servicio-completo-venta-local/barcelona",
-    label: "Servicio completo de venta en Barcelona",
-    description: "Landing de conversión local enlazada desde esta guía.",
-    category: "local",
-  },
-  {
-    href: "/servicios/contrato-arras-local/barcelona",
-    label: "Contrato de arras en Barcelona",
-    description: "Si solo necesitas arras con revisión legal en esta fase.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/gestion-documental-vendedor/barcelona",
-    label: "Gestión documental vendedor",
-    description: "Para después de arras: documentación hacia escritura.",
-    category: "servicio",
-  },
-  {
-    href: "/gestoria/barcelona",
-    label: "Gestoría inmobiliaria Barcelona",
-    description: "Todos los servicios Livendia disponibles en la ciudad.",
-    category: "local",
-  },
-  {
-    href: "/servicios/vender-piso-sin-agencia-barcelona",
-    label: "Vender piso sin agencia Barcelona",
-    description: "Ficha complementaria de venta sin agencia.",
-    category: "guia",
-  },
-  {
-    href: VENDER_PISO_SIN_INMOBILIARIA_BASE,
-    label: "Vender sin inmobiliaria (España)",
-    description: "Hub nacional desde el que se enlazan futuras guías por ciudad.",
-    category: "guia",
-  },
-  {
-    href: "/servicios/servicio-completo-compra-local/barcelona",
-    label: "Comprar piso entre particulares en Barcelona",
-    description: "Para propietarios que venden y compran en cadena.",
-    category: "local",
-  },
-];
+export const PILLAR_BARCELONA_RELATED = buildPillarCompraventaRelatedLinks("barcelona");
 
 export const PILLAR_BARCELONA_NEIGHBORHOODS = [
   "Eixample",

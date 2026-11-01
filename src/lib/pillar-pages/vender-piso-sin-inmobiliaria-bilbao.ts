@@ -3,6 +3,7 @@
  */
 
 import { SERVICIO_COMPLETO_CV_PRICE_EUR, SERVICIO_COMPLETO_CV_PRICE_LABEL } from "@/lib/catalog.public";
+import { buildPillarCompraventaRelatedLinks } from "@/lib/pillar-compraventa-canonical-links";
 import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobiliaria-local-cities";
 import type {
   PillarCaseStudy,
@@ -366,56 +367,7 @@ export const PILLAR_BILBAO_FAQ: readonly PillarFaq[] = [
   },
 ];
 
-export const PILLAR_BILBAO_RELATED: readonly PillarRelatedLink[] = [
-  {
-    href: "/servicios/servicio-completo-venta",
-    label: "Servicio completo de venta",
-    description: "Ficha nacional del servicio: alcance, precio y checkout.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/servicio-completo-venta-local/bilbao",
-    label: "Servicio completo de venta en Bilbao",
-    description: "Landing de conversión local enlazada desde esta guía.",
-    category: "local",
-  },
-  {
-    href: "/servicios/gestion-documental-vendedor/bilbao",
-    label: "Gestión documental vendedor Bilbao",
-    description: "Después de arras: documentación hacia escritura.",
-    category: "servicio",
-  },
-  {
-    href: "/servicios/vender-piso-sin-agencia-bilbao",
-    label: "Vender piso sin agencia Bilbao",
-    description: "Ficha complementaria de venta sin agencia.",
-    category: "guia",
-  },
-  {
-    href: VENDER_PISO_SIN_INMOBILIARIA_BASE,
-    label: "Vender sin inmobiliaria (España)",
-    description: "Hub nacional de guías por ciudad.",
-    category: "guia",
-  },
-  {
-    href: "/vender-piso-sin-inmobiliaria/madrid",
-    label: "Vender sin comisiones en Madrid",
-    description: "Guía pilar equivalente en Madrid.",
-    category: "guia",
-  },
-  {
-    href: "/vender-piso-sin-inmobiliaria/barcelona",
-    label: "Vender sin comisiones en Barcelona",
-    description: "Guía pilar equivalente en Cataluña.",
-    category: "guia",
-  },
-  {
-    href: "/servicios/servicio-completo-compra-local/bilbao",
-    label: "Comprar piso entre particulares en Bilbao",
-    description: "Para propietarios que venden y compran en cadena.",
-    category: "local",
-  },
-];
+export const PILLAR_BILBAO_RELATED = buildPillarCompraventaRelatedLinks("bilbao");
 
 export const PILLAR_BILBAO_NEIGHBORHOODS = [
   "Casco Viejo",

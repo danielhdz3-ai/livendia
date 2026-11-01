@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { getSeoPrimaryLandingCityBlocks } from "@/lib/seo-city-primary-landings";
+import type { HomeCoverageCitySlug } from "@/lib/home-coverage-cities";
+import {
+  getSeoCityPrimaryLandings,
+  getSeoPrimaryLandingCityBlocks,
+} from "@/lib/seo-city-primary-landings";
 import { ArrowRight, MapPinned } from "lucide-react";
 
 type Props = {
@@ -74,6 +78,47 @@ export function SeoCityPrimaryLandingsSection({ variant = "default", id = "compr
           </Link>
         </p>
       </div>
+    </section>
+  );
+}
+
+/** Bloque canónico compraventa en hub /ciudades/[slug]. */
+export function SeoCityPrimaryLandingsForCity({
+  citySlug,
+  cityName,
+}: {
+  citySlug: HomeCoverageCitySlug;
+  cityName: string;
+}) {
+  const block = getSeoCityPrimaryLandings(citySlug);
+  if (!block || block.links.length === 0) return null;
+
+  return (
+    <section
+      className="rounded-2xl border border-[#1A4FBF]/20 bg-[#EFF6FF] p-6 sm:p-8"
+      aria-labelledby={`ciudad-${citySlug}-compraventa-title`}
+    >
+      <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">URLs prioritarias · compraventa</p>
+      <h2 id={`ciudad-${citySlug}-compraventa-title`} className="mt-2 text-xl font-extrabold text-[#1E293B]">
+        Vender o comprar en {cityName} — landings principales
+      </h2>
+      <p className="mt-2 text-sm leading-relaxed text-[#64748b]">
+        Enlaces canónicos para indexación: guía SEO, pack 495 €, servicio 890 € e índice gestoría. Evita competir entre
+        URLs del mismo clúster.
+      </p>
+      <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+        {block.links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="flex h-full flex-col rounded-xl border border-slate-200 bg-white px-4 py-3 transition hover:border-[#1A4FBF]/40 hover:shadow-sm"
+            >
+              <span className="text-sm font-semibold text-[#1E293B]">{link.label}</span>
+              <span className="mt-1 text-xs text-[#64748b]">{link.priceHint}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
