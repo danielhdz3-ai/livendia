@@ -79,6 +79,88 @@ export const VENTA_LOCAL_SEO_CONTENT: Record<string, VentaLocalSeoContent> = {
       },
     ],
   },
+  madrid: {
+    highlightSalePrice: 380_000,
+    savingVs3: 11_400,
+    savingVs5: 19_000,
+    introParagraph:
+      `En Madrid capital el precio medio de un piso ronda los 380.000 € (Idealista, 2025: ~4.200 €/m² en ciudad). Una comisión del 3 % son 11.400 € + IVA (~13.794 €); al 5 %, 19.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana, sin comisión sobre la venta. En la capital es habitual vender entre particulares cuando el comprador viene de Idealista, recomendación o comprador de otra CCAA. Redactamos reserva y arras, revisamos nota simple y comunidad, y coordinamos hasta notaría sin exclusiva.`,
+    marketParagraph:
+      `Madrid concentra operaciones rápidas, compradores con hipoteca aprobada en 15 días y plantillas de arras pensadas para agencias. Idealista (2025) sitúa la vivienda en venta en ~4.200 €/m² en capital. Casuísticas frecuentes: varios cotitulares, herencia pendiente de inscribir, plusvalía municipal mal calculada, y ventas en cadena (vendes en Madrid y compras fuera). Livendia no busca comprador: blinda el tramo legal cuando ya lo tienes.`,
+    gestorLocalNote:
+      `En Madrid el gestor revisa coherencia entre reserva firmada con prisa y arras definitivas, certificado de deuda de comunidad en edificios con obras en Chamberí o Tetuán, plazos de cancelación de hipoteca del vendedor, y coordinación con notarías del corredor norte y sur.`,
+    zones: [
+      { name: "Salamanca y Chamberí", context: "Ticket alto; compradores exigen documentación impecable sin agencia." },
+      { name: "Retiro y Arganzuela", context: "Ventas por Idealista; arras con condición de hipoteca del comprador." },
+      { name: "Tetuán y Chamartín", context: "Familias y expatriados; operaciones sin cartel de venta." },
+      { name: "Vallecas y Usera", context: "Ahorro máximo vs comisión 3 % en tickets ~300.000–350.000 €." },
+      { name: "Getafe, Móstoles, Leganés", context: "Área metropolitana sur: mismo servicio online." },
+      { name: "Las Rozas y Alcobendas", context: "Segunda residencia vendida a comprador conocido." },
+    ],
+    faq: [
+      {
+        question: "¿Puedo vender en Madrid si ya tengo comprador de Idealista?",
+        answer:
+          `Es el caso típico. En 380.000 €, el 3 % son 11.400 € + IVA solo por intermediación. Livendia cubre reserva, arras y documentación por ${SERVICIO_COMPLETO_CV_PRICE_LABEL}.`,
+      },
+      {
+        question: "¿Gestionáis ventas en el cinturón sur o norte?",
+        answer:
+          "Sí. Misma operativa online para Madrid capital y municipios del área metropolitana hasta notaría.",
+      },
+      {
+        question: "¿Qué pasa si hay varios propietarios o herencia reciente?",
+        answer:
+          "El gestor revisa titularidad registral y quién debe firmar arras antes de vincular la operación.",
+      },
+      {
+        question: "¿Cuál es la landing SEO principal de venta en Madrid?",
+        answer:
+          "Además de esta ficha de servicio completo, la guía prioritaria está en /servicios/vender-piso-sin-agencia-madrid y el pilar /vender-piso-sin-inmobiliaria/madrid.",
+      },
+    ],
+  },
+  barcelona: {
+    highlightSalePrice: 420_000,
+    savingVs3: 12_600,
+    savingVs5: 21_000,
+    introParagraph:
+      `En Barcelona capital el precio medio de un piso ronda los 420.000 € (Idealista, 2025: ~4.500 €/m²). Una comisión del 3 % son 12.600 € + IVA (~15.246 €); al 5 %, 21.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — sin comisión sobre la venta. En Cataluña es habitual vender entre particulares con comprador ya encontrado; el tramo crítico es arras CCCat y documentación post-arras. Redactamos contratos, revisamos comunidad e ITE, y coordinamos hasta notaría.`,
+    marketParagraph:
+      `Barcelona mezcla compradores locales, inversión en Eixample y operaciones en AMB (L'Hospitalet, Badalona). Idealista (2025) sitúa la vivienda en venta en ~4.500 €/m² en capital. Casuísticas: arras bilingües mal adaptadas, cláusula 621-49, derramas en actas no comentadas en visita, y ventas por barrio (Eixample, Gràcia) sin agencia. Livendia no capta comprador.`,
+    gestorLocalNote:
+      `En Barcelona el gestor revisa CCCat en arras, coherencia castellano/catalán, ITE en edificios con más de 45 años, certificado de deuda de comunidad en edificios con obras en Poblenou o Gràcia, y enlaza con guías por barrio cuando la venta es hiperlocal.`,
+    zones: [
+      { name: "Eixample y Dreta", context: "Alta demanda; arras CCCat con plazos realistas de hipoteca." },
+      { name: "Gràcia y Sarrià", context: "Ventas entre vecinos; documentación de comunidad reforzada." },
+      { name: "Poblenou y Sant Martí", context: "Rehabilitación; coherencia entre visita y contrato." },
+      { name: "Les Corts y Sants", context: "Despacho Livendia en Les Corts; ventas con gestor presencial si hace falta." },
+      { name: "L'Hospitalet y Badalona", context: "AMB: mismo servicio y tarifa que Barcelona capital." },
+      { name: "Ciutat Vella", context: "Edificios históricos; licencias y comunidad antes de señal." },
+    ],
+    faq: [
+      {
+        question: "¿Revisáis arras conforme al Codi civil de Catalunya?",
+        answer:
+          "Sí. Arras 621-4 a 621-9 y cláusula de financiación 621-49 adaptadas a tu operación, explicadas en castellano claro.",
+      },
+      {
+        question: "¿Sirve el servicio si vendo en Eixample o Gràcia sin agencia?",
+        answer:
+          `Sí. Para búsquedas por barrio también tenemos guías en /servicios/venta-piso-particular-sin-agencia/; la landing principal de ciudad es /servicios/vender-piso-sin-agencia-barcelona (${SERVICIO_COMPLETO_CV_PRICE_LABEL}).`,
+      },
+      {
+        question: "¿Atendéis ventas en el área metropolitana?",
+        answer:
+          "Sí. L'Hospitalet, Cornellà, Sabadell, Terrassa y resto del AMB con expediente online.",
+      },
+      {
+        question: "¿Pack arras 495 € o servicio completo 890 €?",
+        answer:
+          "Si ya cerraste precio y solo necesitas tramo arras + documentación post-arras, el pack vendedor 495 € puede bastar; si quieres cobertura reserva–escritura, el servicio completo 890 €.",
+      },
+    ],
+  },
   valladolid: {
     highlightSalePrice: 150_000,
     savingVs3: 4_500,

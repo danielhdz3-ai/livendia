@@ -8,7 +8,7 @@ import { LandingLocalTestimonialsSection } from "@/components/landing-local-sect
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
-import { getCompraValenciaEnrichment } from "@/lib/servicio-completo-compra-local-valencia-enrichment";
+import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -93,7 +93,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 }: {
   config: ServicioCompletoCompraLocalLandingConfig;
 }) {
-  const valenciaEnrichment = getCompraValenciaEnrichment(config.slug);
+  const cityEnrichment = getCompraLocalCityEnrichment(config.slug);
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
   const priceLabel = service
@@ -293,17 +293,17 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             current="servicio-completo-compra"
           />
 
-          {valenciaEnrichment ? (
+          {cityEnrichment ? (
             <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
               <div className="mx-auto max-w-6xl">
                 <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
-                  Mercado de compra en Valencia — zonas que revisamos
+                  {cityEnrichment.sectionTitle}
                 </h2>
                 <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#475569]">
-                  {valenciaEnrichment.marketNote}
+                  {cityEnrichment.marketNote}
                 </p>
                 <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {valenciaEnrichment.zones.map((zone) => (
+                  {cityEnrichment.zones.map((zone) => (
                     <li
                       key={zone.name}
                       className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4"

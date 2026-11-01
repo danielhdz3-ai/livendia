@@ -11,6 +11,11 @@ import {
   VENTA_PISO_PARTICULAR_PUBLISHED_SLUGS,
 } from "@/lib/venta-piso-particular-sin-agencia-local-cities";
 import { localVenderPisoSinAgenciaHref } from "@/lib/vender-piso-sin-agencia-local-cities";
+import {
+  localVentaPisoParticularSinAgenciaHref,
+} from "@/lib/venta-piso-particular-sin-agencia-local-cities";
+import { getSiteUrl } from "@/lib/site-url";
+import type { Metadata } from "next";
 
 const VENTA_HEAD_BARCELONA = localVenderPisoSinAgenciaHref("barcelona");
 
@@ -40,5 +45,35 @@ export function getVentaParticularCanonicalHint(slug: string): VentaParticularCa
       ? localPackArrasGestionHref("barcelona")
       : null,
     gestoriaCompraventaHref: localGestoriaCityVerticalHref("barcelona", "compraventa"),
+  };
+}
+
+/** Municipios AMB: consolidar señales SEO hacia landing ganadora Barcelona (noindex + canonical). */
+export function isVentaParticularMetroMunicipalitySlug(slug: string): boolean {
+  return BARCELONA_METRO_VENTA_PARTICULAR_CITIES.some((c) => c.slug === slug);
+}
+
+export function isVentaParticularBarcelonaDistrictSlug(slug: string): boolean {
+  return BARCELONA_DISTRICT_VENTA_PARTICULAR_CITIES.some((c) => c.slug === slug);
+}
+
+export function getVentaParticularIndexMetadata(slug: string): {
+  canonicalPath: string;
+  robots: NonNullable<Metadata["robots"]>;
+} {
+  const base = getSiteUrl().replace(/\/$/, "");
+  const selfPath = localVentaPisoParticularSinAgenciaHref(slug);
+  const hint = getVentaParticularCanonicalHint(slug);
+
+  if (hint && isVentaParticularMetroMunicipalitySlug(slug)) {
+    return {
+      canonicalPath: `${base}${hint.venderHeadHref}`,
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return {
+    canonicalPath: `${base}${selfPath}`,
+    robots: { index: true, follow: true },
   };
 }

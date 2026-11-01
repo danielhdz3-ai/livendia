@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { getVentaParticularCanonicalHint } from "@/lib/venta-piso-particular-canonical";
+import {
+  getVentaParticularCanonicalHint,
+  isVentaParticularMetroMunicipalitySlug,
+} from "@/lib/venta-piso-particular-canonical";
 import { MapPinned } from "lucide-react";
 
 type Props = { slug: string };
@@ -7,6 +10,8 @@ type Props = { slug: string };
 export function VentaParticularCanonicalNotice({ slug }: Props) {
   const hint = getVentaParticularCanonicalHint(slug);
   if (!hint) return null;
+
+  const metroConsolidated = isVentaParticularMetroMunicipalitySlug(slug);
 
   return (
     <aside
@@ -40,6 +45,12 @@ export function VentaParticularCanonicalNotice({ slug }: Props) {
             </Link>
             .
           </p>
+          {metroConsolidated ? (
+            <p className="mt-2 text-xs text-[#64748b]">
+              Esta URL de municipio AMB no compite en indexación con la landing principal de Barcelona (canonical
+              consolidado).
+            </p>
+          ) : null}
         </div>
       </div>
     </aside>

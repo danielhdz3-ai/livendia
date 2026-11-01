@@ -8,6 +8,7 @@ import {
 } from "@/lib/venta-piso-particular-sin-agencia-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import { dedupeBrandTitle } from "@/lib/seo-title";
+import { getVentaParticularIndexMetadata } from "@/lib/venta-piso-particular-canonical";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -37,18 +38,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const canonical = `${getSiteUrl()}${localVentaPisoParticularSinAgenciaHref(slug)}`;
+  const indexMeta = getVentaParticularIndexMetadata(slug);
+  const pageUrl = `${getSiteUrl()}${localVentaPisoParticularSinAgenciaHref(slug)}`;
 
   return {
     title: dedupeBrandTitle(city.metaTitle),
     description: city.metaDescription,
     keywords: [...city.keywords],
-    alternates: { canonical },
-    robots: { index: true, follow: true },
+    alternates: { canonical: indexMeta.canonicalPath },
+    robots: indexMeta.robots,
     openGraph: {
       title: city.metaTitle,
       description: city.metaDescription,
-      url: canonical,
+      url: pageUrl,
       locale: "es_ES",
       type: "website",
       images: [{ url: "/images/contratodealquiler.jpg", alt: city.metaTitle }],

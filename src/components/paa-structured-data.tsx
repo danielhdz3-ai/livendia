@@ -33,6 +33,20 @@ export function PaaStructuredData({ article }: { article: PaaArticle }) {
           { "@type": "ListItem", position: 3, name: article.title, item: pageUrl },
         ],
       },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: article.title,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: article.description,
+            },
+          },
+        ],
+      },
     ],
   };
 

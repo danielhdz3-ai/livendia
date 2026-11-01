@@ -5,6 +5,7 @@ import { BLOG_CATEGORY_LABEL } from "@/lib/blog-types";
 import { getAllPublishedRespuestas } from "@/lib/paa-content";
 import { getPaaCanonicalHref, PAA_REGISTRY } from "@/lib/paa-registry";
 import { RespuestasCompraventaLandingsSection } from "@/components/respuestas-compraventa-landings-section";
+import { RespuestasIndexStructuredData } from "@/components/respuestas-index-structured-data";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -21,6 +22,7 @@ export default function RespuestasIndexPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
+      <RespuestasIndexStructuredData />
       <PublicHeader />
       <main className="flex-1">
         <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
