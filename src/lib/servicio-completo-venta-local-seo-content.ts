@@ -161,6 +161,88 @@ export const VENTA_LOCAL_SEO_CONTENT: Record<string, VentaLocalSeoContent> = {
       },
     ],
   },
+  malaga: {
+    highlightSalePrice: 320_000,
+    savingVs3: 9_600,
+    savingVs5: 16_000,
+    introParagraph:
+      `En Málaga capital el precio medio de un piso ronda los 320.000 € (Idealista, 2025: ~3.400 €/m² en ciudad). Una comisión del 3 % son 9.600 € + IVA (~11.616 €); al 5 %, 16.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana sin comisión sobre la venta. En la Costa del Sol es frecuente vender entre particulares (segunda residencia, herencia, traslado) cuando el comprador ya está en Idealista o es recomendación. Redactamos reserva y arras, revisamos documentación y coordinamos hasta notaría.`,
+    marketParagraph:
+      `Málaga combina compradores locales, inversión en centro y operaciones en Rincón de la Victoria, Torremolinos o Teatinos. Idealista (2025) sitúa la vivienda en venta en ~3.400 €/m² en capital. Casuísticas: arras copiadas de agencias costeras, compradores extranjeros con plazos largos, comunidades con obras en edificios turísticos, y ventas sin exclusiva cuando ya hay comprador. Livendia no hace marketing del piso.`,
+    gestorLocalNote:
+      `En Málaga el gestor revisa coherencia reserva–arras en operaciones rápidas post-verano, certificado de deuda de comunidad en edificios con locales turísticos, y checklist pre-escritura para compradores de otra CCAA o extranjeros.`,
+    zones: [
+      { name: "Centro y Soho", context: "Ticket medio-alto; ventas entre particulares sin cartel de agencia." },
+      { name: "Teatinos y Ciudad Jardín", context: "Familias y UMA; arras con condición de hipoteca." },
+      { name: "El Palo y Pedregalejo", context: "Segunda residencia vendida a comprador conocido." },
+      { name: "Rincón de la Victoria", context: "Costa: mismo servicio 890 € online." },
+      { name: "Torremolinos y Benalmádena", context: "Operaciones intermunicipales frecuentes." },
+      { name: "Provincia (Antequera, Axarquía)", context: "Herencias y venta a particular con plazos amplios." },
+    ],
+    faq: [
+      {
+        question: "¿Puedo vender en Málaga si el comprador viene de Idealista?",
+        answer:
+          `Sí. En 320.000 €, el 3 % son 9.600 € + IVA solo por intermediación. Livendia cubre el tramo legal por ${SERVICIO_COMPLETO_CV_PRICE_LABEL}.`,
+      },
+      {
+        question: "¿Atendéis ventas en la Costa del Sol?",
+        answer:
+          "Sí. Misma gestoría online para capital y municipios costeros hasta notaría en la provincia.",
+      },
+      {
+        question: "¿Landing principal de venta en Málaga?",
+        answer:
+          "Esta ficha de servicio completo complementa /servicios/vender-piso-sin-agencia-malaga y el pilar /vender-piso-sin-inmobiliaria/malaga.",
+      },
+      {
+        question: "¿Pack 495 € o servicio 890 €?",
+        answer:
+          "Pack si solo necesitas arras y documentación post-arras; servicio completo si quieres cobertura desde reserva.",
+      },
+    ],
+  },
+  sevilla: {
+    highlightSalePrice: 260_000,
+    savingVs3: 7_800,
+    savingVs5: 13_000,
+    introParagraph:
+      `En Sevilla capital el precio medio de un piso ronda los 260.000 € (Idealista, 2025: ~2.600 €/m²). Una comisión del 3 % son 7.800 € + IVA (~9.438 €); al 5 %, 13.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — sin comisión sobre el precio. En Andalucía es habitual vender entre particulares en Nervión, Triana o Casco Antiguo cuando ya hay comprador. Redactamos reserva y arras, revisamos nota simple y comunidad, y coordinamos hasta notaría.`,
+    marketParagraph:
+      `Sevilla mezcla compradores locales, familias del área metropolitana y adquirentes de otras provincias. Idealista (2025) sitúa la vivienda en venta en ~2.600 €/m² en capital. Casuísticas: edificios históricos con actas de obras, arras copiadas que no contemplan plusvalía municipal, ventas en cadena y operaciones en Los Remedios o Sevilla Este sin agencia. Livendia no busca comprador.`,
+    gestorLocalNote:
+      `En Sevilla el gestor revisa cargas en Casco Antiguo, coherencia entre mobiliario pactado en visita y contrato, plazos de hipoteca del comprador y orientación sobre plusvalía municipal antes de escritura.`,
+    zones: [
+      { name: "Nervión y Sevilla Este", context: "Familias; operaciones por Idealista sin exclusiva." },
+      { name: "Triana y Macarena", context: "Edificios señoriales; comunidad y cargas pre-arras." },
+      { name: "Casco Antiguo", context: "Licencias y estado registral antes de señal." },
+      { name: "Los Remedios y Tablada", context: "Ventas entre vecinos con confianza previa." },
+      { name: "Dos Hermanas y Alcalá", context: "Área metropolitana: gestor online." },
+      { name: "Santa Justa", context: "Reservas rápidas; revisión de penalizaciones." },
+    ],
+    faq: [
+      {
+        question: "¿Vendo en Sevilla sin pagar comisión del 3 %?",
+        answer:
+          `Si ya tienes comprador, Livendia sustituye la agencia en el tramo legal por ${SERVICIO_COMPLETO_CV_PRICE_LABEL}, no por un porcentaje del precio.`,
+      },
+      {
+        question: "¿Gestionáis ventas en el casco histórico?",
+        answer:
+          "Sí. Revisamos documentación de comunidad, cargas y coherencia contractual antes de arras.",
+      },
+      {
+        question: "¿Cuál es la URL ganadora de venta en Sevilla?",
+        answer:
+          "/servicios/vender-piso-sin-agencia-sevilla es la landing SEO principal; esta página es servicio completo 890 €.",
+      },
+      {
+        question: "¿Compro y vendo a la vez en Sevilla?",
+        answer:
+          "Podemos enlazar servicio completo de compra local y venta; el gestor coordina plazos de ambas operaciones.",
+      },
+    ],
+  },
   valladolid: {
     highlightSalePrice: 150_000,
     savingVs3: 4_500,

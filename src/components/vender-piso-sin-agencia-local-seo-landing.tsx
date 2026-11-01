@@ -46,6 +46,7 @@ import {
   isVenderBcnMetroSlugForImages,
 } from "@/lib/vender-piso-sin-agencia-images";
 import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
+import { VenderSinAgenciaBarrioDiscoverySection } from "@/components/vender-sin-agencia-barrio-discovery-section";
 import {
   isPackArrasGestionLocalSlugPublished,
   localPackArrasGestionHref,
@@ -255,6 +256,8 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
             cityLabel={config.city}
             current="vender-sin-agencia"
           />
+
+          <VenderSinAgenciaBarrioDiscoverySection venderCitySlug={config.slug} cityLabel={config.city} />
 
           {isBarcelonaExtended ? (
             <>

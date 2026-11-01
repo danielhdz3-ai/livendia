@@ -48,10 +48,40 @@ const VALENCIA: CompraLocalCityEnrichment = {
   ],
 };
 
+const MALAGA: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Málaga — zonas que revisamos",
+  marketNote:
+    "En Málaga capital y Costa del Sol muchas compras son entre particulares con reserva rápida y arras copiadas. Segundas residencias, obra nueva en Teatinos y operaciones con comprador extranjero exigen revisión documental antes de la señal. Livendia no cobra comisión sobre el precio del inmueble.",
+  zones: [
+    { name: "Centro y Soho", context: "Ticket medio-alto; cláusulas de reserva con prisa." },
+    { name: "Teatinos y UMA", context: "Obra nueva y alquiler estudiantil; anexos y calidades en contrato." },
+    { name: "El Palo y Pedregalejo", context: "Segunda residencia; coherencia visita–arras." },
+    { name: "Rincón de la Victoria y Torremolinos", context: "Costa: mismos 890 € con gestor online." },
+    { name: "Marbella oriente (compradores malagueños)", context: "Operaciones interprovinciales; plazos de hipoteca." },
+    { name: "Municipios del interior", context: "Herencias y venta de particular a particular." },
+  ],
+};
+
+const SEVILLA: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Sevilla — zonas que revisamos",
+  marketNote:
+    "En Sevilla capital y área metropolitana es habitual comprar a particular por Idealista con borrador de agencia del vendedor. Casco Antiguo, Triana y Nervión mezclan edificios históricos y promociones recientes: el gestor revisa comunidad, cargas y penalizaciones antes de transferir señal.",
+  zones: [
+    { name: "Nervión y Sevilla Este", context: "Familias; arras con condición de financiación." },
+    { name: "Triana y Macarena", context: "Edificios señoriales; actas de comunidad y obras." },
+    { name: "Casco Antiguo", context: "Licencias y estado registral revisados pre-arras." },
+    { name: "Los Remedios y Tablada", context: "Operaciones entre vecinos sin agencia compradora." },
+    { name: "Dos Hermanas y Alcalá de Guadaíra", context: "Área metropolitana: expediente online Livendia." },
+    { name: "Santa Justa y entorno", context: "Reservas rápidas tras visita única." },
+  ],
+};
+
 const BY_SLUG: Record<string, CompraLocalCityEnrichment> = {
   madrid: MADRID,
   barcelona: BARCELONA,
   valencia: VALENCIA,
+  malaga: MALAGA,
+  sevilla: SEVILLA,
 };
 
 export function getCompraLocalCityEnrichment(citySlug: string): CompraLocalCityEnrichment | null {
