@@ -10,21 +10,22 @@ function extractPublishedSlugs(source, constName) {
   return [...block.matchAll(/"([a-z0-9-]+)"/g)].map((m) => m[1]);
 }
 const national = ["madrid", "barcelona", "valencia", "malaga", "sevilla"];
-const metro = readFileSync("src/lib/pack-comercial-arras-gestion-barcelona-metro.ts", "utf8");
-const metroSlugs = extractPublishedSlugs(metro, "PACK_ARRAS_GESTION_BCN_METRO_PUBLISHED_SLUGS");
+const batchFiles = [
+  readFileSync("src/lib/pack-comercial-arras-gestion-barcelona-metro.ts", "utf8"),
+  ...["batch2", "batch3", "batch4", "batch5", "batch6"].map((b) =>
+    readFileSync(`src/lib/pack-comercial-arras-gestion-barcelona-metro-zones-${b}.ts`, "utf8"),
+  ),
+];
+const metroSlugs = batchFiles.flatMap((src) => [...src.matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]));
 const all = [...new Set([...national, ...metroSlugs])];
 
 const testimonialLib = readFileSync("src/lib/pack-arras-gestion-local-testimonials.ts", "utf8");
-const mapped = new Set([...testimonialLib.matchAll(/"([a-z0-9-]+)":\s*\[/g)].map((m) => m[1]));
+const mapped = new Set([
+  ...testimonialLib.matchAll(new RegExp('"([a-z0-9-]+)":\\s*\\[', "g")).map((m) => m[1]),
+  ...testimonialLib.matchAll(new RegExp("^\\s{2}([a-z0-9-]+):\\s*\\[", "gm")).map((m) => m[1]),
+]);
 
 const libSeo = readFileSync("src/lib/pack-comercial-local-seo-content.ts", "utf8");
-const batchFiles = [
-  "batch2",
-  "batch3",
-  "batch4",
-  "batch5",
-  "batch6",
-].map((b) => readFileSync(`src/lib/pack-comercial-arras-gestion-barcelona-metro-zones-${b}.ts`, "utf8"));
 
 function hasInlineTestimonials(slug) {
   if (libSeo.includes(`${slug}:`) && libSeo.includes("testimonials:")) {

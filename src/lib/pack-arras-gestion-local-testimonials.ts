@@ -158,6 +158,232 @@ const PACK_ARRAS_GESTION_TESTIMONIALS_BY_SLUG: Record<string, readonly T[]> = {
       role: "Vendedora particular · Sant Martí",
     },
   ],
+  sevilla: [
+    {
+      quote:
+        "Triana, herencia con varios herederos: titularidad alineada antes de arras — 495 € frente a comisión de agencia.",
+      author: "Carmen R.",
+      role: "Vendedora particular · Sevilla",
+    },
+    {
+      quote:
+        "Macarena, derrama en edificio histórico: el gestor cruzó actas antes de la señal. Mismo pack en Dos Hermanas.",
+      author: "Antonio M.",
+      role: "Vendedor entre particulares · Sevilla",
+    },
+  ],
+  "barcelona-pedralbes": [
+    {
+      quote:
+        "Señal elevada en Pedralbes: arras CCCat equilibradas y parking anexo en contrato — operación de 480.000 € sin agencia.",
+      author: "Isabel K.",
+      role: "Vendedora particular · Pedralbes",
+    },
+    {
+      quote:
+        "Despacho Livendia en Les Corts a 10 min: revisé dudas presenciales y firmé arras con tranquilidad.",
+      author: "Robert H.",
+      role: "Vendedor entre particulares · Les Corts",
+    },
+  ],
+  badalona: [
+    {
+      quote:
+        "Venta en Gorg o centre de Badalona: comprador de Barcelona, plazos de comunidad realistas en arras — 495 €.",
+      author: "Sonia T.",
+      role: "Vendedora particular · Badalona",
+    },
+  ],
+  "barcelona-barceloneta": [
+    {
+      quote:
+        "Piso en Barceloneta con humedad conocida: quedó descrita en arras y en informe semáforo antes de la señal.",
+      author: "Enric P.",
+      role: "Vendedor particular · La Barceloneta",
+    },
+  ],
+  "barcelona-ciutat-vella": [
+    {
+      quote:
+        "Venta en el Gòtic con protección patrimonial: el gestor revisó coherencia registral antes de arras penitenciales.",
+      author: "Laia F.",
+      role: "Vendedora particular · Ciutat Vella",
+    },
+  ],
+  "barcelona-el-raval": [
+    {
+      quote:
+        "Comprador extranjero en El Raval: documentación clara en castellano y arras con cláusula 621-49 — pack Livendia.",
+      author: "Mohamed A.",
+      role: "Vendedor entre particulares · El Raval",
+    },
+  ],
+  "barcelona-fort-pienc": [
+    {
+      quote:
+        "Piso en Fort Pienc vendido entre conocidos: cèdula y comunidad persiguió el gestor mientras yo negociaba mudanza.",
+      author: "Helena C.",
+      role: "Vendedora particular · Fort Pienc",
+    },
+  ],
+  "barcelona-gotic": [
+    {
+      quote:
+        "Finca en el Barri Gòtic: arras no copiadas del ensanche — plazos CCCat adaptados al edificio.",
+      author: "Pere J.",
+      role: "Vendedor particular · Gòtic",
+    },
+  ],
+  "barcelona-horta-guinardo": [
+    {
+      quote:
+        "Venta en El Carmel con ITE desfavorable leve: plan de regularización reflejado antes de notaría.",
+      author: "Teresa G.",
+      role: "Vendedora particular · Horta-Guinardó",
+    },
+  ],
+  "barcelona-nou-barris": [
+    {
+      quote:
+        "Roquetes o Verdun: comunidad numerosa, certificado lento — seguimiento semanal del gestor post-arras.",
+      author: "Víctor M.",
+      role: "Vendedor entre particulares · Nou Barris",
+    },
+  ],
+  "barcelona-sant-andreu": [
+    {
+      quote:
+        "Vendí en Sant Andreu de Palomar a un particular: 495 € IVA incl. y cero comisión sobre el precio.",
+      author: "Glòria S.",
+      role: "Vendedora particular · Sant Andreu",
+    },
+  ],
+  "barcelona-sant-antoni": [
+    {
+      quote:
+        "Sant Antoni, edificio con obras en patio: derrama aprobada reflejada en arras — sin sorpresa en notaría.",
+      author: "Andrea L.",
+      role: "Vendedora particular · Sant Antoni",
+    },
+  ],
+  "barcelona-sants-montjuic": [
+    {
+      quote:
+        "Sants, comprador con hipoteca: cláusula suspensiva CCCat desde el borrador Livendia — pack 495 €.",
+      author: "Raúl D.",
+      role: "Vendedor entre particulares · Sants",
+    },
+  ],
+  "barcelona-sarria": [
+    {
+      quote:
+        "Operación en Sarrià con trastero comunitario: anexo en arras y nota simple revisada — tarifa plana.",
+      author: "Christine W.",
+      role: "Vendedora particular · Sarrià",
+    },
+  ],
+  "barcelona-vila-olimpica": [
+    {
+      quote:
+        "Piso en Vila Olímpica post-Olimpiada: terraza comunitaria descrita en arras antes de firmar señal.",
+      author: "Ferran B.",
+      role: "Vendedor particular · Vila Olímpica",
+    },
+  ],
+  castelldefels: [
+    {
+      quote:
+        "Venta en Castelldefels con comprador de Madrid: panel Livendia y gestor por WhatsApp hasta notaría.",
+      author: "Eva R.",
+      role: "Vendedora particular · Castelldefels",
+    },
+  ],
+  "esplugues-de-llobregat": [
+    {
+      quote:
+        "Esplugues, venta entre familias: arras equilibradas y certificado de deuda cero a tiempo.",
+      author: "Sergi V.",
+      role: "Vendedor entre particulares · Esplugues",
+    },
+  ],
+  gava: [
+    {
+      quote:
+        "Gavà Mar, segunda residencia: vendí sin agencia con pack arras + gestión — ahorro frente al 3 %.",
+      author: "Manuel P.",
+      role: "Vendedor particular · Gavà",
+    },
+  ],
+  mataro: [
+    {
+      quote:
+        "Mataró centre, comprador local: gestión documental desde Barcelona online — 495 € precio cerrado.",
+      author: "Montserrat A.",
+      role: "Vendedora particular · Mataró",
+    },
+  ],
+  "mollet-del-valles": [
+    {
+      quote:
+        "Mollet del Vallès, herencia: nota simple detectó carga antes de arras — el gestor la gestionó.",
+      author: "Jordi N.",
+      role: "Vendedor entre particulares · Mollet",
+    },
+  ],
+  rubi: [
+    {
+      quote:
+        "Rubí, venta rápida por recomendación: arras firmadas en días y comunidad en paralelo.",
+      author: "Ana I.",
+      role: "Vendedora particular · Rubí",
+    },
+  ],
+  "sant-adria-de-besos": [
+    {
+      quote:
+        "Sant Adrià, piso con vistas al Besòs: pack Livendia cubrió arras CCCat y trámite hasta notaría.",
+      author: "Pol E.",
+      role: "Vendedor particular · Sant Adrià",
+    },
+  ],
+  "sant-boi-de-llobregat": [
+    {
+      quote:
+        "Sant Boi, bloque de los 70: ITE y cèdula coordinadas en la primera quincena post-arras.",
+      author: "Ruth C.",
+      role: "Vendedora particular · Sant Boi",
+    },
+  ],
+  "sant-cugat-del-valles": [
+    {
+      quote:
+        "Sant Cugat, ticket alto: señal calibrada conforme CCCat — mucho menos que comisión de agencia.",
+      author: "Olga Z.",
+      role: "Vendedora particular · Sant Cugat",
+    },
+  ],
+  "sant-joan-despi": [
+    {
+      quote:
+        "Sant Joan Despí, venta a vecino: arras simples pero bien redactadas — 495 € IVA incl.",
+      author: "Marc L.",
+      role: "Vendedor entre particulares · Sant Joan Despí",
+    },
+  ],
+  "barcelona-gracia": [
+    {
+      quote:
+        "Vila de Gràcia, inquilino LAU vigente: reflejado en arras antes de señal — pack 495 €.",
+      author: "Marta S.",
+      role: "Vendedora particular · Gràcia",
+    },
+    {
+      quote:
+        "Camp d'en Grassot: certificado de comunidad tardó, pero la escritura se mantuvo.",
+      author: "Pau L.",
+      role: "Vendedor entre particulares · Gràcia",
+    },
+  ],
 };
 
 export function withPackArrasGestionTestimonials(

@@ -44,6 +44,7 @@ import {
 import { getComprarPisoSinAgenciaHeroImage } from "@/lib/comprar-piso-sin-agencia-images";
 import { comprarProcessTitle } from "@/lib/comprar-piso-sin-agencia-bcn-zone-enrichment";
 import { isComprarPisoSinAgenciaBcnMetroSlug } from "@/lib/comprar-piso-sin-agencia-bcn-metro-cities";
+import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
 
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 
@@ -253,6 +254,12 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <CompraClusterProductPicker
+            localSlug={config.slug}
+            cityLabel={config.city}
+            current="comprar-sin-agencia"
+          />
 
           {isBarcelonaExtended ? (
             <>

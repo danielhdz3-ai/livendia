@@ -7,6 +7,7 @@ import { LocalCityContextSectionFromConfig } from "@/components/local-city-conte
 import { LandingLocalTestimonialsSection } from "@/components/landing-local-sections";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
+import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -283,6 +284,12 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <CompraClusterProductPicker
+            localSlug={config.slug}
+            cityLabel={config.city}
+            current="servicio-completo-compra"
+          />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
