@@ -363,7 +363,8 @@ export const PILLAR_VALENCIA_FAQ: readonly PillarFaq[] = [
   },
   {
     question: "¿Esta página sustituye a vender piso sin agencia Valencia?",
-    answer: "Esta es la guía pilar más completa. La landing en /servicios/vender-piso-sin-agencia-Valencia sigue activa como ficha complementaria.",
+    answer:
+      "Esta es la guía pilar más completa. La landing SEO de contratación es /servicios/vender-piso-sin-agencia-valencia; si compras en la misma operación, /servicios/comprar-piso-sin-agencia-valencia y /servicios/servicio-completo-compra-local/valencia (890 € IVA incl.).",
   },
 ];
 

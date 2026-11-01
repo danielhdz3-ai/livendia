@@ -13,6 +13,7 @@ import { CompraLocalCityZonesSection } from "@/components/compra-local-city-zone
 import { getCompraLocalCityEnrichment } from "@/lib/servicio-completo-compra-local-city-enrichment";
 import { isSeoPrimaryLandingCitySlug } from "@/lib/seo-city-primary-landings";
 import { ComprarSinAgenciaBarcelonaDiscoverySection } from "@/components/comprar-sin-agencia-barcelona-discovery-section";
+import { CompraLocalBarcelonaHubNotice } from "@/components/compra-local-barcelona-hub-notice";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -290,6 +291,8 @@ export async function ServicioCompletoCompraLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <CompraLocalBarcelonaHubNotice slug={config.slug} zoneLabel={config.city} />
 
           <CompraClusterProductPicker
             localSlug={config.slug}

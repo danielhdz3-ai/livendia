@@ -363,7 +363,8 @@ export const PILLAR_MALAGA_FAQ: readonly PillarFaq[] = [
   },
   {
     question: "¿Esta página sustituye a vender piso sin agencia Malaga?",
-    answer: "Esta es la guía pilar más completa. La landing en /servicios/vender-piso-sin-agencia-malaga sigue activa como ficha complementaria.",
+    answer:
+      "Esta es la guía pilar más completa. Contratar venta: /servicios/vender-piso-sin-agencia-malaga. Comprador en cadena: /servicios/comprar-piso-sin-agencia-malaga y /servicios/servicio-completo-compra-local/malaga (890 € IVA incl.).",
   },
 ];
 

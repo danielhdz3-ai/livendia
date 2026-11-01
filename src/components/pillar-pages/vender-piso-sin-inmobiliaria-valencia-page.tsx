@@ -31,6 +31,7 @@ import {
   VenderPisoSinInmobiliariaSigningFigure,
 } from "@/components/vender-piso-sin-inmobiliaria-images";
 import Link from "next/link";
+import { PillarCityCompraventaLandingsSection } from "@/components/pillar-city-compraventa-landings-section";
 import type { ReactNode } from "react";
 import {
   AlertTriangle,
@@ -572,6 +573,8 @@ export async function VenderPisoSinInmobiliariaValenciaPillarPage() {
                   </div>
                   <InlineCta priceLabelCompact={priceLabelCompact} waHref={waHref} />
                 </section>
+
+                <PillarCityCompraventaLandingsSection citySlug="valencia" cityName="Valencia" />
 
                 {/* Servicios relacionados — pilar linking */}
                 <section id="servicios-relacionados" className="scroll-mt-24 border-b border-slate-100 py-10 text-center sm:py-12">
