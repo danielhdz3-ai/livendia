@@ -11,6 +11,7 @@ import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { getBlogCategoryContractPromoId, getBlogContractPromo } from "@/lib/blog-contract-promos";
 import { BlogPostNav } from "@/components/blog-post-nav";
+import { BlogCompraventaEditorialSection } from "@/components/blog-compraventa-editorial-section";
 import {
   BLOG_CATEGORY_IMAGES,
   BLOG_CATEGORY_LABEL,
@@ -155,6 +156,9 @@ export default async function BlogArticlePage({ params }: Props) {
                 serviceLabel={gestorServiceLabel}
                 headline="Llama a tu gestor experto"
               />
+              {post.category === "compraventa" ? (
+                <BlogCompraventaEditorialSection currentBlogSlug={post.slug} />
+              ) : null}
               <BlogCategoryCta category={post.category} />
               <BlogPostNav prev={prev} next={next} />
             </div>

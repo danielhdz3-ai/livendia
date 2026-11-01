@@ -90,6 +90,48 @@ const ZARAGOZA: CompraLocalCityEnrichment = {
   ],
 };
 
+const OVIEDO: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Oviedo — zonas que revisamos",
+  marketNote:
+    "En Oviedo y el área metropolitana asturiana muchas compras son entre particulares con reserva rápida y arras copiadas. Los Pilares, Pumarín y pedanías del entorno mezclan bloques recientes y edificios con ITE pendiente: el gestor revisa comunidad, cédula y cargas antes de transferir señal.",
+  zones: [
+    { name: "Centro y Casco Histórico", context: "Ticket en alza; penalizaciones y plazos de hipoteca realistas." },
+    { name: "La Ería y Los Pilares", context: "Reservas en 24–48 h; certificado de deuda de comunidad." },
+    { name: "Pumarín y Teatinos", context: "Familias; arras con condición suspensiva de financiación." },
+    { name: "El Llano y Ciudad Naranco", context: "Operaciones por Idealista sin agencia compradora." },
+    { name: "Siero y Langreo", context: "Área metropolitana: mismo protocolo Livendia online." },
+    { name: "San Claudio y Las Caldas", context: "Segunda residencia; coherencia visita–contrato." },
+  ],
+};
+
+const GIJON: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Gijón — zonas que revisamos",
+  marketNote:
+    "En Gijón capital y costa asturiana es habitual comprar a particular por portal o recomendación local. Edificios del centro, La Calzada y la franja costera exigen revisar ITE, derramas en actas y plazos de hipoteca antes de ingresar arras. Livendia defiende al comprador con tarifa plana.",
+  zones: [
+    { name: "Cimadevilla y Centro", context: "Edificios antiguos; licencias y estado registral pre-arras." },
+    { name: "La Calzada y Roces", context: "Bloques recientes; fondos de reserva y obras en comunidad." },
+    { name: "El Llano y Somió", context: "Familias; coherencia reserva–arras." },
+    { name: "La Arena y Natahoyo", context: "Costa: ITE y humedades a contrastar con la visita." },
+    { name: "Playa de San Lorenzo (entorno)", context: "Ticket variable; cláusulas de reserva con prisa." },
+    { name: "Villaviciosa y oriente", context: "Operaciones intermunicipales con gestor online." },
+  ],
+};
+
+const MURCIA: CompraLocalCityEnrichment = {
+  sectionTitle: "Mercado de compra en Murcia — zonas que revisamos",
+  marketNote:
+    "En Murcia capital y huerta metropolitana abundan compras entre familias, herencias y urbanizaciones con varios cotitulares. Sin gestor comprador, arras copiadas, señal desproporcionada y titularidad no alineada son el patrón habitual. El gestor Livendia revisa nota simple y comunidad antes del primer ingreso relevante.",
+  zones: [
+    { name: "Centro y Santa Catalina", context: "Ticket alto en casco; revisión de penalizaciones." },
+    { name: "Espinardo y Vistabella", context: "Universidad y familias; arras con financiación." },
+    { name: "El Carmen y San Andrés", context: "Operaciones entre particulares por Idealista." },
+    { name: "El Palmar y pedanías sur", context: "Boom inversor; documentación de urbanización." },
+    { name: "Sucina y Corvera (entorno)", context: "Herencias; alinear titularidad antes de escritura." },
+    { name: "Alcantarilla y Molina de Segura", context: "Área metropolitana: expediente online Livendia." },
+  ],
+};
+
 const SEVILLA: CompraLocalCityEnrichment = {
   sectionTitle: "Mercado de compra en Sevilla — zonas que revisamos",
   marketNote:
@@ -112,6 +154,9 @@ const BY_SLUG: Record<string, CompraLocalCityEnrichment> = {
   sevilla: SEVILLA,
   bilbao: BILBAO,
   zaragoza: ZARAGOZA,
+  oviedo: OVIEDO,
+  gijon: GIJON,
+  murcia: MURCIA,
 };
 
 export function getCompraLocalCityEnrichment(citySlug: string): CompraLocalCityEnrichment | null {

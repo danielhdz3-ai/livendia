@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { COMPRAVENTA_FEATURED_BLOG } from "@/lib/compraventa-editorial-crosslinks";
 import { getSeoPrimaryLandingCityBlocks } from "@/lib/seo-city-primary-landings";
 import { ArrowRight } from "lucide-react";
 
@@ -35,6 +36,18 @@ export function RespuestasCompraventaLandingsSection() {
           </li>
         ))}
       </ul>
+      <div className="mt-8 border-t border-[#1A4FBF]/15 pt-6">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Guías en profundidad (blog)</p>
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2 text-sm">
+          {COMPRAVENTA_FEATURED_BLOG.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className="font-semibold text-[#1A4FBF] hover:underline">
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
       <p className="mt-6 text-sm text-[#64748b]">
         <Link href="/servicios" className="inline-flex items-center gap-1 font-semibold text-[#1A4FBF] hover:underline">
           Catálogo de servicios
@@ -43,6 +56,10 @@ export function RespuestasCompraventaLandingsSection() {
         {" · "}
         <Link href="/precios#precios-compraventa-ciudad" className="font-semibold text-[#1A4FBF] hover:underline">
           Precios compraventa
+        </Link>
+        {" · "}
+        <Link href="/blog" className="font-semibold text-[#1A4FBF] hover:underline">
+          Blog Livendia
         </Link>
       </p>
     </section>

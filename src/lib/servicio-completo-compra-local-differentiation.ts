@@ -555,7 +555,7 @@ export const COMPRA_LOCAL_DIFFERENTIATION: Record<string, LocalCityLandingFields
     localZonesHeading: "Barrios y municipios donde acompañamos compradores",
     localZones:
       "Centro, Santa Catalina-San Bartolomé y San Miguel (+3.000 €/m²), Espinardo, El Carmen, Vistabella, El Palmar, Sucina y Corvera (pedanías en boom inversor), Alcantarilla, Molina de Segura — precio medio regional ~1.700–2.000 €/m² en 2026. Misma atención gestora online.",
-    heroImage: "/images/gestoria3.jpg",
+    heroImage: "/images/murcia.jpg",
     localBenefits: [
       {
         title: "Reserva revisada antes del primer ingreso",
