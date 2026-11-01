@@ -6,6 +6,7 @@ import { BlogMarkdown } from "@/components/blog-markdown";
 import { BlogCategoryCta } from "@/components/blog-category-cta";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { PaaRelatedServicesBlock } from "@/components/paa-related-services-block";
+import { RespuestasCompraventaLandingsSection } from "@/components/respuestas-compraventa-landings-section";
 import { PaaStructuredData } from "@/components/paa-structured-data";
 import { getPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
@@ -129,6 +130,12 @@ export default async function RespuestaPaaPage({ params }: Props) {
             <BlogMarkdown content={article.content} />
           </div>
         </article>
+
+        {article.category === "compraventa" ? (
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <RespuestasCompraventaLandingsSection />
+          </div>
+        ) : null}
 
         <PaaRelatedServicesBlock
           slug={article.slug}

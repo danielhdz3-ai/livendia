@@ -20,6 +20,65 @@ export type VentaLocalSeoContent = {
 };
 
 export const VENTA_LOCAL_SEO_CONTENT: Record<string, VentaLocalSeoContent> = {
+  valencia: {
+    highlightSalePrice: 280_000,
+    savingVs3: 8_400,
+    savingVs5: 14_000,
+    introParagraph:
+      `En Valencia capital el precio medio de un piso ronda los 280.000 € (Idealista, 2025: ~2.450 €/m² en ciudad). Una comisión del 3 % son 8.400 € + IVA (~10.164 €); al 5 %, 14.000 € + IVA. Livendia cobra ${SERVICIO_COMPLETO_CV_PRICE_LABEL} IVA incluido — tarifa plana de gestoría inmobiliaria, sin comisión sobre la venta. En la Comunidad Valenciana es muy habitual vender entre particulares cuando el comprador viene de Idealista, recomendación de vecino o comprador de Madrid/Barcelona que busca calidad de vida. Redactamos reserva y arras, revisamos nota simple, comunidad y cédula, y coordinamos hasta notaría sin exclusiva ni carteles.`,
+    marketParagraph:
+      `Valencia combina compradores locales, familias del área metropolitana (Mislata, Torrent, Paterna) y adquirentes de otras CCAA atraídos por precios más contenidos que Madrid o Barcelona. Idealista (2025) sitúa la vivienda en venta en ~2.450 €/m² en capital. Casuísticas frecuentes: arras copiadas de operaciones de agencia, reservas firmadas en 48 h con cláusulas que penalizan solo al vendedor si falla la hipoteca del comprador, derramas en edificios de Ciutat Vella o Ruzafa no comentadas en la visita, y ventas en cadena (vendes en Valencia y compras en otra provincia). Livendia no capta comprador: ordena el tramo legal cuando ya lo tienes.`,
+    gestorLocalNote:
+      `En Valencia el gestor revisa coherencia entre reserva verbal (mobiliario, parking, obra) y arras escritas, certificado de deuda de comunidad en edificios con obras de fachada en Cabanyal o Benimaclet, plazos realistas de hipoteca para compradores nacionales, y checklist pre-escritura adaptado a notarías con alta carga en temporada de primavera.`,
+    zones: [
+      {
+        name: "Ruzafa y Ensanche",
+        context: "Alta demanda entre particulares; arras rápidas con riesgo de cláusulas copiadas de agencia.",
+      },
+      {
+        name: "Ciutat Vella y El Carmen",
+        context: "Edificios históricos: comunidad, licencias y estado registral revisados antes de señal.",
+      },
+      {
+        name: "Benimaclet y Algirós",
+        context: "Compradores jóvenes y familias; operaciones por Idealista sin intermediario.",
+      },
+      {
+        name: "Campanar y Nou Moles",
+        context: "Vivienda familiar; ventas entre vecinos con confianza previa al contrato.",
+      },
+      {
+        name: "Mislata, Torrent y l'Horta Sud",
+        context: "Área metropolitana: mismo servicio online sin desplazarte al centro.",
+      },
+      {
+        name: "Patacona y playa (operaciones valencianas)",
+        context: "Segunda residencia o herencia vendida a comprador conocido con plazos largos.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Puedo vender en Valencia si el comprador viene de Madrid o Barcelona?",
+        answer:
+          "Sí. El gestor centraliza documentación en el panel Livendia y coordina hitos hasta notaría en Valencia. Lo crítico es alinear plazos de hipoteca y arras antes de ingresar señal.",
+      },
+      {
+        question: "¿Tiene sentido una agencia si ya tengo comprador en Ruzafa o Campanar?",
+        answer:
+          `En un piso de 280.000 €, el 3 % son 8.400 € + IVA solo por intermediación. Si el comprador ya está, Livendia cubre reserva, arras y documentación por ${SERVICIO_COMPLETO_CV_PRICE_LABEL}.`,
+      },
+      {
+        question: "¿Revisáis ventas con obra nueva o promoción en l'Horta?",
+        answer:
+          "Sí. Verificamos coherencia entre anuncio, reserva y arras: plazos de entrega, anexos de garaje o trastero y condiciones de hipoteca del comprador.",
+      },
+      {
+        question: "¿Qué documentación suele pedir el comprador en Valencia capital?",
+        answer:
+          "Nota simple actualizada, certificado de deuda de la comunidad, cédula de habitabilidad, certificado energético y coherencia entre lo firmado en reserva y lo que irá a escritura.",
+      },
+    ],
+  },
   valladolid: {
     highlightSalePrice: 150_000,
     savingVs3: 4_500,

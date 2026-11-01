@@ -186,6 +186,11 @@ export function SiteFooter({ variant = "full" }: SiteFooterProps) {
                 </h3>
                 <ul className="space-y-1 text-xs">
                   <li>
+                    <Link href="/respuestas" className="text-blue-100 hover:text-white transition-colors">
+                      Respuestas (PAA)
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/blog" className="text-blue-100 hover:text-white transition-colors">
                       Blog
                     </Link>

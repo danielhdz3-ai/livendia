@@ -76,6 +76,22 @@ function PaaRelatedServicesInner({
           <Link href="/gestoria" className="font-semibold text-[#1A4FBF] hover:underline">
             gestoría Livendia
           </Link>
+          {" · "}
+          <Link href="/respuestas" className="font-semibold text-[#1A4FBF] hover:underline">
+            índice de respuestas PAA
+          </Link>
+          {" · "}
+          <Link href="/ciudades/valencia" className="font-semibold text-[#1A4FBF] hover:underline">
+            Valencia
+          </Link>
+          {", "}
+          <Link href="/ciudades/madrid" className="font-semibold text-[#1A4FBF] hover:underline">
+            Madrid
+          </Link>
+          {", "}
+          <Link href="/ciudades/barcelona" className="font-semibold text-[#1A4FBF] hover:underline">
+            Barcelona
+          </Link>
           .
         </p>
       </div>

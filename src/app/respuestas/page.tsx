@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { BLOG_CATEGORY_LABEL } from "@/lib/blog-types";
 import { getAllPublishedRespuestas } from "@/lib/paa-content";
 import { getPaaCanonicalHref, PAA_REGISTRY } from "@/lib/paa-registry";
+import { RespuestasCompraventaLandingsSection } from "@/components/respuestas-compraventa-landings-section";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
@@ -32,6 +33,8 @@ export default function RespuestasIndexPage() {
             tipo «qué pasa si…», «cómo calcular…» o «qué documentos necesito…» sin duplicar el blog
             largo cuando ya existe un artículo allí.
           </p>
+
+          <RespuestasCompraventaLandingsSection />
 
           <h2 className="mt-12 text-xl font-bold text-[#1E293B]">Micro-artículos en Livendia</h2>
           <ul className="mt-6 space-y-3">

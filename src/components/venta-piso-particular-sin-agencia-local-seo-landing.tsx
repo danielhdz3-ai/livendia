@@ -49,6 +49,7 @@ import {
 } from "@/lib/vender-piso-sin-agencia-local-cities";
 import { PILLAR_BARCELONA_PATH } from "@/lib/pillar-pages/vender-piso-sin-inmobiliaria-barcelona";
 import { VentaClusterProductPicker } from "@/components/venta-cluster-product-picker";
+import { VentaParticularCanonicalNotice } from "@/components/venta-particular-canonical-notice";
 import {
   buildVentaPisoParticularSteps,
   VENTA_PISO_PARTICULAR_PROCESS_META,
@@ -251,6 +252,8 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
           </section>
 
           <GestorStrip city={config.city} />
+
+          <VentaParticularCanonicalNotice slug={config.slug} />
 
           <VentaClusterProductPicker
             localSlug={config.slug}

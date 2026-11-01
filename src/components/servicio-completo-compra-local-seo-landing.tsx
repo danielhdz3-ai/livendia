@@ -8,6 +8,7 @@ import { LandingLocalTestimonialsSection } from "@/components/landing-local-sect
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { LandingTrustBar } from "@/components/landing-trust-bar";
 import { CompraClusterProductPicker } from "@/components/compra-cluster-product-picker";
+import { getCompraValenciaEnrichment } from "@/lib/servicio-completo-compra-local-valencia-enrichment";
 import {
   COMPRA_LOCAL_IMPORTANTE_SABER,
   compraLocalPageH1,
@@ -92,6 +93,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
 }: {
   config: ServicioCompletoCompraLocalLandingConfig;
 }) {
+  const valenciaEnrichment = getCompraValenciaEnrichment(config.slug);
   const catalog = await getPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
   const priceLabel = service
@@ -290,6 +292,30 @@ export async function ServicioCompletoCompraLocalSeoLanding({
             cityLabel={config.city}
             current="servicio-completo-compra"
           />
+
+          {valenciaEnrichment ? (
+            <section className="border-b border-slate-200 bg-white px-4 py-14 sm:px-6">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+                  Mercado de compra en Valencia — zonas que revisamos
+                </h2>
+                <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#475569]">
+                  {valenciaEnrichment.marketNote}
+                </p>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {valenciaEnrichment.zones.map((zone) => (
+                    <li
+                      key={zone.name}
+                      className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4"
+                    >
+                      <p className="font-bold text-[#1E293B]">{zone.name}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#64748b]">{zone.context}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ) : null}
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">

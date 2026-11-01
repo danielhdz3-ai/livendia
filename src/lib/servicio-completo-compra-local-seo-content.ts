@@ -104,6 +104,16 @@ export const COMPRA_LOCAL_SEO_CONTENT: Record<string, CompraLocalSeoContent> = {
         answer:
           "Sí, aunque lo recomendable es antes del primer ingreso relevante. Si ya firmaste reserva, el gestor revisa de inmediato penalizaciones y plazos para limitar riesgos antes de pasar a arras confirmatorias.",
       },
+      {
+        question: "¿Revisáis compras en Ruzafa, Cabanyal o Ciutat Vella con edificio antiguo?",
+        answer:
+          "Sí. El protocolo incluye actas de comunidad, obras aprobadas, coherencia entre lo visitado y lo que figura en reserva, y plazos realistas de hipoteca. En zonas con rehabilitación intensa, la documentación previa evita rebajas de última hora.",
+      },
+      {
+        question: "¿Cuál es la landing principal si busco «comprar sin agencia Valencia»?",
+        answer:
+          `Esta ficha es el servicio completo de compra (890 €). La guía SEO complementaria está en /servicios/comprar-piso-sin-agencia-valencia; ambas enlazan entre sí y al hub /gestoria/valencia/compraventa.`,
+      },
     ],
   },
   bilbao: {
