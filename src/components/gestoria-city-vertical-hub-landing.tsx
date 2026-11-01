@@ -263,14 +263,6 @@ export function GestoriaCityVerticalHubLanding({
   config: GestoriaCityVerticalHubConfig;
   servicesBySlug: Partial<Record<string, PublicService>>;
 }) {
-  const slugs = config.serviceShowcases
-    .map((s) => s.contratarSlug)
-    .filter((s): s is string => Boolean(s));
-
-  if (slugs.length === 0) {
-    return <GestoriaVerticalHubMain config={config} servicesBySlug={{}} />;
-  }
-
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
       <GestoriaVerticalHubMain config={config} servicesBySlug={servicesBySlug} />
