@@ -10,6 +10,13 @@ import { GESTORIA_INMOBILIARIA_LOCAL_BASE } from "@/lib/gestoria-inmobiliaria-lo
 import type { PublicService } from "@/lib/catalog.public";
 import { LANDING_HERO_GRADIENT, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
+import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
+import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
+import {
+  buildGestoriaServicesCarouselSections,
+  gestoriaCarouselCopy,
+  gestoriaReadSectionHref,
+} from "@/lib/gestoria-services-carousel-sections";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 
 function VerticalHubJsonLd({ config }: { config: GestoriaCityVerticalHubConfig }) {
@@ -66,6 +73,14 @@ function GestoriaVerticalHubMain({
   config: GestoriaCityVerticalHubConfig;
   servicesBySlug: Partial<Record<string, PublicService>>;
 }) {
+  const carouselScope = config.vertical === "alquiler" ? "alquiler" : "compraventa";
+  const carouselSections = buildGestoriaServicesCarouselSections(
+    config.citySlug,
+    config.city,
+    carouselScope,
+    config.schemaAdministrativeArea,
+  );
+
   return (
     <div className={`flex min-h-screen flex-col ${LANDING_PAGE_BG}`}>
       <VerticalHubJsonLd config={config} />
@@ -141,6 +156,24 @@ function GestoriaVerticalHubMain({
             </p>
           ) : null}
         </section>
+
+        {carouselSections.length > 0 ? (
+          <>
+            <div id="servicios-carrusel">
+              <ContratosBcnServicesCarousel
+                sections={carouselSections}
+                copy={{
+                  ...gestoriaCarouselCopy(config.city),
+                  title: `Servicios de ${config.verticalLabel.toLowerCase()} en ${config.city}`,
+                  subtitle:
+                    "Carrusel interactivo con contratar online y enlace a cada landing local publicada para tu ciudad.",
+                }}
+                readSectionHref={gestoriaReadSectionHref}
+              />
+            </div>
+            <GestoriaServiceModuleSections sections={carouselSections} cityLabel={config.city} />
+          </>
+        ) : null}
 
         <section className="border-t border-slate-200 bg-white px-4 py-14 sm:px-6">
           <div className="mx-auto max-w-6xl">

@@ -87,6 +87,11 @@ export type GestoriaCityVertical = (typeof GESTORIA_CITY_VERTICALS)[number];
 /** Slugs de servicio local que no coinciden con el slug de gestoría. */
 const GESTORIA_SERVICE_SLUG_CANDIDATES: Record<string, readonly string[]> = {
   "les-corts": ["les-corts", "barcelona-les-corts"],
+  "hospitalet-de-llobregat": ["hospitalet-de-llobregat", "barcelona-hospitalet-de-llobregat"],
+  badalona: ["badalona", "barcelona-badalona"],
+  terrassa: ["terrassa", "barcelona-terrassa"],
+  sabadell: ["sabadell", "barcelona-sabadell"],
+  girona: ["girona", "barcelona-girona"],
 };
 
 export type GestoriaVerticalServiceLink = {

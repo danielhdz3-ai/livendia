@@ -1,9 +1,13 @@
 /**
  * Landings SEO unificadas por ciudad: compraventa + contratos + administración.
- * Rutas: /gestoria/[slug]
+ * Rutas: /gestoria/[slug] (marca en title/H1: gestoría inmobiliaria)
  */
 
 import { GESTORIA_INMOBILIARIA_LOCAL_DIFFERENTIATION } from "@/lib/gestoria-inmobiliaria-local-differentiation";
+import {
+  GESTORIA_CATALUNYA_METRO_CITIES,
+  GESTORIA_CATALUNYA_METRO_PUBLISHED_SLUGS,
+} from "@/lib/gestoria-catalunya-metro-cities";
 import { enrichWithCityMarketProfile } from "@/lib/attach-local-city-market-profile";
 import { mergeLocalDifferentiation } from "@/lib/merge-local-differentiation";
 
@@ -45,6 +49,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_PUBLISHED_SLUGS: readonly string[] = [
   "sevilla",
   "bilbao",
   "granada",
+  ...GESTORIA_CATALUNYA_METRO_PUBLISHED_SLUGS,
 ];
 
 export type GestoriaInmobiliariaLocalLandingConfig = {
@@ -925,6 +930,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     finalCtaLead:
       `Contrata online en Granada: compraventa 424 € o 890 €, ${REVISION_META_SNIPPET}, ${LAU_TEMPORADA_CTA} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
   },
+  ...GESTORIA_CATALUNYA_METRO_CITIES,
 ];
 
 /** Catálogo de servicios (precios en UI; no se emite Offer en JSON-LD para evitar errores Merchant en GSC). */

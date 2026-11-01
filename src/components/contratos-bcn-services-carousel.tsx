@@ -9,7 +9,29 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const AUTO_MS = 6500;
 
-export function ContratosBcnServicesCarousel({ sections }: { sections: readonly ContratosBcnServiceSection[] }) {
+export type ServicesCarouselCopy = {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  readSectionLabel?: string;
+};
+
+export function ContratosBcnServicesCarousel({
+  sections,
+  copy,
+  readSectionHref,
+}: {
+  sections: readonly ContratosBcnServiceSection[];
+  copy?: ServicesCarouselCopy;
+  readSectionHref?: (section: ContratosBcnServiceSection) => string;
+}) {
+  const eyebrow = copy?.eyebrow ?? "Explora servicios";
+  const title = copy?.title ?? "Todos los contratos inmobiliarios en un carrusel";
+  const subtitle =
+    copy?.subtitle ??
+    "Desliza, usa las flechas o déjalo avanzar solo. Cada tarjeta enlaza al apartado completo y a contratar online.";
+  const readLabel = copy?.readSectionLabel ?? "Leer apartado";
+  const hrefFor = readSectionHref ?? ((s: ContratosBcnServiceSection) => `#${s.id}`);
   const [active, setActive] = useState(0);
   const paused = useRef(false);
   const len = sections.length;
@@ -47,13 +69,11 @@ export function ContratosBcnServicesCarousel({ sections }: { sections: readonly 
       <div className="relative mx-auto max-w-6xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">Explora servicios</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">{eyebrow}</p>
             <h2 id="contratos-bcn-carousel-title" className="mt-2 text-3xl font-extrabold text-[#1E293B] sm:text-4xl">
-              Todos los contratos inmobiliarios en un carrusel
+              {title}
             </h2>
-            <p className="mt-3 max-w-xl text-sm text-[#64748B] sm:text-base">
-              Desliza, usa las flechas o déjalo avanzar solo. Cada tarjeta enlaza al apartado completo y a contratar online.
-            </p>
+            <p className="mt-3 max-w-xl text-sm text-[#64748B] sm:text-base">{subtitle}</p>
           </div>
           <div className="flex gap-2">
             <button
@@ -112,10 +132,10 @@ export function ContratosBcnServicesCarousel({ sections }: { sections: readonly 
                       <ArrowRight className="h-4 w-4" />
                     </ContratarSlugButton>
                     <Link
-                      href={`#${s.id}`}
+                      href={hrefFor(s)}
                       className="inline-flex min-h-11 items-center rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-[#1A4FBF] hover:bg-slate-50"
                     >
-                      Leer apartado
+                      {readLabel}
                     </Link>
                   </div>
                 </div>

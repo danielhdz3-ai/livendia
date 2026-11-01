@@ -1,4 +1,6 @@
 import { ContratosBcnOfficeSection } from "@/components/contratos-bcn-office-section";
+import { ContratosBcnServicesCarousel } from "@/components/contratos-bcn-services-carousel";
+import { GestoriaServiceModuleSections } from "@/components/gestoria-service-module-sections";
 import { PublicHeader } from "@/components/public-header";
 import { FaqSection } from "@/components/faq-section";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
@@ -32,6 +34,12 @@ import {
   getGestoriaCityVerticalHub,
   localGestoriaCityVerticalHref,
 } from "@/lib/gestoria-city-vertical-hub";
+import {
+  buildGestoriaServicesCarouselSections,
+  gestoriaCarouselCopy,
+  gestoriaContratosHubHref,
+  gestoriaReadSectionHref,
+} from "@/lib/gestoria-services-carousel-sections";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -185,6 +193,13 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
   const administracionLocalHref = localAdministracionAlquilerHref(config.slug);
   const alquilerVerticalHub = getGestoriaCityVerticalHub(config.slug, "alquiler");
   const compraventaVerticalHub = getGestoriaCityVerticalHub(config.slug, "compraventa");
+  const carouselSections = buildGestoriaServicesCarouselSections(
+    config.slug,
+    config.city,
+    "all",
+    config.schemaAdministrativeArea,
+  );
+  const contratosHubHref = gestoriaContratosHubHref(config.slug);
 
   return (
     <MultiServicePurchaseProvider servicesBySlug={servicesBySlug}>
@@ -287,6 +302,41 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
             localNeighborhoods={config.localNeighborhoods}
             localServiceNotes={config.localServiceNotes}
           />
+
+          <nav
+            className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur sm:px-6"
+            aria-label={`Servicios gestoría ${config.city}`}
+          >
+            <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-1">
+              {carouselSections.map((s) => (
+                <a
+                  key={s.id}
+                  href={`#${s.id}`}
+                  className="shrink-0 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-[#475569] hover:bg-slate-50 sm:text-sm"
+                >
+                  {s.navLabel}
+                </a>
+              ))}
+              {contratosHubHref ? (
+                <Link
+                  href={contratosHubHref}
+                  className="shrink-0 rounded-full border border-[#1A4FBF]/40 px-4 py-2 text-xs font-semibold text-[#1A4FBF] hover:bg-blue-50 sm:text-sm"
+                >
+                  Hub contratos Barcelona
+                </Link>
+              ) : null}
+            </div>
+          </nav>
+
+          <div id="servicios-carrusel">
+            <ContratosBcnServicesCarousel
+              sections={carouselSections}
+              copy={gestoriaCarouselCopy(config.city)}
+              readSectionHref={gestoriaReadSectionHref}
+            />
+          </div>
+
+          <GestoriaServiceModuleSections sections={carouselSections} cityLabel={config.city} />
 
           <section id="compraventa" className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
