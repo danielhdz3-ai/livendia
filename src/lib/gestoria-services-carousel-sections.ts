@@ -148,12 +148,14 @@ export function buildGestoriaServicesCarouselSections(
   }
 
   if (scope === "alquiler") {
-    return sections.filter((s) => ALQUILER_IDS.has(s.id));
+    sections = sections.filter((s) => ALQUILER_IDS.has(s.id));
+  } else if (scope === "compraventa") {
+    sections = sections.filter((s) => COMPRAVENTA_IDS.has(s.id));
   }
-  if (scope === "compraventa") {
-    return sections.filter((s) => COMPRAVENTA_IDS.has(s.id));
-  }
-  return sections;
+  return sections.map((s) => ({
+    ...s,
+    carouselReadHref: gestoriaReadSectionHref(s),
+  }));
 }
 
 export function gestoriaCarouselCopy(cityLabel: string) {

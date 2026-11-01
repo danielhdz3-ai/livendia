@@ -15,7 +15,6 @@ import { GestoriaServiceModuleSections } from "@/components/gestoria-service-mod
 import {
   buildGestoriaServicesCarouselSections,
   gestoriaCarouselCopy,
-  gestoriaReadSectionHref,
 } from "@/lib/gestoria-services-carousel-sections";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 
@@ -168,7 +167,6 @@ function GestoriaVerticalHubMain({
                   subtitle:
                     "Carrusel interactivo con contratar online y enlace a cada landing local publicada para tu ciudad.",
                 }}
-                readSectionHref={gestoriaReadSectionHref}
               />
             </div>
             <GestoriaServiceModuleSections sections={carouselSections} cityLabel={config.city} />

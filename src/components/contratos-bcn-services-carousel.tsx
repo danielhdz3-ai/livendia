@@ -19,11 +19,9 @@ export type ServicesCarouselCopy = {
 export function ContratosBcnServicesCarousel({
   sections,
   copy,
-  readSectionHref,
 }: {
   sections: readonly ContratosBcnServiceSection[];
   copy?: ServicesCarouselCopy;
-  readSectionHref?: (section: ContratosBcnServiceSection) => string;
 }) {
   const eyebrow = copy?.eyebrow ?? "Explora servicios";
   const title = copy?.title ?? "Todos los contratos inmobiliarios en un carrusel";
@@ -31,7 +29,7 @@ export function ContratosBcnServicesCarousel({
     copy?.subtitle ??
     "Desliza, usa las flechas o déjalo avanzar solo. Cada tarjeta enlaza al apartado completo y a contratar online.";
   const readLabel = copy?.readSectionLabel ?? "Leer apartado";
-  const hrefFor = readSectionHref ?? ((s: ContratosBcnServiceSection) => `#${s.id}`);
+  const hrefFor = (s: ContratosBcnServiceSection) => s.carouselReadHref ?? `#${s.id}`;
   const [active, setActive] = useState(0);
   const paused = useRef(false);
   const len = sections.length;

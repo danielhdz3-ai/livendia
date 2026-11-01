@@ -54,6 +54,8 @@ export type ContratosBcnServiceSection = {
   serviceHref: string;
   localHref?: string;
   packLocalHref?: string;
+  /** Enlace «Leer apartado» del carrusel (serializable desde Server Components). */
+  carouselReadHref?: string;
   /** Foto apaisada — carrusel y apartados (contratos / mesa de trabajo). */
   image: string;
   imageAlt: string;

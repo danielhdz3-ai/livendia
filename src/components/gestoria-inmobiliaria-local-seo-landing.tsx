@@ -38,7 +38,6 @@ import {
   buildGestoriaServicesCarouselSections,
   gestoriaCarouselCopy,
   gestoriaContratosHubHref,
-  gestoriaReadSectionHref,
 } from "@/lib/gestoria-services-carousel-sections";
 import Image from "next/image";
 import Link from "next/link";
@@ -329,11 +328,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
           </nav>
 
           <div id="servicios-carrusel">
-            <ContratosBcnServicesCarousel
-              sections={carouselSections}
-              copy={gestoriaCarouselCopy(config.city)}
-              readSectionHref={gestoriaReadSectionHref}
-            />
+            <ContratosBcnServicesCarousel sections={carouselSections} copy={gestoriaCarouselCopy(config.city)} />
           </div>
 
           <GestoriaServiceModuleSections sections={carouselSections} cityLabel={config.city} />
