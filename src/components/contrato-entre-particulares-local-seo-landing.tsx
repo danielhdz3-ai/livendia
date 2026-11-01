@@ -255,7 +255,12 @@ export async function ContratoEntreParticularesLocalSeoLanding({
           </section>
         </main>
 
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Contrato entre particulares"
+          primarySlug="contrato-arras-penitenciales"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+        />
         <SiteFooter />
       </div>
     </MultiServicePurchaseProvider>

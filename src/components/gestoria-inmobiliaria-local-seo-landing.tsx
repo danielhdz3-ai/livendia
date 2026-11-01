@@ -602,6 +602,9 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
           city={config.city}
           serviceLabel="Gestoría inmobiliaria"
           skipGestorPlatform
+          skipCommissionCompare
+          skipCrossSell
+          skipResourceLinks
         />
 
 

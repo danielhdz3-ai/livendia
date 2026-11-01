@@ -356,7 +356,9 @@ export function ContratosInmobiliariosBarrioLanding({
           primarySlug="contrato-alquiler-lau"
           localLandingSlug={barrio.slug}
           skipGestorPlatform
+          skipRentalPlatformShowcase
           skipCoverage
+          skipCommissionCompare
         />
 
         <SiteFooter />

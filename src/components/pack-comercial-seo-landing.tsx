@@ -619,8 +619,11 @@ export function PackComercialSeoLanding({ config, servicesBySlug }: Props) {
         <ServiceLandingSharedSections
           serviceLabel={config.heroH1}
           city={local?.city}
+          primarySlug={isVentaPack ? "servicio-completo-venta" : "servicio-completo-compra"}
+          localLandingSlug={local?.slug}
           skipGestorPlatform={false}
           skipFoundersBanner={isVentaPack}
+          skipCommissionCompare={isVentaPack}
           testimonialsCtaHref={config.path}
           testimonialsCtaLabel="Contratar este pack"
         />

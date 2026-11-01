@@ -265,7 +265,15 @@ function GestoriaVerticalHubMain({
         </section>
       </main>
 
-      <ServiceLandingSharedSections skipCoverage skipGestorPlatform city={config.city} serviceLabel="Gestoría inmobiliaria" />
+      <ServiceLandingSharedSections
+        skipCoverage
+        skipGestorPlatform
+        skipCommissionCompare
+        skipCrossSell
+        skipResourceLinks
+        city={config.city}
+        serviceLabel="Gestoría inmobiliaria"
+      />
       <SiteFooter />
     </div>
   );

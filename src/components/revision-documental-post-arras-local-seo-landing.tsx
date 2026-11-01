@@ -504,7 +504,12 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Revisión documental post-arras"
+          primarySlug="revision-documental-post-arras"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+        />
 
 
         <SiteFooter />

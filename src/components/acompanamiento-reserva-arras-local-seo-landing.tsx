@@ -3,6 +3,7 @@ import { AcompanamientoReservaArrasLocalCityLinks } from "@/components/acompanam
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -340,9 +341,21 @@ export async function AcompanamientoReservaArrasLocalSeoLanding({
             </div>
           </section>
 
+          <ServiceMidPageContactSection
+            serviceLabel={`Acompañamiento reserva hasta arras en ${config.placeLabel}`}
+            city={config.city}
+            placement={`acompanamiento_reserva_${config.path.split("/").pop()}`}
+          />
+
           <LivendiaFoundersBanner className="border-t border-slate-200" showCta={false} />
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Acompañamiento reserva hasta arras"
+          primarySlug="acompanamiento-reserva-arras"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipFoundersBanner
+        />
         <SiteFooter variant="landing" />
       </div>
     </ServicePurchaseProvider>

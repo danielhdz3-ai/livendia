@@ -341,7 +341,12 @@ export async function ContratoAlquilerOpcionCompraLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Contrato alquiler con opción de compra"
+          primarySlug="contrato-alquiler-opcion-compra"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+        />
         <SiteFooter />
       </div>
     </MultiServicePurchaseProvider>

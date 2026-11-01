@@ -675,7 +675,14 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
 
           <VentaPisoParticularSinAgenciaLocalCityLinks currentSlug={config.slug} />
         </main>
-        <ServiceLandingSharedSections city={config.city} skipTestimonials />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Venta piso entre particulares"
+          primarySlug="servicio-completo-venta"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipTestimonials
+          skipCommissionCompare
+        />
 
 
         <SiteFooter />

@@ -471,7 +471,13 @@ export async function AcompanamientoCompraParkingTrasteroLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} skipTestimonials />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Acompañamiento compra parking o trastero"
+          primarySlug="acompanamiento-compra-parking-trastero"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipTestimonials
+        />
 
         <SiteFooter />
       </div>

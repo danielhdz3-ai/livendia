@@ -1,6 +1,7 @@
 import { FaqSection } from "@/components/faq-section";
 import { RentalLandingLeadModules } from "@/components/rental-landing-lead-modules";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
@@ -346,8 +347,20 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <ServiceMidPageContactSection
+            serviceLabel={`Acompañamiento alquiler en ${config.placeLabel}`}
+            city={config.city}
+            placement={`acompanamiento_alquiler_${config.path.split("/").pop()}`}
+          />
         </main>
-        <ServiceLandingSharedSections city={config.city} skipTestimonials />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Acompañamiento alquiler"
+          primarySlug="acompanamiento-alquiler"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipTestimonials
+        />
 
         <SiteFooter variant="landing" />
       </div>

@@ -5,6 +5,7 @@ import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
 import { PublicHeader } from "@/components/public-header";
 import { RevisionContratoAlquilerLocalCityLinks } from "@/components/revision-contrato-alquiler-local-city-links";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
+import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
@@ -361,9 +362,21 @@ export async function RevisionContratoAlquilerLocalSeoLanding({
             </div>
           </section>
 
+          <ServiceMidPageContactSection
+            serviceLabel={`Revisión contrato alquiler en ${config.placeLabel}`}
+            city={config.city}
+            placement={`revision_contrato_alquiler_${config.path.split("/").pop()}`}
+          />
+
           <LivendiaFoundersBanner className="border-t border-slate-200" showCta={false} />
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Revisión contrato de alquiler"
+          primarySlug="revision-contrato-alquiler"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipFoundersBanner
+        />
         <SiteFooter variant="landing" />
       </div>
     </ServicePurchaseProvider>

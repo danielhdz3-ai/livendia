@@ -413,7 +413,14 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
             </div>
           </section>
 
-          <ServiceLandingSharedSections />
+          <ServiceLandingSharedSections
+            city={config.placeLabel}
+            serviceLabel="Redactar contrato de alquiler"
+            primarySlug="contrato-alquiler-lau"
+            localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+            skipRentalPlatformShowcase
+            skipGestorPlatform
+          />
         </main>
         <SiteFooter variant="landing" />
       </div>

@@ -648,7 +648,13 @@ export async function ContratoAlquilerTemporadaLocalSeoLanding({
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections city={config.city} skipTestimonials />
+        <ServiceLandingSharedSections
+          city={config.city}
+          serviceLabel="Contrato alquiler temporada"
+          primarySlug="contrato-alquiler-temporada"
+          localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
+          skipTestimonials
+        />
 
 
         <SiteFooter />

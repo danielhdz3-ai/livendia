@@ -489,7 +489,15 @@ export function ContratosInmobiliariosBarcelonaLanding({
           </div>
         </section>
 
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          city="Barcelona"
+          serviceLabel="Contratos inmobiliarios"
+          primarySlug="contrato-alquiler-lau"
+          localLandingSlug="barcelona"
+          skipRentalPlatformShowcase
+          skipGestorPlatform
+          skipCommissionCompare
+        />
         <SiteFooter />
       </div>
     </MultiServicePurchaseProvider>

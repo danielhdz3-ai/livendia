@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
 import { HomeParticularesServicios } from "@/components/home-particulares-servicios";
 import { LivendiaFoundersBanner } from "@/components/livendia-founders-banner";
+import { RentalContractPlatformShowcase } from "@/components/rental-contract-platform-showcase";
 import { ServiceCommissionCompareSection } from "@/components/service-commission-compare-section";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceLandingCrossSellSection } from "@/components/service-landing-cross-sell-section";
@@ -46,6 +47,8 @@ type ServiceLandingSharedSectionsProps = {
   skipCommissionCompare?: boolean;
   skipCrossSell?: boolean;
   skipResourceLinks?: boolean;
+  /** Mockup panel cliente en alquiler/admin (si el main no lo incluye). */
+  skipRentalPlatformShowcase?: boolean;
 };
 
 /**
@@ -69,8 +72,11 @@ export function ServiceLandingSharedSections({
   skipCommissionCompare = false,
   skipCrossSell = false,
   skipResourceLinks = false,
+  skipRentalPlatformShowcase = false,
 }: ServiceLandingSharedSectionsProps) {
   const moduleProfile = resolveServiceLandingModuleProfile({ primarySlug, serviceLabel });
+  const showRentalPlatform =
+    !skipRentalPlatformShowcase && (moduleProfile.kind === "alquiler" || moduleProfile.kind === "admin");
   const resolvedWorkflow =
     gestorWorkflow ??
     buildGestorWorkflowContent({
@@ -96,6 +102,14 @@ export function ServiceLandingSharedSections({
         />
       ) : null}
       {!skipResourceLinks ? <ServiceLandingResourceLinksSection links={moduleProfile.resources} /> : null}
+      {showRentalPlatform ? (
+        <div id="panel-livendia" className="scroll-mt-24 border-b border-slate-200 bg-white">
+          <RentalContractPlatformShowcase
+            city={city ?? "España"}
+            propertyLine={city ? `Inmueble en ${city} · expediente digital Livendia` : undefined}
+          />
+        </div>
+      ) : null}
       {!skipCoverage ? <HomeCoverageCities variant="teaser" /> : null}
       <HomeParticularesServicios />
       <section className="border-b border-slate-200 bg-[#F8FAFC] py-6 sm:py-8">
