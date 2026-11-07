@@ -49,8 +49,11 @@ export async function POST(req: Request) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const result = await fulfillCheckoutSession(stripe, session, supabase);
-    if (!result.ok && result.reason === "insert_failed") {
-      console.error("[webhook] fulfillCheckoutSession insert_failed", session.id);
+    if (!result.ok) {
+      console.error("[webhook] fulfillCheckoutSession", result.reason, session.id);
+      if (result.reason === "insert_failed" || result.reason === "missing_subscription") {
+        return new NextResponse("fulfill failed", { status: 500 });
+      }
     }
   }
 

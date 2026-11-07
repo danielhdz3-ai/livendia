@@ -67,32 +67,29 @@ async function sendConfirmationEmailsSafe(
   const paidAt = new Date().toISOString();
   const totalCents = session.amount_total ?? null;
 
-  if (customerEmail) {
-    try {
-      await sendOrderConfirmedEmail({
+  const customerPayload = customerEmail
+    ? sendOrderConfirmedEmail({
         to: customerEmail,
         customerName: customerName === "—" ? "" : customerName,
         serviceName,
         orderId,
-      });
-    } catch (err) {
-      console.error("[fulfill-checkout] sendOrderConfirmedEmail:", err);
-    }
-  }
+      })
+    : Promise.resolve();
 
-  try {
-    await sendAdminNewOrderEmail({
-      serviceName,
-      orderId,
-      clientEmail: customerEmail ?? "—",
-      clientName: customerName,
-      clientPhone: contact?.phone ?? null,
-      totalCents,
-      paidAt,
-    });
-  } catch (err) {
-    console.error("[fulfill-checkout] sendAdminNewOrderEmail:", err);
-  }
+  const adminPayload = sendAdminNewOrderEmail({
+    serviceName,
+    orderId,
+    clientEmail: customerEmail ?? "—",
+    clientName: customerName,
+    clientPhone: contact?.phone ?? null,
+    totalCents,
+    paidAt,
+  });
+
+  await Promise.all([
+    customerPayload.catch((err) => console.error("[fulfill-checkout] sendOrderConfirmedEmail:", err)),
+    adminPayload.catch((err) => console.error("[fulfill-checkout] sendAdminNewOrderEmail:", err)),
+  ]);
 }
 
 export type FulfillCheckoutResult =

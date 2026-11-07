@@ -35,7 +35,11 @@ function formatOrderTotalEur(totalCents: number | null | undefined): string {
 
 function formatPaidAtEs(iso: string | null | undefined): string {
   if (!iso) return "—";
-  return new Date(iso).toLocaleString("es-ES", { dateStyle: "short", timeStyle: "short" });
+  return new Date(iso).toLocaleString("es-ES", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "Europe/Madrid",
+  });
 }
 
 export async function sendWelcomeEmail(opts: { to: string; customerName: string }) {
@@ -83,7 +87,7 @@ export async function sendOrderConfirmedEmail(opts: {
   const resend = getResend();
   if (!resend || !opts.to) return;
   const dashboardUrl = `${getAppUrl()}/dashboard`;
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from: getResendFrom(),
     to: opts.to,
     subject: `Livendia — Pedido confirmado: ${opts.serviceName}`,
@@ -94,6 +98,10 @@ export async function sendOrderConfirmedEmail(opts: {
       dashboardUrl,
     }),
   });
+  if (result.error) {
+    console.error("[email] sendOrderConfirmedEmail:", result.error);
+  }
+  return result;
 }
 
 export async function sendAdminNewOrderEmail(opts: {
