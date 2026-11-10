@@ -122,7 +122,7 @@ export function ContratosInmobiliariosBarrioLanding({
                 fill
                 className="object-cover object-center transition duration-700 hover:scale-[1.02]"
                 sizes="(max-width:1024px) 100vw, 560px"
-                quality={92}
+                quality={80}
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B2D7A]/80 via-transparent to-transparent" />
@@ -213,7 +213,7 @@ export function ContratosInmobiliariosBarrioLanding({
                             fill
                             className="object-cover transition duration-700 hover:scale-105"
                             sizes="(max-width:1024px) 100vw, 560px"
-                            quality={88}
+                            quality={78}
                           />
                           <div className="absolute inset-0 bg-gradient-to-tr from-[#1A4FBF]/25 to-transparent" />
                         </div>
@@ -293,7 +293,7 @@ export function ContratosInmobiliariosBarrioLanding({
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 100vw, 1152px"
-                  quality={90}
+                  quality={78}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B2D7A]/70 to-transparent" />
                 <p className="absolute bottom-6 left-6 max-w-md text-lg font-bold text-white sm:text-xl">

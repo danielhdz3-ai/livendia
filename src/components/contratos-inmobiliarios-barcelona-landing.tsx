@@ -116,7 +116,7 @@ function ServiceVisualCard({
             fill
             className="object-cover object-center transition duration-700 hover:scale-105"
             sizes="(max-width:1024px) 100vw, 672px"
-            quality={92}
+            quality={80}
           />
           <div className="absolute right-4 top-4 rounded-xl bg-[#1A4FBF] px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">
             {priceLabel}
@@ -406,7 +406,7 @@ export function ContratosInmobiliariosBarcelonaLanding({
                   fill
                   className="object-cover object-center"
                   sizes="(max-width:1024px) 100vw, 1152px"
-                  quality={90}
+                  quality={78}
                   priority={false}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#1A4FBF]/92 via-[#1A4FBF]/55 to-transparent" />

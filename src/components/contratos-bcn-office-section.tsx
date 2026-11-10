@@ -118,7 +118,7 @@ export function ContratosBcnOfficeSection({ barrio = null, showBarrioDespachoNav
                   fill
                   className="object-cover object-center"
                   sizes="(max-width:1024px) 100vw, 560px"
-                  quality={85}
+                  quality={78}
                 />
               </div>
             </div>

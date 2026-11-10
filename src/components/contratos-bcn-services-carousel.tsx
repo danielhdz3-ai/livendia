@@ -111,7 +111,7 @@ export function ContratosBcnServicesCarousel({
                     fill
                     className="object-cover object-center"
                     sizes="(max-width:1024px) 100vw, 560px"
-                    quality={92}
+                    quality={80}
                   />
                   <div className="absolute left-4 top-4 rounded-xl bg-[#1A4FBF] px-3 py-1.5 text-xs font-bold uppercase text-white shadow-lg">
                     {s.priceLabel}

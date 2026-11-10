@@ -45,7 +45,7 @@ export function ContratosBcnFeaturedBarrios({ currentSlug }: { currentSlug?: str
                   fill
                   className="object-cover object-center transition duration-500 group-hover:scale-105"
                   sizes="(max-width:640px) 50vw, 20vw"
-                  quality={90}
+                  quality={78}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#1A4FBF]/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">

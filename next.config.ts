@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   images: {
+    // Máxima TTL en edge para salidas de /_next/image (menos misses → menos origin transfer).
+    minimumCacheTTL: 31_536_000,
+    formats: ["image/avif", "image/webp"],
     // Listas explícitas en vez del default de Next (que llega hasta 3840px).
     // El layout más ancho del sitio es max-w-7xl (1280px) y ninguna imagen
     // ocupa más de ese ancho en pantalla (ver `sizes` en los componentes de

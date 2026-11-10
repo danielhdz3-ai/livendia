@@ -43,7 +43,7 @@ export function ContratosBcnHeroVisual({ sections }: { sections: readonly Contra
                 fill
                 className="object-cover object-[center_20%]"
                 sizes="(max-width:1024px) 85vw, 512px"
-                quality={90}
+                quality={78}
                 priority={i === 0}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#1A4FBF]/20 to-transparent" />

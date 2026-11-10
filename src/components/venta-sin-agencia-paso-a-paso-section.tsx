@@ -50,7 +50,7 @@ function StepImageCard({
             src={step.imageSrc}
             alt={step.imageAlt}
             fill
-            quality={90}
+            quality={78}
             className={stepImageObjectFit === "contain" ? "object-contain object-center" : "object-cover object-center"}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 480px"
           />
