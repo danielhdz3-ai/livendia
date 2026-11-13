@@ -11,7 +11,8 @@ import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 const CHECKOUT_SLUGS = [
   "contrato-arras-penitenciales",

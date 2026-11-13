@@ -43,7 +43,8 @@ import {
 const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const canonical = `${getSiteUrl()}/servicios/acompanamiento-alquiler`;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: `Acompañamiento de alquiler — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL} IVA incl.`,

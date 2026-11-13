@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   images: {
+    // Fuentes ya comprimidas en public/images: sin /_next/image → sin leer el origen en cada variante.
+    unoptimized: true,
     // Máxima TTL en edge para salidas de /_next/image (menos misses → menos origin transfer).
     minimumCacheTTL: 31_536_000,
     formats: ["image/avif", "image/webp"],

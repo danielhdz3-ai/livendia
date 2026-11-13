@@ -6,7 +6,9 @@ import type { ComprarPisoSinAgenciaBcnMetroSlug } from "@/lib/comprar-piso-sin-a
 
 const slug = "barcelona-les-corts" as ComprarPisoSinAgenciaBcnMetroSlug;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
+
 export const metadata = comprarPisoMetroPageMetadata(slug);
 
 export default function Page() {

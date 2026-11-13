@@ -172,12 +172,23 @@ export async function getServiceBySlug(slug: string): Promise<PublicService | nu
   return applyFixedCatalogPrices([service])[0] ?? null;
 }
 
-export async function getPublicServices(): Promise<PublicService[]> {
-  // Cliente anónimo (sin cookies()): permite que las ~10 rutas -local/[slug]
-  // que consumen este catálogo se prerendericen de forma estática en vez de
-  // servirse dinámicamente en cada petición. Rollback de 1 línea si algo
-  // falla: volver a `await createServerSupabaseClient()` (importar desde
-  // "@/lib/supabase/server").
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+/** Catálogo para landings estáticas: sin red ni escrituras en Supabase (evita origin transfer en ISR). */
+export function getMarketingPublicServices(): PublicService[] {
+  const services = CATALOG_SERVICE_SEEDS.map(
+    (seed): PublicService => ({
+      ...normalizeServiceCategory({ ...seed, id: seed.slug }),
+    }),
+  );
+  return applyFixedCatalogPrices(services)
+    .map(normalizeServiceCategory)
+    .filter((s) => !INTERNAL_ONLY_SERVICE_SLUGS.has(s.slug));
+}
+
+/** Panel cliente: lectura real de BD (UUIDs Stripe) sin sincronizar seeds en cada petición. */
+export async function getPublicServicesLive(): Promise<PublicService[]> {
   const supabase = createAnonSupabaseClient();
   const { data } = await supabase
     .from("services")
@@ -187,9 +198,33 @@ export async function getPublicServices(): Promise<PublicService[]> {
     .order("price_cents", { ascending: true });
 
   const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
-  const withSeeds = await syncMissingCatalogSeeds(services);
-  const withPrices = await syncFixedCatalogPrices(withSeeds);
+  const withPrices = await syncFixedCatalogPrices(services);
   return withPrices
     .map(normalizeServiceCategory)
     .filter((s) => !INTERNAL_ONLY_SERVICE_SLUGS.has(s.slug));
+}
+
+/**
+ * Por defecto devuelve seeds locales (marketing estático). El panel usa `{ live: true }`.
+ * Mantenimiento de seeds: despliegue o cron admin, no en cada vista SEO.
+ */
+export async function getPublicServices(options?: { live?: boolean }): Promise<PublicService[]> {
+  if (options?.live) return getPublicServicesLive();
+  return getMarketingPublicServices();
+}
+
+/** Sincroniza seeds/precios en BD — solo invocar desde API/cron, no desde páginas HTML. */
+export async function syncCatalogSeedsToDatabase(): Promise<void> {
+  const supabase = createAnonSupabaseClient();
+  const { data } = await supabase
+    .from("services")
+    .select(SERVICE_SELECT)
+    .eq("is_active", true);
+  const services = ((data ?? []) as PublicService[]).map(normalizeServiceCategory);
+  await syncMissingCatalogSeeds(services);
+  await syncFixedCatalogPrices(services);
+}
+
+export function isCatalogServiceUuid(id: string): boolean {
+  return UUID_RE.test(id);
 }

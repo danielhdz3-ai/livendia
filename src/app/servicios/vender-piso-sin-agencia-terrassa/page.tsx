@@ -2,7 +2,9 @@ import { VenderPisoMetroPage, venderPisoMetroPageMetadata } from "@/lib/vender-p
 
 const slug = "terrassa" as const;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
+
 export const metadata = venderPisoMetroPageMetadata(slug);
 
 export default function Page() {

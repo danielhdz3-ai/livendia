@@ -15,7 +15,8 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${REVISION_CONTRATO_ALQUILER_LOCAL_BASE}`;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: `Revisión de contrato de alquiler por ciudad — ${REVISION_CONTRATO_ALQUILER_PRICE_LABEL}`,

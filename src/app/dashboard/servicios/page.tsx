@@ -17,7 +17,7 @@ export default async function ServiciosInternosPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const services = await getPublicServices();
+  const services = await getPublicServices({ live: true });
   const groups = groupByCategory(services);
 
   return (

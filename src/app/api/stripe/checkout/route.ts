@@ -23,6 +23,7 @@ function fallbackRecurringPriceId(slug: string | null | undefined): string | und
 
 type CheckoutBody = {
   serviceId?: string;
+  serviceSlug?: string;
   email?: string;
   fullName?: string;
   phone?: string;
@@ -53,7 +54,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
   }
 
-  const serviceId = body.serviceId;
+  const serviceId = typeof body.serviceId === "string" ? body.serviceId.trim() : "";
+  const serviceSlug = typeof body.serviceSlug === "string" ? body.serviceSlug.trim() : "";
   const utmMeta =
     body.utm && typeof body.utm === "object"
       ? Object.fromEntries(
@@ -63,8 +65,8 @@ export async function POST(req: Request) {
         )
       : {};
 
-  if (!serviceId || typeof serviceId !== "string") {
-    return NextResponse.json({ error: "Falta serviceId" }, { status: 400 });
+  if (!serviceId && !serviceSlug) {
+    return NextResponse.json({ error: "Falta servicio (slug o id)" }, { status: 400 });
   }
 
   const customerInput: CheckoutCustomerInput = {
@@ -107,11 +109,34 @@ export async function POST(req: Request) {
   }
 
   const admin = createServiceRoleClient();
-  const { data: service, error: sErr } = await admin
-    .from("services")
-    .select("id, name, price_cents, is_active, is_recurring, slug, stripe_price_id")
-    .eq("id", serviceId)
-    .maybeSingle();
+  const select = "id, name, price_cents, is_active, is_recurring, slug, stripe_price_id";
+
+  let service: {
+    id: string;
+    name: string;
+    price_cents: number;
+    is_active: boolean;
+    is_recurring: boolean;
+    slug: string;
+    stripe_price_id: string | null;
+  } | null = null;
+  let sErr: { message: string } | null = null;
+
+  const uuidLike =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(serviceId);
+
+  if (serviceId && uuidLike) {
+    const res = await admin.from("services").select(select).eq("id", serviceId).maybeSingle();
+    service = res.data;
+    sErr = res.error;
+  }
+
+  const slugToTry = serviceSlug || (serviceId && !uuidLike ? serviceId : "");
+  if (!service && slugToTry) {
+    const res = await admin.from("services").select(select).eq("slug", slugToTry).maybeSingle();
+    service = res.data;
+    sErr = res.error ?? sErr;
+  }
 
   if (sErr || !service || !service.is_active) {
     return NextResponse.json({ error: "Servicio no disponible" }, { status: 400 });

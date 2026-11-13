@@ -4,7 +4,8 @@ import { PACK_COMPRADOR_BARCELONA_LANDING } from "@/lib/pack-comercial-landings"
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 const config = PACK_COMPRADOR_BARCELONA_LANDING;
 

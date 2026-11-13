@@ -15,7 +15,8 @@ import { notFound } from "next/navigation";
 type Props = { params: Promise<{ slug: string; vertical: string }> };
 
 export const dynamicParams = false;
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export function generateStaticParams() {
   return getGestoriaCityVerticalStaticParams();

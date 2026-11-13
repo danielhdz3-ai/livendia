@@ -44,6 +44,7 @@ export async function checkoutServiceSession(
   serviceId: string,
   formData: CheckoutBody,
   analytics?: CheckoutAnalytics,
+  serviceSlug?: string,
 ): Promise<void> {
   if (analytics) {
     trackBeginCheckout({
@@ -61,6 +62,7 @@ export async function checkoutServiceSession(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         serviceId,
+        serviceSlug: analytics?.serviceSlug ?? serviceSlug,
         email: formData.email,
         fullName: formData.fullName,
         phone: formData.phone,

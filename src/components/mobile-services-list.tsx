@@ -18,7 +18,7 @@ export function MobileServicesList({ services }: MobileServicesListProps) {
     service: PublicService,
     formData: { fullName: string; email: string; phone: string },
   ) => {
-    await checkoutServiceSession(service.id, formData);
+    await checkoutServiceSession(service.id, formData, undefined, service.slug);
   };
 
   if (services.length === 0) return null;

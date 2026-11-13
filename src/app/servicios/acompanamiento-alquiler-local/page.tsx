@@ -15,7 +15,8 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_ALQUILER_LOCAL_BASE}`;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: `Acompañamiento de alquiler por ciudad — ${ACOMPANAMIENTO_ALQUILER_PRICE_LABEL}`,

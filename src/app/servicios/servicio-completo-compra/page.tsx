@@ -14,13 +14,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Shield, Users, Clock, CheckCircle, AlertCircle, MessageCircle, FileText, Home, Eye, Scale } from "lucide-react";
 
-/**
- * ISR: revalida cada 5 min para que los precios/estado del catalogo
- * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
- * el proximo despliegue. Cambiar este numero (segundos) si se necesita
- * otra frecuencia -- ver SEO_ROADMAP.md.
- */
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: "Servicio completo de compra: de la reserva a la escritura",

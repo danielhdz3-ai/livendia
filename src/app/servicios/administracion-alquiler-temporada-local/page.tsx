@@ -15,7 +15,8 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ADMINISTRACION_ALQUILER_TEMPORADA_LOCAL_BASE}`;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: `Admin. temporada y habitaciones por ciudad — ${ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_LABEL}`,

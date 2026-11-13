@@ -12,16 +12,8 @@ import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
 
-/** Solo se generan rutas para slugs publicados; el resto responde 404 aunque exista borrador en el catálogo. */
-export const dynamicParams = false;
-
-/**
- * ISR: revalida cada 5 min para que los precios/estado del catalogo
- * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
- * el proximo despliegue. Cambiar este numero (segundos) si se necesita
- * otra frecuencia -- ver SEO_ROADMAP.md.
- */
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export function generateStaticParams() {
   return getPublishedContratoAlquilerLocalCities().map((c) => ({ slug: c.slug }));

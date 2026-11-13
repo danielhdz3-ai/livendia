@@ -5,7 +5,9 @@ import {
 
 const slug = "madrid";
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
+
 export const metadata = comprarPisoSinAgenciaLocalPageMetadata(slug);
 
 export default function Page() {

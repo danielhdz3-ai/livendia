@@ -15,7 +15,8 @@ import Link from "next/link";
 
 const canonical = `${getSiteUrl()}${ACOMPANAMIENTO_RESERVA_ARRAS_LOCAL_BASE}`;
 
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: `Acompañamiento reserva hasta arras por ciudad — ${ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_LABEL}`,

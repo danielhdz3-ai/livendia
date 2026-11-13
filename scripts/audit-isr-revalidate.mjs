@@ -1,13 +1,13 @@
 /**
- * Evita repetir el bloqueo Vercel Hobby por ISR writes (402 DEPLOYMENT_DISABLED).
- * Las landings públicas deben usar revalidate >= 86400 (24 h).
+ * En Hobby las landings públicas deben ser estáticas (revalidate = false)
+ * para no consumir ISR Reads/Writes con miles de URLs SEO.
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const appDir = path.join(root, "src", "app");
-const MIN_SECONDS = 86400;
+const SKIP_PREFIXES = new Set(["dashboard", "admin", "api", "auth", "inquilino"]);
 const bad = [];
 
 function walk(dir) {
@@ -19,23 +19,25 @@ function walk(dir) {
 }
 
 function scan(file) {
+  const rel = path.relative(appDir, file).replace(/\\/g, "/");
+  const top = rel.split("/")[0];
+  if (SKIP_PREFIXES.has(top)) return;
+  if (!rel.endsWith("page.tsx")) return;
+
   const text = fs.readFileSync(file, "utf8");
-  const re = /export const revalidate\s*=\s*(\d+)/g;
-  let m;
-  while ((m = re.exec(text)) !== null) {
-    const sec = Number(m[1]);
-    if (sec < MIN_SECONDS) {
-      bad.push({ file: path.relative(root, file), sec });
-    }
+  const m = text.match(/export const revalidate\s*=\s*(false|\d+)/);
+  if (!m) return;
+  if (m[1] !== "false") {
+    bad.push({ file: path.relative(root, file), sec: m[1] });
   }
 }
 
 walk(appDir);
 
 if (bad.length) {
-  console.error("ISR revalidate demasiado bajo (mínimo 86400 s):");
+  console.error("Landings públicas deben usar export const revalidate = false:");
   for (const { file, sec } of bad) console.error(`  ${file} → ${sec}`);
   process.exit(1);
 }
 
-console.log(`OK — revalidate público >= ${MIN_SECONDS}s en src/app.`);
+console.log("OK — landings públicas con revalidate = false.");

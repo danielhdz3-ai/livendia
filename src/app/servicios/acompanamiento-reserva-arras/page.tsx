@@ -16,13 +16,8 @@ import { FileText, Shield, Clock, CheckCircle } from "lucide-react";
 
 const canonical = `${getSiteUrl()}/servicios/acompanamiento-reserva-arras`;
 
-/**
- * ISR: revalida cada 5 min para que los precios/estado del catalogo
- * (getPublicServices, cliente Supabase anonimo) no queden fijados hasta
- * el proximo despliegue. Cambiar este numero (segundos) si se necesita
- * otra frecuencia -- ver SEO_ROADMAP.md.
- */
-export const revalidate = 86400;
+/** Estático hasta el siguiente deploy (evita ISR Reads/Writes en Hobby). */
+export const revalidate = false;
 
 export const metadata: Metadata = {
   title: "Acompañamiento reserva hasta arras — 424 € IVA incl.",
