@@ -32,3 +32,17 @@ Contenido público, SEO, landings, `/precios`, panel rental, rutas nuevas en **l
 - No usar `nuevahabitat-ai`, `danielhdz-ai`, `danielhdz2-ai` ni otra cuenta para este repo.
 - No cerrar dejando cambios solo en local si la tarea era publicar funcionalidad visible.
 - Incluir lista de URLs **después** del deploy, no “pendiente de subir”.
+
+## Coste Vercel Pro — techo 20 USD / mes (obligatorio en el panel)
+
+Factura fija Pro: **20 USD/mes** (incluye **20 USD de crédito** de uso medido). Livendia debe **no generar on-demand** aparte.
+
+Tras crear equipo Pro o si el usuario pide “no pagar más de 20 USD”:
+
+1. [Vercel → Team livendia → Settings → Billing → Spend Management](https://vercel.com/dashboard)
+2. **On-demand spend limit → 0 USD** (o el mínimo que permita el UI).
+3. Activar **Pause production deployments** cuando se alcance ese límite (corte duro).
+4. **No** añadir asientos de pago extra (solo 1 deploying seat si basta).
+5. Recordar al usuario: revisar Usage la 1.ª semana; marketing debe ir **estático** (`revalidate = false`, `getMarketingPublicServices`, sin ISR SEO).
+
+Código: no reactivar `revalidate` numérico en landings públicas ni `getPublicServices()` sin `{ live: true }` en marketing.

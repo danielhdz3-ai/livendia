@@ -11,8 +11,9 @@
     "audit:images:size": "node scripts/audit-public-images-size.mjs",
     "compress:images": "node scripts/compress-public-images.mjs",
     "audit:isr": "node scripts/audit-isr-revalidate.mjs",
-    "prebuild": "npm run audit:images && npm run audit:images:size && npm run audit:isr && npm run audit:catalog && npx tsc --noEmit",
-    "audit:catalog": "node scripts/audit-marketing-no-live-catalog.mjs"
+    "prebuild": "npm run audit:images && npm run audit:images:size && npm run audit:isr && npm run audit:catalog && npm run audit:api && npx tsc --noEmit",
+    "audit:catalog": "node scripts/audit-marketing-no-live-catalog.mjs",
+    "audit:api": "node scripts/audit-dangerous-api.mjs"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

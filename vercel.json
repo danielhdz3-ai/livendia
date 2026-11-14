@@ -1,4 +1,13 @@
 {
+  "regions": ["cdg1"],
+  "functions": {
+    "src/app/api/cron/**/*.ts": {
+      "maxDuration": 60
+    },
+    "src/app/api/**/*.ts": {
+      "maxDuration": 15
+    }
+  },
   "headers": [
     {
       "source": "/images/(.*)",

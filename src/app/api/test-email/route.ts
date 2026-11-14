@@ -1,9 +1,12 @@
+import { blockDebugRouteInProduction } from "@/lib/api-prod-guard";
 import { sendWelcomeEmail } from "@/lib/email/send";
 import { getResendFrom } from "@/lib/email/config";
 import { createServiceRoleClient } from "@/lib/supabase/service";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
+  const blocked = blockDebugRouteInProduction();
+  if (blocked) return blocked;
   // Obtener el email del query parameter
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
