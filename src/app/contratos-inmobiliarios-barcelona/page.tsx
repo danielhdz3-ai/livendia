@@ -3,7 +3,7 @@ import {
   CONTRATOS_INMOBILIARIOS_BARCELONA_META,
   CONTRATOS_INMOBILIARIOS_BARCELONA_PATH,
 } from "@/lib/contratos-inmobiliarios-barcelona-content";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -39,7 +39,7 @@ const CHECKOUT_SLUGS = [
 ] as const;
 
 export default async function ContratosInmobiliariosBarcelonaPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   for (const s of catalog) {
     if (CHECKOUT_SLUGS.includes(s.slug as (typeof CHECKOUT_SLUGS)[number])) {

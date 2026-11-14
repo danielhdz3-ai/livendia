@@ -4,7 +4,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   SERVICIO_ALQUILER_INTEGRAL_PATH,
   SERVICIO_ALQUILER_INTEGRAL_PRICE_LABEL,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ServicioAlquilerIntegralPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === SERVICIO_ALQUILER_INTEGRAL_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, SERVICIO_ALQUILER_INTEGRAL_PRICE_LABEL);
 

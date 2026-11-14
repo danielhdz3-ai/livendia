@@ -11,7 +11,7 @@ import { ServiceStructuredDataFromCatalog } from "@/components/service-structure
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { AdministracionAlquilerTemporadaLocalCityLinks } from "@/components/administracion-alquiler-temporada-local-city-links";
 import { AdministracionAlquilerTemporadaRentSection } from "@/components/administracion-alquiler-temporada-rent-section";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
   ADMINISTRACION_ALQUILER_TEMPORADA_CONTRATO_PRICE_LABEL,
@@ -118,7 +118,7 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
 }: {
   config: AdministracionAlquilerTemporadaLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === ADMINISTRACION_ALQUILER_TEMPORADA_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, `${ADMINISTRACION_ALQUILER_TEMPORADA_MONTHLY_PRICE_EUR} €`);
   const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(

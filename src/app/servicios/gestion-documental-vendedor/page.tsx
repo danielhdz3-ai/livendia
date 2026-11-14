@@ -8,7 +8,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
   GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 };
 
 export default async function GestionDocumentalVendedorPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === GESTION_DOCUMENTAL_VENDEDOR_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, GESTION_DOCUMENTAL_VENDEDOR_PRICE_LABEL);
   const publishedCities = getPublishedGestionDocumentalVendedorLocalCities();

@@ -1,5 +1,5 @@
 import { PackComercialSeoLanding } from "@/components/pack-comercial-seo-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { PACK_LAU_ADMIN_SLUGS } from "@/lib/catalog.public";
 import {
   isPackLauAdminLocalSlugPublished,
@@ -51,7 +51,7 @@ export default async function PackLauAdminLocalPage({ params }: Props) {
   const config = toPackLauAdminLocalConfig(slug);
   if (!config) notFound();
 
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const servicesBySlug = Object.fromEntries(
     PACK_LAU_ADMIN_SLUGS.map((s) => {
       const svc = services.find((x) => x.slug === s);

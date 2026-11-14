@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+
+/** Sitemap estático en build (no ISR en cada fetch de Google). */
+export const revalidate = false;
 import { getAllPosts } from "@/lib/blog-content";
 import { getAllPublishedRespuestas } from "@/lib/paa-content";
 import {

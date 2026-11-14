@@ -8,7 +8,7 @@ import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { PaaRelatedServicesBlock } from "@/components/paa-related-services-block";
 import { RespuestasCompraventaLandingsSection } from "@/components/respuestas-compraventa-landings-section";
 import { PaaStructuredData } from "@/components/paa-structured-data";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { GESTORIA_VERTICAL_CONTRATAR_SLUG } from "@/lib/gestoria-city-vertical-hub-enrichment";
 import { getPaaRelatedServiceKeys } from "@/lib/paa-related-services";
@@ -77,7 +77,7 @@ export default async function RespuestaPaaPage({ params }: Props) {
   const cover = article.ogImage ?? BLOG_CATEGORY_IMAGES[article.category];
 
   const relatedKeys = getPaaRelatedServiceKeys(slug, article.category);
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const neededSlugs = new Set(
     relatedKeys
       .map((key) => GESTORIA_VERTICAL_CONTRATAR_SLUG[key])

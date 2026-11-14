@@ -15,7 +15,7 @@ import {
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
 import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
@@ -105,7 +105,7 @@ export async function RedactarContratoAlquilerLocalSeoLanding({
 }: {
   config: RedactarContratoAlquilerLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const temp = catalog.find((s) => s.slug === "contrato-alquiler-temporada");
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion");

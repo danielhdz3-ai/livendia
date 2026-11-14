@@ -3,7 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -50,7 +50,7 @@ const INCLUDED = [
 ] as const;
 
 export default async function RevisionDocumentalPostArrasPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "revision-documental-post-arras") ?? null;
   const priceLabel = resolveServicePriceLabel(service, REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL);
 

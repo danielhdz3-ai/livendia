@@ -9,7 +9,7 @@ import { ServiceMidPageContactSection } from "@/components/service-mid-page-cont
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   REVISION_CONTRATO_ALQUILER_PRICE_LABEL,
   resolveServicePriceLabel,
@@ -101,7 +101,7 @@ export async function RevisionContratoAlquilerLocalSeoLanding({
 }: {
   config: RevisionContratoAlquilerLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "revision-contrato-alquiler") ?? null;
   const priceLabel = resolveServicePriceLabel(service, REVISION_CONTRATO_ALQUILER_PRICE_LABEL);
   const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(

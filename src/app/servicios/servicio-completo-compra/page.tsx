@@ -3,7 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
@@ -28,7 +28,7 @@ const WA_SERVICIO_COMPLETO = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "3460036
 const waHrefServicioCompleto = `https://wa.me/${WA_SERVICIO_COMPLETO.replace(/\D/g, "")}`;
 
 export default async function ServicioCompletoCompraPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
   const priceLabel = service
     ? `${(service.price_cents / 100).toFixed(0)} €`

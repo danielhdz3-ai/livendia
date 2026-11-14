@@ -1,5 +1,5 @@
 import { PackComercialSeoLanding } from "@/components/pack-comercial-seo-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { PACK_COMPRADOR_BARCELONA_LANDING } from "@/lib/pack-comercial-landings";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PackCompradorBarcelonaPage() {
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const servicesBySlug = Object.fromEntries(
     config.serviceSlugs
       .map((slug) => {

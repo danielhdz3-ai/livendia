@@ -157,7 +157,7 @@ async function syncFixedCatalogPrices(services: PublicService[]): Promise<Public
   return applyFixedCatalogPrices(services);
 }
 
-/** Servicio activo por slug. */
+/** Servicio activo por slug (panel/API: lee BD). */
 export async function getServiceBySlug(slug: string): Promise<PublicService | null> {
   const supabase = createAnonSupabaseClient();
   const { data } = await supabase
@@ -185,6 +185,10 @@ export function getMarketingPublicServices(): PublicService[] {
   return applyFixedCatalogPrices(services)
     .map(normalizeServiceCategory)
     .filter((s) => !INTERNAL_ONLY_SERVICE_SLUGS.has(s.slug));
+}
+
+export function getMarketingServiceBySlug(slug: string): PublicService | null {
+  return getMarketingPublicServices().find((s) => s.slug === slug) ?? null;
 }
 
 /** Panel cliente: lectura real de BD (UUIDs Stripe) sin sincronizar seeds en cada petición. */

@@ -3,7 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { RESERVA_DE_COMPRA_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -29,7 +29,7 @@ const INCLUDED = [
 ];
 
 export default async function ReservaDeCompraPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "reserva-de-compra") ?? null;
   const priceLabel = resolveServicePriceLabel(service, RESERVA_DE_COMPRA_PRICE_LABEL);
 

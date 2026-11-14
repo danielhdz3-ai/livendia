@@ -7,7 +7,7 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AcompanamientoReservaArrasPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "acompanamiento-reserva-arras") ?? null;
 
   const features = [

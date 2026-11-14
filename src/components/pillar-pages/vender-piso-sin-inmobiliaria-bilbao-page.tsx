@@ -2,7 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   SERVICIO_COMPLETO_CV_PRICE_EUR,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
@@ -196,7 +196,7 @@ function ProseSection({
 }
 
 export async function VenderPisoSinInmobiliariaBilbaoPillarPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceEur = service ? service.price_cents / 100 : SERVICIO_COMPLETO_CV_PRICE_EUR;
   const priceLabelCompact = service

@@ -7,7 +7,7 @@ import { ServiceMidPageContactSection } from "@/components/service-mid-page-cont
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { ContratoAlquilerHabitacionLocalLandingConfig } from "@/lib/contrato-alquiler-habitacion-local-cities";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import {
@@ -77,7 +77,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
 }: {
   config: ContratoAlquilerHabitacionLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === CONTRATO_ALQUILER_HABITACION_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, CONTRATO_ALQUILER_HABITACION_PRICE_LABEL);
   const seo = config.seoContent;

@@ -2,7 +2,7 @@ import { RedactarContratoAlquilerAdministracionUpsellSection } from "@/component
 import { RedactarContratoAlquilerOnlineGestorSection } from "@/components/redactar-contrato-alquiler-online-gestor-section";
 import { RedactarContratoAlquilerRedaccionServicioSection } from "@/components/redactar-contrato-alquiler-redaccion-servicio-section";
 import { MultiServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL,
@@ -24,7 +24,7 @@ type Props = {
  * 3) Servicio 100% online + gestor operativo
  */
 export async function RentalLandingLeadModules({ placeLabel, citySlug }: Props) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau");
   const admin = catalog.find((s) => s.slug === "administracion-alquiler");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};

@@ -7,7 +7,7 @@ import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import type { ContratoEntreParticularesLocalLandingConfig } from "@/lib/contrato-entre-particulares-local-cities";
 import {
@@ -48,7 +48,7 @@ export async function ContratoEntreParticularesLocalSeoLanding({
 }: {
   config: ContratoEntreParticularesLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const lau = catalog.find((s) => s.slug === "contrato-alquiler-lau") ?? null;
   const arras = catalog.find((s) => s.slug === "contrato-arras-penitenciales") ?? null;
   const hab = catalog.find((s) => s.slug === "contrato-alquiler-habitacion") ?? null;

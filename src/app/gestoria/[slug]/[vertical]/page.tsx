@@ -1,5 +1,5 @@
 import { GestoriaCityVerticalHubLanding } from "@/components/gestoria-city-vertical-hub-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   getGestoriaCityVerticalHub,
@@ -51,7 +51,7 @@ export default async function GestoriaCityVerticalPage({ params }: Props) {
   const config = getGestoriaCityVerticalHub(slug, vertical);
   if (!config) notFound();
 
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const carouselScope: GestoriaCityVertical = vertical === "alquiler" ? "alquiler" : "compraventa";
   const carouselSections = buildGestoriaServicesCarouselSections(
     slug,

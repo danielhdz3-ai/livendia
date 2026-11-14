@@ -12,7 +12,7 @@ import {
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
 import type { ContratoArrasLocalLandingConfig } from "@/lib/contrato-arras-local-cities";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { getSiteUrl } from "@/lib/site-url";
@@ -90,7 +90,7 @@ export async function ContratoArrasLocalSeoLanding({
 }: {
   config: ContratoArrasLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const pen = catalog.find((s) => s.slug === "contrato-arras-penitenciales");
   const conf = catalog.find((s) => s.slug === "contrato-arras-confirmatorias");
   const servicesBySlug: Partial<Record<string, PublicService>> = {};

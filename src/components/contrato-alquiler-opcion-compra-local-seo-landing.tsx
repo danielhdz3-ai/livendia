@@ -10,7 +10,7 @@ import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   CONTRATO_ALQUILER_OPCION_COMPRA_PRICE_LABEL,
@@ -71,7 +71,7 @@ export async function ContratoAlquilerOpcionCompraLocalSeoLanding({
 }: {
   config: ContratoAlquilerOpcionCompraLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "contrato-alquiler-opcion-compra") ?? null;
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   if (service) servicesBySlug["contrato-alquiler-opcion-compra"] = service;

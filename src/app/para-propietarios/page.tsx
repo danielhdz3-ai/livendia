@@ -2,7 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { getWhatsAppHref, businessNap } from "@/lib/business-nap";
 import { CAMPAIGN_URLS } from "@/lib/campaign-links";
 import {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const waPrefill = `Hola, soy propietario y me interesa la administración de alquiler (${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}). ¿Me podéis orientar?`;
 
 export default async function ParaPropietariosPage() {
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const rental = services.find((s) => s.slug === "administracion-alquiler") ?? null;
   const waHref = getWhatsAppHref(waPrefill);
 

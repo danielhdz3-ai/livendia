@@ -1,7 +1,7 @@
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { getContactPhoneDisplay, getContactPhoneTelHref } from "@/lib/contact";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdministracionAlquilerPage() {
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const rentalService = services.find((s) => s.slug === "administracion-alquiler") ?? null;
   const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
   const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;

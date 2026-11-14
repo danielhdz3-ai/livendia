@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { WhatsAppLeadLink } from "@/components/whatsapp-lead-button";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_LABEL,
   resolveServicePriceLabel,
@@ -88,7 +88,7 @@ export async function AcompanamientoReservaArrasLocalSeoLanding({
 }: {
   config: AcompanamientoReservaArrasLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "acompanamiento-reserva-arras") ?? null;
   const priceLabel = resolveServicePriceLabel(service, ACOMPANAMIENTO_RESERVA_ARRAS_PRICE_LABEL);
   const processIcons = [Upload, FileText, Shield, ClipboardCheck] as const;

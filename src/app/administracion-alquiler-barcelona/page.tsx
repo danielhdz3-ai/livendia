@@ -1,5 +1,5 @@
 import { AdministracionAlquilerBarcelonaLanding } from "@/components/administracion-alquiler-barcelona-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { ADMINISTRACION_ALQUILER_SLUG } from "@/lib/catalog.public";
 import {
   ADMINISTRACION_ALQUILER_BARCELONA_HUB_META,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdministracionAlquilerBarcelonaHubPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const adminService = catalog.find((s) => s.slug === ADMINISTRACION_ALQUILER_SLUG) ?? null;
   return <AdministracionAlquilerBarcelonaLanding adminService={adminService} />;
 }

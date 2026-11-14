@@ -7,7 +7,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   SERVICIO_COMPLETO_CV_PRICE_EUR,
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
@@ -103,7 +103,7 @@ export async function ServicioCompletoVentaLocalSeoLanding({
 }: {
   config: ServicioCompletoVentaLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceLabel = service
     ? `${(service.price_cents / 100).toFixed(0)} €`

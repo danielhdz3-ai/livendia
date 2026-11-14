@@ -15,7 +15,7 @@ import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
@@ -171,7 +171,7 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
 }: {
   config: GestoriaInmobiliariaLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const slugs = [
     "acompanamiento-reserva-arras",
     "revision-documental-post-arras",

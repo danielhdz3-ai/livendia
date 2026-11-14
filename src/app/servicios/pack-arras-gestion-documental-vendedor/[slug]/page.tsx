@@ -1,5 +1,5 @@
 import { PackComercialSeoLanding } from "@/components/pack-comercial-seo-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { PACK_ARRAS_GESTION_VENDEDOR_SLUGS } from "@/lib/catalog.public";
 import {
   isPackArrasGestionLocalSlugPublished,
@@ -51,7 +51,7 @@ export default async function PackArrasGestionLocalPage({ params }: Props) {
   const config = toPackArrasGestionLocalConfig(slug);
   if (!config) notFound();
 
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const servicesBySlug = Object.fromEntries(
     PACK_ARRAS_GESTION_VENDEDOR_SLUGS.map((s) => {
       const svc = services.find((x) => x.slug === s);

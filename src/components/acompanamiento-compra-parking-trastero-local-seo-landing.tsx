@@ -17,7 +17,7 @@ import {
   PARKING_TRASTERO_LIVENDIA_COMPARISON_ROWS,
   PARKING_TRASTERO_PROCESS_PHASES,
 } from "@/lib/acompanamiento-compra-parking-trastero-local-shared";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_CENTS,
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL,
@@ -78,7 +78,7 @@ export async function AcompanamientoCompraParkingTrasteroLocalSeoLanding({
 }: {
   config: ParkingTrasteroLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL);
   const seo = config.seoContent;

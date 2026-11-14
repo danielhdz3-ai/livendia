@@ -2,7 +2,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { FooterDiscoverabilityLinks } from "@/components/footer-discoverability-links";
 import { getAllPosts } from "@/lib/blog-content";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { getHomeCoverageCityFlatLinks, HOME_COVERAGE_CITIES } from "@/lib/home-coverage-cities";
 import { cityHubHref } from "@/lib/ciudades-hub";
 import type { Metadata } from "next";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MapaDelSitioPage() {
-  const services = await getPublicServices();
+  const services = getMarketingPublicServices();
   const posts = getAllPosts();
   const cityLinks = getHomeCoverageCityFlatLinks();
 

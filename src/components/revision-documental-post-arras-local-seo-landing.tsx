@@ -4,7 +4,7 @@ import { ServiceMidPageContactSection } from "@/components/service-mid-page-cont
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR,
   REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL,
@@ -124,7 +124,7 @@ export async function RevisionDocumentalPostArrasLocalSeoLanding({
 }: {
   config: RevisionDocumentalPostArrasLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === REVISION_DOCUMENTAL_POST_ARRAS_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL);
   const seo = config.seoContent;

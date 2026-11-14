@@ -10,7 +10,7 @@ import {
   PARKING_TRASTERO_NOT_INCLUDED,
   PARKING_TRASTERO_PROCESS_PHASES,
 } from "@/lib/acompanamiento-compra-parking-trastero-shared";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_LOCAL_BASE,
   getPublishedParkingTrasteroLocalCities,
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AcompanamientoCompraParkingTrasteroPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_SLUG) ?? null;
   const priceLabel = resolveServicePriceLabel(service, ACOMPANAMIENTO_COMPRA_PARKING_TRASTERO_PRICE_LABEL);
   const publishedCities = getPublishedParkingTrasteroLocalCities();

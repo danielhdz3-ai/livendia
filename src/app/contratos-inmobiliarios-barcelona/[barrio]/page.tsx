@@ -1,5 +1,5 @@
 import { ContratosInmobiliariosBarrioLanding } from "@/components/contratos-inmobiliarios-barcelona-barrio-landing";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import {
   CONTRATOS_INMOBILIARIOS_BARCELONA_BARRIOS,
@@ -56,7 +56,7 @@ export default async function ContratosInmobiliariosBarrioPage({ params }: Props
   if (!isContratosInmobiliariosBarrioSlug(slug)) notFound();
   const barrio = getContratosInmobiliariosBarrio(slug)!;
 
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const servicesBySlug: Partial<Record<string, PublicService>> = {};
   for (const s of catalog) {
     if (CHECKOUT_SLUGS.includes(s.slug as (typeof CHECKOUT_SLUGS)[number])) {

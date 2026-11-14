@@ -3,7 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { CONTRATO_ALQUILER_LAU_PRICE_LABEL, resolveServicePriceLabel } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContratoLAUPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "contrato-alquiler-lau") ?? null;
   const priceLabel = resolveServicePriceLabel(service, CONTRATO_ALQUILER_LAU_PRICE_LABEL);
 

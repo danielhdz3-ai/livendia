@@ -6,7 +6,7 @@ import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { VentaPisoParticularSinAgenciaLocalCityLinks } from "@/components/venta-piso-particular-sin-agencia-local-city-links";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   CONTRATO_ARRAS_LOCAL_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_CENTS,
@@ -162,7 +162,7 @@ export async function VentaPisoParticularSinAgenciaLocalSeoLanding({
 }: {
   config: VentaPisoParticularLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceEur = service ? service.price_cents / 100 : SERVICIO_COMPLETO_CV_PRICE_EUR;
   const priceCents = service?.price_cents ?? SERVICIO_COMPLETO_CV_PRICE_CENTS;

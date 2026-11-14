@@ -19,7 +19,7 @@ import {
   ADMINISTRACION_ALQUILER_MONTHLY_PRICE_EUR,
   type PublicService,
 } from "@/lib/catalog.public";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import { SiteFooter } from "@/components/site-footer";
 import Image from "next/image";
 import Link from "next/link";
@@ -58,7 +58,7 @@ const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "34600367742";
 const waHref = `https://wa.me/${WA.replace(/\D/g, "")}`;
 
 export default async function Home() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const homeCarouselServices = HOME_SERVICES_ORDER.map((slug) => catalog.find((s) => s.slug === slug)).filter(
     (s): s is PublicService => s != null,
   );

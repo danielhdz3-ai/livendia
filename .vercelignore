@@ -1,0 +1,6 @@
+.tmp-*
+exports/
+.tmp-lh-*.json
+ANALISIS_*.md
+ANALISIS_*.html
+*.tmp.png

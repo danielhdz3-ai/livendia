@@ -6,7 +6,7 @@ import {
   ContratarSlugButton,
   MultiServicePurchaseProvider,
 } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { PublicService } from "@/lib/catalog.public";
 import { REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContratoDeArrasPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const pen = catalog.find((s) => s.slug === "contrato-arras-penitenciales");
   const conf = catalog.find((s) => s.slug === "contrato-arras-confirmatorias");
   const revision = catalog.find((s) => s.slug === "revision-documental-post-arras");

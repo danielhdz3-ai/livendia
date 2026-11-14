@@ -22,7 +22,7 @@ import {
 import { PublicHeader } from "@/components/public-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import type { ServicioCompletoCompraLocalLandingConfig } from "@/lib/servicio-completo-compra-local-cities";
 import { getSiteUrl } from "@/lib/site-url";
 import {
@@ -99,7 +99,7 @@ export async function ServicioCompletoCompraLocalSeoLanding({
   config: ServicioCompletoCompraLocalLandingConfig;
 }) {
   const cityEnrichment = getCompraLocalCityEnrichment(config.slug);
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-compra") ?? null;
   const priceLabel = service
     ? `${(service.price_cents / 100).toFixed(0)} €`

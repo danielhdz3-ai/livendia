@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
 import { AcompanamientoAlquilerLocalCityLinks } from "@/components/acompanamiento-alquiler-local-city-links";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   ACOMPANAMIENTO_ALQUILER_PRICE_LABEL,
   resolveServicePriceLabel,
@@ -102,7 +102,7 @@ export async function AcompanamientoAlquilerLocalSeoLanding({
 }: {
   config: AcompanamientoAlquilerLocalLandingConfig;
 }) {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "acompanamiento-alquiler") ?? null;
   const priceLabel = resolveServicePriceLabel(service, ACOMPANAMIENTO_ALQUILER_PRICE_LABEL);
   const waConsultHref = `https://wa.me/${WA.replace(/\D/g, "")}?text=${encodeURIComponent(

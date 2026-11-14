@@ -3,7 +3,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceStructuredDataFromCatalog } from "@/components/service-structured-data";
 import { ContratarServicioButton, ServicePurchaseProvider } from "@/components/service-purchase-provider";
-import { getPublicServices } from "@/lib/catalog";
+import { getMarketingPublicServices } from "@/lib/catalog";
 import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
   SERVICIO_COMPLETO_CV_PRICE_LABEL_COMPACT,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 const SERVICE_LABEL = "Servicio completo de venta";
 
 export default async function ServicioCompletoVentaPage() {
-  const catalog = await getPublicServices();
+  const catalog = getMarketingPublicServices();
   const service = catalog.find((s) => s.slug === "servicio-completo-venta") ?? null;
   const priceLabel = service ? `${(service.price_cents / 100).toFixed(0)} €` : SERVICIO_COMPLETO_CV_PRICE_LABEL;
 
