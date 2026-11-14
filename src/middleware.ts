@@ -2,21 +2,10 @@ import { createServerClient } from "@supabase/ssr";
 import { shouldRedirectToAdminPanel } from "@/lib/admin-access";
 import { type NextRequest, NextResponse } from "next/server";
 
-function isPublicAnonymousPath(pathname: string): boolean {
-  if (pathname.startsWith("/dashboard")) return false;
-  if (pathname.startsWith("/admin")) return false;
-  if (pathname.startsWith("/inquilino")) return false;
-  if (pathname === "/login" || pathname === "/register") return false;
-  if (pathname.startsWith("/mis-pedidos")) return false;
-  return true;
-}
-
+/**
+ * Solo rutas con sesión Supabase. El marketing no ejecuta middleware (cero Edge en crawlers SEO).
+ */
 export async function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname;
-  if (isPublicAnonymousPath(path)) {
-    return NextResponse.next();
-  }
-
   let response = NextResponse.next({ request });
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -46,6 +35,7 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const path = request.nextUrl.pathname;
   const viewAsClient = request.cookies.get("livendia_view_as_client")?.value === "1";
 
   let profileRole: string | null = null;
@@ -138,6 +128,12 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|robots\\.txt|sitemap\\.xml|api/|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|woff2?)$).*)",
+    "/dashboard/:path*",
+    "/mis-pedidos/:path*",
+    "/admin/:path*",
+    "/inquilino/:path*",
+    "/login",
+    "/register",
+    "/auth/:path*",
   ],
 };

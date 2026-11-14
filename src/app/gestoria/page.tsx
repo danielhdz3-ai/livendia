@@ -21,6 +21,8 @@ import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDI
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
+export const revalidate = false;
+
 const canonical = `${getSiteUrl()}${GESTORIA_INMOBILIARIA_LOCAL_BASE}`;
 
 const GESTORIA_INDEX_DESCRIPTION =
