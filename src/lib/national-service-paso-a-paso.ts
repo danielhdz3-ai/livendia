@@ -24,6 +24,10 @@ import {
   buildServicioAlquilerIntegralSteps,
   SERVICIO_ALQUILER_INTEGRAL_PROCESS_META,
 } from "@/lib/servicio-alquiler-integral-modules";
+import {
+  buildConsultaFiscalVendedorSteps,
+  CONSULTA_FISCAL_VENDEDOR_PROCESS,
+} from "@/lib/consulta-fiscal-vendedor-paso-a-paso";
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
 import {
   buildVenderSinAgenciaBarcelonaSteps,
@@ -226,16 +230,10 @@ export function resolveNationalServicePasoAPaso(
   if (primarySlug === "consulta-fiscal-vendedor") {
     return {
       meta: {
-        eyebrow: "Consulta fiscal vendedor",
-        title: "Cómo obtenemos tu memoria tributaria orientativa",
-        intro:
-          "Contratas, aportas documentación post-arras y un gestor elabora la simulación de plusvalía e IRPF; revisa humanamente el borrador antes de entregarte la memoria y la videollamada.",
-        alwaysWithYouTitle: "Panel Livendia",
-        alwaysWithYouBody: "Checklist de documentos, memoria aprobada por el gestor y enlace para agendar la videollamada.",
-        serviceLine: "Consulta fiscal vendedor · Livendia",
+        ...CONSULTA_FISCAL_VENDEDOR_PROCESS,
         feeNote: `${priceLabel} IVA incl. · 3–5 días laborables · 100 % online.`,
       },
-      steps: buildGenericContratoSteps(priceLabel, "Consulta fiscal vendedor"),
+      steps: buildConsultaFiscalVendedorSteps(priceLabel),
       expertVariant: "servicio-completo-venta",
       onlineModule: "gestoria-digital",
       gestoriaFocus: "compraventa",
