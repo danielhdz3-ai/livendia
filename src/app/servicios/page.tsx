@@ -72,7 +72,7 @@ export default async function ServiciosPage() {
         </div>
 
       </main>
-        <ServiceLandingSharedSections skipCoverage />
+        <ServiceLandingSharedSections skipCoverage skipParticularesServicios />
 
       <SiteFooter />
     </div>

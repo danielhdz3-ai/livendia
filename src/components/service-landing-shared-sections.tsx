@@ -32,6 +32,8 @@ type ServiceLandingSharedSectionsProps = {
   skipGestorPlatform?: boolean;
   /** Omitir cobertura si la página ya la incluye dentro del main */
   skipCoverage?: boolean;
+  /** Omitir teasers locales de HomeParticularesServicios (p. ej. en /servicios) */
+  skipParticularesServicios?: boolean;
   /** Omitir TrustReviewsBlock global si la landing ya tiene testimonios locales */
   skipTestimonials?: boolean;
   /** Omitir banner genérico de fundadores (p. ej. si la landing ya muestra perfiles con foto). */
@@ -63,6 +65,7 @@ export function ServiceLandingSharedSections({
   platformServiceKind = "generic",
   skipGestorPlatform = false,
   skipCoverage = false,
+  skipParticularesServicios = false,
   skipTestimonials = false,
   skipFoundersBanner = false,
   testimonialsCtaHref = "/servicios",
@@ -111,7 +114,7 @@ export function ServiceLandingSharedSections({
         </div>
       ) : null}
       {!skipCoverage ? <HomeCoverageCities variant="teaser" /> : null}
-      <HomeParticularesServicios />
+      {!skipParticularesServicios ? <HomeParticularesServicios /> : null}
       <section className="border-b border-slate-200 bg-[#F8FAFC] py-6 sm:py-8">
         <div className="mx-auto max-w-6xl px-4 text-center text-sm text-[#64748b] sm:px-6">
           <Link href={GESTORIA_PRICING_BLOG_PATH} className="font-semibold text-[#1A4FBF] hover:underline">
