@@ -489,7 +489,10 @@ export default async function ContratoHabitacionPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="contrato-alquiler-habitacion"
+          serviceLabel="Contrato de alquiler de habitación"
+        />
 
       <SiteFooter />
     </div>

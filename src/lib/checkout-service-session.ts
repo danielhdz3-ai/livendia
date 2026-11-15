@@ -40,11 +40,17 @@ export async function ensureLoggedInForCheckout(): Promise<boolean> {
 }
 
 /** Inicia Stripe Checkout desde el navegador. */
+type CheckoutExtras = {
+  fiscalIntake?: unknown;
+  disclaimerAccepted?: boolean;
+};
+
 export async function checkoutServiceSession(
   serviceId: string,
   formData: CheckoutBody,
   analytics?: CheckoutAnalytics,
   serviceSlug?: string,
+  extras?: CheckoutExtras,
 ): Promise<void> {
   if (analytics) {
     trackBeginCheckout({
@@ -67,6 +73,8 @@ export async function checkoutServiceSession(
         fullName: formData.fullName,
         phone: formData.phone,
         utm: utmForStripeMetadata(),
+        fiscalIntake: extras?.fiscalIntake,
+        disclaimerAccepted: extras?.disclaimerAccepted === true,
       }),
     });
 

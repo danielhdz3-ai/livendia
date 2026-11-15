@@ -293,7 +293,10 @@ export default async function AcompanamientoCompraParkingTrasteroPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="acompanamiento-compra-parking-trastero"
+          serviceLabel="Compra de parking o trastero"
+        />
 
         <SiteFooter />
       </div>

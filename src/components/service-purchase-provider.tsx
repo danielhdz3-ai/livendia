@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { ConsultaFiscalServiceModal } from "@/components/consulta-fiscal-service-modal";
 import { ServiceModal } from "@/components/service-modal";
-import type { PublicService } from "@/lib/catalog.public";
+import { CONSULTA_FISCAL_VENDEDOR_SLUG, type PublicService } from "@/lib/catalog.public";
 import { analyticsFromService, checkoutServiceSession } from "@/lib/checkout-service-session";
 
 type SingleCtx = { openCheckout: () => void };
@@ -30,13 +31,17 @@ export function ServicePurchaseProvider({
     <SinglePurchaseContext.Provider value={{ openCheckout }}>
       {children}
       {open && service ? (
-        <ServiceModal
-          service={service}
-          onClose={() => setOpen(false)}
-          onCheckout={async (svc, form) => {
-            await checkoutServiceSession(svc.id, form, analyticsFromService(svc));
-          }}
-        />
+        service.slug === CONSULTA_FISCAL_VENDEDOR_SLUG ? (
+          <ConsultaFiscalServiceModal service={service} onClose={() => setOpen(false)} />
+        ) : (
+          <ServiceModal
+            service={service}
+            onClose={() => setOpen(false)}
+            onCheckout={async (svc, form) => {
+              await checkoutServiceSession(svc.id, form, analyticsFromService(svc));
+            }}
+          />
+        )
       ) : null}
     </SinglePurchaseContext.Provider>
   );
@@ -91,13 +96,17 @@ export function MultiServicePurchaseProvider({
     <MultiPurchaseContext.Provider value={{ openCheckoutForSlug }}>
       {children}
       {service ? (
-        <ServiceModal
-          service={service}
-          onClose={() => setActiveSlug(null)}
-          onCheckout={async (svc, form) => {
-            await checkoutServiceSession(svc.id, form, analyticsFromService(svc));
-          }}
-        />
+        service.slug === CONSULTA_FISCAL_VENDEDOR_SLUG ? (
+          <ConsultaFiscalServiceModal service={service} onClose={() => setActiveSlug(null)} />
+        ) : (
+          <ServiceModal
+            service={service}
+            onClose={() => setActiveSlug(null)}
+            onCheckout={async (svc, form) => {
+              await checkoutServiceSession(svc.id, form, analyticsFromService(svc));
+            }}
+          />
+        )
       ) : null}
     </MultiPurchaseContext.Provider>
   );

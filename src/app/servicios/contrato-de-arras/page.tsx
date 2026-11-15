@@ -481,7 +481,10 @@ export default async function ContratoDeArrasPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="contrato-arras-penitenciales"
+          serviceLabel="Contrato de arras penitenciales"
+        />
 
 
       <SiteFooter />

@@ -87,7 +87,7 @@ export default function ContratoAlquilerLocalIndexPage() {
           />
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

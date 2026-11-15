@@ -70,7 +70,7 @@ export default function ContratoAlquilerTemporadaLocalIndexPage() {
           />
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

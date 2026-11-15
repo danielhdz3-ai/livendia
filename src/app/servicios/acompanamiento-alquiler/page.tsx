@@ -334,7 +334,10 @@ export default async function AcompanamientoAlquilerPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="acompanamiento-alquiler"
+          serviceLabel="Acompañamiento de alquiler"
+        />
 
         <SiteFooter />
       </div>

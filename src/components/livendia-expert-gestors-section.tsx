@@ -7,7 +7,14 @@ type LivendiaExpertGestorsSectionProps = {
   city?: string;
   className?: string;
   /** Copy del bloque según servicio de la landing. */
-  variant?: "pack-arras" | "servicio-completo-venta" | "servicio-completo-compra";
+  variant?:
+    | "pack-arras"
+    | "servicio-completo-venta"
+    | "servicio-completo-compra"
+    | "alquiler"
+    | "admin"
+    | "contratos"
+    | "generic";
 };
 
 export function LivendiaExpertGestorsSection({
@@ -18,18 +25,33 @@ export function LivendiaExpertGestorsSection({
   const placeLabel = city ?? "toda España";
   const isVentaCompleta = variant === "servicio-completo-venta";
   const isCompraCompleta = variant === "servicio-completo-compra";
+  const isAlquiler = variant === "alquiler";
+  const isAdmin = variant === "admin";
+  const isContratos = variant === "contratos";
 
   const heading = city
     ? isCompraCompleta
       ? `Tus co-gestores expertos en la compra de tu piso en ${city}`
       : isVentaCompleta
         ? `Tus co-gestores expertos en la venta de tu piso en ${city}`
-        : `Las personas que redactan tus arras en ${city}`
+        : isAlquiler
+          ? `Tus co-gestores expertos en tu contrato y alquiler en ${city}`
+          : isAdmin
+            ? `Tus co-gestores expertos en la administración del alquiler en ${city}`
+            : isContratos
+              ? `Las personas que redactan tus contratos en ${city}`
+              : `Las personas que redactan tus arras en ${city}`
     : isCompraCompleta
       ? "Las personas detrás de tu compra entre particulares"
       : isVentaCompleta
         ? "Las personas detrás de tu venta entre particulares"
-        : "Las personas detrás de tu pack de venta";
+        : isAlquiler
+          ? "Las personas detrás de tu contrato de alquiler"
+          : isAdmin
+            ? "Las personas detrás de tu administración de alquiler"
+            : isContratos
+              ? "Las personas detrás de tus contratos inmobiliarios"
+              : "Tus co-gestores expertos en Livendia";
 
   const lead = isCompraCompleta ? (
     <>
@@ -45,13 +67,40 @@ export function LivendiaExpertGestorsSection({
       Hernández — con experiencia real en compraventas entre particulares en {placeLabel}. Conócelos antes de
       contratar.
     </>
-  ) : (
+  ) : isAlquiler ? (
+    <>
+      No es un formulario anónimo: detrás de cada contrato LAU, temporada o habitación hay{" "}
+      <strong className="font-semibold text-[#1E293B]">co-gestores colegiados</strong> con experiencia real en
+      alquileres entre particulares en {placeLabel}.
+    </>
+  ) : isAdmin ? (
+    <>
+      No es un formulario anónimo: detrás de la administración de alquiler hay un{" "}
+      <strong className="font-semibold text-[#1E293B]">gestor dedicado</strong> y el criterio jurídico de Arnau
+      Martí y Daniel Hernández — operamos online en {placeLabel}.
+    </>
+  ) : isContratos ? (
+    <>
+      No es un formulario anónimo: detrás de arras, reservas y revisiones contractuales hay{" "}
+      <strong className="font-semibold text-[#1E293B]">profesionales colegiados</strong> con experiencia en
+      compraventa y alquiler en {placeLabel}.
+    </>
+  ) : variant === "pack-arras" ? (
     <>
       No es un formulario anónimo: detrás del pack arras + gestión documental hay{" "}
       <strong className="font-semibold text-[#1E293B]">profesionales colegiados</strong> con experiencia real en
       ventas entre particulares en {placeLabel}. Conoce a los socios fundadores de Livendia antes de contratar.
     </>
+  ) : (
+    <>
+      No es un formulario anónimo: detrás de cada servicio Livendia hay{" "}
+      <strong className="font-semibold text-[#1E293B]">co-gestores colegiados</strong> — Arnau Martí y Daniel
+      Hernández — con experiencia en compraventa y alquiler en {placeLabel}.
+    </>
   );
+
+  const useCompraBio = isCompraCompleta;
+  const useVentaBio = !useCompraBio && (isVentaCompleta || variant === "pack-arras" || isContratos);
 
   return (
     <section className={`border-t border-slate-200 bg-white px-4 py-16 sm:px-6 sm:py-20 ${className}`}>
@@ -93,9 +142,11 @@ export function LivendiaExpertGestorsSection({
                   ))}
                 </div>
                 <div className="mt-5 space-y-3 text-sm leading-relaxed text-[#475569] sm:text-base">
-                  {(isCompraCompleta ? founder.compraBio : founder.ventaBio).map((paragraph) => (
-                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                  ))}
+                  {(useCompraBio ? founder.compraBio : useVentaBio ? founder.ventaBio : founder.paragraphs.slice(0, 2)).map(
+                    (paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                    ),
+                  )}
                 </div>
                 <div
                   className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6"

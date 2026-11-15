@@ -172,6 +172,22 @@ export async function fulfillCheckoutSession(
     return { ok: true, orderId: inserted.id as string, created: true };
   }
 
+  const intakeId = session.metadata?.checkout_intake_id;
+  let orderIntake: Record<string, unknown> = {};
+  let fiscalDisclaimerAt: string | null = null;
+
+  if (intakeId) {
+    const { data: staged } = await supabase
+      .from("checkout_intake_staging")
+      .select("payload, disclaimer_accepted_at, service_slug")
+      .eq("id", intakeId)
+      .maybeSingle();
+    if (staged?.payload) {
+      orderIntake = { fiscalSeller: staged.payload as Record<string, unknown> };
+      fiscalDisclaimerAt = (staged.disclaimer_accepted_at as string) ?? null;
+    }
+  }
+
   const { data: inserted, error: insErr } = await supabase
     .from("orders")
     .insert({
@@ -182,6 +198,8 @@ export async function fulfillCheckoutSession(
       stripe_payment_intent_id: paymentIntentId,
       total_cents: session.amount_total ?? null,
       paid_at: new Date().toISOString(),
+      order_intake: orderIntake,
+      fiscal_disclaimer_accepted_at: fiscalDisclaimerAt,
     })
     .select("id")
     .single();

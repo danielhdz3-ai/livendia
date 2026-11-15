@@ -5,6 +5,11 @@ import {
 } from "@/lib/checkout-account";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceRoleClient } from "@/lib/supabase/service";
+import { CONSULTA_FISCAL_VENDEDOR_SLUG } from "@/lib/catalog.public";
+import {
+  resolveConsultaFiscalPriceCents,
+  validateFiscalSellerIntake,
+} from "@/lib/fiscal-seller-intake";
 import { getStripe } from "@/lib/stripe/server";
 import { NextResponse } from "next/server";
 
@@ -28,6 +33,8 @@ type CheckoutBody = {
   fullName?: string;
   phone?: string;
   utm?: Record<string, string>;
+  fiscalIntake?: unknown;
+  disclaimerAccepted?: boolean;
 };
 
 async function syncProfileFromForm(userId: string, input: CheckoutCustomerInput) {
@@ -149,6 +156,41 @@ export async function POST(req: Request) {
 
   const stripe = getStripe();
 
+  let checkoutIntakeId: string | undefined;
+  let unitAmount = service.price_cents;
+
+  if (service.slug === CONSULTA_FISCAL_VENDEDOR_SLUG) {
+    if (body.disclaimerAccepted !== true) {
+      return NextResponse.json({ error: "Debes aceptar el disclaimer fiscal." }, { status: 400 });
+    }
+    const parsed = validateFiscalSellerIntake(body.fiscalIntake);
+    if (!parsed.ok) {
+      return NextResponse.json({ error: parsed.error }, { status: 400 });
+    }
+    const cents = resolveConsultaFiscalPriceCents(parsed.data);
+    if (cents == null) {
+      return NextResponse.json(
+        { error: "Para no residentes fiscales, contacta con info@livendia.com." },
+        { status: 400 },
+      );
+    }
+    unitAmount = cents;
+    const { data: staged, error: stageErr } = await admin
+      .from("checkout_intake_staging")
+      .insert({
+        user_id: checkoutUserId,
+        service_slug: service.slug,
+        payload: parsed.data,
+        disclaimer_accepted_at: new Date().toISOString(),
+      })
+      .select("id")
+      .single();
+    if (stageErr || !staged?.id) {
+      return NextResponse.json({ error: "No se pudo guardar los datos del caso." }, { status: 500 });
+    }
+    checkoutIntakeId = staged.id as string;
+  }
+
   if (service.is_recurring) {
     const priceFromDb = typeof service.stripe_price_id === "string" ? service.stripe_price_id.trim() : "";
     const priceId =
@@ -215,7 +257,7 @@ export async function POST(req: Request) {
             name: service.name,
             metadata: { service_id: service.id },
           },
-          unit_amount: service.price_cents,
+          unit_amount: unitAmount,
         },
         quantity: 1,
       },
@@ -225,6 +267,7 @@ export async function POST(req: Request) {
     metadata: {
       supabase_user_id: checkoutUserId,
       service_id: service.id,
+      ...(checkoutIntakeId ? { checkout_intake_id: checkoutIntakeId } : {}),
       ...utmMeta,
     },
   });

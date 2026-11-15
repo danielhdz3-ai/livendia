@@ -3,9 +3,11 @@ import { Search } from "lucide-react";
 import { NavBarcelonaDropdown } from "@/components/nav-barcelona-dropdown";
 import { NavServicesDropdown } from "@/components/nav-services-dropdown";
 import { PublicHeaderMobileMenu } from "@/components/public-header-mobile-menu";
+import { ServiciosNormativaBannerGate } from "@/components/servicios-normativa-banner-gate";
 
 export function PublicHeader() {
   return (
+    <>
     <header className="sticky top-0 z-40 bg-[#1A4FBF] text-white shadow-md pt-[env(safe-area-inset-top,0px)]">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:gap-4 sm:px-6">
         <Link
@@ -93,5 +95,7 @@ export function PublicHeader() {
         </Link>
       </div>
     </header>
+    <ServiciosNormativaBannerGate />
+    </>
   );
 }

@@ -85,7 +85,7 @@ export default function ContratoArrasLocalIndexPage() {
           />
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

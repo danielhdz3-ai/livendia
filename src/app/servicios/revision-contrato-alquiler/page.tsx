@@ -492,7 +492,10 @@ export default async function RevisionContratoAlquilerPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="revision-contrato-alquiler"
+          serviceLabel="Revisión de contrato de alquiler"
+        />
 
         <SiteFooter />
       </div>

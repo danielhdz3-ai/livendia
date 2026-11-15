@@ -323,7 +323,10 @@ export default async function AcompanamientoReservaArrasPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="acompanamiento-reserva-arras"
+          serviceLabel="Acompañamiento hasta arras"
+        />
 
         <SiteFooter />
       </div>

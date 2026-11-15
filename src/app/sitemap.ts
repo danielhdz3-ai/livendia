@@ -143,6 +143,7 @@ const SERVICIO_SLUGS = [
   "acompanamiento-compra-parking-trastero-local",
   "servicio-completo-venta",
   "revision-documental-post-arras",
+  "consulta-fiscal-vendedor",
   "revision-contrato-alquiler",
   "revision-contrato-alquiler-local",
   "acompanamiento-reserva-arras-local",

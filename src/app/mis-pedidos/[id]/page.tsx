@@ -70,6 +70,7 @@ export default async function MisPedidoDetallePage({ params }: { params: Promise
       .from("order_deliverables")
       .select("id, title, message, file_name, file_path, created_at")
       .eq("order_id", id)
+      .eq("visible_to_client", true)
       .order("created_at", { ascending: false }),
   ]);
 

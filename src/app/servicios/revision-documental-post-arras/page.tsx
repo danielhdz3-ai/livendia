@@ -252,7 +252,10 @@ export default async function RevisionDocumentalPostArrasPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="revision-documental-post-arras"
+          serviceLabel="Revisión documental post-arras"
+        />
 
         <SiteFooter />
       </div>

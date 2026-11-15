@@ -331,7 +331,12 @@ export default async function ServicioAlquilerIntegralPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="servicio-alquiler-integral"
+          serviceLabel="Servicio de alquiler integral"
+          skipPasoAPaso
+          skipGestorPlatform
+        />
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>

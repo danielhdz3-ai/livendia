@@ -287,7 +287,10 @@ export default async function GestionDocumentalVendedorPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="gestion-documental-vendedor"
+          serviceLabel="Gestión documental vendedor"
+        />
 
         <SiteFooter />
       </div>

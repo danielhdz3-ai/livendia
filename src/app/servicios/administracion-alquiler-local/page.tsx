@@ -81,7 +81,7 @@ export default function AdministracionAlquilerLocalIndexPage() {
           />
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

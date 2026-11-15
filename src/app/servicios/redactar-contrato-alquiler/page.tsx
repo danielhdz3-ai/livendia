@@ -510,7 +510,11 @@ export default async function RedactarContratoAlquilerPage() {
             </div>
           </section>
 
-          <ServiceLandingSharedSections />
+          <ServiceLandingSharedSections
+            primarySlug="contrato-alquiler-lau"
+            serviceLabel="Redactar contrato de alquiler"
+            skipOnlineSinDesplazamientos
+          />
         </main>
         <SiteFooter variant="landing" />
       </div>

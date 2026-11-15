@@ -67,7 +67,7 @@ export default function RevisionContratoAlquilerLocalHubPage() {
           </ul>
         </div>
       </main>
-      <ServiceLandingSharedSections />
+      <ServiceLandingSharedSections skipNationalStandardModules />
       <SiteFooter variant="landing" />
     </div>
   );

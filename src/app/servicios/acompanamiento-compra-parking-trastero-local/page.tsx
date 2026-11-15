@@ -110,7 +110,7 @@ export default function AcompanamientoCompraParkingTrasteroLocalIndexPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

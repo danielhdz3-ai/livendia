@@ -1,5 +1,7 @@
 import { AdminDocumentCard } from "@/components/admin/admin-document-card";
+import { AdminFiscalConsultationPanel } from "@/components/admin/admin-fiscal-consultation-panel";
 import { AdminNotifyDeliveredForm } from "@/app/admin/pedidos/[id]/admin-notify-delivered";
+import { CONSULTA_FISCAL_VENDEDOR_SLUG } from "@/lib/catalog.public";
 import { AdminOrderStatusForm } from "@/app/admin/pedidos/[id]/admin-order-status";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { formatEuros } from "@/lib/admin-data";
@@ -24,7 +26,7 @@ export default async function AdminExpedienteOrderPage({
   const { data: order } = await supabase
     .from("orders")
     .select(
-      "id, status, created_at, total_cents, paid_at, stripe_session_id, client_notes, notes, client_id, services ( name, slug ), profiles ( full_name, phone, dni_nie )",
+      "id, status, created_at, total_cents, paid_at, stripe_session_id, client_notes, notes, order_intake, client_id, services ( name, slug ), profiles ( full_name, phone, dni_nie )",
     )
     .eq("id", id)
     .maybeSingle();
@@ -49,7 +51,11 @@ export default async function AdminExpedienteOrderPage({
   ]);
 
   const svc = order.services;
-  const sname = Array.isArray(svc) ? svc[0]?.name : (svc as { name?: string } | null)?.name;
+  const svcRow = Array.isArray(svc) ? svc[0] : (svc as { name?: string; slug?: string } | null);
+  const sname = svcRow?.name;
+  const slug = svcRow?.slug;
+  const intake = order.order_intake as Record<string, unknown> | null;
+  const fiscalDraft = (intake?.fiscal_memoria_draft as { html?: string } | undefined)?.html ?? null;
   const pr = order.profiles;
   const profile = Array.isArray(pr) ? pr[0] : pr;
 
@@ -97,6 +103,14 @@ export default async function AdminExpedienteOrderPage({
               <AdminNotifyDeliveredForm orderId={order.id as string} />
             </div>
           </div>
+
+          {slug === CONSULTA_FISCAL_VENDEDOR_SLUG ? (
+            <AdminFiscalConsultationPanel
+              orderId={order.id as string}
+              intake={(intake?.fiscalSeller as Record<string, unknown>) ?? null}
+              draftHtml={fiscalDraft}
+            />
+          ) : null}
 
           <section className={ADMIN_CARD_PAD}>
             <h2 className="text-lg font-semibold text-[#1E293B]">Documentos del expediente</h2>

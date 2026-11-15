@@ -7,7 +7,9 @@ import { ServiceCommissionCompareSection } from "@/components/service-commission
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
 import { ServiceLandingCrossSellSection } from "@/components/service-landing-cross-sell-section";
 import { ServiceLandingResourceLinksSection } from "@/components/service-landing-resource-links-section";
+import { ServiceNationalStandardModules } from "@/components/service-national-standard-modules";
 import { TrustReviewsBlock } from "@/components/trust-reviews-block";
+import { CATALOG_SERVICE_SEEDS, resolveServicePriceLabel, resolveServicePriceCents } from "@/lib/catalog.public";
 import {
   buildGestorWorkflowContent,
   inferGestorWorkflowService,
@@ -51,6 +53,13 @@ type ServiceLandingSharedSectionsProps = {
   skipResourceLinks?: boolean;
   /** Mockup panel cliente en alquiler/admin (si el main no lo incluye). */
   skipRentalPlatformShowcase?: boolean;
+  /** Etiqueta de precio para pasos nacionales (si no se infiere del catálogo). */
+  priceLabel?: string;
+  /** Bloques paso a paso + online + gestores expertos (fichas genéricas nacionales). */
+  skipNationalStandardModules?: boolean;
+  skipPasoAPaso?: boolean;
+  skipOnlineSinDesplazamientos?: boolean;
+  skipExpertGestors?: boolean;
 };
 
 /**
@@ -76,8 +85,23 @@ export function ServiceLandingSharedSections({
   skipCrossSell = false,
   skipResourceLinks = false,
   skipRentalPlatformShowcase = false,
+  priceLabel: priceLabelProp,
+  skipNationalStandardModules = false,
+  skipPasoAPaso = false,
+  skipOnlineSinDesplazamientos = false,
+  skipExpertGestors = false,
 }: ServiceLandingSharedSectionsProps) {
   const moduleProfile = resolveServiceLandingModuleProfile({ primarySlug, serviceLabel });
+  const seed = primarySlug ? CATALOG_SERVICE_SEEDS.find((s) => s.slug === primarySlug) : undefined;
+  const catalogService = seed
+    ? {
+        slug: seed.slug,
+        price_cents: resolveServicePriceCents({ slug: seed.slug, price_cents: seed.price_cents }) ?? seed.price_cents,
+      }
+    : null;
+  const priceLabel = priceLabelProp ?? resolveServicePriceLabel(catalogService, "—");
+  const showNationalModules = Boolean(primarySlug && !localLandingSlug && !skipNationalStandardModules);
+  const hideFoundersBanner = skipFoundersBanner || (showNationalModules && !skipExpertGestors);
   const showRentalPlatform =
     !skipRentalPlatformShowcase && (moduleProfile.kind === "alquiler" || moduleProfile.kind === "admin");
   const resolvedWorkflow =
@@ -90,6 +114,16 @@ export function ServiceLandingSharedSections({
 
   return (
     <>
+      {showNationalModules ? (
+        <ServiceNationalStandardModules
+          primarySlug={primarySlug!}
+          priceLabel={priceLabel}
+          serviceLabel={serviceLabel}
+          skipPasoAPaso={skipPasoAPaso}
+          skipOnlineSinDesplazamientos={skipOnlineSinDesplazamientos}
+          skipExpertGestors={skipExpertGestors}
+        />
+      ) : null}
       {!skipCommissionCompare && moduleProfile.showCommissionCompare ? (
         <ServiceCommissionCompareSection
           city={city}
@@ -140,7 +174,7 @@ export function ServiceLandingSharedSections({
           </div>
         </section>
       )}
-      {skipFoundersBanner ? null : <LivendiaFoundersBanner />}
+      {hideFoundersBanner ? null : <LivendiaFoundersBanner />}
       {skipGestorPlatform ? null : (
         <ServiceGestorPlatformSection
           workflow={resolvedWorkflow}

@@ -189,7 +189,7 @@ export default async function ReservaDeCompraPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections primarySlug="reserva-de-compra" serviceLabel="Reserva de compra" />
 
         <SiteFooter />
       </div>

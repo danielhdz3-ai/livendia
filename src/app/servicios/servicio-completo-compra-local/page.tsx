@@ -141,7 +141,7 @@ export default function ServicioCompletoCompraLocalIndexPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

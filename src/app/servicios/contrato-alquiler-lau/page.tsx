@@ -174,7 +174,10 @@ export default async function ContratoLAUPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="contrato-alquiler-lau"
+          serviceLabel="Contrato de alquiler LAU"
+        />
 
       <SiteFooter />
     </div>

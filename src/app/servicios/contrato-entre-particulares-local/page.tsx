@@ -76,7 +76,7 @@ export default function ContratoEntreParticularesLocalIndexPage() {
           />
         </section>
       </main>
-      <ServiceLandingSharedSections />
+      <ServiceLandingSharedSections skipNationalStandardModules />
       <SiteFooter />
     </div>
   );

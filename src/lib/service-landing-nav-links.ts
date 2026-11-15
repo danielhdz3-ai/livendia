@@ -46,6 +46,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
       { href: "/servicios/comprar-piso-sin-agencia", label: "Comprar sin agencia" },
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
+      { href: "/servicios/consulta-fiscal-vendedor", label: "Consulta fiscal vendedor (neto venta)" },
     ],
   },
   {

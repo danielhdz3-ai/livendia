@@ -76,7 +76,7 @@ export default function ServicioCompletoVentaLocalIndexPage() {
           />
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

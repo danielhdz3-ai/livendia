@@ -42,6 +42,15 @@ export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS = REVISION_DOCUMENTAL_PO
 export const REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL = `${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_EUR} €`;
 export const REVISION_DOCUMENTAL_POST_ARRAS_SLUG = "revision-documental-post-arras" as const;
 
+/** Consulta fiscal vendedor post-arras — tarifa base IVA incl. (hasta 2 titulares). */
+export const CONSULTA_FISCAL_VENDEDOR_PRICE_EUR = 195;
+export const CONSULTA_FISCAL_VENDEDOR_PRICE_CENTS = CONSULTA_FISCAL_VENDEDOR_PRICE_EUR * 100;
+export const CONSULTA_FISCAL_VENDEDOR_PRICE_LABEL = `${CONSULTA_FISCAL_VENDEDOR_PRICE_EUR} €`;
+export const CONSULTA_FISCAL_VENDEDOR_COMPLEX_PRICE_EUR = 245;
+export const CONSULTA_FISCAL_VENDEDOR_EXTRA_OWNER_EUR = 45;
+export const CONSULTA_FISCAL_VENDEDOR_SLUG = "consulta-fiscal-vendedor" as const;
+export const CONSULTA_FISCAL_VENDEDOR_PATH = "/servicios/consulta-fiscal-vendedor" as const;
+
 /** Gestor documental vendedor (arras → escritura) — precio comercial IVA incl. */
 export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR = 350;
 export const GESTION_DOCUMENTAL_VENDEDOR_PRICE_CENTS = GESTION_DOCUMENTAL_VENDEDOR_PRICE_EUR * 100;
@@ -164,6 +173,7 @@ export const ACOMPANAMIENTO_ALQUILER_SLUG = "acompanamiento-alquiler" as const;
 /** Precios fijos en BD (slug → céntimos). */
 export const FIXED_CATALOG_PRICE_CENTS: Record<string, number> = {
   [REVISION_DOCUMENTAL_POST_ARRAS_SLUG]: REVISION_DOCUMENTAL_POST_ARRAS_PRICE_CENTS,
+  [CONSULTA_FISCAL_VENDEDOR_SLUG]: CONSULTA_FISCAL_VENDEDOR_PRICE_CENTS,
   [RESERVA_DE_COMPRA_SLUG]: RESERVA_DE_COMPRA_PRICE_CENTS,
   [CONTRATO_ALQUILER_LAU_SLUG]: CONTRATO_ALQUILER_LAU_PRICE_CENTS,
   [CONTRATO_ALQUILER_TEMPORADA_SLUG]: CONTRATO_ALQUILER_TEMPORADA_PRICE_CENTS,
@@ -245,6 +255,24 @@ export const CATALOG_SERVICE_SEEDS: CatalogServiceSeed[] = [
       "Entrega en 3-5 días · Análisis en 48h",
     ],
     badge: "Pre-escritura",
+  },
+  {
+    slug: CONSULTA_FISCAL_VENDEDOR_SLUG,
+    name: "Cuánto te queda neto de tu venta",
+    description:
+      "Consulta tributaria orientativa para vendedores con arras firmadas o venta acordada: plusvalía municipal (IIVTNU), IRPF por titular, escenarios de exención y líquido aproximado. Memoria PDF con revisión humana y videollamada de 30–45 min.",
+    category: "compraventa",
+    price_cents: CONSULTA_FISCAL_VENDEDOR_PRICE_CENTS,
+    is_recurring: false,
+    features: [
+      "Plusvalía: método objetivo y real (se aplica la menor si procede)",
+      "IRPF orientativo por titular según % en escritura",
+      "Escenarios vivienda habitual, ≥65 años y reinversión",
+      "Efecto de la fecha de escritura (cambio coeficientes 1-dic-2026)",
+      "Memoria PDF + videollamada explicativa",
+      "Plazo 3–5 días laborables con documentación completa",
+    ],
+    badge: "Vendedor · Fiscal",
   },
   {
     slug: PACK_ARRAS_GESTION_VENDEDOR_SLUG,

@@ -78,7 +78,7 @@ export default function VentaPisoParticularSinAgenciaHubPage() {
 
         <VentaPisoParticularSinAgenciaLocalCityLinks variant="inline" />
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections skipNationalStandardModules />
 
       <SiteFooter />
     </div>

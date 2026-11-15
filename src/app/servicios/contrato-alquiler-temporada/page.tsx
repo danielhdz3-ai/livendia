@@ -196,7 +196,10 @@ export default async function ContratoTemporadaPage() {
           </div>
         </section>
       </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="contrato-alquiler-temporada"
+          serviceLabel="Contrato de alquiler de temporada"
+        />
 
       <SiteFooter />
     </div>

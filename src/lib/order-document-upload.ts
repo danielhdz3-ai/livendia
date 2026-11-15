@@ -37,6 +37,13 @@ export const ORDER_DOC_ALLOWED_TYPES = new Set([
   "recibos",
   "poder_notarial",
   "otro",
+  "contrato_arras",
+  "ibi_catastro",
+  "liquidacion_itp_compra",
+  "facturas_compra",
+  "reformas_mejoras",
+  "empadronamiento_habitual",
+  "saldo_hipoteca",
 ]);
 
 export const ORDER_DOC_TYPE_LABELS: Record<string, string> = {
@@ -52,6 +59,13 @@ export const ORDER_DOC_TYPE_LABELS: Record<string, string> = {
   recibos: "Recibos",
   poder_notarial: "Poder notarial",
   otro: "Otro",
+  contrato_arras: "Contrato de arras",
+  ibi_catastro: "IBI o certificado catastral (suelo)",
+  liquidacion_itp_compra: "Liquidación ITP/IVA de la compra",
+  facturas_compra: "Facturas notaría, registro y gestoría compra",
+  reformas_mejoras: "Facturas de reformas acreditadas",
+  empadronamiento_habitual: "Empadronamiento / vivienda habitual",
+  saldo_hipoteca: "Certificado saldo hipotecario (opcional)",
 };
 
 export const ORDER_DOC_UPLOADABLE_STATUSES = new Set([

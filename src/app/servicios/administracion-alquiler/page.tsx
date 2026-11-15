@@ -397,7 +397,12 @@ export default async function AdministracionAlquilerPage() {
           </div>
         </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="administracion-alquiler"
+          serviceLabel="Administración de alquiler"
+          skipPasoAPaso
+          skipGestorPlatform
+        />
 
 
         <SiteFooter />

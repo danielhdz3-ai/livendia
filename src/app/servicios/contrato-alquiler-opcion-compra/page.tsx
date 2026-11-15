@@ -244,7 +244,10 @@ export default async function ContratoAlquilerOpcionCompraPage() {
             </div>
           </section>
         </main>
-        <ServiceLandingSharedSections />
+        <ServiceLandingSharedSections
+          primarySlug="contrato-alquiler-opcion-compra"
+          serviceLabel="Alquiler con opción de compra"
+        />
         <SiteFooter />
       </div>
     </ServicePurchaseProvider>
