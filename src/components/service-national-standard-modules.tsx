@@ -45,6 +45,7 @@ export function ServiceNationalStandardModules({
           alwaysWithYouBody={bundle.meta.alwaysWithYouBody}
           serviceLine={bundle.meta.serviceLine}
           feeNote={bundle.meta.feeNote}
+          stepImageObjectFit="cover"
         />
       ) : null}
 

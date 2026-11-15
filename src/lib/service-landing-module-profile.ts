@@ -62,6 +62,7 @@ function slugKind(primarySlug?: string): ServiceLandingModuleKind {
     s.includes("comprar-piso") ||
     s.includes("venta-piso") ||
     s.includes("gestion-documental") ||
+    s.includes("consulta-fiscal-vendedor") ||
     s.includes("acompanamiento-reserva") ||
     s.includes("reserva-de-compra") ||
     s.includes("pack-comprador") ||

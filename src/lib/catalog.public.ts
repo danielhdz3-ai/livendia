@@ -582,6 +582,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   "revision-documental-post-arras": "/images/gestoria20.jpg",
   "revision-contrato-alquiler": "/images/gestora2.jpg",
   "gestion-documental-vendedor": "/images/gestoria20.jpg",
+  [CONSULTA_FISCAL_VENDEDOR_SLUG]: "/images/gestoria3.jpg",
   "pack-arras-gestion-documental-vendedor": "/images/servicio-completo-venta-hero.jpg",
   [PACK_COMPRADOR_BARCELONA_SLUG]: "/images/fundadores-oficina.png",
   "acompanamiento-compra-parking-trastero": "/images/contratos6.jpg",

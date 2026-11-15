@@ -22,8 +22,10 @@ import {
 } from "@/lib/catalog.public";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AlertCircle, CheckCircle2, FileText, Scale, XCircle } from "lucide-react";
+import { SERVICE_IMAGES } from "@/lib/catalog.public";
 
 export const revalidate = false;
 
@@ -69,30 +71,45 @@ export default async function ConsultaFiscalVendedorPage() {
       <div className="flex min-h-screen flex-col bg-[#F1F5F9]">
         <PublicHeader />
         <main className="flex-1">
-          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6">
-            <div className="mx-auto max-w-4xl">
-              <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">Vendedor · Post-arras</p>
-              <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-                Cuánto te queda neto de tu venta
-              </h1>
-              <p className="mt-5 text-lg text-blue-100">
-                Ya firmaste arras o tienes la venta acordada y quieres una estimación prudente de{" "}
-                <strong>plusvalía municipal</strong> e <strong>IRPF</strong> antes de ir a notaría — sin contratar el
-                servicio completo de gestión.
-              </p>
-              <p className="mt-4 text-4xl font-extrabold">
-                {priceLabel} <span className="text-lg font-normal text-blue-200">IVA incl. (hasta 2 titulares)</span>
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <ContratarServicioButton className="rounded-full bg-white px-8 py-4 font-bold text-[#1A4FBF]">
-                  Contratar consulta
-                </ContratarServicioButton>
-                <Link
-                  href="/servicios/servicio-completo-venta"
-                  className="inline-flex items-center rounded-full border-2 border-white/80 px-6 py-4 text-sm font-semibold hover:bg-white/10"
-                >
-                  ¿Necesitas gestión hasta escritura? {SERVICIO_COMPLETO_CV_PRICE_LABEL}
-                </Link>
+          <section className="border-b border-slate-200 bg-gradient-to-br from-[#1A4FBF] via-[#1A4FBF] to-[#2563EB] px-4 py-16 text-white sm:px-6 lg:py-20">
+            <div className="mx-auto max-w-6xl">
+              <div className="grid items-center gap-10 lg:grid-cols-2">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">Vendedor · Post-arras</p>
+                  <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl lg:text-5xl">
+                    Cuánto te queda neto de tu venta
+                  </h1>
+                  <p className="mt-5 text-lg leading-relaxed text-blue-100 sm:text-xl">
+                    Ya firmaste arras o tienes la venta acordada y quieres una estimación prudente de{" "}
+                    <strong>plusvalía municipal</strong> e <strong>IRPF</strong> antes de ir a notaría — sin contratar
+                    el servicio completo de gestión.
+                  </p>
+                  <p className="mt-6 flex flex-wrap items-baseline gap-2">
+                    <span className="text-4xl font-extrabold sm:text-5xl">{priceLabel}</span>
+                    <span className="text-lg text-blue-200">IVA incl. (hasta 2 titulares)</span>
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <ContratarServicioButton className="rounded-full bg-white px-8 py-4 font-bold text-[#1A4FBF] shadow-lg hover:bg-slate-50">
+                      Contratar consulta
+                    </ContratarServicioButton>
+                    <Link
+                      href="/servicios/servicio-completo-venta"
+                      className="inline-flex items-center rounded-full border-2 border-white/80 px-6 py-4 text-sm font-semibold hover:bg-white/10"
+                    >
+                      ¿Necesitas gestión hasta escritura? {SERVICIO_COMPLETO_CV_PRICE_LABEL}
+                    </Link>
+                  </div>
+                </div>
+                <div className="relative h-[280px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/20 sm:h-[340px] lg:h-[400px]">
+                  <Image
+                    src={SERVICE_IMAGES[CONSULTA_FISCAL_VENDEDOR_SLUG] ?? "/images/gestoria3.jpg"}
+                    alt="Gestor Livendia revisando documentación fiscal de una venta entre particulares"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </section>
