@@ -429,7 +429,7 @@ export async function GestionDocumentalVendedorLocalSeoLanding({
         <ServiceLandingSharedSections
           city={config.city}
           serviceLabel="Gestión documental vendedor"
-          primarySlug="servicio-completo-venta"
+          primarySlug="gestion-documental-vendedor"
           localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
         />
 

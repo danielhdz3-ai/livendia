@@ -438,6 +438,13 @@ export default async function ContratoDeArrasPage() {
                     Ver detalles del pack
                   </Link>
                 </div>
+                <p className="mt-6 text-sm text-[#64748b]">
+                  ¿Vendes? Estima tu neto con la{" "}
+                  <Link href="/servicios/consulta-fiscal-vendedor" className="font-semibold text-[#1A4FBF] hover:underline">
+                    consulta fiscal del vendedor
+                  </Link>{" "}
+                  (plusvalía e IRPF orientativos, memoria PDF).
+                </p>
               </div>
             </div>
           </div>

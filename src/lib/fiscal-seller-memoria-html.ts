@@ -1,6 +1,8 @@
 import type { FiscalSellerCalcResult } from "@/lib/fiscal-seller-calculator";
 import { FISCAL_SELLER_DISCLAIMER } from "@/lib/fiscal-seller-disclaimer";
+export { renderFiscalMemoriaDocumentHtml } from "@/lib/fiscal-seller-memoria-render";
 
+/** Panel gestor — versión compacta legado. */
 export function renderFiscalMemoriaHtml(result: FiscalSellerCalcResult, meta: { municipality: string; escrituraDate: string }): string {
   const ownerRows = result.owners
     .map(

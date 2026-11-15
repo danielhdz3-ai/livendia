@@ -57,16 +57,18 @@ export const MUNICIPAL_TAX_RATES: MunicipalTaxRate[] = [
   },
 ];
 
-/** Vigencia hasta 30-nov-2026 (coeficientes clásicos IIVTNU). Pendiente contraste BOE. */
-const COEF_HASTA_2026_11_30: number[] = [
-  0, 0.14, 0.13, 0.15, 0.17, 0.17, 0.16, 0.12, 0.1, 0.09, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08,
-  0.08, 0.08,
+/**
+ * Barcelona — tabla calculadora_fiscal_vendedor.xlsx (hoja Parametros).
+ * pending_boe: contrastar ordenanza / BOE antes de memorias definitivas.
+ */
+const COEF_BARCELONA_HASTA_2026_11_30: number[] = [
+  0.05, 0.15, 0.14, 0.14, 0.16, 0.18, 0.19, 0.2, 0.19, 0.15, 0.12, 0.1, 0.09, 0.09, 0.09, 0.09, 0.1, 0.13, 0.17, 0.23,
+  0.4,
 ];
 
-/** Vigencia desde 1-dic-2026 (RDL 29/2026 — valores provisionales hasta confirmación). */
-const COEF_DESDE_2026_12_01: number[] = [
-  0, 0.14, 0.13, 0.12, 0.11, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
-  0.05,
+const COEF_BARCELONA_DESDE_2026_12_01: number[] = [
+  0.05, 0.15, 0.14, 0.14, 0.16, 0.18, 0.19, 0.2, 0.19, 0.15, 0.12, 0.1, 0.09, 0.09, 0.09, 0.09, 0.1, 0.11, 0.13, 0.2,
+  0.3,
 ];
 
 export const TENURE_COEFFICIENT_SCHEDULES: TenureCoefficientSchedule[] = [
@@ -75,7 +77,7 @@ export const TENURE_COEFFICIENT_SCHEDULES: TenureCoefficientSchedule[] = [
     label: "Escritura hasta 30-nov-2026",
     appliesWhenEscrituraBefore: "2026-11-30",
     verification: "pending_boe",
-    coefficientsByYear: COEF_HASTA_2026_11_30,
+    coefficientsByYear: COEF_BARCELONA_HASTA_2026_11_30,
   },
   {
     id: "desde-2026-12-01",
@@ -83,7 +85,7 @@ export const TENURE_COEFFICIENT_SCHEDULES: TenureCoefficientSchedule[] = [
     appliesWhenEscrituraFrom: "2026-12-01",
     appliesWhenEscrituraBefore: "2099-12-31",
     verification: "pending_boe",
-    coefficientsByYear: COEF_DESDE_2026_12_01,
+    coefficientsByYear: COEF_BARCELONA_DESDE_2026_12_01,
   },
 ];
 

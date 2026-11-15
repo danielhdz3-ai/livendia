@@ -241,7 +241,11 @@ export default async function GestionDocumentalVendedorPage() {
                   ))}
                 </ul>
                 <p className="mt-4 text-sm text-[#475569]">
-                  Si eres <strong>comprador</strong>, valora la{" "}
+                  Si ya tienes arras y quieres saber el <strong>líquido neto</strong> tras plusvalía e IRPF, mira la{" "}
+                  <Link href="/servicios/consulta-fiscal-vendedor" className="font-semibold text-[#1A4FBF] hover:underline">
+                    consulta fiscal del vendedor
+                  </Link>
+                  . Si eres <strong>comprador</strong>, valora la{" "}
                   <Link
                     href="/servicios/revision-documental-post-arras"
                     className="font-semibold text-[#1A4FBF] hover:underline"

@@ -343,7 +343,11 @@ export default async function ServicioCompletoVentaPage() {
                 <p className="mt-2 leading-relaxed text-[#475569]">
                   El servicio cubre asesoramiento, redacción de contratos privados y coordinación documental. Las tasas
                   notariales, registrales e impuestos de la transmisión (por ejemplo, plusvalía municipal o IRPF en la
-                  venta) son independientes y te las explicamos para que no haya sorpresas.
+                  venta) son independientes. Si solo quieres el neto aproximado antes de notaría, existe la{" "}
+                  <Link href="/servicios/consulta-fiscal-vendedor" className="font-semibold text-[#1A4FBF] hover:underline">
+                    consulta fiscal del vendedor
+                  </Link>{" "}
+                  (memoria + videollamada).
                 </p>
               </div>
             </div>

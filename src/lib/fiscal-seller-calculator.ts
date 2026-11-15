@@ -17,6 +17,8 @@ export type FiscalSellerCalcInput = {
   improvements: number;
   amortization: number;
   cadastralSoilValue: number;
+  /** Si se indica valor catastral total, % suelo = suelo/total (como el Excel). */
+  cadastralTotalValue?: number;
   cadastralSoilPercent: number; // 0-100
   mortgageBalance: number;
   otherSaleCosts?: number;
@@ -72,9 +74,12 @@ export function computePlusvalia(input: FiscalSellerCalcInput): PlusvaliaBreakdo
 
   const objective = soil * coefficient * tipo;
 
-  const soilShare = Math.min(100, Math.max(0, input.cadastralSoilPercent)) / 100;
-  const increment = (input.salePrice - input.acquisitionPrice) * soilShare;
-  const real = increment > 0 ? increment * tipo : 0;
+  const soilShare =
+    input.cadastralTotalValue && input.cadastralTotalValue > 0
+      ? input.cadastralSoilValue / input.cadastralTotalValue
+      : Math.min(100, Math.max(0, input.cadastralSoilPercent)) / 100;
+  const increment = input.salePrice - input.acquisitionPrice;
+  const real = increment > 0 ? increment * soilShare * tipo : 0;
 
   const payable = increment > 0 ? Math.min(objective, real) : 0;
 
@@ -136,12 +141,17 @@ export function computeFiscalSellerEstimate(input: FiscalSellerCalcInput): Fisca
       exemptAmount = grossGain;
       grossGain = 0;
       assumptions.push("Escenario: exención orientativa por titular ≥65 años con vivienda habitual (sujeto a acreditación).");
-    } else if (input.reinvestmentAmount && input.amountObtained && input.amountObtained > 0) {
-      const ratio = Math.min(1, input.reinvestmentAmount / input.amountObtained);
+    } else if (input.reinvestmentAmount && input.reinvestmentAmount > 0) {
+      const amountObtainedOwner =
+        input.amountObtained != null && input.amountObtained > 0
+          ? input.amountObtained * share
+          : (input.salePrice - input.mortgageBalance) * share;
+      const reinvestOwner = input.reinvestmentAmount * share;
+      const ratio = amountObtainedOwner > 0 ? Math.min(1, reinvestOwner / amountObtainedOwner) : 0;
       exemptAmount = round2(totalGain * share * ratio);
       grossGain = round2(totalGain * share - exemptAmount);
       assumptions.push(
-        `Reinversión orientativa: ${formatEur(input.reinvestmentAmount)} sobre ${formatEur(input.amountObtained)} → exención parcial ${(ratio * 100).toFixed(0)} %.`,
+        `Reinversión orientativa: ${formatEur(reinvestOwner)} sobre cantidad obtenida ${formatEur(amountObtainedOwner)} → exención parcial ${(ratio * 100).toFixed(0)} %.`,
       );
     }
 
@@ -189,25 +199,50 @@ function formatEur(n: number): string {
   return `${n.toFixed(2).replace(".", ",")} €`;
 }
 
-/** Caso de referencia (sustituir expected al contrastar calculadora_fiscal_vendedor.xlsx). */
+export type FiscalSellerValidationIssue = { field: string; message: string };
+
+/** Validaciones panel gestor — sin exposición pública. */
+export function validateFiscalSellerInput(input: FiscalSellerCalcInput): FiscalSellerValidationIssue[] {
+  const issues: FiscalSellerValidationIssue[] = [];
+  const pct = input.owners.reduce((s, o) => s + o.percent, 0);
+  if (Math.abs(pct - 100) > 0.01) {
+    issues.push({ field: "owners", message: `Los % en escritura suman ${pct} %; deben sumar 100 %.` });
+  }
+  if (input.acquisitionDate && input.escrituraDate && input.acquisitionDate >= input.escrituraDate) {
+    issues.push({ field: "escrituraDate", message: "La fecha de escritura debe ser posterior a la adquisición." });
+  }
+  if (input.cadastralTotalValue && input.cadastralSoilValue > input.cadastralTotalValue) {
+    issues.push({
+      field: "cadastralSoilValue",
+      message: "El valor catastral del suelo no puede superar el valor catastral total.",
+    });
+  }
+  const soilShare = input.cadastralSoilPercent / 100;
+  if (!input.cadastralTotalValue && soilShare > 1) {
+    issues.push({ field: "cadastralSoilPercent", message: "El % de suelo en catastro no puede superar 100 %." });
+  }
+  return issues;
+}
+
+/** Caso ficticio hoja Datos + Resumen de calculadora_fiscal_vendedor.xlsx */
 export const FISCAL_SELLER_EXCEL_FIXTURE: FiscalSellerCalcInput = {
   municipalityId: "barcelona",
-  escrituraDate: "2026-11-15",
-  acquisitionDate: "2016-03-01",
-  salePrice: 285_000,
-  acquisitionPrice: 165_000,
-  saleCosts: 2_500,
-  acquisitionCosts: 18_500,
-  improvements: 12_000,
+  escrituraDate: "2026-12-15",
+  acquisitionDate: "2009-03-15",
+  salePrice: 320_000,
+  acquisitionPrice: 180_000,
+  saleCosts: 3_500,
+  acquisitionCosts: 16_000,
+  improvements: 0,
   amortization: 0,
-  cadastralSoilValue: 52_800,
-  cadastralSoilPercent: 58,
-  mortgageBalance: 42_000,
+  cadastralSoilValue: 40_000,
+  cadastralTotalValue: 70_000,
+  cadastralSoilPercent: (40_000 / 70_000) * 100,
+  mortgageBalance: 90_000,
   owners: [
-    { name: "Titular A", percent: 60, age65OrOver: false, habitualHome: true },
-    { name: "Titular B", percent: 40, age65OrOver: false, habitualHome: true },
+    { name: "Titular A (ejemplo)", percent: 50, age65OrOver: false, habitualHome: true },
+    { name: "Titular B (ejemplo)", percent: 50, age65OrOver: false, habitualHome: true },
   ],
   reinvestmentAmount: 0,
-  amountObtained: 285_000,
   otherSavingsIncome: 0,
 };

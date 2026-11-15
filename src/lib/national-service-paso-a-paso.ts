@@ -28,11 +28,36 @@ import {
   buildConsultaFiscalVendedorSteps,
   CONSULTA_FISCAL_VENDEDOR_PROCESS,
 } from "@/lib/consulta-fiscal-vendedor-paso-a-paso";
+import {
+  ACOMPANAMIENTO_ALQUILER_PROCESS,
+  ACOMPANAMIENTO_RESERVA_ARRAS_PROCESS,
+  buildAcompanamientoAlquilerSteps,
+  buildAcompanamientoReservaArrasSteps,
+  buildContratoAlquilerLauSteps,
+  buildContratoArrasPenitencialesSteps,
+  buildContratoOpcionCompraSteps,
+  buildHabitacionNationalSteps,
+  buildParkingTrasteroSteps,
+  buildReservaDeCompraSteps,
+  buildRevisionContratoAlquilerSteps,
+  buildRevisionDocumentalPostArrasSteps,
+  buildTemporadaNationalSteps,
+  CONTRATO_ARRAS_PROCESS,
+  CONTRATO_LAU_PROCESS,
+  CONTRATO_OPCION_COMPRA_PROCESS,
+  HABITACION_NATIONAL_PROCESS,
+  PARKING_TRASTERO_PROCESS,
+  RESERVA_DE_COMPRA_PROCESS,
+  REVISION_CONTRATO_ALQUILER_PROCESS,
+  REVISION_POST_ARRAS_PROCESS,
+  TEMPORADA_NATIONAL_PROCESS,
+} from "@/lib/national-dedicated-paso-a-paso";
 import type { VenderSinAgenciaProcessStep } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
 import {
   buildVenderSinAgenciaBarcelonaSteps,
   VENDER_SIN_AGENCIA_BARCELONA_PROCESS,
 } from "@/lib/vender-piso-sin-agencia-barcelona-modules";
+import { SIN_AGENCIA_STEP_IMAGE_POOL } from "@/lib/sin-agencia-paso-a-paso-image-pools";
 import type { ServiceLandingModuleKind } from "@/lib/service-landing-module-profile";
 
 export type NationalExpertGestorsVariant =
@@ -65,6 +90,13 @@ export type NationalServicePasoAPasoBundle = {
 };
 
 const CITY = "toda España";
+
+function fallbackPriceFromSlug(primarySlug: string, priceLabel: string): string {
+  if (priceLabel !== "—") return priceLabel;
+  if (primarySlug.includes("arras")) return CONTRATO_ARRAS_LOCAL_PRICE_LABEL;
+  if (primarySlug.includes("lau")) return CONTRATO_ALQUILER_LAU_PRICE_LABEL;
+  return priceLabel;
+}
 
 function nationalizeVentaMeta(priceLabel: string, serviceLine: string): NationalPasoAPasoMeta {
   return {
@@ -119,29 +151,44 @@ function genericContratoMeta(priceLabel: string, serviceLabel: string): National
   };
 }
 
+/** Último recurso: textos neutros (nunca cuerpos de venta Barcelona con cédula/ITE). */
 function buildGenericContratoSteps(
   priceLabel: string,
   serviceLabel: string,
 ): readonly VenderSinAgenciaProcessStep[] {
-  const imgs = buildVenderSinAgenciaBarcelonaSteps(priceLabel, "barcelona").map((s) => s.imageSrc);
+  const bodies = [
+    "Primera llamada o WhatsApp: nos cuentas el caso, plazos y qué documentación ya tienes. El gestor aclara alcance del servicio y qué no incluye el precio.",
+    `Contratas ${serviceLabel.toLowerCase()} (${priceLabel} IVA incl.) y se abre expediente en panel Livendia.`,
+    "Subes la documentación que pide el checklist del servicio: contratos, DNI, datos del inmueble u otros PDF según el producto contratado.",
+    "El gestor elabora el trabajo contratado (contrato, revisión o informe) y lo deja en el panel para tu revisión.",
+    "Entrega final, dudas hasta el hito acordado y orientación sobre el siguiente servicio Livendia si lo necesitas.",
+  ];
   const titles = [
-    "Llamada con tu gestor: le explicas el caso",
+    "Llamada con tu gestor: alcance del servicio",
     `Contratas ${serviceLabel.toLowerCase()} online`,
     "Subes documentación al panel",
-    "Preparamos el trabajo (contrato, revisión o informe)",
-    "Entrega, firma y asesoramiento posterior",
+    "Tramitamos el trabajo contratado",
+    "Entrega y asesoramiento posterior",
   ];
-  return titles.map((title, i) => {
-    const base = buildVenderSinAgenciaBarcelonaSteps(priceLabel, "barcelona")[Math.min(i, 5)]!;
-    return {
-      ...base,
-      step: i + 1,
-      title,
-      description: base.description.replace(/Barcelona/g, CITY).replace(/Catalunya/g, "tu comunidad autónoma"),
-      imageSrc: imgs[i] ?? base.imageSrc,
-      imageAlt: `${serviceLabel} — paso ${i + 1} Livendia`,
-    };
-  });
+  return titles.map((title, i) => ({
+    step: i + 1,
+    title,
+    description: bodies[i]!,
+    howWeDoIt: [
+      "Gestor humano asignado",
+      "100 % online",
+      "Expediente en panel Livendia",
+      "Precio publicado en web",
+    ],
+    checklist: [
+      `${priceLabel} IVA incl.`,
+      "Sin comisión sobre el precio del inmueble",
+      CITY,
+      serviceLabel,
+    ],
+    imageSrc: SIN_AGENCIA_STEP_IMAGE_POOL[i % SIN_AGENCIA_STEP_IMAGE_POOL.length]!,
+    imageAlt: `${serviceLabel} — paso ${i + 1} Livendia`,
+  }));
 }
 
 function expertVariantForSlug(slug: string, kind: ServiceLandingModuleKind): NationalExpertGestorsVariant {
@@ -243,20 +290,133 @@ export function resolveNationalServicePasoAPaso(
   if (primarySlug === "revision-documental-post-arras") {
     return {
       meta: {
-        eyebrow: "Qué incluye la revisión post-arras",
-        title: "Cómo funciona la revisión documental antes de escriturar, paso a paso",
-        intro:
-          "Cinco fases con el mismo gestor comprador Livendia: subes contrato y documentación; analizamos comunidad, ITE, registro y urbanismo; entregamos informe y llamada de veredicto.",
-        alwaysWithYouTitle: "Tu expediente en el panel",
-        alwaysWithYouBody:
-          "Actas, notas del gestor e informe PDF en tu área de cliente Livendia antes de ir a notaría.",
-        serviceLine: "Revisión documental post-arras · Livendia",
+        ...REVISION_POST_ARRAS_PROCESS,
         feeNote: `${REVISION_DOCUMENTAL_POST_ARRAS_PRICE_LABEL} IVA incl. · análisis en 48 h · 100 % online.`,
       },
-      steps: buildGenericContratoSteps(priceLabel, "Revisión documental post-arras"),
+      steps: buildRevisionDocumentalPostArrasSteps(priceLabel),
       expertVariant: "servicio-completo-compra",
       onlineModule: "gestoria-digital",
       gestoriaFocus: "compraventa",
+    };
+  }
+
+  if (primarySlug === "contrato-arras-penitenciales" || primarySlug === "contrato-arras-confirmatorias") {
+    return {
+      meta: { ...CONTRATO_ARRAS_PROCESS, feeNote: `${fallbackPriceFromSlug(primarySlug, priceLabel)} IVA incl. · 48-72 h laborables · ${CITY}.` },
+      steps: buildContratoArrasPenitencialesSteps(fallbackPriceFromSlug(primarySlug, priceLabel)),
+      expertVariant: "contratos",
+      onlineModule: "arras-gestor",
+      gestoriaFocus: "compraventa",
+    };
+  }
+
+  if (primarySlug === "contrato-alquiler-lau") {
+    const p = fallbackPriceFromSlug(primarySlug, priceLabel);
+    return {
+      meta: { ...CONTRATO_LAU_PROCESS, feeNote: `${p} IVA incl. · redacción LAU · ${CITY}.` },
+      steps: buildContratoAlquilerLauSteps(p),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
+    };
+  }
+
+  if (primarySlug === "contrato-alquiler-habitacion") {
+    const p = fallbackPriceFromSlug(primarySlug, priceLabel);
+    return {
+      meta: {
+        eyebrow: HABITACION_NATIONAL_PROCESS.eyebrow,
+        title: HABITACION_NATIONAL_PROCESS.title,
+        intro: HABITACION_NATIONAL_PROCESS.intro,
+        alwaysWithYouTitle: HABITACION_NATIONAL_PROCESS.alwaysWithYouTitle,
+        alwaysWithYouBody: HABITACION_NATIONAL_PROCESS.alwaysWithYouBody,
+        serviceLine: "Contrato alquiler habitación · Livendia",
+        feeNote: `${p} IVA incl. · ${CITY}.`,
+      },
+      steps: buildHabitacionNationalSteps(p),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
+    };
+  }
+
+  if (primarySlug === "contrato-alquiler-temporada") {
+    const p = fallbackPriceFromSlug(primarySlug, priceLabel);
+    return {
+      meta: {
+        eyebrow: TEMPORADA_NATIONAL_PROCESS.eyebrow,
+        title: TEMPORADA_NATIONAL_PROCESS.title,
+        intro: TEMPORADA_NATIONAL_PROCESS.intro,
+        alwaysWithYouTitle: TEMPORADA_NATIONAL_PROCESS.alwaysWithYouTitle,
+        alwaysWithYouBody: TEMPORADA_NATIONAL_PROCESS.alwaysWithYouBody,
+        serviceLine: "Contrato alquiler temporada · Livendia",
+        feeNote: `${p} IVA incl. · ${CITY}.`,
+      },
+      steps: buildTemporadaNationalSteps(p),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
+    };
+  }
+
+  if (primarySlug === "contrato-alquiler-opcion-compra") {
+    const p = fallbackPriceFromSlug(primarySlug, priceLabel);
+    return {
+      meta: { ...CONTRATO_OPCION_COMPRA_PROCESS, feeNote: `${p} IVA incl. · inventario incluido · ${CITY}.` },
+      steps: buildContratoOpcionCompraSteps(p),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
+    };
+  }
+
+  if (primarySlug === "acompanamiento-reserva-arras") {
+    return {
+      meta: { ...ACOMPANAMIENTO_RESERVA_ARRAS_PROCESS, feeNote: `${priceLabel} IVA incl. · reserva hasta arras · ${CITY}.` },
+      steps: buildAcompanamientoReservaArrasSteps(priceLabel),
+      expertVariant: "servicio-completo-compra",
+      onlineModule: "gestoria-digital",
+      gestoriaFocus: "compraventa",
+    };
+  }
+
+  if (primarySlug === "reserva-de-compra") {
+    return {
+      meta: { ...RESERVA_DE_COMPRA_PROCESS, feeNote: `${priceLabel} IVA incl. · solo documento reserva · ${CITY}.` },
+      steps: buildReservaDeCompraSteps(priceLabel),
+      expertVariant: "servicio-completo-compra",
+      onlineModule: "gestoria-digital",
+      gestoriaFocus: "compraventa",
+    };
+  }
+
+  if (primarySlug === "acompanamiento-alquiler") {
+    return {
+      meta: { ...ACOMPANAMIENTO_ALQUILER_PROCESS, feeNote: `${priceLabel} IVA incl. · inquilino · ${CITY}.` },
+      steps: buildAcompanamientoAlquilerSteps(priceLabel),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
+    };
+  }
+
+  if (primarySlug === "acompanamiento-compra-parking-trastero") {
+    return {
+      meta: { ...PARKING_TRASTERO_PROCESS, feeNote: `${priceLabel} IVA incl. · anejos · ${CITY}.` },
+      steps: buildParkingTrasteroSteps(priceLabel),
+      expertVariant: "servicio-completo-compra",
+      onlineModule: "gestoria-digital",
+      gestoriaFocus: "compraventa",
+    };
+  }
+
+  if (primarySlug === "revision-contrato-alquiler") {
+    return {
+      meta: { ...REVISION_CONTRATO_ALQUILER_PROCESS, feeNote: `${priceLabel} IVA incl. · 24-48 h · ${CITY}.` },
+      steps: buildRevisionContratoAlquilerSteps(priceLabel),
+      expertVariant: "alquiler",
+      onlineModule: "alquiler-gestor",
+      gestoriaFocus: "alquiler",
     };
   }
 

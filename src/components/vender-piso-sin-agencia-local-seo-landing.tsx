@@ -554,6 +554,7 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
           skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}
           skipCommissionCompare
+          skipPasoAPaso={isBarcelonaExtended}
         />
 
 

@@ -495,9 +495,10 @@ export async function AdministracionAlquilerTemporadaLocalSeoLanding({
         <ServiceLandingSharedSections
           city={config.city}
           serviceLabel="Administración alquiler temporada"
-          primarySlug="administracion-alquiler"
+          primarySlug="administracion-alquiler-temporada"
           localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
           skipTestimonials
+          skipPasoAPaso
         />
 
         <SiteFooter variant="landing" />

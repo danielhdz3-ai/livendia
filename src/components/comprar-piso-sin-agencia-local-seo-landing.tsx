@@ -553,6 +553,7 @@ export async function ComprarPisoSinAgenciaLocalSeoLanding({
           platformServiceKind="compra"
           skipGestorPlatform
           skipFoundersBanner={isBarcelonaExtended}
+          skipPasoAPaso={isBarcelonaExtended}
         />
 
         <SiteFooter />

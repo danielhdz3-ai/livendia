@@ -15,7 +15,7 @@
     "audit:catalog": "node scripts/audit-marketing-no-live-catalog.mjs",
     "audit:api": "node scripts/audit-dangerous-api.mjs",
     "audit:middleware": "node scripts/audit-middleware-cost.mjs",
-    "test:fiscal-calculator": "node scripts/test-fiscal-seller-calculator.mjs"
+    "test:fiscal-calculator": "npx tsx scripts/run-fiscal-seller-calculator-tests.ts"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

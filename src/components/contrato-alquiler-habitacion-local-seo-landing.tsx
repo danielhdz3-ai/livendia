@@ -522,6 +522,7 @@ export async function ContratoAlquilerHabitacionLocalSeoLanding({
           primarySlug="contrato-alquiler-habitacion"
           localLandingSlug={config.path.split("/").filter(Boolean).at(-1)}
           skipTestimonials
+          skipPasoAPaso
         />
 
         <SiteFooter />
