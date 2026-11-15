@@ -1,8 +1,6 @@
 import { PublicHeader } from "@/components/public-header";
 import { ServiceLandingSharedSections } from "@/components/service-landing-shared-sections";
 import { SiteFooter } from "@/components/site-footer";
-import { HomeCoverageCities } from "@/components/home-coverage-cities";
-import { SeoCityPrimaryLandingsSection } from "@/components/seo-city-primary-landings-section";
 import { getMarketingPublicServices, groupByCategory } from "@/lib/catalog";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/site-default-description";
 import { getSiteUrl } from "@/lib/site-url";
@@ -32,8 +30,12 @@ export default async function ServiciosPage() {
             <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">Servicios</h1>
             <p className="mt-3 max-w-2xl text-base text-blue-100 sm:text-lg">
               Consulta toda la información de cada servicio y, cuando quieras, contrata con{" "}
-              <strong>pago seguro por tarjeta</strong>. Operamos online en Madrid, Valencia, Barcelona y toda España
-              con los mismos precios y gestor dedicado.
+              <strong>pago seguro por tarjeta</strong>. Los mismos precios y el mismo gestor en toda España. Si buscas
+              información por ciudad, visita el{" "}
+              <Link href="/ciudades" className="font-semibold text-white underline decoration-white/50 hover:decoration-white">
+                hub de ciudades
+              </Link>
+              .
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -69,9 +71,6 @@ export default async function ServiciosPage() {
           )}
         </div>
 
-        <SeoCityPrimaryLandingsSection variant="compact" id="servicios-compraventa-ciudad" />
-
-        <HomeCoverageCities variant="compact" />
       </main>
         <ServiceLandingSharedSections skipCoverage />
 

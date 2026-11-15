@@ -1,6 +1,6 @@
 /**
  * Landings públicas de servicio (/servicios/…) enlazadas desde la navegación.
- * Mantener alineado con las page.tsx de cada servicio (excl. índices locales SEO).
+ * Solo fichas genéricas (nacionales); landings SEO por ciudad viven en /ciudades, hubs y rutas locales.
  */
 
 export type ServiceLandingNavLink = {
@@ -24,46 +24,10 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
       { href: "/servicios/contrato-de-arras", label: "Guía de contrato de arras" },
       { href: "/servicios/contrato-arras-penitenciales", label: "Arras penitenciales" },
       { href: "/servicios/acompanamiento-reserva-arras", label: "Acompañamiento hasta arras" },
-      { href: "/servicios/acompanamiento-reserva-arras-local", label: "Reserva-arras por ciudad" },
       { href: "/servicios/acompanamiento-compra-parking-trastero", label: "Compra parking o trastero" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/madrid", label: "Pack arras + gestión Madrid" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona", label: "Pack arras + gestión Barcelona" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-eixample", label: "Pack arras Eixample" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-les-corts", label: "Pack arras Les Corts" },
-      { href: "/servicios/pack-comprador-barcelona", label: "Pack comprador Barcelona (395 €)" },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/hospitalet-de-llobregat",
-        label: "Pack arras L'Hospitalet",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/sant-cugat-del-valles",
-        label: "Pack arras Sant Cugat",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/sabadell",
-        label: "Pack arras Sabadell",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-sant-marti",
-        label: "Pack arras Sant Martí",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/esplugues-de-llobregat",
-        label: "Pack arras Esplugues",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/sant-joan-despi",
-        label: "Pack arras Sant Joan Despí",
-      },
-      {
-        href: "/servicios/pack-arras-gestion-documental-vendedor/barcelona-sarria-sant-gervasi",
-        label: "Pack arras Sarrià-Sant Gervasi",
-      },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/valencia", label: "Pack arras + gestión Valencia" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/malaga", label: "Pack arras + gestión Málaga" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor/sevilla", label: "Pack arras + gestión Sevilla" },
-      { href: "/servicios/pack-arras-gestion-documental-vendedor", label: "Pack arras + gestión (495 €)" },
-      { href: "/precios", label: "Todos los packs y precios" },
+      { href: "/servicios/pack-arras-gestion-documental-vendedor", label: "Pack arras + gestión vendedor (495 €)" },
+      { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
+      { href: "/precios", label: "Todos los precios y contratar" },
     ],
   },
   {
@@ -81,11 +45,7 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
     links: [
       { href: "/servicios/servicio-completo-compra", label: "Servicio completo de compra" },
       { href: "/servicios/comprar-piso-sin-agencia", label: "Comprar sin agencia" },
-      { href: "/servicios/reserva-de-compra", label: "Reserva de compra" },
       { href: "/servicios/revision-documental-post-arras", label: "Revisión documental post-arras" },
-      { href: "/servicios/pack-comprador-barcelona", label: "Pack comprador Barcelona (395 €)" },
-      { href: "/contratos-inmobiliarios-barcelona", label: "Hub contratos Barcelona" },
-      { href: "/administracion-alquiler-barcelona", label: "Admin alquiler Barcelona" },
     ],
   },
   {
@@ -93,24 +53,16 @@ export const SERVICE_LANDING_NAV_GROUPS: readonly ServiceLandingNavGroup[] = [
     subtitle: "Propietarios e inquilinos",
     links: [
       { href: "/servicios/servicio-alquiler-integral", label: "Alquiler integral (captación)" },
-      { href: "/servicios/pack-contrato-lau-administracion-alquiler/madrid", label: "Pack LAU + admin Madrid" },
-      { href: "/servicios/pack-contrato-lau-administracion-alquiler/barcelona", label: "Pack LAU + admin Barcelona" },
-      { href: "/servicios/pack-contrato-lau-administracion-alquiler/valencia", label: "Pack LAU + admin Valencia" },
-      { href: "/servicios/pack-contrato-lau-administracion-alquiler/malaga", label: "Pack LAU + admin Málaga" },
-      { href: "/servicios/pack-contrato-lau-administracion-alquiler/sevilla", label: "Pack LAU + admin Sevilla" },
+      { href: "/servicios/pack-contrato-lau-administracion-alquiler", label: "Pack LAU + administración" },
       { href: "/servicios/redactar-contrato-alquiler", label: "Redactar contrato alquiler" },
       { href: "/servicios/contrato-alquiler-lau", label: "Contrato LAU" },
       { href: "/servicios/contrato-alquiler-opcion-compra", label: "Alquiler con opción a compra" },
-      { href: "/servicios/contrato-alquiler-opcion-compra-local", label: "Opción a compra por ciudad" },
       { href: "/servicios/contrato-alquiler-temporada", label: "Contrato de temporada" },
-      { href: "/servicios/contrato-alquiler-habitacion/madrid", label: "Contrato habitación Madrid" },
-      { href: "/servicios/contrato-alquiler-habitacion/barcelona", label: "Contrato habitación Barcelona" },
+      { href: "/servicios/contrato-alquiler-habitacion", label: "Contrato de habitación" },
       { href: "/servicios/administracion-alquiler", label: "Administración de alquiler" },
       { href: "/servicios/administracion-alquiler-temporada", label: "Admin. temporada / habitaciones" },
-      { href: "/servicios/administracion-alquiler-temporada-local", label: "Admin. temporada por ciudad" },
       { href: "/servicios/acompanamiento-alquiler", label: "Acompañamiento de alquiler" },
       { href: "/servicios/revision-contrato-alquiler", label: "Revisión contrato (inquilinos)" },
-      { href: "/servicios/revision-contrato-alquiler-local", label: "Revisión contrato por ciudad" },
       { href: "/servicios/contrato-de-alquiler", label: "Guía de contratos de alquiler" },
     ],
   },
