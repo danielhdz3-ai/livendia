@@ -136,9 +136,9 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "madrid",
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
-    metaTitle: "Madrid: gestoría 890 € venta sin comisiones",
+    metaTitle: "Gestoría inmobiliaria Madrid — venta 890 € sin comisión",
     metaDescription:
-      `Gestoría Madrid para particulares: venta sin agencia 890 €, reserva 424 €, arras 145 €. Gestor humano dedicado, sin comisiones del 3-5 %. ${REVISION_META_SNIPPET} y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+      `Gestoría inmobiliaria en Madrid para particulares: venta sin agencia 890 €, arras 145 €, reserva 424 €. Gestor dedicado, sin comisión del 3-5 %. ${REVISION_META_SNIPPET}. Administración alquiler ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     keywords: [
       "gestoría inmobiliaria madrid particulares",
       "tramites compra piso madrid entre particulares",
@@ -211,9 +211,9 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "barcelona",
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
-    metaTitle: "Gestoría inmobiliaria Barcelona para particulares — desde 145 €",
+    metaTitle: "Gestoría inmobiliaria Barcelona — venta sin comisiones 890 €",
     metaDescription:
-      `Gestoría inmobiliaria en Barcelona para particulares. Venta sin agencia 890 € IVA incl., arras y LAU desde 145 €, zona tensionada e ITE. Gestor dedicado, sin comisión del 3-5 %. ${REVISION_META_SNIPPET}.`,
+      `Gestoría inmobiliaria en Barcelona para particulares. Vender piso sin comisiones: servicio completo 890 €, arras y LAU desde 145 €. Zona tensionada e ITE. Sin comisión del 3-5 %. ${REVISION_META_SNIPPET}.`,
     keywords: [
       "gestoría inmobiliaria para particulares barcelona",
       "gestoría inmobiliaria barcelona particulares",
@@ -226,7 +226,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       "contratos inmobiliarios barcelona",
       "gestoría contratos inmobiliarios barcelona",
     ],
-    h1: "Gestoría inmobiliaria para particulares en Barcelona",
+    h1: "Gestoría inmobiliaria en Barcelona — venta y contratos sin comisiones",
     heroLead:
       "Gestoría especializada en servicios inmobiliarios para particulares en Barcelona capital y área metropolitana. Tarifa plana sin comisiones abusivas, gestor legal experto dedicado y acompañamiento en venta de particular a particular.",
     compraventa: {
@@ -370,9 +370,9 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    metaTitle: "Gestoría inmobiliaria Valencia — venta y alquiler",
+    metaTitle: "Gestoría inmobiliaria Valencia — venta 890 €, gestión alquiler",
     metaDescription:
-      `Gestoría en Valencia para particulares: venta 890 €, arras 145 €, LAU y gestión de alquileres ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Sin comisión del 3-5 %. Ruzafa, Benimaclet, Mislata. Gestor online.`,
+      `Gestoría inmobiliaria en Valencia para particulares: venta sin agencia 890 €, arras 145 €, LAU y gestión de alquileres ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}. Sin comisión del 3-5 %. Ruzafa, Benimaclet, Mislata.`,
     keywords: [
       "gestoría inmobiliaria valencia particulares",
       "venta entre particulares valencia gestoría",
@@ -382,7 +382,7 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
       "contrato arras valencia particular",
       "administración alquiler valencia particulares",
     ],
-    h1: "Gestoría inmobiliaria en Valencia para particulares: venta, compra y alquileres",
+    h1: "Gestoría inmobiliaria en Valencia — venta, contratos y gestión de alquiler",
     heroLead:
       "Gestoría inmobiliaria 100 % online para propietarios y compradores en Valencia capital y área metropolitana. Tarifa plana, gestor legal dedicado y mismos precios que en Madrid o Barcelona.",
     compraventa: {
@@ -445,9 +445,9 @@ export const GESTORIA_INMOBILIARIA_LOCAL_CITIES: GestoriaInmobiliariaLocalCityDe
     slug: "zaragoza",
     city: "Zaragoza",
     schemaAdministrativeArea: "Aragón",
-    metaTitle: "Zaragoza: gestoría 890 € sin comisiones",
+    metaTitle: "Gestoría inmobiliaria Zaragoza — venta 890 € sin comisiones",
     metaDescription:
-      `Gestoría Zaragoza para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor humano dedicado, sin comisiones de agencia. LAU, temporada y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
+      `Gestoría inmobiliaria en Zaragoza para particulares: venta sin agencia 890 €, reserva 424 €, arras ${CONTRATO_ARRAS_PRICE_LABEL}. Gestor dedicado, sin comisión de agencia. LAU y administración ${ADMINISTRACION_ALQUILER_MONTHLY_PRICE_LABEL}.`,
     h1: "Gestoría inmobiliaria en Zaragoza: compraventa, contratos y administración de alquileres",
     heroLead:
       "Compra piso entre particulares, redacta contratos legales o delega la gestión del alquiler en Zaragoza capital y comarca. Precios fijos publicados, gestoría online y entrega en 48-72 h en contratos.",

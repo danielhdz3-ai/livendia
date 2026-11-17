@@ -107,7 +107,6 @@ const CORE_SERVICES: { href: string; label: string }[] = [
   { href: "/gestoria", label: "Gestoría por ciudad" },
   { href: "/blog", label: "Blog y guías" },
   { href: "/equipo", label: "Equipo" },
-  { href: "/mapa-del-sitio", label: "Mapa del sitio" },
 ];
 
 /** Otras ciudades de venta sin agencia (fuera del trío prioritario). */

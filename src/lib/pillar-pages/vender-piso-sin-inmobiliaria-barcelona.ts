@@ -10,9 +10,9 @@ import { VENDER_PISO_SIN_INMOBILIARIA_BASE } from "@/lib/vender-piso-sin-inmobil
 export const PILLAR_BARCELONA_PATH = `${VENDER_PISO_SIN_INMOBILIARIA_BASE}/barcelona`;
 
 export const PILLAR_BARCELONA_META = {
-  title: "Vender piso Barcelona sin comisiones 2026 — guía",
+  title: "Vender piso en Barcelona sin comisiones — gestoría 890 €",
   description:
-    "Vender piso en Barcelona sin comisiones: guía 2026 entre particulares. Sin agencia del 3-5 %. Trámites, arras y gestoría 890 € IVA incl. Eixample, Gràcia, L'Hospitalet. Contrata online.",
+    "Vender piso en Barcelona sin comisiones entre particulares. Guía 2026 + gestoría 890 € IVA incl. (sin agencia del 3-5 %). Arras, trámites, Eixample y Gràcia. Contrata online en Livendia.",
   keywords: [
     "vender piso en barcelona sin comisiones",
     "vender piso sin comisiones en barcelona",

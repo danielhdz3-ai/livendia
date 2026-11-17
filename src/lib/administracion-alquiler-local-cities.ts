@@ -93,8 +93,8 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "madrid",
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
-    heroBadge: "Gestión de alquileres · Madrid",
-    heroH1: "Gestión de alquileres en Madrid para propietarios — desde 59 €/mes",
+    heroBadge: "Gestoría inmobiliaria · Gestión de alquileres Madrid",
+    heroH1: "Gestión de alquileres en Madrid — gestoría para propietarios desde 59 €/mes",
     jsonLdServiceName: "Gestión de alquileres en Madrid para propietarios",
     // Precio medio: Fotocasa, febrero 2026 (21,59 €/m²). Verificar vigencia antes de campañas nuevas.
     heroLead:
@@ -164,8 +164,8 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     city: "Barcelona",
     schemaAdministrativeArea: "Cataluña",
     heroImage: metroBarcelonaZoneImage("barcelona.jpg"),
-    heroBadge: "Gestión de alquileres LAU · Barcelona y AMB",
-    heroH1: "Administración de alquiler en Barcelona para propietarios — desde 59 €/mes",
+    heroBadge: "Gestoría LAU · Gestión de alquiler Barcelona",
+    heroH1: "Gestión de alquiler en Barcelona — gestoría para propietarios desde 59 €/mes",
     jsonLdServiceName: "Administración de alquiler en Barcelona para propietarios",
     // Precio medio: Idealista, abril 2026 (~22 €/m², -7,6% interanual).
     heroLead:
@@ -250,8 +250,8 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "valencia",
     city: "Valencia",
     schemaAdministrativeArea: "Comunidad Valenciana",
-    heroBadge: "Gestión de alquileres · Valencia y l'Horta",
-    heroH1: "Gestión de alquileres en Valencia para propietarios — desde 59 €/mes",
+    heroBadge: "Gestoría inmobiliaria · Gestión de alquileres Valencia",
+    heroH1: "Gestión de alquileres en Valencia — gestoría para propietarios desde 59 €/mes",
     jsonLdServiceName: "Gestión de alquileres en Valencia para propietarios",
     // Precio medio: Idealista, junio 2026 (14,3 €/m²). Sin declaración de zona tensionada.
     heroLead:

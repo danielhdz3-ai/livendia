@@ -31,6 +31,7 @@ import {
   getGestoriaCityVerticalHub,
   localGestoriaCityVerticalHref,
 } from "@/lib/gestoria-city-vertical-hub";
+import { AdministracionAlquilerGestoriaPromoSection } from "@/components/administracion-alquiler-gestoria-promo-section";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
@@ -330,6 +331,8 @@ export async function AdministracionAlquilerLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <AdministracionAlquilerGestoriaPromoSection citySlug={slug} city={config.city} />
 
           <section className="border-b border-slate-200 bg-[#F1F5F9] px-4 pb-20 pt-16 sm:px-6">
             <div className="mx-auto max-w-7xl">
