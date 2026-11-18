@@ -19,6 +19,7 @@ import {
   SERVICIO_COMPLETO_CV_PRICE_LABEL,
 } from "@/lib/catalog.public";
 import { HOME_COVERAGE_CITY_SLUGS } from "@/lib/home-coverage-cities";
+import { localGestoriaCityVerticalHref } from "@/lib/gestoria-city-vertical-hub";
 import { LANDING_HERO_EYEBROW, LANDING_HERO_GRADIENT, LANDING_HUB_EYEBROW, LANDING_PAGE_BG } from "@/lib/landing-design-system";
 import { getSiteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
@@ -43,6 +44,28 @@ export const metadata: Metadata = {
     images: [{ url: "/images/gestoria5.jpg", alt: "Gestoría inmobiliaria Livendia" }],
   },
 };
+
+function GestoriaVerticalHubLinks({ slug, city }: { slug: string; city: string }) {
+  return (
+    <div className="mt-3 flex flex-col gap-2 text-sm">
+      <Link
+        href={localGestoriaCityVerticalHref(slug, "alquiler")}
+        className="font-semibold text-[#1A4FBF] hover:underline"
+      >
+        Gestoría alquiler {city} →
+      </Link>
+      <Link
+        href={localGestoriaCityVerticalHref(slug, "compraventa")}
+        className="font-semibold text-[#1A4FBF] hover:underline"
+      >
+        Gestoría compraventa {city} →
+      </Link>
+      <Link href={localGestoriaInmobiliariaHref(slug)} className="text-[#64748b] hover:text-[#1A4FBF]">
+        Landing completa {city}
+      </Link>
+    </div>
+  );
+}
 
 function splitFeaturedCities(published: GestoriaInmobiliariaLocalCityDefinition[]) {
   const prioritySet = new Set<string>(HOME_COVERAGE_CITY_SLUGS);
@@ -102,6 +125,29 @@ export default function GestoriaIndexPage() {
           administracionHref="/servicios/administracion-alquiler"
           ventaHref="/servicios/servicio-completo-venta"
         />
+
+        <section className="border-b border-slate-200 bg-[#F8FAFC] px-4 py-12 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">Hubs de gestoría por intención de búsqueda</h2>
+            <p className="mt-2 text-[#64748b]">
+              Alquiler y compraventa en las tres ciudades con más demanda — refuerzo de enlazado interno para indexación.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {(
+                [
+                  { slug: "madrid", city: "Madrid" },
+                  { slug: "barcelona", city: "Barcelona" },
+                  { slug: "valencia", city: "Valencia" },
+                ] as const
+              ).map(({ slug, city }) => (
+                <article key={slug} className="rounded-2xl bg-white p-5 shadow-md ring-1 ring-slate-200">
+                  <p className="text-lg font-bold text-[#1E293B]">{city}</p>
+                  <GestoriaVerticalHubLinks slug={slug} city={city} />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <LocalCityImageCardGrid

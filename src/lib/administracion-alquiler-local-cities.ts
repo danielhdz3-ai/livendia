@@ -456,6 +456,9 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     slug: "malaga",
     city: "Málaga",
     schemaAdministrativeArea: "Andalucía",
+    heroBadge: "Gestoría inmobiliaria · Gestión de alquileres Málaga",
+    heroH1: "Gestión de alquileres en Málaga — gestoría para propietarios desde 59 €/mes",
+    jsonLdServiceName: "Gestión de alquileres en Málaga para propietarios",
     // Precio medio: Brains Real Estate, Q1 2026 (16-17 €/m², ticket medio 1.476 €/mes).
     heroLead:
       "Málaga capital y Costa del Sol combinan alquiler residencial, temporada y fuerte presión inversora: el precio medio ronda los 16-17 €/m², con un ticket medio de 1.476 €/mes según Brains Real Estate (primer trimestre de 2026), y distritos como Victoria han subido un 32,1 % interanual. Livendia canaliza todo el contacto con el inquilino para que no perdáis fines de semana en llamadas mientras el mercado sigue tensionándose.",
@@ -478,6 +481,16 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
       "Fuengirola",
     ],
     faq: [
+      {
+        question: "¿Cuánto cuesta la gestión de alquileres en Málaga?",
+        answer:
+          "Livendia cobra 59 €/mes IVA incluido, sin permanencia ni comisión sobre la renta. Incluye intermediación con el inquilino, incidencias en Costa del Sol, coordinación de reparaciones y seguimiento de renovaciones. No incluye juicios de desahucio ni renta garantizada.",
+      },
+      {
+        question: "¿Qué incluye una gestoría de gestión de alquiler en Málaga?",
+        answer:
+          "Canal único con el arrendatario (tú no atiendes llamadas), gestión de averías en Teatinos, El Palo o segunda residencia en la costa, mediación con comunidad y avisos solo cuando hace falta tu firma. Ideal para propietarios fuera de Andalucía con piso en Málaga capital o municipios como Torremolinos.",
+      },
       {
         question: "¿Málaga es zona de mercado tensionado?",
         answer:

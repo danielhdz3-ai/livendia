@@ -56,12 +56,13 @@ import {
   MapPin,
 } from "lucide-react";
 
-const ADMIN_PREMIUM_FAQ_SLUGS = new Set(["valencia", "madrid", "barcelona"]);
+const ADMIN_PREMIUM_FAQ_SLUGS = new Set(["valencia", "madrid", "barcelona", "malaga"]);
 
 const ADMIN_FAQ_SPOTLIGHT_IMAGES: Record<string, string> = {
   valencia: "/images/gestoria20.jpg",
   madrid: "/images/gestoria4.jpg",
   barcelona: "/images/gestoria3.jpg",
+  malaga: "/images/gestoria2.jpg",
 };
 
 function LocalAdministracionJsonLd({
