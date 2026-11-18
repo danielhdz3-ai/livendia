@@ -9,6 +9,8 @@ export type LocalCityImageCardItem = {
   region?: string;
   href: string;
   linkLabel?: string;
+  /** Línea corta bajo la región (precio, servicio). */
+  tagline?: string;
 };
 
 type LocalCityImageCardGridProps = {
@@ -39,7 +41,7 @@ export function LocalCityImageCardGrid({
               href={c.href}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:border-[#1A4FBF] hover:shadow-lg"
             >
-              <div className="relative h-32 overflow-hidden bg-slate-100">
+              <div className="relative h-36 overflow-hidden bg-slate-100 sm:h-40">
                 <Image
                   src={getLocalCityCardImage(c.slug)}
                   alt={`Servicios inmobiliarios en ${c.city}`}
@@ -52,8 +54,9 @@ export function LocalCityImageCardGrid({
                   {c.city}
                 </span>
               </div>
-              <div className="flex flex-1 flex-col p-5">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 {c.region ? <span className="text-sm text-[#64748b]">{c.region}</span> : null}
+                {c.tagline ? <p className="mt-2 text-sm font-medium text-[#1E293B]">{c.tagline}</p> : null}
                 <span className="mt-3 inline-flex text-sm font-semibold text-[#1A4FBF]">
                   {c.linkLabel ?? "Ver landing →"}
                 </span>

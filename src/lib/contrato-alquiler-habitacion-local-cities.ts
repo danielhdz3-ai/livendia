@@ -310,10 +310,10 @@ export const CONTRATO_ALQUILER_HABITACION_LOCAL_CITIES: ContratoAlquilerHabitaci
     city: "Madrid",
     schemaAdministrativeArea: "Comunidad de Madrid",
     heroBadge: "Piso compartido · Madrid",
-    heroH1: "Contrato de alquiler de habitación en Madrid",
-    metaTitle: `Contrato alquiler habitación Madrid — ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
+    heroH1: `Contrato alquiler habitación Madrid — gestoría desde ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
+    metaTitle: `Contrato alquiler habitación Madrid — gestoría ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL}`,
     metaDescription:
-      `Contrato de alquiler de habitación en Madrid ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Piso compartido LAU 2026: Chamberí, Moncloa, Tetuán. Convivencia, gastos y fianza. Entrega 48-72 h. Gestor por teléfono.`,
+      `Contrato de alquiler de habitación en Madrid con gestoría Livendia: ${CONTRATO_ALQUILER_HABITACION_PRICE_LABEL} IVA incl. Chamberí, Moncloa, Tetuán. LAU 2026, convivencia y fianza. Entrega 48-72 h. Contrata online.`,
     keywords: [
       "contrato alquiler habitacion madrid",
       "alquilar habitacion madrid contrato",

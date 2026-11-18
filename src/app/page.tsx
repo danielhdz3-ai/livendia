@@ -2,6 +2,7 @@ import { FaqSection } from "@/components/faq-section";
 import { HomeDecretosBannerCarousel } from "@/components/home-decretos-banner-carousel";
 import { BarcelonaRegionalHubCards } from "@/components/barcelona-regional-hub-cards";
 import { HomeCoverageCities } from "@/components/home-coverage-cities";
+import { HomeGestoriaCitiesPremiumSection } from "@/components/home-gestoria-cities-premium-section";
 import { SeoCityPrimaryLandingsSection } from "@/components/seo-city-primary-landings-section";
 import { HomeHowItWorks } from "@/components/home-how-it-works";
 import { ServiceGestorPlatformSection } from "@/components/service-gestor-platform-section";
@@ -127,6 +128,8 @@ export default async function Home() {
         <HomeMobileQuickActions />
 
         <HomeCoverageCities />
+
+        <HomeGestoriaCitiesPremiumSection />
 
         <SeoCityPrimaryLandingsSection />
 

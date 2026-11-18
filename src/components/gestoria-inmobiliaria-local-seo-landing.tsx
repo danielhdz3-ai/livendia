@@ -38,6 +38,11 @@ import {
   getGestoriaCityVerticalHub,
   localGestoriaCityVerticalHref,
 } from "@/lib/gestoria-city-vertical-hub";
+import { GestoriaPremiumOfferCards } from "@/components/gestoria-premium-offer-cards";
+import {
+  isVenderPisoSinAgenciaSlugPublished,
+  localVenderPisoSinAgenciaHref,
+} from "@/lib/vender-piso-sin-agencia-local-cities";
 import {
   buildGestoriaServicesCarouselSections,
   gestoriaCarouselCopy,
@@ -300,6 +305,19 @@ export async function GestoriaInmobiliariaLocalSeoLanding({
               </div>
             </div>
           </section>
+
+          <GestoriaPremiumOfferCards
+            city={config.city}
+            gestoriaHref={config.path}
+            administracionHref={
+              showAdministracionLocalLink ? administracionLocalHref : undefined
+            }
+            ventaHref={
+              isVenderPisoSinAgenciaSlugPublished(config.slug)
+                ? localVenderPisoSinAgenciaHref(config.slug)
+                : undefined
+            }
+          />
 
           <LocalCityContextSectionFromConfig
             city={config.city}

@@ -4,6 +4,7 @@ import { ServiceLandingSharedSections } from "@/components/service-landing-share
 import { buildGestorWorkflowContent } from "@/lib/gestor-workflow-content";
 import { SiteFooter } from "@/components/site-footer";
 import { FaqSection } from "@/components/faq-section";
+import { LandingPremiumFaqSpotlight } from "@/components/landing-premium-faq-spotlight";
 import { LocalCityContextSectionFromConfig } from "@/components/local-city-context-section-from-config";
 import { ServiceMidPageContactSection } from "@/components/service-mid-page-contact-section";
 import { GestorContactCta } from "@/components/gestor-contact-cta";
@@ -478,16 +479,28 @@ export async function VenderPisoSinAgenciaLocalSeoLanding({
             </section>
           ) : null}
 
-          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-3xl">
-              <FaqSection
-                id={`faq-vender-piso-${config.slug}`}
-                title={pageCopy.faqTitle}
-                subtitle={pageCopy.faqSubtitle}
-                items={[...config.faq]}
-              />
-            </div>
-          </section>
+          {config.slug === "barcelona" ? (
+            <LandingPremiumFaqSpotlight
+              city={config.city}
+              id={`faq-vender-piso-${config.slug}`}
+              title="Vender piso en Barcelona sin comisiones: preguntas frecuentes"
+              subtitle="Gestoría 890 €, trámites entre particulares y ahorro frente a agencias del 3–5 %."
+              items={[...config.faq]}
+              imageSrc="/images/servicio-completo-venta-hero.jpg"
+              maxItems={6}
+            />
+          ) : (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  id={`faq-vender-piso-${config.slug}`}
+                  title={pageCopy.faqTitle}
+                  subtitle={pageCopy.faqSubtitle}
+                  items={[...config.faq]}
+                />
+              </div>
+            </section>
+          )}
 
 
           <ServiceMidPageContactSection serviceLabel={`Venta de piso sin agencia en ${config.city}`} />

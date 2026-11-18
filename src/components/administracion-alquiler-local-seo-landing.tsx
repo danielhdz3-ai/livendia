@@ -32,6 +32,7 @@ import {
   localGestoriaCityVerticalHref,
 } from "@/lib/gestoria-city-vertical-hub";
 import { AdministracionAlquilerGestoriaPromoSection } from "@/components/administracion-alquiler-gestoria-promo-section";
+import { LandingPremiumFaqSpotlight } from "@/components/landing-premium-faq-spotlight";
 import { AdministracionAlquilerMetroHubLinks } from "@/components/administracion-alquiler-metro-hub-links";
 import { AdministracionAlquilerOperationsScopeSection } from "@/components/administracion-alquiler-operations-scope-section";
 import { AdministracionAlquilerOnlineOnlySection } from "@/components/administracion-alquiler-online-only-section";
@@ -54,6 +55,14 @@ import {
   Wrench,
   MapPin,
 } from "lucide-react";
+
+const ADMIN_PREMIUM_FAQ_SLUGS = new Set(["valencia", "madrid", "barcelona"]);
+
+const ADMIN_FAQ_SPOTLIGHT_IMAGES: Record<string, string> = {
+  valencia: "/images/gestoria20.jpg",
+  madrid: "/images/gestoria4.jpg",
+  barcelona: "/images/gestoria3.jpg",
+};
 
 function LocalAdministracionJsonLd({
   path,
@@ -487,16 +496,28 @@ export async function AdministracionAlquilerLocalSeoLanding({
             <AlquilerRegulatoryLocalSection city={config.city} regulatory={regulatory} />
           ) : null}
 
-          <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
-            <div className="mx-auto max-w-3xl">
-              <FaqSection
-                id={`faq-alquiler-local-${slug}`}
-                title={`Preguntas frecuentes sobre administración de alquiler en ${config.city}`}
-                subtitle="Impagos, seguro, venta con inquilino y recuperación de la vivienda — respuestas claras para propietarios."
-                items={faqItems}
-              />
-            </div>
-          </section>
+          {ADMIN_PREMIUM_FAQ_SLUGS.has(slug) ? (
+            <LandingPremiumFaqSpotlight
+              city={config.city}
+              id={`faq-alquiler-local-${slug}`}
+              title={`Gestión de alquileres en ${config.city}: preguntas clave`}
+              subtitle="Precio, gestoría, zona tensionada e impagos — lo que más buscan los propietarios antes de contratar."
+              items={faqItems}
+              imageSrc={ADMIN_FAQ_SPOTLIGHT_IMAGES[slug] ?? "/images/gestoria20.jpg"}
+              maxItems={6}
+            />
+          ) : (
+            <section className="border-b border-slate-200 bg-white px-4 py-16 sm:px-6">
+              <div className="mx-auto max-w-3xl">
+                <FaqSection
+                  id={`faq-alquiler-local-${slug}`}
+                  title={`Preguntas frecuentes sobre administración de alquiler en ${config.city}`}
+                  subtitle="Impagos, seguro, venta con inquilino y recuperación de la vivienda — respuestas claras para propietarios."
+                  items={faqItems}
+                />
+              </div>
+            </section>
+          )}
 
 
           <ServiceMidPageContactSection serviceLabel={`Administración de alquiler en ${config.city}`} />

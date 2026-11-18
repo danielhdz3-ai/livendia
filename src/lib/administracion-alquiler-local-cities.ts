@@ -124,6 +124,16 @@ export const ADMINISTRACION_ALQUILER_LOCAL_CITIES: AdministracionAlquilerLocalCi
     ],
     faq: [
       {
+        question: "¿Cuánto cuesta la gestión de alquileres en Madrid?",
+        answer:
+          "Livendia cobra 59 €/mes IVA incluido, sin permanencia ni comisión sobre la renta. Incluye canal único con el inquilino, incidencias, reparaciones coordinadas y seguimiento de renovaciones. No incluye juicios de desahucio ni renta garantizada.",
+      },
+      {
+        question: "¿Qué incluye una gestoría de gestión de alquileres en Madrid?",
+        answer:
+          "Intermediación profesional ante el arrendatario, filtro de urgencias, coordinación con comunidad y proveedores, control de pagos y avisos solo cuando hace falta tu firma. Ideal si tienes piso en Salamanca, Chamberí, Vallecas o municipios del cinturón y no quieres atender llamadas del inquilino.",
+      },
+      {
         // Fuente: MIVAU, registro oficial de zonas de mercado residencial tensionado, verificado
         // en vivo el 25/07/2026. Revisar cada 3-6 meses (actualización trimestral del registro).
         question: "¿Está Madrid declarada zona tensionada?",
